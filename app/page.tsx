@@ -7,42 +7,39 @@ import { templates, developmentPlans } from '@/lib/data'
 import { formatPrice } from '@/lib/data-utils'
 import {
   ArrowRight, Check, Sparkles, Zap, Shield, Headphones,
-  Code2, Palette, Globe, ChevronRight, Star, Users, Award
+  Code2, Palette, Globe, ChevronRight
 } from 'lucide-react'
-import { Button } from '@/components/ui/button'
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
-import { Badge } from '@/components/ui/badge'
 
 export default function Home() {
   return (
     <div className="min-h-screen bg-white">
-      {/* 헤더 - 클린 */}
-      <header className="sticky top-0 z-50 bg-white/95 backdrop-blur-sm border-b border-gray-100">
-        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+      {/* 헤더 - 아임웹 스타일 */}
+      <header className="sticky top-0 z-50 bg-white/95 backdrop-blur-sm border-b">
+        <div className="imweb-container">
           <div className="flex items-center justify-between h-20">
             <Link href="/" className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-xl bg-blue-600 flex items-center justify-center">
+              <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-blue-500 to-blue-600 flex items-center justify-center">
                 <span className="text-white font-bold text-lg">P</span>
               </div>
-              <span className="font-bold text-xl text-gray-900">Premium Page</span>
+              <span className="font-bold text-xl">Premium Page</span>
             </Link>
 
             <nav className="hidden md:flex items-center gap-8">
-              <a href="#features" className="text-gray-600 hover:text-gray-900 font-medium transition">기능</a>
-              <a href="#templates" className="text-gray-600 hover:text-gray-900 font-medium transition">템플릿</a>
-              <a href="#pricing" className="text-gray-600 hover:text-gray-900 font-medium transition">요금제</a>
-              <Link href="/login" className="text-gray-600 hover:text-gray-900 font-medium transition">로그인</Link>
-              <Button asChild className="bg-blue-600 hover:bg-blue-700 text-white px-6">
-                <Link href="/quote">시작하기</Link>
-              </Button>
+              <a href="#features" className="imweb-body hover:text-blue-600 transition">기능</a>
+              <a href="#templates" className="imweb-body hover:text-blue-600 transition">템플릿</a>
+              <a href="#pricing" className="imweb-body hover:text-blue-600 transition">요금제</a>
+              <Link href="/login" className="imweb-body hover:text-blue-600 transition">로그인</Link>
+              <Link href="/quote" className="imweb-btn imweb-btn-primary">
+                시작하기
+              </Link>
             </nav>
           </div>
         </div>
       </header>
 
-      {/* 히어로 섹션 - 좌우 분할 */}
-      <section className="py-20 lg:py-32">
-        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+      {/* 히어로 섹션 - 아임웹 스타일 */}
+      <section className="imweb-section">
+        <div className="imweb-container">
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
             {/* 왼쪽: 텍스트 */}
             <motion.div
@@ -50,47 +47,45 @@ export default function Home() {
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6 }}
             >
-              <Badge className="inline-flex items-center gap-2 px-4 py-2 bg-blue-50 text-blue-700 rounded-full mb-6">
+              <div className="imweb-badge imweb-badge-primary mb-6">
                 <Sparkles className="w-4 h-4" />
-                <span className="font-semibold">23개의 프리미엄 템플릿</span>
-              </Badge>
+                <span>23개의 프리미엄 템플릿</span>
+              </div>
 
-              <h1 className="text-5xl lg:text-6xl font-bold text-gray-900 mb-6 leading-tight">
+              <h1 className="imweb-heading-1 mb-6">
                 비즈니스를 위한
                 <br />
                 <span className="text-blue-600">프리미엄 웹사이트</span>
               </h1>
 
-              <p className="text-xl text-gray-600 mb-8 leading-relaxed">
+              <p className="imweb-body-lg mb-8">
                 전문가가 디자인한 템플릿으로 빠르고 쉽게 시작하세요.
                 코딩 없이 나만의 웹사이트를 만들 수 있습니다.
               </p>
 
               <div className="flex flex-col sm:flex-row gap-4">
-                <Button asChild size="lg" className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-6 text-lg">
-                  <Link href="/quote">
-                    무료 견적 받기
-                    <ArrowRight className="w-5 h-5 ml-2" />
-                  </Link>
-                </Button>
-                <Button asChild size="lg" variant="outline" className="border-2 px-8 py-6 text-lg">
-                  <a href="#templates">템플릿 보기</a>
-                </Button>
+                <Link href="/quote" className="imweb-btn imweb-btn-primary imweb-btn-lg">
+                  무료 견적 받기
+                  <ArrowRight className="w-5 h-5" />
+                </Link>
+                <a href="#templates" className="imweb-btn imweb-btn-secondary imweb-btn-lg">
+                  템플릿 보기
+                </a>
               </div>
 
               {/* 통계 */}
-              <div className="grid grid-cols-3 gap-8 mt-12 pt-12 border-t border-gray-100">
+              <div className="grid grid-cols-3 gap-8 mt-12 pt-12 border-t">
                 <div>
-                  <div className="text-3xl font-bold text-gray-900">500+</div>
-                  <div className="text-sm text-gray-600 mt-1">만족한 고객</div>
+                  <div className="imweb-heading-3">500+</div>
+                  <div className="imweb-body-sm mt-1">만족한 고객</div>
                 </div>
                 <div>
-                  <div className="text-3xl font-bold text-gray-900">99%</div>
-                  <div className="text-sm text-gray-600 mt-1">고객 만족도</div>
+                  <div className="imweb-heading-3">99%</div>
+                  <div className="imweb-body-sm mt-1">고객 만족도</div>
                 </div>
                 <div>
-                  <div className="text-3xl font-bold text-gray-900">24/7</div>
-                  <div className="text-sm text-gray-600 mt-1">고객 지원</div>
+                  <div className="imweb-heading-3">24/7</div>
+                  <div className="imweb-body-sm mt-1">고객 지원</div>
                 </div>
               </div>
             </motion.div>
@@ -102,7 +97,7 @@ export default function Home() {
               transition={{ duration: 0.6, delay: 0.2 }}
               className="relative"
             >
-              <div className="relative rounded-2xl overflow-hidden shadow-2xl">
+              <div className="relative rounded-2xl overflow-hidden shadow-xl">
                 <Image
                   src="/images/hero-clean.png"
                   alt="Premium Website Builder"
@@ -112,72 +107,54 @@ export default function Home() {
                   priority
                 />
               </div>
-              {/* 플로팅 카드 */}
-              <div className="absolute -bottom-6 -left-6 bg-white rounded-xl shadow-xl p-4 hidden lg:block">
-                <div className="flex items-center gap-3">
-                  <div className="w-12 h-12 rounded-lg bg-green-100 flex items-center justify-center">
-                    <Check className="w-6 h-6 text-green-600" />
-                  </div>
-                  <div>
-                    <div className="font-bold text-gray-900">빠른 제작</div>
-                    <div className="text-sm text-gray-600">24시간 내 완성</div>
-                  </div>
-                </div>
-              </div>
             </motion.div>
           </div>
         </div>
       </section>
 
-      {/* 기능 섹션 - 카드 그리드 */}
-      <section id="features" className="py-20 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+      {/* 기능 섹션 - 아임웹 스타일 */}
+      <section id="features" className="imweb-section imweb-section-gray">
+        <div className="imweb-container">
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-gray-900 mb-4">
+            <h2 className="imweb-heading-2 mb-4">
               왜 Premium Page인가요?
             </h2>
-            <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+            <p className="imweb-body-lg">
               전문적인 웹사이트 제작을 위한 모든 것이 준비되어 있습니다
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="imweb-grid imweb-grid-3">
             {[
               {
                 icon: Code2,
                 title: '코딩 불필요',
-                description: '드래그 앤 드롭으로 쉽게 웹사이트를 만들 수 있습니다',
-                color: 'blue'
+                description: '드래그 앤 드롭으로 쉽게 웹사이트를 만들 수 있습니다'
               },
               {
                 icon: Palette,
                 title: '프리미엄 디자인',
-                description: '전문 디자이너가 만든 아름다운 템플릿을 제공합니다',
-                color: 'purple'
+                description: '전문 디자이너가 만든 아름다운 템플릿을 제공합니다'
               },
               {
                 icon: Zap,
                 title: '빠른 속도',
-                description: '최적화된 성능으로 빠르게 로딩되는 웹사이트',
-                color: 'yellow'
+                description: '최적화된 성능으로 빠르게 로딩되는 웹사이트'
               },
               {
                 icon: Shield,
                 title: '안전한 호스팅',
-                description: 'SSL 인증서와 보안 호스팅이 기본으로 제공됩니다',
-                color: 'green'
+                description: 'SSL 인증서와 보안 호스팅이 기본으로 제공됩니다'
               },
               {
                 icon: Globe,
                 title: '반응형 디자인',
-                description: '모든 기기에서 완벽하게 작동하는 반응형 웹사이트',
-                color: 'indigo'
+                description: '모든 기기에서 완벽하게 작동하는 반응형 웹사이트'
               },
               {
                 icon: Headphones,
                 title: '24/7 지원',
-                description: '언제든지 도움을 받을 수 있는 고객 지원 서비스',
-                color: 'pink'
+                description: '언제든지 도움을 받을 수 있는 고객 지원 서비스'
               }
             ].map((feature, i) => (
               <motion.div
@@ -186,16 +163,13 @@ export default function Home() {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ delay: i * 0.1 }}
                 viewport={{ once: true }}
+                className="imweb-card"
               >
-                <Card className="bg-white border-0 shadow-lg hover:shadow-xl transition-all duration-300 h-full">
-                  <CardContent className="p-8">
-                    <div className={`w-14 h-14 rounded-xl bg-${feature.color}-100 flex items-center justify-center mb-6`}>
-                      <feature.icon className={`w-7 h-7 text-${feature.color}-600`} />
-                    </div>
-                    <h3 className="text-xl font-bold text-gray-900 mb-3">{feature.title}</h3>
-                    <p className="text-gray-600 leading-relaxed">{feature.description}</p>
-                  </CardContent>
-                </Card>
+                <div className="imweb-icon-box mb-6">
+                  <feature.icon className="w-6 h-6" />
+                </div>
+                <h3 className="imweb-heading-4 mb-3">{feature.title}</h3>
+                <p className="imweb-body">{feature.description}</p>
               </motion.div>
             ))}
           </div>
@@ -203,18 +177,18 @@ export default function Home() {
       </section>
 
       {/* 템플릿 섹션 */}
-      <section id="templates" className="py-20">
-        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+      <section id="templates" className="imweb-section">
+        <div className="imweb-container">
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-gray-900 mb-4">
+            <h2 className="imweb-heading-2 mb-4">
               프리미엄 템플릿
             </h2>
-            <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+            <p className="imweb-body-lg">
               다양한 업종에 맞는 전문적인 템플릿을 선택하세요
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="imweb-grid imweb-grid-3">
             {templates.slice(0, 6).map((template, i) => (
               <motion.div
                 key={template.id}
@@ -223,52 +197,42 @@ export default function Home() {
                 transition={{ delay: i * 0.1 }}
                 viewport={{ once: true }}
               >
-                <Link href={`/templates/${template.slug}`}>
-                  <Card className="group overflow-hidden border-0 shadow-lg hover:shadow-xl transition-all duration-300">
-                    <div className="aspect-video bg-gradient-to-br from-blue-50 to-purple-50 relative overflow-hidden">
-                      <div className="absolute inset-0 flex items-center justify-center">
-                        <Globe className="w-16 h-16 text-blue-200" />
-                      </div>
+                <Link href={`/templates/${template.slug}`} className="block">
+                  <div className="imweb-card group">
+                    <div className="aspect-video bg-gradient-to-br from-blue-50 to-purple-50 rounded-lg mb-4 flex items-center justify-center">
+                      <Globe className="w-12 h-12 text-blue-200" />
                     </div>
-                    <CardHeader className="p-6">
-                      <Badge className="w-fit mb-3 bg-blue-50 text-blue-700 border-0">
-                        {template.category}
-                      </Badge>
-                      <CardTitle className="text-lg mb-2">{template.name}</CardTitle>
-                      <p className="text-sm text-gray-600 line-clamp-2">
-                        {template.description}
-                      </p>
-                    </CardHeader>
-                  </Card>
+                    <div className="imweb-badge mb-3">{template.category}</div>
+                    <h3 className="imweb-heading-4 mb-2">{template.name}</h3>
+                    <p className="imweb-body-sm line-clamp-2">{template.description}</p>
+                  </div>
                 </Link>
               </motion.div>
             ))}
           </div>
 
           <div className="text-center mt-12">
-            <Button asChild size="lg" variant="outline" className="border-2">
-              <Link href="/templates">
-                모든 템플릿 보기
-                <ChevronRight className="w-5 h-5 ml-2" />
-              </Link>
-            </Button>
+            <Link href="/templates" className="imweb-btn imweb-btn-secondary imweb-btn-lg">
+              모든 템플릿 보기
+              <ChevronRight className="w-5 h-5" />
+            </Link>
           </div>
         </div>
       </section>
 
       {/* 요금제 섹션 */}
-      <section id="pricing" className="py-20 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+      <section id="pricing" className="imweb-section imweb-section-gray">
+        <div className="imweb-container">
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-gray-900 mb-4">
+            <h2 className="imweb-heading-2 mb-4">
               합리적인 요금제
             </h2>
-            <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+            <p className="imweb-body-lg">
               비즈니스 규모에 맞는 요금제를 선택하세요
             </p>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+          <div className="imweb-grid imweb-grid-3 max-w-5xl mx-auto">
             {developmentPlans.map((plan, i) => (
               <motion.div
                 key={plan.id}
@@ -276,31 +240,29 @@ export default function Home() {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ delay: i * 0.1 }}
                 viewport={{ once: true }}
+                className={`imweb-card ${plan.popular ? 'border-2 border-blue-600' : ''}`}
               >
-                <Card className={`relative ${plan.popular ? 'border-2 border-blue-600 shadow-xl' : 'border-0 shadow-lg'}`}>
-                  {plan.popular && (
-                    <div className="absolute -top-4 left-1/2 -translate-x-1/2">
-                      <Badge className="bg-blue-600 text-white px-4 py-1">인기</Badge>
-                    </div>
-                  )}
-                  <CardContent className="p-8">
-                    <h3 className="text-2xl font-bold text-gray-900 mb-2">{plan.name}</h3>
-                    <div className="text-4xl font-bold text-blue-600 mb-6">
-                      {formatPrice(plan.price)}
-                    </div>
-                    <ul className="space-y-4 mb-8">
-                      {plan.features.map((feature, idx) => (
-                        <li key={idx} className="flex items-start gap-3">
-                          <Check className="w-5 h-5 text-blue-600 flex-shrink-0 mt-0.5" />
-                          <span className="text-gray-700">{feature}</span>
-                        </li>
-                      ))}
-                    </ul>
-                    <Button asChild className={`w-full ${plan.popular ? 'bg-blue-600 hover:bg-blue-700 text-white' : 'bg-gray-100 hover:bg-gray-200 text-gray-900'}`}>
-                      <Link href="/quote">선택하기</Link>
-                    </Button>
-                  </CardContent>
-                </Card>
+                {plan.popular && (
+                  <div className="imweb-badge imweb-badge-primary mb-4">인기</div>
+                )}
+                <h3 className="imweb-heading-3 mb-2">{plan.name}</h3>
+                <div className="imweb-heading-2 text-blue-600 mb-6">
+                  {formatPrice(plan.price)}
+                </div>
+                <ul className="space-y-3 mb-8">
+                  {plan.features.map((feature, idx) => (
+                    <li key={idx} className="flex items-start gap-3">
+                      <Check className="w-5 h-5 text-blue-600 flex-shrink-0 mt-0.5" />
+                      <span className="imweb-body">{feature}</span>
+                    </li>
+                  ))}
+                </ul>
+                <Link
+                  href="/quote"
+                  className={`imweb-btn w-full ${plan.popular ? 'imweb-btn-primary' : 'imweb-btn-secondary'}`}
+                >
+                  선택하기
+                </Link>
               </motion.div>
             ))}
           </div>
@@ -308,40 +270,38 @@ export default function Home() {
       </section>
 
       {/* CTA 섹션 */}
-      <section className="py-20 bg-blue-600">
-        <div className="max-w-4xl mx-auto px-6 lg:px-8 text-center">
-          <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
+      <section className="imweb-section bg-blue-600 text-white">
+        <div className="imweb-container-sm text-center">
+          <h2 className="text-4xl md:text-5xl font-bold mb-6">
             지금 바로 시작하세요
           </h2>
-          <p className="text-xl text-blue-100 mb-10">
+          <p className="text-xl mb-10 opacity-90">
             무료 견적을 받고 전문가와 상담하세요. 24시간 이내에 답변드립니다.
           </p>
-          <Button asChild size="lg" className="bg-white text-blue-600 hover:bg-gray-100 px-8 py-6 text-lg">
-            <Link href="/quote">
-              무료 견적 받기
-              <ArrowRight className="w-5 h-5 ml-2" />
-            </Link>
-          </Button>
+          <Link href="/quote" className="imweb-btn bg-white text-blue-600 hover:bg-gray-100 imweb-btn-lg">
+            무료 견적 받기
+            <ArrowRight className="w-5 h-5" />
+          </Link>
         </div>
       </section>
 
       {/* 푸터 */}
-      <footer className="py-16 bg-gray-900 text-gray-400">
-        <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          <div className="grid md:grid-cols-4 gap-12 mb-12">
+      <footer className="imweb-section-sm bg-gray-900 text-gray-400">
+        <div className="imweb-container">
+          <div className="imweb-grid imweb-grid-4 mb-12">
             <div>
               <div className="flex items-center gap-2 mb-4">
                 <div className="w-8 h-8 rounded-lg bg-blue-600 flex items-center justify-center">
-                  <span className="text-white font-bold">P</span>
+                  <span className="text-white font-bold text-sm">P</span>
                 </div>
                 <span className="font-bold text-white">Premium Page</span>
               </div>
-              <p className="text-sm">프리미엄 웹사이트 제작 플랫폼</p>
+              <p className="imweb-body-sm">프리미엄 웹사이트 제작 플랫폼</p>
             </div>
 
             <div>
               <h4 className="font-bold text-white mb-4">제품</h4>
-              <ul className="space-y-2 text-sm">
+              <ul className="space-y-2 imweb-body-sm">
                 <li><a href="#templates" className="hover:text-white transition">템플릿</a></li>
                 <li><a href="#pricing" className="hover:text-white transition">요금제</a></li>
                 <li><a href="#features" className="hover:text-white transition">기능</a></li>
@@ -350,7 +310,7 @@ export default function Home() {
 
             <div>
               <h4 className="font-bold text-white mb-4">지원</h4>
-              <ul className="space-y-2 text-sm">
+              <ul className="space-y-2 imweb-body-sm">
                 <li><a href="#" className="hover:text-white transition">고객센터</a></li>
                 <li><a href="#" className="hover:text-white transition">가이드</a></li>
                 <li><a href="#" className="hover:text-white transition">FAQ</a></li>
@@ -359,7 +319,7 @@ export default function Home() {
 
             <div>
               <h4 className="font-bold text-white mb-4">회사</h4>
-              <ul className="space-y-2 text-sm">
+              <ul className="space-y-2 imweb-body-sm">
                 <li><a href="#" className="hover:text-white transition">소개</a></li>
                 <li><a href="#" className="hover:text-white transition">블로그</a></li>
                 <li><a href="#" className="hover:text-white transition">채용</a></li>
@@ -367,7 +327,7 @@ export default function Home() {
             </div>
           </div>
 
-          <div className="pt-8 border-t border-gray-800 flex flex-col md:flex-row justify-between items-center gap-4 text-sm">
+          <div className="pt-8 border-t border-gray-800 flex flex-col md:flex-row justify-between items-center gap-4 imweb-body-sm">
             <p>© 2024 Premium Page. All rights reserved.</p>
             <div className="flex gap-6">
               <a href="#" className="hover:text-white transition">이용약관</a>
