@@ -1,0 +1,72 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+}
+
+model QuoteRequest {
+  id                  String   @id @default(cuid())
+  templateId          String
+  developmentPlanId   String
+  maintenancePlanId   String
+  companyName         String?
+  contactName         String
+  contactEmail        String
+  contactPhone        String
+  projectDetails      String
+  attachments         String?  // JSON string of file paths
+  status              String   @default("pending") // pending, processing, completed, cancelled
+  adminNotes          String?
+  createdAt           DateTime @default(now())
+  updatedAt           DateTime @updatedAt
+  
+  project     Project?
+}
+
+model Project {
+  id              String   @id @default(cuid())
+  quoteRequestId  String   @unique
+  name            String
+  domain          String?
+  status          String   @default("in_progress") // in_progress, completed, cancelled
+  progress        Int      @default(0) // 0-100
+  startDate       DateTime @default(now())
+  completionDate  DateTime?
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+  
+  quoteRequest QuoteRequest        @relation(fields: [quoteRequestId], references: [id])
+  messages     ProjectMessage[]
+  milestones   ProjectMilestone[]
+}
+
+model ProjectMessage {
+  id          String   @id @default(cuid())
+  projectId   String
+  senderName  String
+  senderType  String   // customer, admin
+  message     String
+  attachments String?  // JSON string
+  createdAt   DateTime @default(now())
+  
+  project Project @relation(fields: [projectId], references: [id])
+}
+
+model ProjectMilestone {
+  id          String   @id @default(cuid())
+  projectId   String
+  title       String
+  description String?
+  status      String   @default("pending") // pending, in_progress, completed
+  dueDate     DateTime?
+  completedAt DateTime?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  
+  project Project @relation(fields: [projectId], references: [id])
+}
