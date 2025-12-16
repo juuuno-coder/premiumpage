@@ -9,6 +9,7 @@ import {
   ArrowRight, Check, Sparkles, Zap, Shield, Headphones,
   Code2, Palette, Globe, ChevronRight
 } from 'lucide-react'
+import { MobileNav } from '@/components/MobileNav'
 
 export default function Home() {
   return (
@@ -33,6 +34,9 @@ export default function Home() {
                 시작하기
               </Link>
             </nav>
+
+            {/* 모바일 네비게이션 */}
+            <MobileNav />
           </div>
         </div>
       </header>
