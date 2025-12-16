@@ -2,15 +2,23 @@
 
 import { useState } from 'react'
 import Link from 'next/link'
+import { useRouter, useSearchParams } from 'next/navigation'
+import { useSession } from 'next-auth/react'
 import { useBuilderStore } from '@/lib/builder-store'
-import { Save, FolderOpen, Trash2, Eye, Download, Home, Undo, Redo } from 'lucide-react'
+import { Save, FolderOpen, Trash2, Eye, Download, Home, Undo, Redo, Cloud, LogIn } from 'lucide-react'
 
 export function Toolbar() {
+    const router = useRouter()
+    const searchParams = useSearchParams()
+    const projectId = searchParams.get('id')
+    const { data: session } = useSession()
     const { components, clearAll, loadComponents, undo, redo, canUndo, canRedo } = useBuilderStore()
+
     const [showSaveDialog, setShowSaveDialog] = useState(false)
     const [showLoadDialog, setShowLoadDialog] = useState(false)
+    const [isSaving, setIsSaving] = useState(false)
 
-    const handleSave = () => {
+    const handleLocalSave = () => {
         const data = JSON.stringify(components, null, 2)
         localStorage.setItem('builder-components', data)
 
@@ -25,6 +33,55 @@ export function Toolbar() {
 
         setShowSaveDialog(true)
         setTimeout(() => setShowSaveDialog(false), 2000)
+    }
+
+    const handleCloudSave = async () => {
+        if (!session) return
+        setIsSaving(true)
+
+        try {
+            const isNew = !projectId
+            const url = isNew ? '/api/projects' : `/api/projects/${projectId}`
+            const method = isNew ? 'POST' : 'PUT'
+
+            // 프로젝트 이름 입력 (새 프로젝트인 경우)
+            let name = '새 프로젝트'
+            if (isNew) {
+                const input = prompt('프로젝트 이름을 입력하세요:', '나의 멋진 웹사이트')
+                if (!input) {
+                    setIsSaving(false)
+                    return
+                }
+                name = input
+            }
+
+            const res = await fetch(url, {
+                method,
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    name: isNew ? name : undefined,
+                    components,
+                    description: 'Builder로 생성된 프로젝트'
+                })
+            })
+
+            if (res.ok) {
+                const data = await res.json()
+                setShowSaveDialog(true)
+                setTimeout(() => setShowSaveDialog(false), 2000)
+
+                if (isNew) {
+                    router.push(`/builder?id=${data.id}`)
+                }
+            } else {
+                alert('저장 실패')
+            }
+        } catch (error) {
+            console.error('Save failed', error)
+            alert('저장 중 오류가 발생했습니다')
+        } finally {
+            setIsSaving(false)
+        }
     }
 
     const handleLoad = () => {
@@ -77,6 +134,7 @@ export function Toolbar() {
                     </Link>
                     <span className="text-gray-300">|</span>
                     <h1 className="imweb-heading-4">웹사이트 빌더</h1>
+                    {projectId && <span className="text-xs bg-blue-100 text-blue-800 px-2 py-1 rounded">Cloud Mode</span>}
                 </div>
 
                 <div className="flex items-center gap-2">
@@ -99,15 +157,35 @@ export function Toolbar() {
                         <Redo className="w-4 h-4" />
                     </button>
 
-                    <div className="w-px h-6 bg-gray-300" />
+                    <div className="w-px h-6 bg-gray-300 mx-2" />
 
+                    {/* 저장 버튼 그룹 */}
                     <button
-                        onClick={handleSave}
+                        onClick={handleLocalSave}
                         className="imweb-btn imweb-btn-secondary flex items-center gap-2"
+                        title="로컬 저장 및 다운로드"
                     >
-                        <Save className="w-4 h-4" />
-                        저장
+                        <Download className="w-4 h-4" />
+                        내보내기
                     </button>
+
+                    {session ? (
+                        <button
+                            onClick={handleCloudSave}
+                            disabled={isSaving}
+                            className="imweb-btn imweb-btn-primary flex items-center gap-2"
+                        >
+                            <Cloud className="w-4 h-4" />
+                            {isSaving ? '저장 중...' : (projectId ? '클라우드 저장' : '프로젝트 생성')}
+                        </button>
+                    ) : (
+                        <Link href="/login" className="imweb-btn imweb-btn-secondary flex items-center gap-2 text-blue-600">
+                            <LogIn className="w-4 h-4" />
+                            로그인하여 저장
+                        </Link>
+                    )}
+
+                    <div className="w-px h-6 bg-gray-300 mx-2" />
 
                     <button
                         onClick={handleLoad}
@@ -148,14 +226,14 @@ export function Toolbar() {
 
             {/* 저장 알림 */}
             {showSaveDialog && (
-                <div className="fixed top-20 right-6 bg-green-500 text-white px-6 py-3 rounded-lg shadow-lg">
+                <div className="fixed top-20 right-6 bg-green-500 text-white px-6 py-3 rounded-lg shadow-lg z-50">
                     ✓ 저장되었습니다!
                 </div>
             )}
 
             {/* 불러오기 알림 */}
             {showLoadDialog && (
-                <div className="fixed top-20 right-6 bg-blue-500 text-white px-6 py-3 rounded-lg shadow-lg">
+                <div className="fixed top-20 right-6 bg-blue-500 text-white px-6 py-3 rounded-lg shadow-lg z-50">
                     ✓ 불러왔습니다!
                 </div>
             )}

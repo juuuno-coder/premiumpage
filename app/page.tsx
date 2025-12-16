@@ -10,6 +10,7 @@ import {
   Code2, Palette, Globe, ChevronRight
 } from 'lucide-react'
 import { MobileNav } from '@/components/MobileNav'
+import { UserMenu } from '@/components/UserMenu'
 
 export default function Home() {
   return (
@@ -29,7 +30,7 @@ export default function Home() {
               <a href="#features" className="imweb-body hover:text-blue-600 transition">기능</a>
               <a href="#templates" className="imweb-body hover:text-blue-600 transition">템플릿</a>
               <a href="#pricing" className="imweb-body hover:text-blue-600 transition">요금제</a>
-              <Link href="/login" className="imweb-body hover:text-blue-600 transition">로그인</Link>
+              <UserMenu />
               <Link href="/quote" className="imweb-btn imweb-btn-primary">
                 시작하기
               </Link>

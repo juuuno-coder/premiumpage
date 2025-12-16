@@ -1,41 +1,30 @@
-import type { Metadata } from "next";
-import { Inter } from "next/font/google";
-import "./globals.css";
+import type { Metadata } from 'next'
+import { Inter, Noto_Sans_KR } from 'next/font/google'
+import './globals.css'
+import { Providers } from '@/components/Providers'
 
-const inter = Inter({ subsets: ["latin"] });
+const inter = Inter({ subsets: ['latin'], variable: '--font-inter' })
+const notoSansKr = Noto_Sans_KR({
+  weight: ['100', '300', '400', '500', '700', '900'],
+  subsets: ['latin'],
+  variable: '--font-noto-sans-kr',
+})
 
 export const metadata: Metadata = {
-  title: "PP - Premium Page | 프리미엄 웹사이트 제작",
-  description: "아티스트, 소상공인, 중소기업을 위한 프리미엄 웹사이트 제작 서비스. 23개의 전문 템플릿과 완벽한 관리 서비스를 제공합니다.",
-  keywords: ["웹사이트 제작", "홈페이지 제작", "프리미엄 디자인", "템플릿", "웹 개발"],
-  authors: [{ name: "Premium Page" }],
-  openGraph: {
-    title: "PP - Premium Page | 프리미엄 웹사이트 제작",
-    description: "아티스트, 소상공인, 중소기업을 위한 프리미엄 웹사이트 제작 서비스",
-    url: "https://premiumpage.com",
-    siteName: "Premium Page",
-    locale: "ko_KR",
-    type: "website",
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "PP - Premium Page | 프리미엄 웹사이트 제작",
-    description: "아티스트, 소상공인, 중소기업을 위한 프리미엄 웹사이트 제작 서비스",
-  },
-  robots: {
-    index: true,
-    follow: true,
-  },
-};
+  title: 'Premium Page - 고품격 웹사이트 제작',
+  description: '당신의 비즈니스를 위한 최고의 웹사이트를 만드세요.',
+}
 
 export default function RootLayout({
   children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+}: {
+  children: React.ReactNode
+}) {
   return (
-    <html lang="ko" className="dark">
-      <body className={inter.className}>{children}</body>
+    <html lang="ko" className="scroll-smooth">
+      <body className={`${inter.variable} ${notoSansKr.variable} font-sans antialiased text-gray-900 bg-white`}>
+        <Providers>{children}</Providers>
+      </body>
     </html>
-  );
+  )
 }

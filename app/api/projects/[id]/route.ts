@@ -1,65 +1,89 @@
-import { NextRequest, NextResponse } from 'next/server'
+import { NextResponse } from 'next/server'
+import { auth } from '@/lib/auth'
 import { prisma } from '@/lib/prisma'
+import { z } from 'zod'
 
-// GET: 특정 프로젝트 조회
+const projectUpdateSchema = z.object({
+    name: z.string().min(1).optional(),
+    components: z.any().optional(),
+    description: z.string().optional(),
+})
+
 export async function GET(
-    request: NextRequest,
+    req: Request,
     { params }: { params: Promise<{ id: string }> }
 ) {
     try {
-        const { id } = await params
+        const session = await auth()
+        if (!session?.user?.id) return new NextResponse('Unauthorized', { status: 401 })
 
+        const { id } = await params
         const project = await prisma.project.findUnique({
-            where: { id },
-            include: {
-                quoteRequest: true,
-                messages: {
-                    orderBy: { createdAt: 'desc' },
-                    take: 50
-                },
-                milestones: {
-                    orderBy: { createdAt: 'asc' }
-                }
-            }
+            where: {
+                id,
+                userId: session.user.id,
+            },
         })
 
-        if (!project) {
-            return NextResponse.json(
-                { error: '프로젝트를 찾을 수 없습니다.' },
-                { status: 404 }
-            )
-        }
+        if (!project) return new NextResponse('Not Found', { status: 404 })
 
-        return NextResponse.json(project)
+        return NextResponse.json({
+            ...project,
+            components: JSON.parse(project.components),
+        })
     } catch (error) {
-        console.error('Get project error:', error)
-        return NextResponse.json(
-            { error: '프로젝트 조회 중 오류가 발생했습니다.' },
-            { status: 500 }
-        )
+        return new NextResponse('Internal Server Error', { status: 500 })
     }
 }
 
-// PATCH: 프로젝트 업데이트
-export async function PATCH(
-    request: NextRequest,
+export async function PUT(
+    req: Request,
     { params }: { params: Promise<{ id: string }> }
 ) {
     try {
+        const session = await auth()
+        if (!session?.user?.id) return new NextResponse('Unauthorized', { status: 401 })
+
         const { id } = await params
-        const body = await request.json()
+        const body = await req.json()
+        const { name, components, description } = projectUpdateSchema.parse(body)
 
         const project = await prisma.project.update({
-            where: { id },
-            data: body
+            where: {
+                id,
+                userId: session.user.id,
+            },
+            data: {
+                name,
+                components: components ? JSON.stringify(components) : undefined,
+                description,
+            },
         })
 
         return NextResponse.json(project)
     } catch (error) {
-        console.error('Update project error:', error)
-        return NextResponse.json(
-            { error: '프로젝트 업데이트 중 오류가 발생했습니다.' },
-            { status: 500 }
-        )
+        return new NextResponse('Internal Server Error', { status: 500 })
+    }
+}
+
+export async function DELETE(
+    req: Request,
+    { params }: { params: Promise<{ id: string }> }
+) {
+    try {
+        const session = await auth()
+        if (!session?.user?.id) return new NextResponse('Unauthorized', { status: 401 })
+
+        const { id } = await params
+        await prisma.project.delete({
+            where: {
+                id,
+                userId: session.user.id,
+            },
+        })
+
+        return new NextResponse(null, { status: 204 })
+    } catch (error) {
+        return new NextResponse('Internal Server Error', { status: 500 })
     }
 }

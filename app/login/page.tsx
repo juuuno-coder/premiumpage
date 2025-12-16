@@ -1,95 +1,107 @@
 'use client'
 
 import { useState } from 'react'
-import Link from 'next/link'
+import { signIn } from 'next-auth/react'
 import { useRouter } from 'next/navigation'
-import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card'
-import { Button } from '@/components/ui/button'
-import { Input } from '@/components/ui/input'
-import { Label } from '@/components/ui/label'
+import Link from 'next/link'
+import { LoadingSpinner } from '@/components/Loading'
 
 export default function LoginPage() {
     const router = useRouter()
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
+    const [error, setError] = useState('')
+    const [isLoading, setIsLoading] = useState(false)
 
-    const handleLogin = (e: React.FormEvent) => {
+    const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault()
+        setIsLoading(true)
+        setError('')
 
-        // 테스트용 간단한 로그인
-        if (email === 'admin@pp.com' && password === 'admin') {
-            router.push('/admin')
-        } else if (email === 'customer@pp.com' && password === 'customer') {
-            router.push('/dashboard')
-        } else {
-            alert('이메일 또는 비밀번호가 올바르지 않습니다.\n\n테스트 계정:\n- 관리자: admin@pp.com / admin\n- 고객: customer@pp.com / customer')
+        try {
+            const result = await signIn('credentials', {
+                email,
+                password,
+                redirect: false,
+            })
+
+            if (result?.error) {
+                setError('이메일 또는 비밀번호가 올바르지 않습니다.')
+            } else {
+                router.push('/')
+                router.refresh()
+            }
+        } catch (err) {
+            setError('로그인 중 오류가 발생했습니다.')
+        } finally {
+            setIsLoading(false)
         }
     }
 
     return (
-        <div className="min-h-screen bg-black flex items-center justify-center p-4">
-            <div className="absolute inset-0 bg-gradient-to-b from-purple-900/20 via-black to-black" />
-            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[800px] bg-purple-500/20 rounded-full blur-[120px]" />
-
-            <Card className="w-full max-w-md bg-card/50 backdrop-blur border-white/10 relative z-10">
-                <CardHeader className="text-center">
-                    <Link href="/" className="flex items-center justify-center gap-3 mb-4">
-                        <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-purple-500 to-pink-500 flex items-center justify-center text-white font-bold text-2xl animate-glow">
-                            PP
-                        </div>
-                    </Link>
-                    <CardTitle className="text-3xl gradient-text">로그인</CardTitle>
-                    <CardDescription>Premium Page에 오신 것을 환영합니다</CardDescription>
-                </CardHeader>
-
-                <CardContent>
-                    <form onSubmit={handleLogin} className="space-y-4">
+        <div className="min-h-screen flex items-center justify-center bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
+            <div className="max-w-md w-full space-y-8 bg-white p-8 rounded-xl shadow-lg">
+                <div>
+                    <div className="mx-auto w-12 h-12 rounded-xl bg-gradient-to-br from-blue-500 to-blue-600 flex items-center justify-center text-white font-bold text-xl mb-6">
+                        P
+                    </div>
+                    <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900">
+                        로그인
+                    </h2>
+                    <p className="mt-2 text-center text-sm text-gray-600">
+                        Premium Page에 오신 것을 환영합니다
+                    </p>
+                </div>
+                <form className="mt-8 space-y-6" onSubmit={handleSubmit}>
+                    <div className="rounded-md shadow-sm -space-y-px">
                         <div>
-                            <Label htmlFor="email" className="text-gray-300">이메일</Label>
-                            <Input
-                                id="email"
+                            <input
                                 type="email"
+                                required
+                                className="imweb-input rounded-b-none mb-0"
+                                placeholder="이메일 주소"
                                 value={email}
                                 onChange={(e) => setEmail(e.target.value)}
-                                placeholder="이메일을 입력하세요"
-                                className="mt-1 bg-gray-900/50 border-gray-700 text-white"
-                                required
                             />
                         </div>
-
                         <div>
-                            <Label htmlFor="password" className="text-gray-300">비밀번호</Label>
-                            <Input
-                                id="password"
+                            <input
                                 type="password"
+                                required
+                                className="imweb-input rounded-t-none"
+                                placeholder="비밀번호"
                                 value={password}
                                 onChange={(e) => setPassword(e.target.value)}
-                                placeholder="비밀번호를 입력하세요"
-                                className="mt-1 bg-gray-900/50 border-gray-700 text-white"
-                                required
                             />
                         </div>
+                    </div>
 
-                        <Button type="submit" className="w-full bg-gradient-to-r from-purple-500 to-pink-500 hover:opacity-90 text-lg py-6">
-                            로그인
-                        </Button>
-                    </form>
-
-                    <div className="mt-6 p-4 bg-gray-900/50 rounded-lg border border-gray-700">
-                        <p className="text-sm text-gray-400 mb-2">테스트 계정:</p>
-                        <div className="space-y-1 text-xs text-gray-500">
-                            <p>관리자: admin@pp.com / admin</p>
-                            <p>고객: customer@pp.com / customer</p>
+                    {error && (
+                        <div className="text-red-500 text-sm text-center bg-red-50 p-2 rounded">
+                            {error}
                         </div>
-                    </div>
+                    )}
 
-                    <div className="mt-6 text-center">
-                        <Link href="/" className="text-sm text-purple-400 hover:text-purple-300">
-                            ← 홈으로 돌아가기
-                        </Link>
+                    <div>
+                        <button
+                            type="submit"
+                            disabled={isLoading}
+                            className="w-full imweb-btn imweb-btn-primary flex justify-center py-3"
+                        >
+                            {isLoading ? <LoadingSpinner size="sm" /> : '로그인'}
+                        </button>
                     </div>
-                </CardContent>
-            </Card>
+                </form>
+
+                <div className="text-center text-sm">
+                    <p className="text-gray-600">
+                        계정이 없으신가요?{' '}
+                        <Link href="/register" className="font-medium text-blue-600 hover:text-blue-500">
+                            회원가입
+                        </Link>
+                    </p>
+                </div>
+            </div>
         </div>
     )
 }

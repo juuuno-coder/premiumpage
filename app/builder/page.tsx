@@ -1,6 +1,7 @@
 'use client'
 
-import { useState } from 'react'
+import { useEffect } from 'react'
+import { useSearchParams } from 'next/navigation'
 import { DndContext, DragEndEvent, closestCenter } from '@dnd-kit/core'
 import { SortableContext, verticalListSortingStrategy } from '@dnd-kit/sortable'
 import { useBuilderStore, BuilderComponent } from '@/lib/builder-store'
@@ -10,7 +11,22 @@ import { PropertiesPanel } from '@/components/builder/PropertiesPanel'
 import { Toolbar } from '@/components/builder/Toolbar'
 
 export default function BuilderPage() {
-    const { components, reorderComponents } = useBuilderStore()
+    const searchParams = useSearchParams()
+    const projectId = searchParams.get('id')
+    const { components, reorderComponents, loadComponents } = useBuilderStore()
+
+    useEffect(() => {
+        if (projectId) {
+            fetch(`/api/projects/${projectId}`)
+                .then(res => res.json())
+                .then(data => {
+                    if (data.components) {
+                        loadComponents(data.components)
+                    }
+                })
+                .catch(err => console.error(err))
+        }
+    }, [projectId, loadComponents])
 
     const handleDragEnd = (event: DragEndEvent) => {
         const { active, over } = event
