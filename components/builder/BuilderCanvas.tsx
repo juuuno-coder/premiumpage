@@ -111,6 +111,48 @@ function ComponentRenderer({ component }: { component: BuilderComponent }) {
                 </button>
             )
 
+        case 'header':
+            return (
+                <header style={styles} className="border-b">
+                    <div className="font-bold text-lg">{component.content}</div>
+                    <div className="text-sm text-gray-600">메뉴</div>
+                </header>
+            )
+
+        case 'footer':
+            return (
+                <footer style={styles} className="rounded-lg">
+                    {component.content}
+                </footer>
+            )
+
+        case 'gallery':
+            return (
+                <div style={{
+                    ...styles,
+                    gridTemplateColumns: `repeat(${component.props?.columns || 3}, 1fr)`
+                }}>
+                    {component.props?.images?.map((img, i) => (
+                        <img
+                            key={i}
+                            src={img}
+                            alt={`Gallery ${i + 1}`}
+                            className="w-full h-auto rounded-lg"
+                        />
+                    ))}
+                </div>
+            )
+
+        case 'input':
+            return (
+                <input
+                    type="text"
+                    placeholder={component.props?.placeholder}
+                    style={styles}
+                    className="border rounded-md"
+                />
+            )
+
         case 'section':
             return (
                 <div style={styles} className="rounded-lg">

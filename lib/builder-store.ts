@@ -2,7 +2,7 @@ import { create } from 'zustand'
 
 export interface BuilderComponent {
     id: string
-    type: 'text' | 'image' | 'button' | 'section' | 'card'
+    type: 'text' | 'image' | 'button' | 'section' | 'card' | 'header' | 'footer' | 'gallery' | 'input' | 'container'
     content: string
     styles: {
         fontSize?: string
@@ -13,12 +13,21 @@ export interface BuilderComponent {
         textAlign?: 'left' | 'center' | 'right'
         width?: string
         height?: string
+        display?: string
+        flexDirection?: 'row' | 'column'
+        gap?: string
+        justifyContent?: string
+        alignItems?: string
     }
     props?: {
         href?: string
         src?: string
         alt?: string
+        placeholder?: string
+        images?: string[]
+        columns?: number
     }
+    children?: BuilderComponent[]
 }
 
 interface BuilderState {

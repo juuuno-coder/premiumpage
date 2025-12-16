@@ -1,6 +1,6 @@
 'use client'
 
-import { Type, Image as ImageIcon, Square, Layout, CreditCard } from 'lucide-react'
+import { Type, Image as ImageIcon, Square, Layout, CreditCard, Heading, FileText, Grid, FormInput } from 'lucide-react'
 import { useBuilderStore } from '@/lib/builder-store'
 
 const componentTemplates = [
@@ -45,6 +45,72 @@ const componentTemplates = [
             },
             props: {
                 href: '#'
+            }
+        }
+    },
+    {
+        type: 'header' as const,
+        icon: Heading,
+        label: '헤더',
+        template: {
+            content: '사이트 제목',
+            styles: {
+                padding: '20px 24px',
+                backgroundColor: '#FFFFFF',
+                display: 'flex',
+                justifyContent: 'space-between',
+                alignItems: 'center'
+            }
+        }
+    },
+    {
+        type: 'footer' as const,
+        icon: FileText,
+        label: '푸터',
+        template: {
+            content: '© 2024 회사명. All rights reserved.',
+            styles: {
+                padding: '32px 24px',
+                backgroundColor: '#1F2937',
+                color: '#FFFFFF',
+                textAlign: 'center' as const
+            }
+        }
+    },
+    {
+        type: 'gallery' as const,
+        icon: Grid,
+        label: '갤러리',
+        template: {
+            content: '이미지 갤러리',
+            styles: {
+                display: 'grid',
+                gap: '16px',
+                padding: '24px'
+            },
+            props: {
+                images: [
+                    'https://via.placeholder.com/300',
+                    'https://via.placeholder.com/300',
+                    'https://via.placeholder.com/300'
+                ],
+                columns: 3
+            }
+        }
+    },
+    {
+        type: 'input' as const,
+        icon: FormInput,
+        label: '입력 필드',
+        template: {
+            content: '',
+            styles: {
+                padding: '12px 16px',
+                backgroundColor: '#FFFFFF',
+                width: '100%'
+            },
+            props: {
+                placeholder: '입력하세요...'
             }
         }
     },
