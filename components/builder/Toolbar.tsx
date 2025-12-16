@@ -3,10 +3,10 @@
 import { useState } from 'react'
 import Link from 'next/link'
 import { useBuilderStore } from '@/lib/builder-store'
-import { Save, FolderOpen, Trash2, Eye, Download, Home } from 'lucide-react'
+import { Save, FolderOpen, Trash2, Eye, Download, Home, Undo, Redo } from 'lucide-react'
 
 export function Toolbar() {
-    const { components, clearAll, loadComponents } = useBuilderStore()
+    const { components, clearAll, loadComponents, undo, redo, canUndo, canRedo } = useBuilderStore()
     const [showSaveDialog, setShowSaveDialog] = useState(false)
     const [showLoadDialog, setShowLoadDialog] = useState(false)
 
@@ -80,6 +80,27 @@ export function Toolbar() {
                 </div>
 
                 <div className="flex items-center gap-2">
+                    {/* 실행 취소/다시 실행 */}
+                    <button
+                        onClick={undo}
+                        disabled={!canUndo()}
+                        className="imweb-btn imweb-btn-secondary flex items-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed"
+                        title="실행 취소 (Ctrl+Z)"
+                    >
+                        <Undo className="w-4 h-4" />
+                    </button>
+
+                    <button
+                        onClick={redo}
+                        disabled={!canRedo()}
+                        className="imweb-btn imweb-btn-secondary flex items-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed"
+                        title="다시 실행 (Ctrl+Y)"
+                    >
+                        <Redo className="w-4 h-4" />
+                    </button>
+
+                    <div className="w-px h-6 bg-gray-300" />
+
                     <button
                         onClick={handleSave}
                         className="imweb-btn imweb-btn-secondary flex items-center gap-2"
