@@ -448,30 +448,54 @@
             .mob-img-display img { position: relative !important; height: 100% !important; object-fit: cover !important; }
             .mob-tab-list { width: 60% !important; padding-top: 0 !important; }
 
-            /* ESG Mobile Layout - Flattened DOM via contents */
-            .esg-main-container { flex-direction: row !important; flex-wrap: wrap !important; gap: 0 !important; row-gap: 15px !important; justify-content: space-between !important; margin-top: 20px !important; }
-            .esg-arrow { display: none !important; }
-            .esg-circle-container { display: contents !important; } 
-            .esg-desc { display: contents !important; } /* Unwrap text container */
+            /* === ESG MANAGEMENT STYLES (Consolidated) === */
+            /* Desktop Default */
+            .esg-main-container { display: flex; justify-content: center; gap: 40px; margin-top: 60px; }
+            .esg-circle-container { display:flex; flex-direction:column; align-items:center; width: 300px; }
+            .esg-circle {
+                width: 200px; height: 200px; border-radius: 50%; border: 4px solid #555;
+                display:flex; flex-direction:column; justify-content:center; align-items:center; text-align:center;
+                background: rgba(0,0,0,0.5); margin-bottom:30px; transition:0.3s;
+            }
+            .esg-circle:hover { transform: scale(1.05); }
+            .esg-circle h3 { font-size:20px; font-weight:700; line-height:1.2; }
+            .esg-desc { text-align:center; color:#aaa; font-size:15px; line-height:1.6; }
+            .esg-sub-item { margin-bottom: 25px; } 
+            .esg-sub-item:last-child { margin-bottom: 0; }
 
-            /* Circles: Order 1 (Top) */
-            .esg-circle { 
-                width: 32% !important; height: auto !important; aspect-ratio: 1/1 !important;
-                margin: 0 !important; order: 1 !important;
-                border-width: 2px !important; padding: 5px !important;
-                display: flex !important; flex-direction: column !important; justify-content: center !important;
-            }
-            .esg-circle h3 { font-size: 11px !important; line-height:1.2; }
-            .esg-circle img { width: 30px !important; margin-bottom: 5px !important; }
-            
-            /* Text Items: Order 2 (Bottom Grid) */
-            .esg-sub-item { 
-                order: 2 !important; width: 48% !important; 
-                background: rgba(255,255,255,0.05); padding: 10px; border-radius: 8px;
-                margin-bottom: 0 !important;
-            }
-            .esg-sub-item strong { font-size: 14px !important; display:block; margin-bottom:5px; color: var(--neon-green); }
-            .esg-sub-item { font-size: 12px !important; line-height: 1.3 !important; color: #ccc; } 
+            /* Mobile Override */
+            @media (max-width: 1024px) { /* Matched to Tablet/Mobile breakpoint */
+                .esg-main-container { 
+                    flex-direction: row !important; flex-wrap: wrap !important; 
+                    gap: 0 !important; row-gap: 20px !important; 
+                    justify-content: space-between !important; margin-top: 20px !important; 
+                }
+                .esg-arrow { display: none !important; }
+                
+                /* Flatten DOM for Reordering */
+                .esg-circle-container { display: contents !important; }
+                .esg-desc { display: contents !important; }
+                
+                /* Order 1: Circles (3 in a row) */
+                .esg-circle { 
+                    order: 1 !important; 
+                    width: 32% !important; height: auto !important; aspect-ratio: 1/1 !important;
+                    margin: 0 !important; 
+                    border-width: 2px !important; padding: 5px !important;
+                }
+                .esg-circle h3 { font-size: 11px !important; line-height:1.2; }
+                .esg-circle img { width: 30px !important; margin-bottom: 5px !important; }
+
+                /* Order 2: Text Items (2 in a row) */
+                .esg-sub-item {
+                    order: 2 !important; width: 48% !important;
+                    background: rgba(255,255,255,0.05); padding: 12px; border-radius: 8px;
+                    margin-bottom: 0 !important; margin-top: 10px !important;
+                    text-align: left !important;
+                }
+                .esg-sub-item strong { font-size: 13px !important; display:block; margin-bottom:4px; color: var(--neon-green); }
+                .esg-sub-item { font-size: 12px !important; line-height: 1.3 !important; color: #ccc; } 
+            } 
 
             /* HUD: Simplified */
             .mob-tab-head { font-size: 15px !important; padding: 12px 0 !important; }
@@ -611,13 +635,39 @@
             <span class="slide-tag">ABOUT US</span>
             <h1 class="slide-title">COMPANY OVERVIEW</h1>
             
+            <style>
+                @media (max-width: 1024px) {
+                    .overview-top-section {
+                        flex-direction: column !important;
+                        height: auto !important;
+                        gap: 20px !important;
+                    }
+                    .overview-text-col {
+                        width: 100% !important;
+                        padding: 0 !important;
+                        order: 1; /* Text first */
+                    }
+                    .overview-top-section .glass-box {
+                        width: 100% !important;
+                        flex: none !important;
+                        order: 2; /* Table second */
+                    }
+                    /* Adjust Stats on Mobile */
+                    .overview-text-col > div { /* The stats container */
+                        flex-direction: column; 
+                        gap: 30px !important; 
+                        margin-top: 40px !important;
+                    }
+                }
+            </style>
+            
             <div style="display: flex; flex-direction: column; height: 75vh; justify-content: space-between;">
                 
                 <!-- TOP SECTION: Intro & Table -->
-                <div style="display: flex; gap: 40px; height: 100%; align-items: center;">
+                <div class="overview-top-section" style="display: flex; gap: 40px; height: 100%; align-items: center;">
                     
                     <!-- Left: Slogan & Text (60%) -->
-                    <div style="flex: 6.6; display: flex; flex-direction: column; justify-content: center; padding: 40px 0;">
+                    <div class="overview-text-col" style="flex: 6.6; display: flex; flex-direction: column; justify-content: center; padding: 40px 0;">
                         <h2 style="font-size: 38px; color: white; line-height: 1.2; margin-bottom: 40px; font-weight:700;">
                             Creating the standard for future mobility control through <span style="color:var(--neon-green)">electrification</span> and <span style="color:var(--neon-cyan)">intelligence</span>
                         </h2>
@@ -1229,56 +1279,7 @@
                     </div>
                 </div>
 
-            <style>
-                .esg-main-container {
-                    display: flex; justify-content: center; gap: 40px; margin-top: 60px;
-                }
-                .esg-circle-container { display:flex; flex-direction:column; align-items:center; width: 300px; }
-                .esg-circle {
-                    width: 200px; height: 200px; border-radius: 50%; border: 4px solid #555;
-                    display:flex; flex-direction:column; justify-content:center; align-items:center; text-align:center;
-                    background: rgba(0,0,0,0.5); margin-bottom:30px; transition:0.3s;
-                }
-                .esg-circle:hover { transform: scale(1.05); }
-                .esg-circle h3 { font-size:20px; font-weight:700; line-height:1.2; }
-                .esg-desc { text-align:center; color:#aaa; font-size:15px; line-height:1.6; }
-                .esg-sub-item { margin-bottom: 25px; } 
-                .esg-sub-item:last-child { margin-bottom: 0; }
 
-                /* Force Mobile Layout Override here to guarantee specificity */
-                @media (max-width: 1100px) {
-                    .esg-main-container { 
-                        flex-direction: row !important; flex-wrap: wrap !important; 
-                        gap: 0 !important; row-gap: 15px !important; 
-                        justify-content: space-between !important; margin-top: 30px !important; 
-                    }
-                    .esg-arrow { display: none !important; }
-                    /* Flatten Structure */
-                    .esg-circle-container { display: contents !important; width: auto !important; }
-                    .esg-desc { display: contents !important; }
-                    
-                    /* Re-Order: Circles First */
-                    .esg-circle { 
-                        order: 1 !important; 
-                        width: 32% !important; height: auto !important; aspect-ratio: 1/1 !important;
-                        margin: 0 !important; 
-                        border-width: 2px !important; padding: 5px !important;
-                        display: flex !important; flex-direction: column !important; justify-content: center !important;
-                    }
-                    .esg-circle h3 { font-size: 11px !important; line-height:1.2; }
-                    .esg-circle img { width: 30px !important; margin-bottom: 5px !important; }
-
-                    /* Re-Order: Text Second */
-                    .esg-sub-item {
-                        order: 2 !important; width: 48% !important;
-                        background: rgba(255,255,255,0.05); padding: 10px; border-radius: 8px;
-                        margin-bottom: 0 !important; margin-top: 10px !important;
-                        text-align: left !important;
-                    }
-                    .esg-sub-item strong { font-size: 14px !important; display:block; margin-bottom:5px; color: var(--neon-green); }
-                    .esg-sub-item { font-size: 12px !important; line-height: 1.3 !important; color: #ccc; }
-                }
-            </style>
         </div>
 
         <!-- 08. MOBILITY PRODUCTS OVERVIEW -->
