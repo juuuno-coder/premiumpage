@@ -115,7 +115,7 @@
             font-family: var(--font-head); font-size: 60px; color: white; margin-bottom: 40px;
             text-transform: uppercase;
             background: linear-gradient(90deg, #fff 0%, #aaa 100%); 
-            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+            background-clip: text; -webkit-background-clip: text; -webkit-text-fill-color: transparent;
             text-shadow: 0 10px 40px rgba(0,0,0,0.6);
         }
 
@@ -346,6 +346,12 @@
         .partner-card img { max-width: 85%; max-height: 75%; object-fit: contain; filter: grayscale(100%) brightness(1.2); transition: all 0.3s; }
         .partner-card:hover img { filter: grayscale(0%) brightness(1); }
 
+        /* CORE VALUES (PC Defaults) */
+        .cv-title { font-size: 18px; color: white; font-weight: 700; margin-bottom: 8px; line-height: 1.2; display: block; }
+        .cv-desc { font-size: 16px; color: #aaa; line-height: 1.3; display: block; }
+        .cv-item { transition: 0.3s; }
+        .cv-item:hover { transform: translateY(-5px); box-shadow: 0 5px 15px rgba(0,0,0,0.3); }
+        .cv-item:nth-child(4) .cv-title { color: var(--neon-green); }
 
         /* ==================== 1. TABLET (768px ~ 1100px) ==================== */
         @media (max-width: 1100px) {
@@ -399,9 +405,84 @@
             .logo-group { padding: 10px; }
             .glass-box { padding: 30px 20px; }
 
+            /* Overview Table Stack */
+            .overview-table, .overview-table tbody, .overview-table tr, .overview-table th, .overview-table td {
+                display: block; width: 100%;
+            }
+            .overview-table tr { margin-bottom: 15px; border-bottom: 1px solid rgba(255,255,255,0.1); }
+            .overview-table th { border: none; padding-bottom: 5px; font-size: 16px; }
+            .overview-table td { border: none; padding-top: 0; padding-bottom: 15px; font-size: 16px; color: #eee; }
+            .overview-table tr:last-child { border-bottom: none; }
+
+            /* Core Values Mobile 2x2 Grid */
+            .core-values-box { padding: 20px !important; }
+            .core-values-grid { flex-wrap: wrap !important; height: auto !important; gap: 10px !important; }
+            .cv-item { flex: none !important; width: 48% !important; min-height: 110px; padding: 15px 5px !important; }
+            .cv-title { font-size: 15px !important; margin-bottom: 5px; }
+            .cv-desc { font-size: 13px !important; line-height: 1.25; }
+
+            /* Partners Mobile */
+            .partner-text-container { margin-bottom: 15px !important; }
+            .partner-card { width: 47% !important; height: 90px !important; margin-bottom: 10px; }
+            .partner-row { gap: 10px !important; margin-bottom: 0 !important; }
+            .partner-container { gap: 0 !important; }
+
+            /* Partners Mobile */
+            .partner-text-container { margin-bottom: 15px !important; }
+            .partner-card { width: 47% !important; height: 90px !important; margin-bottom: 10px; }
+            .partner-row { gap: 10px !important; margin-bottom: 0 !important; }
+            .partner-container { gap: 0 !important; }
+
+            /* Mobility Tech Mobile Split (Image Left, Tab Right) */
+            .slide .mobility-container {
+                display: flex !important; flex-direction: row !important;
+                gap: 15px !important; align-items: flex-start !important;
+                height: auto !important; margin-top: 10px;
+            }
+            .mob-img-display {
+                display: block !important; width: 40% !important; 
+                height: auto !important; aspect-ratio: 9/16; /* Taller ratio */
+                order: -1 !important; /* Move to Left */
+                border-radius: 8px !important; margin-top: 5px !important;
+            }
+            .mob-img-display img { position: relative !important; height: 100% !important; object-fit: cover !important; }
+            .mob-tab-list { width: 60% !important; padding-top: 0 !important; }
+
+            /* ESG Mobile Layout - Flattened DOM via contents */
+            .esg-main-container { flex-direction: row !important; flex-wrap: wrap !important; gap: 0 !important; row-gap: 15px !important; justify-content: space-between !important; margin-top: 20px !important; }
+            .esg-arrow { display: none !important; }
+            .esg-circle-container { display: contents !important; } 
+            .esg-desc { display: contents !important; } /* Unwrap text container */
+
+            /* Circles: Order 1 (Top) */
+            .esg-circle { 
+                width: 32% !important; height: auto !important; aspect-ratio: 1/1 !important;
+                margin: 0 !important; order: 1 !important;
+                border-width: 2px !important; padding: 5px !important;
+                display: flex !important; flex-direction: column !important; justify-content: center !important;
+            }
+            .esg-circle h3 { font-size: 11px !important; line-height:1.2; }
+            .esg-circle img { width: 30px !important; margin-bottom: 5px !important; }
+            
+            /* Text Items: Order 2 (Bottom Grid) */
+            .esg-sub-item { 
+                order: 2 !important; width: 48% !important; 
+                background: rgba(255,255,255,0.05); padding: 10px; border-radius: 8px;
+                margin-bottom: 0 !important;
+            }
+            .esg-sub-item strong { font-size: 14px !important; display:block; margin-bottom:5px; color: var(--neon-green); }
+            .esg-sub-item { font-size: 12px !important; line-height: 1.3 !important; color: #ccc; } 
+
             /* HUD: Simplified */
-            .hud { 
-                bottom: 30px; left: 50%; transform: translateX(-50%); 
+            .mob-tab-head { font-size: 15px !important; padding: 12px 0 !important; }
+            .mob-tab-body { font-size: 13px !important; line-height: 1.4 !important; padding-right: 0 !important; }
+            .mob-tab.active .mob-tab-head { font-size: 17px !important; color: var(--neon-green); }
+            /* Hide the visual indicator line on mobile to save space? Or keep small. */
+            .mob-tab-head::before { display: none !important; } 
+
+            /* HUD: Simplified */
+            .hud {
+                bottom: 30px; left: 50%; transform: translateX(-50%);
                 right: auto; gap: 0; justify-content: space-between;
                 width: 90%; max-width: 350px;
                 padding: 10px 20px;
@@ -410,8 +491,14 @@
                 border-radius: 40px;
                 box-shadow: 0 10px 30px rgba(0,0,0,0.5);
             }
+            .mobile-nav-close {
+                position: absolute !important; top: 40px !important; right: 30px !important; left: auto !important;
+                font-size: 18px; font-weight: 700; color: #fff; cursor: pointer;
+                border: 2px solid rgba(255,255,255,0.5); padding: 12px 24px; border-radius: 30px;
+                background: rgba(0,0,0,0.3); z-index: 200;
+            }
             .pg-num { font-size: 16px; min-width: auto; margin: 0; font-weight: 700; color: #fff; }
-            .nav-btn { 
+            .nav-btn {
                 display: flex; align-items: center; justify-content: center;
                 width: 40px; height: 40px; padding: 0; border-radius: 50%;
                 background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.1);
@@ -464,7 +551,7 @@
         </div>
         <div class="m-link-group">
             <div class="m-link-head">SUPPORT</div>
-            <div class="m-link" onclick="go(16); toggleMobile();">Directions</div>
+            <div class="m-link" onclick="go(document.querySelectorAll('.slide').length - 1); toggleMobile();">Directions</div>
         </div>
     </div>
 
@@ -495,7 +582,7 @@
             </div>
              <div class="gnb-item">SUPPORT
                 <div class="submenu">
-                    <div class="sub-link" onclick="go(16)">Directions</div>
+                    <div class="sub-link" onclick="go(document.querySelectorAll('.slide').length - 1)">Directions</div>
                 </div>
             </div>
         </div>
@@ -745,7 +832,7 @@
             <span class="slide-tag">ABOUT US</span>
             <h1 class="slide-title">PARTNERS</h1>
             
-            <div style="text-align:center; margin-bottom:40px;">
+            <div class="partner-text-container" style="text-align:center; margin-bottom:40px;">
                 <div style="color:var(--neon-green); font-size:18px; font-weight:700; font-family:var(--font-sub); margin-top:15px; opacity:0.8;">Since 2010</div><br>
                 <p style="color:#aaa; font-size:20px; line-height:1.6;">
                     Partnering with leading global companies, we are leaping forward as a global leader in mobility and industrial control.
@@ -1078,61 +1165,74 @@
             <p style="text-align:center; color:#ddd; font-size:20px; line-height:1.6; max-width:1200px; margin:0 auto 30px auto;">
                 We develop eco-friendly products through energy-efficient design and low-power technology, and pursue sustainable value creation through transparent ESG management and ethical supply chain construction.
             </p>
-            
-            <div style="display:flex; justify-content:center; align-items:flex-start; gap:40px; margin-top:0px;">
-                <!-- 1. Eco-Friendly Design -->
-                <div class="esg-circle-container">
-                    <div class="esg-circle" style="border-color:var(--neon-green); box-shadow:0 0 20px rgba(0,255,136,0.2);">
-                        <img src="assets/icon_eco.png" onerror="this.style.display='none'" style="width:50px; margin-bottom:10px;">
-                        <h3 style="color:var(--neon-green);">Eco-Friendly<br>Design</h3>
+                        <!-- ESG Container -->
+                <div class="esg-main-container" style="display:flex; justify-content:center; gap:40px; margin-top:60px;">
+                    
+                    <!-- 1. Eco-Friendly Design -->
+                    <div class="esg-circle-container">
+                        <div class="esg-circle" style="border-color:var(--neon-green); box-shadow:0 0 20px rgba(0,255,136,0.2);">
+                            <img src="assets/icon_eco.png" onerror="this.style.display='none'" style="width:50px; margin-bottom:10px;">
+                            <h3 style="color:var(--neon-green);">Eco-Friendly<br>Design</h3>
+                        </div>
+                        <div class="esg-desc">
+                            <div class="esg-sub-item">
+                                <strong style="color:white; font-size:24px;">Energy Efficiency</strong><br>
+                                Optimized control algorithms<br>& low-power circuitry
+                            </div>
+                            <div class="esg-sub-item">
+                                <strong style="color:white; font-size:24px;">Hazardous Reduction</strong><br>
+                                Use of lead-free<br>& halogen-free materials
+                            </div>
+                        </div>
                     </div>
-                    <div class="esg-desc">
-                        <strong style="color:white; font-size:24px;">Energy Efficiency</strong><br>
-                        Optimized control algorithms<br>& low-power circuitry
-                        <br><br>
-                        <strong style="color:white; font-size:24px;">Hazardous Reduction</strong><br>
-                        Use of lead-free<br>& halogen-free materials
+
+                    <!-- Arrow -->
+                    <div class="esg-arrow" style="padding-top:80px; color:#555; font-size:40px;">›</div>
+
+                    <!-- 2. ESG Management -->
+                    <div class="esg-circle-container">
+                        <div class="esg-circle" style="border-color:white; box-shadow:0 0 20px rgba(255,255,255,0.2);">
+                             <img src="assets/icon_esg.png" onerror="this.style.display='none'" style="width:50px; margin-bottom:10px;">
+                            <h3 style="color:white;">ESG<br>Management</h3>
+                        </div>
+                        <div class="esg-desc">
+                            <div class="esg-sub-item">
+                                <strong style="color:white; font-size:24px;">KPI Management</strong><br>
+                                Carbon reduction<br>& resource recycling goals
+                            </div>
+                            <div class="esg-sub-item">
+                                <strong style="color:white; font-size:24px;">Transparency</strong><br>
+                                Annual Sustainability reporting<br>& disclosure
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Arrow -->
+                    <div class="esg-arrow" style="padding-top:80px; color:#555; font-size:40px;">›</div>
+
+                    <!-- 3. Ethical Supply Chain -->
+                    <div class="esg-circle-container">
+                        <div class="esg-circle" style="border-color:var(--neon-cyan); box-shadow:0 0 20px rgba(0,240,255,0.2);">
+                             <img src="assets/icon_chain.png" onerror="this.style.display='none'" style="width:50px; margin-bottom:10px;">
+                            <h3 style="color:var(--neon-cyan);">Ethical<br>Supply Chain</h3>
+                        </div>
+                        <div class="esg-desc">
+                            <div class="esg-sub-item">
+                                <strong style="color:white; font-size:24px;">Partner Screening</strong><br>
+                                Ethics & environmental<br>due diligence
+                            </div>
+                            <div class="esg-sub-item">
+                                <strong style="color:white; font-size:24px;">Joint Growth</strong><br>
+                                Carbon reduction campaigns<br>with partners
+                            </div>
+                        </div>
                     </div>
                 </div>
-
-                <!-- Arrow -->
-                <div style="padding-top:80px; color:#555; font-size:40px;">›</div>
-
-                <!-- 2. ESG Management -->
-                <div class="esg-circle-container">
-                    <div class="esg-circle" style="border-color:white; box-shadow:0 0 20px rgba(255,255,255,0.2);">
-                         <img src="assets/icon_esg.png" onerror="this.style.display='none'" style="width:50px; margin-bottom:10px;">
-                        <h3 style="color:white;">ESG<br>Management</h3>
-                    </div>
-                    <div class="esg-desc">
-                        <strong style="color:white; font-size:24px;">KPI Management</strong><br>
-                        Carbon reduction<br>& resource recycling goals
-                        <br><br>
-                        <strong style="color:white; font-size:24px;">Transparency</strong><br>
-                        Annual Sustainability reporting<br>& disclosure
-                    </div>
-                </div>
-
-                <!-- Arrow -->
-                <div style="padding-top:80px; color:#555; font-size:40px;">›</div>
-
-                <!-- 3. Ethical Supply Chain -->
-                <div class="esg-circle-container">
-                    <div class="esg-circle" style="border-color:var(--neon-cyan); box-shadow:0 0 20px rgba(0,240,255,0.2);">
-                         <img src="assets/icon_chain.png" onerror="this.style.display='none'" style="width:50px; margin-bottom:10px;">
-                        <h3 style="color:var(--neon-cyan);">Ethical<br>Supply Chain</h3>
-                    </div>
-                    <div class="esg-desc">
-                        <strong style="color:white; font-size:24px;">Partner Screening</strong><br>
-                        Ethics & environmental<br>due diligence
-                        <br><br>
-                        <strong style="color:white; font-size:24px;">Joint Growth</strong><br>
-                        Carbon reduction campaigns<br>with partners
-                    </div>
-                </div>
-            </div>
 
             <style>
+                .esg-main-container {
+                    display: flex; justify-content: center; gap: 40px; margin-top: 60px;
+                }
                 .esg-circle-container { display:flex; flex-direction:column; align-items:center; width: 300px; }
                 .esg-circle {
                     width: 200px; height: 200px; border-radius: 50%; border: 4px solid #555;
@@ -1142,6 +1242,42 @@
                 .esg-circle:hover { transform: scale(1.05); }
                 .esg-circle h3 { font-size:20px; font-weight:700; line-height:1.2; }
                 .esg-desc { text-align:center; color:#aaa; font-size:15px; line-height:1.6; }
+                .esg-sub-item { margin-bottom: 25px; } 
+                .esg-sub-item:last-child { margin-bottom: 0; }
+
+                /* Force Mobile Layout Override here to guarantee specificity */
+                @media (max-width: 1100px) {
+                    .esg-main-container { 
+                        flex-direction: row !important; flex-wrap: wrap !important; 
+                        gap: 0 !important; row-gap: 15px !important; 
+                        justify-content: space-between !important; margin-top: 30px !important; 
+                    }
+                    .esg-arrow { display: none !important; }
+                    /* Flatten Structure */
+                    .esg-circle-container { display: contents !important; width: auto !important; }
+                    .esg-desc { display: contents !important; }
+                    
+                    /* Re-Order: Circles First */
+                    .esg-circle { 
+                        order: 1 !important; 
+                        width: 32% !important; height: auto !important; aspect-ratio: 1/1 !important;
+                        margin: 0 !important; 
+                        border-width: 2px !important; padding: 5px !important;
+                        display: flex !important; flex-direction: column !important; justify-content: center !important;
+                    }
+                    .esg-circle h3 { font-size: 11px !important; line-height:1.2; }
+                    .esg-circle img { width: 30px !important; margin-bottom: 5px !important; }
+
+                    /* Re-Order: Text Second */
+                    .esg-sub-item {
+                        order: 2 !important; width: 48% !important;
+                        background: rgba(255,255,255,0.05); padding: 10px; border-radius: 8px;
+                        margin-bottom: 0 !important; margin-top: 10px !important;
+                        text-align: left !important;
+                    }
+                    .esg-sub-item strong { font-size: 14px !important; display:block; margin-bottom:5px; color: var(--neon-green); }
+                    .esg-sub-item { font-size: 12px !important; line-height: 1.3 !important; color: #ccc; }
+                }
             </style>
         </div>
 
@@ -1756,9 +1892,11 @@
 
                 @media (max-width: 1024px) {
                     .directions-container { flex-direction: column; }
-                    .dir-left { width: 100%; margin-bottom: 40px; }
+                    .dir-left { display: none !important; }
                     .dir-right { width: 100%; }
                     .dir-address { font-size: 18px; }
+                    /* Hide Map/Grey Square on Mobile */
+                    .directions-container iframe, .directions-container .map-placeholder { display: none !important; }
                 }
             </style>
         </div>
@@ -1813,6 +1951,33 @@
             display: none; align-items: center; justify-content: center;
             backdrop-filter: blur(10px);
         }
+        
+        /* Lightbox (Image Modal) - MUST BE HIGHER Z-INDEX */
+        #imgModal {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.95); z-index: 100001 !important;
+            display: none; align-items: center; justify-content: center;
+            backdrop-filter: blur(5px);
+        }
+        #imgModal.open { display: flex; }
+        #imgModal .modal-content {
+            position: relative; width: auto; height: auto;
+            max-width: 90%; max-height: 90%;
+            display: flex; justify-content: center; align-items: center;
+            background: transparent; pointer-events: auto;
+        }
+        #imgModal img {
+            max-width: 100%; max-height: 85vh;
+            border-radius: 4px; box-shadow: 0 0 50px rgba(0,0,0,0.8);
+            object-fit: contain;
+        }
+        #imgModal .modal-close {
+            position: absolute; top: -40px; right: 0;
+            color: #fff; font-size: 16px; cursor: pointer;
+            font-family: var(--font-sub); letter-spacing: 2px;
+            opacity: 0.8; transition: 0.3s;
+        }
+        #imgModal .modal-close:hover { opacity: 1; color: var(--neon-cyan); }
         .product-modal.open { display: flex; }
 
         /* Close Button */
@@ -1914,14 +2079,32 @@
         .product-modal-inner::-webkit-scrollbar-thumb:hover { background: #555; }
 
         /* Mobile Responsive */
+        /* Mobile Responsive */
         @media (max-width: 1024px) {
             .product-modal-inner { width: 100%; height: 100%; border: none; border-radius: 0; }
-            .modal-content-wrapper { padding: 40px 20px; gap: 40px; overflow-y: scroll;}
-            .product-modal-top { flex-direction: column-reverse; gap: 40px; height: auto; }
-            .product-modal-left { width: 100%; max-width: 100%; text-align: left; }
-            .product-modal-right { width: 100%; height: 300px; flex-shrink: 0; }
-            .product-modal-title { font-size: 36px; margin-bottom: 20px; }
-            .product-modal-specs { gap: 20px; justify-content: flex-start; flex-wrap: wrap; }
+            /* Stack Content: Image Top, Text Bottom */
+            .modal-content-wrapper { 
+                flex-direction: column !important; 
+                padding: 80px 20px 20px 20px; /* Reduced bottom padding */
+                gap: 20px; 
+                overflow-y: auto; /* Scroll only if needed */
+                scrollbar-width: none; /* Firefox */
+                -ms-overflow-style: none; /* IE/Edge */
+            }
+            .modal-content-wrapper::-webkit-scrollbar { display: none; } /* Chrome/Safari */
+            .product-modal-right { 
+                order: -1; /* Image Top */
+                width: 100%; height: auto; max-height: 300px;
+                flex-shrink: 0; margin-bottom: 10px;
+                display: flex; justify-content: center; background: rgba(255,255,255,0.02); border-radius: 8px;
+            }
+            .product-modal-right img { max-height: 250px; width: auto; max-width: 100%; }
+            
+            .product-modal-left { width: 100%; max-width: 100%; text-align: left; order: 2; }
+            .product-modal-title { font-size: 32px; margin-bottom: 20px; }
+            .product-modal-specs { gap: 15px; justify-content: flex-start; flex-wrap: wrap; }
+            .spec-item { width: 70px; } /* Smaller icons on mobile */
+            .spec-icon-circle { width: 50px; height: 50px; }
         }
     </style>
 
@@ -2653,6 +2836,7 @@ Connector type: Custom multi pin connector`
         // Scroll
         let isScroll = false;
         window.addEventListener('wheel', e => {
+            if(window.innerWidth <= 1100) return; // Disable sticky scroll on Tablet/Mobile
             if(document.getElementById('productModal').classList.contains('open')) return;
             if(document.getElementById('imgModal').classList.contains('open')) return;
             if(Math.abs(e.deltaY) < 30 || isScroll) return;
