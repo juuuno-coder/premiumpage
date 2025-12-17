@@ -319,21 +319,95 @@
         .sensor-info img { width: 40px; height: 40px; object-fit: contain; margin-bottom: 10px; border-radius: 50%; background: #222; padding: 5px; }
 
         /* ==================== RESPONSIVE ==================== */
-        @media (max-width: 1200px) {
-            .top-bar { padding: 0 30px; height: 80px; }
-            .brand-logo img { height: 35px !important; }
-            .gnb-menu { gap: 25px; }
-            .gnb-item { font-size: 12px; letter-spacing: 0.5px; }
-            .submenu { top: 60px; min-width: 200px; }
-            .gnb-item:hover .submenu { top: 80px; }
-            .sub-link { font-size: 14px; padding: 10px 20px; }
+        /* ==================== RESPONSIVE & MOBILE UI ==================== */
+        .mobile-menu-btn { display: none; font-size: 28px; color: white; cursor: pointer; z-index: 200; }
+        .mobile-nav {
+            position: fixed; top: 0; right: -100%; width: 100%; height: 100%;
+            background: rgba(5,5,5,0.98); z-index: 150;
+            transition: 0.4s cubic-bezier(0.19, 1, 0.22, 1);
+            display: flex; flex-direction: column; padding: 100px 40px;
+            overflow-y: auto; backdrop-filter: blur(20px);
+        }
+        .mobile-nav.open { right: 0; }
+        .m-link-group { margin-bottom: 40px; }
+        .m-link-head { font-family: var(--font-sub); font-size: 14px; color: var(--neon-green); margin-bottom: 20px; letter-spacing: 2px; text-transform: uppercase; }
+        .m-link { font-size: 24px; color: #fff; margin-bottom: 15px; display: block; font-weight: 700; transition: 0.2s; }
+        .m-link:active { color: var(--neon-cyan); transform: translateX(10px); }
+
+        /* Partner Styles Moved from Body */
+        .partner-container { display: flex; flex-direction: column; gap: 20px; width: 100%; max-width: 1700px; align-items: center; }
+        .partner-row { display: flex; gap: 20px; justify-content: center; width: 100%; }
+        .partner-card {
+            background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 4px; width: 220px; height: 130px;
+            display: flex; align-items: center; justify-content: center; transition: all 0.3s ease; position: relative; overflow: hidden;
+        }
+        .partner-card:hover { background: rgba(255,255,255,0.08); border-color: var(--neon-cyan); box-shadow: 0 0 20px rgba(0, 255, 255, 0.15); transform: translateY(-5px); }
+        .partner-card img { max-width: 85%; max-height: 75%; object-fit: contain; filter: grayscale(100%) brightness(1.2); transition: all 0.3s; }
+        .partner-card:hover img { filter: grayscale(0%) brightness(1); }
+
+
+        /* ==================== 1. TABLET (768px ~ 1100px) ==================== */
+        @media (max-width: 1100px) {
+            /* Switch to Hamburger Menu */
+            .mobile-menu-btn { display: block; }
+            .gnb-menu { display: none; }
+            .top-bar { padding: 0 30px; height: 70px; background: rgba(0,0,0,0.8); }
+
+            /* Compact Layout */
+            .slide { padding: 100px 40px; overflow-y: auto; display: block !important; }
+            
+            /* Relax height constraints */
+            .slide > div { height: auto !important; min-height: 100%; display: block !important; }
+            .content-split { flex-direction: column; height: auto; gap: 30px; }
+            .grid-full { flex-direction: column; height: auto; gap: 30px; }
+            
+            /* Typography */
+            h1 { font-size: 60px !important; }
+            .slide-title { font-size: 40px; }
+            
+            /* Products: 2 Columns */
+            .product-grid { grid-template-columns: repeat(2, 1fr); gap: 20px; }
+            .p-card img { height: 180px; }
+
+            /* Partners: Wrap */
+            .partner-row { flex-wrap: wrap; }
+            .partner-card { width: 30%; }
         }
 
-        @media (max-width: 1000px) {
-            .gnb-menu { gap: 15px; }
-            .gnb-item { font-size: 11px; }
-        }
+        /* ==================== 2. MOBILE (< 768px) ==================== */
+        @media (max-width: 768px) {
+            /* 1 Column ONLY */
+            .product-grid { grid-template-columns: 1fr; gap: 30px; }
+            .grid-full { gap: 40px; }
+            
+            /* Cards */
+            .p-card { background: rgba(30,30,30,0.6); }
+            .p-card img { height: 220px; /* Bigger images for mobile */ }
+            
+            /* Partners */
+            .partner-card { width: 48%; /* 2 logos per row is minimal */ }
+            
+            /* Typography & Spacing */
+            .slide { padding: 90px 20px 60px 20px; }
+            .slide-title { font-size: 32px; word-break: keep-all; line-height: 1.3; }
+            h1 { font-size: 42px !important; line-height: 1.1; }
+            
+            .text-body { font-size: 17px; line-height: 1.7; text-align: justify; }
+            
+            /* Reset specific flex layouts to column */
+            .logo-group { padding: 10px; }
+            .glass-box { padding: 30px 20px; }
 
+            /* HUD: Simplified */
+            .hud { bottom: 20px; right: 20px; background: rgba(0,0,0,0.8); padding: 5px 15px; border-radius: 20px; border: 1px solid #333; }
+            .pg-num { margin: 0; font-size: 14px; min-width: auto; }
+            .nav-btn { display: none; }
+            
+            /* Modals: Full Screen */
+            .product-modal-inner { padding: 30px; }
+            .product-modal-right img { max-height: 200px; }
+        }
     </style>
 </head>
 <body>
@@ -351,6 +425,32 @@
     </div>
 
 
+
+    <!-- NAVIGATION -->
+    <!-- MOBILE NAVIGATION OVERLAY -->
+    <div class="mobile-nav" id="mobileNav">
+        <div class="m-link-group">
+            <div class="m-link-head">ABOUT US</div>
+            <div class="m-link" onclick="go(1); toggleMobile();">Overview</div>
+            <div class="m-link" onclick="go(2); toggleMobile();">Vision & Mission</div>
+            <div class="m-link" onclick="go(3); toggleMobile();">History</div>
+            <div class="m-link" onclick="go(4); toggleMobile();">Partners</div>
+            <div class="m-link" onclick="go(5); toggleMobile();">Technology</div>
+            <div class="m-link" onclick="go(6); toggleMobile();">Control</div>
+            <div class="m-link" onclick="go(7); toggleMobile();">ESG</div>
+        </div>
+        <div class="m-link-group">
+            <div class="m-link-head">PRODUCTS</div>
+            <div class="m-link" onclick="go(8); toggleMobile();">Overview</div>
+            <div class="m-link" onclick="go(9); toggleMobile();">Sensors</div>
+            <div class="m-link" onclick="go(14); toggleMobile();">Actuators</div>
+            <div class="m-link" onclick="go(15); toggleMobile();">Controllers</div>
+        </div>
+        <div class="m-link-group">
+            <div class="m-link-head">SUPPORT</div>
+            <div class="m-link" onclick="go(16); toggleMobile();">Directions</div>
+        </div>
+    </div>
 
     <!-- NAVIGATION -->
     <nav class="top-bar">
@@ -383,6 +483,8 @@
                 </div>
             </div>
         </div>
+        <!-- Mobile Menu Button -->
+        <div class="mobile-menu-btn" onclick="toggleMobile()">☰</div>
     </nav>
 
     <!-- CONTENT STAGE -->
@@ -638,51 +740,7 @@
             <div style="display:flex; justify-content:center;">
                 <!-- Logo Grid (Individual Cards) -->
                 <!-- Logo Rows (Brick Layout) -->
-                <style>
-                    .partner-container {
-                        display: flex;
-                        flex-direction: column;
-                        gap: 20px;
-                        width: 100%;
-                        max-width: 1700px;
-                        align-items: center;
-                    }
-                    .partner-row {
-                        display: flex;
-                        gap: 20px;
-                        justify-content: center;
-                        width: 100%;
-                    }
-                    .partner-card {
-                        background: rgba(255,255,255,0.03);
-                        border: 1px solid rgba(255,255,255,0.1);
-                        border-radius: 4px;
-                        width: 220px; /* Fixed width for consistent bricks */
-                        height: 130px;
-                        display: flex;
-                        align-items: center;
-                        justify-content: center;
-                        transition: all 0.3s ease;
-                        position: relative;
-                        overflow: hidden;
-                    }
-                    .partner-card:hover {
-                        background: rgba(255,255,255,0.08);
-                        border-color: var(--neon-cyan);
-                        box-shadow: 0 0 20px rgba(0, 255, 255, 0.15);
-                        transform: translateY(-5px);
-                    }
-                    .partner-card img {
-                        max-width: 85%;
-                        max-height: 75%;
-                        object-fit: contain;
-                        filter: grayscale(100%) brightness(1.2);
-                        transition: all 0.3s;
-                    }
-                    .partner-card:hover img {
-                        filter: grayscale(0%) brightness(1);
-                    }
-                </style>
+
                 <div class="partner-container">
                     <!-- Row 1 (7 items) -->
                     <div class="partner-row">
@@ -2609,6 +2667,48 @@ Connector type: Custom multi pin connector`
         }
         updateState();
 
+    </script>
+    <script>
+        // Mobile Toggle
+        function toggleMobile() {
+            const nav = document.getElementById('mobileNav');
+            nav.classList.toggle('open');
+            const btn = document.querySelector('.mobile-menu-btn');
+            btn.innerHTML = nav.classList.contains('open') ? '✕' : '☰';
+        }
+
+        // Touch Swipe Logic
+        let touchstartX = 0;
+        let touchstartY = 0;
+        let touchendX = 0;
+        let touchendY = 0;
+
+        document.addEventListener('touchstart', e => {
+            touchstartX = e.changedTouches[0].screenX;
+            touchstartY = e.changedTouches[0].screenY;
+        }, {passive: false});
+
+        document.addEventListener('touchend', e => {
+            if(document.getElementById('productModal').classList.contains('open')) return;
+            if(document.getElementById('mobileNav').classList.contains('open')) return;
+            // Disable swipe if zooming (pinch) - naive check
+            if(e.changedTouches.length > 1) return;
+
+            touchendX = e.changedTouches[0].screenX;
+            touchendY = e.changedTouches[0].screenY;
+            handleGesture();
+        }, {passive: false});
+
+        function handleGesture() {
+            const xDiff = touchendX - touchstartX;
+            const yDiff = touchendY - touchstartY;
+
+            // Threshold for Horizontal Swipe
+            if (Math.abs(xDiff) > Math.abs(yDiff) && Math.abs(xDiff) > 60) {
+                if (xDiff < 0) go(current + 1); // Left Swipe = Next
+                if (xDiff > 0) go(current - 1); // Right Swipe = Prev
+            }
+        }
     </script>
 </body>
 </html>
