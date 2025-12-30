@@ -3372,7 +3372,19 @@ Connector type: Custom multi pin connector`
         // Initialize theme on load
         (function initTheme() {
             const savedTheme = localStorage.getItem('theme');
-            if (savedTheme === 'light') {
+            // DEFAULT: Light Mode
+            // If savedTheme is 'dark', we do nothing (default body is dark CSS? No, default CSS is dark. We need to add light-mode if NOT dark)
+            // Wait, base CSS is Dark Mode. Light Mode is an override class.
+            
+            // Logic:
+            // 1. If savedTheme is 'dark', do NOT add 'light-mode'.
+            // 2. If savedTheme is 'light', add 'light-mode'.
+            // 3. If savedTheme is null (first visit), add 'light-mode' (Default Light).
+            
+            if (savedTheme === 'dark') {
+                document.body.classList.remove('light-mode');
+            } else {
+                // Default to Light Mode if null or 'light'
                 document.body.classList.add('light-mode');
             }
         })();
