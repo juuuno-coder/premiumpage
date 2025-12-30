@@ -1,0 +1,2915 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EMT Global Tech Catalog | Masterpiece Edition</title>
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Michroma&family=Rajdhani:wght@400;500;600;700&family=Syncopate:wght@700&display=swap" rel="stylesheet">
+    <!-- Three.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    
+    <style>
+        /* ==================== 1. VARIABLES & RESET ==================== */
+        :root {
+            --bg-deep: #050505;
+            --neon-green: #00ff88;
+            --neon-cyan: #00ffff;
+            --glass-bg: rgba(20, 20, 20, 0.65);
+            --border: rgba(255, 255, 255, 0.2);
+            --font-head: 'Syncopate', sans-serif;
+            --font-sub: 'Michroma', sans-serif;
+            --font-body: 'Rajdhani', sans-serif;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; user-select: auto; /* 임시 해제 */ }
+        a { text-decoration: none; color: inherit; }
+        ::-webkit-scrollbar { width: 5px; }
+        ::-webkit-scrollbar-thumb { background: #444; border-radius: 2px; }
+
+        body {
+            background: var(--bg-deep); color: white;
+            font-family: var(--font-body);
+            font-size: 16px;
+            overflow: hidden; width: 100vw; height: 100vh;
+        }
+
+        /* ==================== 2. LAYOUT & BACKGROUND ==================== */
+        #webgl-container {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 0;
+            pointer-events: none; transition: filter 1s ease;
+        }
+        
+        .vignette {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 1;
+            background: radial-gradient(circle, transparent 50%, rgba(0,0,0,0.85) 100%);
+            pointer-events: none;
+        }
+
+        /* ==================== 3. TOP GNB ==================== */
+        .top-bar {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100px; z-index: 100;
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 0 60px;
+            background: linear-gradient(to bottom, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0) 100%);
+        }
+
+        .brand-logo {
+            font-family: var(--font-sub); font-size: 30px; color: white;
+            letter-spacing: 2px; text-shadow: 0 0 15px rgba(0, 240, 255, 0.6);
+            cursor: pointer;
+        }
+
+        .gnb-menu { display: flex; gap: 45px; height: 100%; align-items: center; }
+        .gnb-item {
+            font-family: var(--font-sub); font-size: 16px; color: #bbb;
+            cursor: pointer; position: relative; height: 100%; display: flex; align-items: center;
+            transition: 0.3s; letter-spacing: 1px; font-weight: 500;
+        }
+        .gnb-item:hover { color: white; text-shadow: 0 0 10px white; }
+        .gnb-item::after {
+            content: ''; position: absolute; bottom: 30px; left: 0; width: 0; height: 2px;
+            background: var(--neon-cyan); transition: 0.3s;
+        }
+        .gnb-item:hover::after { width: 100%; }
+
+        .submenu {
+            position: absolute; top: 80px; left: 50%; transform: translateX(-50%);
+            background: rgba(10,10,10,0.95); backdrop-filter: blur(15px);
+            border: 1px solid var(--border); border-top: 3px solid var(--neon-cyan);
+            padding: 15px 0; min-width: 240px;
+            opacity: 0; visibility: hidden; transition: 0.3s;
+            display: flex; flex-direction: column; gap: 5px;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.7);
+        }
+        .gnb-item:hover .submenu { opacity: 1; visibility: visible; top: 100px; }
+
+        .sub-link {
+            padding: 12px 25px; font-family: var(--font-body); font-size: 17px; color: #ccc;
+            white-space: nowrap; transition: 0.2s; font-weight: 500;
+        }
+        .sub-link:hover { background: rgba(255,255,255,0.1); color: var(--neon-green); padding-left: 30px; }
+
+
+        /* ==================== 4. SLIDE & CONTENT ==================== */
+        .stage {
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            perspective: 1200px;
+        }
+
+        .slide {
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            padding: 130px 100px 60px 100px;
+            opacity: 0; visibility: hidden; pointer-events: none;
+            transform: translateZ(50px); filter: blur(5px);
+            transition: 0.8s cubic-bezier(0.19, 1, 0.22, 1);
+            display: flex; flex-direction: column;
+        }
+        .slide.active {
+            opacity: 1; visibility: visible; pointer-events: auto;
+            transform: translateZ(0); filter: blur(0);
+        }
+
+        .slide-tag { color: var(--neon-cyan); font-family: var(--font-sub); letter-spacing: 3px; font-size: 16px; margin-bottom: 10px; display: block; }
+        .slide-title {
+            font-family: var(--font-head); font-size: 60px; color: white; margin-bottom: 40px;
+            text-transform: uppercase;
+            background: linear-gradient(90deg, #fff 0%, #aaa 100%); 
+            background-clip: text; -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+            text-shadow: 0 10px 40px rgba(0,0,0,0.6);
+        }
+
+        /* Glass Box Containers */
+        .content-split { display: flex; gap: 60px; height: 60vh; align-items: stretch; }
+        
+        .glass-box {
+            flex: 1; background: rgba(25, 25, 25, 0.5);
+            border: 1px solid rgba(255,255,255,0.1); 
+            backdrop-filter: blur(20px); padding: 50px;
+            position: relative; overflow: hidden;
+            display: flex; flex-direction: column; justify-content: center;
+        }
+        .glass-box.hover-glow:hover { border-color: var(--neon-green); box-shadow: 0 0 30px rgba(0,255,136,0.1); }
+        .glass-box::before { 
+            content:''; position: absolute; top:0; left:0; width: 100%; height: 3px;
+            background: linear-gradient(90deg, transparent, var(--neon-green), transparent); opacity: 0.8;
+        }
+
+        .img-frame { 
+            flex: 1; height: 100%; width: 100%; 
+            border: 1px solid rgba(255,255,255,0.1); position: relative; overflow: hidden; cursor: pointer;
+        }
+        .img-frame img { 
+            width: 100%; height: 100%; object-fit: cover; 
+            transition: transform 0.6s; opacity: 0.85; 
+        }
+        .img-frame:hover img { transform: scale(1.05); opacity: 1; }
+        .img-hint {
+            position: absolute; bottom: 20px; right: 20px; 
+            background: rgba(0,0,0,0.7); padding: 5px 10px; 
+            font-size: 16px; color: var(--neon-cyan); border: 1px solid var(--neon-cyan); pointer-events: none;
+        }
+
+        /* Typography */
+        .text-body { color: #ddd; font-size: 20px; line-height: 1.7; margin-bottom: 30px; font-weight: 500; letter-spacing: 0.5px; }
+        .text-big { font-size: 26px; font-family: var(--font-sub); color: white; margin-bottom: 15px; }
+        
+        /* Grids */
+        .grid-full { display: flex; justify-content: space-between; gap: 40px; width: 100%; height: 50vh; }
+        .grid-full .glass-box { height: 100%; padding: 40px; justify-content: flex-start; }
+
+        .product-grid { 
+            display: grid; grid-template-columns: repeat(5, 1fr); 
+            grid-template-rows: 1fr; /* Single row to fill height */
+            gap: 20px; width: 100%; 
+            flex: 1; /* Fills remaining height */
+            margin-bottom: 20px;
+        }
+        .p-card {
+            background: rgba(30,30,30,0.4); border: 1px solid #444; padding: 30px; 
+            display: flex; flex-direction: column; transition: 0.4s; cursor: pointer; position: relative;
+        }
+        .p-card:hover { 
+            background: rgba(40,40,40,0.6); border-color: var(--neon-green); 
+            transform: translateY(-10px); box-shadow: 0 20px 40px rgba(0,0,0,0.6);
+        }
+        .p-card img {
+            width: 100%; height: 280px; object-fit: contain; margin-bottom: 30px;
+            filter: drop-shadow(0 5px 10px rgba(0,0,0,0.5)); transition: 0.4s;
+        }
+        .p-card:hover img { transform: scale(1.08); filter: drop-shadow(0 10px 20px rgba(0,255,136,0.3)); }
+        .p-card h3 { font-size: 20px; color: white; font-family: var(--font-sub); margin-bottom: 10px; line-height: 1.2; }
+        .p-card p { font-size: 16px; color: #aaa; line-height: 1.5; flex-grow: 1; }
+        .p-tag { 
+            color: var(--neon-cyan); font-size: 16px; font-weight: 700; 
+            text-transform: uppercase; margin-top: 15px; display: block; text-align: right;
+        }
+
+
+        /* Partner Logos */
+        .logo-group {
+            width: 100%; display: flex; justify-content: center; align-items: center;
+            padding: 20px; border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+        .logo-group:last-child { border-bottom: none; }
+        .logo-group img { width: 90%; max-width: 800px; max-height: 140px; object-fit: contain; filter: brightness(0) invert(0.6); transition: 0.4s; }
+        .logo-group img:hover { filter: brightness(0) invert(1); opacity: 1; transform: scale(1.02); }
+
+
+        /* HUD */
+        .hud {
+            position: fixed; bottom: 10px; right: 30px; z-index: 50;
+            display: flex; align-items: center; gap: 20px; 
+            font-family: var(--font-sub); font-size: 16px; color: #666;
+        }
+        .pg-num { font-size: 28px; color: white; margin: 0 40px; font-weight: 700; width: auto; min-width: 150px; text-align: center; letter-spacing: 2px; white-space: nowrap; }
+        .nav-btn { 
+            cursor: pointer; padding: 12px 20px; border: 1px solid #444; transition: 0.2s; 
+            background: rgba(0,0,0,0.5); color: #aaa; text-transform: uppercase; letter-spacing: 1px;
+        }
+        .nav-btn:hover { border-color: var(--neon-green); color: white; background: rgba(0,255,136,0.1); }
+
+        /* MODAL */
+        .modal-overlay {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.9); z-index: 999;
+            display: none; justify-content: center; align-items: center;
+            opacity: 0; transition: opacity 0.3s;
+        }
+        .modal-overlay.open { display: flex; opacity: 1; }
+        .modal-content {
+            max-width: 80%; max-height: 80%; position: relative;
+        }
+        .modal-content img { width: 100%; height: 100%; object-fit: contain; border: 2px solid #333; box-shadow: 0 0 50px rgba(0,0,0,0.8); }
+        .modal-close {
+            position: absolute; top: -40px; right: 0; color: white; font-size: 30px; cursor: pointer; font-family: var(--font-sub);
+        }
+
+        /* PRODUCT DETAIL MODAL */
+        .product-modal {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: linear-gradient(135deg, rgba(0,20,10,0.95), rgba(0,0,0,0.98)); 
+            z-index: 1000; display: none; opacity: 0; transition: opacity 0.3s;
+        }
+        .product-modal.open { display: block; opacity: 1; }
+        .product-modal-inner {
+            width: 100%; height: 100%; display: flex; flex-direction: column; padding: 60px 100px;
+            overflow-y: auto; /* Scroll enabled */
+        }
+        
+        /* TOP SECTION */
+        .product-modal-top { display: flex; flex: 1; min-height: 50vh; margin-bottom: 40px; }
+        .product-modal-left {
+            flex: 1; padding-right: 60px; display: flex; flex-direction: column; justify-content: center;
+        }
+        .product-modal-right {
+            flex: 1; display: flex; align-items: center; justify-content: center; position: relative;
+        }
+        .product-modal-right img {
+            max-width: 90%; max-height: 50vh; object-fit: contain;
+            filter: drop-shadow(0 20px 40px rgba(0,0,0,0.5));
+        }
+
+        /* BOTTOM SECTION (DETAILS) */
+        .product-modal-bottom {
+            border-top: 1px solid rgba(255,255,255,0.1); padding-top: 40px;
+        }
+        .detail-row { display: flex; margin-bottom: 30px; }
+        .detail-label { width: 150px; font-size: 16px; color: white; font-weight: 700; font-family: var(--font-sub); }
+        .detail-content { flex: 1; font-size: 16px; color: #aaa; line-height: 1.8; white-space: pre-line; }
+
+        .product-modal-category {
+            color: #888; font-size: 16px; font-family: var(--font-sub); margin-bottom: 10px;
+        }
+        .product-modal-title {
+            font-size: 48px; font-weight: 700; color: white; margin-bottom: 25px; font-family: var(--font-head);
+        }
+        .product-modal-desc {
+            font-size: 16px; color: #aaa; line-height: 1.7; margin-bottom: 40px; max-width: 90%;
+        }
+        .product-modal-specs {
+            display: flex; gap: 30px;
+        }
+        .spec-item {
+            text-align: center; padding: 10px; background: rgba(255,255,255,0.05); border-radius: 50%; width: 110px; height: 110px;
+            display: flex; flex-direction: column; align-items: center; justify-content: center; border: 1px solid rgba(255,255,255,0.1);
+        }
+        .spec-icon { font-size: 24px; margin-bottom: 3px; }
+        .spec-label { font-size: 16px; color: #888; }
+        .spec-value { font-size: 16px; color: var(--neon-cyan); font-weight: 600; }
+        
+        .product-modal-close {
+            position: absolute; top: 30px; right: 40px; color: white; font-size: 24px;
+            cursor: pointer; font-family: var(--font-sub); z-index: 1001;
+            padding: 10px 20px; border: 1px solid #444; transition: 0.3s;
+        }
+        .product-modal-close:hover { border-color: var(--neon-green); color: var(--neon-green); }
+        .product-modal-zoom {
+            position: absolute; bottom: 20px; right: 20px; width: 40px; height: 40px;
+            border: 2px solid var(--neon-cyan); border-radius: 50%; display: flex;
+            align-items: center; justify-content: center; cursor: pointer; transition: 0.3s;
+        }
+        .product-modal-zoom:hover { background: var(--neon-cyan); color: black; }
+
+        /* CAR DIAGRAM */
+        .car-diagram {
+            position: relative; width: 100%; height: 70vh; display: flex; 
+            justify-content: center; align-items: center;
+        }
+        .car-diagram-img {
+            max-width: 60%; max-height: 100%; object-fit: contain;
+            filter: brightness(0.9);
+        }
+        .sensor-point {
+            position: absolute; width: 12px; height: 12px; background: white;
+            border-radius: 50%; cursor: pointer; transition: 0.3s;
+            animation: pulse 2s infinite;
+        }
+        .sensor-point:hover { transform: scale(1.5); background: var(--neon-cyan); }
+        @keyframes pulse {
+            0%, 100% { box-shadow: 0 0 0 0 rgba(255,255,255,0.4); }
+            50% { box-shadow: 0 0 0 10px rgba(255,255,255,0); }
+        }
+        .sensor-info {
+            position: absolute; width: 240px; padding: 15px;
+            background: rgba(0,0,0,0.8); border-left: 2px solid var(--neon-green);
+        }
+        .sensor-info h4 { color: var(--neon-green); font-size: 16px; margin-bottom: 8px; font-family: var(--font-sub); }
+        .sensor-info p { color: #aaa; font-size: 16px; line-height: 1.5; }
+        .sensor-info img { width: 40px; height: 40px; object-fit: contain; margin-bottom: 10px; border-radius: 50%; background: #222; padding: 5px; }
+
+        /* ==================== RESPONSIVE ==================== */
+        /* ==================== RESPONSIVE & MOBILE UI ==================== */
+        .mobile-menu-btn { display: none; font-size: 28px; color: white; cursor: pointer; z-index: 200; }
+        .mobile-nav {
+            position: fixed; top: 0; right: -100%; width: 100%; height: 100%;
+            background: rgba(5,5,5,0.98); z-index: 150;
+            transition: 0.4s cubic-bezier(0.19, 1, 0.22, 1);
+            display: flex; flex-direction: column; padding: 100px 40px;
+            overflow-y: auto; backdrop-filter: blur(20px);
+        }
+        .mobile-nav.open { right: 0; }
+        .m-link-group { margin-bottom: 40px; }
+        .m-link-head { font-family: var(--font-sub); font-size: 14px; color: var(--neon-green); margin-bottom: 20px; letter-spacing: 2px; text-transform: uppercase; }
+        .m-link { font-size: 24px; color: #fff; margin-bottom: 15px; display: block; font-weight: 700; transition: 0.2s; }
+        .m-link:active { color: var(--neon-cyan); transform: translateX(10px); }
+
+        /* Partner Styles Moved from Body */
+        .partner-container { display: flex; flex-direction: column; gap: 20px; width: 100%; max-width: 1700px; align-items: center; }
+        .partner-row { display: flex; gap: 20px; justify-content: center; width: 100%; }
+        .partner-card {
+            background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 4px; width: 220px; height: 130px;
+            display: flex; align-items: center; justify-content: center; transition: all 0.3s ease; position: relative; overflow: hidden;
+        }
+        .partner-card:hover { background: rgba(255,255,255,0.08); border-color: var(--neon-cyan); box-shadow: 0 0 20px rgba(0, 255, 255, 0.15); transform: translateY(-5px); }
+        .partner-card img { max-width: 85%; max-height: 75%; object-fit: contain; filter: grayscale(100%) brightness(1.2); transition: all 0.3s; }
+        .partner-card:hover img { filter: grayscale(0%) brightness(1); }
+
+        /* CORE VALUES (PC Defaults) */
+        .cv-title { font-size: 18px; color: white; font-weight: 700; margin-bottom: 8px; line-height: 1.2; display: block; }
+        .cv-desc { font-size: 16px; color: #aaa; line-height: 1.3; display: block; }
+        .cv-item { transition: 0.3s; }
+        .cv-item:hover { transform: translateY(-5px); box-shadow: 0 5px 15px rgba(0,0,0,0.3); }
+        .cv-item:nth-child(4) .cv-title { color: var(--neon-green); }
+
+        /* ==================== 1. TABLET (768px ~ 1100px) ==================== */
+        @media (max-width: 1100px) {
+            /* Switch to Hamburger Menu */
+            .mobile-menu-btn { display: block; }
+            .gnb-menu { display: none; }
+            .top-bar { padding: 0 30px; height: 70px; background: rgba(0,0,0,0.8); }
+
+            /* Compact Layout */
+            .slide { padding: 100px 40px; overflow-y: auto; display: block !important; }
+            
+            /* Relax height constraints */
+            .slide > div { height: auto !important; min-height: 100%; display: block !important; }
+            .content-split { flex-direction: column; height: auto; gap: 30px; }
+            .grid-full { flex-direction: column; height: auto; gap: 30px; }
+            
+            /* Typography */
+            h1 { font-size: 60px !important; }
+            .slide-title { font-size: 40px; }
+            
+            /* Products: 2 Columns */
+            .product-grid { grid-template-columns: repeat(2, 1fr); gap: 20px; }
+            .p-card img { height: 180px; }
+
+            /* Partners: Wrap */
+            .partner-row { flex-wrap: wrap; }
+            .partner-card { width: 30%; }
+        }
+
+        /* ==================== 2. MOBILE (< 768px) ==================== */
+        @media (max-width: 768px) {
+            /* 1 Column ONLY */
+            .product-grid { grid-template-columns: 1fr; gap: 30px; }
+            .grid-full { gap: 40px; }
+            
+            /* Cards */
+            .p-card { background: rgba(30,30,30,0.6); }
+            .p-card img { height: 220px; /* Bigger images for mobile */ }
+            
+            /* Partners */
+            .partner-card { width: 48%; /* 2 logos per row is minimal */ }
+            
+            /* Typography & Spacing */
+            .slide { padding: 90px 20px 60px 20px; }
+            .slide-title { font-size: 32px; word-break: keep-all; line-height: 1.3; }
+            h1 { font-size: 42px !important; line-height: 1.1; }
+            
+            .text-body { font-size: 17px; line-height: 1.7; text-align: justify; }
+            
+            /* Reset specific flex layouts to column */
+            .logo-group { padding: 10px; }
+            .glass-box { padding: 30px 20px; }
+
+            /* Overview Table Stack */
+            .overview-table, .overview-table tbody, .overview-table tr, .overview-table th, .overview-table td {
+                display: block; width: 100%;
+            }
+            .overview-table tr { margin-bottom: 15px; border-bottom: 1px solid rgba(255,255,255,0.1); }
+            .overview-table th { border: none; padding-bottom: 5px; font-size: 16px; }
+            .overview-table td { border: none; padding-top: 0; padding-bottom: 15px; font-size: 16px; color: #eee; }
+            .overview-table tr:last-child { border-bottom: none; }
+
+            /* Core Values Mobile 2x2 Grid */
+            .core-values-box { padding: 20px !important; }
+            .core-values-grid { flex-wrap: wrap !important; height: auto !important; gap: 10px !important; }
+            .cv-item { flex: none !important; width: 48% !important; min-height: 110px; padding: 15px 5px !important; }
+            .cv-title { font-size: 15px !important; margin-bottom: 5px; }
+            .cv-desc { font-size: 13px !important; line-height: 1.25; }
+
+            /* Partners Mobile */
+            .partner-text-container { margin-bottom: 15px !important; }
+            .partner-card { width: 47% !important; height: 90px !important; margin-bottom: 10px; }
+            .partner-row { gap: 10px !important; margin-bottom: 0 !important; }
+            .partner-container { gap: 0 !important; }
+
+            /* Partners Mobile */
+            .partner-text-container { margin-bottom: 15px !important; }
+            .partner-card { width: 47% !important; height: 90px !important; margin-bottom: 10px; }
+            .partner-row { gap: 10px !important; margin-bottom: 0 !important; }
+            .partner-container { gap: 0 !important; }
+
+            /* Mobility Tech Mobile Split (Image Left, Tab Right) */
+            .slide .mobility-container {
+                display: flex !important; flex-direction: row !important;
+                gap: 15px !important; align-items: flex-start !important;
+                height: auto !important; margin-top: 10px;
+            }
+            .mob-img-display {
+                display: block !important; width: 40% !important; 
+                height: auto !important; aspect-ratio: 9/16; /* Taller ratio */
+                order: -1 !important; /* Move to Left */
+                border-radius: 8px !important; margin-top: 5px !important;
+            }
+            .mob-img-display img { position: relative !important; height: 100% !important; object-fit: cover !important; }
+            .mob-tab-list { width: 60% !important; padding-top: 0 !important; }
+
+            /* === ESG MANAGEMENT STYLES (Consolidated) === */
+            /* Desktop Default */
+            .esg-main-container { display: flex; justify-content: center; gap: 40px; margin-top: 60px; }
+            .esg-circle-container { display:flex; flex-direction:column; align-items:center; width: 300px; }
+            .esg-circle {
+                width: 200px; height: 200px; border-radius: 50%; border: 4px solid #555;
+                display:flex; flex-direction:column; justify-content:center; align-items:center; text-align:center;
+                background: rgba(0,0,0,0.5); margin-bottom:30px; transition:0.3s;
+            }
+            .esg-circle:hover { transform: scale(1.05); }
+            .esg-circle h3 { font-size:20px; font-weight:700; line-height:1.2; }
+            .esg-desc { text-align:center; color:#aaa; font-size:15px; line-height:1.6; }
+            .esg-sub-item { margin-bottom: 25px; } 
+            .esg-sub-item:last-child { margin-bottom: 0; }
+
+            /* Mobile Override */
+            @media (max-width: 1024px) { /* Matched to Tablet/Mobile breakpoint */
+                .esg-main-container { 
+                    flex-direction: row !important; flex-wrap: wrap !important; 
+                    gap: 0 !important; row-gap: 20px !important; 
+                    justify-content: space-between !important; margin-top: 20px !important; 
+                }
+                .esg-arrow { display: none !important; }
+                
+                /* Flatten DOM for Reordering */
+                .esg-circle-container { display: contents !important; }
+                .esg-desc { display: contents !important; }
+                
+                /* Order 1: Circles (3 in a row) */
+                .esg-circle { 
+                    order: 1 !important; 
+                    width: 32% !important; height: auto !important; aspect-ratio: 1/1 !important;
+                    margin: 0 !important; 
+                    border-width: 2px !important; padding: 5px !important;
+                }
+                .esg-circle h3 { font-size: 11px !important; line-height:1.2; }
+                .esg-circle img { width: 30px !important; margin-bottom: 5px !important; }
+
+                /* Order 2: Text Items (2 in a row) */
+                .esg-sub-item {
+                    order: 2 !important; width: 48% !important;
+                    background: rgba(255,255,255,0.05); padding: 12px; border-radius: 8px;
+                    margin-bottom: 0 !important; margin-top: 10px !important;
+                    text-align: left !important;
+                }
+                .esg-sub-item strong { font-size: 13px !important; display:block; margin-bottom:4px; color: var(--neon-green); }
+                .esg-sub-item { font-size: 12px !important; line-height: 1.3 !important; color: #ccc; } 
+            } 
+
+            /* HUD: Simplified */
+            .mob-tab-head { font-size: 15px !important; padding: 12px 0 !important; }
+            .mob-tab-body { font-size: 13px !important; line-height: 1.4 !important; padding-right: 0 !important; }
+            .mob-tab.active .mob-tab-head { font-size: 17px !important; color: var(--neon-green); }
+            /* Hide the visual indicator line on mobile to save space? Or keep small. */
+            .mob-tab-head::before { display: none !important; } 
+
+            /* HUD: Simplified */
+            .hud {
+                bottom: 30px; left: 50%; transform: translateX(-50%);
+                right: auto; gap: 0; justify-content: space-between;
+                width: 90%; max-width: 350px;
+                padding: 10px 20px;
+                background: rgba(10,10,10,0.9);
+                border: 1px solid rgba(255,255,255,0.2);
+                border-radius: 40px;
+                box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            }
+            .mobile-nav-close {
+                position: absolute !important; top: 40px !important; right: 30px !important; left: auto !important;
+                font-size: 18px; font-weight: 700; color: #fff; cursor: pointer;
+                border: 2px solid rgba(255,255,255,0.5); padding: 12px 24px; border-radius: 30px;
+                background: rgba(0,0,0,0.3); z-index: 200;
+            }
+            .pg-num { font-size: 16px; min-width: auto; margin: 0; font-weight: 700; color: #fff; }
+            .nav-btn {
+                display: flex; align-items: center; justify-content: center;
+                width: 40px; height: 40px; padding: 0; border-radius: 50%;
+                background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.1);
+                color: #fff; font-size: 18px; 
+            }
+            .nav-btn:active { background: var(--neon-cyan); color: #000; }
+            
+            /* Modals: Full Screen */
+            .product-modal-inner { padding: 30px; }
+            .product-modal-right img { max-height: 200px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- VISUALS -->
+    <div id="webgl-container"></div>
+    <div class="vignette"></div>
+
+    <!-- MODAL -->
+    <div class="modal-overlay" id="imgModal" onclick="closeModal()">
+        <div class="modal-content" onclick="event.stopPropagation()">
+            <div class="modal-close" onclick="closeModal()">CLOSE X</div>
+            <img id="modalImg" src="">
+        </div>
+    </div>
+
+
+
+    <!-- NAVIGATION -->
+    <!-- MOBILE NAVIGATION OVERLAY -->
+    <div class="mobile-nav" id="mobileNav">
+        <div class="mobile-nav-close" onclick="toggleMobile()">✕ CLOSE</div>
+        <div class="m-link-group">
+            <div class="m-link-head">ABOUT US</div>
+            <div class="m-link" onclick="go(1); toggleMobile();">Overview</div>
+            <div class="m-link" onclick="go(2); toggleMobile();">Vision & Mission</div>
+            <div class="m-link" onclick="go(3); toggleMobile();">History</div>
+            <div class="m-link" onclick="go(4); toggleMobile();">Partners</div>
+            <div class="m-link" onclick="go(5); toggleMobile();">Technology</div>
+            <div class="m-link" onclick="go(6); toggleMobile();">Control</div>
+            <div class="m-link" onclick="go(7); toggleMobile();">ESG</div>
+        </div>
+        <div class="m-link-group">
+            <div class="m-link-head">PRODUCTS</div>
+            <div class="m-link" onclick="go(8); toggleMobile();">Overview</div>
+            <div class="m-link" onclick="go(9); toggleMobile();">Sensors</div>
+            <div class="m-link" onclick="go(14); toggleMobile();">Actuators</div>
+            <div class="m-link" onclick="go(15); toggleMobile();">Controllers</div>
+        </div>
+        <div class="m-link-group">
+            <div class="m-link-head">SUPPORT</div>
+            <div class="m-link" onclick="go(document.querySelectorAll('.slide').length - 1); toggleMobile();">Directions</div>
+        </div>
+    </div>
+
+    <!-- NAVIGATION -->
+    <nav class="top-bar">
+        <div class="brand-logo" onclick="go(0)" style="padding: 0;">
+            <img src="assets/logo_full.png" alt="EMT Logo" style="height: 45px; width: auto;">
+        </div>
+        <div class="gnb-menu">
+            <div class="gnb-item">ABOUT US
+                <div class="submenu">
+                    <div class="sub-link" onclick="go(1)">Overview</div>
+                    <div class="sub-link" onclick="go(2)">Vision & Mission</div>
+                    <div class="sub-link" onclick="go(3)">History</div>
+                    <div class="sub-link" onclick="go(4)">Partners</div>
+                    <div class="sub-link" onclick="go(5)">Technology & Patents</div>
+                    <div class="sub-link" onclick="go(6)">Mobility Control</div>
+                    <div class="sub-link" onclick="go(7)">ESG Management</div>
+                </div>
+            </div>
+            <div class="gnb-item">MOBILITY PRODUCTS
+                <div class="submenu">
+                    <div class="sub-link" onclick="go(8)">Overview</div>
+                    <div class="sub-link" onclick="go(9)">SENSORS</div>
+                    <div class="sub-link" onclick="go(14)">ACTUATORS</div>
+                    <div class="sub-link" onclick="go(15)">CONTROLLERS</div>
+                </div>
+            </div>
+             <div class="gnb-item">SUPPORT
+                <div class="submenu">
+                    <div class="sub-link" onclick="go(document.querySelectorAll('.slide').length - 1)">Directions</div>
+                </div>
+            </div>
+        </div>
+        <!-- Mobile Menu Button -->
+        <div class="mobile-menu-btn" onclick="toggleMobile()">☰</div>
+    </nav>
+
+    <!-- CONTENT STAGE -->
+    <main class="stage">
+        
+        <!-- 01. HERO -->
+        <div class="slide active">
+            <div style="height: 100%; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center;">
+                <div class="slide-tag">E-CATALOG 2025</div>
+                <h1 style="font-family: 'Syncopate'; font-size: 96px; font-weight: 700; line-height: 1.1; margin-bottom: 30px;">
+                    SMART SENSOR<br>& CONTROL
+                </h1>
+                <p style="color:#ddd; font-size: 24px; max-width: 900px; line-height: 1.6; font-weight: 300;">
+                    Leaping forward as a global smart sensor company leading the future mobility industry.
+                </p>
+            </div>
+        </div>
+
+        <!-- 02. OVERVIEW -->
+        <div class="slide">
+            <span class="slide-tag">ABOUT US</span>
+            <h1 class="slide-title">COMPANY OVERVIEW</h1>
+            
+            <style>
+                @media (max-width: 1024px) {
+                    .overview-top-section {
+                        flex-direction: column !important;
+                        height: auto !important;
+                        gap: 20px !important;
+                    }
+                    .overview-text-col {
+                        width: 100% !important;
+                        padding: 0 !important;
+                        order: 1; /* Text first */
+                    }
+                    .overview-top-section .glass-box {
+                        width: 100% !important;
+                        flex: none !important;
+                        order: 2; /* Table second */
+                    }
+                    /* Adjust Stats on Mobile */
+                    .overview-text-col > div { /* The stats container */
+                        flex-direction: column; 
+                        gap: 30px !important; 
+                        margin-top: 40px !important;
+                    }
+                }
+            </style>
+            
+            <div style="display: flex; flex-direction: column; height: 75vh; justify-content: space-between;">
+                
+                <!-- TOP SECTION: Intro & Table -->
+                <div class="overview-top-section" style="display: flex; gap: 40px; height: 100%; align-items: center;">
+                    
+                    <!-- Left: Slogan & Text (60%) -->
+                    <div class="overview-text-col" style="flex: 6.6; display: flex; flex-direction: column; justify-content: center; padding: 40px 0;">
+                        <h2 style="font-size: 38px; color: white; line-height: 1.2; margin-bottom: 40px; font-weight:700;">
+                            Creating the standard for future mobility control through <span style="color:var(--neon-green)">electrification</span> and <span style="color:var(--neon-cyan)">intelligence</span>
+                        </h2>
+                        <p style="font-size: 20px; color: #aaa; line-height: 1.8; max-width: 95%;">
+                            EMT is a small and medium-sized manufacturing company producing smart sensors and actuators for automobiles, centered at our Busan headquarters. Since our establishment in 2010, we have built an IATF 16949 quality system and grown to an annual revenue of approximately 200 billion won.
+                        </p>
+
+                        <!-- Stats moved here -->
+                        <div style="display: flex; gap: 20px; margin-top: 80px;">
+                            <div style="flex:1;">
+                                <div style="font-size: 16px; color: white; margin-bottom: 8px; font-weight: 600; opacity:0.8;">R&D Experience</div>
+                                <div style="font-size: 42px; font-weight: 700; color: var(--neon-green); margin-bottom: 10px;">30+</div>
+                                <p style="font-size: 16px; color: #777; line-height: 1.4;">With over 30 years of accumulated R&D experience, we continuously innovate smart mobility control technology.</p>
+                            </div>
+                            <div style="flex:1;">
+                                <div style="font-size: 16px; color: white; margin-bottom: 8px; font-weight: 600; opacity:0.8;">Global Customer</div>
+                                <div style="font-size: 42px; font-weight: 700; color: var(--neon-cyan); margin-bottom: 10px;">100+</div>
+                                <p style="font-size: 16px; color: #777; line-height: 1.4;">We collaborate with over 100 global customers, providing customized solutions as a trusted partner.</p>
+                            </div>
+                            <div style="flex:1;">
+                                <div style="font-size: 16px; color: white; margin-bottom: 8px; font-weight: 600; opacity:0.8;">Patents & IP</div>
+                                <div style="font-size: 42px; font-weight: 700; color: white; margin-bottom: 10px;">500+</div>
+                                <p style="font-size: 16px; color: #777; line-height: 1.4;">With over 500 patents and certifications, we prove EMT's proprietary technology and competitiveness.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Right: Company Info Table (40%) -->
+                    <div class="glass-box" style="flex: 3.4; padding: 30px; display: flex; flex-direction: column; justify-content: center; background: rgba(255,255,255,0.03);">
+                        <style>
+                            .overview-table th, .overview-table td { font-size: 18px; padding: 36px 0; border-bottom: 1px solid rgba(255,255,255,0.1); }
+                            .overview-table th { color: var(--neon-cyan); text-align: left; width: 40%; }
+                            .overview-table td { color: white; text-align: left; opacity: 0.9; }
+                        </style>
+                        <table class="overview-table">
+                            <tr>
+                                <th>Company Name</th>
+                                <td>EMT Co., Ltd.</td>
+                            </tr>
+                            <tr>
+                                <th>CEO</th>
+                                <td>Young-ho Ko</td>
+                            </tr>
+                            <tr>
+                                <th>Establishment</th>
+                                <td>July 14, 2010</td>
+                            </tr>
+                            <tr>
+                                <th>Headquarters</th>
+                                <td>Busan, Republic of Korea</td>
+                            </tr>
+                            <tr>
+                                <th>Main Business</th>
+                                <td>Smart sensors, Actuators, Controllers</td>
+                            </tr>
+                            <tr>
+                                <th>Affiliates</th>
+                                <td>Futronic, Cotron</td>
+                            </tr>
+                            <tr>
+                                <th>Certifications</th>
+                                <td>IATF 16949, ISO 14001</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+
+        <!-- 03. VISION & MISSION -->
+        <div class="slide">
+            <span class="slide-tag">ABOUT US</span>
+            <h1 class="slide-title">VISION & MISSION</h1>
+            <p style="color:#aaa; font-size:20px; text-align:center; margin-bottom:30px; max-width:1920px; margin-left:auto; margin-right:auto;">
+                We enhance safety and efficiency in various fields such as automobiles, motorcycles, and industrial facilities, creating sustainable industrial development and future customer value together
+            </p>
+            
+            <!-- Top Row: VISION & MISSION -->
+            <div style="display: flex; gap: 30px; margin-bottom:30px;">
+                <div class="glass-box" style="flex:3; padding: 30px;">
+                    <h2 style="color:var(--neon-green); font-size:16px; font-family:var(--font-sub); margin-bottom: 15px;">VISION</h2>
+                    <p style="font-size:24px; color:white; font-weight:700; line-height: 1.3; margin-bottom:15px;">
+                        Global Top-Tier Partner by 2035<br>with Core Mobility Sensor & Control Solutions
+                    </p>
+                    <p style="color:#aaa; font-size:16px; line-height:1.5;">
+                        EMT develops sensor and actuator technology to make vehicles safer and more reliable.
+                        Our goal is to become a "trusted partner" that global customers seek first by 2035.
+                    </p>
+                </div>
+                <div class="glass-box" style="flex:3; padding: 30px;">
+                    <h2 style="color:var(--neon-cyan); font-size:16px; font-family:var(--font-sub); margin-bottom: 15px;">MISSION</h2>
+                    <p style="font-size:20px; color:white; font-weight:600; margin-bottom:15px;">Building Trust with Quality, Creating the Future with Technology</p>
+                    <div style="display:flex; gap:15px;">
+                        <div style="flex:1; text-align:center;">
+                            <div style="height:80px; border-radius:8px; overflow:hidden;"><img src="assets/mission_1.png" style="width:100%; height:100%; object-fit:cover;"></div>
+                            <p style="font-size:16px; color:#aaa; margin-top:8px;">Quality & Service</p>
+                        </div>
+                        <div style="flex:1; text-align:center;">
+                            <div style="height:80px; border-radius:8px; overflow:hidden;"><img src="assets/mission_2.png" style="width:100%; height:100%; object-fit:cover;"></div>
+                            <p style="font-size:16px; color:#aaa; margin-top:8px;">Zero-Defect</p>
+                        </div>
+                        <div style="flex:1; text-align:center;">
+                            <div style="height:80px; border-radius:8px; overflow:hidden;"><img src="assets/mission_3.png" style="width:100%; height:100%; object-fit:cover;"></div>
+                            <p style="font-size:16px; color:#aaa; margin-top:8px;">Sustainability</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Bottom Row: CORE VALUES & OUR GOALS -->
+            <div style="display: flex; gap: 30px;">
+                <!-- CORE VALUES -->
+                <div class="glass-box" style="flex:1; padding: 30px;">
+                    <h2 style="color:var(--neon-green); font-size:16px; font-family:var(--font-sub); margin-bottom: 20px;">CORE VALUES</h2>
+                    <div style="display:flex; gap:15px; height: 160px;">
+                        <div style="flex:1; border:1px solid #444; border-radius:10px; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; background:rgba(0,0,0,0.3);">
+                            <span style="font-size:18px; color:white; font-weight:700; margin-bottom:8px; line-height:1.2;">Customer<br>Value</span>
+                            <span style="font-size:16px; color:#aaa; line-height:1.3;">Customer<br>success is<br>our success</span>
+                        </div>
+                        <div style="flex:1; border:1px solid #444; border-radius:10px; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; background:rgba(0,0,0,0.3);">
+                            <span style="font-size:18px; color:white; font-weight:700; margin-bottom:8px; line-height:1.2;">Innovation</span>
+                            <span style="font-size:16px; color:#aaa; line-height:1.3;">Daily small<br>improvements</span>
+                        </div>
+                        <div style="flex:1; border:1px solid var(--neon-cyan); border-radius:10px; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; background:rgba(0, 240, 255, 0.05);">
+                            <span style="font-size:18px; color:white; font-weight:700; margin-bottom:8px; line-height:1.2;">Honesty &<br>Transparency</span>
+                            <span style="font-size:16px; color:#ccc; line-height:1.3;">Keep promises<br>and integrity</span>
+                        </div>
+                        <div style="flex:1; border:1px solid var(--neon-green); border-radius:10px; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; background:rgba(0, 255, 136, 0.05);">
+                            <span style="font-size:18px; color:var(--neon-green); font-weight:700; margin-bottom:8px; line-height:1.2;">People-<br>Centered</span>
+                            <span style="font-size:16px; color:#ccc; line-height:1.3;">Safety and<br>growth first</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- OUR GOALS -->
+                <div class="glass-box" style="flex:1; padding: 30px;">
+                    <h2 style="color:#888; font-size:16px; font-family:var(--font-sub); margin-bottom:20px;">OUR GOALS <span style="color:#666; margin-left: 8px;">(2025 ~ 2030)</span></h2>
+                    <div style="display:flex; gap:30px;">
+                        <div style="flex:1;">
+                            <h3 style="color:white; font-size:16px; margin-bottom:10px;">Defect Rate Reduction</h3>
+                            <p style="margin-bottom:10px;"><span style="font-size:42px; color:var(--neon-cyan); font-weight:700;">10</span><span style="color:#888; font-size:16px;"> ppm or less</span></p>
+                            <p style="font-size:16px; color:#777; line-height:1.5;">We aim to reduce the defect rate to 10 ppm or less by 2030 through smart quality management.</p>
+                        </div>
+                        <div style="flex:1;">
+                            <h3 style="color:white; font-size:16px; margin-bottom:10px;">Carbon Emission Reduction</h3>
+                            <p style="margin-bottom:10px;"><span style="font-size:42px; color:var(--neon-green); font-weight:700;">30</span><span style="color:#888; font-size:16px;"> % (vs. 2019)</span></p>
+                            <p style="font-size:16px; color:#777; line-height:1.5;">We plan to reduce carbon emissions by 30% compared to 2019 through renewable energy transition.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 04. HISTORY -->
+        <div class="slide">
+            <span class="slide-tag">ABOUT US</span>
+            <h1 class="slide-title">HISTORY</h1>
+            <p style="color:#aaa; font-size:18px; text-align:center; margin-bottom:35px; max-width:1920px; margin-left:auto; margin-right:auto; line-height:1.6;">
+                We enhance safety and efficiency in various fields such as automobiles, motorcycles, and industrial facilities, creating sustainable industrial development and future customer value together.
+            </p>
+            <div class="grid-full">
+                <div class="glass-box hover-glow">
+                    <h3 style="color:var(--neon-green); font-size:32px; font-family:var(--font-sub); margin-bottom:30px;">2013</h3>
+                    <div style="color:#ccc; font-size:20px; line-height:2; display:flex; flex-direction:column; gap:10px;">
+                        <div style="display:flex; gap:15px;">
+                            <strong style="color:var(--neon-cyan); min-width:50px;">10</strong>
+                            <span>Opened Haeundae Centum Research Center in Busan</span>
+                        </div>
+                        <div style="display:flex; gap:15px;">
+                            <strong style="color:var(--neon-cyan); min-width:50px;">10</strong>
+                            <span>Acquired Parts and Materials Specialized Company Certification</span>
+                        </div>
+                        <div style="display:flex; gap:15px;">
+                            <strong style="color:var(--neon-cyan); min-width:50px;">10</strong>
+                            <span>Venture Company Confirmation (Korea Technology Finance Corp.)</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="glass-box hover-glow">
+                    <h3 style="color:white; font-size:32px; font-family:var(--font-sub); margin-bottom:30px;">2012</h3>
+                    <div style="color:#ccc; font-size:20px; line-height:2; display:flex; flex-direction:column; gap:10px;">
+                        <div style="display:flex; gap:15px;">
+                            <strong style="color:var(--neon-cyan); min-width:50px;">05</strong>
+                            <span>Acquired ISO14001 Environmental Management System Certification</span>
+                        </div>
+                        <div style="display:flex; gap:15px;">
+                            <strong style="color:var(--neon-cyan); min-width:50px;">04</strong>
+                            <span>Technology Research Center Certification (KOITA)</span>
+                        </div>
+                        <div style="display:flex; gap:15px;">
+                            <strong style="color:var(--neon-cyan); min-width:50px;">03</strong>
+                            <span>Acquired ISO/TS16949 Quality Management System Certification</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="glass-box hover-glow">
+                    <h3 style="color:#aaa; font-size:32px; font-family:var(--font-sub); margin-bottom:30px;">2010</h3>
+                    <div style="color:#ccc; font-size:20px; line-height:2; display:flex; flex-direction:column; gap:10px;">
+                        <div style="display:flex; gap:15px;">
+                            <strong style="color:var(--neon-cyan); min-width:50px;">07</strong>
+                            <span>EMT Co., Ltd. Established</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 05. PARTNERS -->
+        <div class="slide">
+            <span class="slide-tag">ABOUT US</span>
+            <h1 class="slide-title">PARTNERS</h1>
+            
+            <div class="partner-text-container" style="text-align:center; margin-bottom:40px;">
+                <div style="color:var(--neon-green); font-size:18px; font-weight:700; font-family:var(--font-sub); margin-top:15px; opacity:0.8;">Since 2010</div><br>
+                <p style="color:#aaa; font-size:20px; line-height:1.6;">
+                    Partnering with leading global companies, we are leaping forward as a global leader in mobility and industrial control.
+                </p>
+                
+            </div>
+
+            <div style="display:flex; justify-content:center;">
+                <!-- Logo Grid (Individual Cards) -->
+                <!-- Logo Rows (Brick Layout) -->
+
+                <div class="partner-container">
+                    <!-- Row 1 (7 items) -->
+                    <div class="partner-row">
+                        <div class="partner-card"><img src="assets/logo_01.svg" onerror="this.style.display='none'"></div>
+                        <div class="partner-card"><img src="assets/logo_02.svg" onerror="this.style.display='none'"></div>
+                        <div class="partner-card"><img src="assets/logo_03.svg" onerror="this.style.display='none'"></div>
+                        <div class="partner-card"><img src="assets/logo_04.svg" onerror="this.style.display='none'"></div>
+                        <div class="partner-card"><img src="assets/logo_05.svg" onerror="this.style.display='none'"></div>
+                        <div class="partner-card"><img src="assets/logo_06.svg" onerror="this.style.display='none'"></div>
+                        <div class="partner-card"><img src="assets/logo_07.svg" onerror="this.style.display='none'"></div>
+                    </div>
+                    
+                    <!-- Row 2 (6 items - Centered for brick effect) -->
+                    <div class="partner-row">
+                        <div class="partner-card"><img src="assets/logo_08.svg" onerror="this.style.display='none'"></div>
+                        <div class="partner-card"><img src="assets/logo_09.svg" onerror="this.style.display='none'"></div>
+                        <div class="partner-card"><img src="assets/logo_10.svg" onerror="this.style.display='none'"></div>
+                        <div class="partner-card"><img src="assets/logo_11.svg" onerror="this.style.display='none'"></div>
+                        <div class="partner-card"><img src="assets/logo_12.svg" onerror="this.style.display='none'"></div>
+                        <div class="partner-card"><img src="assets/logo_13.svg" onerror="this.style.display='none'"></div>
+                    </div>
+
+                    <!-- Row 3 (7 items) -->
+                    <div class="partner-row">
+                        <div class="partner-card"><img src="assets/logo_14.svg" onerror="this.style.display='none'"></div>
+                        <div class="partner-card"><img src="assets/logo_15.svg" onerror="this.style.display='none'"></div>
+                        <div class="partner-card"><img src="assets/logo_16.svg" onerror="this.style.display='none'"></div>
+                        <div class="partner-card"><img src="assets/logo_17.svg" onerror="this.style.display='none'"></div>
+                        <div class="partner-card"><img src="assets/logo_18.svg" onerror="this.style.display='none'"></div>
+                        <div class="partner-card"><img src="assets/logo_19.svg" onerror="this.style.display='none'"></div>
+                        <div class="partner-card"><img src="assets/logo_20.svg" onerror="this.style.display='none'"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+            </div>
+        </div>
+
+        <div class="slide">
+            <span class="slide-tag">ABOUT US</span>
+            <h1 class="slide-title">TECHNOLOGY & PATENTS</h1>
+            <p style="color:#aaa; font-size:20px; text-align:center; margin-bottom:50px; max-width:1400px; margin-left:auto; margin-right:auto; line-height:1.6;">
+                We enhance safety and efficiency in various fields such as automobiles, motorcycles, and industrial facilities, creating sustainable industrial development and future customer value together.
+            </p>
+            
+            <!-- Adjusted height for 1-page fit -->
+            <div style="display:flex; gap:30px; height:55vh; max-width:1800px; margin:0 auto; width:100%; align-items: stretch;">
+                
+                <!-- Left: Certifications (40%) -->
+                <div class="glass-box hover-glow" style="flex:4; padding:30px; display:flex; flex-direction:column; position:relative; overflow:hidden;">
+                    <!-- Gradient Top Border -->
+                    <div style="position:absolute; top:0; left:0; width:100%; height:3px; background: linear-gradient(90deg, var(--neon-green), transparent);"></div>
+                    <h2 style="color:var(--neon-green); font-family:var(--font-main); font-size:28px; margin-bottom:20px; letter-spacing:1px; font-weight:700;">
+                        CERTIFICATIONS
+                    </h2>
+                    
+                    <!-- Horizontal Content Layout -->
+                    <div style="display:flex; gap:20px; height:100%; overflow:hidden;">
+                        <!-- Image Preview (Left) - Portrait aspect ratio -->
+                        <div style="flex:1; background: rgba(0,0,0,0.3); border-radius: 8px; display: flex; align-items: center; justify-content: center; overflow:hidden;">
+                            <img id="certPreviewImg" src="assets/IATF16949 인증서_이엠티.jpg" style="width:100%; height:100%; object-fit:contain; transition: opacity 0.3s;">
+                        </div>
+
+                        <!-- List (Right) -->
+                        <div style="flex:1.2; display:flex; flex-direction:column; gap:10px; overflow-y:auto; padding-right:5px;" class="custom-scroll">
+                             <script>
+                                function showCertImg(el, imgName) {
+                                    // Highlight Item
+                                    document.querySelectorAll('.cert-item').forEach(p => p.classList.remove('active'));
+                                    el.classList.add('active');
+                                    
+                                    // Update Image
+                                    const imgEl = document.getElementById('certPreviewImg');
+                                    if(imgName) {
+                                        imgEl.style.opacity = '0';
+                                        setTimeout(() => {
+                                            imgEl.src = 'assets/' + imgName;
+                                            imgEl.onload = () => { imgEl.style.opacity = '1'; };
+                                        }, 200);
+                                    }
+                                }
+                            </script>
+                            <style>
+                                .cert-item {
+                                    display:flex; align-items:center; padding: 12px; 
+                                    background:rgba(255,255,255,0.05); border-radius: 4px; border: 1px solid transparent;
+                                    cursor: pointer; transition: all 0.2s;
+                                }
+                                .cert-item:hover, .cert-item.active { background: rgba(0,255,136,0.1); border-color: var(--neon-green); }
+                                .cert-item span.dot { display:inline-block; width:8px; height:8px; background:var(--neon-green); border-radius:50%; margin-right:10px; box-shadow:0 0 5px var(--neon-green); }
+                                .cert-text { font-size: 16px; color: #eee; font-weight: 300; }
+                                .custom-scroll::-webkit-scrollbar { width: 4px; }
+                                .custom-scroll::-webkit-scrollbar-track { background: transparent; }
+                                .custom-scroll::-webkit-scrollbar-thumb { background: #333; border-radius: 2px; }
+                            </style>
+
+                            <div class="cert-item active" onmouseenter="showCertImg(this, 'IATF16949 인증서_이엠티.jpg')">
+                                <span class="dot"></span><span class="cert-text">IATF 16949 : 2016</span>
+                            </div>
+                            <div class="cert-item" onmouseenter="showCertImg(this, 'IATF16949 인증서_이엠티.jpg')"> <!-- Placeholder: Mapping to IATF for now -->
+                                <span class="dot"></span><span class="cert-text">ISO 14001 : 2015</span>
+                            </div>
+                            <div class="cert-item" onmouseenter="showCertImg(this, 'IATF16949 인증서_이엠티.jpg')"> <!-- Placeholder -->
+                                <span class="dot"></span><span class="cert-text">ISO 45001 : 2018</span>
+                            </div>
+                            <div class="cert-item" onmouseenter="showCertImg(this, 'IATF16949 인증서_이엠티.jpg')"> <!-- Placeholder -->
+                                <span class="dot"></span><span class="cert-text">SQ Certification</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right: Patents (60%) -->
+                <div class="glass-box hover-glow" style="flex:6; padding:30px; display:flex; flex-direction:column; position:relative; overflow:hidden;">
+                    <!-- Gradient Top Border -->
+                    <div style="position:absolute; top:0; left:0; width:100%; height:3px; background: linear-gradient(90deg, var(--neon-cyan), transparent);"></div>
+                    <h2 style="color:var(--neon-cyan); font-family:var(--font-main); font-size:28px; margin-bottom:20px; letter-spacing:1px; display:flex; align-items:center; justify-content:space-between; font-weight:700;">
+                        PATENTS
+                        <span style="font-size:14px; color:#666; font-weight:normal; font-family:var(--font-sub);">Total 30+</span>
+                    </h2>
+                    
+                    <!-- Horizontal Content Layout -->
+                    <div style="display:flex; gap:20px; height:100%; overflow:hidden;">
+                         <!-- Image Preview (Left) -->
+                         <div style="flex:1; background: rgba(0,0,0,0.3); border-radius: 8px; display: flex; align-items: center; justify-content: center; overflow:hidden;">
+                            <img id="patentPreviewImg" src="assets/특허증_토크센서.jpg" style="width:100%; height:100%; object-fit:contain; transition: opacity 0.3s;">
+                        </div>
+
+                         <!-- List (Right) -->
+                         <div style="flex:1.2; overflow-y:auto; padding-right:5px; display: flex; flex-wrap: wrap; align-content: flex-start; gap: 8px;" class="custom-scroll">
+                             <!-- Script reused from before, just ensuring ID consistency -->
+                             <script>
+                                function showPatentImg(el, imgName) {
+                                    document.querySelectorAll('.patent-pill').forEach(p => p.classList.remove('active'));
+                                    el.classList.add('active');
+                                    const imgEl = document.getElementById('patentPreviewImg');
+                                    if(imgName) {
+                                        imgEl.style.opacity = '0';
+                                        setTimeout(() => {
+                                            imgEl.src = 'assets/' + imgName;
+                                            imgEl.onload = () => { imgEl.style.opacity = '1'; };
+                                        }, 200);
+                                    }
+                                }
+                            </script>
+                            <style>
+                                .patent-pill {
+                                    display: inline-flex; align-items: center; justify-content: center;
+                                    padding: 8px 16px; /* Increased padding */
+                                    background: rgba(255,255,255,0.03);
+                                    border: 1px solid rgba(255,255,255,0.1);
+                                    border-radius: 20px;
+                                    color: #aaa; font-size: 13px; /* Increased font size */ 
+                                    cursor: pointer; transition: all 0.2s;
+                                    white-space: nowrap; height: fit-content;
+                                }
+                                .patent-pill:hover, .patent-pill.active {
+                                    background: rgba(0, 240, 255, 0.1); border-color: var(--neon-cyan);
+                                    color: #fff; box-shadow: 0 2px 10px rgba(0,240,255,0.1);
+                                }
+                            </style>
+
+                            <!-- Mapped List Items -->
+                            <div class="patent-pill active" onmouseenter="showPatentImg(this, '특허증_토크센서.jpg')">Torque Sensor</div>
+                            <div class="patent-pill" onmouseenter="showPatentImg(this, '특허증_압력센서.jpg')">Pressure Sensor</div>
+                            <div class="patent-pill" onmouseenter="showPatentImg(this, '특허증_엔진냉각제어장치.jpg')">Engine Cooling Control</div>
+                            <div class="patent-pill" onmouseenter="showPatentImg(this, '특허증_그리퍼.jpg')">Gripper Mechanism</div>
+                            <div class="patent-pill" onmouseenter="showPatentImg(this, '특허증_도어핸들.jpg')">Door Handle System</div>
+                            <div class="patent-pill" onmouseenter="showPatentImg(this, '특허증_레이저센서.jpg')">Laser Sensor</div>
+                            <div class="patent-pill" onmouseenter="showPatentImg(this, '특허증_초정밀멀티턴형레졸버.jpg')">Precision Resolver</div>
+                            <div class="patent-pill" onmouseenter="showPatentImg(this, '특허증_모터일체형토크센서.jpg')">Integrated Motor Torque Sensor</div>
+                            <div class="patent-pill" onmouseenter="showPatentImg(this, '특허증_스마트터치식자동수전장치.jpg')">Smart Touch Faucet</div>
+                            <div class="patent-pill" onmouseenter="showPatentImg(this, '특허증_세면기용스마트자동수전장치.jpg')">Smart Basin Faucet</div>
+
+                            <div class="patent-pill" onmouseenter="showPatentImg(this, '특허증(10-1164547).jpg')">Patent 10-1164547</div>
+                            <div class="patent-pill" onmouseenter="showPatentImg(this, '특허증(10-1309073).jpg')">Patent 10-1309073</div>
+                            <div class="patent-pill" onmouseenter="showPatentImg(this, '특허증(10-1384660).jpg')">Patent 10-1384660</div>
+                            
+                            <div class="patent-pill" onmouseenter="showPatentImg(this, '특허증_스로틀 제어방법_1.jpg')">Throttle Control 1</div>
+                            <div class="patent-pill" onmouseenter="showPatentImg(this, '특허증_스로틀 제어방법_2.jpg')">Throttle Control 2</div>
+                            <div class="patent-pill" onmouseenter="showPatentImg(this, '특허증_스로틀 제어방법_3.jpg')">Throttle Control 3</div>
+                            <div class="patent-pill" onmouseenter="showPatentImg(this, '특허증_스로틀 제어방법_4.jpg')">Throttle Control 4</div>
+                            <div class="patent-pill" onmouseenter="showPatentImg(this, '특허증_스로틀 제어방법_5.jpg')">Throttle Control 5</div>
+                            <div class="patent-pill" onmouseenter="showPatentImg(this, '특허증_스로틀 제어방법_6.jpg')">Throttle Control 6</div>
+                            <div class="patent-pill" onmouseenter="showPatentImg(this, '특허증_스로틀 제어방법_7.jpg')">Throttle Control 7</div>
+                            <div class="patent-pill" onmouseenter="showPatentImg(this, '특허증_스로틀 제어방법_8.jpg')">Throttle Control 8</div>
+                            <div class="patent-pill" onmouseenter="showPatentImg(this, '특허증_스로틀 제어방법_9.jpg')">Throttle Control 9</div>
+                            <div class="patent-pill" onmouseenter="showPatentImg(this, '특허증_스로틀 제어방법_10.jpg')">Throttle Control 10</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+
+
+        <!-- 06. MOBILITY CONTROL -->
+        <div class="slide">
+            <span class="slide-tag">ABOUT US</span>
+            <h1 class="slide-title">MOBILITY CONTROL</h1>
+            <h2 style="font-size:20px; color:#fff; margin-bottom:50px; text-align: center; font-weight:300; margin-top:-10px; opacity:0.8;">We present key technology areas for future mobility control</h2>
+            
+            <div class="mobility-container">
+                <!-- Left: Tabs -->
+                <div class="mob-tab-list">
+                    <!-- 1. AGV -->
+                    <div class="mob-tab active" onclick="setMobTab(0)">
+                        <div class="mob-tab-head">AGV / AMR Navigation</div>
+                        <div class="mob-tab-body">
+                            AGV/AMR control technology uses sensor fusion-based SLAM to estimate real-time position, and supports safe and efficient movement through path planning and obstacle avoidance algorithms. It also improves operational efficiency with low-power motor control and battery optimization technology, and enables integrated management of multiple robots through API-linked fleet management.
+                        </div>
+                    </div>
+                    <!-- 2. Drone -->
+                    <div class="mob-tab" onclick="setMobTab(1)">
+                        <div class="mob-tab-head">Drone Delivery Control</div>
+                        <div class="mob-tab-body">
+                           Drone delivery control technology uses sensor fusion-based SLAM to estimate real-time position, and supports safe and efficient movement through path planning and obstacle avoidance algorithms. It also improves operational efficiency with low-power motor control and battery optimization technology, and enables integrated management of multiple drones through API-linked fleet management.
+                        </div>
+                    </div>
+                    <!-- 3. Maritime -->
+                    <div class="mob-tab" onclick="setMobTab(2)">
+                        <div class="mob-tab-head">Maritime Autonomy Systems</div>
+                        <div class="mob-tab-body">
+                            Maritime autonomy technology uses sensor fusion-based SLAM to estimate real-time position, and supports safe and efficient navigation through path planning and obstacle avoidance algorithms. It also improves operational efficiency with low-power motor control and battery optimization technology, and enables integrated management of multiple autonomous vessels through API-linked fleet management.
+                        </div>
+                    </div>
+                    <!-- 4. Smart City -->
+                    <div class="mob-tab" onclick="setMobTab(3)">
+                        <div class="mob-tab-head">Smart City Infrastructure</div>
+                        <div class="mob-tab-body">
+                            Smart city infrastructure control technology uses sensor fusion-based SLAM to estimate real-time position, and supports safe and efficient movement through path planning and obstacle avoidance algorithms. It also improves operational efficiency with low-power motor control and battery optimization technology, and enables integrated management of various infrastructure units through API-linked fleet management.
+                        </div>
+                    </div>
+                    <!-- 5. Personal -->
+                    <div class="mob-tab" onclick="setMobTab(4)">
+                        <div class="mob-tab-head">Personal Mobility / Assistive Tech</div>
+                        <div class="mob-tab-body">
+                            Personal mobility and assistive technology use sensor fusion-based SLAM to estimate real-time position, and support safe and efficient movement through path planning and obstacle avoidance algorithms. It also improves operational efficiency with low-power motor control and battery optimization technology, and enables integrated management of multiple mobility devices through API-linked fleet management.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right: Image Display -->
+                <div class="mob-img-display">
+                    <img id="mobDisplayImg" src="assets/agv.jpg" onerror="this.src='https://via.placeholder.com/800x600'">
+                </div>
+            </div>
+
+            <style>
+                .mobility-container { display: flex; width: 100%; height: 65%; gap: 60px; max-width: 1600px; margin: 0 auto; align-items:flex-start; }
+                .mob-tab-list { width: 45%; display: flex; flex-direction: column; justify-content: flex-start; gap: 0; padding-top:10px; }
+                
+                .mob-tab { border-bottom: 1px solid rgba(255,255,255,0.1); cursor: pointer; padding: 20px 0; transition: 0.3s; }
+                .mob-tab:first-child { border-top: 1px solid rgba(255,255,255,0.1); }
+                
+                .mob-tab-head { font-size: 20px; font-weight: 700; color: #666; transition: 0.3s; font-family: var(--font-sub); display:flex; align-items:center; }
+                .mob-tab:hover .mob-tab-head { color: #aaa; }
+                
+                .mob-tab-body { 
+                    max-height: 0; overflow: hidden; opacity: 0; transition: all 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+                    font-size: 15px; color: #ccc; line-height: 1.6; padding-right: 20px;
+                }
+
+                /* Active State */
+                .mob-tab.active .mob-tab-head { color: var(--neon-green); font-size: 24px; text-shadow: 0 0 10px rgba(0,255,136,0.3); }
+                .mob-tab.active .mob-tab-body { max-height: 300px; opacity: 1; margin-top: 20px; margin-bottom: 10px; }
+                
+                /* Indicator for active tab */
+                .mob-tab-head::before {
+                    content: ''; display: inline-block; width: 4px; height: 0px; background: var(--neon-green); 
+                    margin-right: 0px; transition: 0.3s; opacity:0;
+                }
+                .mob-tab.active .mob-tab-head::before { height: 24px; margin-right: 15px; opacity:1; box-shadow: 0 0 10px var(--neon-green); }
+
+                .mob-img-display { width: 55%; height: 100%; border-radius: 12px; overflow: hidden; box-shadow: 0 20px 50px rgba(0,0,0,0.5); border: 1px solid rgba(255,255,255,0.1); position:relative; }
+                .mob-img-display img { width: 100%; height: 100%; object-fit: cover; transition: 0.5s transform; position:absolute; top:0; left:0; }
+            </style>
+
+            <script>
+                const mobImages = [
+                    'assets/agv.jpg',
+                    'assets/industry-02.png',
+                    'assets/industry-03.png',
+                    'assets/industry-04.png',
+                    'assets/industry-05.png'
+                ];
+                window.setMobTab = function(idx) {
+                    // Update Tabs
+                    const tabs = document.querySelectorAll('.mob-tab');
+                    tabs.forEach(t => t.classList.remove('active'));
+                    tabs[idx].classList.add('active');
+                    
+                    // Update Image with Fade
+                    const imgEl = document.getElementById('mobDisplayImg');
+                    imgEl.style.opacity = 0;
+                    imgEl.style.transform = 'scale(1.1)';
+                    
+                    setTimeout(() => {
+                        imgEl.src = mobImages[idx];
+                        imgEl.onload = () => {
+                            imgEl.style.opacity = 1;
+                            imgEl.style.transform = 'scale(1)';
+                        };
+                        // Fallback in case onload assumes cached
+                        setTimeout(() => {
+                             imgEl.style.opacity = 1;
+                             imgEl.style.transform = 'scale(1)';
+                        }, 50);
+                    }, 300);
+                }
+            </script>
+        </div>
+
+
+        <!-- 07. ESG MANAGEMENT -->
+        <div class="slide">
+            <span class="slide-tag">ABOUT US</span>
+            <h1 class="slide-title">ESG MANAGEMENT</h1>
+            <p style="text-align:center; color:#ddd; font-size:20px; line-height:1.6; max-width:1200px; margin:0 auto 30px auto;">
+                We develop eco-friendly products through energy-efficient design and low-power technology, and pursue sustainable value creation through transparent ESG management and ethical supply chain construction.
+            </p>
+                        <!-- ESG Container -->
+                <div class="esg-main-container" style="display:flex; justify-content:center; gap:40px; margin-top:60px;">
+                    
+                    <!-- 1. Eco-Friendly Design -->
+                    <div class="esg-circle-container">
+                        <div class="esg-circle" style="border-color:var(--neon-green); box-shadow:0 0 20px rgba(0,255,136,0.2);">
+                            <img src="assets/icon_eco.png" onerror="this.style.display='none'" style="width:50px; margin-bottom:10px;">
+                            <h3 style="color:var(--neon-green);">Eco-Friendly<br>Design</h3>
+                        </div>
+                        <div class="esg-desc">
+                            <div class="esg-sub-item">
+                                <strong style="color:white; font-size:24px;">Energy Efficiency</strong><br>
+                                Optimized control algorithms<br>& low-power circuitry
+                            </div>
+                            <div class="esg-sub-item">
+                                <strong style="color:white; font-size:24px;">Hazardous Reduction</strong><br>
+                                Use of lead-free<br>& halogen-free materials
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Arrow -->
+                    <div class="esg-arrow" style="padding-top:80px; color:#555; font-size:40px;">›</div>
+
+                    <!-- 2. ESG Management -->
+                    <div class="esg-circle-container">
+                        <div class="esg-circle" style="border-color:white; box-shadow:0 0 20px rgba(255,255,255,0.2);">
+                             <img src="assets/icon_esg.png" onerror="this.style.display='none'" style="width:50px; margin-bottom:10px;">
+                            <h3 style="color:white;">ESG<br>Management</h3>
+                        </div>
+                        <div class="esg-desc">
+                            <div class="esg-sub-item">
+                                <strong style="color:white; font-size:24px;">KPI Management</strong><br>
+                                Carbon reduction<br>& resource recycling goals
+                            </div>
+                            <div class="esg-sub-item">
+                                <strong style="color:white; font-size:24px;">Transparency</strong><br>
+                                Annual Sustainability reporting<br>& disclosure
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Arrow -->
+                    <div class="esg-arrow" style="padding-top:80px; color:#555; font-size:40px;">›</div>
+
+                    <!-- 3. Ethical Supply Chain -->
+                    <div class="esg-circle-container">
+                        <div class="esg-circle" style="border-color:var(--neon-cyan); box-shadow:0 0 20px rgba(0,240,255,0.2);">
+                             <img src="assets/icon_chain.png" onerror="this.style.display='none'" style="width:50px; margin-bottom:10px;">
+                            <h3 style="color:var(--neon-cyan);">Ethical<br>Supply Chain</h3>
+                        </div>
+                        <div class="esg-desc">
+                            <div class="esg-sub-item">
+                                <strong style="color:white; font-size:24px;">Partner Screening</strong><br>
+                                Ethics & environmental<br>due diligence
+                            </div>
+                            <div class="esg-sub-item">
+                                <strong style="color:white; font-size:24px;">Joint Growth</strong><br>
+                                Carbon reduction campaigns<br>with partners
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+        </div>
+
+        <!-- 08. MOBILITY PRODUCTS OVERVIEW -->
+        <div class="slide">
+            <span class="slide-tag">TECHNOLOGY</span><h1 class="slide-title">MOBILITY PRODUCTS</h1>
+            <p style="color:#aaa; font-size:20px; text-align:center; margin-bottom:40px; max-width:1200px; margin-left:auto; margin-right:auto; position:relative; z-index:10;">
+                We enhance safety and efficiency in various fields such as automobiles, motorcycles, and industrial facilities, creating sustainable industrial development and future customer value together
+            </p>
+
+            <!-- CSS for Diagram -->
+            <style>
+                .car-diagram-container {
+                    position:relative; width:100%; height:80%; max-width:1600px; margin:-50px auto 0 auto; display:flex; justify-content:center; align-items:center;
+                }
+                
+                /* Icon & Text Styling */
+                .diagram-item-row { display:flex; align-items:center; gap:20px; margin-bottom:20px; position: relative; z-index: 2; }
+                .diagram-item-row:last-child { margin-bottom:0; }
+
+                .diagram-icon {
+                   width:60px; height:60px; border-radius:50%; display:flex; align-items:center; justify-content:center; flex-shrink:0;
+                   background: #000; border: 2px solid #555; transition:0.3s; overflow:hidden; padding:0;
+                }
+                .diagram-icon img { width: 100%; height: 100%; object-fit: cover; opacity: 0.8; transition:0.3s; }
+                
+                .diagram-text { max-width: 320px; }
+                .diagram-text h4 { color:#fff; font-size:17px; font-weight:700; margin-bottom:6px; font-family: var(--font-main); letter-spacing: -0.5px; }
+                .diagram-text p { color:#aaa; font-size:14px; line-height:1.5; margin:0; font-family: sans-serif; letter-spacing: -0.2px;}
+
+                /* Hover Effects */
+                .diagram-item-row:hover .diagram-icon { border-color: var(--neon-green); box-shadow: 0 0 15px rgba(0,255,136,0.3); transform: scale(1.1); }
+                .diagram-item-row:hover .diagram-icon img { opacity: 1; }
+                .diagram-item-row:hover h4 { color: var(--neon-green); }
+
+                /* Layout Columns */
+                /* Layout Columns - Widened spacing as requested */
+                .left-col { position:absolute; left:10%; top:10%; width:22%; display:flex; flex-direction:column; align-items:flex-end; text-align:right; }
+                .right-col { position:absolute; right:10%; top:5%; width:22%; display:flex; flex-direction:column; align-items:flex-start; text-align:left; }
+                
+                .left-col .diagram-item-row { flex-direction: row-reverse; } /* Text - Icon */
+                .right-col .diagram-item-row { flex-direction: row; } /* Icon - Text */
+
+                /* SVG Lines */
+                .diagram-lines { position:absolute; top:0; left:0; width:100%; height:100%; pointer-events:none; z-index:1; }
+                .diagram-line { stroke: rgba(255,255,255,0.3); stroke-width: 1px; fill: none; }
+                .dot-start { fill: rgba(255,255,255,0.3); }
+                .dot-end { fill: #fff; }
+
+                /* Mobile Layout */
+                /* Mobile & Small Laptop Layout */
+                @media (max-width: 1279px) {
+                    .car-diagram-container { flex-direction: column; height: auto; padding: 20px 0; }
+                    .car-bg-img, .diagram-lines { display: none; }
+                    .left-col, .right-col { position: static; width: 100%; align-items: flex-start; text-align: left; }
+                    .left-col .diagram-item-row { flex-direction: row; }
+                    .diagram-text { max-width: 100%; }
+                    .diagram-item-row { margin-bottom: 30px; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 20px; width: 100%; }
+                }
+
+                /* PC & Laptop Layout Fix: Lock Aspect Ratio to prevent line shifting */
+                @media (min-width: 1280px) {
+                    .car-diagram-container {
+                        position: relative;
+                        width: 100%; max-width: 100%;
+                        aspect-ratio: 16 / 9; /* Lock ratio to match SVG viewBox */
+                        margin: 0 auto;
+                        display: flex; justify-content: center; align-items: center;
+                    }
+                    .car-bg-img {
+                        width: 100%; height: 100%;
+                        object-fit: contain; /* Ensure image fits the locked ratio */
+                        margin-top: 0 !important; /* Remove individual shifts */
+                    }
+                    .diagram-lines { width: 100%; height: 100%; }
+
+                    /* Absolute Positioning for Items to match Lines exactly */
+                    .left-col, .right-col {
+                        position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+                        display: block; pointer-events: none; /* Overlay mode */
+                    }
+                    .diagram-item-row {
+                        position: absolute; width: auto; max-width: 40%; min-width: 350px; z-index: 100;
+                        pointer-events: auto; margin: 0; border: none;
+                        background: rgba(0,0,0,0.6); border-radius: 10px; padding: 15px;
+                        backdrop-filter: blur(5px);
+                        display: flex; align-items: center; gap: 15px; /* Horizontal layout restored */
+                    }
+                }
+            </style>
+
+            <div class="car-diagram-container">
+                
+                <!-- Central Car Image -->
+                <img class="car-bg-img" src="assets/bg.png" alt="Car" style="width:100%; height:100%; object-fit:contain; opacity:1.0; z-index:0;" onerror="this.src='https://emt.uxis.co.kr/share/portal/img/main/bg.png'">
+                
+                <!-- Diagram SVG Overlay -->
+                <!-- Diagram SVG Overlay (Content generated by JS below) -->
+                <svg class="diagram-lines" id="diagramSvg"></svg>
+
+                <script>
+                    // ==========================================================
+                    // [USER CONFIG] DIAGRAM CONNECTION COORDINATES
+                    // You can adjust x2, y2 values here to move the white dots.
+                    // ==========================================================
+                    // ==========================================================
+                    // [USER CONFIG] DIAGRAM CONNECTION COORDINATES
+                    // You can adjust x2, y2 values here to move the white dots.
+                    // ==========================================================
+                    // ==========================================================
+                    // [USER CONFIG] DIAGRAM CONNECTION COORDINATES
+                    // You can adjust x2, y2 values here to move the white dots.
+                    // ==========================================================
+                    const diagramConfig = [
+                        // Left Items (Indices 0-3) - Start item on the RIGHT (Text - Icon)
+                        { x1: '36%', y1: '18%', x2: '43%', y2: '50%', isLeft: true }, 
+                        { x1: '36%', y1: '38%', x2: '46%', y2: '66%', isLeft: true }, 
+                        { x1: '36%', y1: '58%', x2: '42%', y2: '70%', isLeft: true }, 
+                        { x1: '36%', y1: '78%', x2: '47%', y2: '82%', isLeft: true }, 
+                        
+                        // Right Items (Indices 4-7) - Start item on the LEFT (Icon - Text)
+                        { x1: '64%', y1: '18%', x2: '54%', y2: '80%', isLeft: false }, 
+                        { x1: '64%', y1: '38%', x2: '55%', y2: '70%', isLeft: false }, 
+                        { x1: '64%', y1: '58%', x2: '60%', y2: '70%', isLeft: false }, 
+                        { x1: '64%', y1: '78%', x2: '58%', y2: '82%', isLeft: false }  
+                    ];
+
+                    function renderDiagram() {
+                        const svg = document.getElementById('diagramSvg');
+                        const container = document.querySelector('.car-diagram-container');
+                        if(!svg || !container) return;
+
+                        // 1. FLATTEN DOM (Unwrap items from cols to ensure shared coordinate space)
+                        const leftCol = container.querySelector('.left-col');
+                        const rightCol = container.querySelector('.right-col');
+                        
+                        if (leftCol) {
+                            while(leftCol.firstChild) container.appendChild(leftCol.firstChild);
+                            leftCol.remove();
+                        }
+                        if (rightCol) {
+                            while(rightCol.firstChild) container.appendChild(rightCol.firstChild);
+                            rightCol.remove();
+                        }
+
+                        // 2. Select All Items (Now siblings in container)
+                        const items = Array.from(container.querySelectorAll('.diagram-item-row'));
+                        
+                        // 3. Responsive Check
+                        const isPC = window.innerWidth >= 1280;
+
+                        if (!isPC) {
+                            // Mobile: Clear absolute positioning style
+                            items.forEach(el => {
+                                el.style.position = ''; 
+                                el.style.left = ''; el.style.top = ''; 
+                                el.style.right = ''; el.style.bottom = '';
+                                el.style.transform = '';
+                            });
+                            svg.innerHTML = '';
+                            return;
+                        }
+
+                        // 4. Draw & Position (PC)
+                        let html = '<defs><circle id="end-dot" cx="0" cy="0" r="4" fill="white" /></defs>';
+                        
+                        diagramConfig.forEach((d, i) => {
+                            // SVG Lines
+                            html += `<line x1="${d.x1}" y1="${d.y1}" x2="${d.x2}" y2="${d.y2}" class="diagram-line" />`;
+                            html += `<circle cx="${d.x2}" cy="${d.y2}" r="4" fill="white" />`;
+
+                            // DOM Positioning
+                            if (items[i]) {
+                                const el = items[i];
+                                el.style.position = 'absolute';
+                                el.style.zIndex = '100'; // Force on top
+                                el.style.top = d.y1;
+                                el.style.left = d.x1;
+                                
+                                // Anchor Logic
+                                if (d.isLeft) {
+                                    el.style.transform = 'translate(-100%, -50%)'; 
+                                    el.style.textAlign = 'right';
+                                    el.style.flexDirection = 'row-reverse'; // Text - Icon
+                                    el.style.justifyContent = 'flex-start'; 
+                                } else {
+                                    el.style.transform = 'translate(0, -50%)'; 
+                                    el.style.textAlign = 'left';
+                                    el.style.flexDirection = 'row'; // Icon - Text (Default)
+                                    el.style.justifyContent = 'flex-start';
+                                }
+                            }
+                        });
+                        svg.innerHTML = html;
+                    }
+                    // Run
+                    setTimeout(renderDiagram, 100); // Small delay to ensure DOM parsed
+                    window.addEventListener('resize', renderDiagram);
+                </script>
+
+                <!-- Left Column Items -->
+                <div class="left-col">
+                    <!-- 1. Steering Angle -->
+                    <div class="diagram-item-row">
+                         <div class="diagram-icon"><img src="assets/8.png"></div>
+                        <div class="diagram-text">
+                            <h4>Steering Angle Sensor</h4>
+                            <p>Detects the steering wheel's rotation angle and provides data to the vehicle's ECU.</p>
+                        </div>
+                    </div>
+                    <!-- 2. Electronic Accelerator Pedal -->
+                    <div class="diagram-item-row">
+                         <div class="diagram-icon"><img src="assets/3.png"></div>
+                        <div class="diagram-text">
+                            <h4>Electronic Accelerator Pedal Sensor</h4>
+                            <p>Detects the position of the accelerator pedal and sends signals to the ECU for vehicle speed control.</p>
+                        </div>
+                    </div>
+                    <!-- 3. Crankshaft Position -->
+                    <div class="diagram-item-row">
+                         <div class="diagram-icon"><img src="assets/10.png"></div> <!-- Assuming 10 is generic sensor -->
+                        <div class="diagram-text">
+                            <h4>Crankshaft Position Sensor</h4>
+                            <p>Measures the rotational speed and position of the crankshaft and delivers this information to the ECU.</p>
+                        </div>
+                    </div>
+                     <!-- 4. Fan Clutch -->
+                     <div class="diagram-item-row">
+                        <div class="diagram-icon"><img src="assets/12.png"></div>
+                       <div class="diagram-text">
+                           <h4>Fan Clutch</h4>
+                           <p>Helps regulate engine temperature and ensures efficient cooling performance.</p>
+                       </div>
+                   </div>
+                </div>
+
+                <!-- Right Column Items -->
+                <div class="right-col">
+                    <!-- 1. Throttle Position -->
+                    <div class="diagram-item-row">
+                         <div class="diagram-icon"><img src="assets/7.png"></div>
+                        <div class="diagram-text">
+                            <h4>Throttle Position Sensor</h4>
+                            <p>Detects the throttle opening and sends signals to the ECU to control the engine's power output.</p>
+                        </div>
+                    </div>
+                    <!-- 2. Inhibitor Switch -->
+                    <div class="diagram-item-row">
+                         <div class="diagram-icon"><img src="assets/17.png"></div>
+                        <div class="diagram-text">
+                            <h4>Inhibitor Switch</h4>
+                            <p>Detects the gear position (P, R, N, D, etc.) in automatic transmissions and controls functions such as engine start and reverse lights.</p>
+                        </div>
+                    </div>
+                    <!-- 3. Transfer Case Switch -->
+                    <div class="diagram-item-row">
+                         <div class="diagram-icon"><img src="assets/20.png"></div>
+                        <div class="diagram-text">
+                            <h4>Transfer Case Switch</h4>
+                            <p>Used to send and control operating signals for a vehicle's 4WD (four-wheel drive) system.</p>
+                        </div>
+                    </div>
+                    <!-- 4. Coolant Temperature -->
+                    <div class="diagram-item-row">
+                        <div class="diagram-icon"><img src="assets/19.png"></div>
+                       <div class="diagram-text">
+                           <h4>Coolant Temperature Sensor</h4>
+                           <p>Measures engine coolant temperature and sends data to the ECU for controlling cooling fan operation and fuel injection.</p>
+                       </div>
+                   </div>
+                </div>
+
+            </div>
+        </div>    
+            <style>
+                .sensor-info-new {
+                    position: absolute; width: 220px;
+                    display: flex; flex-direction: column; 
+                    z-index: 2;
+                }
+                .sensor-info-new.left { align-items: flex-end; text-align: right; }
+                .sensor-info-new.right { align-items: flex-start; text-align: left; }
+                
+                .sensor-text h4 { color: white; margin-bottom: 5px; font-size: 16px; font-weight:700; font-family:var(--font-sub); }
+                .sensor-text p { color: #888; font-size: 14px; line-height: 1.4; }
+                
+                .sensor-icon-circle {
+                    width: 60px; height: 60px; border-radius: 50%; 
+                    border: 1px solid #555; background: rgba(0,0,0,0.6);
+                    display: flex; justify-content: center; align-items: center;
+                    margin-bottom: 15px; position: relative;
+                }
+                .sensor-icon-circle img { width: 35px; height: 35px; object-fit: contain; }
+                
+                /* Icon Connection Dot */
+                .sensor-info-new.left .sensor-icon-circle::after {
+                    content:''; position: absolute; right: -5px; top: 50%; transform: translateY(-50%);
+                    width: 6px; height: 6px; background: white; border-radius: 50%;
+                    box-shadow: 0 0 10px white;
+                }
+                .sensor-info-new.right .sensor-icon-circle::after {
+                    content:''; position: absolute; left: -5px; top: 50%; transform: translateY(-50%);
+                    width: 6px; height: 6px; background: white; border-radius: 50%;
+                    box-shadow: 0 0 10px white;
+                }
+                
+                /* Hover Effects */
+                .sensor-info-new:hover .sensor-icon-circle { border-color: var(--neon-cyan); box-shadow: 0 0 15px rgba(0,255,255,0.3); }
+                .sensor-info-new:hover h4 { color: var(--neon-cyan); }
+            </style>
+        </div>
+
+        <!-- 08. SENSORS I -->
+        <div class="slide">
+            <span class="slide-tag">MOBILITY PRODUCTS</span>
+            <h1 class="slide-title">SENSORS</h1>
+            <div class="product-grid">
+                <!-- 1. PTC Heater -->
+                <div class="p-card" onclick="openProductModal('ptc-heater')">
+                    <img src="assets/19.png">
+                    <h3>PTC Heater</h3>
+                    <div style="height:30px"></div>
+                    <p>A self regulating electric heater that uses the resistance characteristics of a ceramic semiconductor to automatically limit current above a certain temperature</p>
+                </div>
+                <!-- 2. Limit Sensor -->
+                <div class="p-card" onclick="openProductModal('limit-sensor')">
+                    <img src="assets/11.png">
+                    <h3>Limit Sensor</h3>
+                    <div style="height:30px"></div>
+                    <p>A precision detection sensor that senses the operating range of a mechanical device or outputs a switching signal when the preset limit position is reached</p>
+                </div>
+                <!-- 3. Resolver Sensor -->
+                <div class="p-card" onclick="openProductModal('resolver')">
+                    <img src="assets/2.png">
+                    <h3>Resolver Sensor</h3>
+                    <div style="height:30px"></div>
+                    <p>An analog angle-detection sensor that converts mechanical angular displacement into electrical signals using electromagnetic induction</p>
+                </div>
+                <!-- 4. Position Indicator Switch -->
+                <div class="p-card" onclick="openProductModal('pos-indicator')">
+                    <img src="assets/5.png">
+                    <h3>Position Indicator Switch</h3>
+                    <div style="height:30px"></div>
+                    <p>A sensor switch mounted on the transfer case that detects the current drive mode such as 2H 4H or 4L and sends the signal to the ECU</p>
+                </div>
+                 <!-- 5. Torque Sensor -->
+                 <div class="p-card" onclick="openProductModal('torque-sensor')">
+                    <img src="assets/15.png">
+                    <h3>Torque Sensor</h3>
+                    <div style="height:30px"></div>
+                    <p>A sensor that detects torsional deformation applied to a rotating shaft and converts the torque value into an electrical signal</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- 09. SENSORS II -->
+        <div class="slide">
+            <span class="slide-tag">MOBILITY PRODUCTS</span>
+            <h1 class="slide-title">SENSORS</h1>
+            <div class="product-grid">
+                <!-- 6. Pressure Sensor -->
+                <div class="p-card" onclick="openProductModal('pressure-sensor')">
+                    <img src="assets/1.png">
+                    <h3>Pressure Sensor</h3>
+                    <div style="height:30px"></div>
+                    <p>A sensor that uses piezoelectric effects to convert pressure into electrical signals</p>
+                </div>
+                 <!-- 7. TPMS Sensor -->
+                 <div class="p-card" onclick="openProductModal('tpms-sensor')">
+                    <img src="assets/16.png">
+                    <h3>TPMS Sensor</h3>
+                    <div style="height:30px"></div>
+                    <p>A sensor that detects tire pressure and temperature in real time and sends the information to the driver</p>
+                </div>
+                 <!-- 8. APS -->
+                 <div class="p-card" onclick="openProductModal('aps-sensor')">
+                    <img src="assets/3.png">
+                    <h3>Electronic Accelerator Pedal Sensor, APS</h3>
+                    <div style="height:30px"></div>
+                    <p>A device that converts the pedal depression depth angle into an electrical signal and delivers it to the ECU to control vehicle speed</p>
+                </div>
+                 <!-- 9. Speed Sensor -->
+                 <div class="p-card" onclick="openProductModal('speed-sensor')">
+                    <img src="assets/18.png">
+                    <h3>Speed Sensor</h3>
+                    <div style="height:30px"></div>
+                    <p>A sensor that measures vehicle driving speed and sends the information to the ECU and instrument cluster</p>
+                </div>
+                <!-- 10. Transfer Case Sensor -->
+                 <div class="p-card" onclick="openProductModal('transfer-case')">
+                    <img src="assets/4.png">
+                    <h3>Transfer Case Sensor</h3>
+                    <div style="height:30px"></div>
+                    <p>A key component that switches between two wheel drive and four wheel drive according to driving conditions and detects and controls the distribution of power between the front and rear wheels.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- 10. SENSORS III -->
+        <div class="slide">
+            <span class="slide-tag">MOBILITY PRODUCTS</span>
+            <h1 class="slide-title">SENSORS</h1>
+            <div class="product-grid">
+                <!-- 11. Map sensor -->
+                <div class="p-card" onclick="openProductModal('map-sensor')">
+                    <img src="assets/10.png">
+                    <h3>Map sensor</h3>
+                    <div style="height:30px"></div>
+                    <p>A sensor that detects the absolute pressure inside the intake manifold and sends the information to the ECU</p>
+                </div>
+                <!-- 12. Steering Angle Sensor -->
+                <div class="p-card" onclick="openProductModal('steering-angle')">
+                    <img src="assets/8.png">
+                    <h3>Steering Angle Sensor</h3>
+                    <div style="height:30px"></div>
+                    <p>A sensor that measures the steering angle direction and rotational speed of the steering wheel and sends the information to the ECU</p>
+                </div>
+                <!-- 13. Transmission Position Sensor -->
+                <div class="p-card" onclick="openProductModal('trans-position')">
+                    <img src="assets/17.png">
+                    <h3>Transmission Position Sensor</h3>
+                    <div style="height:30px"></div>
+                    <p>A sensor that detects the gear lever position such as P R N D in an electric vehicle transmission system and sends the information to the ECU and instrument cluster</p>
+                </div>
+                 <!-- 14. 4WD Electronic Shift Control Sensor -->
+                 <div class="p-card" onclick="openProductModal('4wd-shift')">
+                    <img src="assets/20.png">
+                    <h3>4WD Electronic Shift Control Sensor</h3>
+                    <div style="height:30px"></div>
+                    <p>A core sensor for electronic 4WD systems that precisely detects the actuator position inside the transfer case and sends the information to the ECU</p>
+                </div>
+                <!-- 15. Water Temperature Sensor -->
+                <div class="p-card" onclick="openProductModal('water-temp')">
+                    <img src="assets/6.png">
+                    <h3>Water Temperature Sensor</h3>
+                    <div style="height:30px"></div>
+                    <p>A sensor that measures engine coolant temperature and sends the information to the ECU to control cooling fan operation and fuel injection</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- 11. SENSORS IV -->
+        <div class="slide">
+            <span class="slide-tag">MOBILITY PRODUCTS</span>
+            <h1 class="slide-title">SENSORS</h1>
+            <div class="product-grid">
+                <!-- 16. Crankshaft Position Sensor -->
+                <div class="p-card" onclick="openProductModal('crank-position')">
+                    <img src="assets/9.png">
+                    <h3>Crankshaft Position Sensor</h3>
+                    <div style="height:30px"></div>
+                    <p>A sensor that detects the rotational speed and position of the crankshaft and sends the information to the ECU</p>
+                </div>
+                <!-- 17. Oxygen Sensor -->
+                <div class="p-card" onclick="openProductModal('oxygen-sensor')">
+                    <img src="assets/12.png">
+                    <h3>Oxygen Sensor</h3>
+                    <div style="height:30px"></div>
+                    <p>A sensor that detects the oxygen concentration in exhaust gas in real time and sends the information to the ECU to control the air-fuel mixture ratio</p>
+                </div>
+                 <!-- 18. Throttle Position Sensor -->
+                 <div class="p-card" onclick="openProductModal('tps')">
+                    <img src="assets/7.png">
+                    <h3>Throttle Position Sensor</h3>
+                    <div style="height:30px"></div>
+                    <p>A sensor that detects the opening degree of the throttle valve and sends the information to the ECU</p>
+                </div>
+                 <!-- 19. Knock Sensor -->
+                  <div class="p-card" onclick="openProductModal('knock-sensor')">
+                    <img src="assets/14.png">
+                    <h3>Knock Sensor</h3>
+                    <div style="height:30px"></div>
+                    <p>A sensor that detects abnormal combustion knocking inside the engine and sends the information to the ECU</p>
+                </div>
+                 <!-- 20. Idle Speed Control Valve -->
+                  <div class="p-card" onclick="openProductModal('idle-valve')">
+                    <img src="assets/13.png">
+                    <h3>Idle Speed Control Valve</h3>
+                    <div style="height:30px"></div>
+                    <p>A valve that adjusts airflow according to ECU control signals during engine idling to maintain a stable idle speed</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- 11. ACTUATORS -->
+        <div class="slide">
+            <span class="slide-tag">MOBILITY PRODUCTS</span>
+            <h1 class="slide-title">ACTUATORS</h1>
+            <div class="product-grid">
+                <div class="p-card" onclick="openProductModal('bldc-motor')">
+                    <img src="assets/25.png">
+                    <h3>BLDC Motor</h3>
+                    <div style="height:30px"></div>
+                    <p>A high efficiency motor with a brushless structure that minimizes friction loss and electrical noise and enables precise control</p>
+                </div>
+                <div class="p-card" onclick="openProductModal('digital-shift')">
+                    <img src="assets/22.png">
+                    <h3>Digital-Electric Shift Control Actuator</h3>
+                    <div style="height:30px"></div>
+                    <p>An actuator that electronically controls gear shifting in automatic transmissions and switches 4WD transfer case modes such as 2H 4H and 4L</p>
+                </div>
+                <div class="p-card" onclick="openProductModal('ac-motor')">
+                    <img src="assets/24.png">
+                    <h3>AC Motor</h3>
+                    <div style="height:30px"></div>
+                    <p>An electric motor that generates rotational motion using AC power and provides high durability and stable performance for HVAC systems</p>
+                </div>
+                <div class="p-card" onclick="openProductModal('fan-clutch')">
+                    <img src="assets/21.png">
+                    <h3>Fan Clutch</h3>
+                    <div style="height:30px"></div>
+                    <p>An electronic actuator that controls the rotational speed of the engine cooling fan</p>
+                </div>
+                <div class="p-card" onclick="openProductModal('4wd-geared')">
+                    <img src="assets/23.png">
+                    <h3>4WD Geared</h3>
+                    <div style="height:30px"></div>
+                    <p>A drive unit that shifts the gears inside the transfer case in an electronic 4WD system</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- 12. CONTROLLERS -->
+        <div class="slide">
+            <span class="slide-tag">MOBILITY PRODUCTS</span>
+            <h1 class="slide-title">CONTROLLERS</h1>
+            <div class="product-grid">
+                <div class="p-card" onclick="openProductModal('proximity')">
+                    <img src="assets/26.png">
+                    <h3>Smart Electronic Proximity Sensor</h3>
+                    <div style="height:30px"></div>
+                    <p>A non contact sensor that detects the proximity of an object using magnetic capacitive or ultrasonic principles</p>
+                </div>
+                <div class="p-card" onclick="openProductModal('flush-handle')">
+                    <img src="assets/29.png">
+                    <h3>Flush Door Handle Control Unit</h3>
+                    <div style="height:30px"></div>
+                    <p>A control unit that automatically deploys and retracts the door handle based on smart key signals proximity detection and vehicle lock status</p>
+                </div>
+                <div class="p-card" onclick="openProductModal('smart-key')">
+                    <img src="assets/27.png">
+                    <h3>Smart Keyless Entry</h3>
+                    <div style="height:30px"></div>
+                    <p>An electronic control module that uses RF communication and encryption technology to perform vehicle door unlocking and ignition control</p>
+                </div>
+                <div class="p-card" onclick="openProductModal('tcu')">
+                    <img src="assets/28.png">
+                    <h3>Transmission Control Unit</h3>
+                    <div style="height:30px"></div>
+                    <p>A control unit that optimally distributes driving power between the front and rear wheels to enhance driving stability and traction</p>
+                </div>
+                <div class="p-card" onclick="openProductModal('smart-hvac')">
+                    <img src="assets/30.png">
+                    <h3>Multi-purpose, high-efficiency, energy-saving temperature and humidity control system</h3>
+                    <div style="height:30px"></div>
+                    <p>A multi purpose high efficiency energy saving temperature and humidity control system for HVAC applications used in automotive and agricultural industries</p>
+                </div>
+            </div>
+        </div>
+
+
+
+
+
+        <!-- 17. CONTACT -->
+        <div class="slide">
+            <span class="slide-tag">Support</span>
+            <h1 class="slide-title">Directions</h1>
+            <p style="text-align: center; color: #aaa; font-size: 20px; max-width: 1920px; margin: 0 auto 50px auto; line-height: 1.6; font-family: var(--font-body);">
+                We enhance safety and efficiency in various fields such as automobiles, motorcycles, and industrial facilities, creating sustainable industrial development and future customer value together
+            </p>
+
+            <!-- Divider -->
+            <div style="width: 100%; height: 1px; background: #333; margin-bottom: 60px; max-width: 1400px; margin-left: auto; margin-right: auto;"></div>
+
+            <div class="directions-container">
+                <div class="dir-left">
+                    <h2 class="dir-section-title">Headquarters and<br>Research Center</h2>
+                </div>
+                <div class="dir-right">
+                    <!-- Headquarters -->
+                    <div class="dir-item">
+                        <h3 class="dir-loc-title">Headquarters</h3>
+                        <p class="dir-address">Room 204, Gyeongnam Technopark, 88 Somang gil, Juchon myeon, Gimhae si, Gyeongsangnam do, Republic of Korea</p>
+                    </div>
+                    
+                    <!-- Research Center -->
+                    <div class="dir-item">
+                        <h3 class="dir-loc-title">Research Center</h3>
+                        <p class="dir-address">45, Bansong-ro 525beon-gil, Haeundae-gu, Busan, Republic of Korea</p>
+                    </div>
+                    
+                    <div style="width: 100%; height: 1px; background: #333; margin-top: 60px;"></div>
+                </div>
+            </div>
+
+            <style>
+                .directions-container {
+                    display: flex; width: 100%; max-width: 1400px; margin: 0 auto;
+                    justify-content: flex-start; align-items: flex-start; padding-bottom: 100px;
+                }
+                .dir-left { width: 30%; }
+                .dir-right { width: 70%; padding-left: 0; }
+                
+                .dir-section-title { font-size: 24px; font-weight: 700; color: #fff; line-height: 1.4; font-family: var(--font-main); letter-spacing: -0.5px; }
+                
+                .dir-item { margin-bottom: 60px; }
+                .dir-item:last-of-type { margin-bottom: 0; }
+                
+                .dir-loc-title { color: #c0ff00; font-size: 20px; margin-bottom: 15px; font-family: var(--font-sub); font-weight: 500; letter-spacing: 1px; }
+                .dir-address { color: #fff; font-size: 22px; line-height: 1.5; font-family: var(--font-main); font-weight: 600; letter-spacing: -0.5px; }
+
+                @media (max-width: 1024px) {
+                    .directions-container { flex-direction: column; }
+                    .dir-left { display: none !important; }
+                    .dir-right { width: 100%; }
+                    .dir-address { font-size: 18px; }
+                    /* Hide Map/Grey Square on Mobile */
+                    .directions-container iframe, .directions-container .map-placeholder { display: none !important; }
+                }
+            </style>
+        </div>
+
+
+        <!-- CONTROLS -->
+        <div class="hud">
+            <button class="nav-btn" onclick="go(current-1)">&lt;</button>
+            <div class="pg-num"><span id="cur">01</span> / <span id="tot">17</span></div>
+            <button class="nav-btn" onclick="go(current+1)">&gt;</button>
+        </div>
+
+    </main>
+
+    <!-- 18. PRODUCT DETAIL MODAL HTML -->
+    <div class="product-modal" id="productModal">
+        <div class="product-modal-close" onclick="closeProductModal()">✕ CLOSE</div>
+        <div class="product-modal-inner">
+            <div class="modal-content-wrapper">
+                <!-- TOP: Info & Image -->
+                <div class="product-modal-top">
+                    <div class="product-modal-left">
+                        <div class="product-modal-category" id="pModalCategory">Category</div>
+                        <h2 class="product-modal-title" id="pModalTitle">Product Title</h2>
+                        <p class="product-modal-desc" id="pModalDesc">Description...</p>
+                        
+                        <!-- Specs Row -->
+                        <div class="product-modal-specs" id="pModalSpecs"></div>
+                    </div>
+                    
+                    <!-- Right Column (Image) -->
+                    <div class="product-modal-right" onclick="openLightbox(document.getElementById('pModalImg').src)">
+                        <img id="pModalImg" src="assets/19.png" alt="Product" style="cursor: pointer;">
+                        <!-- Zoom Icon -->
+                        <div class="product-modal-zoom">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="11" cy="11" r="8"></circle>
+                                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <style>
+        /* Modal Overlay */
+        .product-modal {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.95); z-index: 99999;
+            display: none; align-items: center; justify-content: center;
+            backdrop-filter: blur(10px);
+        }
+        
+        /* Lightbox (Image Modal) - MUST BE HIGHER Z-INDEX */
+        #imgModal {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.95); z-index: 100001 !important;
+            display: none; align-items: center; justify-content: center;
+            backdrop-filter: blur(5px);
+        }
+        #imgModal.open { display: flex; }
+        #imgModal .modal-content {
+            position: relative; width: auto; height: auto;
+            max-width: 90%; max-height: 90%;
+            display: flex; justify-content: center; align-items: center;
+            background: transparent; pointer-events: auto;
+        }
+        #imgModal img {
+            max-width: 100%; max-height: 85vh;
+            border-radius: 4px; box-shadow: 0 0 50px rgba(0,0,0,0.8);
+            object-fit: contain;
+        }
+        #imgModal .modal-close {
+            position: absolute; top: -40px; right: 0;
+            color: #fff; font-size: 16px; cursor: pointer;
+            font-family: var(--font-sub); letter-spacing: 2px;
+            opacity: 0.8; transition: 0.3s;
+        }
+        #imgModal .modal-close:hover { opacity: 1; color: var(--neon-cyan); }
+        .product-modal.open { display: flex; }
+
+        /* Close Button */
+        .product-modal-close {
+            position: absolute; top: 30px; right: 40px;
+            color: #fff; cursor: pointer; font-size: 14px; letter-spacing: 2px;
+            z-index: 10001; font-weight: 600; opacity: 0.6; transition: 0.3s;
+            display: flex; align-items: center; gap: 10px;
+        }
+        .product-modal-close:hover { opacity: 1; }
+
+        /* Modal Inner */
+        .product-modal-inner {
+            width: 95%; max-width: 1800px; height: 90vh; /* Maximize height usage */
+            background: #050505; border: none !important; 
+            border-radius: 4px; 
+            overflow: hidden; /* Hide scrollbar if possible, but keep accessible */
+            position: relative;
+            box-shadow: 0 0 50px rgba(0,0,0,0.8);
+            overscroll-behavior: contain; /* Prevent parent scroll */
+        }
+
+        /* Content Wrapper */
+        /* Content Wrapper -> Row Layout */
+        .modal-content-wrapper { padding: 40px; display: flex; flex-direction: row; gap: 40px; height: 100%; box-sizing: border-box; }
+
+        /* Top Section */
+        /* Top Section Removed wrapper since main is flex row now */
+        .product-modal-top { 
+            display: contents; /* Allow children to be grid/flex items of wrapper */
+        }
+        
+        .product-modal-left { 
+            flex: 6; /* 60% Width for Text */
+            display: flex; flex-direction: column; justify-content: center; 
+            overflow-y: auto; 
+            padding-right: 40px; /* More spacing for text */
+        }
+        
+        .product-modal-right {
+            flex: 4; /* 40% Width for Image */
+            /* Removed background color to remove the "box" feel */
+            background: transparent; 
+            border-radius: 10px;
+            display: flex; align-items: center; justify-content: center;
+            height: 100%; position: relative; border: none !important;
+            cursor: pointer; overflow: hidden;
+            padding: 0; /* Removed padding to maximize image size within container */
+        }
+        .product-modal-right img { width: 100%; height: 100%; object-fit: contain; }
+        .product-modal-right:hover img { transform: scale(1.02); transition: 0.3s; }
+
+        /* Typography */
+        .product-modal-category { color: var(--neon-cyan); font-size: 13px; margin-bottom: 10px; font-weight: 600; letter-spacing: 2px; font-family: var(--font-sub); }
+        .product-modal-title { color: #fff; font-size: 42px; font-weight: 700; margin-bottom: 20px; line-height: 1.1; letter-spacing: -1px; font-family: var(--font-main); }
+                    
+        /* Description Area */
+        .product-modal-desc { 
+            color: #ddd; font-size: 15px; line-height: 1.6; margin-bottom: 30px; 
+            max-width: 100%; font-family: sans-serif; font-weight: 300; 
+            white-space: pre-line;
+            flex: 1; /* Allow it to fill space before stats */
+        }
+
+        /* Specs - Restored Circular Icons */
+        .product-modal-specs { display: flex; flex-wrap: wrap; gap: 30px; margin-top: auto; }
+        .spec-item { 
+            display: flex; flex-direction: column; align-items: center; justify-content: flex-start;
+            background: transparent; border: none; padding: 0;
+            width: 90px; height: auto; gap: 10px; vertical-align: top;
+        }
+        .spec-icon-circle { 
+            display: flex; align-items: center; justify-content: center;
+            width: 60px; height: 60px; border-radius: 50%; 
+            border: 1px solid #444; background: rgba(255,255,255,0.02);
+            transition: 0.3s;
+        } 
+        .spec-item:hover .spec-icon-circle { border-color: var(--neon-cyan); box-shadow: 0 0 15px rgba(0,255,255,0.2); color: var(--neon-cyan); }
+        .spec-icon-circle svg { width: 28px; height: 28px; fill: none; stroke: currentColor; stroke-width: 1.5; }
+
+        .spec-label { display: block; font-size: 12px; color: #888; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; margin: 0; } 
+        .spec-value { font-size: 12px; color: #fff; font-weight: 600; font-family: var(--font-sub); margin:0; letter-spacing: 0.5px; }
+
+
+        /* Zoom */
+        .product-modal-zoom {
+            position: absolute; bottom: 20px; right: 20px;
+            width: 44px; height: 44px; border-radius: 50%;
+            background: #111; border: 1px solid #444; color: #fff; 
+            display: flex; align-items: center; justify-content: center;
+            cursor: pointer; transition: 0.3s;
+        }
+        .product-modal-zoom:hover { background: var(--neon-green); color: #000; border-color: var(--neon-green); }
+
+        /* Scrollbar */
+        .product-modal-inner::-webkit-scrollbar { width: 8px; }
+        .product-modal-inner::-webkit-scrollbar-track { background: #050505; }
+        .product-modal-inner::-webkit-scrollbar-thumb { background: #333; border-radius: 4px; }
+        .product-modal-inner::-webkit-scrollbar-thumb:hover { background: #555; }
+
+        /* Mobile Responsive */
+        /* Mobile Responsive */
+        @media (max-width: 1024px) {
+            .product-modal-inner { width: 100%; height: 100%; border: none; border-radius: 0; }
+            /* Stack Content: Image Top, Text Bottom */
+            .modal-content-wrapper { 
+                flex-direction: column !important; 
+                padding: 80px 20px 20px 20px; /* Reduced bottom padding */
+                gap: 20px; 
+                overflow-y: auto; /* Scroll only if needed */
+                scrollbar-width: none; /* Firefox */
+                -ms-overflow-style: none; /* IE/Edge */
+            }
+            .modal-content-wrapper::-webkit-scrollbar { display: none; } /* Chrome/Safari */
+            .product-modal-right { 
+                order: -1; /* Image Top */
+                width: 100%; height: auto; max-height: 300px;
+                flex-shrink: 0; margin-bottom: 10px;
+                display: flex; justify-content: center; background: rgba(255,255,255,0.02); border-radius: 8px;
+            }
+            .product-modal-right img { max-height: 250px; width: auto; max-width: 100%; }
+            
+            .product-modal-left { width: 100%; max-width: 100%; text-align: left; order: 2; }
+            .product-modal-title { font-size: 32px; margin-bottom: 20px; }
+            .product-modal-specs { gap: 15px; justify-content: flex-start; flex-wrap: wrap; }
+            .spec-item { width: 70px; } /* Smaller icons on mobile */
+            .spec-icon-circle { width: 50px; height: 50px; }
+        }
+    </style>
+
+    <style>
+        /* Partners Grid */
+        .partners-grid-container {
+            display: grid; grid-template-columns: repeat(5, 1fr); gap: 20px;
+            padding: 40px; width: 100%; max-width: 1200px; margin: 0 auto;
+        }
+        .partner-logo {
+            display: flex; align-items: center; justify-content: center;
+            background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.05);
+            height: 80px; border-radius: 8px; color: #888; font-family: var(--font-sub);
+            font-size: 16px; font-weight: 600; text-align: center;
+            transition: 0.3s; cursor: default;
+        }
+        .partner-logo:hover {
+            background: rgba(255,255,255,0.1); color: white;
+            border-color: var(--neon-cyan); box-shadow: 0 0 15px rgba(0,240,255,0.2);
+            transform: translateY(-5px);
+        }
+
+        /* Hexagon Logo - Removed but keeping class for safety */
+        .hexagon-wrapper { display: none; }
+
+        /* Overview Table */
+        .overview-table { width: 100%; border-collapse: collapse; font-size: 13px; }
+        .overview-table th { 
+            text-align: left; padding: 10px 5px; color: var(--neon-cyan); 
+            border-bottom: 1px solid rgba(255,255,255,0.1); width: 130px; font-family: var(--font-sub);
+        }
+        .overview-table td { 
+            padding: 10px 5px; color: #ddd; border-bottom: 1px solid rgba(255,255,255,0.05); line-height: 1.3;
+        }
+        .overview-table tr:last-child th, .overview-table tr:last-child td { border-bottom: none; }
+
+        /* Make sure modal is above everything */
+        .product-modal { z-index: 9999; }
+    </style>
+
+    <script>
+        // === 3D BACKGROUND (Slow & subtle) ===
+        const container = document.getElementById('webgl-container');
+        const scene = new THREE.Scene();
+        const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+        const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        container.appendChild(renderer.domElement);
+
+        const sphereGeo = new THREE.IcosahedronGeometry(9, 2);
+        const sphereMat = new THREE.MeshBasicMaterial({ color: 0x00ff88, wireframe: true, transparent: true, opacity: 0.05 });
+        const mainSphere = new THREE.Mesh(sphereGeo, sphereMat);
+        scene.add(mainSphere);
+
+        const pGeo = new THREE.BufferGeometry();
+        const pCount = 800;
+        const pArr = new Float32Array(pCount * 3);
+        for(let i=0; i<pCount*3; i++) pArr[i] = (Math.random()-0.5) * 100;
+        pGeo.setAttribute('position', new THREE.BufferAttribute(pArr, 3));
+        const pMat = new THREE.PointsMaterial({ size: 0.08, color: 0x00ffff, transparent: true, opacity: 0.3 });
+        const stars = new THREE.Points(pGeo, pMat);
+        scene.add(stars);
+
+        camera.position.z = 22;
+        let targetX = 0, targetScale = 1.0;
+        let mouseX=0, mouseY=0;
+
+        document.addEventListener('mousemove', e => {
+            mouseX = (e.clientX/window.innerWidth)*2-1;
+            mouseY = -(e.clientY/window.innerHeight)*2+1;
+        });
+
+        function animate() {
+            requestAnimationFrame(animate);
+            mainSphere.rotation.y += 0.0003; 
+            mainSphere.rotation.x += 0.0001; 
+            stars.rotation.y -= 0.0001;
+            
+            camera.position.x += (mouseX*0.5 - camera.position.x)*0.03;
+            camera.position.y += (mouseY*0.5 - camera.position.y)*0.03;
+            camera.lookAt(scene.position);
+            
+            mainSphere.position.x += (targetX - mainSphere.position.x)*0.05;
+            renderer.render(scene, camera);
+        }
+        animate();
+        window.addEventListener('resize', ()=>{
+            camera.aspect=window.innerWidth/window.innerHeight; camera.updateProjectionMatrix(); renderer.setSize(window.innerWidth, window.innerHeight);
+        });
+
+        // === UI & NAVIGATION ===
+        const slides = document.querySelectorAll('.slide');
+        const curEl = document.getElementById('cur');
+        const totEl = document.getElementById('tot');
+        const webglEl = document.getElementById('webgl-container');
+        let current = 0;
+        
+        totEl.innerText = slides.length;
+
+        function updateState() {
+            // Background Logic: Shift sphere to right when standard page
+            if(current === 0) {
+                targetX = 0; webglEl.style.filter = 'blur(0px)'; webglEl.style.opacity = '1';
+            } else {
+                targetX = 8; webglEl.style.filter = 'blur(2px)'; webglEl.style.opacity = '0.4';
+            }
+            // Slide Logic
+            slides.forEach((s, i) => {
+                if(i === current) s.classList.add('active');
+                else s.classList.remove('active');
+            });
+            curEl.innerText = (current + 1).toString().padStart(2, '0');
+        }
+
+        function go(idx) {
+            if(idx < 0 || idx >= slides.length) return;
+            current = idx;
+            sessionStorage.setItem('currentSlideIndex', current);
+            updateState();
+        }
+
+        // === MODAL LOGIC ===
+        const modal = document.getElementById('imgModal');
+        const modalImg = document.getElementById('modalImg');
+
+        window.openModal = function(src) {
+            modalImg.src = src;
+            modal.classList.add('open');
+        }
+        window.closeModal = function() {
+            modal.classList.remove('open');
+        }
+
+        // === PRODUCT DETAIL MODAL ===
+        const productModal = document.getElementById('productModal');
+        const productData = {
+            'ptc-heater': {
+                category: 'Sensor',
+                title: 'PTC Heater',
+                desc: 'A self regulating electric heater that uses the resistance characteristics of a ceramic semiconductor to automatically limit current above a certain temperature. It is applied in electric vehicles (EV), hybrid vehicles (HEV), and HVAC systems to provide rapid heating, stable temperature maintenance, and improved energy efficiency.',
+                specs: [
+                    { icon: '<svg viewBox="0 0 24 24"><path d="M14 14.76V3.5a2.5 2.5 0 0 0-5 0v11.26a4.5 4.5 0 1 0 5 0z"></path></svg>', label: 'Op. Temp', value: '-30°C ~ +85°C' },
+                    { icon: '<svg viewBox="0 0 24 24"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"></path></svg>', label: 'Protection', value: 'IP50' },
+                    { icon: '<svg viewBox="0 0 24 24"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>', label: 'Op. Voltage', value: '8V ~ 16V' }
+                ],
+                img: 'assets/19.png',
+                details: `A self regulating electric heater that uses the resistance characteristics of a ceramic semiconductor to automatically limit current above a certain temperature. It is applied in electric vehicles EV hybrid vehicles HEV and HVAC systems to provide rapid heating stable temperature maintenance and improved energy efficiency.
+                
+                Rated voltage: 13.5V ±0.1V
+Rated power: 1200 W +5% / -10%
+Operating voltage range: 8V to 16V
+Protection rating: IP50
+Operating temperature: -30°C to +85°C
+Storage temperature: -40°C to +90°C
+Temperature rise: 13 to 15 K`
+            },
+            'limit-sensor': {
+                category: 'Sensor',
+                title: 'Limit Sensor',
+                desc: 'A precision detection sensor that senses the operating range of a mechanical device or outputs a switching signal when the preset limit position is reached.',
+                specs: [
+                    { icon: '<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>', label: 'Type', value: 'Mechanical' },
+                    { icon: '<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>', label: 'Accuracy', value: 'High' },
+                    { icon: '<svg viewBox="0 0 24 24"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>', label: 'Output', value: 'Switch' }
+                ],
+                img: 'assets/11.png',
+                details: `Its metal housing structure provides excellent shock resistance and durability enabling use in high reliability environments such as industrial automation aviation defense and machinery systems.
+
+Operating voltage: DC 5V to 28V depending on model
+Output type: Switching signal ON OFF
+Detection type: Mechanical plunger or non contact magnetic sensor
+Response time: ≤1 ms
+Repeatability: ±0.01 mm or less
+Operating temperature: −40°C to +150°C
+Ingress protection: IP67 or higher
+Connector type: Aviation connector or custom type`
+            },
+            'resolver': {
+                category: 'Sensor',
+                title: 'Resolver Sensor',
+                desc: 'An analog angle detection sensor that converts mechanical angular displacement into electrical signals using electromagnetic induction and is widely used for motor control and position detection in electric motors aircraft and automotive systems.',
+                specs: [
+                    { icon: '<svg viewBox="0 0 24 24"><polyline points="23 4 23 10 17 10"></polyline><polyline points="1 20 1 14 7 14"></polyline><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"></path></svg>', label: 'Type', value: 'Analog' },
+                    { icon: '<svg viewBox="0 0 24 24"><path d="M21.21 15.89A10 10 0 1 1 8 2.83"></path><path d="M22 12A10 10 0 0 0 12 2v10z"></path></svg>', label: 'Detection', value: 'Angle' },
+                    { icon: '<svg viewBox="0 0 24 24"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>', label: 'Signal', value: 'EMF' }
+                ],
+                img: 'assets/2.png',
+                details: `An analog angle detection sensor that converts mechanical angular displacement into electrical signals using electromagnetic induction and is widely used for motor control and position detection in electric motors aircraft and automotive systems.
+                
+                Input voltage: 7V rms
+Output type: Speed 1X 32X
+Sensor accuracy: ±20 arc sec
+Frequency: 2000±100 Hz
+Operating temperature: −40°C to +125°C
+Output: Two orthogonal coils generating sin θ and cos θ voltages
+R/D conversion: Converts analog signals to digital
+Connector type: 6 pin or 8 pin`
+            },
+            
+            // --- NEW SENSORS ADDED ---
+            // --- NEW SENSORS ADDED ---
+            'pos-indicator': { 
+                category: 'Sensor', 
+                title: 'Position Indicator Switch', 
+                img: 'assets/5.png', 
+                desc: 'A sensor switch mounted on the transfer case that detects the current drive mode such as 2H 4H or 4L and sends the signal to the ECU.', 
+                specs:[
+                    { icon: '<svg viewBox="0 0 24 24"><path d="M14 14.76V3.5a2.5 2.5 0 0 0-5 0v11.26a4.5 4.5 0 1 0 5 0z"></path></svg>', label: 'Op. Temp', value: '-40℃ ~ +135℃' },
+                    { icon: '<svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>', label: 'IP Rating', value: 'IP67+' },
+                    { icon: '<svg viewBox="0 0 24 24"><path d="M9 3v18M15 3v18M3 9h18M3 15h18"></path></svg>', label: 'Connector', value: '2 or 3 pin' }
+                ], 
+                details: `A sensor switch mounted on the transfer case that detects the current drive mode such as 2H 4H or 4L and sends the signal to the ECU and verifies whether the selected four wheel drive mode is properly engaged and displays the status on the instrument cluster.
+
+Operating voltage: DC 5V ±0.05V
+Output type: Linear Potentiometer Output
+Detection type: Mechanical contact type for position detection
+Thread size: M16 x 1.5 depending on vehicle model
+Operating temperature: −40°C to +135°C
+Ingress protection: IP67 or higher
+Connector type: 2 pin or 3 pin`
+            },
+            'torque-sensor': { 
+                category: 'Sensor', 
+                title: 'Torque Sensor', 
+                img: 'assets/15.png', 
+                desc: 'A sensor that detects torsional deformation applied to a rotating shaft and converts the torque value into an electrical signal.', 
+                specs:[
+                    { icon: '<svg viewBox="0 0 24 24"><path d="M14 14.76V3.5a2.5 2.5 0 0 0-5 0v11.26a4.5 4.5 0 1 0 5 0z"></path></svg>', label: 'Op. Temp', value: '-40℃ ~ +145℃' },
+                    { icon: '<svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>', label: 'IP Rating', value: 'IP67' },
+                    { icon: '<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>', label: 'Resp. Time', value: '≤ 1ms' }
+                ], 
+                details:`A sensor that detects torsional deformation applied to a rotating shaft and converts the torque value into an electrical signal. It uses non contact magnetic sensing technology providing no wear high linearity and fast response and is optimized for electronic power steering EPS and drive control systems.
+
+Measurement type: Non contact magnetic induction
+Measurement range: ±10 N·m to ±150 N·m
+Operating voltage: DC 5V ±0.1V
+Output signal: Analog voltage or PWM
+Accuracy: ±1% F.S. or less
+Response time: ≤1 ms
+Operating temperature: −40°C to +145°C
+Ingress protection: IP67
+Output wire configuration: 3 wire or 5 wire` 
+            },
+            'pressure-sensor': { 
+                category: 'Sensor', 
+                title: 'Pressure Sensor', 
+                img: 'assets/1.png', 
+                desc: 'A sensor that uses piezoelectric effects to convert pressure into electrical signals.', 
+                specs:[
+                    { icon: '<svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>', label: 'IP Rating', value: '≥ IP67' },
+                    { icon: '<svg viewBox="0 0 24 24"><path d="M14 14.76V3.5a2.5 2.5 0 0 0-5 0v11.26a4.5 4.5 0 1 0 5 0z"></path></svg>', label: 'Op. Temp', value: '-40℃ ~ +125℃' },
+                    { icon: '<svg viewBox="0 0 24 24"><path d="M9 3v18M15 3v18M3 9h18M3 15h18"></path></svg>', label: 'Connector', value: '2 or 3 pin' }
+                ],
+                details:`It is a sensor that converts pressure into electrical signals using piezoelectric effects, and is used in various fields such as automobile industry, medical care, and environmental control due to its excellent durability and corrosion resistance. With ceramic diaphragm structure, when pressure acts on the diaphragm, deformation occurs, and thick film resistors (Whitstone Bridge) convert it into electrical signals
+
+Operating voltage: DC 5V ± 0.05V
+Output method: mV/V or 0.5–4.5V Proportional Output signal
+Pressure law: 0 to 600 bar (0 to 60 MPa)
+Sensor Degree: 0.05–0.5% linearity
+Operating temperature: -40°C to +125°C
+Waterproof rating: IP67 or higher
+Connector type: 2 pins or 3 pins
+`
+            },
+            'tpms-sensor': { 
+                category: 'Sensor', 
+                title: 'TPMS Sensor', 
+                img: 'assets/16.png', 
+                desc: 'A sensor that detects tire pressure and temperature in real time and sends the information to the driver.', 
+                specs:[
+                    { icon: '<svg viewBox="0 0 24 24"><path d="M14 14.76V3.5a2.5 2.5 0 0 0-5 0v11.26a4.5 4.5 0 1 0 5 0z"></path></svg>', label: 'Temp. Range', value: '-40℃ ~ +135℃' },
+                    { icon: '<svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg>', label: 'Signal', value: 'Digital' },
+                    { icon: '<svg viewBox="0 0 24 24"><path d="M4.93 4.93a10 10 0 0 1 14.14 0"></path><path d="M7.76 7.76a6 6 0 0 1 8.48 0"></path><path d="M10.59 10.59a2 2 0 0 1 2.82 0"></path></svg>', label: 'Type', value: 'RF Wireless' }
+                ], 
+                details:`A sensor that detects tire pressure and temperature in real time and sends the information to the driver.
+
+Sensor type: Combined pressure and temperature sensor
+Operating voltage: DC 3V
+Pressure range: 0 to 800 kPa
+Pressure accuracy: ±7 kPa
+Temperature range: −40°C to +135°C
+Temperature accuracy: ±2°C
+Communication type: RF wireless communication
+Output signal: Digital transmission
+Response interval: Approximately 1 second while driving 60 seconds when stationary`
+            },
+            'aps-sensor': { 
+                category: 'Sensor', 
+                title: 'Electronic Accelerator Pedal Sensor, APS', 
+                img: 'assets/3.png', 
+                desc: 'Electronic Accelerator Pedal Sensor converting pedal depression into electrical signal.', 
+                specs:[
+                    { icon: '<svg viewBox="0 0 24 24"><path d="M14 14.76V3.5a2.5 2.5 0 0 0-5 0v11.26a4.5 4.5 0 1 0 5 0z"></path></svg>', label: 'Op. Temp', value: '-40℃ ~ +125℃' },
+                    { icon: '<svg viewBox="0 0 24 24"><path d="M9 3v18M15 3v18M3 9h18M3 15h18"></path></svg>', label: 'Connector', value: '4 or 6 pin' },
+                    { icon: '<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>', label: 'Resp. Time', value: '≤ 5ms' }
+                ],
+                details:`A device that converts the pedal depression depth angle into an electrical signal and delivers it to the ECU to control vehicle speed.
+
+Type: Contact type sensor Dual Potentiometer
+Output voltage range: 0.5V to 4.5V
+Supply voltage: DC 5V ±10%
+Operating temperature: −40°C to +125°C
+Response time: 5 ms or less
+Environmental performance: Designed to withstand vibration humidity and EMI
+Connector type: 4 pin or 6 pin`
+            },
+            'speed-sensor': { 
+                category: 'Sensor', 
+                title: 'Speed Sensor', 
+                img: 'assets/18.png', 
+                desc: 'Measures vehicle driving speed and sends information to ECU and cluster.', 
+                specs:[
+                    { icon: '<svg viewBox="0 0 24 24"><path d="M14 14.76V3.5a2.5 2.5 0 0 0-5 0v11.26a4.5 4.5 0 1 0 5 0z"></path></svg>', label: 'Temp. Range', value: '-40℃ ~ +135℃' },
+                    { icon: '<svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>', label: 'IP Rating', value: 'IP67' },
+                    { icon: '<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>', label: 'Resp. Time', value: '≤ 1ms' }
+                ], 
+                details: `A sensor that measures vehicle driving speed and sends the information to the ECU and instrument cluster. This data is used in various vehicle control systems such as engine control transmission control ABS and cruise control.
+
+Detection type: Inductive Hall Effect Sensor
+Operating voltage: DC 5V ±0.1V
+Output signal: Digital pulse or analog voltage
+Detection range: 0 to 15000 rpm
+Response time: ≤1 ms
+Temperature range: −40°C to +135°C
+Connector type: 2 pin or 3 pin
+Ingress protection: IP67`
+            },
+            
+            'map-sensor': { 
+                category: 'Sensor', 
+                title: 'Map sensor', 
+                img: 'assets/10.png', 
+                desc: 'A sensor that detects the absolute pressure inside the intake manifold and sends the information to the ECU', 
+                specs:[
+                    { icon: '<svg viewBox="0 0 24 24"><path d="M14 14.76V3.5a2.5 2.5 0 0 0-5 0v11.26a4.5 4.5 0 1 0 5 0z"></path></svg>', label: 'Op. Temp', value: '-40℃ ~ +135℃' },
+                    { icon: '<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>', label: 'Resp. Time', value: '≤ 1ms' },
+                    { icon: '<svg viewBox="0 0 24 24"><path d="M9 3v18M15 3v18M3 9h18M3 15h18"></path></svg>', label: 'Connector', value: '3 pin' }
+                ],
+                details:`A sensor that detects the absolute pressure inside the intake manifold and sends the information to the ECU. This data is used to calculate engine load and control fuel injection and ignition timing.
+
+Sensor type: MEMS based absolute pressure sensor
+Operating voltage: DC 5V ±0.1V
+Output range: 20 to 250 kPa depending on vehicle model
+Output type: Analog voltage output
+Accuracy: ±1.5 kPa at 25°C
+Response time: ≤1 ms
+Operating temperature: −40°C to +135°C
+Connector type: 3 pin`
+            },
+            'trans-position': { 
+                category: 'Sensor', 
+                title: 'Transmission Position Sensor', 
+                img: 'assets/17.png', 
+                desc: 'A sensor that detects the gear lever position such as P R N D in an electric vehicle transmission system and sends the information to the ECU and instrument cluster', 
+                specs:[
+                    { icon: '<svg viewBox="0 0 24 24"><path d="M14 14.76V3.5a2.5 2.5 0 0 0-5 0v11.26a4.5 4.5 0 1 0 5 0z"></path></svg>', label: 'Temp. Range', value: '-40℃ ~ +200℃' },
+                    { icon: '<svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>', label: 'IP Rating', value: 'IP67' },
+                    { icon: '<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>', label: 'Resp. Time', value: '≤ 5ms' }
+                ],
+                details:`It ensures that the vehicle starts only in the correct gear position and that shift control and safety functions operate properly.
+
+Detection type: Electrical contact Non contact magnetic sensor
+Operating voltage: DC 5V ±0.05V
+Output type: Analog voltage or digital switching signal
+Detection range: P R N D M gear positions
+Accuracy: ±1°
+Response time: ≤5 ms
+Temperature range: −40°C to +200°C
+Connector type: 3 pin or 6 pin
+Ingress protection: IP67`
+            },
+            'steering-angle': { 
+                category: 'Sensor', 
+                title: 'Steering Angle Sensor', 
+                img: 'assets/8.png', 
+                desc: 'A sensor that measures the steering angle direction and rotational speed of the steering wheel and sends the information to the ECU', 
+                specs:[
+                    { icon: '<svg viewBox="0 0 24 24"><path d="M14 14.76V3.5a2.5 2.5 0 0 0-5 0v11.26a4.5 4.5 0 1 0 5 0z"></path></svg>', label: 'Op. Temp', value: '-40℃ ~ +125℃' },
+                    { icon: '<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>', label: 'Resp. Time', value: '≤ 5ms' },
+                    { icon: '<svg viewBox="0 0 24 24"><path d="M9 3v18M15 3v18M3 9h18M3 15h18"></path></svg>', label: 'Connector', value: '2pin/ 3pin /mult pin' }
+                ],
+                details:`A sensor that measures the steering angle direction and rotational speed of the steering wheel and sends the information to the ECU. This data is used as a key input for advanced driver assistance systems such as ESC lane keeping assist automatic parking and adaptive cruise control.
+
+Sensor type: Contact type GMR Giant Magneto Resistance
+Operating voltage: DC 5V ±0.1V
+Measurement range: Steering angle ±720° two rotations or more
+Output type: SENT CAN digital communication to the ECU
+Resolution: ≤0.1°
+Operating temperature: −40°C to +125°C
+Response time: ≤5 ms
+Connector type: 2 pin 3 pin or multi pin connector` 
+            },
+            'transfer-case': { 
+                category: 'Sensor', 
+                title: 'Transfer Case Sensor', 
+                img: 'assets/4.png', 
+                desc: 'A key component that switches between two wheel drive and four wheel drive according to driving conditions and detects and controls the distribution of power between the front and rear wheels.', 
+                specs:[], 
+                details:`A sensor that detects the gear lever position such as P R N D in an electric vehicle transmission system and sends the information to the ECU and instrument cluster. It ensures that the vehicle starts only in the correct gear position and that shift control and safety functions operate properly.
+
+Detection type: Electrical contact Non contact magnetic sensor
+Operating voltage: DC 5V ±0.05V
+Output type: Analog voltage or digital switching signal
+Detection range: P R N D M gear positions
+Accuracy: ±1°
+Response time: ≤5 ms
+Temperature range: −40°C to +200°C
+Connector type: 3 pin or 6 pin
+Ingress protection: IP67`
+            },
+            '4wd-shift': { 
+                category: 'Sensor', 
+                title: '4WD Electronic Shift Control Sensor', 
+                img: 'assets/20.png', 
+                desc: 'A core sensor for electronic 4WD systems that precisely detects the actuator position inside the transfer case and sends the information to the ECU', 
+                specs:[
+                    { icon: '<svg viewBox="0 0 24 24"><path d="M14 14.76V3.5a2.5 2.5 0 0 0-5 0v11.26a4.5 4.5 0 1 0 5 0z"></path></svg>', label: 'Op. Temp', value: '-40℃ ~ +135℃' },
+                    { icon: '<svg viewBox="0 0 24 24"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>', label: 'Supply Voltage', value: 'DC 5V' },
+                    { icon: '<svg viewBox="0 0 24 24"><path d="M9 3v18M15 3v18M3 9h18M3 15h18"></path></svg>', label: 'Connector', value: '3 ~ 8 pin' }
+                ],
+                details:`A core sensor for electronic 4WD systems that precisely detects the actuator position inside the transfer case and sends the information to the ECU enabling the vehicle to automatically switch driving modes between 2WD and 4WD.
+
+Supply voltage: DC 5V
+Output type: Analog Voltage / PWM Signal
+Measurement range: 0° to 360°
+Accuracy: ±1° or less
+Operating temperature: −40°C to +135°C
+Vibration resistance: Compliant with SAE J1455
+Connector type: 3 to 8 pin depending on vehicle model`
+            },
+            'water-temp': { 
+                category: 'Sensor', 
+                title: 'Water Temperature Sensor', 
+                img: 'assets/6.png', 
+                desc: 'A sensor that measures engine coolant temperature and sends the information to the ECU to control cooling fan operation and fuel injection', 
+                specs:[
+                    { icon: '<svg viewBox="0 0 24 24"><path d="M14 14.76V3.5a2.5 2.5 0 0 0-5 0v11.26a4.5 4.5 0 1 0 5 0z"></path></svg>', label: 'Temp. Range', value: '-40℃ ~ +150℃' },
+                    { icon: '<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>', label: 'Resp. Time', value: '≤ 1.5 sec' },
+                    { icon: '<svg viewBox="0 0 24 24"><path d="M9 3v18M15 3v18M3 9h18M3 15h18"></path></svg>', label: 'Connector', value: '2 or 3 pin' }
+                ],
+                details:`A sensor that measures engine coolant temperature and sends the information to the ECU to control cooling fan operation and fuel injection.
+
+Operating voltage: DC 5V
+Output type: Resistance change type resistance decreases as temperature increases
+Sensor type: NTC thermistor sensor or Bi metal
+Thread size: M12 x 1.5 depending on vehicle model
+Temperature range: −40°C to +150°C
+Accuracy: ±2°C at 25°C
+Response time: ≤1.5 seconds based on coolant flow condition
+Connector type: 2 pin or 3 pin`
+            },
+            'crank-position': { 
+                category: 'Sensor', 
+                title: 'Crankshaft Position Sensor', 
+                img: 'assets/9.png', 
+                desc: 'A sensor that detects the rotational speed and position of the crankshaft and sends the information to the ECU', 
+                specs:[
+                    { icon: '<svg viewBox="0 0 24 24"><path d="M14 14.76V3.5a2.5 2.5 0 0 0-5 0v11.26a4.5 4.5 0 1 0 5 0z"></path></svg>', label: 'Op. Temp', value: '-40℃ ~ +145℃' },
+                    { icon: '<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>', label: 'Resp. Time', value: '≤ 1ms' },
+                    { icon: '<svg viewBox="0 0 24 24"><path d="M9 3v18M15 3v18M3 9h18M3 15h18"></path></svg>', label: 'Connector', value: '2 or 3 pin' }
+                ],
+                details:`A sensor that detects the rotational speed and position of the crankshaft and sends the information to the ECU. This information is essential for controlling ignition timing fuel injection timing and engine RPM.
+
+Sensor type: Hall Sensor Magnetic Inductive Sensor
+Operating voltage: DC 5V ±0.1V
+Output type: Digital pulse signal
+Target detection: Crankshaft tooth wheel Reluctor Ring
+Operating temperature: −40°C to +145°C
+Output frequency range: 0 to 10 kHz depending on engine speed
+Response time: ≤1 ms
+Connector type: 2 pin or 3 pin`
+            },
+            'oxygen-sensor': { 
+                category: 'Sensor', 
+                title: 'Oxygen Sensor', 
+                img: 'assets/12.png', 
+                desc: 'A sensor that detects the oxygen concentration in exhaust gas in real time and sends the information to the ECU to control the air-fuel mixture ratio', 
+                specs:[
+                    { icon: '<svg viewBox="0 0 24 24"><path d="M14 14.76V3.5a2.5 2.5 0 0 0-5 0v11.26a4.5 4.5 0 1 0 5 0z"></path></svg>', label: 'Op. Temp', value: '-40℃ ~ +125℃' },
+                    { icon: '<svg viewBox="0 0 24 24"><path d="M9 3v18M15 3v18M3 9h18M3 15h18"></path></svg>', label: 'Connector', value: 'Multi-pin connector' },
+                    { icon: '<svg viewBox="0 0 24 24"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>', label: 'Op. Voltage', value: 'DC 9 ~ 16V' },
+                    { icon: '<svg viewBox="0 0 24 24"><path d="M14 14.76V3.5a2.5 2.5 0 0 0-5 0v11.26a4.5 4.5 0 1 0 5 0z"></path></svg>', label: 'Op. Temp', value: '300℃ ~ 900℃' },
+                    { icon: '<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>', label: 'Resp. Time', value: '≤ 100ms' },
+                    { icon: '<svg viewBox="0 0 24 24"><path d="M9 3v18M15 3v18M3 9h18M3 15h18"></path></svg>', label: 'Connector', value: '1~4 pin' }
+                ],
+                details:`A zirconia based electrochemical oxygen sensor that detects the oxygen concentration in exhaust gas in real time and sends the information to the ECU to control the air-fuel mixture ratio.
+
+Sensor type: Zirconia based electrochemical oxygen sensor
+Operating voltage: DC 12V signal voltage 0 to 1V
+Output voltage range: 0.1V lean mixture to 0.9V rich mixture
+Operating temperature: 300°C to 900°C heater integrated
+Response time: ≤100 ms
+Heater resistance: Approximately 6 to 12 Ω at 20°C
+Connector type: 1 to 4 pin
+Output signal type: Analog voltage or wideband type`
+            },
+            'tps': { 
+                category: 'Sensor', 
+                title: 'Throttle Position Sensor', 
+                img: 'assets/7.png', 
+                desc: 'A sensor that detects the opening degree of the throttle valve and sends the information to the ECU', 
+                specs:[
+                    { icon: '<svg viewBox="0 0 24 24"><path d="M14 14.76V3.5a2.5 2.5 0 0 0-5 0v11.26a4.5 4.5 0 1 0 5 0z"></path></svg>', label: 'Op. Temp', value: '-40℃ ~ +145℃' },
+                    { icon: '<svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>', label: 'IP Rating', value: 'IP67 or higher' },
+                    { icon: '<svg viewBox="0 0 24 24"><path d="M9 3v18M15 3v18M3 9h18M3 15h18"></path></svg>', label: 'Connector', value: '2 or 3 pin' }
+                ],
+                details:`A sensor that detects the opening degree of the throttle valve and sends the information to the ECU. This information is a critical input used to control fuel injection timing ignition timing and shift timing.
+
+Sensor type: Contact type or Hall Effect Sensor
+Operating voltage: DC 5V ±0.1V
+Output voltage range: 0.5V to 4.5V
+Output signal: Linear Output Potentiometer
+Operating temperature: −40°C to +145°C
+Ingress protection: IP67 or higher
+Response time: ≤5 ms
+Connector type: 2 pin or 3 pin`
+            },
+            'knock-sensor': { 
+                category: 'Sensor', 
+                title: 'Knock Sensor', 
+                img: 'assets/14.png', 
+                desc: 'A sensor that detects abnormal combustion knocking inside the engine and sends the information to the ECU', 
+                specs:[
+                    { icon: '<svg viewBox="0 0 24 24"><path d="M14 14.76V3.5a2.5 2.5 0 0 0-5 0v11.26a4.5 4.5 0 1 0 5 0z"></path></svg>', label: 'Op. Temp', value: '-40℃ ~ +145℃' },
+                    { icon: '<svg viewBox="0 0 24 24"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>', label: 'Voltage', value: 'Approx. 0.1 to 4.9 V' },
+                    { icon: '<svg viewBox="0 0 24 24"><path d="M9 3v18M15 3v18M3 9h18M3 15h18"></path></svg>', label: 'Connector', value: '2 pin' }
+                ],
+                details:`A sensor that detects abnormal combustion knocking inside the engine and sends the information to the ECU allowing early detection of knocking and enabling ignition timing control to prevent engine damage and power loss.
+
+Sensor type: Piezoelectric
+Operating voltage: DC 5V
+Output signal: Vibration frequency based analog voltage signal
+Detection frequency range: 5 to 15 kHz
+Output voltage range: Approximately 0.1 to 4.9 V
+Operating temperature: −40°C to +145°C
+Mounting type: Bolt fastening type
+Connector type: 2 pin`
+            },
+            'idle-valve': { 
+                category: 'Sensor', 
+                title: 'Idle Speed Control Valve', 
+                img: 'assets/13.png', 
+                desc: 'A valve that adjusts airflow according to ECU control signals during engine idling to maintain a stable idle speed', 
+                specs:[
+                    { icon: '<svg viewBox="0 0 24 24"><path d="M14 14.76V3.5a2.5 2.5 0 0 0-5 0v11.26a4.5 4.5 0 1 0 5 0z"></path></svg>', label: 'Op. Temp', value: '-40℃ ~ +145℃' },
+                    { icon: '<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>', label: 'Resp. Time', value: '≤ 10ms' },
+                    { icon: '<svg viewBox="0 0 24 24"><path d="M9 3v18M15 3v18M3 9h18M3 15h18"></path></svg>', label: 'Connector', value: '4 pin' }
+                ],
+                details:`A valve that adjusts airflow according to ECU control signals during engine idling to maintain a stable idle speed. It regulates the amount of air entering the engine during idle to keep the engine speed constant allowing the engine to operate stably even when the accelerator pedal is not pressed.
+
+Operating type: Stepper motor driven valve
+Operating voltage: DC 12V
+Control signal: Pulse input
+Valve stroke: Approximately 8 to 12 mm
+Response time: ≤10 ms
+Operating temperature: −40°C to +145°C
+Connector type: 4 pin
+					`
+            },
+            // Actuators
+            // Actuators
+            'bldc-motor': {
+                category: 'Actuator', title: 'BLDC Motor', img: 'assets/25.png',
+                desc: 'High-efficiency brushless DC motor designed for precise control and durability in automotive applications.',
+                specs: [
+                    { icon: '<svg viewBox="0 0 24 24"><path d="M14 14.76V3.5a2.5 2.5 0 0 0-5 0v11.26a4.5 4.5 0 1 0 5 0z"></path></svg>', label: 'Op. Temp', value: '-40℃ ~ +125℃' },
+                    { icon: '<svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>', label: 'IP Rating', value: 'IP65+' },
+                    { icon: '<svg viewBox="0 0 24 24"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>', label: 'Voltage', value: '12V / 24V / 48V' }
+                ],
+                details: `A high efficiency motor with a brushless structure that minimizes friction loss and electrical noise and enables precise control providing high power density and long service life for applications such as vehicle fans pumps and actuators.
+
+Supply voltage: DC 12V / 24V / 48V
+Rated power: 50W to 1 kW depending on model
+Rated speed: 1000 to 6000 rpm
+Control type: Hall sensor feedback / sensorless control PWM FOC
+Efficiency: ≥85%
+Torque characteristics: Flat torque curve high output low vibration
+Operating temperature: −40°C to +125°C
+Protection rating: IP65 or higher
+Bearing type: High precision ball bearing
+Connector type: Custom multi pin connector`
+            },
+            'digital-shift': {
+                category: 'Actuator', title: 'Digital-Electric Shift Control Actuator', img: 'assets/22.png',
+                desc: 'An actuator that electronically controls gear shifting in automatic transmissions and switches 4WD transfer case modes such as 2H 4H and 4L',
+                specs: [
+                     { icon: '<svg viewBox="0 0 24 24"><path d="M14 14.76V3.5a2.5 2.5 0 0 0-5 0v11.26a4.5 4.5 0 1 0 5 0z"></path></svg>', label: 'Op. Temp', value: '-40℃ ~ +145℃' },
+                     { icon: '<svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>', label: 'IP Rating', value: 'IP67+' },
+                     { icon: '<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>', label: 'Resp. Time', value: '≤ 500ms' }
+                ],
+                details: `An actuator that electronically controls gear shifting in automatic transmissions and switches 4WD transfer case modes such as 2H 4H and 4L`
+            },
+            'ac-motor': {
+                category: 'Actuator', title: 'AC Motor', img: 'assets/24.png',
+                desc: 'An electric motor that generates rotational motion using AC power and provides high durability and stable performance for HVAC systems',
+                specs: [
+                     { icon: '<svg viewBox="0 0 24 24"><path d="M14 14.76V3.5a2.5 2.5 0 0 0-5 0v11.26a4.5 4.5 0 1 0 5 0z"></path></svg>', label: 'Op. Temp', value: '-20℃ ~ +80℃' },
+                     { icon: '<svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>', label: 'Protection', value: 'IP54 ~ IP65' },
+                     { icon: '<svg viewBox="0 0 24 24"><path d="M9 3v18M15 3v18M3 9h18M3 15h18"></path></svg>', label: 'Connector', value: 'Custom/Lead' }
+                ],
+                details: `An electric motor that generates rotational motion using AC power and provides high durability and stable performance for HVAC systems`
+            },
+            'fan-clutch': {
+                category: 'Actuator', title: 'Electronic Fan Clutch Actuator', img: 'assets/21.png',
+                desc: 'An electronic actuator that controls the rotational speed of the engine cooling fan',
+                specs: [
+                     { icon: '<svg viewBox="0 0 24 24"><path d="M14 14.76V3.5a2.5 2.5 0 0 0-5 0v11.26a4.5 4.5 0 1 0 5 0z"></path></svg>', label: 'Op. Temp', value: '-40℃ ~ +145℃' },
+                     { icon: '<svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>', label: 'IP Rating', value: 'IP65+' },
+                     { icon: '<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>', label: 'Resp. Time', value: '≤ 300ms' }
+                ],
+                details: `An electronic actuator that controls the rotational speed of the engine cooling fan`
+            },
+            '4wd-geared': {
+                category: 'Actuator', title: '4WD Geared Actuator', img: 'assets/23.png',
+                desc: 'A drive unit that shifts the gears inside the transfer case in an electronic 4WD system',
+                specs: [
+                     { icon: '<svg viewBox="0 0 24 24"><path d="M14 14.76V3.5a2.5 2.5 0 0 0-5 0v11.26a4.5 4.5 0 1 0 5 0z"></path></svg>', label: 'Op. Temp', value: '-40℃ ~ +145℃' },
+                     { icon: '<svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>', label: 'IP Rating', value: 'IP67' },
+                     { icon: '<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>', label: 'Resp. Time', value: '≤ 300ms' }
+                ],
+                details: `A drive unit that shifts the gears inside the transfer case in an electronic 4WD system`
+            },
+            // Controllers
+            'proximity': {
+                category: 'Controller', title: 'Smart Electronic Proximity Sensor', img: 'assets/26.png',
+                desc: 'A non contact sensor that detects the proximity of an object using magnetic capacitive or ultrasonic principles',
+                specs: [
+                     { icon: '<svg viewBox="0 0 24 24"><path d="M14 14.76V3.5a2.5 2.5 0 0 0-5 0v11.26a4.5 4.5 0 1 0 5 0z"></path></svg>', label: 'Op. Temp', value: '-40℃ ~ +125℃' },
+                     { icon: '<svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>', label: 'Protection', value: 'IP67' },
+                     { icon: '<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>', label: 'Resp. Time', value: '≤ 1ms' }
+                ],
+                details: `A non contact sensor that detects the proximity of an object using magnetic capacitive or ultrasonic principles`
+            },
+            'flush-handle': {
+                category: 'Controller', title: 'Flush Door Handle Control Unit', img: 'assets/29.png',
+                desc: 'A control unit that automatically deploys and retracts the door handle based on smart key signals proximity detection and vehicle lock status',
+                specs: [
+                     { icon: '<svg viewBox="0 0 24 24"><path d="M14 14.76V3.5a2.5 2.5 0 0 0-5 0v11.26a4.5 4.5 0 1 0 5 0z"></path></svg>', label: 'Op. Temp', value: '-40℃ ~ +125℃' },
+                     { icon: '<svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>', label: 'IP Rating', value: 'IP67' },
+                     { icon: '<svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg>', label: 'Interface', value: 'CAN / LIN' }
+                ],
+                details: `A control unit that automatically deploys and retracts the door handle based on smart key signals proximity detection and vehicle lock status`
+            },
+            'smart-key': {
+                category: 'Controller', title: 'Smart Keyless Entry', img: 'assets/27.png',
+                desc: 'An electronic control module that uses RF communication and encryption technology to perform vehicle door unlocking and ignition control',
+                specs: [
+                     { icon: '<svg viewBox="0 0 24 24"><path d="M14 14.76V3.5a2.5 2.5 0 0 0-5 0v11.26a4.5 4.5 0 1 0 5 0z"></path></svg>', label: 'Op. Temp', value: '-40℃ ~ +125℃' },
+                     { icon: '<svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>', label: 'Protection', value: 'EMC/ESD/IP65' },
+                     { icon: '<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>', label: 'Resp. Time', value: '≤ 100ms' }
+                ],
+                details: `An electronic control module that uses RF communication and encryption technology to perform vehicle door unlocking and ignition control`
+            },
+            'tcu': {
+                category: 'Controller', title: 'Transmission Control Unit', img: 'assets/28.png',
+                desc: 'A control unit that optimally distributes driving power between the front and rear wheels to enhance driving stability and traction',
+                specs: [
+                     { icon: '<svg viewBox="0 0 24 24"><path d="M14 14.76V3.5a2.5 2.5 0 0 0-5 0v11.26a4.5 4.5 0 1 0 5 0z"></path></svg>', label: 'Op. Temp', value: '-40℃ ~ +125℃' },
+                     { icon: '<svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg>', label: 'Processor', value: '32-bit MCU' },
+                     { icon: '<svg viewBox="0 0 24 24"><path d="M9 3v18M15 3v18M3 9h18M3 15h18"></path></svg>', label: 'Connector', value: '20~30 pin' }
+                ],
+                details: `A control unit that optimally distributes driving power between the front and rear wheels to enhance driving stability and traction`
+            },
+            'smart-hvac': {
+                category: 'Controller', title: 'Smart HVAC System', img: 'assets/30.png',
+                desc: 'A multi purpose high efficiency energy saving temperature and humidity control system for HVAC applications used in automotive and agricultural industries',
+                 specs: [
+                     { icon: '<svg viewBox="0 0 24 24"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>', label: 'Power', value: 'AC 220V' },
+                     { icon: '<svg viewBox="0 0 24 24"><path d="M9 3v18M15 3v18M3 9h18M3 15h18"></path></svg>', label: 'Type', value: 'Wall Box' },
+                     { icon: '<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>', label: 'Output', value: '3 Channel' }
+                ],
+                details: `A multi purpose high efficiency energy saving temperature and humidity control system for HVAC applications used in automotive and agricultural industries`
+            }
+        };
+
+        window.openProductModal = function(productId) {
+            const data = productData[productId];
+            if (!data) return;
+            
+            document.getElementById('pModalCategory').textContent = data.category;
+            document.getElementById('pModalTitle').textContent = data.title;
+            
+            // ONLY DETAILS, NO DESC
+            // MERGE DESC AND DETAILS (User requested to hide DESC in modal)
+            let fullDesc = ''; 
+            if(data.details) {
+                fullDesc = data.details;
+            }
+            document.getElementById('pModalDesc').textContent = fullDesc;
+            
+            document.getElementById('pModalImg').src = data.img;
+            
+            // Specs
+            const specsContainer = document.getElementById('pModalSpecs');
+            specsContainer.innerHTML = '';
+            
+            data.specs.forEach(s => {
+                const item = document.createElement('div');
+                item.className = 'spec-item';
+                item.innerHTML = `
+                    <div class="spec-icon-circle">${s.icon}</div>
+                    <div class="spec-label">${s.label}</div>
+                    <div class="spec-value">${s.value}</div>
+                `;
+                specsContainer.appendChild(item);
+            });
+            
+            const modal = document.getElementById('productModal');
+            modal.classList.add('open');
+            document.body.style.overflow = 'hidden';
+        }
+        
+        window.closeProductModal = function() {
+            document.getElementById('productModal').classList.remove('open');
+            document.body.style.overflow = 'auto'; // Restore scroll
+        }
+
+        // Lightbox Logic
+        window.openLightbox = function(src) {
+            const lb = document.getElementById('imgModal');
+            const lbImg = document.getElementById('modalImg');
+            lbImg.src = src;
+            lb.classList.add('open');
+        }
+        window.closeModal = function() {
+            document.getElementById('imgModal').classList.remove('open');
+        }
+
+        // Scroll
+        let isScroll = false;
+        window.addEventListener('wheel', e => {
+            if(window.innerWidth <= 1100) return; // Disable sticky scroll on Tablet/Mobile
+            if(document.getElementById('productModal').classList.contains('open')) return;
+            if(document.getElementById('imgModal').classList.contains('open')) return;
+            if(Math.abs(e.deltaY) < 30 || isScroll) return;
+            isScroll = true;
+            if(e.deltaY > 0) go(current+1);
+            else go(current-1);
+            setTimeout(()=>isScroll=false, 800);
+        });
+        window.addEventListener('keydown', e => {
+            if(e.key==='ArrowDown') go(current+1);
+            if(e.key==='ArrowUp') go(current-1);
+            if(e.key==='Escape') { 
+                // Priority: Close Lightbox first, then Product Modal
+                if(document.getElementById('imgModal').classList.contains('open')) {
+                    closeModal();
+                } else if(document.getElementById('productModal').classList.contains('open')) {
+                    closeProductModal(); 
+                } else {
+                    closeModal(); // Failsafe
+                }
+            }
+        });
+
+        // Initialize state from storage
+        const savedIndex = sessionStorage.getItem('currentSlideIndex');
+        if (savedIndex !== null) {
+            current = parseInt(savedIndex, 10);
+        }
+        updateState();
+
+    </script>
+    <script>
+        // Mobile Toggle
+        function toggleMobile() {
+            const nav = document.getElementById('mobileNav');
+            nav.classList.toggle('open');
+            const btn = document.querySelector('.mobile-menu-btn');
+            btn.innerHTML = nav.classList.contains('open') ? '✕' : '☰';
+        }
+
+        // Touch Swipe Logic
+        let touchstartX = 0;
+        let touchstartY = 0;
+        let touchendX = 0;
+        let touchendY = 0;
+
+        document.addEventListener('touchstart', e => {
+            touchstartX = e.changedTouches[0].screenX;
+            touchstartY = e.changedTouches[0].screenY;
+        }, {passive: false});
+
+        document.addEventListener('touchend', e => {
+            if(document.getElementById('productModal').classList.contains('open')) return;
+            if(document.getElementById('mobileNav').classList.contains('open')) return;
+            // Disable swipe if zooming (pinch) - naive check
+            if(e.changedTouches.length > 1) return;
+
+            touchendX = e.changedTouches[0].screenX;
+            touchendY = e.changedTouches[0].screenY;
+            handleGesture();
+        }, {passive: false});
+
+        function handleGesture() {
+            const xDiff = touchendX - touchstartX;
+            const yDiff = touchendY - touchstartY;
+
+            // Threshold for Horizontal Swipe
+            if (Math.abs(xDiff) > Math.abs(yDiff) && Math.abs(xDiff) > 60) {
+                if (xDiff < 0) go(current + 1); // Left Swipe = Next
+                if (xDiff > 0) go(current - 1); // Right Swipe = Prev
+            }
+        }
+    </script>
+</body>
+</html>
