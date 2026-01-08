@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import { Inter, Noto_Sans_KR } from 'next/font/google'
 import './globals.css'
 import { Providers } from '@/components/Providers'
+import { ScrollProgress } from '@/components/ScrollProgress'
 
 const inter = Inter({ subsets: ['latin'], variable: '--font-inter' })
 const notoSansKr = Noto_Sans_KR({
@@ -23,7 +24,10 @@ export default function RootLayout({
   return (
     <html lang="ko" className="scroll-smooth">
       <body className={`${inter.variable} ${notoSansKr.variable} font-sans antialiased text-gray-900 bg-white`}>
-        <Providers>{children}</Providers>
+        <Providers>
+          <ScrollProgress />
+          {children}
+        </Providers>
       </body>
     </html>
   )

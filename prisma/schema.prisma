@@ -77,12 +77,16 @@ model Project {
 model QuoteRequest {
   id              String   @id @default(cuid())
   templateId      String
-  businessName    String
-  businessType    String
+  developmentPlanId String?
+  maintenancePlanId String?
+  companyName     String?
+  businessName    String?
+  businessType    String?
   contactName     String
   contactEmail    String
   contactPhone    String
-  requirements    String
+  projectDetails  String?
+  requirements    String?
   budget          String?
   timeline        String?
   additionalNotes String?

@@ -9,6 +9,7 @@ import { ArrowLeft, Check, ExternalLink, Eye, GitCompare, Sparkles } from 'lucid
 import { TemplatePreview } from '@/components/TemplatePreview'
 import { TemplateComparison } from '@/components/TemplateComparison'
 import { RelatedTemplates } from '@/components/RelatedTemplates'
+import { TemplateActionButtons } from '@/components/TemplateActionButtons'
 
 export async function generateStaticParams() {
     return templates.map((template) => ({
@@ -18,6 +19,29 @@ export async function generateStaticParams() {
 
 interface TemplateDetailPageProps {
     params: Promise<{ slug: string }>
+}
+
+import { Metadata } from 'next'
+
+export async function generateMetadata({ params }: TemplateDetailPageProps): Promise<Metadata> {
+    const { slug } = await params
+    const template = templates.find((t) => t.slug === slug)
+
+    if (!template) {
+        return {
+            title: '템플릿을 찾을 수 없습니다',
+        }
+    }
+
+    return {
+        title: `${template.name} - Premium Page Template`,
+        description: template.description,
+        openGraph: {
+            title: `${template.name} - Premium Website Template`,
+            description: template.description,
+            images: [template.imageUrl],
+        },
+    }
 }
 
 export default async function TemplateDetailPage({ params }: TemplateDetailPageProps) {
@@ -87,21 +111,12 @@ export default async function TemplateDetailPage({ params }: TemplateDetailPageP
                             </div>
 
                             {/* CTA 버튼 */}
-                            <div className="flex flex-col sm:flex-row gap-4">
-                                <Link href="/quote" className="imweb-btn imweb-btn-primary imweb-btn-lg">
-                                    이 템플릿으로 시작하기
-                                    <Sparkles className="w-5 h-5" />
-                                </Link>
-                                <button className="imweb-btn imweb-btn-secondary imweb-btn-lg">
-                                    <Eye className="w-5 h-5" />
-                                    데모 보기
-                                </button>
-                            </div>
+                            <TemplateActionButtons demoUrl={template.demoUrl} />
                         </div>
 
                         {/* 오른쪽: 미리보기 */}
                         <div className="sticky top-24">
-                            <TemplatePreview template={template} />
+                            <TemplatePreview demoUrl={template.demoUrl} templateName={template.name} />
                         </div>
                     </div>
                 </div>
@@ -111,7 +126,7 @@ export default async function TemplateDetailPage({ params }: TemplateDetailPageP
             <section className="imweb-section imweb-section-gray">
                 <div className="imweb-container">
                     <h2 className="imweb-heading-2 mb-8 text-center">관련 템플릿</h2>
-                    <RelatedTemplates currentTemplate={template} />
+                    <RelatedTemplates currentTemplate={template} allTemplates={templates} />
                 </div>
             </section>
 
