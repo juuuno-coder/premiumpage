@@ -325,10 +325,8 @@
             filter: brightness(0); /* Turn white text to black */
         }
         /* Light Mode: Keep the base logo visible for the Symbol part */
-        body.light-mode .brand-logo img.logo-base {
-            /* No filter on base logo, so Symbol stays original (White 'e', Colored bg) */
-            /* But text part will be effectively replaced by the black overlay */
-        }
+        /* No filter on base logo, so Symbol stays original (White 'e', Colored bg) */
+        /* But text part will be effectively replaced by the black overlay */
 
         .gnb-menu { display: flex; gap: 45px; height: 100%; align-items: center; }
         .gnb-item {
@@ -943,7 +941,7 @@
         <div class="slide">
             <!-- Background Image -->
             <div style="position:absolute; top:0; left:0; width:100%; height:100%; z-index:-1;">
-                <img src="assets/research_robot.png" style="width:100%; height:100%; object-fit:cover; filter: brightness(0.4);">
+                <img src="assets/overview_robot.jpg" style="width:100%; height:100%; object-fit:cover; filter: brightness(0.4);">
             </div>
 
             <span class="slide-tag">ABOUT US</span>
