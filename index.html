@@ -252,11 +252,13 @@
         body.light-mode .esg-pic { border-color: var(--border) !important; }
         body.light-mode .esg-content .esg-title { color: var(--neon-cyan) !important; }
         body.light-mode .esg-content .esg-title[style*="var(--neon-green)"] { color: var(--neon-green) !important; }
-        body.light-mode .esg-content .esg-desc { color: var(--text-secondary) !important; }
-        
-        /* Partner Card Light Mode - Natural Version */
-        body.light-mode .partner-card { background: rgba(0, 121, 255, 0.03) !important; border-color: rgba(0, 121, 255, 0.2) !important; }
-        body.light-mode .partner-card img { filter: grayscale(100%) opacity(0.4) !important; }
+        /* Partner Card Light Mode - Enhanced Visibility */
+        body.light-mode .partner-card { 
+            background: #fff !important; 
+            border-color: rgba(0,0,0,0.05) !important; 
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05) !important;
+        }
+        body.light-mode .partner-card img { filter: grayscale(100%) opacity(0.7) !important; }
         body.light-mode .partner-card:hover img { filter: grayscale(0%) opacity(1) !important; }
         
         /* Glass Box Text Colors - Re-added for explicit theme support */
@@ -272,15 +274,22 @@
         body.light-mode .slide p,
         body.light-mode .slide span:not(.slide-tag):not(.diagram-text *) { color: var(--text-secondary); }
 
-        /* Mobility Slide: Reverted to natural state */
+        /* Mobility Slide: Refined Premium Natural state */
+        body.light-mode .diagram-item-row {
+            background: rgba(255,255,255,0.85) !important;
+            border: 1px solid rgba(0,0,0,0.1) !important;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08) !important;
+        }
         body.light-mode .diagram-text,
         body.light-mode .diagram-text * {
-            color: #fff !important;
+            color: var(--text-primary) !important;
         }
-        body.light-mode .diagram-text p { color: #ccc !important; }
-        body.light-mode .diagram-item-row h4 { color: #fff !important; }
+        body.light-mode .diagram-text p { color: var(--text-secondary) !important; }
+        body.light-mode .diagram-item-row h4 { color: var(--text-primary) !important; font-weight: 700; }
         body.light-mode .diagram-item-row:hover h4 { color: var(--neon-green) !important; }
-        body.light-mode .diagram-line { stroke: rgba(255,255,255,0.3) !important; }
+        body.light-mode .diagram-line { stroke: rgba(0,0,0,0.2) !important; }
+        body.light-mode .diagramSvg circle { fill: var(--neon-cyan) !important; }
 
         /* Product Modal Light Mode Fixes */
         body.light-mode .product-modal { background: rgba(255,255,255,0.9); }
@@ -1147,9 +1156,9 @@
             <!-- Bottom Row: CORE VALUES & OUR GOALS -->
             <div style="display: flex; gap: 30px; margin-top: 10px;">
                 <!-- CORE VALUES -->
-                <div class="glass-box" style="flex:1.4; padding: 25px; min-width: 0;">
-                    <h2 style="color:var(--neon-green); font-size:16px; font-family:var(--font-sub); margin-bottom: 35px; margin-top: -5px;">CORE VALUES</h2>
-                    <div style="display:flex; gap:12px; justify-content: space-between; align-items: center; width: 100%;">
+                <div class="glass-box" style="flex:4; padding: 25px; min-width: 0;">
+                    <h2 style="color:var(--neon-green); font-size:16px; font-family:var(--font-sub); margin-bottom: 35px; margin-top: -10px;">CORE VALUES</h2>
+                    <div style="display:flex; gap:5px; justify-content: space-between; align-items: center; width: 100%;">
                         <!-- Value 1 -->
                         <div class="cv-circle" style="width:145px; height:145px; flex-shrink: 1; border-radius:50%; border:2px solid #333; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; transition: 0.3s; padding: 10px;">
                             <span style="font-size:14px; color:white; font-weight:700; margin-bottom:6px; line-height:1.1;">Customer Value</span>
@@ -1180,7 +1189,7 @@
                 </div>
                 
                 <!-- OUR GOALS -->
-                <div class="glass-box" style="flex:1.3; padding: 25px;">
+                <div class="glass-box" style="flex:6; padding: 25px;">
                     <h2 style="color:var(--text-muted); font-size:16px; font-family:var(--font-sub); margin-bottom:25px;">OUR GOALS <span style="opacity: 0.5; margin-left: 8px;">(2025 ~ 2030)</span></h2>
                     <div style="display:flex; gap:30px;">
                         <div style="flex:1;">
