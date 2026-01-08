@@ -2165,7 +2165,7 @@
         const pArr = new Float32Array(pCount * 3);
         for(let i=0; i<pCount*3; i++) pArr[i] = (Math.random()-0.5) * 100;
         pGeo.setAttribute('position', new THREE.BufferAttribute(pArr, 3));
-        const pMat = new THREE.PointsMaterial({ size: 0.08, color: 0x00ffff, transparent: true, opacity: 0.3 });
+        const pMat = new THREE.PointsMaterial({ size: 0.015, color: 0x00ffff, transparent: true, opacity: 0.3 });
         const stars = new THREE.Points(pGeo, pMat);
         scene.add(stars);
 
