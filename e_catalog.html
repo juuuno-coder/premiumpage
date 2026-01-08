@@ -1106,39 +1106,36 @@
                             AGV/AMR control technology uses sensor fusion-based SLAM to estimate real-time position, and supports safe and efficient movement through path planning and obstacle avoidance algorithms. It also improves operational efficiency with low-power motor control and battery optimization technology, and enables integrated management of multiple robots through API-linked fleet management.
                         </div>
                     </div>
-                    <!-- 2. Drone -->
+                    
+                    <!-- 2. Physical AI (New Position) -->
                     <div class="mob-tab" onclick="setMobTab(1)">
-                        <div class="mob-tab-head">Drone Delivery Control</div>
+                        <div class="mob-tab-head">Physical AI</div>
                         <div class="mob-tab-body">
-                           Drone delivery control technology uses sensor fusion-based SLAM to estimate real-time position, and supports safe and efficient movement through path planning and obstacle avoidance algorithms. It also improves operational efficiency with low-power motor control and battery optimization technology, and enables integrated management of multiple drones through API-linked fleet management.
+                            This technology integrates artificial intelligence algorithms with physical systems, enabling robots and machines to perceive real-world environments, make decisions, and act autonomously. Through sensor-fusion-based perception technologies that combine vision, LiDAR, tactile, and force sensors, the system understands surrounding environments and object states in real time and generates context-appropriate actions.
                         </div>
                     </div>
-                    <!-- 3. Maritime -->
+
+                    <!-- 3. Personal Mobility -->
                     <div class="mob-tab" onclick="setMobTab(2)">
-                        <div class="mob-tab-head">Maritime Autonomy Systems</div>
-                        <div class="mob-tab-body">
-                            Maritime autonomy technology uses sensor fusion-based SLAM to estimate real-time position, and supports safe and efficient navigation through path planning and obstacle avoidance algorithms. It also improves operational efficiency with low-power motor control and battery optimization technology, and enables integrated management of multiple autonomous vessels through API-linked fleet management.
-                        </div>
-                    </div>
-                    <!-- 4. Smart City -->
-                    <div class="mob-tab" onclick="setMobTab(3)">
-                        <div class="mob-tab-head">Smart City Infrastructure</div>
-                        <div class="mob-tab-body">
-                            Smart city infrastructure control technology uses sensor fusion-based SLAM to estimate real-time position, and supports safe and efficient movement through path planning and obstacle avoidance algorithms. It also improves operational efficiency with low-power motor control and battery optimization technology, and enables integrated management of various infrastructure units through API-linked fleet management.
-                        </div>
-                    </div>
-                    <!-- 5. Personal -->
-                    <div class="mob-tab" onclick="setMobTab(4)">
                         <div class="mob-tab-head">Personal Mobility / Assistive Tech</div>
                         <div class="mob-tab-body">
                             Personal mobility and assistive technology use sensor fusion-based SLAM to estimate real-time position, and support safe and efficient movement through path planning and obstacle avoidance algorithms. It also improves operational efficiency with low-power motor control and battery optimization technology, and enables integrated management of multiple mobility devices through API-linked fleet management.
                         </div>
                     </div>
-                    <!-- 6. Physical AI (New) -->
-                    <div class="mob-tab" onclick="setMobTab(5)">
-                        <div class="mob-tab-head">Physical AI</div>
+
+                    <!-- 4. Drone -->
+                    <div class="mob-tab" onclick="setMobTab(3)">
+                        <div class="mob-tab-head">Drone Delivery Control</div>
                         <div class="mob-tab-body">
-                            We are advancing as a global smart control enterprise driving the future mobility industry by developing Physical AI solutions. This involves integrating AI innovative technologies into physical robots and systems to enable autonomous decision-making and precise control in complex real-world environments.
+                           Drone delivery control technology uses sensor fusion-based SLAM to estimate real-time position, and supports safe and efficient movement through path planning and obstacle avoidance algorithms. It also improves operational efficiency with low-power motor control and battery optimization technology, and enables integrated management of multiple drones through API-linked fleet management.
+                        </div>
+                    </div>
+
+                    <!-- 5. Maritime -->
+                    <div class="mob-tab" onclick="setMobTab(4)">
+                        <div class="mob-tab-head">Maritime Autonomy Systems</div>
+                        <div class="mob-tab-body">
+                            Maritime autonomy technology uses sensor fusion-based SLAM to estimate real-time position, and supports safe and efficient navigation through path planning and obstacle avoidance algorithms. It also improves operational efficiency with low-power motor control and battery optimization technology, and enables integrated management of multiple autonomous vessels through API-linked fleet management.
                         </div>
                     </div>
                 </div>
@@ -1153,27 +1150,28 @@
                 .mobility-container { display: flex; width: 100%; height: 65%; gap: 60px; max-width: 1600px; margin: 0 auto; align-items:flex-start; }
                 .mob-tab-list { width: 45%; display: flex; flex-direction: column; justify-content: flex-start; gap: 0; padding-top:10px; }
                 
-                .mob-tab { border-bottom: 1px solid rgba(255,255,255,0.1); cursor: pointer; padding: 20px 0; transition: 0.3s; }
-                .mob-tab:first-child { border-top: 1px solid rgba(255,255,255,0.1); }
+                .mob-tab { border-bottom: 0px solid rgba(255,255,255,0.1); cursor: pointer; padding: 15px 0; transition: 0.3s; position: relative; }
                 
-                .mob-tab-head { font-size: 20px; font-weight: 700; color: #666; transition: 0.3s; font-family: var(--font-sub); display:flex; align-items:center; }
+                .mob-tab-head { font-size: 20px; font-weight: 700; color: #666; transition: 0.3s; font-family: var(--font-sub); display:flex; align-items:center; padding-left: 15px; }
                 .mob-tab:hover .mob-tab-head { color: #aaa; }
                 
                 .mob-tab-body { 
                     max-height: 0; overflow: hidden; opacity: 0; transition: all 0.5s cubic-bezier(0.25, 1, 0.5, 1);
-                    font-size: 15px; color: #ccc; line-height: 1.6; padding-right: 20px;
+                    font-size: 15px; color: #ccc; line-height: 1.6; padding-left: 15px; padding-right: 20px;
                 }
 
                 /* Active State */
-                .mob-tab.active .mob-tab-head { color: var(--neon-green); font-size: 24px; text-shadow: 0 0 10px rgba(0,255,136,0.3); }
-                .mob-tab.active .mob-tab-body { max-height: 300px; opacity: 1; margin-top: 20px; margin-bottom: 10px; }
+                .mob-tab.active .mob-tab-head { color: #fff; font-size: 24px; text-shadow: none; }
+                .mob-tab.active .mob-tab-body { max-height: 300px; opacity: 1; margin-top: 15px; margin-bottom: 15px; }
                 
-                /* Indicator for active tab */
-                /* Indicator for active tab REMOVED */
-                .mob-tab-head::before {
-                    content: ''; display: none; 
+                /* Gradient Indicator for active tab */
+                .mob-tab::before {
+                    content: ''; position: absolute; left: 0; top: 18px; bottom: 18px; width: 3px; 
+                    background: linear-gradient(to bottom, var(--neon-green), var(--neon-cyan));
+                    opacity: 0; transition: 0.3s;
                 }
-                .mob-tab.active .mob-tab-head::before { display: none; }
+                .mob-tab.active::before { opacity: 1; top: 20px; bottom: auto; height: 30px; } /* Initial height for head */
+                .mob-tab.active::before { height: calc(100% - 30px); top: 15px; } /* Full height line */
 
                 .mob-img-display { width: 55%; height: 100%; border-radius: 12px; overflow: hidden; box-shadow: 0 20px 50px rgba(0,0,0,0.5); border: 1px solid rgba(255,255,255,0.1); position:relative; }
                 .mob-img-display img { width: 100%; height: 100%; object-fit: cover; transition: 0.5s transform; position:absolute; top:0; left:0; }
@@ -1182,11 +1180,10 @@
             <script>
                 const mobImages = [
                     'assets/agv.jpg',
-                    'assets/industry-02.png',
-                    'assets/industry-03.png',
-                    'assets/industry-04.png',
+                    'assets/physical_ai.png',
                     'assets/industry-05.png',
-                    'assets/physical_ai.png'
+                    'assets/industry-02.png',
+                    'assets/industry-03.png'
                 ];
                 window.setMobTab = function(idx) {
                     // Update Tabs
