@@ -252,14 +252,14 @@
         body.light-mode .esg-pic { border-color: var(--border) !important; }
         body.light-mode .esg-content .esg-title { color: var(--neon-cyan) !important; }
         body.light-mode .esg-content .esg-title[style*="var(--neon-green)"] { color: var(--neon-green) !important; }
-        /* Partner Card Light Mode - Enhanced Visibility */
+        /* Partner Card Light Mode - Fixed Visibility */
         body.light-mode .partner-card { 
             background: #fff !important; 
             border-color: rgba(0,0,0,0.05) !important; 
             box-shadow: 0 5px 15px rgba(0,0,0,0.05) !important;
         }
-        body.light-mode .partner-card img { filter: grayscale(100%) opacity(0.7) !important; }
-        body.light-mode .partner-card:hover img { filter: grayscale(0%) opacity(1) !important; }
+        body.light-mode .partner-card img { filter: invert(1) grayscale(100%) opacity(0.8) !important; }
+        body.light-mode .partner-card:hover img { filter: invert(1) grayscale(0%) opacity(1) !important; }
         
         /* Glass Box Text Colors - Re-added for explicit theme support */
         body.light-mode .glass-box td,
@@ -274,19 +274,19 @@
         body.light-mode .slide p,
         body.light-mode .slide span:not(.slide-tag):not(.diagram-text *) { color: var(--text-secondary); }
 
-        /* Mobility Slide: Refined Premium Natural state */
+        /* Mobility Slide: Restored Premium Dark Boxes for Contrast */
         body.light-mode .diagram-item-row {
-            background: rgba(255,255,255,0.85) !important;
-            border: 1px solid rgba(0,0,0,0.1) !important;
+            background: rgba(15, 25, 35, 0.95) !important;
+            border: 1px solid rgba(255,255,255,0.1) !important;
             backdrop-filter: blur(10px);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.08) !important;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.2) !important;
         }
         body.light-mode .diagram-text,
         body.light-mode .diagram-text * {
-            color: var(--text-primary) !important;
+            color: #fff !important;
         }
-        body.light-mode .diagram-text p { color: var(--text-secondary) !important; }
-        body.light-mode .diagram-item-row h4 { color: var(--text-primary) !important; font-weight: 700; }
+        body.light-mode .diagram-text p { color: #ccc !important; }
+        body.light-mode .diagram-item-row h4 { color: #fff !important; font-weight: 700; }
         body.light-mode .diagram-item-row:hover h4 { color: var(--neon-green) !important; }
         body.light-mode .diagram-line { stroke: rgba(0,0,0,0.2) !important; }
         body.light-mode .diagramSvg circle { fill: var(--neon-cyan) !important; }
