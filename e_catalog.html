@@ -1127,6 +1127,13 @@
                             Personal mobility and assistive technology use sensor fusion-based SLAM to estimate real-time position, and support safe and efficient movement through path planning and obstacle avoidance algorithms. It also improves operational efficiency with low-power motor control and battery optimization technology, and enables integrated management of multiple mobility devices through API-linked fleet management.
                         </div>
                     </div>
+                    <!-- 6. Physical AI (New) -->
+                    <div class="mob-tab" onclick="setMobTab(5)">
+                        <div class="mob-tab-head">Physical AI</div>
+                        <div class="mob-tab-body">
+                            We are advancing as a global smart control enterprise driving the future mobility industry by developing Physical AI solutions. This involves integrating AI innovative technologies into physical robots and systems to enable autonomous decision-making and precise control in complex real-world environments.
+                        </div>
+                    </div>
                 </div>
 
                 <!-- Right: Image Display -->
@@ -1155,11 +1162,11 @@
                 .mob-tab.active .mob-tab-body { max-height: 300px; opacity: 1; margin-top: 20px; margin-bottom: 10px; }
                 
                 /* Indicator for active tab */
+                /* Indicator for active tab REMOVED */
                 .mob-tab-head::before {
-                    content: ''; display: inline-block; width: 4px; height: 0px; background: var(--neon-green); 
-                    margin-right: 0px; transition: 0.3s; opacity:0;
+                    content: ''; display: none; 
                 }
-                .mob-tab.active .mob-tab-head::before { height: 24px; margin-right: 15px; opacity:1; box-shadow: 0 0 10px var(--neon-green); }
+                .mob-tab.active .mob-tab-head::before { display: none; }
 
                 .mob-img-display { width: 55%; height: 100%; border-radius: 12px; overflow: hidden; box-shadow: 0 20px 50px rgba(0,0,0,0.5); border: 1px solid rgba(255,255,255,0.1); position:relative; }
                 .mob-img-display img { width: 100%; height: 100%; object-fit: cover; transition: 0.5s transform; position:absolute; top:0; left:0; }
@@ -1171,7 +1178,8 @@
                     'assets/industry-02.png',
                     'assets/industry-03.png',
                     'assets/industry-04.png',
-                    'assets/industry-05.png'
+                    'assets/industry-05.png',
+                    'assets/physical_ai.png'
                 ];
                 window.setMobTab = function(idx) {
                     // Update Tabs
