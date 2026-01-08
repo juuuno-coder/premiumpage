@@ -1217,68 +1217,56 @@
                 We develop eco-friendly products through energy-efficient design and low-power technology, and pursue sustainable value creation through transparent ESG management and ethical supply chain construction.
             </p>
                         <!-- ESG Container -->
-                <div class="esg-main-container" style="display:flex; justify-content:center; gap:40px; margin-top:60px;">
+            <!-- New ESG Container based on EMT - Global2 -->
+            <div class="esg-new-container" style="margin-top:40px; width:100%; max-width:1600px; margin-left:auto; margin-right:auto;">
+                <style>
+                    .esg-list { display: flex; gap: 30px; justify-content: center; list-style: none; padding: 0; }
+                    .esg-item { flex: 1; min-width: 300px; text-align: left; }
+                    .esg-pic { 
+                        width: 100%; height: 250px; overflow: hidden; border-radius: 12px; margin-bottom: 25px;
+                        border: 1px solid rgba(255,255,255,0.1); position: relative;
+                    }
+                    .esg-pic img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s; }
+                    .esg-item:hover .esg-pic img { transform: scale(1.05); }
                     
-                    <!-- 1. Eco-Friendly Design -->
-                    <div class="esg-circle-container">
-                        <div class="esg-circle" style="border-color:var(--neon-green); box-shadow:0 0 20px rgba(0,255,136,0.2);">
-                            <img src="assets/icon_eco.png" onerror="this.style.display='none'" style="width:50px; margin-bottom:10px;">
-                            <h3 style="color:var(--neon-green);">Eco-Friendly<br>Design</h3>
+                    .esg-content .esg-title { 
+                        color: white; font-size: 28px; font-weight: 700; margin-bottom: 15px; 
+                        font-family: var(--font-sub);
+                    }
+                    .esg-content .esg-desc { 
+                        color: #aaa; font-size: 18px; line-height: 1.6; font-weight: 300;
+                    }
+                </style>
+                <ul class="esg-list">
+                    <li class="esg-item">
+                        <figure class="esg-pic">
+                            <img src="assets/esg-01.png" alt="Environmental">
+                        </figure>
+                        <div class="esg-content">
+                            <div class="esg-title" style="color:var(--neon-green);">Environmental</div>
+                            <div class="esg-desc">Low-power hardware, lightweight and modular design, hazardous substance reduction, and eco-friendly manufacturing</div>
                         </div>
-                        <div class="esg-desc">
-                            <div class="esg-sub-item">
-                                <strong style="color:white; font-size:24px;">Energy Efficiency</strong><br>
-                                Optimized control algorithms<br>& low-power circuitry
-                            </div>
-                            <div class="esg-sub-item">
-                                <strong style="color:white; font-size:24px;">Hazardous Reduction</strong><br>
-                                Use of lead-free<br>& halogen-free materials
-                            </div>
+                    </li>                  
+                    <li class="esg-item">
+                        <figure class="esg-pic">
+                            <img src="assets/esg-02.png" alt="Social">
+                        </figure>
+                        <div class="esg-content">
+                            <div class="esg-title" style="color:#fff;">Social</div>
+                            <div class="esg-desc">Employee welfare programs, diversity and inclusion, and community contribution</div>
                         </div>
-                    </div>
-
-                    <!-- Arrow -->
-                    <div class="esg-arrow" style="padding-top:80px; color:#555; font-size:40px;">›</div>
-
-                    <!-- 2. ESG Management -->
-                    <div class="esg-circle-container">
-                        <div class="esg-circle" style="border-color:white; box-shadow:0 0 20px rgba(255,255,255,0.2);">
-                             <img src="assets/icon_esg.png" onerror="this.style.display='none'" style="width:50px; margin-bottom:10px;">
-                            <h3 style="color:white;">ESG<br>Management</h3>
+                    </li>             
+                    <li class="esg-item">
+                        <figure class="esg-pic">
+                            <img src="assets/esg-03.png" alt="Governance">
+                        </figure>
+                        <div class="esg-content">
+                            <div class="esg-title" style="color:var(--neon-cyan);">Governance</div>
+                            <div class="esg-desc">Board independence and diversity, shareholder rights protection and transparent, ethical management</div>
                         </div>
-                        <div class="esg-desc">
-                            <div class="esg-sub-item">
-                                <strong style="color:white; font-size:24px;">KPI Management</strong><br>
-                                Carbon reduction<br>& resource recycling goals
-                            </div>
-                            <div class="esg-sub-item">
-                                <strong style="color:white; font-size:24px;">Transparency</strong><br>
-                                Annual Sustainability reporting<br>& disclosure
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Arrow -->
-                    <div class="esg-arrow" style="padding-top:80px; color:#555; font-size:40px;">›</div>
-
-                    <!-- 3. Ethical Supply Chain -->
-                    <div class="esg-circle-container">
-                        <div class="esg-circle" style="border-color:var(--neon-cyan); box-shadow:0 0 20px rgba(0,240,255,0.2);">
-                             <img src="assets/icon_chain.png" onerror="this.style.display='none'" style="width:50px; margin-bottom:10px;">
-                            <h3 style="color:var(--neon-cyan);">Ethical<br>Supply Chain</h3>
-                        </div>
-                        <div class="esg-desc">
-                            <div class="esg-sub-item">
-                                <strong style="color:white; font-size:24px;">Partner Screening</strong><br>
-                                Ethics & environmental<br>due diligence
-                            </div>
-                            <div class="esg-sub-item">
-                                <strong style="color:white; font-size:24px;">Joint Growth</strong><br>
-                                Carbon reduction campaigns<br>with partners
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                    </li>
+                </ul>
+            </div>
 
 
         </div>
