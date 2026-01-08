@@ -1,6 +1,3 @@
 {
-  "rewrites": [
-    { "source": "/", "destination": "/e_catalog.html" },
-    { "source": "/after", "destination": "/after.html" }
-  ]
+  "rewrites": [{ "source": "/", "destination": "/e_catalog.html" }]
 }

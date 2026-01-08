@@ -560,18 +560,18 @@
             <div class="m-link-head">ABOUT US</div>
             <div class="m-link" onclick="go(1); toggleMobile();">Overview</div>
             <div class="m-link" onclick="go(2); toggleMobile();">Vision & Mission</div>
-                        <div class="m-link" onclick="go(3); toggleMobile();">History</div>
-            <div class="m-link" onclick="go(4); toggleMobile();">Partners</div>
-                        <div class="m-link" onclick="go(5); toggleMobile();">Technology</div>
-            <div class="m-link" onclick="go(6); toggleMobile();">Control</div>
-            <div class="m-link" onclick="go(7); toggleMobile();">ESG</div>
+            <!-- <div class="m-link" onclick="go(3); toggleMobile();">History</div> -->
+            <div class="m-link" onclick="go(3); toggleMobile();">Partners</div>
+            <!-- <div class="m-link" onclick="go(5); toggleMobile();">Technology</div> -->
+            <div class="m-link" onclick="go(4); toggleMobile();">Control</div>
+            <div class="m-link" onclick="go(5); toggleMobile();">ESG</div>
         </div>
         <div class="m-link-group">
             <div class="m-link-head">PRODUCTS</div>
-            <div class="m-link" onclick="go(8); toggleMobile();">Overview</div>
-            <div class="m-link" onclick="go(9); toggleMobile();">Sensors</div>
-            <div class="m-link" onclick="go(14); toggleMobile();">Actuators</div>
-            <div class="m-link" onclick="go(15); toggleMobile();">Controllers</div>
+            <div class="m-link" onclick="go(6); toggleMobile();">Overview</div>
+            <div class="m-link" onclick="go(7); toggleMobile();">Sensors</div>
+            <div class="m-link" onclick="go(12); toggleMobile();">Actuators</div>
+            <div class="m-link" onclick="go(13); toggleMobile();">Controllers</div>
         </div>
         <div class="m-link-group">
             <div class="m-link-head">SUPPORT</div>
@@ -589,19 +589,19 @@
                 <div class="submenu">
                     <div class="sub-link" onclick="go(1)">Overview</div>
                     <div class="sub-link" onclick="go(2)">Vision & Mission</div>
-                                        <div class="sub-link" onclick="go(3)">History</div>
-                    <div class="sub-link" onclick="go(4)">Partners</div>
-                                        <div class="sub-link" onclick="go(5)">Technology & Patents</div>
-                    <div class="sub-link" onclick="go(6)">Mobility Control</div>
-                    <div class="sub-link" onclick="go(7)">ESG Management</div>
+                    <!-- <div class="sub-link" onclick="go(3)">History</div> -->
+                    <div class="sub-link" onclick="go(3)">Partners</div>
+                    <!-- <div class="sub-link" onclick="go(5)">Technology & Patents</div> -->
+                    <div class="sub-link" onclick="go(4)">Mobility Control</div>
+                    <div class="sub-link" onclick="go(5)">ESG Management</div>
                 </div>
             </div>
             <div class="gnb-item">MOBILITY PRODUCTS
                 <div class="submenu">
-                    <div class="sub-link" onclick="go(8)">Overview</div>
-                    <div class="sub-link" onclick="go(9)">SENSORS</div>
-                    <div class="sub-link" onclick="go(14)">ACTUATORS</div>
-                    <div class="sub-link" onclick="go(15)">CONTROLLERS</div>
+                    <div class="sub-link" onclick="go(6)">Overview</div>
+                    <div class="sub-link" onclick="go(7)">SENSORS</div>
+                    <div class="sub-link" onclick="go(12)">ACTUATORS</div>
+                    <div class="sub-link" onclick="go(13)">CONTROLLERS</div>
                 </div>
             </div>
              <div class="gnb-item">SUPPORT
@@ -824,6 +824,8 @@
         </div>
 
         <!-- 04. HISTORY -->
+        <!-- 04. HISTORY (HIDDEN) -->
+        <!--
         <div class="slide">
             <span class="slide-tag">ABOUT US</span>
             <h1 class="slide-title">HISTORY</h1>
@@ -876,6 +878,7 @@
                 </div>
             </div>
         </div>
+        -->
 
         <!-- 05. PARTNERS -->
         <div class="slide">
@@ -932,6 +935,8 @@
             </div>
         </div>
 
+        <!-- TECHNOLOGY & PATENTS (HIDDEN) -->
+        <!--
         <div class="slide">
             <span class="slide-tag">ABOUT US</span>
             <h1 class="slide-title">TECHNOLOGY & PATENTS</h1>
@@ -939,25 +944,19 @@
                 We enhance safety and efficiency in various fields such as automobiles, motorcycles, and industrial facilities, creating sustainable industrial development and future customer value together.
             </p>
             
-            <!-- Adjusted height for 1-page fit -->
             <div style="display:flex; gap:30px; height:55vh; max-width:1800px; margin:0 auto; width:100%; align-items: stretch;">
                 
-                <!-- Left: Certifications (40%) -->
                 <div class="glass-box hover-glow" style="flex:4; padding:30px; display:flex; flex-direction:column; position:relative; overflow:hidden;">
-                    <!-- Gradient Top Border -->
                     <div style="position:absolute; top:0; left:0; width:100%; height:3px; background: linear-gradient(90deg, var(--neon-green), transparent);"></div>
                     <h2 style="color:var(--neon-green); font-family:var(--font-main); font-size:28px; margin-bottom:20px; letter-spacing:1px; font-weight:700;">
                         CERTIFICATIONS
                     </h2>
                     
-                    <!-- Horizontal Content Layout -->
                     <div style="display:flex; gap:20px; height:100%; overflow:hidden;">
-                        <!-- Image Preview (Left) - Portrait aspect ratio -->
                         <div style="flex:1; background: rgba(0,0,0,0.3); border-radius: 8px; display: flex; align-items: center; justify-content: center; overflow:hidden;">
                             <img id="certPreviewImg" src="assets/IATF16949 인증서_이엠티.jpg" style="width:100%; height:100%; object-fit:contain; transition: opacity 0.3s;">
                         </div>
 
-                        <!-- List (Right) -->
                         <div style="flex:1.2; display:flex; flex-direction:column; gap:10px; overflow-y:auto; padding-right:5px;" class="custom-scroll">
                              <script>
                                 function showCertImg(el, imgName) {
@@ -993,38 +992,32 @@
                             <div class="cert-item active" onmouseenter="showCertImg(this, 'IATF16949 인증서_이엠티.jpg')">
                                 <span class="dot"></span><span class="cert-text">IATF 16949 : 2016</span>
                             </div>
-                            <div class="cert-item" onmouseenter="showCertImg(this, 'IATF16949 인증서_이엠티.jpg')"> <!-- Placeholder: Mapping to IATF for now -->
+                            <div class="cert-item" onmouseenter="showCertImg(this, 'IATF16949 인증서_이엠티.jpg')"> 
                                 <span class="dot"></span><span class="cert-text">ISO 14001 : 2015</span>
                             </div>
-                            <div class="cert-item" onmouseenter="showCertImg(this, 'IATF16949 인증서_이엠티.jpg')"> <!-- Placeholder -->
+                            <div class="cert-item" onmouseenter="showCertImg(this, 'IATF16949 인증서_이엠티.jpg')"> 
                                 <span class="dot"></span><span class="cert-text">ISO 45001 : 2018</span>
                             </div>
-                            <div class="cert-item" onmouseenter="showCertImg(this, 'IATF16949 인증서_이엠티.jpg')"> <!-- Placeholder -->
+                            <div class="cert-item" onmouseenter="showCertImg(this, 'IATF16949 인증서_이엠티.jpg')"> 
                                 <span class="dot"></span><span class="cert-text">SQ Certification</span>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <!-- Right: Patents (60%) -->
                 <div class="glass-box hover-glow" style="flex:6; padding:30px; display:flex; flex-direction:column; position:relative; overflow:hidden;">
-                    <!-- Gradient Top Border -->
                     <div style="position:absolute; top:0; left:0; width:100%; height:3px; background: linear-gradient(90deg, var(--neon-cyan), transparent);"></div>
                     <h2 style="color:var(--neon-cyan); font-family:var(--font-main); font-size:28px; margin-bottom:20px; letter-spacing:1px; display:flex; align-items:center; justify-content:space-between; font-weight:700;">
                         PATENTS
                         <span style="font-size:14px; color:#666; font-weight:normal; font-family:var(--font-sub);">Total 30+</span>
                     </h2>
                     
-                    <!-- Horizontal Content Layout -->
                     <div style="display:flex; gap:20px; height:100%; overflow:hidden;">
-                         <!-- Image Preview (Left) -->
                          <div style="flex:1; background: rgba(0,0,0,0.3); border-radius: 8px; display: flex; align-items: center; justify-content: center; overflow:hidden;">
                             <img id="patentPreviewImg" src="assets/특허증_토크센서.jpg" style="width:100%; height:100%; object-fit:contain; transition: opacity 0.3s;">
                         </div>
 
-                         <!-- List (Right) -->
                          <div style="flex:1.2; overflow-y:auto; padding-right:5px; display: flex; flex-wrap: wrap; align-content: flex-start; gap: 8px;" class="custom-scroll">
-                             <!-- Script reused from before, just ensuring ID consistency -->
                              <script>
                                 function showPatentImg(el, imgName) {
                                     document.querySelectorAll('.patent-pill').forEach(p => p.classList.remove('active'));
@@ -1056,7 +1049,6 @@
                                 }
                             </style>
 
-                            <!-- Mapped List Items -->
                             <div class="patent-pill active" onmouseenter="showPatentImg(this, '특허증_토크센서.jpg')">Torque Sensor</div>
                             <div class="patent-pill" onmouseenter="showPatentImg(this, '특허증_압력센서.jpg')">Pressure Sensor</div>
                             <div class="patent-pill" onmouseenter="showPatentImg(this, '특허증_엔진냉각제어장치.jpg')">Engine Cooling Control</div>
@@ -1088,6 +1080,7 @@
             </div>
         </div>
         </div>
+        -->
 
 
         <!-- 06. MOBILITY CONTROL -->
