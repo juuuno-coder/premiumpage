@@ -255,9 +255,18 @@
         body.light-mode .esg-content .esg-desc { color: var(--text-secondary) !important; }
         
         /* Partner Card Light Mode */
-        body.light-mode .partner-card { background: rgba(0, 121, 255, 0.03) !important; border-color: rgba(0, 121, 255, 0.2) !important; }
-        body.light-mode .partner-card img { filter: grayscale(100%) opacity(0.4) !important; }
-        body.light-mode .partner-card:hover img { filter: grayscale(0%) opacity(1) !important; }
+        body.light-mode .partner-card { background: rgba(0, 121, 255, 0.05) !important; border-color: rgba(0, 121, 255, 0.2) !important; }
+        body.light-mode .partner-card img { filter: grayscale(100%) invert(0.8) opacity(0.8) !important; }
+        body.light-mode .partner-card:hover img { filter: grayscale(0%) invert(0) opacity(1) !important; }
+        
+        /* Overview Badge Light Mode */
+        body.light-mode .overview-badge { 
+            background: rgba(255,255,255,0.95) !important; 
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1) !important;
+            border-left-color: var(--neon-green) !important;
+        }
+        body.light-mode .overview-badge .badge-title { color: var(--text-primary) !important; }
+        body.light-mode .overview-badge .badge-sub { color: var(--text-secondary) !important; }
         
         /* Glass Box Text Colors - Re-added for explicit theme support */
         body.light-mode .glass-box td,
@@ -1032,26 +1041,29 @@
                             <div style="flex:1;">
                                 <div style="font-size: 16px; color: white; margin-bottom: 8px; font-weight: 600; opacity:0.8;">R&D Experience</div>
                                 <div style="font-size: 42px; font-weight: 700; color: var(--neon-green); margin-bottom: 10px;">30+</div>
-                                <p style="font-size: 14px; color: #999; line-height: 1.4;">With over 30 years of accumulated R&D experience, we continuously innovate smart mobility control technology, enhancing efficiency and advancement across industries</p>
+                                <p class="stats-desc" style="font-size: 14px; color: #999; line-height: 1.4;">With over 30 years of accumulated R&D experience, we continuously innovate smart mobility control technology, enhancing efficiency and advancement across industries</p>
                             </div>
                             <div style="flex:1;">
                                 <div style="font-size: 16px; color: white; margin-bottom: 8px; font-weight: 600; opacity:0.8;">Global Customer Collaboration</div>
                                 <div style="font-size: 42px; font-weight: 700; color: var(--neon-cyan); margin-bottom: 10px;">100+</div>
-                                <p style="font-size: 14px; color: #999; line-height: 1.4;">We collaborate with over 100 global customers, providing customized solutions and establishing ourselves as a trusted partner in various industrial environments</p>
+                                <p class="stats-desc" style="font-size: 14px; color: #999; line-height: 1.4;">We collaborate with over 100 global customers, providing customized solutions and establishing ourselves as a trusted partner in various industrial environments</p>
                             </div>
                             <div style="flex:1;">
                                 <div style="font-size: 16px; color: white; margin-bottom: 8px; font-weight: 600; opacity:0.8;">Patents & Technical Certifications</div>
                                 <div style="font-size: 42px; font-weight: 700; color: white; margin-bottom: 10px;">50+</div>
-                                <p style="font-size: 14px; color: #999; line-height: 1.4;">With over 50 patents and technical certifications, we prove EMT's proprietary technology and global competitiveness, providing innovative solutions</p>
+                                <p class="stats-desc" style="font-size: 14px; color: #999; line-height: 1.4;">With over 50 patents and technical certifications, we prove EMT's proprietary technology and global competitiveness, providing innovative solutions</p>
                             </div>
                         </div>
+                        <style>
+                            body.light-mode .stats-desc { color: #576574 !important; font-weight: 500; }
+                        </style>
                     </div>
 
                     <!-- Hexagon Badge (Premium Detail) -->
                     <div style="position: absolute; right: 28%; top: 15%; z-index: 5; pointer-events: none;">
-                        <div style="width: 180px; height: 200px; background: rgba(5,5,5,0.9); clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%); border: 2px solid var(--neon-cyan); display: flex; flex-direction: column; align-items: center; justify-content: center; box-shadow: 0 0 30px rgba(0,255,136,0.15); border-left: 2px solid var(--neon-green);">
-                            <div style="font-family: var(--font-head); font-size: 32px; color: white; font-weight: 700; letter-spacing: 1px;">EMT</div>
-                            <div style="font-size: 13px; color: #aaa; margin-top: 5px; font-weight: 400;">Smart sensor & Control</div>
+                        <div class="overview-badge" style="width: 180px; height: 200px; background: rgba(5,5,5,0.9); clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%); border: 2px solid var(--neon-cyan); display: flex; flex-direction: column; align-items: center; justify-content: center; box-shadow: 0 0 30px rgba(0,255,136,0.15); border-left: 2px solid var(--neon-green);">
+                            <div class="badge-title" style="font-family: var(--font-head); font-size: 32px; color: white; font-weight: 700; letter-spacing: 1px;">EMT</div>
+                            <div class="badge-sub" style="font-size: 13px; color: #aaa; margin-top: 5px; font-weight: 400;">Smart sensor & Control</div>
                         </div>
                     </div>
 
@@ -1103,12 +1115,12 @@
         <div class="slide">
             <span class="slide-tag">ABOUT US</span>
             <h1 class="slide-title">VISION & MISSION</h1>
-            <p style="color:#aaa; font-size:20px; text-align:center; margin-bottom:30px; max-width:1920px; margin-left:auto; margin-right:auto;">
+            <p style="color:#aaa; font-size:18px; text-align:center; margin-bottom:20px; max-width:1920px; margin-left:auto; margin-right:auto;">
                 We enhance safety and efficiency in various fields such as automobiles, motorcycles, and industrial facilities, creating sustainable industrial development and future customer value together
             </p>
             
             <!-- Top Row: VISION & MISSION -->
-            <div style="display: flex; gap: 30px; margin-bottom:30px;">
+            <div style="display: flex; gap: 30px; margin-bottom:20px;">
                 <div class="glass-box" style="flex:3; padding: 30px;">
                     <h2 style="color:var(--neon-green); font-size:16px; font-family:var(--font-sub); margin-bottom: 15px;">VISION</h2>
                     <p style="font-size:24px; color:white; font-weight:700; line-height: 1.3; margin-bottom:15px;">
@@ -1140,10 +1152,10 @@
             </div>
 
             <!-- Bottom Row: CORE VALUES & OUR GOALS -->
-            <div style="display: flex; gap: 30px; margin-top: 20px;">
+            <div style="display: flex; gap: 30px; margin-top: 10px;">
                 <!-- CORE VALUES -->
-                <div class="glass-box" style="flex:1.7; padding: 25px; min-width: 0;">
-                    <h2 style="color:var(--neon-green); font-size:16px; font-family:var(--font-sub); margin-bottom: 25px;">CORE VALUES</h2>
+                <div class="glass-box" style="flex:1.7; padding: 20px; min-width: 0;">
+                    <h2 style="color:var(--neon-green); font-size:16px; font-family:var(--font-sub); margin-bottom: 20px;">CORE VALUES</h2>
                     <div style="display:flex; gap:10px; justify-content: space-between; align-items: center; width: 100%;">
                         <!-- Value 1 -->
                         <div class="cv-circle" style="width:125px; height:125px; flex-shrink: 1; border-radius:50%; border:2px solid #333; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; transition: 0.3s; padding: 5px;">
@@ -1984,7 +1996,7 @@
                 </div>
                 <div class="p-card" onclick="openProductModal('smart-hvac')">
                     <img src="assets/30.png">
-                    <h3>Multi-purpose, high-efficiency, energy-saving temperature and humidity control system</h3>
+                    <h3>Smart HVAC System</h3>
                     <div style="height:30px"></div>
                     <p>A multi purpose high efficiency energy saving temperature and humidity control system for HVAC applications used in automotive and agricultural industries</p>
                 </div>
