@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -498,6 +498,19 @@
         .p-card {
             background: var(--glass-bg-alt); border: 1px solid var(--border); padding: 30px; 
             display: flex; flex-direction: column; transition: 0.4s; cursor: pointer; position: relative;
+        }
+        /* Light Mode High Contrast Fix */
+        body.light-mode .p-card {
+            background: #ffffff !important; /* Pure white background */
+            border: 1px solid rgba(0,0,0,0.1) !important;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+        }
+        body.light-mode .p-card p {
+            color: #2d3436 !important; /* Dark text */
+            font-weight: 500;
+        }
+        body.light-mode .p-card h3 {
+            color: #000 !important;
         }
         .p-card:hover { 
             border-color: var(--neon-green); 
@@ -1315,6 +1328,13 @@
 
             <style>
                 .mobility-container { display: flex; width: 100%; height: 65%; gap: 60px; max-width: 1600px; margin: 0 auto; align-items:flex-start; }
+                /* Mobile Navigation Fix */
+                @media (max-width: 1279px) {
+                    .mobility-container { flex-direction: column-reverse; height: auto; gap: 30px; }
+                    .mob-tab-list { width: 100%; padding-top: 0; }
+                    .mob-img-display { width: 100%; height: 350px; min-height: 250px; margin-bottom: 20px; }
+                    .mob-tab-head { font-size: 18px; }
+                }
                 .mob-tab-list { width: 45%; display: flex; flex-direction: column; justify-content: flex-start; gap: 0; padding-top:10px; }
                 
                 .mob-tab { border-bottom: 0px solid rgba(255,255,255,0.1); cursor: pointer; padding: 15px 0; transition: 0.3s; position: relative; }
@@ -1391,8 +1411,13 @@
             <!-- New ESG Container based on EMT - Global2 -->
             <div class="esg-new-container" style="margin-top:40px; width:100%; max-width:1600px; margin-left:auto; margin-right:auto;">
                 <style>
-                    .esg-list { display: flex; gap: 30px; justify-content: center; list-style: none; padding: 0; }
+                    .esg-list { display: flex; gap: 30px; justify-content: center; list-style: none; padding: 0; flex-wrap: wrap; }
                     .esg-item { flex: 1; min-width: 300px; text-align: left; }
+                    /* Mobile ESG Fix */
+                    @media (max-width: 1279px) {
+                        .esg-list { flex-direction: column; gap: 40px; }
+                        .esg-item { width: 100%; min-width: auto; }
+                    }
                     .esg-pic { 
                         width: 100%; height: 250px; overflow: hidden; border-radius: 12px; margin-bottom: 25px;
                         border: 1px solid rgba(255,255,255,0.1); position: relative;
@@ -1446,7 +1471,7 @@
         <div class="slide">
             <span class="slide-tag">TECHNOLOGY</span><h1 class="slide-title">MOBILITY PRODUCTS</h1>
             <p style="color:#aaa; font-size:20px; text-align:center; margin-bottom:40px; max-width:1200px; margin-left:auto; margin-right:auto; position:relative; z-index:10;">
-                Leading the global market with optimized and customized solutions that maximize safety and convenience through advanced sensor and control technology
+                We enhance safety and efficiency in various fields such as automobiles, motorcycles, and industrial facilities, creating sustainable industrial development and future customer value together
             </p>
 
             <!-- CSS for Diagram -->
@@ -1484,9 +1509,43 @@
 
                 /* SVG Lines */
                 .diagram-lines { position:absolute; top:0; left:0; width:100%; height:100%; pointer-events:none; z-index:1; }
+                .diagram-line { stroke: rgba(255,255,255,0.3); stroke-width: 1.5; }
+                body.light-mode .diagram-line { stroke: rgba(0,0,0,0.5); } /* Dark lines for light mode white background */
+
+                /* Light Mode: Solid Dark Boxes (No Transparency) as requested */
+                body.light-mode .diagram-item-row {
+                    background: #111 !important; /* Solid Dark Grey/Black */
+                    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+                    border: 1px solid #333;
+                }
+                
+                /* User Request: Make title text brighter inside the box */
+                body.light-mode .diagram-text h4 { color: #fff !important; }
+                body.light-mode .diagram-text p { color: #ccc !important; }
+                
+                /* User Request: Clean up car background (likely shadow issues) */
+                /* We add a dark backing to the car image to absorb shadow artifacts */
+                body.light-mode .car-bg-img {
+                    /* Create a dark "stage" behind the car so shadows blend in naturally */
+                    /* Or use a radial gradient to fade it out */
+                    background: radial-gradient(closest-side, #000 40%, transparent 100%);
+                    mix-blend-mode: multiply; /* Optional: helps blend if the page was not white */
+                    opacity: 0.8 !important; /* Slightly reduce intensity */
+                    border-radius: 50%;
+                }
+                
+                /* Adjust Icon Border in Light Mode */
+                body.light-mode .diagram-icon {
+                    border-color: #333; /* Darker border for icon circle */
+                    background: #222; /* Dark background for icon circle */
+                }
                 .diagram-line { stroke: rgba(255,255,255,0.3); stroke-width: 1px; fill: none; }
                 .dot-start { fill: rgba(255,255,255,0.3); }
                 .dot-end { fill: #fff; }
+                
+                /* Light Mode Dots */
+                body.light-mode .dot-start { fill: rgba(0,0,0,0.3); }
+                body.light-mode .dot-end { fill: #000; }
 
                 /* Mobile Layout */
                 /* Mobile & Small Laptop Layout */
@@ -1722,12 +1781,12 @@
                 .sensor-info-new.left { align-items: flex-end; text-align: right; }
                 .sensor-info-new.right { align-items: flex-start; text-align: left; }
                 
-                .sensor-text h4 { color: white; margin-bottom: 5px; font-size: 16px; font-weight:700; font-family:var(--font-sub); }
-                .sensor-text p { color: #888; font-size: 14px; line-height: 1.4; }
+                .sensor-text h4 { color: var(--text-primary); margin-bottom: 5px; font-size: 16px; font-weight:700; font-family:var(--font-sub); }
+                .sensor-text p { color: var(--text-muted); font-size: 14px; line-height: 1.4; }
                 
                 .sensor-icon-circle {
                     width: 60px; height: 60px; border-radius: 50%; 
-                    border: 1px solid #555; background: rgba(0,0,0,0.6);
+                    border: 1px solid var(--border); background: var(--glass-bg);
                     display: flex; justify-content: center; align-items: center;
                     margin-bottom: 15px; position: relative;
                 }
@@ -2316,7 +2375,8 @@
         container.appendChild(renderer.domElement);
 
         const sphereGeo = new THREE.IcosahedronGeometry(9, 2);
-        const sphereMat = new THREE.MeshBasicMaterial({ color: 0x00ff88, wireframe: true, transparent: true, opacity: 0.05 });
+        // Base opacity 0.04 (80% of 0.05)
+        const sphereMat = new THREE.MeshBasicMaterial({ color: 0x00ff88, wireframe: true, transparent: true, opacity: 0.04 });
         const mainSphere = new THREE.Mesh(sphereGeo, sphereMat);
         scene.add(mainSphere);
 
@@ -2325,7 +2385,8 @@
         const pArr = new Float32Array(pCount * 3);
         for(let i=0; i<pCount*3; i++) pArr[i] = (Math.random()-0.5) * 100;
         pGeo.setAttribute('position', new THREE.BufferAttribute(pArr, 3));
-        const pMat = new THREE.PointsMaterial({ size: 0.015, color: 0x00ffff, transparent: true, opacity: 0.3 });
+        // Star Size 0.064 (80% of 0.08), Opacity 0.24 (80% of 0.3)
+        const pMat = new THREE.PointsMaterial({ size: 0.064, color: 0x00ffff, transparent: true, opacity: 0.24 });
         const stars = new THREE.Points(pGeo, pMat);
         scene.add(stars);
 
@@ -2340,6 +2401,21 @@
 
         function animate() {
             requestAnimationFrame(animate);
+
+            // Theme Color Update (Added from Before version logic)
+            const isLight = document.body.classList.contains('light-mode');
+            if(isLight) {
+                // Light Mode: Darker Colors but specific opacity (80% of Before's 0.08 -> 0.064)
+                mainSphere.material.color.setHex(0x006644); // Dark Green
+                mainSphere.material.opacity = 0.064; 
+                stars.material.color.setHex(0x005580); // Dark Blue-ish
+            } else {
+                // Dark Mode: Neon Colors
+                mainSphere.material.color.setHex(0x00ff88); // Neon Green
+                mainSphere.material.opacity = 0.04; // 80% of 0.05
+                stars.material.color.setHex(0x00ffff); // Neon Cyan
+            }
+
             mainSphere.rotation.y += 0.0003; 
             mainSphere.rotation.x += 0.0001; 
             stars.rotation.y -= 0.0001;
