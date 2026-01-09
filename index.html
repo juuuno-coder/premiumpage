@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -1446,7 +1446,7 @@
         <div class="slide">
             <span class="slide-tag">TECHNOLOGY</span><h1 class="slide-title">MOBILITY PRODUCTS</h1>
             <p style="color:#aaa; font-size:20px; text-align:center; margin-bottom:40px; max-width:1200px; margin-left:auto; margin-right:auto; position:relative; z-index:10;">
-                Leading the global market with optimized and customized solutions that maximize safety and convenience through advanced sensor and control technology
+                We enhance safety and efficiency in various fields such as automobiles, motorcycles, and industrial facilities, creating sustainable industrial development and future customer value together
             </p>
 
             <!-- CSS for Diagram -->
@@ -1484,9 +1484,43 @@
 
                 /* SVG Lines */
                 .diagram-lines { position:absolute; top:0; left:0; width:100%; height:100%; pointer-events:none; z-index:1; }
+                .diagram-line { stroke: rgba(255,255,255,0.3); stroke-width: 1.5; }
+                body.light-mode .diagram-line { stroke: rgba(0,0,0,0.5); } /* Dark lines for light mode white background */
+
+                /* Light Mode: Solid Dark Boxes (No Transparency) as requested */
+                body.light-mode .diagram-item-row {
+                    background: #111 !important; /* Solid Dark Grey/Black */
+                    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+                    border: 1px solid #333;
+                }
+                
+                /* User Request: Make title text brighter inside the box */
+                body.light-mode .diagram-text h4 { color: #fff !important; }
+                body.light-mode .diagram-text p { color: #ccc !important; }
+                
+                /* User Request: Clean up car background (likely shadow issues) */
+                /* We add a dark backing to the car image to absorb shadow artifacts */
+                body.light-mode .car-bg-img {
+                    /* Create a dark "stage" behind the car so shadows blend in naturally */
+                    /* Or use a radial gradient to fade it out */
+                    background: radial-gradient(closest-side, #000 40%, transparent 100%);
+                    mix-blend-mode: multiply; /* Optional: helps blend if the page was not white */
+                    opacity: 0.8 !important; /* Slightly reduce intensity */
+                    border-radius: 50%;
+                }
+                
+                /* Adjust Icon Border in Light Mode */
+                body.light-mode .diagram-icon {
+                    border-color: #333; /* Darker border for icon circle */
+                    background: #222; /* Dark background for icon circle */
+                }
                 .diagram-line { stroke: rgba(255,255,255,0.3); stroke-width: 1px; fill: none; }
                 .dot-start { fill: rgba(255,255,255,0.3); }
                 .dot-end { fill: #fff; }
+                
+                /* Light Mode Dots */
+                body.light-mode .dot-start { fill: rgba(0,0,0,0.3); }
+                body.light-mode .dot-end { fill: #000; }
 
                 /* Mobile Layout */
                 /* Mobile & Small Laptop Layout */
@@ -1722,12 +1756,12 @@
                 .sensor-info-new.left { align-items: flex-end; text-align: right; }
                 .sensor-info-new.right { align-items: flex-start; text-align: left; }
                 
-                .sensor-text h4 { color: white; margin-bottom: 5px; font-size: 16px; font-weight:700; font-family:var(--font-sub); }
-                .sensor-text p { color: #888; font-size: 14px; line-height: 1.4; }
+                .sensor-text h4 { color: var(--text-primary); margin-bottom: 5px; font-size: 16px; font-weight:700; font-family:var(--font-sub); }
+                .sensor-text p { color: var(--text-muted); font-size: 14px; line-height: 1.4; }
                 
                 .sensor-icon-circle {
                     width: 60px; height: 60px; border-radius: 50%; 
-                    border: 1px solid #555; background: rgba(0,0,0,0.6);
+                    border: 1px solid var(--border); background: var(--glass-bg);
                     display: flex; justify-content: center; align-items: center;
                     margin-bottom: 15px; position: relative;
                 }
