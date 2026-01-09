@@ -2350,7 +2350,8 @@
         container.appendChild(renderer.domElement);
 
         const sphereGeo = new THREE.IcosahedronGeometry(9, 2);
-        const sphereMat = new THREE.MeshBasicMaterial({ color: 0x00ff88, wireframe: true, transparent: true, opacity: 0.05 });
+        // Base opacity 0.04 (80% of 0.05)
+        const sphereMat = new THREE.MeshBasicMaterial({ color: 0x00ff88, wireframe: true, transparent: true, opacity: 0.04 });
         const mainSphere = new THREE.Mesh(sphereGeo, sphereMat);
         scene.add(mainSphere);
 
@@ -2359,7 +2360,8 @@
         const pArr = new Float32Array(pCount * 3);
         for(let i=0; i<pCount*3; i++) pArr[i] = (Math.random()-0.5) * 100;
         pGeo.setAttribute('position', new THREE.BufferAttribute(pArr, 3));
-        const pMat = new THREE.PointsMaterial({ size: 0.015, color: 0x00ffff, transparent: true, opacity: 0.3 });
+        // Star Size 0.064 (80% of 0.08), Opacity 0.24 (80% of 0.3)
+        const pMat = new THREE.PointsMaterial({ size: 0.064, color: 0x00ffff, transparent: true, opacity: 0.24 });
         const stars = new THREE.Points(pGeo, pMat);
         scene.add(stars);
 
@@ -2374,6 +2376,21 @@
 
         function animate() {
             requestAnimationFrame(animate);
+
+            // Theme Color Update (Added from Before version logic)
+            const isLight = document.body.classList.contains('light-mode');
+            if(isLight) {
+                // Light Mode: Darker Colors but specific opacity (80% of Before's 0.08 -> 0.064)
+                mainSphere.material.color.setHex(0x006644); // Dark Green
+                mainSphere.material.opacity = 0.064; 
+                stars.material.color.setHex(0x005580); // Dark Blue-ish
+            } else {
+                // Dark Mode: Neon Colors
+                mainSphere.material.color.setHex(0x00ff88); // Neon Green
+                mainSphere.material.opacity = 0.04; // 80% of 0.05
+                stars.material.color.setHex(0x00ffff); // Neon Cyan
+            }
+
             mainSphere.rotation.y += 0.0003; 
             mainSphere.rotation.x += 0.0001; 
             stars.rotation.y -= 0.0001;
