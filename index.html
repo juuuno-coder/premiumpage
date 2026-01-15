@@ -2156,12 +2156,48 @@
                 .dir-address { color: #fff; font-size: 22px; line-height: 1.5; font-family: var(--font-main); font-weight: 600; letter-spacing: -0.5px; }
 
                 @media (max-width: 1024px) {
-                    .directions-container { flex-direction: column; }
+                    .directions-container { 
+                        flex-direction: column; 
+                        padding: 0 !important; 
+                        margin: 0 !important; 
+                        min-height: 0 !important;
+                        height: auto !important;
+                    }
                     .dir-left { display: none !important; }
-                    .dir-right { width: 100%; }
+                    .dir-right { 
+                        width: 100%; 
+                        padding: 0 20px !important; 
+                        margin: 0 !important;
+                    }
                     .dir-address { font-size: 18px; }
+                    .dir-item { margin-bottom: 30px !important; }
+                    .dir-item:last-of-type { margin-bottom: 0 !important; }
+                    
                     /* Hide Map/Grey Square on Mobile */
-                    .directions-container iframe, .directions-container .map-placeholder, .mobile-hide, .dir-right img, .dir-right iframe, .dir-right > div:not(.dir-item) { display: none !important; }
+                    .directions-container iframe, 
+                    .directions-container .map-placeholder, 
+                    .mobile-hide, 
+                    .dir-right img, 
+                    .dir-right iframe, 
+                    .dir-right > div:not(.dir-item) { 
+                        display: none !important; 
+                    }
+                    
+                    /* Completely override Contact slide spacing */
+                    .slide:has(.directions-container) { 
+                        padding: 90px 20px 40px 20px !important;
+                        min-height: 0 !important;
+                        height: auto !important;
+                    }
+                    .slide:has(.directions-container) .slide-tag { 
+                        margin-bottom: 15px !important; 
+                    }
+                    .slide:has(.directions-container) .slide-title { 
+                        margin-bottom: 15px !important; 
+                    }
+                    .slide:has(.directions-container) > p { 
+                        margin-bottom: 20px !important; 
+                    }
                 }
             </style>
         </div>
