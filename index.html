@@ -339,6 +339,23 @@
             border-bottom: 1px solid var(--border);
             box-shadow: var(--shadow-sm);
         }
+        
+        /* LANGUAGE SWITCHER */
+        .lang-switch { display: flex; gap: 12px; margin-left: 40px; align-items: center; }
+        .lang-link { 
+            color: #666; font-family: var(--font-sub); font-size: 14px; font-weight: 600; text-decoration: none; cursor: pointer; transition: color 0.3s; 
+        }
+        .lang-link.active { color: var(--neon-cyan); }
+        .lang-link:hover { color: #fff; }
+        
+        body.light-mode .lang-link { color: #aaa; }
+        body.light-mode .lang-link:hover { color: #000; }
+        body.light-mode .lang-link.active { color: var(--neon-cyan); }
+
+        /* Mobile Lang Switch */
+        .m-lang-switch { display: flex; justify-content: center; gap: 20px; margin-top: 30px; padding-top: 30px; border-top: 1px solid rgba(255,255,255,0.1); }
+        .m-lang-link { font-size: 18px; color: #666; font-weight: 700; text-decoration: none; }
+        .m-lang-link.active { color: var(--neon-cyan); }
 
         /* Brand Logo - Smart Masking for Light Mode */
         .brand-logo {
@@ -948,6 +965,13 @@
             <div class="m-link-head">SUPPORT</div>
             <div class="m-link" onclick="go(document.querySelectorAll('.slide').length - 1); toggleMobile();">Directions</div>
         </div>
+        
+        <!-- Mobile Language Switch -->
+        <div class="m-lang-switch">
+            <a href="/ko" class="m-lang-link">KR</a>
+            <span style="color:#333">|</span>
+            <a href="/" class="m-lang-link active">EN</a>
+        </div>
     </div>
 
     <!-- NAVIGATION -->
@@ -975,11 +999,18 @@
                     <div class="sub-link" onclick="go(12)">CONTROLLERS</div>
                 </div>
             </div>
-             <div class="gnb-item">SUPPORT
+            <div class="gnb-item">SUPPORT
                 <div class="submenu">
                     <div class="sub-link" onclick="go(document.querySelectorAll('.slide').length - 1)">Directions</div>
                 </div>
             </div>
+        </div>
+        
+        <!-- Desktop Language Switch -->
+        <div class="lang-switch mobile-hide">
+            <a href="/ko" class="lang-link">KR</a>
+            <span style="color:rgba(255,255,255,0.2)">|</span>
+            <a href="/" class="lang-link active">EN</a>
         </div>
         <!-- Mobile Menu Button -->
         <div class="mobile-menu-btn" onclick="toggleMobile()">☰</div>
