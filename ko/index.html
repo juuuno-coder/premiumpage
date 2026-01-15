@@ -2165,12 +2165,16 @@
                 .dir-address { color: #fff; font-size: 22px; line-height: 1.5; font-family: var(--font-main); font-weight: 600; letter-spacing: -0.5px; }
 
                 @media (max-width: 1024px) {
-                    .directions-container { flex-direction: column; }
+                    .directions-container { flex-direction: column; padding-top: 0 !important; margin-top: 0 !important; }
                     .dir-left { display: none !important; }
-                    .dir-right { width: 100%; }
+                    .dir-right { width: 100%; padding-top: 0 !important; }
                     .dir-address { font-size: 18px; }
+                    .dir-item { margin-bottom: 40px; }
                     /* Hide Map/Grey Square on Mobile */
                     .directions-container iframe, .directions-container .map-placeholder, .mobile-hide, .dir-right img, .dir-right iframe, .dir-right > div:not(.dir-item) { display: none !important; }
+                    /* Remove any top spacing in contact slide on mobile */
+                    .slide:has(.directions-container) { padding-top: 80px !important; }
+                    .slide:has(.directions-container) p { margin-bottom: 30px !important; }
                 }
             </style>
         </div>
