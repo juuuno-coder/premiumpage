@@ -1,6 +1,32 @@
 {
   "rewrites": [
-    { "source": "/", "destination": "/e_catalog.html" },
-    { "source": "/before", "destination": "/e_catalog_v1.html" }
+    {
+      "source": "/",
+      "destination": "/index.html",
+      "has": [
+        {
+          "type": "host",
+          "value": "emt-en.vercel.app"
+        }
+      ]
+    },
+    {
+      "source": "/",
+      "destination": "/ko/index.html",
+      "has": [
+        {
+          "type": "host",
+          "value": "emt-ko.vercel.app"
+        }
+      ]
+    },
+    {
+      "source": "/",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/before",
+      "destination": "/e_catalog_v1.html"
+    }
   ]
 }
