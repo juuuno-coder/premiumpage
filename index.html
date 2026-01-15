@@ -2478,7 +2478,14 @@
         });
 
         // === UI & NAVIGATION ===
-        const slides = document.querySelectorAll('.slide');
+        let slides = document.querySelectorAll('.slide');
+        // [HOTFIX] Remove extra ghost slides > 13 (User reported empty box on page 14)
+        if(slides.length > 13) {
+            for(let i=13; i<slides.length; i++) {
+                if(slides[i]) slides[i].remove();
+            }
+            slides = document.querySelectorAll('.slide');
+        }
         const curEl = document.getElementById('cur');
         const totEl = document.getElementById('tot');
         const webglEl = document.getElementById('webgl-container');
