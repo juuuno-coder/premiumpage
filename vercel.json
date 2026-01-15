@@ -1,24 +1,12 @@
 {
   "rewrites": [
     {
-      "source": "/",
-      "destination": "/index.html",
-      "has": [
-        {
-          "type": "host",
-          "value": "emt-en.vercel.app"
-        }
-      ]
+      "source": "/ko",
+      "destination": "/ko/index.html"
     },
     {
-      "source": "/",
-      "destination": "/ko/index.html",
-      "has": [
-        {
-          "type": "host",
-          "value": "emt-ko.vercel.app"
-        }
-      ]
+      "source": "/ko/:path*",
+      "destination": "/ko/:path*"
     },
     {
       "source": "/",
