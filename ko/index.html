@@ -2116,7 +2116,7 @@
             </p>
 
             <!-- Divider -->
-            <div style="width: 100%; height: 1px; background: #333; margin-bottom: 60px; max-width: 1400px; margin-left: auto; margin-right: auto;"></div>
+            <div class="mobile-hide" style="width: 100%; height: 1px; background: #333; margin-bottom: 60px; max-width: 1400px; margin-left: auto; margin-right: auto;"></div>
 
             <div class="directions-container">
                 <div class="dir-left">
@@ -2135,7 +2135,7 @@
                         <p class="dir-address">45, Bansong-ro 525beon-gil, Haeundae-gu, Busan, Republic of Korea</p>
                     </div>
                     
-                    <div style="width: 100%; height: 1px; background: #333; margin-top: 60px;"></div>
+                    <div class="mobile-hide" style="width: 100%; height: 1px; background: #333; margin-top: 60px;"></div>
                 </div>
             </div>
 
@@ -2161,7 +2161,7 @@
                     .dir-right { width: 100%; }
                     .dir-address { font-size: 18px; }
                     /* Hide Map/Grey Square on Mobile */
-                    .directions-container iframe, .directions-container .map-placeholder { display: none !important; }
+                    .directions-container iframe, .directions-container .map-placeholder, .mobile-hide { display: none !important; }
                 }
             </style>
         </div>
@@ -2478,14 +2478,7 @@
         });
 
         // === UI & NAVIGATION ===
-        let slides = document.querySelectorAll('.slide');
-        // [HOTFIX] Remove extra ghost slides > 13 (User reported empty box on page 14)
-        if(slides.length > 13) {
-            for(let i=13; i<slides.length; i++) {
-                if(slides[i]) slides[i].remove();
-            }
-            slides = document.querySelectorAll('.slide');
-        }
+        const slides = document.querySelectorAll('.slide');
         const curEl = document.getElementById('cur');
         const totEl = document.getElementById('tot');
         const webglEl = document.getElementById('webgl-container');
