@@ -306,7 +306,10 @@
         
         /* Lightbox (Image Modal) Close Btn Fix */
         body.light-mode #imgModal .modal-close { color: #000; font-weight: 700; }
+        body.light-mode #imgModal .modal-close { color: #000; font-weight: 700; }
         body.light-mode .product-modal-zoom { background: #fff; border-color: var(--border); color: #000; }
+        /* Request 4: Mobile Hamburger Visible in Light Mode */
+        body.light-mode .mobile-menu-btn { color: #000 !important; }
 
         /* GNB Light Mode Polish */
         body.light-mode .gnb-item { color: var(--text-primary); font-weight: 500; }
@@ -540,7 +543,15 @@
         }
         .p-card:hover img { transform: scale(1.08); filter: drop-shadow(0 10px 20px rgba(0,255,136,0.3)); }
         .p-card h3 { font-size: 20px; color: var(--text-primary); font-family: var(--font-sub); margin-bottom: 10px; line-height: 1.2; }
-        .p-card p { font-size: 16px; color: var(--text-secondary); line-height: 1.5; flex-grow: 1; }
+        .p-card p { 
+            font-size: 16px; color: var(--text-secondary); line-height: 1.5; 
+            /* Request 3: Match Paragraph Size */
+            height: 75px; 
+            overflow: hidden; 
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+        }
         .p-tag { 
             color: var(--neon-cyan); font-size: 16px; font-weight: 700; 
             text-transform: uppercase; margin-top: 15px; display: block; text-align: right;
@@ -1029,7 +1040,6 @@
         <div class="slide active">
             <div style="height: 100%; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center;">
 
-                <div class="slide-tag">E-카탈로그 2025</div>
                 <h1 style="font-family: 'Syncopate'; font-size: 86px; font-weight: 700; line-height: 1.1; margin-bottom: 30px;">
                     SMART SENSOR<br>& CONTROL
                 </h1>
@@ -1254,7 +1264,7 @@
             
             <div class="partner-text-container" style="text-align:center; margin-bottom:40px;">
                 <div style="color:var(--neon-green); font-size:18px; font-weight:700; font-family:var(--font-sub); margin-top:15px; opacity:0.8;">Since 2010</div>
-                <h2 style="color:white; font-size:32px; font-weight:700; margin: 20px 0;">축적된 센서와 제어기술로 <br>글로벌 기업과 함께 성장합니다</h2>
+                <h2 style="color:white; font-size:32px; font-weight:700; margin: 20px 0;">축적된 센서와 제어기술로 글로벌 기업과 함께 성장합니다</h2>
                 <p style="color:#aaa; font-size:17px; line-height:1.6; max-width:1050px; margin: 0 auto;">
                     세계 유수 기업들과 협약을 맺으며 스마트 모빌리티와 자율주행제어분야 분야에서 글로벌 리더로 도약하고 있습니다
                 </p>
