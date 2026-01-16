@@ -98,9 +98,12 @@
             background: var(--bg-deep); color: var(--text-primary);
             font-family: var(--font-body);
             font-size: 16px;
-            overflow: hidden; width: 100vw; height: 100vh;
+            overflow-x: hidden; width: 100%; height: 100vh;
             transition: background 0.5s ease, color 0.5s ease;
         }
+        
+        /* Partners Slide Specific to reduce top padding */
+        .slide:nth-of-type(6) { padding-top: 100px; padding-bottom: 20px; }
         
         /* ==================== THEME TOGGLE BUTTON ==================== */
         /* Moved to bottom-left, near HUD but not overlapping */
@@ -1260,7 +1263,7 @@
         <!-- 05. PARTNERS -->
         <div class="slide">
             <span class="slide-tag">ABOUT US</span>
-            <h1 class="slide-title">파트너사</h1>
+            <h1 class="slide-title">파트너</h1>
             
             <div class="partner-text-container" style="text-align:center; margin-bottom:40px;">
                 <div style="color:var(--neon-green); font-size:18px; font-weight:700; font-family:var(--font-sub); margin-top:15px; opacity:0.8;">Since 2010</div>
@@ -1622,12 +1625,13 @@
                         display: block; pointer-events: none; /* Overlay mode */
                     }
                     .diagram-item-row {
-                        position: absolute; width: auto; max-width: 40%; min-width: 350px; z-index: 100;
+                        /* Fixed width for uniform alignment & gap */
+                        position: absolute; width: 420px; z-index: 100;
                         pointer-events: auto; margin: 0; border: none;
-                        background: rgba(0,0,0,0.6); border-radius: 8px; padding: 0 12px; /* Remove vertical padding, let flex center */
+                        background: rgba(0,0,0,0.6); border-radius: 8px; padding: 0 12px;
                         backdrop-filter: blur(5px);
                         display: flex; align-items: center; gap: 12px;
-                        height: 90px; /* Fixed height for perfectly equal gaps */
+                        height: 90px; 
                     }
                     /* Compact fonts for 5 items */
                     .diagram-text h4 { font-size: 14px; margin-bottom: 3px; }
