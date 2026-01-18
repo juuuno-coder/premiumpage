@@ -48,3 +48,28 @@ description: EMT E-Catalog 웹사이트의 한국어 버전 생성, 모바일 �
 - **Mobile Layout Fix Verification**:
   - `ko/index.html`의 '오시는 길' (Contact) 섹션을 모바일 해상도에서 확인했습니다.
   - 이전에 보고된 '회색 박스' 문제가 해결되었으며, 배경과 텍스트가 깔끔하게 렌더링됨을 스크린샷으로 검증했습니다.
+
+## 2026-01-19: 제품 상세 정보 동기화 및 다이어그램 좌표 수정
+
+**작업 목표:**
+영문 및 국문 E-Catalog의 제품 상세 설명과 스펙을 사용자 요청 데이터와 100% 일치시키고, UI 레이아웃 및 다이어그램 불일치 문제를 해결한다.
+
+**주요 변경 사항:**
+
+1.  **제품 상세 정보 업데이트 (영문/국문 동기화)**
+    - **국문 (`ko/index.html`)**:
+      - 'Flush Door Handle Control Unit', 'Transmission Control Unit' 상세 정보 및 스펙 수정.
+      - 'Smart Electronic Proximity Sensor', 'Smart Keyless Entry', 'HVAC System' 상세 정보 및 스펙 수정.
+    - **영문 (`index.html`)**:
+      - 액추에이터 4종 ('Digital-Electric Shift', 'AC Motor', 'Fan Clutch', '4WD Geared') 상세 정보 및 스펙 수정.
+      - 컨트롤러 5종 상세 정보 및 스펙 수정.
+
+2.  **UI 레이아웃 및 표시 수정**
+    - **영문**: 'Hidden Door Handle Actuator' 카드를 숨김 처리하여(`display:none`) 그리드 레이아웃(1줄 5개) 유지.
+    - **국문**: 컨트롤러 섹션에 잘못 배치된 'Hidden Door Handle'을 제거하고, 누락되었던 'Flush Door Handle Control Unit' 복구.
+
+3.  **다이어그램 좌표 동기화**
+    - 국문 페이지의 'Mobility Products' 다이어그램 내 흰 점 좌표(`diagramConfig`)를 영문 페이지와 동일하게 수정하여 시각적 정렬 맞춤.
+
+**결과:**
+모든 제품 설명이 최신 사양으로 업데이트되었으며, 다국어 페이지 간의 레이아웃 및 디자인 요소가 통일됨.
