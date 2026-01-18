@@ -3054,21 +3054,23 @@ R/D 변환 : 아날로그 신호를 디지털로 변환
                 img: '../assets/25.png',
                 desc: '브러시가 없는 구조로 마찰 손실과 전기 노이즈를 최소화한 고효율 전동기이며 정밀 제어가 가능',
                 specs: [
-                    { icon: '<svg viewBox="0 0 24 24"><path d="M14 14.76V3.5a2.5 2.5 0 0 0-5 0v11.26a4.5 4.5 0 1 0 5 0z"></path></svg>', label: '동작 온도', value: '-40℃ ~ +125℃' },
-                    { icon: '<svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>', label: '보호 등급', value: 'IP65+' },
-                    { icon: '<svg viewBox="0 0 24 24"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>', label: '전압', value: '12V / 24V / 48V' }
+                    { icon: '<svg viewBox="0 0 24 24"><path d="M14 14.76V3.5a2.5 2.5 0 0 0-5 0v11.26a4.5 4.5 0 1 0 5 0z"></path></svg>', label: '작동 온도', value: '-40 ℃ ~ +125 ℃' },
+                    { icon: '<svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>', label: '보호 등급', value: 'IP65 이상' },
+                    { icon: '<svg viewBox="0 0 24 24"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>', label: '전원 전압', value: 'DC 12V / 24V / 48V' }
                 ],
-                details: `브러시가 없는 구조로 마찰 손실과 전기 노이즈를 최소화한 고효율 전동기이며 정밀 제어가 가능
+                details: `마찰 손실과 전기 노이즈를 최소화한 브러시 리스 고효율 전동기로 정밀 제어가 가능하여, 
+높은 출력 밀도와 긴 수명을 제공하여 차량용 팬, 펌프, 액추에이터 등 다양한 응용 분야에 활용
 
-작동 전압 : DC 12V / 24V / 48V
-정격 출력 : 50W ~ 1 kW (모델별 상이)
-정격 속도 : 1000 ~ 6000 rpm
+전원 전압 : DC 12V / 24V / 48V
+
+정격 출력 : 50W ~ 1kW (모델별 상이)
+정격 속도 : 1,000 ~ 6,000 rpm 
 제어 방식 : 홀 센서 피드백 / 센서리스 제어 (PWM, FOC)
 효율 : ≥85%
-토크 특성 : 평탄한 토크 곡선, 고출력, 저진동
+토크 특성 : High torque, 고출력 저 진동
 작동 온도 : -40 ℃ ~ +125 ℃
 보호 등급 : IP65 이상
-베어링 타입 : 고정밀 볼 베어링
+베어링 타입 : 고 내구성 베어링
 커넥터 형식 : 맞춤형 다핀 커넥터`
             },
             'digital-shift': {
@@ -3077,16 +3079,21 @@ R/D 변환 : 아날로그 신호를 디지털로 변환
                 img: '../assets/22.png',
                 desc: '자동변속기의 기어 변속을 전자적으로 제어하는 액추에이터로 4WD 트랜스퍼 케이스의 변속 모드 (2H / 4H / 4L 등)를 전자적으로 전환하는 핵심 구동 장치',
                 specs: [
-                     { icon: '<svg viewBox="0 0 24 24"><path d="M14 14.76V3.5a2.5 2.5 0 0 0-5 0v11.26a4.5 4.5 0 1 0 5 0z"></path></svg>', label: '동작 온도', value: '-40℃ ~ +145℃' },
-                     { icon: '<svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>', label: '보호 등급', value: 'IP67+' },
-                     { icon: '<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>', label: '응답 시간', value: '500ms 이하' }
+                     { icon: '<svg viewBox="0 0 24 24"><path d="M14 14.76V3.5a2.5 2.5 0 0 0-5 0v11.26a4.5 4.5 0 1 0 5 0z"></path></svg>', label: '작동 온도', value: '40 ℃ ~ +145 ℃' },
+                     { icon: '<svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>', label: '보호 등급', value: 'IP67 이상' },
+                     { icon: '<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>', label: '응답 시간', value: '≤ 500ms' }
                 ],
-                details: `자동변속기의 기어 변속을 전자적으로 제어하는 액추에이터로 4WD 트랜스퍼 케이스의 변속 모드 (2H / 4H / 4L 등)를 전자적으로 전환하는 핵심 구동 장치
+                details: `자동변속기의 기어 변속을 전자적으로 제어하는 액추에이터로 4WD 트랜스퍼 케이스의 변속 모드 (2H / 4H / 4L 등)를  전자적으로 전환하는 핵심 구동 장치
 
+구동 방식 : DC/BLDC 모터, 기어 감속 메커니즘 
+전원 전압 : DC 12V / 24V
+출력 토크 : 20 ~ 60 N·m (사양에 따라 상이)
+제어 방식 : PWM 신호 제어, Linear Output 제어
+위치 검출 : 홀 센서 / 포텐셔미터 내장
+응답 시간 : ≤500ms
 작동 온도 : -40 ℃ ~ +145 ℃
-보호 등급 : IP67+
-반응 시간 : 500ms 이하
-특징 : 고정밀 제어, 높은 내구성, 방수 및 방진 설계`
+보호 등급 : IP67 이상
+커넥터 형식 : 다핀 커넥터 (4 ~ 8핀 구성)`
             },
             'ac-motor': {
                 category: '액추에이터', 
@@ -3094,16 +3101,20 @@ R/D 변환 : 아날로그 신호를 디지털로 변환
                 img: '../assets/24.png',
                 desc: '교류 전원을 이용해 회전 운동을 생성하는 전동기 이며 높은 내구성과 안정적인 특성을 갖추어 HVAC 시스템 적용',
                 specs: [
-                     { icon: '<svg viewBox="0 0 24 24"><path d="M14 14.76V3.5a2.5 2.5 0 0 0-5 0v11.26a4.5 4.5 0 1 0 5 0z"></path></svg>', label: '동작 온도', value: '-20℃ ~ +80℃' },
+                     { icon: '<svg viewBox="0 0 24 24"><path d="M14 14.76V3.5a2.5 2.5 0 0 0-5 0v11.26a4.5 4.5 0 1 0 5 0z"></path></svg>', label: '작동 온도', value: '-20 ℃ ~ +80 ℃' },
                      { icon: '<svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>', label: '보호 등급', value: 'IP54 ~ IP65' },
-                     { icon: '<svg viewBox="0 0 24 24"><path d="M9 3v18M15 3v18M3 9h18M3 15h18"></path></svg>', label: '커넥터', value: '맞춤형/리드선' }
+                     { icon: '<svg viewBox="0 0 24 24"><path d="M9 3v18M15 3v18M3 9h18M3 15h18"></path></svg>', label: '커넥터 형식', value: '맞춤형 커넥터 / 리드선 출력' }
                 ],
-                details: `교류 전원을 이용해 회전 운동을 생성하는 전동기 이며 높은 내구성과 안정적인 특성을 갖추어 HVAC 시스템 적용
+                details: `교류 전원을 이용해 회전 운동을 생성하는 전동기 이며 높은 내구성과 안정적인 특성을 갖추어 HVAC 시스템, 산업 자동화, 자동차 구동 장치 등 다양한 분야에 적용
 
-작동 온도 : -20 ℃ ~ +80 ℃
+전원 전압 : AC 100V ~ 240V
+정격 출력 : 10W ~ 500W (모델별 상이)
+정격 속도 : 1,000 ~ 3,600 rpm 
+회전 방향 : 정 / 역회전 (양방향 제어 가능)
+절연 등급 : Class B / F
 보호 등급 : IP54 ~ IP65
-커넥터 형식 : 맞춤형/리드선
-특징 : 저소음, 긴 수명, 효율적인 공조 제어`
+작동 온도 : -40 ℃ ~ +135 ℃
+커넥터 형식 : 맞춤형 커넥터 / 리드선 출력`
             },
             'fan-clutch': {
                 category: '액추에이터', 
@@ -3111,16 +3122,20 @@ R/D 변환 : 아날로그 신호를 디지털로 변환
                 img: '../assets/21.png',
                 desc: '실시간 엔진 냉각팬의 회전 속도를 제어하는 전자식 액추에이터',
                 specs: [
-                     { icon: '<svg viewBox="0 0 24 24"><path d="M14 14.76V3.5a2.5 2.5 0 0 0-5 0v11.26a4.5 4.5 0 1 0 5 0z"></path></svg>', label: '동작 온도', value: '-40℃ ~ +145℃' },
-                     { icon: '<svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>', label: '보호 등급', value: 'IP65+' },
-                     { icon: '<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>', label: '응답 시간', value: '300ms 이하' }
+                     { icon: '<svg viewBox="0 0 24 24"><path d="M14 14.76V3.5a2.5 2.5 0 0 0-5 0v11.26a4.5 4.5 0 1 0 5 0z"></path></svg>', label: '작동 온도', value: '-40 ℃ ~ +145 ℃' },
+                     { icon: '<svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>', label: '보호 등급', value: 'IP65 이상' },
+                     { icon: '<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>', label: '응답 시간', value: '≤ 300ms' }
                 ],
-                details: `실시간 엔진 냉각팬의 회전 속도를 제어하는 전자식 액추에이터
+                details: `전자식 팬 클러치 엑추에이터는 엔진 냉각팬의 회전 속도를 제어하는 전자식 구동 장치로 기존 점도식(Viscous) 팬 클러치가 단순히  온도에 따라 기계적으로 작동하는 것과 달리, ECU(엔진 제어 장치)의 전기 신호를 받아 팬 클러치를 정밀하게 제어하여 냉각 효율 향상과 소음·연비 개선 역할
 
+작동 방식 : 전자식 구동 제어
+제어 신호 : PWM 신호 ECU 제어
+전원 전압 : DC 12V 또는 24V
 작동 온도 : -40 ℃ ~ +145 ℃
-보호 등급 : IP65+
-반응 시간 : 300ms 이하
-기능 : PWM 신호를 통한 연속 가변 제어, 엔진 과열 방지`
+응답 시간 : ≤300ms
+클러치 유체 : 실리콘 오일
+베어링 타입 : 고 내구 베어링 내장
+보호 등급 : IP65 이상`
             },
             '4wd-geared': {
                 category: '액추에이터', 
@@ -3128,16 +3143,22 @@ R/D 변환 : 아날로그 신호를 디지털로 변환
                 img: '../assets/23.png',
                 desc: '전자식 4륜구동 시스템에서 트랜스퍼 케이스(Transfer Case)의 기어를 전환하는 액추에이터',
                 specs: [
-                     { icon: '<svg viewBox="0 0 24 24"><path d="M14 14.76V3.5a2.5 2.5 0 0 0-5 0v11.26a4.5 4.5 0 1 0 5 0z"></path></svg>', label: '동작 온도', value: '-40℃ ~ +145℃' },
+                     { icon: '<svg viewBox="0 0 24 24"><path d="M14 14.76V3.5a2.5 2.5 0 0 0-5 0v11.26a4.5 4.5 0 1 0 5 0z"></path></svg>', label: '작동 온도', value: '-40 ℃ ~ +145 ℃' },
                      { icon: '<svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>', label: '보호 등급', value: 'IP67' },
-                     { icon: '<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>', label: '응답 시간', value: '300ms 이하' }
+                     { icon: '<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>', label: '응답 시간', value: '≤ 300ms' }
                 ],
-                details: `전자식 4륜구동 시스템에서 트랜스퍼 케이스(Transfer Case)의 기어를 전환하는 액추에이터
+                details: `전자식 4륜 구동 시스템에서 트랜스퍼 케이스(Transfer Case)의 기어를 전환하는 구동 장치로
+운전자가 선택한 모드를 ECU로 부터 받아 자동으로 4륜 모드 전환.
 
+전원 전압 : DC 12V / 24V
+구동 방식 : DC/BLDC모터, 기어 감속 메커니즘
+출력 토크 : 5 ~ 50 N·m (사양에 따라 상이)
+응답 시간 : ≤300ms
+위치 검출 : 홀 센서 / 포텐셔미터
+제어 방식 : 전압 제어 또는 PWM ECU 제어
 작동 온도 : -40 ℃ ~ +145 ℃
 보호 등급 : IP67
-반응 시간 : 300ms 이하
-적용 : 파트타임 및 풀타임 4WD 시스템`
+커넥터 형식 : 2핀 / 3핀 / 다핀`
             },
             'hidden-door-handle': {
                 category: '액추에이터', 
