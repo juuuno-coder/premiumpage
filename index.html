@@ -3055,10 +3055,20 @@ Connector type: Custom multi pin connector`
                 desc: 'An actuator that electronically controls gear shifting in automatic transmissions and switches 4WD transfer case modes such as 2H 4H and 4L',
                 specs: [
                      { icon: '<svg viewBox="0 0 24 24"><path d="M14 14.76V3.5a2.5 2.5 0 0 0-5 0v11.26a4.5 4.5 0 1 0 5 0z"></path></svg>', label: 'Op. Temp', value: '-40℃ ~ +145℃' },
-                     { icon: '<svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>', label: 'IP Rating', value: 'IP67+' },
+                     { icon: '<svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>', label: 'IP Rating', value: 'IP67 or higher' },
                      { icon: '<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>', label: 'Resp. Time', value: '≤ 500ms' }
                 ],
-                details: `An actuator that electronically controls gear shifting in automatic transmissions and switches 4WD transfer case modes such as 2H 4H and 4L`
+                details: `An actuator that electronically controls gear shifting in automatic transmissions and switches 4WD transfer case modes such as 2H 4H and 4L.
+
+Drive type: DC or BLDC motor with gear reduction mechanism
+Operating voltage: DC 12V or 24V
+Output torque: 20 to 60 N·m depending on specification
+Control type: Digital signal control Shift by Wire
+Position detection: Built in Hall sensor or potentiometer
+Response time: ≤500 ms
+Operating temperature: −40°C to +145°C
+Ingress protection: IP67 or higher
+Connector type: Multi pin connector 4 to 8 pin`
             },
             'ac-motor': {
                 category: 'Actuator', title: 'AC Motor', img: 'assets/24.png',
@@ -3066,19 +3076,37 @@ Connector type: Custom multi pin connector`
                 specs: [
                      { icon: '<svg viewBox="0 0 24 24"><path d="M14 14.76V3.5a2.5 2.5 0 0 0-5 0v11.26a4.5 4.5 0 1 0 5 0z"></path></svg>', label: 'Op. Temp', value: '-20℃ ~ +80℃' },
                      { icon: '<svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>', label: 'Protection', value: 'IP54 ~ IP65' },
-                     { icon: '<svg viewBox="0 0 24 24"><path d="M9 3v18M15 3v18M3 9h18M3 15h18"></path></svg>', label: 'Connector', value: 'Custom/Lead' }
+                     { icon: '<svg viewBox="0 0 24 24"><path d="M9 3v18M15 3v18M3 9h18M3 15h18"></path></svg>', label: 'Connector', value: 'Custom / lead wire' }
                 ],
-                details: `An electric motor that generates rotational motion using AC power and provides high durability and stable performance for HVAC systems`
+                details: `An electric motor that generates rotational motion using AC power and provides high durability and stable performance for HVAC systems industrial automation and automotive drive systems.
+
+Supply voltage: AC 100V to 240V
+Rated power: 10W to 500W depending on model
+Rated speed: 1000 to 3600 rpm
+Rotation direction: Forward and reverse bidirectional control
+Insulation class: Class B or Class F
+Protection rating: IP54 to IP65
+Operating temperature: −20°C to +80°C
+Connector type: Custom connector or lead wire output`
             },
             'fan-clutch': {
                 category: 'Actuator', title: 'Electronic Fan Clutch Actuator', img: 'assets/21.png',
                 desc: 'An electronic actuator that controls the rotational speed of the engine cooling fan',
                 specs: [
                      { icon: '<svg viewBox="0 0 24 24"><path d="M14 14.76V3.5a2.5 2.5 0 0 0-5 0v11.26a4.5 4.5 0 1 0 5 0z"></path></svg>', label: 'Op. Temp', value: '-40℃ ~ +145℃' },
-                     { icon: '<svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>', label: 'IP Rating', value: 'IP65+' },
+                     { icon: '<svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>', label: 'IP Rating', value: 'IP65 or higher' },
                      { icon: '<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>', label: 'Resp. Time', value: '≤ 300ms' }
                 ],
-                details: `An electronic actuator that controls the rotational speed of the engine cooling fan`
+                details: `An electronic actuator that controls the rotational speed of the engine cooling fan. Unlike conventional viscous fan clutches that operate mechanically according to temperature this actuator receives electrical control signals from the ECU and precisely regulates the fan clutch improving cooling efficiency reducing noise and enhancing fuel economy.
+
+Operating type: Electronic drive control
+Control signal: PWM signal ECU controlled
+Supply voltage: DC 12V or 24V
+Operating temperature: −40°C to +145°C
+Response time: ≤300 ms
+Clutch fluid: Silicone oil
+Bearing type: High temperature resistant ball bearing
+Ingress protection: IP65 or higher`
             },
             '4wd-geared': {
                 category: 'Actuator', title: '4WD Geared Actuator', img: 'assets/23.png',
@@ -3088,7 +3116,17 @@ Connector type: Custom multi pin connector`
                      { icon: '<svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>', label: 'IP Rating', value: 'IP67' },
                      { icon: '<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>', label: 'Resp. Time', value: '≤ 300ms' }
                 ],
-                details: `A drive unit that shifts the gears inside the transfer case in an electronic 4WD system`
+                details: `A drive unit that shifts the gears inside the transfer case in an electronic 4WD system. When the driver selects 2H 4H or 4L mode the ECU sends an electrical signal and this actuator physically moves the gear to engage the selected mode.
+
+Operating voltage: DC 12V or 24V
+Drive type: DC or BLDC motor with gear reduction mechanism
+Output torque: 5 to 50 N·m depending on specification
+Response time: ≤300 ms
+Position detection: Hall sensor or potentiometer
+Control type: Voltage control or PWM ECU control
+Operating temperature: −40°C to +145°C
+Ingress protection: IP67
+Connector type: 2 pin 3 pin or multi pin`
             },
             'hidden-door-handle': {
                 category: 'Actuator', title: 'Hidden Door Handle Actuator', img: 'assets/hidden_door_handle.png',
