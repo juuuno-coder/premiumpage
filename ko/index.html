@@ -2861,20 +2861,22 @@ R/D 변환 : 아날로그 신호를 디지털로 변환
                 img: '../assets/8.png', 
                 desc: '운전자가 핸들을 돌린 각도와 방향, 회전 속도를 측정해 ECU에 전달하는 센서', 
                 specs:[
-                    { icon: '<svg viewBox="0 0 24 24"><path d="M14 14.76V3.5a2.5 2.5 0 0 0-5 0v11.26a4.5 4.5 0 1 0 5 0z"></path></svg>', label: '작동 온도', value: '-40 °C ~ +125 °C' },
+                    { icon: '<svg viewBox="0 0 24 24"><path d="M14 14.76V3.5a2.5 2.5 0 0 0-5 0v11.26a4.5 4.5 0 1 0 5 0z"></path></svg>', label: '작동 온도', value: '-40 ℃ ~ +125 ℃' },
                     { icon: '<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>', label: '응답 시간', value: '≤ 5ms' },
                     { icon: '<svg viewBox="0 0 24 24"><path d="M9 3v18M15 3v18M3 9h18M3 15h18"></path></svg>', label: '커넥터 형식', value: '2핀 / 3핀 / 다핀 커넥터' }
                 ],
-                details:`운전자가 핸들을 돌린 각도와 방향, 회전 속도를 측정해 ECU에 전달하는 센서
+                details:`운전자가 핸들을 돌린 각도와 방향, 회전 속도를 측정해 ECU에 전달하는 센서.
+이 데이터는 차체자세제어장치(ESC), 차선 유지 보조, 자동 주차, 어댑티브 크루즈 컨트롤 등
+첨단 운전자 보조 시스템(ADAS)의 핵심 입력값으로 사용
 
-센서 유형 : 접촉식 또는 GMR (거대 자기 저항)
-작동 전압 : DC 5V ±0.1V
-측정 범위 : 조향 각도 ±720° (2회전 이상)
-출력 방식 : SENT, CAN 디지털 통신 (ECU로 전송)
-해상도 : ≤0.1°
+센서 방식 : 접촉식, GMR(Giant Magneto-Resistance)
+작동 전압 : DC 5V ±0.1V 
+측정 범위 : 회전각도 ±720° (2회전) 이상
+출력 방식 : SENT, CAN 등 디지털 신호로 ECU와 연결
+분해능 : ≤0.1°
 작동 온도 : -40 ℃ ~ +125 ℃
-반응 시간 : ≤5ms
-커넥터 형식 : 2핀, 3핀 또는 다핀 커넥터` 
+응답 시간 : ≤5ms
+커넥터 형식 : 2핀 / 3핀 / 다핀 커넥터` 
             },
             'transfer-case': { 
                 category: '센서', 
