@@ -1,20 +1,22 @@
 # Vercel Deployment Guide
 
-## 1. English Version (emt-en.vercel.app)
+## Unified Deployment (Recommended)
 
-- **Project Name**: `emt-en` (recommended)
-- **Root Directory**: `./` (Default)
-- **Build Command**: None (Static HTML)
-- This will serve the files in the root directory (e.g., `index.html` or `e_catalog.html`).
+This project is configured to serve both English and Korean versions from a single Vercel project using **Rewrites**.
 
-## 2. Korean Version (emt-ko.vercel.app)
+### 1. Configuration
 
-- **Step 1**: Go to Vercel Dashboard and click **"Add New..."** > **"Project"**.
-- **Step 2**: Import the **SAME** Git repository repository as the English version.
-- **Step 3**: Set Project Name to `emt-ko`.
-- **Step 4**: In the **"Deploy"** screen, click on **"Edit"** next to **Root Directory**.
-- **Step 5**: Type `ko` and save.
-- **Step 6**: Click **Deploy**.
+The `vercel.json` file handles routing:
 
-This configuration will serve `ko/index.html` as the main page for `emt-ko.vercel.app`.
-The Korean version uses `../assets/` to reference the images in the root folder, so you don't need to duplicate images.
+- `domain.com/` -> Serves `/index.html` (English)
+- `domain.com/ko` -> Serves `/ko/index.html` (Korean)
+
+### 2. Deployment Steps
+
+1.  Go to Vercel Dashboard and create a **New Project**.
+2.  Import this Git repository.
+3.  **Root Directory**: Leave as `./` (Default).
+4.  **Build Command**: None (Static HTML).
+5.  Click **Deploy**.
+
+No separate project is needed for the Korean version. The `vercel.json` configuration automatically routes `/ko` requests to the correct file while maintaining a single domain.
