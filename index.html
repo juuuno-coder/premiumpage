@@ -3156,27 +3156,55 @@ Applications: Electric vehicles, luxury vehicles, sports cars, modern sedans`
                      { icon: '<svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>', label: 'Protection', value: 'IP67' },
                      { icon: '<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>', label: 'Resp. Time', value: '≤ 1ms' }
                 ],
-                details: `A non contact sensor that detects the proximity of an object using magnetic capacitive or ultrasonic principles`
+                details: `A non contact sensor that detects the proximity of an object using magnetic capacitive or ultrasonic principles.
+
+Supply voltage: DC 5V to 24V
+Detection distance: 1 mm to 30 mm
+Detection type: Magnetic inductive capacitive ultrasonic
+Output signal: Digital or analog voltage output
+Response time: ≤1 ms
+Operating temperature: −40°C to +125°C
+Communication interface optional: UART CAN LIN I²C
+Protection rating: IP67`
             },
             'flush-handle': {
                 category: 'Controller', title: 'Flush Door Handle Control Unit', img: 'assets/29.png',
                 desc: 'A control unit that automatically deploys and retracts the door handle based on smart key signals proximity detection and vehicle lock status',
                 specs: [
+                     { icon: '<svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg>', label: 'Comm. Interface', value: 'CAN / LIN / UART' },
                      { icon: '<svg viewBox="0 0 24 24"><path d="M14 14.76V3.5a2.5 2.5 0 0 0-5 0v11.26a4.5 4.5 0 1 0 5 0z"></path></svg>', label: 'Op. Temp', value: '-40℃ ~ +125℃' },
-                     { icon: '<svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>', label: 'IP Rating', value: 'IP67' },
-                     { icon: '<svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg>', label: 'Interface', value: 'CAN / LIN' }
+                     { icon: '<svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>', label: 'IP Rating', value: 'IP67' }
                 ],
-                details: `A control unit that automatically deploys and retracts the door handle based on smart key signals proximity detection and vehicle lock status`
+                details: `A control unit that automatically deploys and retracts the door handle based on smart key signals proximity detection and vehicle lock status.
+
+Supply voltage: DC 12V ±10%
+Drive type: BLDC motor drive with built in position feedback sensor
+Communication interface: CAN LIN UART
+Control functions: Door handle deployment and retraction position detection safety cut off
+Protection functions: Overcurrent overvoltage overheating protection
+Response time: ≤300 ms
+Operating temperature: −40°C to +125°C
+Ingress protection: IP67`
             },
             'smart-key': {
                 category: 'Controller', title: 'Smart Keyless Entry', img: 'assets/27.png',
                 desc: 'An electronic control module that uses RF communication and encryption technology to perform vehicle door unlocking and ignition control',
                 specs: [
                      { icon: '<svg viewBox="0 0 24 24"><path d="M14 14.76V3.5a2.5 2.5 0 0 0-5 0v11.26a4.5 4.5 0 1 0 5 0z"></path></svg>', label: 'Op. Temp', value: '-40℃ ~ +125℃' },
-                     { icon: '<svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>', label: 'Protection', value: 'EMC/ESD/IP65' },
+                     { icon: '<svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>', label: 'Protection', value: 'EMC / ESD / IP65' },
                      { icon: '<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>', label: 'Resp. Time', value: '≤ 100ms' }
                 ],
-                details: `An electronic control module that uses RF communication and encryption technology to perform vehicle door unlocking and ignition control`
+                details: `An electronic control module that uses RF communication and encryption technology to perform vehicle door unlocking and ignition control.
+
+Supply voltage: DC 12V
+Communication type: RF wireless communication 433 MHz / 315 MHz
+Encryption type: AES / Rolling Code secure communication
+Operating distance: Approximately 1 to 3 m
+Response speed: ≤100 ms
+Input output interface: Door lock relay ignition relay RF receiving antenna
+Operating temperature: −40°C to +125°C
+Protection rating: EMC / ESD / IP65 level
+Processor: Built in 32 bit MCU supporting low power standby mode`
             },
             'tcu': {
                 category: 'Controller', title: 'Transmission Control Unit', img: 'assets/28.png',
@@ -3186,17 +3214,34 @@ Applications: Electric vehicles, luxury vehicles, sports cars, modern sedans`
                      { icon: '<svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg>', label: 'Processor', value: '32-bit MCU' },
                      { icon: '<svg viewBox="0 0 24 24"><path d="M9 3v18M15 3v18M3 9h18M3 15h18"></path></svg>', label: 'Connector', value: '20~30 pin' }
                 ],
-                details: `A control unit that optimally distributes driving power between the front and rear wheels to enhance driving stability and traction`
+                details: `A control unit that optimally distributes driving power between the front and rear wheels to enhance driving stability and traction.
+
+Processor: 32 bit microcontroller
+Memory: Flash ROM 512 kb to 2 MB RAM 64 kb to 256 kb
+Input output: Analog digital input PWM output CAN LIN communication
+Supply voltage: DC 9V to 16V
+Protection circuit: Built in overvoltage overcurrent and reverse polarity protection
+Operating temperature: −40°C to +125°C
+Connector: 20 to 30 pin`
             },
             'smart-hvac': {
                 category: 'Controller', title: 'Multi-purpose, high-efficiency, energy-saving temperature and humidity control system', img: 'assets/30.png',
                 desc: 'A multi purpose high efficiency energy saving temperature and humidity control system for HVAC applications used in automotive and agricultural industries',
                  specs: [
-                     { icon: '<svg viewBox="0 0 24 24"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>', label: 'Power', value: 'AC 220V' },
-                     { icon: '<svg viewBox="0 0 24 24"><path d="M9 3v18M15 3v18M3 9h18M3 15h18"></path></svg>', label: 'Type', value: 'Wall Box' },
-                     { icon: '<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>', label: 'Output', value: '3 Channel' }
+                     { icon: '<svg viewBox="0 0 24 24"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>', label: 'Power', value: 'AC 220V, 50/60Hz' },
+                     { icon: '<svg viewBox="0 0 24 24"><path d="M9 3v18M15 3v18M3 9h18M3 15h18"></path></svg>', label: 'Type', value: 'Wall-mounted box' },
+                     { icon: '<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>', label: 'Output Channels', value: '3 channel' }
                 ],
-                details: `A multi purpose high efficiency energy saving temperature and humidity control system for HVAC applications used in automotive and agricultural industries`
+                details: `A multi purpose high efficiency energy saving temperature and humidity control system for HVAC applications used in automotive and agricultural industries.
+
+Power supply: AC 220V 50/60Hz
+Type: Wall mounted control enclosure dust and moisture resistant case
+Display: LED digital display
+Output channels: 3 channel
+Protection functions: Overcurrent cut off sensor fault alert power shutoff switch
+Display items: Temperature humidity set value operating status power status
+Energy optimization: Temperature and humidity linked energy efficiency control
+Fan modes: Strong medium weak and natural wind mode built in`
             }
         };
 
