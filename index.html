@@ -1088,9 +1088,14 @@
                     <!-- Left: Slogan & Text (60%) -->
                     <div class="overview-text-col" style="flex: 6.6; display: flex; flex-direction: column; justify-content: center; padding: 40px 0;">
                         <h2 style="font-size: 38px; color: white; line-height: 1.3; margin-bottom: 50px; font-weight:700;">
-                            Through <span style="color:var(--neon-green)">electrification</span> and <span style="color:var(--neon-cyan)">intelligence</span>,<br>
+                            Through <span class="highlight-green">electrification</span> and <span class="highlight-cyan">intelligence</span>,<br>
                             we are reshaping our portfolio around future mobility modules, control software, and data.
                         </h2>
+                        <style>
+                            .highlight-green { color: var(--neon-green); }
+                            .highlight-cyan { color: var(--neon-cyan); }
+                            body.light-mode .highlight-green, body.light-mode .highlight-cyan { color: #1a1a1a !important; }
+                        </style>
                         <p style="font-size: 18px; color: #ccc; line-height: 1.8; max-width: 95%;">
                             EMT is based on technology that has supplied smart sensors and actuators to global Tier-1 customers As a company, it has high quality reliability, cost and delivery competitiveness, and a stable sales base. EMT has moved beyond sensors and actuators to become an IoT, SW, and Data–based battlefield solutions company We will open up the future with our customers.
                         </p>
@@ -1099,12 +1104,12 @@
                         <div style="display: flex; gap: 20px; margin-top: 60px;">
                             <div style="flex:1;">
                                 <div style="font-size: 16px; color: white; margin-bottom: 8px; font-weight: 600; opacity:0.8;">R&D Experience</div>
-                                <div style="font-size: 42px; font-weight: 700; color: var(--neon-green); margin-bottom: 10px;">100+</div>
+                                <div class="highlight-green" style="font-size: 42px; font-weight: 700; margin-bottom: 10px;">100+</div>
                                 <p class="stats-desc" style="font-size: 14px; color: #999; line-height: 1.4;">With over 30 years of accumulated R&D experience, we continuously innovate smart mobility control technology, enhancing efficiency and advancement across industries</p>
                             </div>
                             <div style="flex:1;">
                                 <div style="font-size: 16px; color: white; margin-bottom: 8px; font-weight: 600; opacity:0.8;">Global Customer Collaboration</div>
-                                <div style="font-size: 42px; font-weight: 700; color: var(--neon-cyan); margin-bottom: 10px;">30+</div>
+                                <div class="highlight-cyan" style="font-size: 42px; font-weight: 700; margin-bottom: 10px;">30+</div>
                                 <p class="stats-desc" style="font-size: 14px; color: #999; line-height: 1.4;">We collaborate with over 100 global customers, providing customized solutions and establishing ourselves as a trusted partner in various industrial environments</p>
                             </div>
                             <div style="flex:1;">
@@ -1170,7 +1175,7 @@
             
             <!-- Top Row: VISION & MISSION -->
             <div style="display: flex; gap: 30px; margin-bottom:15px; align-items: stretch;">
-                <div class="glass-box" style="flex:3; padding: 30px;">
+                <div class="glass-box" style="flex:3; padding: 30px; justify-content: flex-start;">
                     <h2 style="color:var(--neon-green); font-size:16px; font-family:var(--font-sub); margin-bottom: 15px;">VISION</h2>
                     <p style="font-size:24px; color:white; font-weight:700; line-height: 1.3; margin-bottom:15px;">
                         Global Top-Tier Partner by 2035<br>with Core Mobility Sensor & Control Solutions
@@ -1180,7 +1185,7 @@
                         Our goal is to become a "trusted partner" that global customers seek first by 2035.
                     </p>
                 </div>
-                <div class="glass-box" style="flex:3; padding: 30px;">
+                <div class="glass-box" style="flex:3; padding: 30px; justify-content: flex-start;">
                     <h2 style="color:var(--neon-cyan); font-size:16px; font-family:var(--font-sub); margin-bottom: 15px;">MISSION</h2>
                     <p style="font-size:20px; color:white; font-weight:600; margin-bottom:15px;">Building Trust with Quality, Creating the Future with Technology</p>
                     <div style="display:flex; gap:15px;">
@@ -1203,40 +1208,34 @@
             <!-- Bottom Row: CORE VALUES & OUR GOALS -->
             <div style="display: flex; gap: 30px; margin-top: 0;">
                 <!-- CORE VALUES -->
-                <div class="glass-box" style="flex:4; padding: 25px; min-width: 0;">
+                <div class="glass-box" style="flex:6; padding: 30px; min-width: 0;">
                     <h2 style="color:var(--neon-green); font-size:16px; font-family:var(--font-sub); margin-bottom: 25px; margin-top: -10px;">CORE VALUES</h2>
-                    <div style="display:flex; gap:5px; justify-content: space-between; align-items: center; width: 100%;">
+                    <div style="display:flex; gap:10px; justify-content: space-around; align-items: center; width: 100%;">
                         <!-- Value 1 -->
-                        <div class="cv-circle" style="width:130px; height:130px; flex-shrink: 1; border-radius:50%; border:2px solid #333; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; transition: 0.3s; padding: 10px;">
-                            <span style="font-size:13px; color:white; font-weight:700; margin-bottom:6px; line-height:1.1;">Customer Value</span>
-                            <span style="font-size:10px; color:#aaa; line-height:1.2;">Customer Success<br>is our success</span>
+                        <div class="cv-circle" style="width:160px; height:160px; flex-shrink: 0; border-radius:50%; border:2px solid #333; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; transition: 0.3s; padding: 10px;">
+                            <span style="font-size:18px; color:white; font-weight:700; margin-bottom:6px; line-height:1.1;">Customer Value</span>
+                            <span style="font-size:13px; color:#aaa; line-height:1.2;">Customer Success<br>is our success</span>
                         </div>
                         <!-- Value 2 -->
-                        <div class="cv-circle" style="width:130px; height:130px; flex-shrink: 1; border-radius:50%; border:2px solid #333; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; transition: 0.3s; padding: 10px;">
-                            <span style="font-size:13px; color:white; font-weight:700; margin-bottom:6px; line-height:1.1;">Diligence</span>
-                            <span style="font-size:10px; color:#aaa; line-height:1.2;">Sincere and<br>dedicated work</span>
+                        <div class="cv-circle" style="width:160px; height:160px; flex-shrink: 0; border-radius:50%; border:2px solid #333; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; transition: 0.3s; padding: 10px;">
+                            <span style="font-size:18px; color:white; font-weight:700; margin-bottom:6px; line-height:1.1;">Diligence</span>
+                            <span style="font-size:13px; color:#aaa; line-height:1.2;">Sincere and<br>dedicated work</span>
                         </div>
                         <!-- Value 3 -->
-                        <div class="cv-circle" style="width:130px; height:130px; flex-shrink: 1; border-radius:50%; border:2px solid #333; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; transition: 0.3s; padding: 10px;">
-                            <span style="font-size:13px; color:white; font-weight:700; margin-bottom:6px; line-height:1.1;">Creativity</span>
-                            <span style="font-size:10px; color:#aaa; line-height:1.2;">Creating value<br>through innovation</span>
+                        <div class="cv-circle" style="width:160px; height:160px; flex-shrink: 0; border-radius:50%; border:2px solid #333; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; transition: 0.3s; padding: 10px;">
+                            <span style="font-size:18px; color:white; font-weight:700; margin-bottom:6px; line-height:1.1;">Creativity</span>
+                            <span style="font-size:13px; color:#aaa; line-height:1.2;">Creating value<br>through innovation</span>
                         </div>
-                        <!-- Value 4: Highlighted -->
-                        <div class="cv-circle" style="width:130px; height:130px; flex-shrink: 1; border-radius:50%; border:3px solid var(--neon-green); display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; box-shadow: 0 0 20px rgba(0,255,136,0.15); transition: 0.3s; padding: 10px;">
-                            <span style="font-size:13px; color:white; font-weight:700; margin-bottom:6px; line-height:1.1;">Harmony</span>
-                            <span style="font-size:10px; color:#aaa; line-height:1.2;">Collaboration<br>mutual respect</span>
+                        <!-- Value 4 -->
+                        <div class="cv-circle" style="width:160px; height:160px; flex-shrink: 0; border-radius:50%; border:2px solid #333; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; transition: 0.3s; padding: 10px;">
+                            <span style="font-size:18px; color:white; font-weight:700; margin-bottom:6px; line-height:1.1;">Harmony</span>
+                            <span style="font-size:13px; color:#aaa; line-height:1.2;">Collaboration<br>mutual respect</span>
                         </div>
                     </div>
-                    <style>
-                        body.light-mode .cv-circle { border-color: var(--border) !important; background: rgba(0,0,0,0.02); }
-                        body.light-mode .cv-circle:last-child { border-color: var(--neon-green) !important; box-shadow: 0 5px 15px rgba(33, 179, 114, 0.1); }
-                        body.light-mode .cv-circle span { color: var(--text-primary) !important; }
-                        body.light-mode .cv-circle span:last-child { color: var(--text-secondary) !important; }
-                    </style>
                 </div>
                 
                 <!-- OUR GOALS -->
-                <div class="glass-box" style="flex:6; padding: 25px;">
+                <div class="glass-box" style="flex:4; padding: 25px;">
                     <h2 style="color:var(--text-muted); font-size:16px; font-family:var(--font-sub); margin-bottom:25px;">OUR GOALS <span style="opacity: 0.5; margin-left: 8px;">(2025 ~ 2030)</span></h2>
                     <div style="display:flex; gap:30px;">
                         <div style="flex:1;">
@@ -1252,7 +1251,40 @@
                     </div>
                 </div>
             </div>
+            <style>
+                .cv-circle.active {
+                    border: 2px solid transparent !important;
+                    background-image: linear-gradient(#000, #000), linear-gradient(135deg, #a8ff78 0%, #06b6d4 100%);
+                    background-origin: border-box;
+                    background-clip: content-box, border-box;
+                    box-shadow: 0 0 20px rgba(0,255,136,0.15);
+                    transform: scale(1.05);
+                }
+                body.light-mode .cv-circle { border-color: var(--border) !important; background: rgba(0,0,0,0.02); }
+                body.light-mode .cv-circle.active { 
+                    border-color: transparent !important;
+                    background-image: linear-gradient(#fff, #fff), linear-gradient(135deg, #a8ff78 0%, #06b6d4 100%);
+                    box-shadow: 0 5px 15px rgba(33, 179, 114, 0.2); 
+                }
+                body.light-mode .cv-circle span { color: var(--text-primary) !important; }
+                body.light-mode .cv-circle.active span:last-child { color: var(--text-secondary) !important; }
+            </style>
+            <script>
+                // Core Values Animation
+                (function(){
+                    let cvIndex = 0;
+                    const cvCircles = document.querySelectorAll('.cv-circle');
+                    if(cvCircles.length > 0) {
+                        setInterval(() => {
+                            cvCircles.forEach(c => c.classList.remove('active'));
+                            cvCircles[cvIndex].classList.add('active');
+                            cvIndex = (cvIndex + 1) % cvCircles.length;
+                        }, 2000);
+                    }
+                })();
+            </script>
         </div>
+
 
         <!-- 04. HISTORY -->
 

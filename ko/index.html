@@ -1232,20 +1232,20 @@
             
             <!-- Top Row: VISION & MISSION -->
             <div style="display: flex; gap: 30px; margin-bottom:15px; align-items: stretch;">
-                <div class="glass-box" style="flex:3; padding: 30px; display: flex; flex-direction: column; justify-content: center;">
+                <div class="glass-box" style="flex:3; padding: 30px; display: flex; flex-direction: column; justify-content: flex-start;">
                     <h2 style="color:var(--neon-green); font-size:16px; font-family:var(--font-sub); margin-bottom: 25px;">VISION</h2>
                     <h3 style="font-size: 28px; color: white; font-weight: 700; line-height: 1.2; margin-bottom: 25px;">紐⑤퉴由ы떚 ?듭떖 ?쇱꽌쨌?쒖뼱 ?붾（?섏쑝濡?br>2035??湲濡쒕쾶 Top-Tier ?뚰듃??/h3>
                     <p style="font-size:16px; color:var(--text-muted); font-weight:400; line-height: 1.8;">
-                        EMT???먮룞李④? ???덉쟾?섍쾶 ?щ┫ ???덈뒗 ?쇱꽌쨌?≪텛?먯??湲곗닠??留뚮벊?덈떎.<br>2035?꾩뿉???쇱꽌 + MCU + SW ?듯빀紐⑤뱢濡?怨좉컼??癒쇱옄 李얜뒗 "誘우쓣 留뚰븳 ?뚰듃??媛 ?섎뒗 寃껋씠 紐⑺몴?낅땲??
+                        EMT???먮룞李④? ???덉쟾?섍쾶 ?щ┫ ???덈뒗 ?쇱꽌쨌?≪텛?먯??湲곗닠??留뚮벊?덈떎.<br>2035?꾩뿉???쇱꽌 + MCU + SW ?듯빀紐⑤뱢濡?怨좉컼??癒쇱? 李얜뒗 "誘우쓣 留뚰븳 ?뚰듃??媛 ?섎뒗 寃껋씠 紐⑺몴?낅땲??
                     </p>
                 </div>
-                <div class="glass-box" style="flex:3; padding: 30px;">
+                <div class="glass-box" style="flex:3; padding: 30px; display: flex; flex-direction: column; justify-content: flex-start;">
                     <h2 style="color:var(--neon-cyan); font-size:16px; font-family:var(--font-sub); margin-bottom: 15px;">MISSION</h2>
                     <h3 style="font-size: 24px; color: white; font-weight: 700; margin-bottom: 15px;">?덉쭏濡??좊ː瑜? 湲곗닠濡?誘몃옒瑜?留뚮뱺??/h3>
                     <div style="display:flex; gap:15px;">
                         <div style="flex:1; text-align:left;">
                             <div style="height:100px; border-radius:8px; overflow:hidden; margin-bottom:12px;"><img src="../assets/mission_1.png" style="width:100%; height:100%; object-fit:cover;"></div>
-                            <p style="font-size:14px; color:#ccc; line-height:1.5;">怨좉컼???좊ː瑜?理쒖슦?좎쑝濡??앷컖?섍퀬, 理쒓퀬???덉쭏怨??쒕퉬?ㅻ줈 蹂대떟?⑸땲??</p>
+                            <p style="font-size:14px; color:#ccc; line-height:1.5;">怨좉컼???좊ː瑜?理쒖슦?좎쑝濡??앷컻?섍퀬, 理쒓퀬???덉쭏怨??쒕퉬?ㅻ줈 蹂대떟?⑸땲??</p>
                         </div>
                         <div style="flex:1; text-align:left;">
                             <div style="height:100px; border-radius:8px; overflow:hidden; margin-bottom:12px;"><img src="../assets/mission_2.png" style="width:100%; height:100%; object-fit:cover;"></div>
@@ -1289,16 +1289,20 @@
                     <style>
                         /* CV Animation Styles */
                         .cv-circle.active {
-                            border: 6px solid transparent !important;
+                            border: 2px solid transparent !important; /* Keep same width as inactive to prevent shift */
                             background-image: linear-gradient(#000, #000), linear-gradient(135deg, #a8ff78 0%, #06b6d4 100%);
                             background-origin: border-box;
                             background-clip: content-box, border-box;
-                            box-shadow: 0 0 20px rgba(0,255,136,0.15);
+                            box-shadow: 0 0 20px rgba(0,255,136,0.15); /* Use shadow for glow */
                             transform: scale(1.05);
                         }
                         
                         body.light-mode .cv-circle { border-color: var(--border) !important; background: rgba(0,0,0,0.02); }
-                        body.light-mode .cv-circle.active { border-color: var(--neon-green) !important; box-shadow: 0 5px 15px rgba(33, 179, 114, 0.2); }
+                        body.light-mode .cv-circle.active { 
+                            border-color: transparent !important; /* Gradient handling */
+                            background-image: linear-gradient(#fff, #fff), linear-gradient(135deg, #a8ff78 0%, #06b6d4 100%);
+                            box-shadow: 0 5px 15px rgba(33, 179, 114, 0.2); 
+                        }
                         body.light-mode .cv-circle span { color: var(--text-primary) !important; }
                         body.light-mode .cv-circle.active span:last-child { color: var(--text-secondary) !important; }
                     </style>
