@@ -1,10 +1,62 @@
+﻿<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EMT E-Catalog | 誘몃옒 紐⑤퉴由ы떚 ?쇱꽌 & ?쒖뼱</title>
+    <meta name="description" content="EMT??誘몃옒 紐⑤퉴由ы떚 ?곗뾽???대걣?닿???湲濡쒕쾶 ?ㅻ쭏???쇱꽌 諛??쒖뼱 ?붾（???꾨Ц 湲곗뾽?낅땲??">
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Michroma&family=Rajdhani:wght@400;500;600;700&family=Syncopate:wght@700&display=swap" rel="stylesheet">
+    <!-- Three.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <!-- Deploy Trigger 2026-01-19 Fix Corruption -->
+    
+    <style>
+        /* ==================== 1. VARIABLES & RESET - THEME SYSTEM ==================== */
+        :root {
+            /* Font Variables (Shared) */
+            --font-head: 'Syncopate', sans-serif;
+            --font-sub: 'Michroma', sans-serif;
+            --font-body: 'Rajdhani', sans-serif;
+        }
+        
+        /* Dark Theme (Default) */
+        body {
+            --bg-deep: #050505;
+            --bg-secondary: #1a1a1a;
+            --neon-green: #00ff88;
+            --neon-cyan: #00ffff;
+            --text-primary: #ffffff;
+            --text-secondary: #cccccc;
+            --text-muted: #888888;
+            --glass-bg: rgba(20, 20, 20, 0.65);
+            --glass-bg-alt: rgba(30, 30, 30, 0.5);
+            --border: rgba(255, 255, 255, 0.2);
+            --border-light: rgba(255, 255, 255, 0.1);
+            --shadow-sm: 0 2px 8px rgba(0,0,0,0.4);
+            --shadow-md: 0 4px 20px rgba(0,0,0,0.5);
+            --shadow-lg: 0 10px 40px rgba(0,0,0,0.6);
+            --topbar-bg: linear-gradient(to bottom, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0) 100%);
+            --submenu-bg: rgba(10,10,10,0.95);
+            --mobile-nav-bg: rgba(5,5,5,0.98);
+            --vignette-bg: radial-gradient(circle, transparent 50%, rgba(0,0,0,0.85) 100%);
+            --logo-filter: grayscale(100%) brightness(1.2) contrast(0.9);
+            --slide-bg: transparent;
+            --hud-bg: rgba(0,0,0,0.5);
+            --hud-text: #aaa;
+            --hud-text-active: #fff;
+            --bg-img-filter: brightness(0.4);
+        }
+        
+        /* Light Theme - Airy & Premium Polish */
+```html
 <!DOCTYPE html>
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>EMT E-Catalog | 미래 모빌리티 센서 & 제어</title>
-    <meta name="description" content="EMT는 미래 모빌리티 산업을 이끌어가는 글로벌 스마트 센서 및 제어 솔루션 전문 기업입니다.">
+    <title>EMT E-Catalog | 誘몃옒 紐⑤퉴由ы떚 ?쇱꽌 & ?쒖뼱</title>
+    <meta name="description" content="EMT??誘몃옒 紐⑤퉴由ы떚 ?곗뾽???대걣?닿???湲濡쒕쾶 ?ㅻ쭏???쇱꽌 諛??쒖뼱 ?붾（???꾨Ц 湲곗뾽?낅땲??">
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Michroma&family=Rajdhani:wght@400;500;600;700&family=Syncopate:wght@700&display=swap" rel="stylesheet">
     <!-- Three.js -->
@@ -55,9 +107,9 @@
             --neon-green: #10ac84;
             --neon-cyan: #0984e3;
             --accent-warm: #e17055;
-            --text-primary: #2d3436;
-            --text-secondary: #636e72;
-            --text-muted: #b2bec3;
+            --text-primary: #1a1a1a;
+            --text-secondary: #444444;
+            --text-muted: #777777;
             --glass-bg: rgba(255, 255, 255, 0.9);
             --glass-bg-alt: rgba(255, 255, 255, 0.85);
             --border: rgba(0, 121, 255, 0.15);
@@ -126,14 +178,14 @@
             box-shadow: var(--shadow-md);
         }
         .theme-toggle::before {
-            content: '🌙';
+            content: '?뙔';
             position: absolute;
             left: 8px;
             font-size: 13px;
             opacity: 0.7;
         }
         .theme-toggle::after {
-            content: '☀️';
+            content: '?截?;
             position: absolute;
             right: 8px;
             font-size: 13px;
@@ -968,25 +1020,25 @@
     <!-- NAVIGATION -->
     <!-- MOBILE NAVIGATION OVERLAY -->
     <div class="mobile-nav" id="mobileNav">
-        <div class="mobile-nav-close" onclick="toggleMobile()">✕ CLOSE</div>
+        <div class="mobile-nav-close" onclick="toggleMobile()">??CLOSE</div>
         <div class="m-link-group">
             <div class="m-link-head">About us</div>
-            <div class="m-link" onclick="go(1); toggleMobile();">기업 개요</div>
-            <div class="m-link" onclick="go(2); toggleMobile();">비전 & 미션</div>
-            <div class="m-link" onclick="go(3); toggleMobile();">파트너사</div>
-            <div class="m-link" onclick="go(4); toggleMobile();">모빌리티 제어</div>
-            <div class="m-link" onclick="go(5); toggleMobile();">ESG 경영</div>
+            <div class="m-link" onclick="go(1); toggleMobile();">湲곗뾽 媛쒖슂</div>
+            <div class="m-link" onclick="go(2); toggleMobile();">鍮꾩쟾 & 誘몄뀡</div>
+            <div class="m-link" onclick="go(3); toggleMobile();">?뚰듃?덉궗</div>
+            <div class="m-link" onclick="go(4); toggleMobile();">紐⑤퉴由ы떚 ?쒖뼱</div>
+            <div class="m-link" onclick="go(5); toggleMobile();">ESG 寃쎌쁺</div>
         </div>
         <div class="m-link-group">
             <div class="m-link-head">Mobility Products</div>
-            <div class="m-link" onclick="go(6); toggleMobile();">제품 개요</div>
-            <div class="m-link" onclick="go(7); toggleMobile();">센서</div>
-            <div class="m-link" onclick="go(11); toggleMobile();">액추에이터</div>
-            <div class="m-link" onclick="go(12); toggleMobile();">컨트롤러</div>
+            <div class="m-link" onclick="go(6); toggleMobile();">?쒗뭹 媛쒖슂</div>
+            <div class="m-link" onclick="go(7); toggleMobile();">?쇱꽌</div>
+            <div class="m-link" onclick="go(11); toggleMobile();">?≪텛?먯??/div>
+            <div class="m-link" onclick="go(12); toggleMobile();">而⑦듃濡ㅻ윭</div>
         </div>
         <div class="m-link-group">
             <div class="m-link-head">Support</div>
-            <div class="m-link" onclick="go(document.querySelectorAll('.slide').length - 1); toggleMobile();">오시는 길</div>
+            <div class="m-link" onclick="go(document.querySelectorAll('.slide').length - 1); toggleMobile();">?ㅼ떆??湲?/div>
         </div>
         
         <!-- Mobile Language Switch -->
@@ -1006,25 +1058,25 @@
         <div class="gnb-menu">
             <div class="gnb-item">About us
                 <div class="submenu">
-                    <div class="sub-link" onclick="go(1)">기업 개요</div>
-                    <div class="sub-link" onclick="go(2)">비전 & 미션</div>
-                    <div class="sub-link" onclick="go(3)">파트너</div>
-                    <div class="sub-link" onclick="go(4)">모빌리티 제어</div>
+                    <div class="sub-link" onclick="go(1)">湲곗뾽 媛쒖슂</div>
+                    <div class="sub-link" onclick="go(2)">鍮꾩쟾 & 誘몄뀡</div>
+                    <div class="sub-link" onclick="go(3)">?뚰듃??/div>
+                    <div class="sub-link" onclick="go(4)">紐⑤퉴由ы떚 ?쒖뼱</div>
 
-                    <div class="sub-link" onclick="go(5)">ESG 경영</div>
+                    <div class="sub-link" onclick="go(5)">ESG 寃쎌쁺</div>
                 </div>
             </div>
             <div class="gnb-item">Products
                 <div class="submenu">
-                    <div class="sub-link" onclick="go(6)">제품 개요</div>
-                    <div class="sub-link" onclick="go(7)">센서 (SENSORS)</div>
-                    <div class="sub-link" onclick="go(11)">액추에이터 (ACTUATORS)</div>
-                    <div class="sub-link" onclick="go(12)">컨트롤러 (CONTROLLERS)</div>
+                    <div class="sub-link" onclick="go(6)">?쒗뭹 媛쒖슂</div>
+                    <div class="sub-link" onclick="go(7)">?쇱꽌 (SENSORS)</div>
+                    <div class="sub-link" onclick="go(11)">?≪텛?먯??(ACTUATORS)</div>
+                    <div class="sub-link" onclick="go(12)">而⑦듃濡ㅻ윭 (CONTROLLERS)</div>
                 </div>
             </div>
             <div class="gnb-item">Support
                 <div class="submenu">
-                    <div class="sub-link" onclick="go(document.querySelectorAll('.slide').length - 1)">오시는 길</div>
+                    <div class="sub-link" onclick="go(document.querySelectorAll('.slide').length - 1)">?ㅼ떆??湲?/div>
                 </div>
             </div>
         </div>
@@ -1036,7 +1088,7 @@
             <a href="/" class="lang-link">EN</a>
         </div>
         <!-- Mobile Menu Button -->
-        <div class="mobile-menu-btn" onclick="toggleMobile()">☰</div>
+        <div class="mobile-menu-btn" onclick="toggleMobile()">??/div>
     </nav>
 
     <!-- CONTENT STAGE -->
@@ -1050,7 +1102,7 @@
                     SMART SENSOR<br>& CONTROL
                 </h1>
                 <p style="color:#ddd; font-size: 24px; max-width: 900px; line-height: 1.6; font-weight: 300;">
-                    미래 모빌리티 산업을 이끌어가는 글로벌 스마트 센서 기업으로 도약합니다.
+                    誘몃옒 紐⑤퉴由ы떚 ?곗뾽???대걣?닿???湲濡쒕쾶 ?ㅻ쭏???쇱꽌 湲곗뾽?쇰줈 ?꾩빟?⑸땲??
                 </p>
                 <div style="height: 50px;"></div>
             </div>
@@ -1064,7 +1116,7 @@
             </div>
 
             <span class="slide-tag">ABOUT US</span>
-            <h1 class="slide-title">기업 개요</h1>
+            <h1 class="slide-title">湲곗뾽 媛쒖슂</h1>
             
             <style>
                 @media (max-width: 1024px) {
@@ -1103,30 +1155,30 @@
                     <!-- Left: Slogan & Text (60%) -->
                     <div class="overview-text-col" style="flex: 5.5; display: flex; flex-direction: column; justify-content: center; padding: 40px 0;">
                         <h2 style="font-size: 38px; color: #333; line-height: 1.3; margin-bottom: 50px; font-weight:700;">
-                            <span style="color:#333">전동화</span>와 <span style="color:#333">지능화</span>로 <br>
-                            미래 모빌리티 통합모듈, 제어SW, 데이터 옵션을 <br>
-                            중심으로 포트폴리오 재편
+                            <span style="color:#333">?꾨룞??/span>? <span style="color:#333">吏?ν솕</span>濡?<br>
+                            誘몃옒 紐⑤퉴由ы떚 ?듯빀紐⑤뱢, ?쒖뼱SW, ?곗씠???듭뀡??<br>
+                            以묒떖?쇰줈 ?ы듃?대━???ы렪
                         </h2>
                         <p style="font-size: 18px; color: #333; line-height: 1.8; max-width: 95%;">
-                            EMT는 글로벌 Tier-1 고객사에 스마트 센서와 액추에이터를 공급해온 기술력을 바탕으로 고품질의 신뢰성, 원가 및 납기 경쟁력, 그리고 안정적인 판매 기반을 갖추고 있습니다. EMT는 센서와 액추에이터를 넘어 IoT, SW, 데이터 기반의 전장 솔루션 기업으로 도약하며 고객과 함께 미래를 열어가겠습니다.
+                            EMT??湲濡쒕쾶 Tier-1 怨좉컼?ъ뿉 ?ㅻ쭏???쇱꽌? ?≪텛?먯?곕? 怨듦툒?댁삩 湲곗닠?μ쓣 諛뷀깢?쇰줈 怨좏뭹吏덉쓽 ?좊ː?? ?먭? 諛??⑷린 寃쎌웳?? 洹몃━怨??덉젙?곸씤 ?먮ℓ 湲곕컲??媛뽰텛怨??덉뒿?덈떎. EMT???쇱꽌? ?≪텛?먯?곕? ?섏뼱 IoT, SW, ?곗씠??湲곕컲???꾩옣 ?붾（??湲곗뾽?쇰줈 ?꾩빟?섎ŉ 怨좉컼怨??④퍡 誘몃옒瑜??댁뼱媛寃좎뒿?덈떎.
                         </p>
 
                         <!-- Stats moved here -->
                         <div style="display: flex; gap: 20px; margin-top: 60px;">
                             <div style="flex:1;">
-                                <div style="font-size: 16px; color: #000; margin-bottom: 8px; font-weight: 600; opacity:0.8;">연구개발 경험</div>
-                                <div style="font-size: 42px; font-weight: 700; color: #000; margin-bottom: 10px;">100여 개</div>
-                                <p class="stats-desc" style="font-size: 14px; color: #555; line-height: 1.4;">30년 이상 축적된 연구개발 경험으로 스마트 모빌리티 제어 기술을 지속적으로 혁신하며, 산업 전반의 효율성과 안전성을 높입니다</p>
+                                <div style="font-size: 16px; color: #000; margin-bottom: 8px; font-weight: 600; opacity:0.8;">?곌뎄媛쒕컻 寃쏀뿕</div>
+                                <div style="font-size: 42px; font-weight: 700; color: #000; margin-bottom: 10px;">100??媛?/div>
+                                <p class="stats-desc" style="font-size: 14px; color: #555; line-height: 1.4;">30???댁긽 異뺤쟻???곌뎄媛쒕컻 寃쏀뿕?쇰줈 ?ㅻ쭏??紐⑤퉴由ы떚 ?쒖뼱 湲곗닠??吏?띿쟻?쇰줈 ?곸떊?섎ŉ, ?곗뾽 ?꾨컲???⑥쑉?깃낵 ?덉쟾?깆쓣 ?믪엯?덈떎</p>
                             </div>
                             <div style="flex:1;">
-                                <div style="font-size: 16px; color: #000; margin-bottom: 8px; font-weight: 600; opacity:0.8;">글로벌 고객사 협력</div>
-                                <div style="font-size: 42px; font-weight: 700; color: #000; margin-bottom: 10px;">30여 개</div>
-                                <p class="stats-desc" style="font-size: 14px; color: #555; line-height: 1.4;">전 세계 100여 개 고객사와 협력하며 맞춤형 솔루션을 제공, 다양한 산업 환경에서 신뢰받는 파트너로 자리매김하고 있습니다.</p>
+                                <div style="font-size: 16px; color: #000; margin-bottom: 8px; font-weight: 600; opacity:0.8;">湲濡쒕쾶 怨좉컼???묐젰</div>
+                                <div style="font-size: 42px; font-weight: 700; color: #000; margin-bottom: 10px;">30??媛?/div>
+                                <p class="stats-desc" style="font-size: 14px; color: #555; line-height: 1.4;">???멸퀎 100??媛?怨좉컼?ъ? ?묐젰?섎ŉ 留욎땄???붾（?섏쓣 ?쒓났, ?ㅼ뼇???곗뾽 ?섍꼍?먯꽌 ?좊ː諛쏅뒗 ?뚰듃?덈줈 ?먮━留ㅺ??섍퀬 ?덉뒿?덈떎.</p>
                             </div>
                             <div style="flex:1;">
-                                <div style="font-size: 16px; color: #000; margin-bottom: 8px; font-weight: 600; opacity:0.8;">특허 및 기술 인증 보유</div>
-                                <div style="font-size: 42px; font-weight: 700; color: #000; margin-bottom: 10px;">50여 건</div>
-                                <p class="stats-desc" style="font-size: 14px; color: #555; line-height: 1.4;">50여 건 이상의 특허와 기술 인증을 통해 EMT의 독자적 기술력과 글로벌 경쟁력을 입증하며, 혁신적 솔루션을 제공합니다</p>
+                                <div style="font-size: 16px; color: #000; margin-bottom: 8px; font-weight: 600; opacity:0.8;">?뱁뿀 諛?湲곗닠 ?몄쬆 蹂댁쑀</div>
+                                <div style="font-size: 42px; font-weight: 700; color: #000; margin-bottom: 10px;">50??嫄?/div>
+                                <p class="stats-desc" style="font-size: 14px; color: #555; line-height: 1.4;">50??嫄??댁긽???뱁뿀? 湲곗닠 ?몄쬆???듯빐 EMT???낆옄??湲곗닠?κ낵 湲濡쒕쾶 寃쎌웳?μ쓣 ?낆쬆?섎ŉ, ?곸떊???붾（?섏쓣 ?쒓났?⑸땲??/p>
                             </div>
                         </div>
                         <style>
@@ -1144,28 +1196,28 @@
                         </style>
                         <table class="overview-table">
                             <tr>
-                                <th>회사명</th>
-                                <td>(주) 이엠티 (EMT)</td>
+                                <th>?뚯궗紐?/th>
+                                <td>(二? ?댁뿞??(EMT)</td>
                             </tr>
                             <tr>
-                                <th>설립일</th>
-                                <td>2010년 7월 14일</td>
+                                <th>?ㅻ┰??/th>
+                                <td>2010??7??14??/td>
                             </tr>
                             <tr>
-                                <th>본사 주소</th>
-                                <td>경남 김해시 주촌면 소망길 88 204호 (경남테크노파크)</td>
+                                <th>蹂몄궗 二쇱냼</th>
+                                <td>寃쎈궓 源?댁떆 二쇱큿硫??뚮쭩湲?88 204??(寃쎈궓?뚰겕?명뙆??</td>
                             </tr>
                             <tr>
-                                <th>주요 사업</th>
-                                <td>차량용 스마트 센서·모터(액추에이터)·컨트롤러 설계 및 제조</td>
+                                <th>二쇱슂 ?ъ뾽</th>
+                                <td>李⑤웾???ㅻ쭏???쇱꽌쨌紐⑦꽣(?≪텛?먯??쨌而⑦듃濡ㅻ윭 ?ㅺ퀎 諛??쒖“</td>
                             </tr>
                             <tr>
-                                <th>대표자</th>
-                                <td>고영호</td>
+                                <th>??쒖옄</th>
+                                <td>怨좎쁺??/td>
                             </tr>
                             <tr>
-                                <th>품질·환경 인증</th>
-                                <td>IATF 16949, ISO 14001 등</td>
+                                <th>?덉쭏쨌?섍꼍 ?몄쬆</th>
+                                <td>IATF 16949, ISO 14001 ??/td>
                             </tr>
                         </table>
                     </div>
@@ -1176,32 +1228,32 @@
         <!-- 03. VISION & MISSION -->
         <div class="slide">
             <span class="slide-tag">ABOUT US</span>
-            <h1 class="slide-title" style="margin-bottom: 15px;">비전 및 미션</h1>
+            <h1 class="slide-title" style="margin-bottom: 15px;">鍮꾩쟾 諛?誘몄뀡</h1>
             
             <!-- Top Row: VISION & MISSION -->
             <div style="display: flex; gap: 30px; margin-bottom:15px; align-items: stretch;">
                 <div class="glass-box" style="flex:3; padding: 30px; display: flex; flex-direction: column; justify-content: center;">
                     <h2 style="color:var(--neon-green); font-size:16px; font-family:var(--font-sub); margin-bottom: 25px;">VISION</h2>
-                    <h3 style="font-size: 28px; color: white; font-weight: 700; line-height: 1.2; margin-bottom: 25px;">모빌리티 핵심 센서·제어 솔루션으로<br>2035년 글로벌 Top-Tier 파트너</h3>
+                    <h3 style="font-size: 28px; color: white; font-weight: 700; line-height: 1.2; margin-bottom: 25px;">紐⑤퉴由ы떚 ?듭떖 ?쇱꽌쨌?쒖뼱 ?붾（?섏쑝濡?br>2035??湲濡쒕쾶 Top-Tier ?뚰듃??/h3>
                     <p style="font-size:16px; color:var(--text-muted); font-weight:400; line-height: 1.8;">
-                        EMT는 자동차가 더 안전하게 달릴 수 있는 센서·액추에이터 기술을 만듭니다.<br>2035년에는 센서 + MCU + SW 통합모듈로 고객이 먼저 찾는 "믿을 만한 파트너"가 되는 것이 목표입니다.
+                        EMT???먮룞李④? ???덉쟾?섍쾶 ?щ┫ ???덈뒗 ?쇱꽌쨌?≪텛?먯??湲곗닠??留뚮벊?덈떎.<br>2035?꾩뿉???쇱꽌 + MCU + SW ?듯빀紐⑤뱢濡?怨좉컼??癒쇱옄 李얜뒗 "誘우쓣 留뚰븳 ?뚰듃??媛 ?섎뒗 寃껋씠 紐⑺몴?낅땲??
                     </p>
                 </div>
                 <div class="glass-box" style="flex:3; padding: 30px;">
                     <h2 style="color:var(--neon-cyan); font-size:16px; font-family:var(--font-sub); margin-bottom: 15px;">MISSION</h2>
-                    <h3 style="font-size: 24px; color: white; font-weight: 700; margin-bottom: 15px;">품질로 신뢰를, 기술로 미래를 만든다</h3>
+                    <h3 style="font-size: 24px; color: white; font-weight: 700; margin-bottom: 15px;">?덉쭏濡??좊ː瑜? 湲곗닠濡?誘몃옒瑜?留뚮뱺??/h3>
                     <div style="display:flex; gap:15px;">
                         <div style="flex:1; text-align:left;">
                             <div style="height:100px; border-radius:8px; overflow:hidden; margin-bottom:12px;"><img src="../assets/mission_1.png" style="width:100%; height:100%; object-fit:cover;"></div>
-                            <p style="font-size:14px; color:#ccc; line-height:1.5;">고객의 신뢰를 최우선으로 생각하고, 최고의 품질과 서비스로 보답합니다.</p>
+                            <p style="font-size:14px; color:#ccc; line-height:1.5;">怨좉컼???좊ː瑜?理쒖슦?좎쑝濡??앷컖?섍퀬, 理쒓퀬???덉쭏怨??쒕퉬?ㅻ줈 蹂대떟?⑸땲??</p>
                         </div>
                         <div style="flex:1; text-align:left;">
                             <div style="height:100px; border-radius:8px; overflow:hidden; margin-bottom:12px;"><img src="../assets/mission_2.png" style="width:100%; height:100%; object-fit:cover;"></div>
-                            <p style="font-size:14px; color:#ccc; line-height:1.5;">Zero-Defect를 위해 통계적 공정 관리(SPC) 기법으로 공정을 관리합니다.</p>
+                            <p style="font-size:14px; color:#ccc; line-height:1.5;">Zero-Defect瑜??꾪빐 ?듦퀎??怨듭젙 愿由ъ? SPC) 湲곕쾿?쇰줈 怨듭젙??愿由ы빀?덈떎.</p>
                         </div>
                         <div style="flex:1; text-align:left;">
                             <div style="height:100px; border-radius:8px; overflow:hidden; margin-bottom:12px;"><img src="../assets/mission_3.png" style="width:100%; height:100%; object-fit:cover;"></div>
-                            <p style="font-size:14px; color:#ccc; line-height:1.5;">ESG 경영으로 모두가 안전하고 지속 가능한 기업 환경을 만들어가고 있습니다.</p>
+                            <p style="font-size:14px; color:#ccc; line-height:1.5;">ESG 寃쎌쁺?쇰줈 紐⑤몢媛 ?덉쟾?섍퀬 吏??媛?ν븳 湲곗뾽 ?섍꼍??留뚮뱾?닿?怨??덉뒿?덈떎.</p>
                         </div>
                     </div>
                 </div>
@@ -1215,23 +1267,23 @@
                     <div style="display:flex; gap:5px; justify-content: space-between; align-items: center; width: 100%;">
                         <!-- Value 1 -->
                         <div class="cv-circle active" style="width:130px; height:130px; flex-shrink: 1; border-radius:50%; border:2px solid #333; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; transition: all 0.3s ease; padding: 10px;">
-                            <span style="font-size:13px; color:white; font-weight:700; margin-bottom:6px; line-height:1.1;">고객 가치</span>
-                            <span style="font-size:10px; color:#aaa; line-height:1.2;">고객 성공 = <br>EMT 성공</span>
+                            <span style="font-size:13px; color:white; font-weight:700; margin-bottom:6px; line-height:1.1;">怨좉컼 媛移?/span>
+                            <span style="font-size:10px; color:#aaa; line-height:1.2;">怨좉컼 ?깃났 = <br>EMT ?깃났</span>
                         </div>
                         <!-- Value 2 -->
                         <div class="cv-circle" style="width:130px; height:130px; flex-shrink: 1; border-radius:50%; border:2px solid #333; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; transition: all 0.3s ease; padding: 10px;">
-                            <span style="font-size:13px; color:white; font-weight:700; margin-bottom:6px; line-height:1.1;">근면 (勤勉)</span>
-                            <span style="font-size:10px; color:#aaa; line-height:1.2;">근면하고 정성스러운<br>참된 태도</span>
+                            <span style="font-size:13px; color:white; font-weight:700; margin-bottom:6px; line-height:1.1;">洹쇰㈃ (?ㅵ땳)</span>
+                            <span style="font-size:10px; color:#aaa; line-height:1.2;">洹쇰㈃?섍퀬 ?뺤꽦?ㅻ윭??br>李몃맂 ?쒕룄</span>
                         </div>
                         <!-- Value 3 -->
                         <div class="cv-circle" style="width:130px; height:130px; flex-shrink: 1; border-radius:50%; border:2px solid #333; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; transition: all 0.3s ease; padding: 10px;">
-                            <span style="font-size:13px; color:white; font-weight:700; margin-bottom:6px; line-height:1.1;">창조 (創造)</span>
-                            <span style="font-size:10px; color:#aaa; line-height:1.2;">무에서 유를<br>만들어내는 정신</span>
+                            <span style="font-size:13px; color:white; font-weight:700; margin-bottom:6px; line-height:1.1;">李쎌“ (?들?</span>
+                            <span style="font-size:10px; color:#aaa; line-height:1.2;">臾댁뿉???좊?<br>留뚮뱾?대궡???뺤떊</span>
                         </div>
                         <!-- Value 4 -->
                         <div class="cv-circle" style="width:130px; height:130px; flex-shrink: 1; border-radius:50%; border:2px solid #333; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; transition: all 0.3s ease; padding: 10px;">
-                            <span style="font-size:13px; color:white; font-weight:700; margin-bottom:6px; line-height:1.1;">인화 (人和)</span>
-                            <span style="font-size:10px; color:#aaa; line-height:1.2; word-break: keep-all;">여러 사람이 서로<br>아끼고 도와주며<br>화합하는 정신</span>
+                            <span style="font-size:13px; color:white; font-weight:700; margin-bottom:6px; line-height:1.1;">?명솕 (雅뷴뭽)</span>
+                            <span style="font-size:10px; color:#aaa; line-height:1.2; word-break: keep-all;">?щ윭 ?щ엺???쒕줈<br>?꾨겮怨??꾩?二쇰ŉ<br>?뷀빀?섎뒗 ?뺤떊</span>
                         </div>
                     </div>
                     <style>
@@ -1279,14 +1331,14 @@
                     <h2 style="color:var(--text-muted); font-size:16px; font-family:var(--font-sub); margin-bottom:25px;">OUR GOALS <span style="opacity: 0.5; margin-left: 8px;">(2025 ~ 2030)</span></h2>
                     <div style="display:flex; gap:30px;">
                         <div style="flex:1;">
-                            <h3 style="color:white; font-size:17px; margin-bottom:12px; font-weight: 600;">불량률 감소</h3>
+                            <h3 style="color:white; font-size:17px; margin-bottom:12px; font-weight: 600;">遺덈웾瑜?媛먯냼</h3>
                             <p style="margin-bottom:12px;"><span style="font-size:42px; color:var(--neon-green); font-weight:700;">Zero</span><span style="color:var(--text-muted); font-size:16px; margin-left:8px;">ppm</span></p>
-                            <p style="font-size:15px; color:#888; line-height:1.5;">2030년까지 전 공정의 스마트 품질 관리와 자동화 검증 시스템을 통해 Zero Defect 실현을 목표로 합니다</p>
+                            <p style="font-size:15px; color:#888; line-height:1.5;">2030?꾧퉴吏 ??怨듭젙???ㅻ쭏???덉쭏 愿由ъ? ?먮룞??寃利??쒖뒪?쒖쓣 ?듯빐 Zero Defect ?ㅽ쁽??紐⑺몴濡??⑸땲??/p>
                         </div>
                         <div style="flex:1;">
-                            <h3 style="color:white; font-size:17px; margin-bottom:12px; font-weight: 600;">탄소 배출 감축</h3>
-                            <p style="margin-bottom:12px;"><span style="font-size:42px; color:var(--neon-green); font-weight:700;">30</span><span style="color:var(--text-muted); font-size:16px; margin-left:8px;">% (2020년 대비)</span></p>
-                            <p style="font-size:15px; color:#888; line-height:1.5;">2030년까지 공정 효율 개선과 재생에너지 전환을 통해 2020년 대비 탄소 배출량을 30% 감축할 계획입니다.</p>
+                            <h3 style="color:white; font-size:17px; margin-bottom:12px; font-weight: 600;">?꾩냼 諛곗텧 媛먯텞</h3>
+                            <p style="margin-bottom:12px;"><span style="font-size:42px; color:var(--neon-green); font-weight:700;">30</span><span style="color:var(--text-muted); font-size:16px; margin-left:8px;">% (2020???鍮?</span></p>
+                            <p style="font-size:15px; color:#888; line-height:1.5;">2030?꾧퉴吏 怨듭젙 ?⑥쑉 媛쒖꽑怨??ъ깮?먮꼫吏 ?꾪솚???듯빐 2020???鍮??꾩냼 諛곗텧?됱쓣 30% 媛먯텞??怨꾪쉷?낅땲??</p>
                         </div>
                     </div>
                 </div>
@@ -1299,13 +1351,13 @@
         <!-- 05. PARTNERS -->
         <div class="slide">
             <span class="slide-tag">ABOUT US</span>
-            <h1 class="slide-title">파트너</h1>
+            <h1 class="slide-title">?뚰듃??/h1>
             
             <div class="partner-text-container" style="text-align:center; margin-bottom:20px;">
                 <div style="color:var(--neon-green); font-size:18px; font-weight:700; font-family:var(--font-sub); margin-top:5px; opacity:0.8;">Since 2010</div>
-                <h2 style="color:white; font-size:32px; font-weight:700; margin: 10px 0;">축적된 센서와 제어기술로 글로벌 기업과 함께 성장합니다</h2>
+                <h2 style="color:white; font-size:32px; font-weight:700; margin: 10px 0;">異뺤쟻???쇱꽌? ?쒖뼱湲곗닠濡?湲濡쒕쾶 湲곗뾽怨??④퍡 ?깆옣?⑸땲??/h2>
                 <p style="color:#bfbfbf; font-size:18px; line-height:1.6; max-width:1050px; margin: 0 auto; font-weight: 500;">
-                    세계 유수 기업들과 협약을 맺으며 스마트 모빌리티와 자율주행 제어 분야에서 글로벌 리더로 도약하고 있습니다
+                    ?멸퀎 ?좎닔 湲곗뾽?ㅺ낵 ?묒빟??留븐쑝硫??ㅻ쭏??紐⑤퉴由ы떚? ?먯쑉二쇳뻾 ?쒖뼱 遺꾩빞?먯꽌 湲濡쒕쾶 由щ뜑濡??꾩빟?섍퀬 ?덉뒿?덈떎
                 </p>
             </div>
 
@@ -1354,854 +1406,39 @@
             <span class="slide-tag">ABOUT US</span>
             <h1 class="slide-title">MOBILITY CONTROL</h1>
             <h2 style="font-size:20px; color:#fff; margin-bottom:30px; text-align: center; font-weight:300; margin-top:-10px; opacity:0.8;">
-                미래 모빌리티 제어를 위한 주요 기술 영역을 제시합니다
-            </h2>
-            
-            <div class="mobility-container">
-                <!-- Left: Tabs -->
-                <div class="mob-tab-list">
-                    <!-- 1. AGV -->
-                    <div class="mob-tab active" onclick="setMobTab(0)">
-                        <div class="mob-tab-head">AGV / AMR Navigation</div>
-                        <div class="mob-tab-body">
-                            AGV/AMR 제어 기술은 센서 융합 기반 SLAM을 활용해 실시간 위치를 추정하고, 경로 계획 및 장애물 회피 알고리즘으로 안전하고 효율적인 이동을 지원합니다. 또한 저전력 모터 제어와 배터리 최적화 기술로 운행 효율을 높이며, API 연동 기반의 플릿 매니지먼트를 통해 다수의 로봇을 통합적으로 관리할 수 있습니다.
-                        </div>
-                    </div>
-                    
-                    <!-- 2. Physical AI -->
-                    <div class="mob-tab" onclick="setMobTab(1)">
-                        <div class="mob-tab-head">Physical AI</div>
-                        <div class="mob-tab-body">
-                            인공지능 알고리즘을 물리적 시스템과 결합하여, 로봇·기계가 실제 환경을 인식하고 판단하며 자율적으로 행동할 수 있도록 하는 기술이며 비전, 라이다, 촉각, 힘 센서등 다양한 센서 융합 기반 인지 기술을 통해 주변 환경과 객체의 상태를 실시간으로 이해하고, 이를 바탕으로 상황에 맞는 행동을 생성합니다.
-                        </div>
-                    </div>
-
-                    <!-- 3. Personal Mobility -->
-                    <div class="mob-tab" onclick="setMobTab(2)">
-                        <div class="mob-tab-head">Personal Mobility / Assistive Tech</div>
-                        <div class="mob-tab-body">
-                            센서 융합 기반 인지 기술을 활용하여 사용자의 상태와 주변 환경을 실시간으로 인식하고, 비전, 초음파, IMU, 생체 센서 등을 통해 장애물, 지면 상태, 사용자의 움직임을 감지하며, 이를 바탕으로 경로 안내 및 충돌 방지 알고리즘을 적용해 실내·외 환경 모두에서 안정적인 이동을 가능하게 최적화된 서비스를 제공합니다.
-                        </div>
-                    </div>
-
-                    <!-- 4. Drone -->
-                    <div class="mob-tab" onclick="setMobTab(3)">
-                        <div class="mob-tab-head">Drone Delivery Control</div>
-                        <div class="mob-tab-body">
-                            비행 제어 알고리즘과 추력·자세 제어 최적화를 통해 안정적인 호버링과 정확한 이착륙을 지원하며, 배터리 관리 시스템 (BMS)과 에너지 효율 기반 비행 전략으로 비행 시간과 운송 효율을 극대화한다. 더불어 통신 연동 기반 관제 및 플릿 매니지먼트 시스템을 통해 다수의 드론을 통합적으로 관리하고, 임무 할당, 비행 상태 모니터링, 이상 상황 대응을 수행함으로써 안전하고 효율적인 드론 배송 서비스를 구현합니다.
-                        </div>
-                    </div>
-
-                    <!-- 5. Maritime -->
-                    <div class="mob-tab" onclick="setMobTab(4)">
-                        <div class="mob-tab-head">Maritime Autonomy Systems</div>
-                        <div class="mob-tab-body">
-                            해상 자율운항 시스템은 센서 융합 기반 항법 기술(GNSS, IMU, 레이더, 라이다, AIS 등) 을 활용하여 선박의 위치와 자세, 주변 해상 환경을 실시간으로 인식한다. 이를 통해 기상 변화와 파랑, 조류 등 복합적인 해상 조건에서도 안정적인 항로 추적이 가능하며, 자율 항로 계획 (Route Planning)과 충돌 회피 알고리즘을 적용해 국제해상충돌예방규칙 (COLREGs)을 준수하는 안전한 운항을 지원합니다.
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Right: Image Display -->
-                <div class="mob-img-display">
-                    <img id="mobDisplayImg" src="../assets/agv.jpg" onerror="this.src='https://via.placeholder.com/800x600'">
-                </div>
-            </div>
-
-            <style>
-                .mobility-container { display: flex; width: 100%; height: 65%; gap: 60px; max-width: 1600px; margin: 0 auto; align-items:flex-start; }
-                /* Mobile Navigation Fix */
-                @media (max-width: 1279px) {
-                    .mobility-container { flex-direction: column-reverse; height: auto; gap: 30px; }
-                    .mob-tab-list { width: 100%; padding-top: 0; }
-                    .mob-img-display { width: 100%; height: 350px; min-height: 250px; margin-bottom: 20px; }
-                    .mob-tab-head { font-size: 18px; }
-                }
-                .mob-tab-list { width: 45%; display: flex; flex-direction: column; justify-content: flex-start; gap: 0; padding-top:10px; }
-                
-                .mob-tab { border-bottom: 0px solid rgba(255,255,255,0.1); cursor: pointer; padding: 15px 0; transition: 0.3s; position: relative; }
-                
-                .mob-tab-head { font-size: 20px; font-weight: 700; color: #666; transition: 0.3s; font-family: var(--font-sub); display:flex; align-items:center; padding-left: 15px; }
-                .mob-tab:hover .mob-tab-head { color: #aaa; }
-                
-                .mob-tab-body { 
-                    max-height: 0; overflow: hidden; opacity: 0; transition: all 0.5s cubic-bezier(0.25, 1, 0.5, 1);
-                    font-size: 15px; color: #ccc; line-height: 1.6; padding-left: 15px; padding-right: 20px;
-                }
-
-                /* Active State */
-                .mob-tab.active .mob-tab-head { color: #fff; font-size: 24px; text-shadow: none; }
-                .mob-tab.active .mob-tab-body { max-height: 300px; opacity: 1; margin-top: 15px; margin-bottom: 15px; }
-                
-                /* Gradient Indicator for active tab */
-                .mob-tab::before {
-                    content: ''; position: absolute; left: 0; top: 18px; bottom: 18px; width: 3px; 
-                    background: linear-gradient(to bottom, var(--neon-green), var(--neon-cyan));
-                    opacity: 0; transition: 0.3s;
-                }
-                .mob-tab.active::before { opacity: 1; top: 20px; bottom: auto; height: 30px; } /* Initial height for head */
-                .mob-tab.active::before { height: calc(100% - 30px); top: 15px; } /* Full height line */
-
-                .mob-img-display { width: 55%; height: 100%; border-radius: 12px; overflow: hidden; box-shadow: 0 20px 50px rgba(0,0,0,0.5); border: 1px solid rgba(255,255,255,0.1); position:relative; }
-                .mob-img-display img { width: 100%; height: 100%; object-fit: cover; transition: 0.5s transform; position:absolute; top:0; left:0; }
-            </style>
-
-            <script>
-                const mobImages = [
-                    '../assets/agv.jpg',
-                    '../assets/physical_ai.png',
-                    '../assets/industry-05.png',
-                    '../assets/industry-02.png',
-                    '../assets/industry-03.png'
-                ];
-                window.setMobTab = function(idx) {
-                    // Update Tabs
-                    const tabs = document.querySelectorAll('.mob-tab');
-                    tabs.forEach(t => t.classList.remove('active'));
-                    tabs[idx].classList.add('active');
-                    
-                    // Update Image with Fade
-                    const imgEl = document.getElementById('mobDisplayImg');
-                    imgEl.style.opacity = 0;
-                    imgEl.style.transform = 'scale(1.1)';
-                    
-                    setTimeout(() => {
-                        imgEl.src = mobImages[idx];
-                        imgEl.onload = () => {
-                            imgEl.style.opacity = 1;
-                            imgEl.style.transform = 'scale(1)';
-                        };
-                        // Fallback in case onload assumes cached
-                        setTimeout(() => {
-                             imgEl.style.opacity = 1;
-                             imgEl.style.transform = 'scale(1)';
-                        }, 50);
-                    }, 300);
-                }
-            </script>
-        </div>
-
-
-        <!-- 07. ESG MANAGEMENT -->
-        <div class="slide" style="padding-top: 130px; padding-bottom: 15px;">
-            <span class="slide-tag">ABOUT US</span>
-            <h1 class="slide-title" style="margin-top:0px; margin-bottom: 20px; padding-left:5px;">Sustainability & ESG</h1>
-            <p style="text-align:center; color:#ddd; font-size:18px; line-height:1.6; max-width:1200px; margin:0 auto 10px auto;">
-                협력사와 함께 지속가능한 성장을 추구하고, 투명한 지배구조로 <br>글로벌 ESG 기준을 실천합니다.
-            </p>
-                        <!-- ESG Container -->
-            <!-- New ESG Container based on EMT - Global2 -->
-            <div class="esg-new-container" style="margin-top:5px; width:100%; max-width:1600px; margin-left:auto; margin-right:auto;">
-                <style>
-                    .esg-list { display: flex; gap: 30px; justify-content: center; list-style: none; padding: 0; flex-wrap: wrap; }
-                    .esg-item { flex: 1; min-width: 300px; text-align: left; }
-                    /* Mobile ESG Fix */
-                    @media (max-width: 1279px) {
-                        .esg-list { flex-direction: column; gap: 40px; }
-                        .esg-item { width: 100%; min-width: auto; }
-                    }
-                    .esg-pic { 
-                        width: 100%; height: 250px; overflow: hidden; border-radius: 12px; margin-bottom: 15px;
-                        border: 1px solid rgba(255,255,255,0.1); position: relative;
-                    }
-                    .esg-pic img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s; }
-                    .esg-item:hover .esg-pic img { transform: scale(1.05); }
-                    
-                    .esg-content .esg-title { 
-                        color: white; font-size: 28px; font-weight: 700; margin-bottom: 10px; 
-                        font-family: var(--font-sub);
-                    }
-                    .esg-content .esg-desc { 
-                        color: #aaa; font-size: 16px; line-height: 1.4; font-weight: 300;
-                    }
-                </style>
-                <ul class="esg-list">
-                    <li class="esg-item">
-                        <figure class="esg-pic">
-                            <img src="../assets/esg-01.png" alt="Environmental">
-                        </figure>
-                        <div class="esg-content">
-                            <div class="esg-title" style="color:var(--neon-green);">Environmental</div>
-                            <div class="esg-desc">저전력 하드웨어, 경량·모듈화 설계, <br>유해물질 저감, 친환경적인 생산</div>
-                        </div>
-                    </li>                  
-                    <li class="esg-item">
-                        <figure class="esg-pic">
-                            <img src="../assets/esg-02.png" alt="Social">
-                        </figure>
-                        <div class="esg-content">
-                            <div class="esg-title" style="color:#fff;">Social</div>
-                            <div class="esg-desc">직원 복지 제도, 다양성과 포용성, <br>지역사회 공헌</div>
-                        </div>
-                    </li>             
-                    <li class="esg-item">
-                        <figure class="esg-pic">
-                            <img src="../assets/esg-03.png" alt="Governance">
-                        </figure>
-                        <div class="esg-content">
-                            <div class="esg-title" style="color:var(--neon-cyan);">Governance</div>
-                            <div class="esg-desc">이사회 독립성과 다양성 확보 <br>주주권리보호, 투명하고 윤리적인 경영</div>
-                        </div>
-                    </li>
-                </ul>
-            </div>
-
-
-        </div>
-
-        <!-- 08. MOBILITY PRODUCTS OVERVIEW -->
-        <div class="slide">
-            <span class="slide-tag">TECHNOLOGY</span>
-            <h1 class="slide-title">Mobility Products</h1>
-            <p style="color:#aaa; font-size:20px; text-align:center; margin-bottom:20px; max-width:1400px; margin-left:auto; margin-right:auto; position:relative; z-index:10; word-break: keep-all;">
-                내연차, 전기차/수소차, 자율주행차, 로봇 등 다양한 분야에서 적용 되는 고정밀 센서와 <br>
-                모빌리티 솔루션을 통해 안정성과 효율성을 높이며 고객의 기술 경쟁력을 지원합니다.
-            </p>
-
-            <!-- CSS for Diagram -->
-            <style>
-                .car-diagram-container {
-                    position:relative; width:100%; height:80%; max-width:1600px; margin:-140px auto 0 auto; display:flex; justify-content:center; align-items:center;
-                }
-                
-                /* Icon & Text Styling */
-                .diagram-item-row { display:flex; align-items:center; gap:20px; margin-bottom:10px; position: relative; z-index: 2; }
-                .diagram-item-row:last-child { margin-bottom:0; }
-
-                .diagram-icon {
-                   width:60px; height:60px; border-radius:50%; display:flex; align-items:center; justify-content:center; flex-shrink:0;
-                   background: #000; border: 2px solid #555; transition:0.3s; overflow:hidden; padding:0;
-                }
-                .diagram-icon img { width: 100%; height: 100%; object-fit: cover; opacity: 0.8; transition:0.3s; }
-                
-                .diagram-text { max-width: 320px; }
-                .diagram-text h4 { color:#fff; font-size:17px; font-weight:700; margin-bottom:6px; font-family: var(--font-main); letter-spacing: -0.5px; }
-                .diagram-text p { color:#aaa; font-size:14px; line-height:1.5; margin:0; font-family: sans-serif; letter-spacing: -0.2px;}
-
-                /* Hover Effects */
-                .diagram-item-row:hover .diagram-icon { border-color: var(--neon-green); box-shadow: 0 0 15px rgba(0,255,136,0.3); transform: scale(1.1); }
-                .diagram-item-row:hover .diagram-icon img { opacity: 1; }
-                .diagram-item-row:hover h4 { color: var(--neon-green); }
-
-                /* Layout Columns */
-                /* Layout Columns - Widened spacing as requested */
-                .left-col { position:absolute; left:10%; top:10%; width:22%; display:flex; flex-direction:column; align-items:flex-end; text-align:right; }
-                .right-col { position:absolute; right:10%; top:5%; width:22%; display:flex; flex-direction:column; align-items:flex-start; text-align:left; }
-                
-                .left-col .diagram-item-row { flex-direction: row-reverse; } /* Text - Icon */
-                .right-col .diagram-item-row { flex-direction: row; } /* Icon - Text */
-
-                /* SVG Lines */
-                .diagram-lines { position:absolute; top:0; left:0; width:100%; height:100%; pointer-events:none; z-index:1; }
-                .diagram-line { stroke: rgba(255,255,255,0.3); stroke-width: 1px; }
-                body.light-mode .diagram-line { stroke: rgba(0,0,0,0.5); } /* Dark lines for light mode white background */
-
-                /* Light Mode: Solid Dark Boxes (No Transparency) as requested */
-                body.light-mode .diagram-item-row {
-                    background: #111 !important; /* Solid Dark Grey/Black */
-                    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-                    border: 1px solid #333;
-                }
-                
-                /* User Request: Make title text brighter inside the box */
-                body.light-mode .diagram-text h4 { color: #fff !important; }
-                body.light-mode .diagram-text p { color: #ccc !important; }
-                
-                /* User Request: Clean up car background (likely shadow issues) */
-                /* We add a dark backing to the car image to absorb shadow artifacts */
-                body.light-mode .car-bg-img {
-                    /* Create a dark "stage" behind the car so shadows blend in naturally */
-                    /* Or use a radial gradient to fade it out */
-                    background: radial-gradient(closest-side, #000 40%, transparent 100%);
-                    mix-blend-mode: multiply; /* Optional: helps blend if the page was not white */
-                    opacity: 0.8 !important; /* Slightly reduce intensity */
-                    border-radius: 50%;
-                }
-                
-                /* Adjust Icon Border in Light Mode */
-                body.light-mode .diagram-icon {
-                    border-color: #333; /* Darker border for icon circle */
-                    background: #222; /* Dark background for icon circle */
-                }
-                .diagram-line { stroke: rgba(255,255,255,0.3); stroke-width: 1px; fill: none; }
-                .dot-start { fill: rgba(255,255,255,0.3); }
-                .dot-end { fill: #fff; }
-                
-                /* Light Mode Dots */
-                body.light-mode .dot-start { fill: rgba(0,0,0,0.3); }
-                body.light-mode .dot-end { fill: #000; }
-
-                /* Mobile Layout */
-                /* Mobile & Small Laptop Layout */
-                @media (max-width: 1279px) {
-                    .car-diagram-container { flex-direction: column; height: auto; padding: 20px 0; }
-                    .car-bg-img, .diagram-lines { display: none; }
-                    .left-col, .right-col { position: static; width: 100%; align-items: flex-start; text-align: left; }
-                    .left-col .diagram-item-row { flex-direction: row; }
-                    .diagram-text { max-width: 100%; }
-                    .diagram-item-row { margin-bottom: 30px; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 20px; width: 100%; }
-                }
-
-                /* PC & Laptop Layout Fix: Lock Aspect Ratio to prevent line shifting */
-                @media (min-width: 1280px) {
-                    .car-diagram-container {
-                        position: relative;
-                        width: 100%; max-width: 100%;
-                        aspect-ratio: 16 / 9; /* Lock ratio to match SVG viewBox */
-                        margin: 0 auto;
-                        display: flex; justify-content: center; align-items: center;
-                    }
-                    .car-bg-img {
-                        width: 100%; height: 100%;
-                        object-fit: contain; /* Ensure image fits the locked ratio */
-                        margin-top: 0 !important; /* Remove individual shifts */
-                    }
-                    .diagram-lines { width: 100%; height: 100%; }
-
-                    /* Absolute Positioning for Items to match Lines exactly */
-                    .left-col, .right-col {
-                        position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-                        display: block; pointer-events: none; /* Overlay mode */
-                    }
-                    .diagram-item-row {
-                        /* Fixed width for uniform alignment & gap */
-                        position: absolute; width: 420px; z-index: 100;
-                        pointer-events: auto; margin: 0; border: none;
-                        background: rgba(0,0,0,0.6); border-radius: 8px; padding: 0 12px;
-                        backdrop-filter: blur(5px);
-                        display: flex; align-items: center; gap: 12px;
-                        height: 90px; 
-                    }
-                    /* Compact fonts for 5 items */
-                    .diagram-text h4 { font-size: 14px; margin-bottom: 3px; }
-                    .diagram-text p { font-size: 13px; line-height: 1.3; margin: 0; }
-                    
-                    /* Icon Brightness & Hover Glow */
-                    .diagram-icon {
-                        border-radius: 50%;
-                        transition: all 0.3s ease;
-                        padding: 2px; /* Space for border glow */
-                        border: 2px solid transparent; 
-                    }
-                    .diagram-icon img { 
-                        width: 45px; height: 45px; 
-                        filter: brightness(1.3); /* Brighter by default */
-                        transition: all 0.3s ease;
-                    }
-                    
-                    .diagram-item-row:hover .diagram-icon {
-                        border-color: rgba(0, 255, 255, 0.8);
-                        box-shadow: 0 0 15px rgba(0, 255, 255, 0.4);
-                        background: rgba(0,0,0,0.3);
-                    }
-                    .diagram-item-row:hover .diagram-icon img {
-                        filter: brightness(1.5);
-                        transform: scale(1.1);
-                    }
-                }
-            </style>
-
-            <div class="car-diagram-container">
-                
-                <!-- Central Car Image -->
-                <img class="car-bg-img" src="../assets/bg.png" alt="Car" style="width:100%; height:100%; object-fit:contain; opacity:1.0; z-index:0;" onerror="this.src='https://emt.uxis.co.kr/share/portal/img/main/bg.png'">
-                
-                <!-- Diagram SVG Overlay -->
-                <!-- Diagram SVG Overlay (Content generated by JS below) -->
-                <svg class="diagram-lines" id="diagramSvg"></svg>
-
-                <script>
-                    // ==========================================================
-                    // [USER CONFIG] DIAGRAM CONNECTION COORDINATES
-                    // You can adjust x2, y2 values here to move the white dots.
-                    // ==========================================================
-                    // ==========================================================
-                    // [USER CONFIG] DIAGRAM CONNECTION COORDINATES
-                    // You can adjust x2, y2 values here to move the white dots.
-                    // ==========================================================
-                    // ==========================================================
-                    // [USER CONFIG] DIAGRAM CONNECTION COORDINATES
-                    // You can adjust x2, y2 values here to move the white dots.
-                    // ==========================================================
-                    const diagramConfig = [
-                        // Left Items (Indices 0-4)
-                        { x1: '36%', y1: '13%', x2: '43%', y2: '50%', isLeft: true }, 
-                        { x1: '36%', y1: '29%', x2: '46%', y2: '66%', isLeft: true }, 
-                        { x1: '36%', y1: '45%', x2: '41%', y2: '66%', isLeft: true }, 
-                        { x1: '36%', y1: '61%', x2: '47%', y2: '78%', isLeft: true },
-                        { x1: '36%', y1: '77%', x2: '46%', y2: '86%', isLeft: true }, 
-                        
-                        // Right Items (Indices 5-9)
-                        { x1: '64%', y1: '13%', x2: '56%', y2: '52%', isLeft: false }, 
-                        { x1: '64%', y1: '29%', x2: '55%', y2: '66%', isLeft: false }, 
-                        { x1: '64%', y1: '45%', x2: '59%', y2: '68%', isLeft: false }, 
-                        { x1: '64%', y1: '61%', x2: '58%', y2: '82%', isLeft: false },
-                        { x1: '64%', y1: '77%', x2: '56%', y2: '85%', isLeft: false }
-                    ];
-
-                    function renderDiagram() {
-                        const svg = document.getElementById('diagramSvg');
-                        const container = document.querySelector('.car-diagram-container');
-                        if(!svg || !container) return;
-
-                        // 1. FLATTEN DOM (Unwrap items from cols to ensure shared coordinate space)
-                        const leftCol = container.querySelector('.left-col');
-                        const rightCol = container.querySelector('.right-col');
-                        
-                        if (leftCol) {
-                            while(leftCol.firstChild) container.appendChild(leftCol.firstChild);
-                            leftCol.remove();
-                        }
-                        if (rightCol) {
-                            while(rightCol.firstChild) container.appendChild(rightCol.firstChild);
-                            rightCol.remove();
-                        }
-
-                        // 2. Select All Items (Now siblings in container)
-                        const items = Array.from(container.querySelectorAll('.diagram-item-row'));
-                        
-                        // 3. Responsive Check
-                        const isPC = window.innerWidth >= 1280;
-
-                        if (!isPC) {
-                            // Mobile: Clear absolute positioning style
-                            items.forEach(el => {
-                                el.style.position = ''; 
-                                el.style.left = ''; el.style.top = ''; 
-                                el.style.right = ''; el.style.bottom = '';
-                                el.style.transform = '';
-                            });
-                            svg.innerHTML = '';
-                            return;
-                        }
-
-                        // 4. Draw & Position (PC)
-                        let html = '<defs><circle id="end-dot" cx="0" cy="0" r="4" fill="white" /></defs>';
-                        
-                        diagramConfig.forEach((d, i) => {
-                            // SVG Lines
-                            html += `<line x1="${d.x1}" y1="${d.y1}" x2="${d.x2}" y2="${d.y2}" class="diagram-line" />`;
-                            html += `<circle cx="${d.x2}" cy="${d.y2}" r="4" fill="white" />`;
-
-                            // DOM Positioning
-                            if (items[i]) {
-                                const el = items[i];
-                                el.style.position = 'absolute';
-                                el.style.zIndex = '100'; // Force on top
-                                el.style.top = d.y1;
-                                el.style.left = d.x1;
-                                
-                                // Anchor Logic
-                                if (d.isLeft) {
-                                    el.style.transform = 'translate(-100%, -50%)'; 
-                                    el.style.textAlign = 'right';
-                                    el.style.flexDirection = 'row-reverse'; // Text - Icon
-                                    el.style.justifyContent = 'flex-start'; 
-                                } else {
-                                    el.style.transform = 'translate(0, -50%)'; 
-                                    el.style.textAlign = 'left';
-                                    el.style.flexDirection = 'row'; // Icon - Text (Default)
-                                    el.style.justifyContent = 'flex-start';
-                                }
-                            }
-                        });
-                        svg.innerHTML = html;
-                    }
-                    // Run
-                    setTimeout(renderDiagram, 100); // Small delay to ensure DOM parsed
-                    window.addEventListener('resize', renderDiagram);
-                </script>
-
-                <!-- Left Column Items -->
-                <div class="left-col">
-                    <!-- 1. Steering Angle -->
-                    <div class="diagram-item-row" onclick="openProductModal('steering-angle')" style="cursor: pointer;">
-                         <div class="diagram-icon"><img src="../assets/8.png"></div>
-                        <div class="diagram-text">
-                            <h4>Steering Angle Sensor</h4>
-                            <p>스티어링 휠의 회전 각도를 감지하여 차량의 전자 제어 장치(ECU)에 정보를 제공</p>
-                        </div>
-                    </div>
-                    <!-- 2. Transmission Position Sensor -->
-                    <div class="diagram-item-row" onclick="openProductModal('trans-position')" style="cursor: pointer;">
-                         <div class="diagram-icon"><img src="../assets/17.png"></div>
-                        <div class="diagram-text">
-                            <h4>Transmission Position Sensor</h4>
-                            <p>전기 자동차 변속 시스템에서 기어 레버 위치 (P, R, N, D 등)를 감지하여 ECU와 계기판에 전달하는 센서</p>
-                        </div>
-                    </div>
-                    <!-- 3. Crankshaft Position Sensor -->
-                    <div class="diagram-item-row" onclick="openProductModal('crank-position')" style="cursor: pointer;">
-                         <div class="diagram-icon"><img src="../assets/9.png"></div>
-                        <div class="diagram-text">
-                            <h4>Crankshaft Position Sensor</h4>
-                            <p>엔진의 크랭크 샤프트 회전 속도와 위치를 감지하여 엔진 제어 장치 (ECU)로 정보를 전달하는 역할</p>
-                        </div>
-                    </div>
-                     <!-- 4. Fan Clutch -->
-                     <div class="diagram-item-row" onclick="openProductModal('fan-clutch')" style="cursor: pointer;">
-                        <div class="diagram-icon"><img src="../assets/21.png"></div>
-                       <div class="diagram-text">
-                           <h4>Fan Clutch</h4>
-                           <p>차량의 엔진 온도를 조절하여 효율적인 냉각을 돕는 역할</p>
-                       </div>
-                   </div>
-                   <!-- 5. Flush Door Handle Control Unit (Left) -->
-                   <div class="diagram-item-row" onclick="openProductModal('flush-handle')" style="cursor: pointer;">
-                        <div class="diagram-icon"><img src="../assets/29.png"></div>
-                       <div class="diagram-text">
-                           <h4>Flush Door Handle Control Unit</h4>
-                           <p>스마트키 신호, 근접 감지, 차량 잠금 상태 등을 기반으로 도어 핸들의 자동 돌출 및 수납을 제어하는 역할</p>
-                       </div>
-                   </div>
-                </div>
-
-                <!-- Right Column Items -->
-                <div class="right-col">
-                    <!-- 1. PTC Heater -->
-                    <div class="diagram-item-row" onclick="openProductModal('ptc-heater')" style="cursor: pointer;">
-                         <div class="diagram-icon"><img src="../assets/19.png"></div>
-                        <div class="diagram-text">
-                            <h4>PTC Heater</h4>
-                            <p>세라믹 반도체의 저항 특성을 이용하여 일정 온도 이상에서는 전류를 자동으로 제한 하는 자기제어형 전기히터</p>
-                        </div>
-                    </div>
-                    <!-- 2. Transfer Case Switch -->
-                    <div class="diagram-item-row" onclick="openProductModal('pos-indicator')" style="cursor: pointer;">
-                         <div class="diagram-icon"><img src="../assets/5.png"></div>
-                        <div class="diagram-text">
-                            <h4>Transfer Case Switch</h4>
-                            <p>차량의 4륜 구동(4WD) 시스템의 작동 신호를 전달 / 제어하는데 사용</p>
-                        </div>
-                    </div>
-                    <!-- 3. Coolant Temperature Sensor -->
-                    <div class="diagram-item-row" onclick="openProductModal('water-temp')" style="cursor: pointer;">
-                         <div class="diagram-icon"><img src="../assets/6.png"></div>
-                        <div class="diagram-text">
-                            <h4>Coolant Temperature Sensor</h4>
-                            <p>엔진 냉각수 온도를 측정하여 엔진 제어 장치 (ECU)에 정보를 전달, 냉각 팬 작동 및 연료 분사량 조절하는 역할</p>
-                        </div>
-                    </div>
-                    <!-- 4. BLDC Motor -->
-                    <div class="diagram-item-row" onclick="openProductModal('bldc-motor')" style="cursor: pointer;">
-                         <div class="diagram-icon"><img src="../assets/25.png"></div>
-                        <div class="diagram-text">
-                            <h4>BLDC Motor</h4>
-                            <p>브러시가 없는 구조로 마찰 손실과 전기 노이즈를 최소화한 고효율 전동기이며 정밀 제어가 가능</p>
-                        </div>
-                    </div>
-                    <!-- 5. Smart Electronic Proximity Sensor (Right) -->
-                    <div class="diagram-item-row" onclick="openProductModal('proximity')" style="cursor: pointer;">
-                         <div class="diagram-icon"><img src="../assets/26.png"></div>
-                        <div class="diagram-text">
-                            <h4>Smart Electronic Proximity Sensor</h4>
-                            <p>자기장, 정전용량 또는 초음파 원리를 이용해 물체의 접근을 감지하는 비접촉식 감지 센서</p>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-        </div>    
-            <style>
-                .sensor-info-new {
-                    position: absolute; width: 220px;
-                    display: flex; flex-direction: column; 
-                    z-index: 2;
-                }
-                .sensor-info-new.left { align-items: flex-end; text-align: right; }
-                .sensor-info-new.right { align-items: flex-start; text-align: left; }
-                
-                .sensor-text h4 { color: var(--text-primary); margin-bottom: 5px; font-size: 16px; font-weight:700; font-family:var(--font-sub); }
-                .sensor-text p { color: var(--text-muted); font-size: 14px; line-height: 1.4; }
-                
-                .sensor-icon-circle {
-                    width: 60px; height: 60px; border-radius: 50%; 
-                    border: 1px solid var(--border); background: var(--glass-bg);
-                    display: flex; justify-content: center; align-items: center;
-                    margin-bottom: 15px; position: relative;
-                }
-                .sensor-icon-circle img { width: 35px; height: 35px; object-fit: contain; }
-                
-                /* Icon Connection Dot */
-                .sensor-info-new.left .sensor-icon-circle::after {
-                    content:''; position: absolute; right: -5px; top: 50%; transform: translateY(-50%);
-                    width: 6px; height: 6px; background: white; border-radius: 50%;
-                    box-shadow: 0 0 10px white;
-                }
-                .sensor-info-new.right .sensor-icon-circle::after {
-                    content:''; position: absolute; left: -5px; top: 50%; transform: translateY(-50%);
-                    width: 6px; height: 6px; background: white; border-radius: 50%;
-                    box-shadow: 0 0 10px white;
-                }
-                
-                /* Hover Effects */
-                .sensor-info-new:hover .sensor-icon-circle { border-color: var(--neon-cyan); box-shadow: 0 0 15px rgba(0,255,255,0.3); }
-                .sensor-info-new:hover h4 { color: var(--neon-cyan); }
-            </style>
-        </div>
-
-        <!-- 08. SENSORS I -->
-        <div class="slide">
+                誘몃옒 紐⑤퉴由ы떚 ?쒖뼱瑜??꾪븳 二쇱슂 湲곗닠 ?곸뿭???쒖떆?⑸땲??
             <span class="slide-tag">MOBILITY PRODUCTS</span>
-            <h1 class="slide-title">센서</h1>
-            <div class="product-grid">
-                <!-- 1. PTC Heater -->
-                <div class="p-card" onclick="openProductModal('ptc-heater')">
-                    <img src="../assets/19.png">
-                    <h3>PTC Heater</h3>
-                    <div style="height:15px"></div>
-                    <p>세라믹 반도체의 저항 특성을 이용하여 일정 온도 이상에서는 전류를 자동으로 제한 하는 자기제어형 전기히터</p>
-                </div>
-                <!-- 2. Limit Sensor -->
-                <div class="p-card" onclick="openProductModal('limit-sensor')">
-                    <img src="../assets/11.png">
-                    <h3>Limit Sensor</h3>
-                    <div style="height:15px"></div>
-                    <p>기계 장치의 동작 범위를 감지하거나, 설정된 한계 위치에 도달했을 때 스위칭 신호를 출력하는 정밀 감지 센서</p>
-                </div>
-                <!-- 3. Resolver Sensor -->
-                <div class="p-card" onclick="openProductModal('resolver')">
-                    <img src="../assets/2.png">
-                    <h3>Resolver Sensor</h3>
-                    <div style="height:15px"></div>
-                    <p>전자유도현상을 이용해 기계적인 각도 변위를 전기신호로 변환하는 아날로그 각도 검출 센서</p>
-                </div>
-                <!-- 4. Position Indicator Switch -->
-                <div class="p-card" onclick="openProductModal('pos-indicator')">
-                    <img src="../assets/5.png">
-                    <h3>Position Indicator Switch</h3>
-                    <div style="height:15px"></div>
-                    <p>Transfer Case에 장착되어, 현재 구동 모드(2H, 4H, 4L 등)를 감지하고 ECU에 신호를 전달하는 센서/스위치</p>
-                </div>
-                 <!-- 5. Transmission Position Sensor -->
-                 <div class="p-card" onclick="openProductModal('trans-position')">
-                    <img src="../assets/17.png">
-                    <h3>Transmission Position Sensor (High temperature)</h3>
-                    <div style="height:15px"></div>
-                    <p>전기 자동차 변속 시스템에서 기어 레버 위치 (P, R, N, D 등)를 감지하여 ECU와 계기판에 전달하는 센서</p>
-                </div>
-            </div>
-        </div>
-
-        <!-- 09. SENSORS II -->
-        <div class="slide">
-            <span class="slide-tag">MOBILITY PRODUCTS</span>
-            <h1 class="slide-title">센서</h1>
-            <div class="product-grid">
-                <!-- 6. Pressure Sensor -->
-                <div class="p-card" onclick="openProductModal('pressure-sensor')">
-                    <img src="../assets/1.png">
-                    <h3>Pressure Sensor</h3>
-                    <div style="height:15px"></div>
-                    <p>압전 효과를 이용해 압력을 전기 신호로 변환하는 센서</p>
-                </div>
-                 <!-- 7. TPMS Sensor -->
-                 <div class="p-card" onclick="openProductModal('tpms-sensor')">
-                    <img src="../assets/16.png">
-                    <h3>TPMS Sensor</h3>
-                    <div style="height:15px"></div>
-                    <p>타이어 내부의 공기압 및 온도를 실시간으로 감지하여 운전자에게 전달 하는 역할</p>
-                </div>
-                 <!-- 8. APS -->
-                 <div class="p-card" onclick="openProductModal('aps-sensor')">
-                    <img src="../assets/3.png">
-                    <h3>Electronic Accelerator Pedal Sensor, APS</h3>
-                    <div style="height:15px"></div>
-                    <p>운전자가 밟는 페달의 깊이(각도)를 전기 신호로 변환해 ECU에 전달하는 장치로 차량의 속도를 제어하는데 사용</p>
-                </div>
-                 <!-- 9. Speed Sensor -->
-                 <div class="p-card" onclick="openProductModal('speed-sensor')">
-                    <img src="../assets/18.png">
-                    <h3>Speed Sensor (ABS)</h3>
-                    <div style="height:15px"></div>
-                    <p>차량의 주행 속도를 측정해 ECU와 계기판에 전달하는 센서</p>
-                </div>
-                <!-- 10. Transfer Case Sensor -->
-                 <div class="p-card" onclick="openProductModal('transfer-case')">
-                    <img src="../assets/4.png">
-                    <h3>Transfer Case Sensor (ESA)</h3>
-                    <div style="height:15px"></div>
-                    <p>차량의 주행 조건에 따라 2륜과 4륜을 전환하거나, 앞뒤 바퀴의 동력 배분을 감지·제어하는 핵심 부품</p>
-                </div>
-            </div>
-        </div>
-
-        <!-- 10. SENSORS III -->
-        <div class="slide">
-            <span class="slide-tag">MOBILITY PRODUCTS</span>
-            <h1 class="slide-title">센서</h1>
-            <div class="product-grid">
-                <!-- 11. Map sensor -->
-                <div class="p-card" onclick="openProductModal('map-sensor')">
-                    <img src="../assets/10.png">
-                    <h3>Map sensor</h3>
-                    <div style="height:15px"></div>
-                    <p>흡기 매니폴드 내부의 절대 압력을 감지하여 ECU로 전달하는 핵심 센서</p>
-                </div>
-                <!-- 12. Steering Angle Sensor -->
-                <div class="p-card" onclick="openProductModal('steering-angle')">
-                    <img src="../assets/8.png">
-                    <h3>Steering Angle Sensor</h3>
-                    <div style="height:15px"></div>
-                    <p>운전자가 핸들을 돌린 각도와 방향, 회전 속도를 측정해 ECU에 전달하는 센서</p>
-                </div>
-                <!-- 13. Torque Sensor -->
-                <div class="p-card" onclick="openProductModal('torque-sensor')">
-                   <img src="../assets/15.png">
-                   <h3>Torque Sensor</h3>
-                   <div style="height:15px"></div>
-                   <p>회전축에 가해지는 비틀림 변형을 감지하여 토크 값을 전기 신호로 변환하는 역할</p>
-               </div>
-                 <!-- 14. 4WD Electronic Shift Control Sensor -->
-                 <div class="p-card" onclick="openProductModal('4wd-shift')">
-                    <img src="../assets/20.png">
-                    <h3>4WD Electronic Shift Control Sensor</h3>
-                    <div style="height:15px"></div>
-                    <p>전자식 4륜 구동 시스템 (Electronic 4WD System) 핵심 센서로, 트랜스퍼 케이스 내 액추에이터의 동작을 정밀하게 감지하여 ECU에 전달</p>
-                </div>
-                <!-- 15. Water Temperature Sensor -->
-                <div class="p-card" onclick="openProductModal('water-temp')">
-                    <img src="../assets/6.png">
-                    <h3>Water Temperature Sensor</h3>
-                    <div style="height:15px"></div>
-                    <p>엔진 냉각수 온도를 측정하여 엔진 제어 장치 (ECU)에 정보를 전달, 냉각 팬 작동 및 연료 분사량 조절하는 역할</p>
-                </div>
-            </div>
-        </div>
-
-        <!-- 11. SENSORS IV -->
-        <div class="slide">
-            <span class="slide-tag">MOBILITY PRODUCTS</span>
-            <h1 class="slide-title">센서</h1>
-            <div class="product-grid">
-                <!-- 16. Crankshaft Position Sensor -->
-                <div class="p-card" onclick="openProductModal('crank-position')">
-                    <img src="../assets/9.png">
-                    <h3>Crankshaft Position Sensor</h3>
-                    <div style="height:15px"></div>
-                    <p>엔진의 크랭크 샤프트 회전 속도와 위치를 감지하여 엔진 제어 장치(ECU)로 정보를 전달하는 역할</p>
-                </div>
-                <!-- 17. Oxygen Sensor -->
-                <div class="p-card" onclick="openProductModal('oxygen-sensor')">
-                    <img src="../assets/12.png">
-                    <h3>Oxygen Sensor</h3>
-                    <div style="height:15px"></div>
-                    <p>배기 가스 내 산소 농도를 실시간으로 감지하여 ECU에 전달함으로써, 연료와 공기의 혼합비를 제어하는 역할</p>
-                </div>
-                 <!-- 18. Throttle Position Sensor -->
-                 <div class="p-card" onclick="openProductModal('tps')">
-                    <img src="../assets/7.png">
-                    <h3>Throttle Position Sensor</h3>
-                    <div style="height:15px"></div>
-                    <p>스로틀 밸브의 개폐 정도를 감지해 ECU(엔진 제어 장치)에 전달하는 센서</p>
-                </div>
-                 <!-- 19. Knock Sensor -->
-                  <div class="p-card" onclick="openProductModal('knock-sensor')">
-                    <img src="../assets/14.png">
-                    <h3>Knock Sensor</h3>
-                    <div style="height:15px"></div>
-                    <p>엔진 내부에서 발생하는 이상 폭발(노킹, Detonation) 을 감지하여 ECU로 전달</p>
-                </div>
-                 <!-- 20. Idle Speed Control Valve -->
-                  <div class="p-card" onclick="openProductModal('idle-valve')">
-                    <img src="../assets/13.png">
-                    <h3>Idle Speed Control Valve</h3>
-                    <div style="height:15px"></div>
-                    <p>엔진 공회전 시 ECU의 제어 신호에 따라 공기 유량을 조절하여 안정적인 아이들 회전수를 유지하는 역할</p>
-                </div>
-            </div>
-        </div>
-
-        <!-- 11. ACTUATORS -->
-        <div class="slide">
-            <span class="slide-tag">MOBILITY PRODUCTS</span>
-            <h1 class="slide-title">액추에이터</h1>
-            <div class="product-grid" style="grid-template-columns: repeat(6, 1fr) !important; gap: 15px;">
-                <div class="p-card" onclick="openProductModal('bldc-motor')" style="padding-top: 15px;">
-                    <img src="../assets/25.png">
-                    <h3>BLDC Motor</h3>
-                    <div style="height:15px"></div>
-                    <p>브러시가 없는 구조로 마찰 손실과 전기 노이즈를 최소화한 고효율 전동기이며 정밀 제어가 가능</p>
-                </div>
-                <div class="p-card" onclick="openProductModal('digital-shift')" style="padding-top: 15px;">
-                    <img src="../assets/22.png">
-                    <h3>Digital-Electric Shift Control Actuator</h3>
-                    <div style="height:15px"></div>
-                    <p>자동변속기의 기어 변속을 전자적으로 제어하는 액추에이터로 4WD 트랜스퍼 케이스의 변속 모드 (2H / 4H / 4L 등)를 전자적으로 전환하는 핵심 구동 장치</p>
-                </div>
-                <div class="p-card" onclick="openProductModal('ac-motor')" style="padding-top: 15px;">
-                    <img src="../assets/24.png">
-                    <h3>AC Motor</h3>
-                    <div style="height:15px"></div>
-                    <p>교류 전원을 이용해 회전 운동을 생성하는 전동기 이며 높은 내구성과 안정적인 특성을 갖추어 HVAC 시스템 등에 사용</p>
-                </div>
-                <div class="p-card" onclick="openProductModal('fan-clutch')" style="padding-top: 15px;">
-                    <img src="../assets/21.png">
-                    <h3>Electronic Fan Clutch Actuator</h3>
-                    <div style="height:15px"></div>
-                    <p>실시간 엔진 냉각팬의 회전 속도를 제어하는 전자식 액추에이터</p>
-                </div>
-                <div class="p-card" onclick="openProductModal('4wd-geared')" style="padding-top: 15px;">
-                    <img src="../assets/23.png">
-                    <h3>4WD Geared Actuator</h3>
-                    <div style="height:15px"></div>
-                    <p>전자식 4륜구동 시스템에서 트랜스퍼 케이스(Transfer Case)의 기어를 전환하는 액추에이터</p>
-                </div>
-                 <!-- 6. Hidden Door Handle Actuator (New) -->
-                 <div class="p-card" onclick="openProductModal('hidden-door-handle')">
-                    <div style="background: #111; width: 100%; height: 280px; margin-bottom: 30px; display: flex; justify-content: center; align-items: center;">
-                        <img src="../assets/Hidden Door Image 824.png" onerror="this.src='../assets/29.png'" style="width: 80%; height: 80%; object-fit: contain; margin-bottom: 0;">
-                    </div>
-                    <h3>Hidden Door Handle Actuator</h3>
-                    <div style="height:15px"></div>
-                    <p>도어와 일체화된 히든 핸들은 차문 개폐시 자동으로 돌출되어 공기 저항 감소, 고급 스러운 디자인, 향상된 보안성을 제공</p>
-                </div>
-            </div>
-            <!-- Custom Style for Actuator Grid to fit 6 items -->
-            <style>
-                /* Override grid just for this section if needed, or rely on flex/scroll */
-                /* If the main grid is 5 cols, we force 6 here */
-                 .slide:has(.slide-title:contains('액추에이터')) .product-grid,
-                 /* Fallback selector if :has isn't supported or reliable, targeting by order usually risky but... */
-                 /* Let's use a more specific trick or just inline style on the div if possible. I'll use inline style on the div in next step if I can't target it. 
-                    Actually, I'll update the div class below. 
-                 */
-            </style>
-        </div>
-
-        <!-- 12. CONTROLLERS -->
-        <div class="slide">
-            <span class="slide-tag">MOBILITY PRODUCTS</span>
-            <h1 class="slide-title">컨트롤러</h1>
+            <h1 class="slide-title">而⑦듃濡ㅻ윭</h1>
             <div class="product-grid">
                 <div class="p-card" onclick="openProductModal('proximity')">
                     <img src="../assets/26.png">
                     <h3>Smart Electronic Proximity Sensor</h3>
                     <div style="height:15px"></div>
-                    <p>자기장, 정전용량 또는 초음파 원리를 이용해 물체의 접근을 감지하는 비접촉식 감지 센서</p>
+                    <p>?먭린?? ?뺤쟾?⑸웾 ?먮뒗 珥덉쓬???먮━瑜??댁슜??臾쇱껜???묎렐??媛먯??섎뒗 鍮꾩젒珥됱떇 媛먯? ?쇱꽌</p>
                 </div>
                 <div class="p-card" onclick="openProductModal('flush-handle')">
                     <img src="../assets/29.png">
                     <h3>Flush Door Handle Control Unit</h3>
                     <div style="height:15px"></div>
-                    <p>스마트 키 신호, 근접 감지 및 차량 잠금 상태를 기반으로 도어 핸들을 자동으로 전개하고 수납하는 제어 장치</p>
+                    <p>?ㅻ쭏?????좏샇, 洹쇱젒 媛먯? 諛?李⑤웾 ?좉툑 ?곹깭瑜?湲곕컲?쇰줈 ?꾩뼱 ?몃뱾???먮룞?쇰줈 ?꾧컻?섍퀬 ?섎궔?섎뒗 ?쒖뼱 ?μ튂</p>
                 </div>
                 <div class="p-card" onclick="openProductModal('smart-key')">
                     <img src="../assets/27.png">
                     <h3>Smart Keyless Entry</h3>
                     <div style="height:15px"></div>
-                    <p>RF 통신 및 암호화 기술을 이용하여 차량의 도어 잠금 해제와 시동 제어를 수행하는 전자 제어 모듈</p>
+                    <p>RF ?듭떊 諛??뷀샇??湲곗닠???댁슜?섏뿬 李⑤웾???꾩뼱 ?좉툑 ?댁젣? ?쒕룞 ?쒖뼱瑜??섑뻾?섎뒗 ?꾩옄 ?쒖뼱 紐⑤뱢</p>
                 </div>
                 <div class="p-card" onclick="openProductModal('tcu')">
                     <img src="../assets/28.png">
                     <h3>Transmission Control Unit</h3>
                     <div style="height:15px"></div>
-                    <p>차량의 구동력을 전륜과 후륜에 적절히 분배하여 주행 안정성과 트랙션을 최적화 하는 제어 장치</p>
+                    <p>李⑤웾??援щ룞?μ쓣 ?꾨쪣怨??꾨쪣???곸젅??遺꾨같?섏뿬 二쇳뻾 ?덉젙?깃낵 ?몃옓?섏쓣 理쒖쟻???섎뒗 ?쒖뼱 ?μ튂</p>
                 </div>
                 <div class="p-card" onclick="openProductModal('smart-hvac')">
                     <img src="../assets/30.png">
-                    <h3>다목적 고효율 절전형 온습도 제어 시스템</h3>
+                    <h3>?ㅻぉ??怨좏슚???덉쟾???⑥뒿???쒖뼱 ?쒖뒪??/h3>
                     <div style="height:15px"></div>
-                    <p>HVAC, 온/습도 제어 시스템으로 자동차 산업용 및 농업용 등 다양한 응용 분야에 적용</p>
+                    <p>HVAC, ???듬룄 ?쒖뼱 ?쒖뒪?쒖쑝濡??먮룞李??곗뾽??諛??띿뾽?????ㅼ뼇???묒슜 遺꾩빞???곸슜</p>
                 </div>
             </div>
         </div>
@@ -2213,7 +1450,7 @@
         <!-- 17. CONTACT -->
         <div class="slide">
             <span class="slide-tag">Business & Products Inquiry</span>
-            <h1 class="slide-title">사업/제품 문의</h1>
+            <h1 class="slide-title">?ъ뾽/?쒗뭹 臾몄쓽</h1>
             <!-- Divider Removed -->
             
             <div class="inquiry-container">
@@ -2225,15 +1462,15 @@
                 <!-- Right: Info -->
                 <div class="inquiry-right">
                     <div class="inquiry-item">
-                        <h3>[본사]</h3>
-                        <p>경남 김해시 주촌면 소망길 88, 204호 (경남테크노파크)</p>
+                        <h3>[蹂몄궗]</h3>
+                        <p>寃쎈궓 源?댁떆 二쇱큿硫??뚮쭩湲?88, 204??(寃쎈궓?뚰겕?명뙆??</p>
                     </div>
                     <div class="inquiry-item">
-                        <h3>[연구소]</h3>
-                        <p>부산광역시 해운대구 반송로 525번길 45</p>
+                        <h3>[?곌뎄??</h3>
+                        <p>遺?곌킅??떆 ?댁슫?援?諛섏넚濡?525踰덇만 45</p>
                     </div>
                     <div class="inquiry-item">
-                        <h3>[연락처]</h3>
+                        <h3>[?곕씫泥?</h3>
                         <p><strong>TEL :</strong> 051)781-7661</p>
                         <p><strong>E-MAIL :</strong> support@emetrotechnology.com</p>
                         <p><strong>WEB :</strong> www.emetrotechnology.com</p>
@@ -2289,7 +1526,7 @@
 
     <!-- 18. PRODUCT DETAIL MODAL HTML -->
     <div class="product-modal" id="productModal">
-        <div class="product-modal-close" onclick="closeProductModal()">✕ CLOSE</div>
+        <div class="product-modal-close" onclick="closeProductModal()">??CLOSE</div>
         <div class="product-modal-inner">
             <div class="modal-content-wrapper">
                 <!-- TOP: Info & Image -->
@@ -2340,7 +1577,7 @@
             position: relative; width: auto; height: auto;
             max-width: 90%; max-height: 90%;
             display: flex; justify-content: center; align-items: center;
-            background: transparent; pointer-events: auto;
+            background: transparent; pointer-events: auto; background-color: rgba(0,0,0,0.5);
         }
         #imgModal img {
             max-width: 100%; max-height: 85vh;
@@ -2412,8 +1649,8 @@
                     
         /* Description Area */
         .product-modal-desc { 
-            color: #ddd; font-size: 15px; line-height: 1.6; margin-bottom: 30px; 
-            max-width: 100%; font-family: sans-serif; font-weight: 300; 
+            color: #ddd; font-size: 16px; line-height: 1.6; margin-bottom: 30px; 
+            max-width: 100%; font-family: sans-serif; font-weight: 500; 
             white-space: pre-line;
             flex: 1; /* Allow it to fill space before stats */
         }
@@ -2434,8 +1671,8 @@
         .spec-item:hover .spec-icon-circle { border-color: var(--neon-cyan); box-shadow: 0 0 15px rgba(0,255,255,0.2); color: var(--neon-cyan); }
         .spec-icon-circle svg { width: 28px; height: 28px; fill: none; stroke: currentColor; stroke-width: 1.5; }
 
-        .spec-label { display: block; font-size: 12px; color: #888; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; margin: 0; } 
-        .spec-value { font-size: 12px; color: #fff; font-weight: 600; font-family: var(--font-sub); margin:0; letter-spacing: 0.5px; }
+        .spec-label { display: block; font-size: 13px; color: #999; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; margin: 0; } 
+        .spec-value { font-size: 14px; color: #fff; font-weight: 600; font-family: var(--font-sub); margin:0; letter-spacing: 0.5px; }
 
 
         /* Zoom */
@@ -2643,678 +1880,678 @@
         const productModal = document.getElementById('productModal');
         const productData = {
             'ptc-heater': {
-                category: '센서', // Image says Sensor
+                category: '?쇱꽌', // Image says Sensor
                 title: 'PTC Heater',
-                desc: '세라믹 반도체의 저항 특성을 이용하여 일정 온도 이상에서는 전류를 자동으로 제한 하는 자기제어형 전기히터',
+                desc: '?몃씪誘?諛섎룄泥댁쓽 ????뱀꽦???댁슜?섏뿬 ?쇱젙 ?⑤룄 ?댁긽?먯꽌???꾨쪟瑜??먮룞?쇰줈 ?쒗븳 ?섎뒗 ?먭린?쒖뼱???꾧린?덊꽣',
                 specs: [
-                    { icon: '<svg viewBox="0 0 24 24"><path d="M14 14.76V3.5a2.5 2.5 0 0 0-5 0v11.26a4.5 4.5 0 1 0 5 0z"></path></svg>', label: '작동 온도', value: '-30℃ ~ +85℃' },
-                    { icon: '<svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>', label: '보호 등급', value: 'IP50' },
-                    { icon: '<svg viewBox="0 0 24 24"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>', label: '작동 전압 범위', value: '8V ~ 16V' }
+                    { icon: '<svg viewBox="0 0 24 24"><path d="M14 14.76V3.5a2.5 2.5 0 0 0-5 0v11.26a4.5 4.5 0 1 0 5 0z"></path></svg>', label: '?묐룞 ?⑤룄', value: '-30??~ +85?? },
+                    { icon: '<svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>', label: '蹂댄샇 ?깃툒', value: 'IP50' },
+                    { icon: '<svg viewBox="0 0 24 24"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>', label: '?묐룞 ?꾩븬 踰붿쐞', value: '8V ~ 16V' }
                 ],
                 img: '../assets/19.png',
-                details: `세라믹 반도체의 저항 특성을 이용하여 일정 온도 이상에서는 전류를 자동으로 제한 하는 자기제어형 전기히터.
-전기차(EV), 하이브리드차(HEV), HVAC 공조 시스템에 적용되어 쾌속 난방, 안정된 온도 유지, 에너지 효율 향상을 제공
+                details: `?몃씪誘?諛섎룄泥댁쓽 ????뱀꽦???댁슜?섏뿬 ?쇱젙 ?⑤룄 ?댁긽?먯꽌???꾨쪟瑜??먮룞?쇰줈 ?쒗븳 ?섎뒗 ?먭린?쒖뼱???꾧린?덊꽣.
+?꾧린李?EV), ?섏씠釉뚮━?쒖감(HEV), HVAC 怨듭“ ?쒖뒪?쒖뿉 ?곸슜?섏뼱 苡뚯냽 ?쒕갑, ?덉젙???⑤룄 ?좎?, ?먮꼫吏 ?⑥쑉 ?μ긽???쒓났
 
-정격 전압 : 13.5V ±0.1V
-정격 출력 : 1200 W (+5% / -10%)
-작동 전압 범위 : 8V ~ 16V
-보호 등급 : IP50
-작동 온도 : -30 ℃ ~ +85 ℃
-보관 온도 : -40 ℃ ~ +90 ℃
-온도 상승 : 13 ~ 15K`
+?뺢꺽 ?꾩븬 : 13.5V 짹0.1V
+?뺢꺽 異쒕젰 : 1200 W (+5% / -10%)
+?묐룞 ?꾩븬 踰붿쐞 : 8V ~ 16V
+蹂댄샇 ?깃툒 : IP50
+?묐룞 ?⑤룄 : -30 ??~ +85 ??
+蹂닿? ?⑤룄 : -40 ??~ +90 ??
+?⑤룄 ?곸듅 : 13 ~ 15K`
             },
             'limit-sensor': {
-                category: '센서',
+                category: '?쇱꽌',
                 title: 'Limit Sensor',
-                desc: '기계 장치의 동작 범위를 감지하거나, 설정된 한계 위치에 도달했을 때 스위칭 신호를 출력하는 정밀 감지 센서',
+                desc: '湲곌퀎 ?μ튂???숈옉 踰붿쐞瑜?媛먯??섍굅?? ?ㅼ젙???쒓퀎 ?꾩튂???꾨떖?덉쓣 ???ㅼ쐞移??좏샇瑜?異쒕젰?섎뒗 ?뺣? 媛먯? ?쇱꽌',
                 specs: [
-                    { icon: '<svg viewBox="0 0 24 24"><path d="M14 14.76V3.5a2.5 2.5 0 0 0-5 0v11.26a4.5 4.5 0 1 0 5 0z"></path></svg>', label: '작동 온도', value: '-40℃ ~ +150℃' },
-                    { icon: '<svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>', label: '보호 등급', value: 'IP67 이상' },
-                    { icon: '<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>', label: '반응 시간', value: '≤ 1ms' }
+                    { icon: '<svg viewBox="0 0 24 24"><path d="M14 14.76V3.5a2.5 2.5 0 0 0-5 0v11.26a4.5 4.5 0 1 0 5 0z"></path></svg>', label: '?묐룞 ?⑤룄', value: '-40??~ +150?? },
+                    { icon: '<svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>', label: '蹂댄샇 ?깃툒', value: 'IP67 ?댁긽' },
+                    { icon: '<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>', label: '諛섏쓳 ?쒓컙', value: '??1ms' }
                 ],
                 img: '../assets/11.png',
-                details: `기계 장치의 동작 범위를 감지하거나, 설정된 한계 위치에 도달했을 때 스위칭 신호를 출력하는 정밀 감지 센서. 
-내충격성과 내구성이 뛰어난 방폭 구조로 방위산업·산업용 자동화·항공·기계 설비 등 고신뢰성 환경에서 사용
+                details: `湲곌퀎 ?μ튂???숈옉 踰붿쐞瑜?媛먯??섍굅?? ?ㅼ젙???쒓퀎 ?꾩튂???꾨떖?덉쓣 ???ㅼ쐞移??좏샇瑜?異쒕젰?섎뒗 ?뺣? 媛먯? ?쇱꽌. 
+?댁땐寃⑹꽦怨??닿뎄?깆씠 ?곗뼱??諛⑺룺 援ъ“濡?諛⑹쐞?곗뾽쨌?곗뾽???먮룞?붋룻빆怨돠룰린怨??ㅻ퉬 ??怨좎떊猶곗꽦 ?섍꼍?먯꽌 ?ъ슜
 
-작동 전압 : DC 5V ~ 28V (모델별 상이)
-출력 방식 : 스위칭 신호 (ON / OFF)
-감지 방식 : 기계식 플런저 또는 비접촉식 자기 센서
-반응 시간 : ≤1ms
-반복 정밀도 : ±0.01mm 이하
-작동 온도 : -40 ℃ ~ +150 ℃
-보호 등급 : IP67 이상
-커넥터 형식 : 항공 커넥터 또는 커스텀형`
+?묐룞 ?꾩븬 : DC 5V ~ 28V (紐⑤뜽蹂??곸씠)
+異쒕젰 諛⑹떇 : ?ㅼ쐞移??좏샇 (ON / OFF)
+媛먯? 諛⑹떇 : 湲곌퀎???뚮윴? ?먮뒗 鍮꾩젒珥됱떇 ?먭린 ?쇱꽌
+諛섏쓳 ?쒓컙 : ??ms
+諛섎났 ?뺣???: 짹0.01mm ?댄븯
+?묐룞 ?⑤룄 : -40 ??~ +150 ??
+蹂댄샇 ?깃툒 : IP67 ?댁긽
+而ㅻ꽖???뺤떇 : ??났 而ㅻ꽖???먮뒗 而ㅼ뒪???
             },
             'resolver': {
-                category: '센서',
+                category: '?쇱꽌',
                 title: 'Resolver Sensor',
-                desc: '전자유도현상을 이용해 기계적인 각도 변위를 전기신호로 변환하는 아날로그 각도 검출 센서',
+                desc: '?꾩옄?좊룄?꾩긽???댁슜??湲곌퀎?곸씤 媛곷룄 蹂?꾨? ?꾧린?좏샇濡?蹂?섑븯???꾨궇濡쒓렇 媛곷룄 寃異??쇱꽌',
                 specs: [
-                    { icon: '<svg viewBox="0 0 24 24"><path d="M14 14.76V3.5a2.5 2.5 0 0 0-5 0v11.26a4.5 4.5 0 1 0 5 0z"></path></svg>', label: '작동 온도', value: '-40℃ ~ +125℃' },
-                    { icon: '<svg viewBox="0 0 24 24"><path d="M9 3v18M15 3v18M3 9h18M3 15h18"></path></svg>', label: '커넥터 형식', value: '6핀 또는 8핀' },
-                    { icon: '<svg viewBox="0 0 24 24"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>', label: '입력 전압', value: '7V rms' }
+                    { icon: '<svg viewBox="0 0 24 24"><path d="M14 14.76V3.5a2.5 2.5 0 0 0-5 0v11.26a4.5 4.5 0 1 0 5 0z"></path></svg>', label: '?묐룞 ?⑤룄', value: '-40??~ +125?? },
+                    { icon: '<svg viewBox="0 0 24 24"><path d="M9 3v18M15 3v18M3 9h18M3 15h18"></path></svg>', label: '而ㅻ꽖???뺤떇', value: '6? ?먮뒗 8?' },
+                    { icon: '<svg viewBox="0 0 24 24"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>', label: '?낅젰 ?꾩븬', value: '7V rms' }
                 ],
                 img: '../assets/2.png',
-                details: `전자유도현상을 이용해 기계적인 각도 변위를 전기신호로 변환하는 아날로그 각도 검출 센서. 전기 모터, 항공기, 자동차 등에서 모터 제어와 위치 검출에 널리 사용
+                details: `?꾩옄?좊룄?꾩긽???댁슜??湲곌퀎?곸씤 媛곷룄 蹂?꾨? ?꾧린?좏샇濡?蹂?섑븯???꾨궇濡쒓렇 媛곷룄 寃異??쇱꽌. ?꾧린 紐⑦꽣, ??났湲? ?먮룞李??깆뿉??紐⑦꽣 ?쒖뼱? ?꾩튂 寃異쒖뿉 ?먮━ ?ъ슜
 
-작동 전압 : 7V rms
-출력 방식 : Speed 1X, 32X
-정확도 : ± 20 Arc sec
-작동 주파수 : 2,000±100 Hz
-작동 온도 : -40 ℃ ~ +125 ℃
-출력 신호 : 두 개의 직교 코일 sin θ, cos θ 형태 전압
-R/D 변환 : 아날로그 신호를 디지털로 변환
-커넥터 형식 : 6핀 또는 8핀`
+?묐룞 ?꾩븬 : 7V rms
+異쒕젰 諛⑹떇 : Speed 1X, 32X
+?뺥솗??: 짹 20 Arc sec
+?묐룞 二쇳뙆??: 2,000짹100 Hz
+?묐룞 ?⑤룄 : -40 ??~ +125 ??
+異쒕젰 ?좏샇 : ??媛쒖쓽 吏곴탳 肄붿씪 sin 罐, cos 罐 ?뺥깭 ?꾩븬
+R/D 蹂??: ?꾨궇濡쒓렇 ?좏샇瑜??붿??몃줈 蹂??
+而ㅻ꽖???뺤떇 : 6? ?먮뒗 8?`
             },
             
             // --- NEW SENSORS ADDED ---
             'pos-indicator': { 
-                category: '센서', 
+                category: '?쇱꽌', 
                 title: 'Position Indicator Switch', 
                 img: '../assets/5.png', 
-                desc: 'Transfer Case에 장착되어, 현재 구동 모드(2H, 4H, 4L 등)를 감지하고 ECU에 신호를 전달하는 센서/스위치', 
+                desc: 'Transfer Case???μ갑?섏뼱, ?꾩옱 援щ룞 紐⑤뱶(2H, 4H, 4L ??瑜?媛먯??섍퀬 ECU???좏샇瑜??꾨떖?섎뒗 ?쇱꽌/?ㅼ쐞移?, 
                 specs:[
-                    { icon: '<svg viewBox="0 0 24 24"><path d="M14 14.76V3.5a2.5 2.5 0 0 0-5 0v11.26a4.5 4.5 0 1 0 5 0z"></path></svg>', label: '작동 온도', value: '-40℃ ~ +135℃' },
-                    { icon: '<svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>', label: '보호 등급', value: 'IP67 이상' },
-                    { icon: '<svg viewBox="0 0 24 24"><path d="M9 3v18M15 3v18M3 9h18M3 15h18"></path></svg>', label: '커넥터 형식', value: '2핀 또는 3핀' }
+                    { icon: '<svg viewBox="0 0 24 24"><path d="M14 14.76V3.5a2.5 2.5 0 0 0-5 0v11.26a4.5 4.5 0 1 0 5 0z"></path></svg>', label: '?묐룞 ?⑤룄', value: '-40??~ +135?? },
+                    { icon: '<svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>', label: '蹂댄샇 ?깃툒', value: 'IP67 ?댁긽' },
+                    { icon: '<svg viewBox="0 0 24 24"><path d="M9 3v18M15 3v18M3 9h18M3 15h18"></path></svg>', label: '而ㅻ꽖???뺤떇', value: '2? ?먮뒗 3?' }
                 ], 
-                details: `Transfer Case에 장착되어, 현재 구동 모드(2H, 4H, 4L 등)를 감지하고 ECU에 신호를 전달하는 센서/스위치.
-운전자가 선택한 4륜 모드가 제대로 체결되었는지 확인하고 계기판에 표시해주는 역할
+                details: `Transfer Case???μ갑?섏뼱, ?꾩옱 援щ룞 紐⑤뱶(2H, 4H, 4L ??瑜?媛먯??섍퀬 ECU???좏샇瑜??꾨떖?섎뒗 ?쇱꽌/?ㅼ쐞移?
+?댁쟾?먭? ?좏깮??4瑜?紐⑤뱶媛 ?쒕?濡?泥닿껐?섏뿀?붿? ?뺤씤?섍퀬 怨꾧린?먯뿉 ?쒖떆?댁＜????븷
 
-작동 전압 : DC 5V ± 0.05V
-출력 방식 : Linear Potentiometer Output
-감지 방식 : 기계식 접점 타입 (위치 감지)
-나사 규격 : M16 x 1.5 (차종별 상이)
-작동 온도 : -40 ℃ ~ +135 ℃
-보호 등급 : IP67 이상
-커넥터 형식 : 2핀 또는 3핀`
+?묐룞 ?꾩븬 : DC 5V 짹 0.05V
+異쒕젰 諛⑹떇 : Linear Potentiometer Output
+媛먯? 諛⑹떇 : 湲곌퀎???묒젏 ???(?꾩튂 媛먯?)
+?섏궗 洹쒓꺽 : M16 x 1.5 (李⑥쥌蹂??곸씠)
+?묐룞 ?⑤룄 : -40 ??~ +135 ??
+蹂댄샇 ?깃툒 : IP67 ?댁긽
+而ㅻ꽖???뺤떇 : 2? ?먮뒗 3?`
             },
             'torque-sensor': { 
-                category: '센서', 
+                category: '?쇱꽌', 
                 title: 'Torque Sensor', 
                 img: '../assets/15.png', 
-                desc: '회전축에 가해지는 비틀림 변형을 감지하여 토크 값을 전기 신호로 변환하는 역할', 
+                desc: '?뚯쟾異뺤뿉 媛?댁???鍮꾪?由?蹂?뺤쓣 媛먯??섏뿬 ?좏겕 媛믪쓣 ?꾧린 ?좏샇濡?蹂?섑븯????븷', 
                 specs:[
-                    { icon: '<svg viewBox="0 0 24 24"><path d="M14 14.76V3.5a2.5 2.5 0 0 0-5 0v11.26a4.5 4.5 0 1 0 5 0z"></path></svg>', label: '작동 온도', value: '-40℃ ~ +145℃' },
-                    { icon: '<svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>', label: '보호 등급', value: 'IP67' },
-                    { icon: '<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>', label: '응답 시간', value: '≤ 1ms' }
+                    { icon: '<svg viewBox="0 0 24 24"><path d="M14 14.76V3.5a2.5 2.5 0 0 0-5 0v11.26a4.5 4.5 0 1 0 5 0z"></path></svg>', label: '?묐룞 ?⑤룄', value: '-40??~ +145?? },
+                    { icon: '<svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>', label: '蹂댄샇 ?깃툒', value: 'IP67' },
+                    { icon: '<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>', label: '?묐떟 ?쒓컙', value: '??1ms' }
                 ], 
-                details:`회전축에 가해지는 비틀림 변형을 감지하여 토크 값을 전기 신호로 변환하는 역할.
-비접촉식 자기 감지 기술을 적용하여 마모가 없고, 높은 선형성과 응답성을 제공하며
-전자식 파워 스티어링 (EPS) 및 구동 제어 시스템에 최적화 되어 있음. 
+                details:`?뚯쟾異뺤뿉 媛?댁???鍮꾪?由?蹂?뺤쓣 媛먯??섏뿬 ?좏겕 媛믪쓣 ?꾧린 ?좏샇濡?蹂?섑븯????븷.
+鍮꾩젒珥됱떇 ?먭린 媛먯? 湲곗닠???곸슜?섏뿬 留덈え媛 ?녾퀬, ?믪? ?좏삎?깃낵 ?묐떟?깆쓣 ?쒓났?섎ŉ
+?꾩옄???뚯썙 ?ㅽ떚?대쭅 (EPS) 諛?援щ룞 ?쒖뼱 ?쒖뒪?쒖뿉 理쒖쟻???섏뼱 ?덉쓬. 
 
-측정 방식 : 비접촉식 자기 유도
-측정 범위 : ±10 N·m ~ ±150 N·m
-작동 전압 : DC 5V ±0.1V
-출력 신호 : 아날로그 전압 또는 PWM
-정확도 : ±1% F.S. 이하
-응답 시간 : ≤1ms
-작동 온도 : -40 ℃ ~ +145 ℃
-보호 등급 : IP67 
-출력 선 구성 : 3선식 또는 5선식` 
+痢≪젙 諛⑹떇 : 鍮꾩젒珥됱떇 ?먭린 ?좊룄
+痢≪젙 踰붿쐞 : 짹10 N쨌m ~ 짹150 N쨌m
+?묐룞 ?꾩븬 : DC 5V 짹0.1V
+異쒕젰 ?좏샇 : ?꾨궇濡쒓렇 ?꾩븬 ?먮뒗 PWM
+?뺥솗??: 짹1% F.S. ?댄븯
+?묐떟 ?쒓컙 : ??ms
+?묐룞 ?⑤룄 : -40 ??~ +145 ??
+蹂댄샇 ?깃툒 : IP67 
+異쒕젰 ??援ъ꽦 : 3?좎떇 ?먮뒗 5?좎떇` 
             },
             'pressure-sensor': { 
-                category: '센서', 
+                category: '?쇱꽌', 
                 title: 'Pressure Sensor', 
                 img: '../assets/1.png', 
-                desc: '압전 효과를 이용해 압력을 전기 신호로 변환하는 센서', 
+                desc: '?뺤쟾 ?④낵瑜??댁슜???뺣젰???꾧린 ?좏샇濡?蹂?섑븯???쇱꽌', 
                 specs:[
-                    { icon: '<svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>', label: '보호 등급', value: 'IP67 이상' },
-                    { icon: '<svg viewBox="0 0 24 24"><path d="M14 14.76V3.5a2.5 2.5 0 0 0-5 0v11.26a4.5 4.5 0 1 0 5 0z"></path></svg>', label: '작동 온도', value: '-40℃ ~ +125℃' },
-                    { icon: '<svg viewBox="0 0 24 24"><path d="M9 3v18M15 3v18M3 9h18M3 15h18"></path></svg>', label: '커넥터 형식', value: '2핀 또는 3핀' }
+                    { icon: '<svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>', label: '蹂댄샇 ?깃툒', value: 'IP67 ?댁긽' },
+                    { icon: '<svg viewBox="0 0 24 24"><path d="M14 14.76V3.5a2.5 2.5 0 0 0-5 0v11.26a4.5 4.5 0 1 0 5 0z"></path></svg>', label: '?묐룞 ?⑤룄', value: '-40??~ +125?? },
+                    { icon: '<svg viewBox="0 0 24 24"><path d="M9 3v18M15 3v18M3 9h18M3 15h18"></path></svg>', label: '而ㅻ꽖???뺤떇', value: '2? ?먮뒗 3?' }
                 ],
-                details: `압전 효과를 이용해 압력을 전기 신호로 변환하는 센서로, 내구성과 내식성이 뛰어나 자동차산업·의료·환경 제어 등 다양한 분야에서 활용. 세라믹 다이어프램 구조로 압력이 다이어프램에 작용하면 변형이 생기고, 후막 저항기(휘트스톤 브리지)가 이를 전기 신호로 변환
+                details: `?뺤쟾 ?④낵瑜??댁슜???뺣젰???꾧린 ?좏샇濡?蹂?섑븯???쇱꽌濡? ?닿뎄?깃낵 ?댁떇?깆씠 ?곗뼱???먮룞李⑥궛?끒룹쓽猷뙿룻솚寃??쒖뼱 ???ㅼ뼇??遺꾩빞?먯꽌 ?쒖슜. ?몃씪誘??ㅼ씠?댄봽??援ъ“濡??뺣젰???ㅼ씠?댄봽?⑥뿉 ?묒슜?섎㈃ 蹂?뺤씠 ?앷린怨? ?꾨쭑 ???린(?섑듃?ㅽ넠 釉뚮━吏)媛 ?대? ?꾧린 ?좏샇濡?蹂??
 
-작동 전압 : DC 5V ± 0.05V
-출력 방식 : mV/V 또는 0.5–4.5V 비례 출력 신호 
-압력 범위 : 0~600bar(0~60MPa)
-센서 정도 : 0.05~0.5% linearity 
-작동 온도 : -40 ℃ ~ +125 ℃
-보호 등급 : IP67 이상
-커넥터 형식 : 2핀 또는 3핀`
+?묐룞 ?꾩븬 : DC 5V 짹 0.05V
+異쒕젰 諛⑹떇 : mV/V ?먮뒗 0.5??.5V 鍮꾨? 異쒕젰 ?좏샇 
+?뺣젰 踰붿쐞 : 0~600bar(0~60MPa)
+?쇱꽌 ?뺣룄 : 0.05~0.5% linearity 
+?묐룞 ?⑤룄 : -40 ??~ +125 ??
+蹂댄샇 ?깃툒 : IP67 ?댁긽
+而ㅻ꽖???뺤떇 : 2? ?먮뒗 3?`
             },
             'tpms-sensor': { 
-                category: '센서', 
+                category: '?쇱꽌', 
                 title: 'TPMS Sensor', 
                 img: '../assets/16.png', 
-                desc: '타이어 내부의 공기압 및 온도를 실시간으로 감지하여 운전자에게 전달 하는 역할', 
+                desc: '??댁뼱 ?대???怨듦린??諛??⑤룄瑜??ㅼ떆媛꾩쑝濡?媛먯??섏뿬 ?댁쟾?먯뿉寃??꾨떖 ?섎뒗 ??븷', 
                 specs:[
-                    { icon: '<svg viewBox="0 0 24 24"><path d="M14 14.76V3.5a2.5 2.5 0 0 0-5 0v11.26a4.5 4.5 0 1 0 5 0z"></path></svg>', label: '작동 온도', value: '-40℃ ~ +135℃' },
-                    { icon: '<svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg>', label: '출력 신호', value: '디지털 전송' },
-                    { icon: '<svg viewBox="0 0 24 24"><path d="M4.93 4.93a10 10 0 0 1 14.14 0"></path><path d="M7.76 7.76a6 6 0 0 1 8.48 0"></path><path d="M10.59 10.59a2 2 0 0 1 2.82 0"></path></svg>', label: '통신 방식', value: 'RF 무선 통신' }
+                    { icon: '<svg viewBox="0 0 24 24"><path d="M14 14.76V3.5a2.5 2.5 0 0 0-5 0v11.26a4.5 4.5 0 1 0 5 0z"></path></svg>', label: '?묐룞 ?⑤룄', value: '-40??~ +135?? },
+                    { icon: '<svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg>', label: '異쒕젰 ?좏샇', value: '?붿????꾩넚' },
+                    { icon: '<svg viewBox="0 0 24 24"><path d="M4.93 4.93a10 10 0 0 1 14.14 0"></path><path d="M7.76 7.76a6 6 0 0 1 8.48 0"></path><path d="M10.59 10.59a2 2 0 0 1 2.82 0"></path></svg>', label: '?듭떊 諛⑹떇', value: 'RF 臾댁꽑 ?듭떊' }
                 ], 
-                details:`타이어 내부의 공기압 및 온도를 실시간으로 감지하여 운전자에게 전달 하는 역할
+                details:`??댁뼱 ?대???怨듦린??諛??⑤룄瑜??ㅼ떆媛꾩쑝濡?媛먯??섏뿬 ?댁쟾?먯뿉寃??꾨떖 ?섎뒗 ??븷
 
-센서 유형: 복합 압력 및 온도 센서
-작동 전압: DC 3V
-압력 범위: 0 ~ 800 kPa
-압력 정확도: ±7 kPa
-온도 범위: −40℃ ~ +135℃
-온도 정확도: ±2℃
-통신 방식: RF 무선 통신
-출력 신호: 디지털 전송
-응답 간격: 주행 중 약 1초, 정지 시 약 60초`
+?쇱꽌 ?좏삎: 蹂듯빀 ?뺣젰 諛??⑤룄 ?쇱꽌
+?묐룞 ?꾩븬: DC 3V
+?뺣젰 踰붿쐞: 0 ~ 800 kPa
+?뺣젰 ?뺥솗?? 짹7 kPa
+?⑤룄 踰붿쐞: ??0??~ +135??
+?⑤룄 ?뺥솗?? 짹2??
+?듭떊 諛⑹떇: RF 臾댁꽑 ?듭떊
+異쒕젰 ?좏샇: ?붿????꾩넚
+?묐떟 媛꾧꺽: 二쇳뻾 以???1珥? ?뺤? ????60珥?
             },
             'aps-sensor': { 
-                category: '센서', 
+                category: '?쇱꽌', 
                 title: 'Electronic Accelerator Pedal Sensor, APS', 
                 img: '../assets/3.png', 
-                desc: '운전자가 밟는 페달의 깊이(각도)를 전기 신호로 변환해 ECU에 전달하는 장치로 차량의 속도를 제어하는데 사용', 
+                desc: '?댁쟾?먭? 諛잙뒗 ?섎떖??源딆씠(媛곷룄)瑜??꾧린 ?좏샇濡?蹂?섑빐 ECU???꾨떖?섎뒗 ?μ튂濡?李⑤웾???띾룄瑜??쒖뼱?섎뒗???ъ슜', 
                 specs:[
-                    { icon: '<svg viewBox="0 0 24 24"><path d="M14 14.76V3.5a2.5 2.5 0 0 0-5 0v11.26a4.5 4.5 0 1 0 5 0z"></path></svg>', label: '작동 온도', value: '-40℃ ~ +125℃' },
-                    { icon: '<svg viewBox="0 0 24 24"><path d="M9 3v18M15 3v18M3 9h18M3 15h18"></path></svg>', label: '커넥터 형식', value: '4 핀 또는 6 핀' },
-                    { icon: '<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>', label: '응답 시간', value: '5ms 이하' }
+                    { icon: '<svg viewBox="0 0 24 24"><path d="M14 14.76V3.5a2.5 2.5 0 0 0-5 0v11.26a4.5 4.5 0 1 0 5 0z"></path></svg>', label: '?묐룞 ?⑤룄', value: '-40??~ +125?? },
+                    { icon: '<svg viewBox="0 0 24 24"><path d="M9 3v18M15 3v18M3 9h18M3 15h18"></path></svg>', label: '而ㅻ꽖???뺤떇', value: '4 ? ?먮뒗 6 ?' },
+                    { icon: '<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>', label: '?묐떟 ?쒓컙', value: '5ms ?댄븯' }
                 ],
-                details:`운전자가 밟는 페달의 깊이(각도)를 전기 신호로 변환해 ECU에 전달하는 장치로 차량의 속도를 제어하는데 사용
+                details:`?댁쟾?먭? 諛잙뒗 ?섎떖??源딆씠(媛곷룄)瑜??꾧린 ?좏샇濡?蹂?섑빐 ECU???꾨떖?섎뒗 ?μ튂濡?李⑤웾???띾룄瑜??쒖뼱?섎뒗???ъ슜
 
-센서 유형 : 접촉식 센서 또는 듀얼 포텐쇼미터
-출력 전압 범위 : 0.5V ~ 4.5V
-작동 전압 : DC 5V ±10%
-작동 온도 : -40 ℃ ~ +125 ℃
-반응 시간 : 5ms 이하
-환경 성능 : 진동, 습기 및 EMI를 견디도록 설계됨
-커넥터 형식 : 4핀 또는 6핀`
+?쇱꽌 ?좏삎 : ?묒큺???쇱꽌 ?먮뒗 ????ы뀗?쇰???
+異쒕젰 ?꾩븬 踰붿쐞 : 0.5V ~ 4.5V
+?묐룞 ?꾩븬 : DC 5V 짹10%
+?묐룞 ?⑤룄 : -40 ??~ +125 ??
+諛섏쓳 ?쒓컙 : 5ms ?댄븯
+?섍꼍 ?깅뒫 : 吏꾨룞, ?듦린 諛?EMI瑜?寃щ뵒?꾨줉 ?ㅺ퀎??
+而ㅻ꽖???뺤떇 : 4? ?먮뒗 6?`
             },
             'speed-sensor': { 
-                category: '센서', 
+                category: '?쇱꽌', 
                 title: 'Speed Sensor (ABS)', 
                 img: '../assets/18.png', 
-                desc: '차량의 주행 속도를 측정해 ECU와 계기판에 전달하는 센서', 
+                desc: '李⑤웾??二쇳뻾 ?띾룄瑜?痢≪젙??ECU? 怨꾧린?먯뿉 ?꾨떖?섎뒗 ?쇱꽌', 
                 specs:[
-                    { icon: '<svg viewBox="0 0 24 24"><path d="M14 14.76V3.5a2.5 2.5 0 0 0-5 0v11.26a4.5 4.5 0 1 0 5 0z"></path></svg>', label: '작동 온도', value: '-40 ℃ ~ +135 ℃' },
-                    { icon: '<svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>', label: '보호 등급', value: 'IP67' },
-                    { icon: '<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>', label: '응답 시간', value: '≤ 1ms' }
+                    { icon: '<svg viewBox="0 0 24 24"><path d="M14 14.76V3.5a2.5 2.5 0 0 0-5 0v11.26a4.5 4.5 0 1 0 5 0z"></path></svg>', label: '?묐룞 ?⑤룄', value: '-40 ??~ +135 ?? },
+                    { icon: '<svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>', label: '蹂댄샇 ?깃툒', value: 'IP67' },
+                    { icon: '<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>', label: '?묐떟 ?쒓컙', value: '??1ms' }
                 ], 
-                details: `차량의 주행 속도를 측정해 ECU와 계기판에 전달하는 센서.
-이 정보는 엔진 제어, 변속기 제어, ABS, 크루즈 컨트롤 등 다양한 차량 제어 시스템에서 활용
+                details: `李⑤웾??二쇳뻾 ?띾룄瑜?痢≪젙??ECU? 怨꾧린?먯뿉 ?꾨떖?섎뒗 ?쇱꽌.
+???뺣낫???붿쭊 ?쒖뼱, 蹂?띻린 ?쒖뼱, ABS, ?щ（利?而⑦듃濡????ㅼ뼇??李⑤웾 ?쒖뼱 ?쒖뒪?쒖뿉???쒖슜
 
-감지 방식 : Inductive, Hall Effect Sensor
-작동 전압 : DC 5V ±0.1V
-출력 신호 : 디지털 펄스 또는 아날로그 전압
-감지 범위 : 0 ~ 15,000 rpm
-응답 시간 : ≤1ms
-온도 측정 : -40 ℃ ~ +135 ℃
-커넥터 형식 : 2핀 또는 3핀
-보호 등급 : IP67`
+媛먯? 諛⑹떇 : Inductive, Hall Effect Sensor
+?묐룞 ?꾩븬 : DC 5V 짹0.1V
+異쒕젰 ?좏샇 : ?붿????꾩뒪 ?먮뒗 ?꾨궇濡쒓렇 ?꾩븬
+媛먯? 踰붿쐞 : 0 ~ 15,000 rpm
+?묐떟 ?쒓컙 : ??ms
+?⑤룄 痢≪젙 : -40 ??~ +135 ??
+而ㅻ꽖???뺤떇 : 2? ?먮뒗 3?
+蹂댄샇 ?깃툒 : IP67`
             },
             
             'map-sensor': { 
-                category: '센서', 
+                category: '?쇱꽌', 
                 title: 'Map sensor', 
                 img: '../assets/10.png', 
-                desc: '흡기 매니폴드 내부의 절대 압력을 감지하여 ECU로 전달하는 핵심 센서', 
+                desc: '?↔린 留ㅻ땲?대뱶 ?대????덈? ?뺣젰??媛먯??섏뿬 ECU濡??꾨떖?섎뒗 ?듭떖 ?쇱꽌', 
                 specs:[
-                    { icon: '<svg viewBox="0 0 24 24"><path d="M14 14.76V3.5a2.5 2.5 0 0 0-5 0v11.26a4.5 4.5 0 1 0 5 0z"></path></svg>', label: '작동 온도', value: '-40 ℃ ~ +135 ℃' },
-                    { icon: '<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>', label: '응답 시간', value: '≤ 1ms' },
-                    { icon: '<svg viewBox="0 0 24 24"><path d="M9 3v18M15 3v18M3 9h18M3 15h18"></path></svg>', label: '커넥터 형식', value: '3핀' }
+                    { icon: '<svg viewBox="0 0 24 24"><path d="M14 14.76V3.5a2.5 2.5 0 0 0-5 0v11.26a4.5 4.5 0 1 0 5 0z"></path></svg>', label: '?묐룞 ?⑤룄', value: '-40 ??~ +135 ?? },
+                    { icon: '<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>', label: '?묐떟 ?쒓컙', value: '??1ms' },
+                    { icon: '<svg viewBox="0 0 24 24"><path d="M9 3v18M15 3v18M3 9h18M3 15h18"></path></svg>', label: '而ㅻ꽖???뺤떇', value: '3?' }
                 ],
-                details:`흡기 매니폴드 내부의 절대 압력을 감지하여 ECU로 전달하는 핵심 센서로, 엔진 부하를 계산 하고 연료 분사량 및 점화 시기를 제어하는 역할
+                details:`?↔린 留ㅻ땲?대뱶 ?대????덈? ?뺣젰??媛먯??섏뿬 ECU濡??꾨떖?섎뒗 ?듭떖 ?쇱꽌濡? ?붿쭊 遺?섎? 怨꾩궛 ?섍퀬 ?곕즺 遺꾩궗??諛??먰솕 ?쒓린瑜??쒖뼱?섎뒗 ??븷
 
-센서 방식 : MEMS 기반 절대압 센서
-작동 전압 : DC 5V ±0.1V 
-출력 범위 : 20 ~ 250kPa (차종별 상이)
-출력 방식 : 아날로그 전압 출력
-정확도 : ±1.5 kPa (25 ℃ 기준)
-응답 시간 : ≤1ms
-작동 온도 : -40 ℃ ~ +135 ℃
-커넥터 형식 : 3핀`
+?쇱꽌 諛⑹떇 : MEMS 湲곕컲 ?덈????쇱꽌
+?묐룞 ?꾩븬 : DC 5V 짹0.1V 
+異쒕젰 踰붿쐞 : 20 ~ 250kPa (李⑥쥌蹂??곸씠)
+異쒕젰 諛⑹떇 : ?꾨궇濡쒓렇 ?꾩븬 異쒕젰
+?뺥솗??: 짹1.5 kPa (25 ??湲곗?)
+?묐떟 ?쒓컙 : ??ms
+?묐룞 ?⑤룄 : -40 ??~ +135 ??
+而ㅻ꽖???뺤떇 : 3?`
             },
             'trans-position': { 
-                category: '센서', 
+                category: '?쇱꽌', 
                 title: 'Transmission Position Sensor (High temperature)', 
                 img: '../assets/17.png', 
-                desc: '전기 자동차 변속 시스템에서 기어 레버 위치 (P, R, N, D 등)를 감지하여 ECU와 계기판에 전달하는 센서', 
+                desc: '?꾧린 ?먮룞李?蹂???쒖뒪?쒖뿉??湲곗뼱 ?덈쾭 ?꾩튂 (P, R, N, D ??瑜?媛먯??섏뿬 ECU? 怨꾧린?먯뿉 ?꾨떖?섎뒗 ?쇱꽌', 
                 specs:[
-                    { icon: '<svg viewBox="0 0 24 24"><path d="M14 14.76V3.5a2.5 2.5 0 0 0-5 0v11.26a4.5 4.5 0 1 0 5 0z"></path></svg>', label: '작동 온도', value: '-40 ℃ ~ +200 ℃' },
-                    { icon: '<svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>', label: '보호 등급', value: 'IP67' },
-                    { icon: '<svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg>', label: '응답 시간', value: '≤ 5ms' }
+                    { icon: '<svg viewBox="0 0 24 24"><path d="M14 14.76V3.5a2.5 2.5 0 0 0-5 0v11.26a4.5 4.5 0 1 0 5 0z"></path></svg>', label: '?묐룞 ?⑤룄', value: '-40 ??~ +200 ?? },
+                    { icon: '<svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>', label: '蹂댄샇 ?깃툒', value: 'IP67' },
+                    { icon: '<svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg>', label: '?묐떟 ?쒓컙', value: '??5ms' }
                 ],
-                details:`전기 자동차 변속 시스템에서 기어 레버 위치 (P, R, N, D 등)를 감지하여 ECU와 계기판에 전달하는 센서. 
-이 센서 덕분에 차량은 올바른 기어 위치에서만 시동이 걸리고, 변속 제어 및 안전 기능이 정상적으로 작동
+                details:`?꾧린 ?먮룞李?蹂???쒖뒪?쒖뿉??湲곗뼱 ?덈쾭 ?꾩튂 (P, R, N, D ??瑜?媛먯??섏뿬 ECU? 怨꾧린?먯뿉 ?꾨떖?섎뒗 ?쇱꽌. 
+???쇱꽌 ?뺣텇??李⑤웾? ?щ컮瑜?湲곗뼱 ?꾩튂?먯꽌留??쒕룞??嫄몃━怨? 蹂???쒖뼱 諛??덉쟾 湲곕뒫???뺤긽?곸쑝濡??묐룞
 
-감지 방식 : 전기 접점, 비접촉식 자기 센서
-작동 전압 : DC 5V ±0.05V
-출력 방식 : 아날로그 전압 또는 디지털 스위칭 신호
-감지 범위 : P / R / N / D / M 등 변속 위치
-정확도 : ±1°
-응답 시간 : ≤5ms
-온도 측정 : -40 ℃ ~ +200 ℃
-커넥터 형식 : 3핀 또는 6핀
-보호 등급 : IP67`
+媛먯? 諛⑹떇 : ?꾧린 ?묒젏, 鍮꾩젒珥됱떇 ?먭린 ?쇱꽌
+?묐룞 ?꾩븬 : DC 5V 짹0.05V
+異쒕젰 諛⑹떇 : ?꾨궇濡쒓렇 ?꾩븬 ?먮뒗 ?붿????ㅼ쐞移??좏샇
+媛먯? 踰붿쐞 : P / R / N / D / M ??蹂???꾩튂
+?뺥솗??: 짹1째
+?묐떟 ?쒓컙 : ??ms
+?⑤룄 痢≪젙 : -40 ??~ +200 ??
+而ㅻ꽖???뺤떇 : 3? ?먮뒗 6?
+蹂댄샇 ?깃툒 : IP67`
             },
             'steering-angle': { 
-                category: '센서', 
+                category: '?쇱꽌', 
                 title: 'Steering Angle Sensor', 
                 img: '../assets/8.png', 
-                desc: '운전자가 핸들을 돌린 각도와 방향, 회전 속도를 측정해 ECU에 전달하는 센서', 
+                desc: '?댁쟾?먭? ?몃뱾???뚮┛ 媛곷룄? 諛⑺뼢, ?뚯쟾 ?띾룄瑜?痢≪젙??ECU???꾨떖?섎뒗 ?쇱꽌', 
                 specs:[
-                    { icon: '<svg viewBox="0 0 24 24"><path d="M14 14.76V3.5a2.5 2.5 0 0 0-5 0v11.26a4.5 4.5 0 1 0 5 0z"></path></svg>', label: '작동 온도', value: '-40 ℃ ~ +125 ℃' },
-                    { icon: '<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>', label: '응답 시간', value: '≤ 5ms' },
-                    { icon: '<svg viewBox="0 0 24 24"><path d="M9 3v18M15 3v18M3 9h18M3 15h18"></path></svg>', label: '커넥터 형식', value: '2핀 / 3핀 / 다핀 커넥터' }
+                    { icon: '<svg viewBox="0 0 24 24"><path d="M14 14.76V3.5a2.5 2.5 0 0 0-5 0v11.26a4.5 4.5 0 1 0 5 0z"></path></svg>', label: '?묐룞 ?⑤룄', value: '-40 ??~ +125 ?? },
+                    { icon: '<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>', label: '?묐떟 ?쒓컙', value: '??5ms' },
+                    { icon: '<svg viewBox="0 0 24 24"><path d="M9 3v18M15 3v18M3 9h18M3 15h18"></path></svg>', label: '而ㅻ꽖???뺤떇', value: '2? / 3? / ?ㅽ? 而ㅻ꽖?? }
                 ],
-                details:`운전자가 핸들을 돌린 각도와 방향, 회전 속도를 측정해 ECU에 전달하는 센서.
-이 데이터는 차체자세제어장치(ESC), 차선 유지 보조, 자동 주차, 어댑티브 크루즈 컨트롤 등
-첨단 운전자 보조 시스템(ADAS)의 핵심 입력값으로 사용
+                details:`?댁쟾?먭? ?몃뱾???뚮┛ 媛곷룄? 諛⑺뼢, ?뚯쟾 ?띾룄瑜?痢≪젙??ECU???꾨떖?섎뒗 ?쇱꽌.
+???곗씠?곕뒗 李⑥껜?먯꽭?쒖뼱?μ튂(ESC), 李⑥꽑 ?좎? 蹂댁“, ?먮룞 二쇱감, ?대뙌?곕툕 ?щ（利?而⑦듃濡???
+泥⑤떒 ?댁쟾??蹂댁“ ?쒖뒪??ADAS)???듭떖 ?낅젰媛믪쑝濡??ъ슜
 
-센서 방식 : 접촉식, GMR(Giant Magneto-Resistance)
-작동 전압 : DC 5V ±0.1V 
-측정 범위 : 회전각도 ±720° (2회전) 이상
-출력 방식 : SENT, CAN 등 디지털 신호로 ECU와 연결
-분해능 : ≤0.1°
-작동 온도 : -40 ℃ ~ +125 ℃
-응답 시간 : ≤5ms
-커넥터 형식 : 2핀 / 3핀 / 다핀 커넥터` 
+?쇱꽌 諛⑹떇 : ?묒큺?? GMR(Giant Magneto-Resistance)
+?묐룞 ?꾩븬 : DC 5V 짹0.1V 
+痢≪젙 踰붿쐞 : ?뚯쟾媛곷룄 짹720째 (2?뚯쟾) ?댁긽
+異쒕젰 諛⑹떇 : SENT, CAN ???붿????좏샇濡?ECU? ?곌껐
+遺꾪빐??: ??.1째
+?묐룞 ?⑤룄 : -40 ??~ +125 ??
+?묐떟 ?쒓컙 : ??ms
+而ㅻ꽖???뺤떇 : 2? / 3? / ?ㅽ? 而ㅻ꽖?? 
             },
             'transfer-case': { 
-                category: '센서', 
+                category: '?쇱꽌', 
                 title: 'Transfer Case Sensor (ESA)', 
                 img: '../assets/4.png', 
-                desc: '차량의 주행 조건에 따라 2륜과 4륜을 전환하거나, 앞뒤 바퀴의 동력 배분을 감지·제어하는 핵심 부품', 
+                desc: '李⑤웾??二쇳뻾 議곌굔???곕씪 2瑜쒓낵 4瑜쒖쓣 ?꾪솚?섍굅?? ?욌뮘 諛뷀댁쓽 ?숇젰 諛곕텇??媛먯?쨌?쒖뼱?섎뒗 ?듭떖 遺??, 
                 specs:[
-                    { icon: '<svg viewBox="0 0 24 24"><path d="M14 14.76V3.5a2.5 2.5 0 0 0-5 0v11.26a4.5 4.5 0 1 0 5 0z"></path></svg>', label: '작동 온도', value: '-40 ℃ ~ +125 ℃' },
-                    { icon: '<svg viewBox="0 0 24 24"><path d="M9 3v18M15 3v18M3 9h18M3 15h18"></path></svg>', label: '커넥터 형식', value: '다핀 커넥터 3~8 핀' },
-                    { icon: '<svg viewBox="0 0 24 24"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>', label: '작동 전압', value: 'DC 9 ~ 16V' }
+                    { icon: '<svg viewBox="0 0 24 24"><path d="M14 14.76V3.5a2.5 2.5 0 0 0-5 0v11.26a4.5 4.5 0 1 0 5 0z"></path></svg>', label: '?묐룞 ?⑤룄', value: '-40 ??~ +125 ?? },
+                    { icon: '<svg viewBox="0 0 24 24"><path d="M9 3v18M15 3v18M3 9h18M3 15h18"></path></svg>', label: '而ㅻ꽖???뺤떇', value: '?ㅽ? 而ㅻ꽖??3~8 ?' },
+                    { icon: '<svg viewBox="0 0 24 24"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>', label: '?묐룞 ?꾩븬', value: 'DC 9 ~ 16V' }
                 ], 
-                details:`차량의 주행 조건에 따라 2륜과 4륜을 전환하거나, 앞뒤 바퀴의 동력 배분을 감지·제어하는 핵심 부품.
-주로 트랜스퍼 케이스(Transfer Case)에 장착된 전자식 액추에이터와 위치 감지 센서가 함께 작동
+                details:`李⑤웾??二쇳뻾 議곌굔???곕씪 2瑜쒓낵 4瑜쒖쓣 ?꾪솚?섍굅?? ?욌뮘 諛뷀댁쓽 ?숇젰 諛곕텇??媛먯?쨌?쒖뼱?섎뒗 ?듭떖 遺??
+二쇰줈 ?몃옖?ㅽ띁 耳?댁뒪(Transfer Case)???μ갑???꾩옄???≪텛?먯씠?곗? ?꾩튂 媛먯? ?쇱꽌媛 ?④퍡 ?묐룞
 (Electric Shift Control Sensor)
 
-작동 전압 : DC 9 ~ 16V
-출력 방식 : 4-bit output signal
-접점 방식 : 기계식 접점 또는 홀 센서식
-작동 온도 : -40 ℃ ~ +135 ℃
-커넥터 형식 : 다핀 커넥터 3~8 핀 (차종별 상이)`
+?묐룞 ?꾩븬 : DC 9 ~ 16V
+異쒕젰 諛⑹떇 : 4-bit output signal
+?묒젏 諛⑹떇 : 湲곌퀎???묒젏 ?먮뒗 ? ?쇱꽌??
+?묐룞 ?⑤룄 : -40 ??~ +135 ??
+而ㅻ꽖???뺤떇 : ?ㅽ? 而ㅻ꽖??3~8 ? (李⑥쥌蹂??곸씠)`
             },
             '4wd-shift': { 
-                category: '센서', 
+                category: '?쇱꽌', 
                 title: '4WD Electronic Shift Control Sensor', 
                 img: '../assets/20.png', 
-                desc: '전자식 4륜 구동 시스템 (Electronic 4WD System) 핵심 센서로, 트랜스퍼 케이스 내 액추에이터의 동작을 정밀하게 감지하여 ECU에 전달', 
+                desc: '?꾩옄??4瑜?援щ룞 ?쒖뒪??(Electronic 4WD System) ?듭떖 ?쇱꽌濡? ?몃옖?ㅽ띁 耳?댁뒪 ???≪텛?먯씠?곗쓽 ?숈옉???뺣??섍쾶 媛먯??섏뿬 ECU???꾨떖', 
                 specs:[
-                    { icon: '<svg viewBox="0 0 24 24"><path d="M14 14.76V3.5a2.5 2.5 0 0 0-5 0v11.26a4.5 4.5 0 1 0 5 0z"></path></svg>', label: '작동 온도', value: '-40 ℃ ~ +135 ℃' },
-                    { icon: '<svg viewBox="0 0 24 24"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>', label: '전원 전압', value: 'DC 5V' },
-                    { icon: '<svg viewBox="0 0 24 24"><path d="M9 3v18M15 3v18M3 9h18M3 15h18"></path></svg>', label: '커넥터 타입', value: '3~8핀' }
+                    { icon: '<svg viewBox="0 0 24 24"><path d="M14 14.76V3.5a2.5 2.5 0 0 0-5 0v11.26a4.5 4.5 0 1 0 5 0z"></path></svg>', label: '?묐룞 ?⑤룄', value: '-40 ??~ +135 ?? },
+                    { icon: '<svg viewBox="0 0 24 24"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>', label: '?꾩썝 ?꾩븬', value: 'DC 5V' },
+                    { icon: '<svg viewBox="0 0 24 24"><path d="M9 3v18M15 3v18M3 9h18M3 15h18"></path></svg>', label: '而ㅻ꽖?????, value: '3~8?' }
                 ], 
-                details: `전자식 4륜 구동 시스템 (Electronic 4WD System) 핵심 센서로, 트랜스퍼 케이스 내 액추에이터의 동작을 정밀하게 감지하여 ECU에 전달하며 이 정보를 바탕으로 차량은 자동으로 구동 모드를 전환 (2WD ↔ 4WD) 하는 역할
+                details: `?꾩옄??4瑜?援щ룞 ?쒖뒪??(Electronic 4WD System) ?듭떖 ?쇱꽌濡? ?몃옖?ㅽ띁 耳?댁뒪 ???≪텛?먯씠?곗쓽 ?숈옉???뺣??섍쾶 媛먯??섏뿬 ECU???꾨떖?섎ŉ ???뺣낫瑜?諛뷀깢?쇰줈 李⑤웾? ?먮룞?쇰줈 援щ룞 紐⑤뱶瑜??꾪솚 (2WD ??4WD) ?섎뒗 ??븷
 
-전원 전압 : DC 5V
-출력 방식 : Analog Voltage / PWM Signal
-측정 범위 : 0° ~ 360°
-정밀도 : ±1° 이하
-작동 온도 : -40 ℃ ~ +135 ℃
-내 진동성 : SAE J1455 기준 준수 
-커넥터 타입 : 3~8핀 (차종별 상이)`
+?꾩썝 ?꾩븬 : DC 5V
+異쒕젰 諛⑹떇 : Analog Voltage / PWM Signal
+痢≪젙 踰붿쐞 : 0째 ~ 360째
+?뺣???: 짹1째 ?댄븯
+?묐룞 ?⑤룄 : -40 ??~ +135 ??
+??吏꾨룞??: SAE J1455 湲곗? 以??
+而ㅻ꽖?????: 3~8? (李⑥쥌蹂??곸씠)`
             },
             'water-temp': { 
-                category: '센서', 
+                category: '?쇱꽌', 
                 title: 'Water Temperature Sensor', 
                 img: '../assets/6.png', 
-                desc: '엔진 냉각수 온도를 측정하여 엔진 제어 장치 (ECU)에 정보를 전달, 냉각 팬 작동 및 연료 분사량 조절하는 역할', 
+                desc: '?붿쭊 ?됯컖???⑤룄瑜?痢≪젙?섏뿬 ?붿쭊 ?쒖뼱 ?μ튂 (ECU)???뺣낫瑜??꾨떖, ?됯컖 ???묐룞 諛??곕즺 遺꾩궗??議곗젅?섎뒗 ??븷', 
                 specs:[
-                    { icon: '<svg viewBox="0 0 24 24"><path d="M14 14.76V3.5a2.5 2.5 0 0 0-5 0v11.26a4.5 4.5 0 1 0 5 0z"></path></svg>', label: '측정 온도', value: '-40 ℃ ~ +150 ℃' },
-                    { icon: '<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>', label: '응답 시간', value: '≤ 1.5 초' },
-                    { icon: '<svg viewBox="0 0 24 24"><path d="M9 3v18M15 3v18M3 9h18M3 15h18"></path></svg>', label: '커넥터 형식', value: '2핀 또는 3핀' }
+                    { icon: '<svg viewBox="0 0 24 24"><path d="M14 14.76V3.5a2.5 2.5 0 0 0-5 0v11.26a4.5 4.5 0 1 0 5 0z"></path></svg>', label: '痢≪젙 ?⑤룄', value: '-40 ??~ +150 ?? },
+                    { icon: '<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>', label: '?묐떟 ?쒓컙', value: '??1.5 珥? },
+                    { icon: '<svg viewBox="0 0 24 24"><path d="M9 3v18M15 3v18M3 9h18M3 15h18"></path></svg>', label: '而ㅻ꽖???뺤떇', value: '2? ?먮뒗 3?' }
                 ], 
-                details: `엔진 냉각수 온도를 측정하여 엔진 제어 장치 (ECU)에 정보를 전달, 냉각 팬 작동 및 연료 분사량 조절하는 역할
+                details: `?붿쭊 ?됯컖???⑤룄瑜?痢≪젙?섏뿬 ?붿쭊 ?쒖뼱 ?μ튂 (ECU)???뺣낫瑜??꾨떖, ?됯컖 ???묐룞 諛??곕즺 遺꾩궗??議곗젅?섎뒗 ??븷
 
-작동 전압 : DC 5V
-출력 방식 : 저항 변화형 (온도 상승 시 저항 감소)
-센서 타입 : NTC 서미스터 센서, 혹은 Bi-metal
-나사 규격 : M12 x 1.5 (차종별 상이)
-측정 온도 : -40 ℃ ~ +150 ℃
-정확도 : ±2 ℃ (25 ℃ 기준)
-응답 시간 : ≤1.5 초 (냉각수 유동 상태 기준)
-커넥터 형식 : 2핀 또는 3핀`
+?묐룞 ?꾩븬 : DC 5V
+異쒕젰 諛⑹떇 : ???蹂?뷀삎 (?⑤룄 ?곸듅 ?????媛먯냼)
+?쇱꽌 ???: NTC ?쒕??ㅽ꽣 ?쇱꽌, ?뱀? Bi-metal
+?섏궗 洹쒓꺽 : M12 x 1.5 (李⑥쥌蹂??곸씠)
+痢≪젙 ?⑤룄 : -40 ??~ +150 ??
+?뺥솗??: 짹2 ??(25 ??湲곗?)
+?묐떟 ?쒓컙 : ??.5 珥?(?됯컖???좊룞 ?곹깭 湲곗?)
+而ㅻ꽖???뺤떇 : 2? ?먮뒗 3?`
             },
             'crank-position': { 
-                category: '센서', 
+                category: '?쇱꽌', 
                 title: 'Crankshaft Position Sensor', 
                 img: '../assets/9.png', 
-                desc: '엔진의 크랭크 샤프트 회전 속도와 위치를 감지하여 엔진 제어 장치 (ECU)로 정보를 전달하는 역할', 
+                desc: '?붿쭊???щ옲???ㅽ봽???뚯쟾 ?띾룄? ?꾩튂瑜?媛먯??섏뿬 ?붿쭊 ?쒖뼱 ?μ튂 (ECU)濡??뺣낫瑜??꾨떖?섎뒗 ??븷', 
                 specs:[
-                    { icon: '<svg viewBox="0 0 24 24"><path d="M14 14.76V3.5a2.5 2.5 0 0 0-5 0v11.26a4.5 4.5 0 1 0 5 0z"></path></svg>', label: '작동 온도', value: '-40 ℃ ~ +145 ℃' },
-                    { icon: '<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>', label: '응답 시간', value: '≤ 1ms' },
-                    { icon: '<svg viewBox="0 0 24 24"><path d="M9 3v18M15 3v18M3 9h18M3 15h18"></path></svg>', label: '커넥터 형식', value: '2핀 또는 3핀' }
+                    { icon: '<svg viewBox="0 0 24 24"><path d="M14 14.76V3.5a2.5 2.5 0 0 0-5 0v11.26a4.5 4.5 0 1 0 5 0z"></path></svg>', label: '?묐룞 ?⑤룄', value: '-40 ??~ +145 ?? },
+                    { icon: '<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>', label: '?묐떟 ?쒓컙', value: '??1ms' },
+                    { icon: '<svg viewBox="0 0 24 24"><path d="M9 3v18M15 3v18M3 9h18M3 15h18"></path></svg>', label: '而ㅻ꽖???뺤떇', value: '2? ?먮뒗 3?' }
                 ],
-                details:`엔진의 크랭크 샤프트 회전 속도와 위치를 감지하여 엔진 제어 장치(ECU)로 정보를 전달하는 역할.
-이 정보는 점화 시기, 연료 분사 타이밍, 엔진 회전수(RPM) 제어에 필수
+                details:`?붿쭊???щ옲???ㅽ봽???뚯쟾 ?띾룄? ?꾩튂瑜?媛먯??섏뿬 ?붿쭊 ?쒖뼱 ?μ튂(ECU)濡??뺣낫瑜??꾨떖?섎뒗 ??븷.
+???뺣낫???먰솕 ?쒓린, ?곕즺 遺꾩궗 ??대컢, ?붿쭊 ?뚯쟾??RPM) ?쒖뼱???꾩닔
 
-센서 방식 : Hall Sensor, Magnetic Inductive Sensor
-작동 전압 : DC 5V ±0.1V 
-출력 방식 : 디지털 펄스 신호
-감지 대상 : 크랭크 샤프트 톱니 휠((Reluctor Ring)
-작동 온도 : -40 ℃ ~ +145 ℃
-출력 주파수 범위 : 0 ~ 10 khz (엔진 속도에 따라)
-응답 시간 : ≤1ms
-커넥터 형식 : 2핀 또는 3핀`
+?쇱꽌 諛⑹떇 : Hall Sensor, Magnetic Inductive Sensor
+?묐룞 ?꾩븬 : DC 5V 짹0.1V 
+異쒕젰 諛⑹떇 : ?붿????꾩뒪 ?좏샇
+媛먯? ???: ?щ옲???ㅽ봽???깅땲 ??(Reluctor Ring)
+?묐룞 ?⑤룄 : -40 ??~ +145 ??
+異쒕젰 二쇳뙆??踰붿쐞 : 0 ~ 10 khz (?붿쭊 ?띾룄???곕씪)
+?묐떟 ?쒓컙 : ??ms
+而ㅻ꽖???뺤떇 : 2? ?먮뒗 3?`
             },
             'oxygen-sensor': { 
-                category: '센서', 
+                category: '?쇱꽌', 
                 title: 'Oxygen Sensor', 
                 img: '../assets/12.png', 
-                desc: '배기 가스 내 산소 농도를 실시간으로 감지하여 ECU에 전달함으로써, 연료와 공기의 혼합비를 제어하는 역할', 
+                desc: '諛곌린 媛?????곗냼 ?띾룄瑜??ㅼ떆媛꾩쑝濡?媛먯??섏뿬 ECU???꾨떖?⑥쑝濡쒖뜥, ?곕즺? 怨듦린???쇳빀鍮꾨? ?쒖뼱?섎뒗 ??븷', 
                 specs:[
-                    { icon: '<svg viewBox="0 0 24 24"><path d="M14 14.76V3.5a2.5 2.5 0 0 0-5 0v11.26a4.5 4.5 0 1 0 5 0z"></path></svg>', label: '작동 온도', value: '300 ℃ ~ 900 ℃' },
-                    { icon: '<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>', label: '응답 시간', value: '≤ 100ms' },
-                    { icon: '<svg viewBox="0 0 24 24"><path d="M9 3v18M15 3v18M3 9h18M3 15h18"></path></svg>', label: '커넥터 형식', value: '1~4핀' }
+                    { icon: '<svg viewBox="0 0 24 24"><path d="M14 14.76V3.5a2.5 2.5 0 0 0-5 0v11.26a4.5 4.5 0 1 0 5 0z"></path></svg>', label: '?묐룞 ?⑤룄', value: '300 ??~ 900 ?? },
+                    { icon: '<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>', label: '?묐떟 ?쒓컙', value: '??100ms' },
+                    { icon: '<svg viewBox="0 0 24 24"><path d="M9 3v18M15 3v18M3 9h18M3 15h18"></path></svg>', label: '而ㅻ꽖???뺤떇', value: '1~4?' }
                 ],
-                details:`센싱 방식 : Pt, Zr 기반 전기화학식 산소 센서. 배기 가스 내 산소 농도를 실시간으로 감지하여 ECU에 전달함으로써,
-연료와 공기의 혼합비를 제어하는 역할
+                details:`?쇱떛 諛⑹떇 : Pt, Zr 湲곕컲 ?꾧린?뷀븰???곗냼 ?쇱꽌. 諛곌린 媛?????곗냼 ?띾룄瑜??ㅼ떆媛꾩쑝濡?媛먯??섏뿬 ECU???꾨떖?⑥쑝濡쒖뜥,
+?곕즺? 怨듦린???쇳빀鍮꾨? ?쒖뼱?섎뒗 ??븷
 
-작동 전압 : DC 12V / 신호 전압 0 ~ 1V 
-출력 전압 범위 : 0.1V (희박 혼합) ~ 0.9V (농후 혼합)
-작동 온도 : 300 ℃ ~ 900 ℃ (히터 내장형)
-응답 시간 : ≤100ms
-히터 저항 : 약 6 ~ 12Ω (20℃ 기준)
-커넥터 형식 : 1~4핀
-출력 신호 타입 : 아날로그 전압 또는 광대역형`
+?묐룞 ?꾩븬 : DC 12V / ?좏샇 ?꾩븬 0 ~ 1V 
+異쒕젰 ?꾩븬 踰붿쐞 : 0.1V (?щ컯 ?쇳빀) ~ 0.9V (?랁썑 ?쇳빀)
+?묐룞 ?⑤룄 : 300 ??~ 900 ??(?덊꽣 ?댁옣??
+?묐떟 ?쒓컙 : ??00ms
+?덊꽣 ???: ??6 ~ 12廓 (20??湲곗?)
+而ㅻ꽖???뺤떇 : 1~4?
+異쒕젰 ?좏샇 ???: ?꾨궇濡쒓렇 ?꾩븬 ?먮뒗 愿묐???삎`
             },
 
             'tps': { 
-                category: '센서', 
+                category: '?쇱꽌', 
                 title: 'Throttle Position Sensor', 
                 img: '../assets/7.png', 
-                desc: '스로틀 밸브의 개폐 정도를 감지해 ECU(엔진 제어 장치)에 전달하는 센서', 
+                desc: '?ㅻ줈? 諛몃툕??媛쒗룓 ?뺣룄瑜?媛먯???ECU(?붿쭊 ?쒖뼱 ?μ튂)???꾨떖?섎뒗 ?쇱꽌', 
                 specs:[
-                    { icon: '<svg viewBox="0 0 24 24"><path d="M14 14.76V3.5a2.5 2.5 0 0 0-5 0v11.26a4.5 4.5 0 1 0 5 0z"></path></svg>', label: '작동 온도', value: '-40℃ ~ +145℃' },
-                    { icon: '<svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>', label: '보호 등급', value: 'IP67 이상' },
-                    { icon: '<svg viewBox="0 0 24 24"><path d="M9 3v18M15 3v18M3 9h18M3 15h18"></path></svg>', label: '커넥터 형식', value: '2핀 또는 3핀' }
+                    { icon: '<svg viewBox="0 0 24 24"><path d="M14 14.76V3.5a2.5 2.5 0 0 0-5 0v11.26a4.5 4.5 0 1 0 5 0z"></path></svg>', label: '?묐룞 ?⑤룄', value: '-40??~ +145?? },
+                    { icon: '<svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>', label: '蹂댄샇 ?깃툒', value: 'IP67 ?댁긽' },
+                    { icon: '<svg viewBox="0 0 24 24"><path d="M9 3v18M15 3v18M3 9h18M3 15h18"></path></svg>', label: '而ㅻ꽖???뺤떇', value: '2? ?먮뒗 3?' }
                 ],
-                details:`스로틀 밸브의 개폐 정도를 감지해 ECU(엔진 제어 장치)에 전달하는 센서.
-이 정보는 연료 분사량, 점화 시기, 변속 시점 등을 제어하는 핵심 부품
+                details:`?ㅻ줈? 諛몃툕??媛쒗룓 ?뺣룄瑜?媛먯???ECU(?붿쭊 ?쒖뼱 ?μ튂)???꾨떖?섎뒗 ?쇱꽌.
+???뺣낫???곕즺 遺꾩궗?? ?먰솕 ?쒓린, 蹂???쒖젏 ?깆쓣 ?쒖뼱?섎뒗 ?듭떖 遺??
 
-센서 방식 : 접촉식 혹은 Hall Effect Sensor
-작동 전압 : DC 5V ±0.1V 
-출력 전압 범위 : 0.5V ~ 4.5V
-출력 신호 : Linear Output Potentiometer
-작동 온도 : -40℃ ~ +145℃
-보호 등급 : IP67 이상
-응답 시간 : ≤5ms
-커넥터 형식 : 2핀 또는 3핀`
+?쇱꽌 諛⑹떇 : ?묒큺???뱀? Hall Effect Sensor
+?묐룞 ?꾩븬 : DC 5V 짹0.1V 
+異쒕젰 ?꾩븬 踰붿쐞 : 0.5V ~ 4.5V
+異쒕젰 ?좏샇 : Linear Output Potentiometer
+?묐룞 ?⑤룄 : -40??~ +145??
+蹂댄샇 ?깃툒 : IP67 ?댁긽
+?묐떟 ?쒓컙 : ??ms
+而ㅻ꽖???뺤떇 : 2? ?먮뒗 3?`
             },
             'knock-sensor': { 
-                category: '센서', 
+                category: '?쇱꽌', 
                 title: 'Knock Sensor', 
                 img: '../assets/14.png', 
-                desc: '엔진 내부에서 발생하는 이상 폭발(노킹, Detonation)을 감지하여 ECU로 전달', 
+                desc: '?붿쭊 ?대??먯꽌 諛쒖깮?섎뒗 ?댁긽 ??컻(?명궧, Detonation)??媛먯??섏뿬 ECU濡??꾨떖', 
                 specs:[
-                    { icon: '<svg viewBox="0 0 24 24"><path d="M14 14.76V3.5a2.5 2.5 0 0 0-5 0v11.26a4.5 4.5 0 1 0 5 0z"></path></svg>', label: '작동 온도', value: '-40℃ ~ +145℃' },
-                    { icon: '<svg viewBox="0 0 24 24"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>', label: '출력 전압 범위', value: '약0.1 ~ 4.9 V' },
-                    { icon: '<svg viewBox="0 0 24 24"><path d="M9 3v18M15 3v18M3 9h18M3 15h18"></path></svg>', label: '커넥터 형식', value: '2핀' }
+                    { icon: '<svg viewBox="0 0 24 24"><path d="M14 14.76V3.5a2.5 2.5 0 0 0-5 0v11.26a4.5 4.5 0 1 0 5 0z"></path></svg>', label: '?묐룞 ?⑤룄', value: '-40??~ +145?? },
+                    { icon: '<svg viewBox="0 0 24 24"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>', label: '異쒕젰 ?꾩븬 踰붿쐞', value: '??.1 ~ 4.9 V' },
+                    { icon: '<svg viewBox="0 0 24 24"><path d="M9 3v18M15 3v18M3 9h18M3 15h18"></path></svg>', label: '而ㅻ꽖???뺤떇', value: '2?' }
                 ],
-                details:`엔진 내부에서 발생하는 이상 폭발(노킹, Detonation) 을 감지하여 ECU로 전달함으로써,  노킹을 조기에 감지 하고 점화 시기를 제어하는 역할, 엔진 손상과 출력 저하 방지
+                details:`?붿쭊 ?대??먯꽌 諛쒖깮?섎뒗 ?댁긽 ??컻(?명궧, Detonation) ??媛먯??섏뿬 ECU濡??꾨떖?⑥쑝濡쒖뜥,  ?명궧??議곌린??媛먯? ?섍퀬 ?먰솕 ?쒓린瑜??쒖뼱?섎뒗 ??븷, ?붿쭊 ?먯긽怨?異쒕젰 ???諛⑹?
 
-센싱 방식 : 압전식(Piezoelectric)
-작동 전압 : DC 5V 
-출력 신호 : 진동 주파수 기반 아날로그 전압 신호
-감지 주파수 범위 : 5 ~ 15kHz
-출력 전압 범위 : 약 0.1 ~ 4.9 V
-작동 온도 : -40℃ ~ +145℃
-장착 형식 : 볼트 체결형 
-커넥터 형식 : 2핀`
+?쇱떛 諛⑹떇 : ?뺤쟾??Piezoelectric)
+?묐룞 ?꾩븬 : DC 5V 
+異쒕젰 ?좏샇 : 吏꾨룞 二쇳뙆??湲곕컲 ?꾨궇濡쒓렇 ?꾩븬 ?좏샇
+媛먯? 二쇳뙆??踰붿쐞 : 5 ~ 15kHz
+異쒕젰 ?꾩븬 踰붿쐞 : ??0.1 ~ 4.9 V
+?묐룞 ?⑤룄 : -40??~ +145??
+?μ갑 ?뺤떇 : 蹂쇳듃 泥닿껐??
+而ㅻ꽖???뺤떇 : 2?`
             },
             'idle-valve': { 
-                category: '센서', 
+                category: '?쇱꽌', 
                 title: 'Idle Speed Control Valve', 
                 img: '../assets/13.png', 
-                desc: '엔진 공회전 시 ECU의 제어 신호에 따라 공기 유량을 조절하여 안정적인 아이들 회전수를 유지하는 역할', 
+                desc: '?붿쭊 怨듯쉶????ECU???쒖뼱 ?좏샇???곕씪 怨듦린 ?좊웾??議곗젅?섏뿬 ?덉젙?곸씤 ?꾩씠???뚯쟾?섎? ?좎??섎뒗 ??븷', 
                 specs:[
-                    { icon: '<svg viewBox="0 0 24 24"><path d="M14 14.76V3.5a2.5 2.5 0 0 0-5 0v11.26a4.5 4.5 0 1 0 5 0z"></path></svg>', label: '작동 온도', value: '-40℃ ~ +145℃' },
-                    { icon: '<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>', label: '응답 시간', value: '≤ 10ms' },
-                    { icon: '<svg viewBox="0 0 24 24"><path d="M9 3v18M15 3v18M3 9h18M3 15h18"></path></svg>', label: '커넥터 형식', value: '4핀' }
+                    { icon: '<svg viewBox="0 0 24 24"><path d="M14 14.76V3.5a2.5 2.5 0 0 0-5 0v11.26a4.5 4.5 0 1 0 5 0z"></path></svg>', label: '?묐룞 ?⑤룄', value: '-40??~ +145?? },
+                    { icon: '<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>', label: '?묐떟 ?쒓컙', value: '??10ms' },
+                    { icon: '<svg viewBox="0 0 24 24"><path d="M9 3v18M15 3v18M3 9h18M3 15h18"></path></svg>', label: '而ㅻ꽖???뺤떇', value: '4?' }
                 ],
-                details:`엔진 공회전 시 ECU의 제어 신호에 따라 공기 유량을 조절하여 안정적인 아이들 회전수를 유지하는 역할.
-엔진이 공회전 상태일 때 흡입되는 공기량을 조절해 엔진 회전수를 일정하게 유지하는 장치로 운전자가 가속 페달을 밟지 않아도  엔진이 꺼지지 않고 안정적으로 작동
+                details:`?붿쭊 怨듯쉶????ECU???쒖뼱 ?좏샇???곕씪 怨듦린 ?좊웾??議곗젅?섏뿬 ?덉젙?곸씤 ?꾩씠???뚯쟾?섎? ?좎??섎뒗 ??븷.
+?붿쭊??怨듯쉶???곹깭?????≪엯?섎뒗 怨듦린?됱쓣 議곗젅???붿쭊 ?뚯쟾?섎? ?쇱젙?섍쾶 ?좎??섎뒗 ?μ튂濡??댁쟾?먭? 媛???섎떖??諛잛? ?딆븘?? ?붿쭊??爰쇱?吏 ?딄퀬 ?덉젙?곸쑝濡??묐룞
 
-작동 방식 : 스테퍼 모터 구동형 밸브
-작동 전압 : DC 12V
-제어 신호 : 펄스 입력
-밸브 스트로크 : 약 8 ~ 12mm
-응답 시간 : ≤10ms
-작동 온도 : -40℃ ~ +145℃
-커넥터 형식 : 4핀`
+?묐룞 諛⑹떇 : ?ㅽ뀒??紐⑦꽣 援щ룞??諛몃툕
+?묐룞 ?꾩븬 : DC 12V
+?쒖뼱 ?좏샇 : ?꾩뒪 ?낅젰
+諛몃툕 ?ㅽ듃濡쒗겕 : ??8 ~ 12mm
+?묐떟 ?쒓컙 : ??0ms
+?묐룞 ?⑤룄 : -40??~ +145??
+而ㅻ꽖???뺤떇 : 4?`
             },
             // Actuators
             'bldc-motor': {
-                category: '액추에이터', 
+                category: '?≪텛?먯씠??, 
                 title: 'BLDC Motor', 
                 img: '../assets/25.png',
-                desc: '브러시가 없는 구조로 마찰 손실과 전기 노이즈를 최소화한 고효율 전동기이며 정밀 제어가 가능',
+                desc: '釉뚮윭?쒓? ?녿뒗 援ъ“濡?留덉같 ?먯떎怨??꾧린 ?몄씠利덈? 理쒖냼?뷀븳 怨좏슚???꾨룞湲곗씠硫??뺣? ?쒖뼱媛 媛??,
                 specs: [
-                    { icon: '<svg viewBox="0 0 24 24"><path d="M14 14.76V3.5a2.5 2.5 0 0 0-5 0v11.26a4.5 4.5 0 1 0 5 0z"></path></svg>', label: '작동 온도', value: '-40℃ ~ +125℃' },
-                    { icon: '<svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>', label: '보호 등급', value: 'IP65 이상' },
-                    { icon: '<svg viewBox="0 0 24 24"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>', label: '전원 전압', value: 'DC 12V / 24V / 48V' }
+                    { icon: '<svg viewBox="0 0 24 24"><path d="M14 14.76V3.5a2.5 2.5 0 0 0-5 0v11.26a4.5 4.5 0 1 0 5 0z"></path></svg>', label: '?묐룞 ?⑤룄', value: '-40??~ +125?? },
+                    { icon: '<svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>', label: '蹂댄샇 ?깃툒', value: 'IP65 ?댁긽' },
+                    { icon: '<svg viewBox="0 0 24 24"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>', label: '?꾩썝 ?꾩븬', value: 'DC 12V / 24V / 48V' }
                 ],
-                details: `마찰 손실과 전기 노이즈를 최소화한 브러시 리스 고효율 전동기로 정밀 제어가 가능하여, 
-높은 출력 밀도와 긴 수명을 제공하여 차량용 팬, 펌프, 액추에이터 등 다양한 응용 분야에 활용
+                details: `留덉같 ?먯떎怨??꾧린 ?몄씠利덈? 理쒖냼?뷀븳 釉뚮윭??由ъ뒪 怨좏슚???꾨룞湲곕줈 ?뺣? ?쒖뼱媛 媛?ν븯?? 
+?믪? 異쒕젰 諛?꾩? 湲??섎챸???쒓났?섏뿬 李⑤웾???? ?뚰봽, ?≪텛?먯씠?????ㅼ뼇???묒슜 遺꾩빞???쒖슜
 
-전원 전압 : DC 12V / 24V / 48V
+?꾩썝 ?꾩븬 : DC 12V / 24V / 48V
 
-정격 출력 : 50W ~ 1kW (모델별 상이)
-정격 속도 : 1,000 ~ 6,000 rpm 
-제어 방식 : 홀 센서 피드백 / 센서리스 제어 (PWM, FOC)
-효율 : ≥85%
-토크 특성 : High torque, 고출력 저 진동
-작동 온도 : -40℃ ~ +125℃
-보호 등급 : IP65 이상
-베어링 타입 : 고 내구성 베어링
-커넥터 형식 : 맞춤형 다핀 커넥터`
+?뺢꺽 異쒕젰 : 50W ~ 1kW (紐⑤뜽蹂??곸씠)
+?뺢꺽 ?띾룄 : 1,000 ~ 6,000 rpm 
+?쒖뼱 諛⑹떇 : ? ?쇱꽌 ?쇰뱶諛?/ ?쇱꽌由ъ뒪 ?쒖뼱 (PWM, FOC)
+?⑥쑉 : ??5%
+?좏겕 ?뱀꽦 : High torque, 怨좎텧??? 吏꾨룞
+?묐룞 ?⑤룄 : -40??~ +125??
+蹂댄샇 ?깃툒 : IP65 ?댁긽
+踰좎뼱留????: 怨??닿뎄??踰좎뼱留?
+而ㅻ꽖???뺤떇 : 留욎땄???ㅽ? 而ㅻ꽖??
             },
             'digital-shift': {
-                category: '액추에이터', 
+                category: '?≪텛?먯씠??, 
                 title: 'Digital-Electric Shift Control Actuator', 
                 img: '../assets/22.png',
-                desc: '자동변속기의 기어 변속을 전자적으로 제어하는 액추에이터로 4WD 트랜스퍼 케이스의 변속 모드 (2H / 4H / 4L 등)를 전자적으로 전환하는 핵심 구동 장치',
+                desc: '?먮룞蹂?띻린??湲곗뼱 蹂?띿쓣 ?꾩옄?곸쑝濡??쒖뼱?섎뒗 ?≪텛?먯씠?곕줈 4WD ?몃옖?ㅽ띁 耳?댁뒪??蹂??紐⑤뱶 (2H / 4H / 4L ??瑜??꾩옄?곸쑝濡??꾪솚?섎뒗 ?듭떖 援щ룞 ?μ튂',
                 specs: [
-                     { icon: '<svg viewBox="0 0 24 24"><path d="M14 14.76V3.5a2.5 2.5 0 0 0-5 0v11.26a4.5 4.5 0 1 0 5 0z"></path></svg>', label: '작동 온도', value: '-40℃ ~ +145℃' },
-                     { icon: '<svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>', label: '보호 등급', value: 'IP67 이상' },
-                     { icon: '<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>', label: '응답 시간', value: '≤ 500ms' }
+                     { icon: '<svg viewBox="0 0 24 24"><path d="M14 14.76V3.5a2.5 2.5 0 0 0-5 0v11.26a4.5 4.5 0 1 0 5 0z"></path></svg>', label: '?묐룞 ?⑤룄', value: '-40??~ +145?? },
+                     { icon: '<svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>', label: '蹂댄샇 ?깃툒', value: 'IP67 ?댁긽' },
+                     { icon: '<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>', label: '?묐떟 ?쒓컙', value: '??500ms' }
                 ],
-                details: `자동변속기의 기어 변속을 전자적으로 제어하는 액추에이터로 4WD 트랜스퍼 케이스의 변속 모드 (2H / 4H / 4L 등)를  전자적으로 전환하는 핵심 구동 장치
+                details: `?먮룞蹂?띻린??湲곗뼱 蹂?띿쓣 ?꾩옄?곸쑝濡??쒖뼱?섎뒗 ?≪텛?먯씠?곕줈 4WD ?몃옖?ㅽ띁 耳?댁뒪??蹂??紐⑤뱶 (2H / 4H / 4L ??瑜? ?꾩옄?곸쑝濡??꾪솚?섎뒗 ?듭떖 援щ룞 ?μ튂
 
-구동 방식 : DC/BLDC 모터, 기어 감속 메커니즘 
-전원 전압 : DC 12V / 24V
-출력 토크 : 20 ~ 60 N·m (사양에 따라 상이)
-제어 방식 : PWM 신호 제어, Linear Output 제어
-위치 검출 : 홀 센서 / 포텐셔미터 내장
-응답 시간 : ≤500ms
-작동 온도 : -40℃ ~ +145℃
-보호 등급 : IP67 이상
-커넥터 형식 : 다핀 커넥터 (4 ~ 8핀 구성)`
+援щ룞 諛⑹떇 : DC/BLDC 紐⑦꽣, 湲곗뼱 媛먯냽 硫붿빱?덉쬁 
+?꾩썝 ?꾩븬 : DC 12V / 24V
+異쒕젰 ?좏겕 : 20 ~ 60 N쨌m (?ъ뼇???곕씪 ?곸씠)
+?쒖뼱 諛⑹떇 : PWM ?좏샇 ?쒖뼱, Linear Output ?쒖뼱
+?꾩튂 寃異?: ? ?쇱꽌 / ?ы뀗?붾????댁옣
+?묐떟 ?쒓컙 : ??00ms
+?묐룞 ?⑤룄 : -40??~ +145??
+蹂댄샇 ?깃툒 : IP67 ?댁긽
+而ㅻ꽖???뺤떇 : ?ㅽ? 而ㅻ꽖??(4 ~ 8? 援ъ꽦)`
             },
             'ac-motor': {
-                category: '액추에이터', 
+                category: '?≪텛?먯씠??, 
                 title: 'AC Motor', 
                 img: '../assets/24.png',
-                desc: '교류 전원을 이용해 회전 운동을 생성하는 전동기 이며 높은 내구성과 안정적인 특성을 갖추어 HVAC 시스템 적용',
+                desc: '援먮쪟 ?꾩썝???댁슜???뚯쟾 ?대룞???앹꽦?섎뒗 ?꾨룞湲??대ŉ ?믪? ?닿뎄?깃낵 ?덉젙?곸씤 ?뱀꽦??媛뽰텛??HVAC ?쒖뒪???곸슜',
                 specs: [
-                     { icon: '<svg viewBox="0 0 24 24"><path d="M14 14.76V3.5a2.5 2.5 0 0 0-5 0v11.26a4.5 4.5 0 1 0 5 0z"></path></svg>', label: '작동 온도', value: '-20℃ ~ +80℃' },
-                     { icon: '<svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>', label: '보호 등급', value: 'IP54 ~ IP65' },
-                     { icon: '<svg viewBox="0 0 24 24"><path d="M9 3v18M15 3v18M3 9h18M3 15h18"></path></svg>', label: '커넥터 형식', value: '맞춤형 커넥터 / 리드선 출력' }
+                     { icon: '<svg viewBox="0 0 24 24"><path d="M14 14.76V3.5a2.5 2.5 0 0 0-5 0v11.26a4.5 4.5 0 1 0 5 0z"></path></svg>', label: '?묐룞 ?⑤룄', value: '-20??~ +80?? },
+                     { icon: '<svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>', label: '蹂댄샇 ?깃툒', value: 'IP54 ~ IP65' },
+                     { icon: '<svg viewBox="0 0 24 24"><path d="M9 3v18M15 3v18M3 9h18M3 15h18"></path></svg>', label: '而ㅻ꽖???뺤떇', value: '留욎땄??而ㅻ꽖??/ 由щ뱶??異쒕젰' }
                 ],
-                details: `교류 전원을 이용해 회전 운동을 생성하는 전동기 이며 높은 내구성과 안정적인 특성을 갖추어 HVAC 시스템, 산업 자동화, 자동차 구동 장치 등 다양한 분야에 적용
+                details: `援먮쪟 ?꾩썝???댁슜???뚯쟾 ?대룞???앹꽦?섎뒗 ?꾨룞湲??대ŉ ?믪? ?닿뎄?깃낵 ?덉젙?곸씤 ?뱀꽦??媛뽰텛??HVAC ?쒖뒪?? ?곗뾽 ?먮룞?? ?먮룞李?援щ룞 ?μ튂 ???ㅼ뼇??遺꾩빞???곸슜
 
-전원 전압 : AC 100V ~ 240V
-정격 출력 : 10W ~ 500W (모델별 상이)
-정격 속도 : 1,000 ~ 3,600 rpm 
-회전 방향 : 정 / 역회전 (양방향 제어 가능)
-절연 등급 : Class B / F
-보호 등급 : IP54 ~ IP65
-작동 온도 : -40℃ ~ +135℃
-커넥터 형식 : 맞춤형 커넥터 / 리드선 출력`
+?꾩썝 ?꾩븬 : AC 100V ~ 240V
+?뺢꺽 異쒕젰 : 10W ~ 500W (紐⑤뜽蹂??곸씠)
+?뺢꺽 ?띾룄 : 1,000 ~ 3,600 rpm 
+?뚯쟾 諛⑺뼢 : ??/ ??쉶??(?묐갑???쒖뼱 媛??
+?덉뿰 ?깃툒 : Class B / F
+蹂댄샇 ?깃툒 : IP54 ~ IP65
+?묐룞 ?⑤룄 : -40??~ +135??
+而ㅻ꽖???뺤떇 : 留욎땄??而ㅻ꽖??/ 由щ뱶??異쒕젰`
             },
             'fan-clutch': {
-                category: '액추에이터', 
+                category: '?≪텛?먯씠??, 
                 title: 'Electronic Fan Clutch Actuator', 
                 img: '../assets/21.png',
-                desc: '실시간 엔진 냉각팬의 회전 속도를 제어하는 전자식 액추에이터',
+                desc: '?ㅼ떆媛??붿쭊 ?됯컖?ъ쓽 ?뚯쟾 ?띾룄瑜??쒖뼱?섎뒗 ?꾩옄???≪텛?먯씠??,
                 specs: [
-                     { icon: '<svg viewBox="0 0 24 24"><path d="M14 14.76V3.5a2.5 2.5 0 0 0-5 0v11.26a4.5 4.5 0 1 0 5 0z"></path></svg>', label: '작동 온도', value: '-40℃ ~ +145℃' },
-                     { icon: '<svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>', label: '보호 등급', value: 'IP65 이상' },
-                     { icon: '<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>', label: '응답 시간', value: '≤ 300ms' }
+                     { icon: '<svg viewBox="0 0 24 24"><path d="M14 14.76V3.5a2.5 2.5 0 0 0-5 0v11.26a4.5 4.5 0 1 0 5 0z"></path></svg>', label: '?묐룞 ?⑤룄', value: '-40??~ +145?? },
+                     { icon: '<svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>', label: '蹂댄샇 ?깃툒', value: 'IP65 ?댁긽' },
+                     { icon: '<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>', label: '?묐떟 ?쒓컙', value: '??300ms' }
                 ],
-                details: `전자식 팬 클러치 엑추에이터는 엔진 냉각팬의 회전 속도를 제어하는 전자식 구동 장치로 기존 점도식(Viscous) 팬 클러치가 단순히  온도에 따라 기계적으로 작동하는 것과 달리, ECU(엔진 제어 장치)의 전기 신호를 받아 팬 클러치를 정밀하게 제어하여 냉각 효율 향상과 소음·연비 개선 역할
+                details: `?꾩옄?????대윭移??묒텛?먯씠?곕뒗 ?붿쭊 ?됯컖?ъ쓽 ?뚯쟾 ?띾룄瑜??쒖뼱?섎뒗 ?꾩옄??援щ룞 ?μ튂濡?湲곗〈 ?먮룄??Viscous) ???대윭移섍? ?⑥닚?? ?⑤룄???곕씪 湲곌퀎?곸쑝濡??묐룞?섎뒗 寃껉낵 ?щ━, ECU(?붿쭊 ?쒖뼱 ?μ튂)???꾧린 ?좏샇瑜?諛쏆븘 ???대윭移섎? ?뺣??섍쾶 ?쒖뼱?섏뿬 ?됯컖 ?⑥쑉 ?μ긽怨??뚯쓬쨌?곕퉬 媛쒖꽑 ??븷
 
-작동 방식 : 전자식 구동 제어
-제어 신호 : PWM 신호 ECU 제어
-전원 전압 : DC 12V 또는 24V
-작동 온도 : -40℃ ~ +145℃
-응답 시간 : ≤300ms
-클러치 유체 : 실리콘 오일
-베어링 타입 : 고 내구 베어링 내장
-보호 등급 : IP65 이상`
+?묐룞 諛⑹떇 : ?꾩옄??援щ룞 ?쒖뼱
+?쒖뼱 ?좏샇 : PWM ?좏샇 ECU ?쒖뼱
+?꾩썝 ?꾩븬 : DC 12V ?먮뒗 24V
+?묐룞 ?⑤룄 : -40??~ +145??
+?묐떟 ?쒓컙 : ??00ms
+?대윭移??좎껜 : ?ㅻ━肄??ㅼ씪
+踰좎뼱留????: 怨??닿뎄 踰좎뼱留??댁옣
+蹂댄샇 ?깃툒 : IP65 ?댁긽`
             },
             '4wd-geared': {
-                category: '액추에이터', 
+                category: '?≪텛?먯씠??, 
                 title: '4WD Geared Actuator', 
                 img: '../assets/23.png',
-                desc: '전자식 4륜구동 시스템에서 트랜스퍼 케이스(Transfer Case)의 기어를 전환하는 액추에이터',
+                desc: '?꾩옄??4瑜쒓뎄???쒖뒪?쒖뿉???몃옖?ㅽ띁 耳?댁뒪(Transfer Case)??湲곗뼱瑜??꾪솚?섎뒗 ?≪텛?먯씠??,
                 specs: [
-                     { icon: '<svg viewBox="0 0 24 24"><path d="M14 14.76V3.5a2.5 2.5 0 0 0-5 0v11.26a4.5 4.5 0 1 0 5 0z"></path></svg>', label: '작동 온도', value: '-40℃ ~ +145℃' },
-                     { icon: '<svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>', label: '보호 등급', value: 'IP67' },
-                     { icon: '<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>', label: '응답 시간', value: '≤ 300ms' }
+                     { icon: '<svg viewBox="0 0 24 24"><path d="M14 14.76V3.5a2.5 2.5 0 0 0-5 0v11.26a4.5 4.5 0 1 0 5 0z"></path></svg>', label: '?묐룞 ?⑤룄', value: '-40??~ +145?? },
+                     { icon: '<svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>', label: '蹂댄샇 ?깃툒', value: 'IP67' },
+                     { icon: '<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>', label: '?묐떟 ?쒓컙', value: '??300ms' }
                 ],
-                details: `전자식 4륜 구동 시스템에서 트랜스퍼 케이스(Transfer Case)의 기어를 전환하는 구동 장치로
-운전자가 선택한 모드를 ECU로 부터 받아 자동으로 4륜 모드 전환.
+                details: `?꾩옄??4瑜?援щ룞 ?쒖뒪?쒖뿉???몃옖?ㅽ띁 耳?댁뒪(Transfer Case)??湲곗뼱瑜??꾪솚?섎뒗 援щ룞 ?μ튂濡?
+?댁쟾?먭? ?좏깮??紐⑤뱶瑜?ECU濡?遺??諛쏆븘 ?먮룞?쇰줈 4瑜?紐⑤뱶 ?꾪솚.
 
-전원 전압 : DC 12V / 24V
-구동 방식 : DC/BLDC모터, 기어 감속 메커니즘
-출력 토크 : 5 ~ 50 N·m (사양에 따라 상이)
-응답 시간 : ≤300ms
-위치 검출 : 홀 센서 / 포텐셔미터
-제어 방식 : 전압 제어 또는 PWM ECU 제어
-작동 온도 : -40℃ ~ +145℃
-보호 등급 : IP67
-커넥터 형식 : 2핀 / 3핀 / 다핀`
+?꾩썝 ?꾩븬 : DC 12V / 24V
+援щ룞 諛⑹떇 : DC/BLDC紐⑦꽣, 湲곗뼱 媛먯냽 硫붿빱?덉쬁
+異쒕젰 ?좏겕 : 5 ~ 50 N쨌m (?ъ뼇???곕씪 ?곸씠)
+?묐떟 ?쒓컙 : ??00ms
+?꾩튂 寃異?: ? ?쇱꽌 / ?ы뀗?붾???
+?쒖뼱 諛⑹떇 : ?꾩븬 ?쒖뼱 ?먮뒗 PWM ECU ?쒖뼱
+?묐룞 ?⑤룄 : -40??~ +145??
+蹂댄샇 ?깃툒 : IP67
+而ㅻ꽖???뺤떇 : 2? / 3? / ?ㅽ?`
             },
             'hidden-door-handle': {
-                category: '액추에이터', 
+                category: '?≪텛?먯씠??, 
                 title: 'Hidden Door Handle Actuator', 
                 img: '../assets/hidden_door_handle.png',
-                desc: '도어와 일체화된 히든 핸들은 개폐시 자동으로 돌출되어 공기 저항 감소, 고급스러운 디자인, 향상된 보안성을 제공',
+                desc: '?꾩뼱? ?쇱껜?붾맂 ?덈뱺 ?몃뱾? 媛쒗룓???먮룞?쇰줈 ?뚯텧?섏뼱 怨듦린 ???媛먯냼, 怨좉툒?ㅻ윭???붿옄?? ?μ긽??蹂댁븞?깆쓣 ?쒓났',
                 specs: [
-                     { icon: '<svg viewBox="0 0 24 24"><path d="M14 14.76V3.5a2.5 2.5 0 0 0-5 0v11.26a4.5 4.5 0 1 0 5 0z"></path></svg>', label: '작동 온도', value: '-40℃ ~ +125℃' },
-                     { icon: '<svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>', label: '보호 등급', value: 'IP67' },
-                     { icon: '<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>', label: '응답 시간', value: '≤ 500ms' }
+                     { icon: '<svg viewBox="0 0 24 24"><path d="M14 14.76V3.5a2.5 2.5 0 0 0-5 0v11.26a4.5 4.5 0 1 0 5 0z"></path></svg>', label: '?묐룞 ?⑤룄', value: '-40??~ +125?? },
+                     { icon: '<svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>', label: '蹂댄샇 ?깃툒', value: 'IP67' },
+                     { icon: '<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>', label: '?묐떟 ?쒓컙', value: '??500ms' }
                 ],
-                details: `도어와 일체화된 히든 핸들은 개폐시 자동으로 돌출되어 공기 저항 감소, 고급 스러운 디자인, 향상된 보안성을 제공
+                details: `?꾩뼱? ?쇱껜?붾맂 ?덈뱺 ?몃뱾? 媛쒗룓???먮룞?쇰줈 ?뚯텧?섏뼱 怨듦린 ???媛먯냼, 怨좉툒 ?ㅻ윭???붿옄?? ?μ긽??蹂댁븞?깆쓣 ?쒓났
 
-주요 특징:
-• 공기역학적 디자인 : 매립형 핸들로 공기 저항을 줄여 연비 향상
-• 프리미엄 디자인 : 차체와 일체감 있는 매끄럽고 현대적인 외관
-• 향상된 보안성 : 주행 및 주차 시 핸들이 내부로 수납되어 보안 강화
-• 스마트키 연동 : 스마트키 감지 시 자동으로 핸들 전개
-• 내후성 설계 : IP67 등급의 방수/방진 설계로 전천후 작동 보장
+二쇱슂 ?뱀쭠:
+??怨듦린??븰???붿옄??: 留ㅻ┰???몃뱾濡?怨듦린 ???쓣 以꾩뿬 ?곕퉬 ?μ긽
+???꾨━誘몄뾼 ?붿옄??: 李⑥껜? ?쇱껜媛??덈뒗 留ㅻ걚?쎄퀬 ?꾨??곸씤 ?멸?
+???μ긽??蹂댁븞??: 二쇳뻾 諛?二쇱감 ???몃뱾???대?濡??섎궔?섏뼱 蹂댁븞 媛뺥솕
+???ㅻ쭏?명궎 ?곕룞 : ?ㅻ쭏?명궎 媛먯? ???먮룞?쇰줈 ?몃뱾 ?꾧컻
+???댄썑???ㅺ퀎 : IP67 ?깃툒??諛⑹닔/諛⑹쭊 ?ㅺ퀎濡??꾩쿇???묐룞 蹂댁옣
 
-적용 분야 : 전기차(EV), 고급 세단, 스포츠카 등 미래 모빌리티`
+?곸슜 遺꾩빞 : ?꾧린李?EV), 怨좉툒 ?몃떒, ?ㅽ룷痢좎뭅 ??誘몃옒 紐⑤퉴由ы떚`
             },
             // Controllers
             'proximity': {
-                category: '컨트롤러', 
+                category: '而⑦듃濡ㅻ윭', 
                 title: 'Smart Electronic Proximity Sensor', 
                 img: '../assets/26.png',
-                desc: '자기장, 정전용량 또는 초음파 원리를 이용해 물체의 접근을 감지하는 비접촉식 감지 센서',
+                desc: '?먭린?? ?뺤쟾?⑸웾 ?먮뒗 珥덉쓬???먮━瑜??댁슜??臾쇱껜???묎렐??媛먯??섎뒗 鍮꾩젒珥됱떇 媛먯? ?쇱꽌',
                 specs: [
-                     { icon: '<svg viewBox="0 0 24 24"><path d="M14 14.76V3.5a2.5 2.5 0 0 0-5 0v11.26a4.5 4.5 0 1 0 5 0z"></path></svg>', label: '작동 온도', value: '-40℃ ~ +125℃' },
-                     { icon: '<svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>', label: '보호 등급', value: 'IP67' },
-                     { icon: '<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>', label: '응답 시간', value: '≤ 1ms' }
+                     { icon: '<svg viewBox="0 0 24 24"><path d="M14 14.76V3.5a2.5 2.5 0 0 0-5 0v11.26a4.5 4.5 0 1 0 5 0z"></path></svg>', label: '?묐룞 ?⑤룄', value: '-40??~ +125?? },
+                     { icon: '<svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>', label: '蹂댄샇 ?깃툒', value: 'IP67' },
+                     { icon: '<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>', label: '?묐떟 ?쒓컙', value: '??1ms' }
                 ],
-                details: `자기장, 정전용량 또는 초음파 원리를 이용해 물체의 접근을 감지하는 비접촉식 감지 센서
+                details: `?먭린?? ?뺤쟾?⑸웾 ?먮뒗 珥덉쓬???먮━瑜??댁슜??臾쇱껜???묎렐??媛먯??섎뒗 鍮꾩젒珥됱떇 媛먯? ?쇱꽌
 
-전원 전압 : DC 5V ~ 24V
-감지 거리 : 1mm ~ 30mm
-감지 방식 : 자기유도 / 정전용량 / 초음파형 
-출력 신호 : 디지털 또는 아날로그 전압 출력
-응답 시간 : ≤1ms
-작동 온도 : -40℃ ~ +125℃
-통신 인터페이스 (옵션) : UART / CAN / LIN / I²C
-보호 등급 : IP67`
+?꾩썝 ?꾩븬 : DC 5V ~ 24V
+媛먯? 嫄곕━ : 1mm ~ 30mm
+媛먯? 諛⑹떇 : ?먭린?좊룄 / ?뺤쟾?⑸웾 / 珥덉쓬?뚰삎 
+異쒕젰 ?좏샇 : ?붿????먮뒗 ?꾨궇濡쒓렇 ?꾩븬 異쒕젰
+?묐떟 ?쒓컙 : ??ms
+?묐룞 ?⑤룄 : -40??~ +125??
+?듭떊 ?명꽣?섏씠??(?듭뀡) : UART / CAN / LIN / I짼C
+蹂댄샇 ?깃툒 : IP67`
             },
             'flush-handle': {
-                category: '컨트롤러', 
+                category: '而⑦듃濡ㅻ윭', 
                 title: 'Flush Door Handle Control Unit', 
                 img: '../assets/29.png',
-                desc: '스마트키 신호, 근접 감지, 차량 잠금 상태 등을 기반으로 도어 핸들의 자동 돌출 및 수납을 제어하는 역할',
+                desc: '?ㅻ쭏?명궎 ?좏샇, 洹쇱젒 媛먯?, 李⑤웾 ?좉툑 ?곹깭 ?깆쓣 湲곕컲?쇰줈 ?꾩뼱 ?몃뱾???먮룞 ?뚯텧 諛??섎궔???쒖뼱?섎뒗 ??븷',
                 specs: [
-                     { icon: '<svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg>', label: '통신 인터페이스', value: 'CAN / LIN / UART' },
-                     { icon: '<svg viewBox="0 0 24 24"><path d="M14 14.76V3.5a2.5 2.5 0 0 0-5 0v11.26a4.5 4.5 0 1 0 5 0z"></path></svg>', label: '작동 온도', value: '-40℃ ~ +125℃' },
-                     { icon: '<svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>', label: '보호 등급', value: 'IP67' }
+                     { icon: '<svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg>', label: '?듭떊 ?명꽣?섏씠??, value: 'CAN / LIN / UART' },
+                     { icon: '<svg viewBox="0 0 24 24"><path d="M14 14.76V3.5a2.5 2.5 0 0 0-5 0v11.26a4.5 4.5 0 1 0 5 0z"></path></svg>', label: '?묐룞 ?⑤룄', value: '-40??~ +125?? },
+                     { icon: '<svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>', label: '蹂댄샇 ?깃툒', value: 'IP67' }
                 ],
-                details: `스마트키 신호, 근접 감지, 차량 잠금 상태 등을 기반으로 도어 핸들의 자동 돌출 및 수납을 제어하는 역할
+                details: `?ㅻ쭏?명궎 ?좏샇, 洹쇱젒 媛먯?, 李⑤웾 ?좉툑 ?곹깭 ?깆쓣 湲곕컲?쇰줈 ?꾩뼱 ?몃뱾???먮룞 ?뚯텧 諛??섎궔???쒖뼱?섎뒗 ??븷
 
-전원 전압 : DC 12V ±10%
-구동 방식 : BLDC 모터구동 / 위치 피드백 센서 내장
+?꾩썝 ?꾩븬 : DC 12V 짹10%
+援щ룞 諛⑹떇 : BLDC 紐⑦꽣援щ룞 / ?꾩튂 ?쇰뱶諛??쇱꽌 ?댁옣
 
 
-통신 인터페이스 : CAN / LIN / UART
-제어 기능 : 도어 핸들 돌출·수납 제어, 위치 감지, 안전 차단
-보호 기능 : 과전류 / 과전압 / 과열 보호
-응답 시간 : ≤300ms
-작동 온도 : -40℃ ~ +125℃
-보호 등급 : IP67`
+?듭떊 ?명꽣?섏씠??: CAN / LIN / UART
+?쒖뼱 湲곕뒫 : ?꾩뼱 ?몃뱾 ?뚯텧쨌?섎궔 ?쒖뼱, ?꾩튂 媛먯?, ?덉쟾 李⑤떒
+蹂댄샇 湲곕뒫 : 怨쇱쟾瑜?/ 怨쇱쟾??/ 怨쇱뿴 蹂댄샇
+?묐떟 ?쒓컙 : ??00ms
+?묐룞 ?⑤룄 : -40??~ +125??
+蹂댄샇 ?깃툒 : IP67`
             },
             'smart-key': {
-                category: '컨트롤러', 
+                category: '而⑦듃濡ㅻ윭', 
                 title: 'Smart Keyless Entry', 
                 img: '../assets/27.png',
-                desc: 'RF 통신 및 암호화 기술을 이용하여 차량의 도어 잠금 해제와 시동 제어를 수행하는 전자 제어 모듈',
+                desc: 'RF ?듭떊 諛??뷀샇??湲곗닠???댁슜?섏뿬 李⑤웾???꾩뼱 ?좉툑 ?댁젣? ?쒕룞 ?쒖뼱瑜??섑뻾?섎뒗 ?꾩옄 ?쒖뼱 紐⑤뱢',
                 specs: [
-                     { icon: '<svg viewBox="0 0 24 24"><path d="M14 14.76V3.5a2.5 2.5 0 0 0-5 0v11.26a4.5 4.5 0 1 0 5 0z"></path></svg>', label: '작동 온도', value: '-40℃ ~ +125℃' },
-                     { icon: '<svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>', label: '보호 등급', value: 'EMC / ESD / IP65 수준' },
-                     { icon: '<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>', label: '응답 속도', value: '≤100ms' }
+                     { icon: '<svg viewBox="0 0 24 24"><path d="M14 14.76V3.5a2.5 2.5 0 0 0-5 0v11.26a4.5 4.5 0 1 0 5 0z"></path></svg>', label: '?묐룞 ?⑤룄', value: '-40??~ +125?? },
+                     { icon: '<svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>', label: '蹂댄샇 ?깃툒', value: 'EMC / ESD / IP65 ?섏?' },
+                     { icon: '<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>', label: '?묐떟 ?띾룄', value: '??00ms' }
                 ],
-                details: `RF 통신 및 암호화 기술을 이용하여 차량의 도어 잠금 해제와 시동 제어를 수행하는 전자 제어 모듈
+                details: `RF ?듭떊 諛??뷀샇??湲곗닠???댁슜?섏뿬 李⑤웾???꾩뼱 ?좉툑 ?댁젣? ?쒕룞 ?쒖뼱瑜??섑뻾?섎뒗 ?꾩옄 ?쒖뼱 紐⑤뱢
 
-전원 전압 : DC 12V
-통신 방식 : RF 무선 통신 (433 Mhz / 315 Mhz)
-암호화 방식 : AES / Rolling Code 기반 보안 통신 
-작동 거리 : 약 1 ~ 3m
-응답 속도 : ≤100ms
-입출력 인터페이스 : 도어락 릴레이, 시동 릴레이, RF 수신 안테나
-작동 온도 : -40℃ ~ +125℃
-보호 등급 : EMC / ESD / IP65 수준
-프로 세서 : 32-bit MCU 내장, 저전력 대기 모드 지원`
+?꾩썝 ?꾩븬 : DC 12V
+?듭떊 諛⑹떇 : RF 臾댁꽑 ?듭떊 (433 Mhz / 315 Mhz)
+?뷀샇??諛⑹떇 : AES / Rolling Code 湲곕컲 蹂댁븞 ?듭떊 
+?묐룞 嫄곕━ : ??1 ~ 3m
+?묐떟 ?띾룄 : ??00ms
+?낆텧???명꽣?섏씠??: ?꾩뼱??由대젅?? ?쒕룞 由대젅?? RF ?섏떊 ?덊뀒??
+?묐룞 ?⑤룄 : -40??~ +125??
+蹂댄샇 ?깃툒 : EMC / ESD / IP65 ?섏?
+?꾨줈 ?몄꽌 : 32-bit MCU ?댁옣, ??꾨젰 ?湲?紐⑤뱶 吏??
             },
             'tcu': {
-                category: '컨트롤러', 
+                category: '而⑦듃濡ㅻ윭', 
                 title: 'Transmission Control Unit', 
                 img: '../assets/28.png',
-                desc: '차량의 구동력을 전륜과 후륜에 적절히 분배하여 주행 안정성과 트랙션을 최적화 하는 제어 장치',
+                desc: '李⑤웾??援щ룞?μ쓣 ?꾨쪣怨??꾨쪣???곸젅??遺꾨같?섏뿬 二쇳뻾 ?덉젙?깃낵 ?몃옓?섏쓣 理쒖쟻???섎뒗 ?쒖뼱 ?μ튂',
                 specs: [
-                     { icon: '<svg viewBox="0 0 24 24"><path d="M14 14.76V3.5a2.5 2.5 0 0 0-5 0v11.26a4.5 4.5 0 1 0 5 0z"></path></svg>', label: '작동 온도', value: '-40℃ ~ +125℃' },
-                     { icon: '<svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg>', label: '프로세서', value: '32bit 마이크로 컨트롤러' },
-                     { icon: '<svg viewBox="0 0 24 24"><path d="M9 3v18M15 3v18M3 9h18M3 15h18"></path></svg>', label: '커넥터', value: '20~30핀' }
+                     { icon: '<svg viewBox="0 0 24 24"><path d="M14 14.76V3.5a2.5 2.5 0 0 0-5 0v11.26a4.5 4.5 0 1 0 5 0z"></path></svg>', label: '?묐룞 ?⑤룄', value: '-40??~ +125?? },
+                     { icon: '<svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg>', label: '?꾨줈?몄꽌', value: '32bit 留덉씠?щ줈 而⑦듃濡ㅻ윭' },
+                     { icon: '<svg viewBox="0 0 24 24"><path d="M9 3v18M15 3v18M3 9h18M3 15h18"></path></svg>', label: '而ㅻ꽖??, value: '20~30?' }
                 ],
-                details: `차량의 구동력을 전륜과 후륜에 적절히 분배하여 주행 안정성과 트랙션을 최적화 하는 제어 장치
+                details: `李⑤웾??援щ룞?μ쓣 ?꾨쪣怨??꾨쪣???곸젅??遺꾨같?섏뿬 二쇳뻾 ?덉젙?깃낵 ?몃옓?섏쓣 理쒖쟻???섎뒗 ?쒖뼱 ?μ튂
 
-프로세서 : 32bit 마이크로 컨트롤러
-메모리 : Flash ROM 512kb~2MB, RAM 64kb~256kb
-입출력 : 아날로그 / 디지털 입력, PWM 출력, CAN/LIN 통신
-전원 전압 : DC 9V ~ 16V
-보호 회로 : 과전압, 과전류, 역극성 보호 회로 내장
-작동 온도 : -40℃ ~ +125℃
-커넥터 : 20~30핀`
+?꾨줈?몄꽌 : 32bit 留덉씠?щ줈 而⑦듃濡ㅻ윭
+硫붾え由?: Flash ROM 512kb~2MB, RAM 64kb~256kb
+?낆텧??: ?꾨궇濡쒓렇 / ?붿????낅젰, PWM 異쒕젰, CAN/LIN ?듭떊
+?꾩썝 ?꾩븬 : DC 9V ~ 16V
+蹂댄샇 ?뚮줈 : 怨쇱쟾?? 怨쇱쟾瑜? ??레??蹂댄샇 ?뚮줈 ?댁옣
+?묐룞 ?⑤룄 : -40??~ +125??
+而ㅻ꽖??: 20~30?`
             },
             'smart-hvac': {
-                category: '컨트롤러', 
-                title: '다목적 고효율 절전형 온습도 제어 시스템', 
+                category: '而⑦듃濡ㅻ윭', 
+                title: '?ㅻぉ??怨좏슚???덉쟾???⑥뒿???쒖뼱 ?쒖뒪??, 
                 img: '../assets/30.png',
-                desc: 'HVAC, 온/습도 제어 시스템으로 산업용 및 농업용 등 다양한 응용 분야에 적용',
+                desc: 'HVAC, ???듬룄 ?쒖뼱 ?쒖뒪?쒖쑝濡??곗뾽??諛??띿뾽?????ㅼ뼇???묒슜 遺꾩빞???곸슜',
                  specs: [
-                     { icon: '<svg viewBox="0 0 24 24"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>', label: '전원', value: 'AC 220V, 50/60Hz' },
-                     { icon: '<svg viewBox="0 0 24 24"><path d="M9 3v18M15 3v18M3 9h18M3 15h18"></path></svg>', label: '형태', value: '벽부형 제어함 (방진·방습형 케이스)' },
-                     { icon: '<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>', label: '출력 채널', value: '3채널' }
+                     { icon: '<svg viewBox="0 0 24 24"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>', label: '?꾩썝', value: 'AC 220V, 50/60Hz' },
+                     { icon: '<svg viewBox="0 0 24 24"><path d="M9 3v18M15 3v18M3 9h18M3 15h18"></path></svg>', label: '?뺥깭', value: '踰쎈????쒖뼱??(諛⑹쭊쨌諛⑹뒿??耳?댁뒪)' },
+                     { icon: '<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>', label: '異쒕젰 梨꾨꼸', value: '3梨꾨꼸' }
                 ],
-                details: `HVAC, 온/습도 제어 시스템으로 산업용 및 농업용 등 다양한 응용 분야에 적용
+                details: `HVAC, ???듬룄 ?쒖뼱 ?쒖뒪?쒖쑝濡??곗뾽??諛??띿뾽?????ㅼ뼇???묒슜 遺꾩빞???곸슜
 
-전원 : AC 220V, 50/60Hz
-형태 : 벽부형 제어함 (방진·방습형 케이스)
-표시부 : LED 디지털 디스플레이
-출력 채널 : 3채널
-보호 기능 : 과전류 차단, 센서 이상 알림, 전원 차단 스위치
-표시 항목 : 온도, 습도, 설정 값, 동작 상태, 전원 상태
-온도, 습도 연동에 의한 에너지 효율 최적화 구현
-강/중/약 3단 및 자연바람 구현 기능 내장`
+?꾩썝 : AC 220V, 50/60Hz
+?뺥깭 : 踰쎈????쒖뼱??(諛⑹쭊쨌諛⑹뒿??耳?댁뒪)
+?쒖떆遺 : LED ?붿????붿뒪?뚮젅??
+異쒕젰 梨꾨꼸 : 3梨꾨꼸
+蹂댄샇 湲곕뒫 : 怨쇱쟾瑜?李⑤떒, ?쇱꽌 ?댁긽 ?뚮┝, ?꾩썝 李⑤떒 ?ㅼ쐞移?
+?쒖떆 ??ぉ : ?⑤룄, ?듬룄, ?ㅼ젙 媛? ?숈옉 ?곹깭, ?꾩썝 ?곹깭
+?⑤룄, ?듬룄 ?곕룞???섑븳 ?먮꼫吏 ?⑥쑉 理쒖쟻??援ы쁽
+媛?以???3??諛??먯뿰諛붾엺 援ы쁽 湲곕뒫 ?댁옣`
             }
         };
 
@@ -3436,7 +2673,7 @@ R/D 변환 : 아날로그 신호를 디지털로 변환
             const nav = document.getElementById('mobileNav');
             nav.classList.toggle('open');
             const btn = document.querySelector('.mobile-menu-btn');
-            btn.innerHTML = nav.classList.contains('open') ? '✕' : '☰';
+            btn.innerHTML = nav.classList.contains('open') ? '?? : '??;
         }
 
         // Touch Swipe Logic
@@ -3497,3 +2734,4 @@ R/D 변환 : 아날로그 신호를 디지털로 변환
     </div>
 </body>
 </html>
+
