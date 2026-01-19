@@ -1,55 +1,4 @@
-﻿<!DOCTYPE html>
-<html lang="ko">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>EMT E-Catalog | 誘몃옒 紐⑤퉴由ы떚 ?쇱꽌 & ?쒖뼱</title>
-    <meta name="description" content="EMT??誘몃옒 紐⑤퉴由ы떚 ?곗뾽???대걣?닿???湲濡쒕쾶 ?ㅻ쭏???쇱꽌 諛??쒖뼱 ?붾（???꾨Ц 湲곗뾽?낅땲??">
-    <!-- Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Michroma&family=Rajdhani:wght@400;500;600;700&family=Syncopate:wght@700&display=swap" rel="stylesheet">
-    <!-- Three.js -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-    <!-- Deploy Trigger 2026-01-19 Fix Corruption -->
-    
-    <style>
-        /* ==================== 1. VARIABLES & RESET - THEME SYSTEM ==================== */
-        :root {
-            /* Font Variables (Shared) */
-            --font-head: 'Syncopate', sans-serif;
-            --font-sub: 'Michroma', sans-serif;
-            --font-body: 'Rajdhani', sans-serif;
-        }
-        
-        /* Dark Theme (Default) */
-        body {
-            --bg-deep: #050505;
-            --bg-secondary: #1a1a1a;
-            --neon-green: #00ff88;
-            --neon-cyan: #00ffff;
-            --text-primary: #ffffff;
-            --text-secondary: #cccccc;
-            --text-muted: #888888;
-            --glass-bg: rgba(20, 20, 20, 0.65);
-            --glass-bg-alt: rgba(30, 30, 30, 0.5);
-            --border: rgba(255, 255, 255, 0.2);
-            --border-light: rgba(255, 255, 255, 0.1);
-            --shadow-sm: 0 2px 8px rgba(0,0,0,0.4);
-            --shadow-md: 0 4px 20px rgba(0,0,0,0.5);
-            --shadow-lg: 0 10px 40px rgba(0,0,0,0.6);
-            --topbar-bg: linear-gradient(to bottom, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0) 100%);
-            --submenu-bg: rgba(10,10,10,0.95);
-            --mobile-nav-bg: rgba(5,5,5,0.98);
-            --vignette-bg: radial-gradient(circle, transparent 50%, rgba(0,0,0,0.85) 100%);
-            --logo-filter: grayscale(100%) brightness(1.2) contrast(0.9);
-            --slide-bg: transparent;
-            --hud-bg: rgba(0,0,0,0.5);
-            --hud-text: #aaa;
-            --hud-text-active: #fff;
-            --bg-img-filter: brightness(0.4);
-        }
-        
-        /* Light Theme - Airy & Premium Polish */
-```html
+﻿
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -178,14 +127,14 @@
             box-shadow: var(--shadow-md);
         }
         .theme-toggle::before {
-            content: '?뙔';
+            content: '☀';
             position: absolute;
             left: 8px;
             font-size: 13px;
             opacity: 0.7;
         }
         .theme-toggle::after {
-            content: '?截?;
+            content: '☾';
             position: absolute;
             right: 8px;
             font-size: 13px;
@@ -1020,7 +969,7 @@
     <!-- NAVIGATION -->
     <!-- MOBILE NAVIGATION OVERLAY -->
     <div class="mobile-nav" id="mobileNav">
-        <div class="mobile-nav-close" onclick="toggleMobile()">??CLOSE</div>
+        <div class="mobile-nav-close" onclick="toggleMobile()">✕ CLOSE</div>
         <div class="m-link-group">
             <div class="m-link-head">About us</div>
             <div class="m-link" onclick="go(1); toggleMobile();">湲곗뾽 媛쒖슂</div>
@@ -1033,19 +982,19 @@
             <div class="m-link-head">Mobility Products</div>
             <div class="m-link" onclick="go(6); toggleMobile();">?쒗뭹 媛쒖슂</div>
             <div class="m-link" onclick="go(7); toggleMobile();">?쇱꽌</div>
-            <div class="m-link" onclick="go(11); toggleMobile();">?≪텛?먯??/div>
+            <div class="m-link" onclick="go(11); toggleMobile();">액추에이터</div>
             <div class="m-link" onclick="go(12); toggleMobile();">而⑦듃濡ㅻ윭</div>
         </div>
         <div class="m-link-group">
             <div class="m-link-head">Support</div>
-            <div class="m-link" onclick="go(document.querySelectorAll('.slide').length - 1); toggleMobile();">?ㅼ떆??湲?/div>
+            <div class="m-link" onclick="go(document.querySelectorAll('.slide').length - 1); toggleMobile();">오시는 길</div>
         </div>
         
         <!-- Mobile Language Switch -->
         <div class="m-lang-switch">
-            <a href="/ko" class="m-lang-link active">KR</a>
+            <a href="#" class="m-lang-link active">KR</a>
             <span style="color:#333">|</span>
-            <a href="/" class="m-lang-link">EN</a>
+            <a href="../index.html" class="m-lang-link">EN</a>
         </div>
     </div>
 
@@ -1060,7 +1009,7 @@
                 <div class="submenu">
                     <div class="sub-link" onclick="go(1)">湲곗뾽 媛쒖슂</div>
                     <div class="sub-link" onclick="go(2)">鍮꾩쟾 & 誘몄뀡</div>
-                    <div class="sub-link" onclick="go(3)">?뚰듃??/div>
+                    <div class="sub-link" onclick="go(3)">파트너</div>
                     <div class="sub-link" onclick="go(4)">紐⑤퉴由ы떚 ?쒖뼱</div>
 
                     <div class="sub-link" onclick="go(5)">ESG 寃쎌쁺</div>
@@ -1076,19 +1025,19 @@
             </div>
             <div class="gnb-item">Support
                 <div class="submenu">
-                    <div class="sub-link" onclick="go(document.querySelectorAll('.slide').length - 1)">?ㅼ떆??湲?/div>
+                    <div class="sub-link" onclick="go(document.querySelectorAll('.slide').length - 1)">오시는 길</div>
                 </div>
             </div>
         </div>
 
         <!-- Desktop Language Switch -->
         <div class="lang-switch mobile-hide">
-            <a href="/ko" class="lang-link active">KR</a>
+            <a href="#" class="lang-link active">KR</a>
             <span style="color:rgba(255,255,255,0.2)">|</span>
-            <a href="/" class="lang-link">EN</a>
+            <a href="../index.html" class="lang-link">EN</a>
         </div>
         <!-- Mobile Menu Button -->
-        <div class="mobile-menu-btn" onclick="toggleMobile()">??/div>
+        <div class="mobile-menu-btn" onclick="toggleMobile()">☰</div>
     </nav>
 
     <!-- CONTENT STAGE -->
@@ -1888,7 +1837,7 @@
                 title: 'PTC Heater',
                 desc: '?몃씪誘?諛섎룄泥댁쓽 ????뱀꽦???댁슜?섏뿬 ?쇱젙 ?⑤룄 ?댁긽?먯꽌???꾨쪟瑜??먮룞?쇰줈 ?쒗븳 ?섎뒗 ?먭린?쒖뼱???꾧린?덊꽣',
                 specs: [
-                    { icon: '<svg viewBox="0 0 24 24"><path d="M14 14.76V3.5a2.5 2.5 0 0 0-5 0v11.26a4.5 4.5 0 1 0 5 0z"></path></svg>', label: '?묐룞 ?⑤룄', value: '-30??~ +85?? },
+                    { icon: '<svg viewBox="0 0 24 24"><path d="M14 14.76V3.5a2.5 2.5 0 0 0-5 0v11.26a4.5 4.5 0 1 0 5 0z"></path></svg>', label: '?묐룞 ?⑤룄', value: '-30??~ +85??' },
                     { icon: '<svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>', label: '蹂댄샇 ?깃툒', value: 'IP50' },
                     { icon: '<svg viewBox="0 0 24 24"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>', label: '?묐룞 ?꾩븬 踰붿쐞', value: '8V ~ 16V' }
                 ],
@@ -1909,7 +1858,7 @@
                 title: 'Limit Sensor',
                 desc: '湲곌퀎 ?μ튂???숈옉 踰붿쐞瑜?媛먯??섍굅?? ?ㅼ젙???쒓퀎 ?꾩튂???꾨떖?덉쓣 ???ㅼ쐞移??좏샇瑜?異쒕젰?섎뒗 ?뺣? 媛먯? ?쇱꽌',
                 specs: [
-                    { icon: '<svg viewBox="0 0 24 24"><path d="M14 14.76V3.5a2.5 2.5 0 0 0-5 0v11.26a4.5 4.5 0 1 0 5 0z"></path></svg>', label: '?묐룞 ?⑤룄', value: '-40??~ +150?? },
+                    { icon: '<svg viewBox="0 0 24 24"><path d="M14 14.76V3.5a2.5 2.5 0 0 0-5 0v11.26a4.5 4.5 0 1 0 5 0z"></path></svg>', label: '?묐룞 ?⑤룄', value: '-40??~ +150??' },
                     { icon: '<svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>', label: '蹂댄샇 ?깃툒', value: 'IP67 ?댁긽' },
                     { icon: '<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>', label: '諛섏쓳 ?쒓컙', value: '??1ms' }
                 ],
@@ -1924,14 +1873,14 @@
 諛섎났 ?뺣???: 짹0.01mm ?댄븯
 ?묐룞 ?⑤룄 : -40 ??~ +150 ??
 蹂댄샇 ?깃툒 : IP67 ?댁긽
-而ㅻ꽖???뺤떇 : ??났 而ㅻ꽖???먮뒗 而ㅼ뒪???
+而ㅻ꽖???뺤떇 : ??났 而ㅻ꽖???먮뒗 而ㅼ뒪???`
             },
             'resolver': {
                 category: '?쇱꽌',
                 title: 'Resolver Sensor',
                 desc: '?꾩옄?좊룄?꾩긽???댁슜??湲곌퀎?곸씤 媛곷룄 蹂?꾨? ?꾧린?좏샇濡?蹂?섑븯???꾨궇濡쒓렇 媛곷룄 寃異??쇱꽌',
                 specs: [
-                    { icon: '<svg viewBox="0 0 24 24"><path d="M14 14.76V3.5a2.5 2.5 0 0 0-5 0v11.26a4.5 4.5 0 1 0 5 0z"></path></svg>', label: '?묐룞 ?⑤룄', value: '-40??~ +125?? },
+                    { icon: '<svg viewBox="0 0 24 24"><path d="M14 14.76V3.5a2.5 2.5 0 0 0-5 0v11.26a4.5 4.5 0 1 0 5 0z"></path></svg>', label: '?묐룞 ?⑤룄', value: '-40??~ +125??' },
                     { icon: '<svg viewBox="0 0 24 24"><path d="M9 3v18M15 3v18M3 9h18M3 15h18"></path></svg>', label: '而ㅻ꽖???뺤떇', value: '6? ?먮뒗 8?' },
                     { icon: '<svg viewBox="0 0 24 24"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>', label: '?낅젰 ?꾩븬', value: '7V rms' }
                 ],
@@ -1953,9 +1902,9 @@ R/D 蹂??: ?꾨궇濡쒓렇 ?좏샇瑜??붿??몃줈 蹂??
                 category: '?쇱꽌', 
                 title: 'Position Indicator Switch', 
                 img: '../assets/5.png', 
-                desc: 'Transfer Case???μ갑?섏뼱, ?꾩옱 援щ룞 紐⑤뱶(2H, 4H, 4L ??瑜?媛먯??섍퀬 ECU???좏샇瑜??꾨떖?섎뒗 ?쇱꽌/?ㅼ쐞移?, 
+                desc: 'Transfer Case???μ갑?섏뼱, ?꾩옱 援щ룞 紐⑤뱶(2H, 4H, 4L ??瑜?媛먯??섍퀬 ECU???좏샇瑜??꾨떖?섎뒗 ?쇱꽌/?ㅼ쐞移?', 
                 specs:[
-                    { icon: '<svg viewBox="0 0 24 24"><path d="M14 14.76V3.5a2.5 2.5 0 0 0-5 0v11.26a4.5 4.5 0 1 0 5 0z"></path></svg>', label: '?묐룞 ?⑤룄', value: '-40??~ +135?? },
+                    { icon: '<svg viewBox="0 0 24 24"><path d="M14 14.76V3.5a2.5 2.5 0 0 0-5 0v11.26a4.5 4.5 0 1 0 5 0z"></path></svg>', label: '?묐룞 ?⑤룄', value: '-40??~ +135??' },
                     { icon: '<svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>', label: '蹂댄샇 ?깃툒', value: 'IP67 ?댁긽' },
                     { icon: '<svg viewBox="0 0 24 24"><path d="M9 3v18M15 3v18M3 9h18M3 15h18"></path></svg>', label: '而ㅻ꽖???뺤떇', value: '2? ?먮뒗 3?' }
                 ], 
@@ -1976,7 +1925,7 @@ R/D 蹂??: ?꾨궇濡쒓렇 ?좏샇瑜??붿??몃줈 蹂??
                 img: '../assets/15.png', 
                 desc: '?뚯쟾異뺤뿉 媛?댁???鍮꾪?由?蹂?뺤쓣 媛먯??섏뿬 ?좏겕 媛믪쓣 ?꾧린 ?좏샇濡?蹂?섑븯????븷', 
                 specs:[
-                    { icon: '<svg viewBox="0 0 24 24"><path d="M14 14.76V3.5a2.5 2.5 0 0 0-5 0v11.26a4.5 4.5 0 1 0 5 0z"></path></svg>', label: '?묐룞 ?⑤룄', value: '-40??~ +145?? },
+                    { icon: '<svg viewBox="0 0 24 24"><path d="M14 14.76V3.5a2.5 2.5 0 0 0-5 0v11.26a4.5 4.5 0 1 0 5 0z"></path></svg>', label: '?묐룞 ?⑤룄', value: '-40??~ +145??' },
                     { icon: '<svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>', label: '蹂댄샇 ?깃툒', value: 'IP67' },
                     { icon: '<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>', label: '?묐떟 ?쒓컙', value: '??1ms' }
                 ], 
@@ -1985,7 +1934,7 @@ R/D 蹂??: ?꾨궇濡쒓렇 ?좏샇瑜??붿??몃줈 蹂??
 ?꾩옄???뚯썙 ?ㅽ떚?대쭅 (EPS) 諛?援щ룞 ?쒖뼱 ?쒖뒪?쒖뿉 理쒖쟻???섏뼱 ?덉쓬. 
 
 痢≪젙 諛⑹떇 : 鍮꾩젒珥됱떇 ?먭린 ?좊룄
-痢≪젙 踰붿쐞 : 짹10 N쨌m ~ 짹150 N쨌m
+痢≪젙 踰붿쓽 : 짹10 N쨌m ~ 짹150 N쨌m
 ?묐룞 ?꾩븬 : DC 5V 짹0.1V
 異쒕젰 ?좏샇 : ?꾨궇濡쒓렇 ?꾩븬 ?먮뒗 PWM
 ?뺥솗??: 짹1% F.S. ?댄븯
@@ -2001,14 +1950,14 @@ R/D 蹂??: ?꾨궇濡쒓렇 ?좏샇瑜??붿??몃줈 蹂??
                 desc: '?뺤쟾 ?④낵瑜??댁슜???뺣젰???꾧린 ?좏샇濡?蹂?섑븯???쇱꽌', 
                 specs:[
                     { icon: '<svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>', label: '蹂댄샇 ?깃툒', value: 'IP67 ?댁긽' },
-                    { icon: '<svg viewBox="0 0 24 24"><path d="M14 14.76V3.5a2.5 2.5 0 0 0-5 0v11.26a4.5 4.5 0 1 0 5 0z"></path></svg>', label: '?묐룞 ?⑤룄', value: '-40??~ +125?? },
+                    { icon: '<svg viewBox="0 0 24 24"><path d="M14 14.76V3.5a2.5 2.5 0 0 0-5 0v11.26a4.5 4.5 0 1 0 5 0z"></path></svg>', label: '?묐룞 ?⑤룄', value: '-40??~ +125??' },
                     { icon: '<svg viewBox="0 0 24 24"><path d="M9 3v18M15 3v18M3 9h18M3 15h18"></path></svg>', label: '而ㅻ꽖???뺤떇', value: '2? ?먮뒗 3?' }
                 ],
                 details: `?뺤쟾 ?④낵瑜??댁슜???뺣젰???꾧린 ?좏샇濡?蹂?섑븯???쇱꽌濡? ?닿뎄?깃낵 ?댁떇?깆씠 ?곗뼱???먮룞李⑥궛?끒룹쓽猷뙿룻솚寃??쒖뼱 ???ㅼ뼇??遺꾩빞?먯꽌 ?쒖슜. ?몃씪誘??ㅼ씠?댄봽??援ъ“濡??뺣젰???ㅼ씠?댄봽?⑥뿉 ?묒슜?섎㈃ 蹂?뺤씠 ?앷린怨? ?꾨쭑 ???린(?섑듃?ㅽ넠 釉뚮━吏)媛 ?대? ?꾧린 ?좏샇濡?蹂??
 
 ?묐룞 ?꾩븬 : DC 5V 짹 0.05V
 異쒕젰 諛⑹떇 : mV/V ?먮뒗 0.5??.5V 鍮꾨? 異쒕젰 ?좏샇 
-?뺣젰 踰붿쐞 : 0~600bar(0~60MPa)
+?뺣젰 踰붿쓽 : 0~600bar(0~60MPa)
 ?쇱꽌 ?뺣룄 : 0.05~0.5% linearity 
 ?묐룞 ?⑤룄 : -40 ??~ +125 ??
 蹂댄샇 ?깃툒 : IP67 ?댁긽
@@ -2020,7 +1969,7 @@ R/D 蹂??: ?꾨궇濡쒓렇 ?좏샇瑜??붿??몃줈 蹂??
                 img: '../assets/16.png', 
                 desc: '??댁뼱 ?대???怨듦린??諛??⑤룄瑜??ㅼ떆媛꾩쑝濡?媛먯??섏뿬 ?댁쟾?먯뿉寃??꾨떖 ?섎뒗 ??븷', 
                 specs:[
-                    { icon: '<svg viewBox="0 0 24 24"><path d="M14 14.76V3.5a2.5 2.5 0 0 0-5 0v11.26a4.5 4.5 0 1 0 5 0z"></path></svg>', label: '?묐룞 ?⑤룄', value: '-40??~ +135?? },
+                    { icon: '<svg viewBox="0 0 24 24"><path d="M14 14.76V3.5a2.5 2.5 0 0 0-5 0v11.26a4.5 4.5 0 1 0 5 0z"></path></svg>', label: '?묐룞 ?⑤룄', value: '-40??~ +135??' },
                     { icon: '<svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg>', label: '異쒕젰 ?좏샇', value: '?붿????꾩넚' },
                     { icon: '<svg viewBox="0 0 24 24"><path d="M4.93 4.93a10 10 0 0 1 14.14 0"></path><path d="M7.76 7.76a6 6 0 0 1 8.48 0"></path><path d="M10.59 10.59a2 2 0 0 1 2.82 0"></path></svg>', label: '?듭떊 諛⑹떇', value: 'RF 臾댁꽑 ?듭떊' }
                 ], 
@@ -2028,13 +1977,13 @@ R/D 蹂??: ?꾨궇濡쒓렇 ?좏샇瑜??붿??몃줈 蹂??
 
 ?쇱꽌 ?좏삎: 蹂듯빀 ?뺣젰 諛??⑤룄 ?쇱꽌
 ?묐룞 ?꾩븬: DC 3V
-?뺣젰 踰붿쐞: 0 ~ 800 kPa
+?뺣젰 踰붿쓽: 0 ~ 800 kPa
 ?뺣젰 ?뺥솗?? 짹7 kPa
-?⑤룄 踰붿쐞: ??0??~ +135??
+?⑤룄 踰붿쓽: ??0??~ +135??
 ?⑤룄 ?뺥솗?? 짹2??
 ?듭떊 諛⑹떇: RF 臾댁꽑 ?듭떊
 異쒕젰 ?좏샇: ?붿????꾩넚
-?묐떟 媛꾧꺽: 二쇳뻾 以???1珥? ?뺤? ????60珥?
+?묐떟 媛꾧꺽: 二쇳뻾 以???1珥? ?뺤? ????60珥?`
             },
             'aps-sensor': { 
                 category: '?쇱꽌', 
@@ -2042,14 +1991,14 @@ R/D 蹂??: ?꾨궇濡쒓렇 ?좏샇瑜??붿??몃줈 蹂??
                 img: '../assets/3.png', 
                 desc: '?댁쟾?먭? 諛잙뒗 ?섎떖??源딆씠(媛곷룄)瑜??꾧린 ?좏샇濡?蹂?섑빐 ECU???꾨떖?섎뒗 ?μ튂濡?李⑤웾???띾룄瑜??쒖뼱?섎뒗???ъ슜', 
                 specs:[
-                    { icon: '<svg viewBox="0 0 24 24"><path d="M14 14.76V3.5a2.5 2.5 0 0 0-5 0v11.26a4.5 4.5 0 1 0 5 0z"></path></svg>', label: '?묐룞 ?⑤룄', value: '-40??~ +125?? },
+                    { icon: '<svg viewBox="0 0 24 24"><path d="M14 14.76V3.5a2.5 2.5 0 0 0-5 0v11.26a4.5 4.5 0 1 0 5 0z"></path></svg>', label: '?묐룞 ?⑤룄', value: '-40??~ +125??' },
                     { icon: '<svg viewBox="0 0 24 24"><path d="M9 3v18M15 3v18M3 9h18M3 15h18"></path></svg>', label: '而ㅻ꽖???뺤떇', value: '4 ? ?먮뒗 6 ?' },
                     { icon: '<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>', label: '?묐떟 ?쒓컙', value: '5ms ?댄븯' }
                 ],
                 details:`?댁쟾?먭? 諛잙뒗 ?섎떖??源딆씠(媛곷룄)瑜??꾧린 ?좏샇濡?蹂?섑빐 ECU???꾨떖?섎뒗 ?μ튂濡?李⑤웾???띾룄瑜??쒖뼱?섎뒗???ъ슜
 
 ?쇱꽌 ?좏삎 : ?묒큺???쇱꽌 ?먮뒗 ????ы뀗?쇰???
-異쒕젰 ?꾩븬 踰붿쐞 : 0.5V ~ 4.5V
+異쒕젰 ?꾩븬 踰붿쓽 : 0.5V ~ 4.5V
 ?묐룞 ?꾩븬 : DC 5V 짹10%
 ?묐룞 ?⑤룄 : -40 ??~ +125 ??
 諛섏쓳 ?쒓컙 : 5ms ?댄븯
@@ -2062,7 +2011,7 @@ R/D 蹂??: ?꾨궇濡쒓렇 ?좏샇瑜??붿??몃줈 蹂??
                 img: '../assets/18.png', 
                 desc: '李⑤웾??二쇳뻾 ?띾룄瑜?痢≪젙??ECU? 怨꾧린?먯뿉 ?꾨떖?섎뒗 ?쇱꽌', 
                 specs:[
-                    { icon: '<svg viewBox="0 0 24 24"><path d="M14 14.76V3.5a2.5 2.5 0 0 0-5 0v11.26a4.5 4.5 0 1 0 5 0z"></path></svg>', label: '?묐룞 ?⑤룄', value: '-40 ??~ +135 ?? },
+                    { icon: '<svg viewBox="0 0 24 24"><path d="M14 14.76V3.5a2.5 2.5 0 0 0-5 0v11.26a4.5 4.5 0 1 0 5 0z"></path></svg>', label: '?묐룞 ?⑤룄', value: '-40 ??~ +135 ??' },
                     { icon: '<svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>', label: '蹂댄샇 ?깃툒', value: 'IP67' },
                     { icon: '<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>', label: '?묐떟 ?쒓컙', value: '??1ms' }
                 ], 
@@ -2072,11 +2021,10 @@ R/D 蹂??: ?꾨궇濡쒓렇 ?좏샇瑜??붿??몃줈 蹂??
 媛먯? 諛⑹떇 : Inductive, Hall Effect Sensor
 ?묐룞 ?꾩븬 : DC 5V 짹0.1V
 異쒕젰 ?좏샇 : ?붿????꾩뒪 ?먮뒗 ?꾨궇濡쒓렇 ?꾩븬
-媛먯? 踰붿쐞 : 0 ~ 15,000 rpm
+媛먯? 踰붿쓽 : 0 ~ 15,000 rpm
 ?묐떟 ?쒓컙 : ??ms
 ?⑤룄 痢≪젙 : -40 ??~ +135 ??
-而ㅻ꽖???뺤떇 : 2? ?먮뒗 3?
-蹂댄샇 ?깃툒 : IP67`
+而ㅻ꽖???뺤떇 : 2? ?먮뒗 3?`
             },
             
             'map-sensor': { 
@@ -2085,7 +2033,7 @@ R/D 蹂??: ?꾨궇濡쒓렇 ?좏샇瑜??붿??몃줈 蹂??
                 img: '../assets/10.png', 
                 desc: '?↔린 留ㅻ땲?대뱶 ?대????덈? ?뺣젰??媛먯??섏뿬 ECU濡??꾨떖?섎뒗 ?듭떖 ?쇱꽌', 
                 specs:[
-                    { icon: '<svg viewBox="0 0 24 24"><path d="M14 14.76V3.5a2.5 2.5 0 0 0-5 0v11.26a4.5 4.5 0 1 0 5 0z"></path></svg>', label: '?묐룞 ?⑤룄', value: '-40 ??~ +135 ?? },
+                    { icon: '<svg viewBox="0 0 24 24"><path d="M14 14.76V3.5a2.5 2.5 0 0 0-5 0v11.26a4.5 4.5 0 1 0 5 0z"></path></svg>', label: '?묐룞 ?⑤룄', value: '-40 ??~ +135 ??' },
                     { icon: '<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>', label: '?묐떟 ?쒓컙', value: '??1ms' },
                     { icon: '<svg viewBox="0 0 24 24"><path d="M9 3v18M15 3v18M3 9h18M3 15h18"></path></svg>', label: '而ㅻ꽖???뺤떇', value: '3?' }
                 ],
@@ -2093,7 +2041,7 @@ R/D 蹂??: ?꾨궇濡쒓렇 ?좏샇瑜??붿??몃줈 蹂??
 
 ?쇱꽌 諛⑹떇 : MEMS 湲곕컲 ?덈????쇱꽌
 ?묐룞 ?꾩븬 : DC 5V 짹0.1V 
-異쒕젰 踰붿쐞 : 20 ~ 250kPa (李⑥쥌蹂??곸씠)
+異쒕젰 踰붿쓽 : 20 ~ 250kPa (李⑥쥌蹂??곸씠)
 異쒕젰 諛⑹떇 : ?꾨궇濡쒓렇 ?꾩븬 異쒕젰
 ?뺥솗??: 짹1.5 kPa (25 ??湲곗?)
 ?묐떟 ?쒓컙 : ??ms
@@ -2106,17 +2054,17 @@ R/D 蹂??: ?꾨궇濡쒓렇 ?좏샇瑜??붿??몃줈 蹂??
                 img: '../assets/17.png', 
                 desc: '?꾧린 ?먮룞李?蹂???쒖뒪?쒖뿉??湲곗뼱 ?덈쾭 ?꾩튂 (P, R, N, D ??瑜?媛먯??섏뿬 ECU? 怨꾧린?먯뿉 ?꾨떖?섎뒗 ?쇱꽌', 
                 specs:[
-                    { icon: '<svg viewBox="0 0 24 24"><path d="M14 14.76V3.5a2.5 2.5 0 0 0-5 0v11.26a4.5 4.5 0 1 0 5 0z"></path></svg>', label: '?묐룞 ?⑤룄', value: '-40 ??~ +200 ?? },
+                    { icon: '<svg viewBox="0 0 24 24"><path d="M14 14.76V3.5a2.5 2.5 0 0 0-5 0v11.26a4.5 4.5 0 1 0 5 0z"></path></svg>', label: '?묐룞 ?⑤룄', value: '-40 ??~ +200 ??' },
                     { icon: '<svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>', label: '蹂댄샇 ?깃툒', value: 'IP67' },
                     { icon: '<svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg>', label: '?묐떟 ?쒓컙', value: '??5ms' }
                 ],
-                details:`?꾧린 ?먮룞李?蹂???쒖뒪?쒖뿉??湲곗뼱 ?덈쾭 ?꾩튂 (P, R, N, D ??瑜?媛먯??섏뿬 ECU? 怨꾧린?먯뿉 ?꾨떖?섎뒗 ?쇱꽌. 
+                details: `?꾧린 ?먮룞李?蹂???쒖뒪?쒖뿉??湲곗뼱 ?덈쾭 ?꾩튂 (P, R, N, D ??瑜?媛먯??섏뿬 ECU? 怨꾧린?먯뿉 ?꾨떖?섎뒗 ?쇱꽌. 
 ???쇱꽌 ?뺣텇??李⑤웾? ?щ컮瑜?湲곗뼱 ?꾩튂?먯꽌留??쒕룞??嫄몃━怨? 蹂???쒖뼱 諛??덉쟾 湲곕뒫???뺤긽?곸쑝濡??묐룞
 
 媛먯? 諛⑹떇 : ?꾧린 ?묒젏, 鍮꾩젒珥됱떇 ?먭린 ?쇱꽌
 ?묐룞 ?꾩븬 : DC 5V 짹0.05V
 異쒕젰 諛⑹떇 : ?꾨궇濡쒓렇 ?꾩븬 ?먮뒗 ?붿????ㅼ쐞移??좏샇
-媛먯? 踰붿쐞 : P / R / N / D / M ??蹂???꾩튂
+媛먯? 踰붿쓽 : P / R / N / D / M ??蹂???꾩튂
 ?뺥솗??: 짹1째
 ?묐떟 ?쒓컙 : ??ms
 ?⑤룄 痢≪젙 : -40 ??~ +200 ??
@@ -2129,34 +2077,34 @@ R/D 蹂??: ?꾨궇濡쒓렇 ?좏샇瑜??붿??몃줈 蹂??
                 img: '../assets/8.png', 
                 desc: '?댁쟾?먭? ?몃뱾???뚮┛ 媛곷룄? 諛⑺뼢, ?뚯쟾 ?띾룄瑜?痢≪젙??ECU???꾨떖?섎뒗 ?쇱꽌', 
                 specs:[
-                    { icon: '<svg viewBox="0 0 24 24"><path d="M14 14.76V3.5a2.5 2.5 0 0 0-5 0v11.26a4.5 4.5 0 1 0 5 0z"></path></svg>', label: '?묐룞 ?⑤룄', value: '-40 ??~ +125 ?? },
+                    { icon: '<svg viewBox="0 0 24 24"><path d="M14 14.76V3.5a2.5 2.5 0 0 0-5 0v11.26a4.5 4.5 0 1 0 5 0z"></path></svg>', label: '?묐룞 ?⑤룄', value: '-40 ??~ +125 ??' },
                     { icon: '<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>', label: '?묐떟 ?쒓컙', value: '??5ms' },
-                    { icon: '<svg viewBox="0 0 24 24"><path d="M9 3v18M15 3v18M3 9h18M3 15h18"></path></svg>', label: '而ㅻ꽖???뺤떇', value: '2? / 3? / ?ㅽ? 而ㅻ꽖?? }
+                    { icon: '<svg viewBox="0 0 24 24"><path d="M9 3v18M15 3v18M3 9h18M3 15h18"></path></svg>', label: '而ㅻ꽖???뺤떇', value: '2? / 3? / ?ㅽ? 而ㅻ꽖??' }
                 ],
-                details:`?댁쟾?먭? ?몃뱾???뚮┛ 媛곷룄? 諛⑺뼢, ?뚯쟾 ?띾룄瑜?痢≪젙??ECU???꾨떖?섎뒗 ?쇱꽌.
+                details: `?댁쟾?먭? ?몃뱾???뚮┛ 媛곷룄? 諛⑺뼢, ?뚯쟾 ?띾룄瑜?痢≪젙??ECU???꾨떖?섎뒗 ?쇱꽌.
 ???곗씠?곕뒗 李⑥껜?먯꽭?쒖뼱?μ튂(ESC), 李⑥꽑 ?좎? 蹂댁“, ?먮룞 二쇱감, ?대뙌?곕툕 ?щ（利?而⑦듃濡???
-泥⑤떒 ?댁쟾??蹂댁“ ?쒖뒪??ADAS)???듭떖 ?낅젰媛믪쑝濡??ъ슜
+泥⑤떒 ?댁쟾??蹂댁조 ?쒖뒪??ADAS)???듭떖 ?낅젰媛믪쑝濡??ъ슜
 
 ?쇱꽌 諛⑹떇 : ?묒큺?? GMR(Giant Magneto-Resistance)
 ?묐룞 ?꾩븬 : DC 5V 짹0.1V 
-痢≪젙 踰붿쐞 : ?뚯쟾媛곷룄 짹720째 (2?뚯쟾) ?댁긽
+痢≪젙 踰붿쓽 : ?뚯쟾媛곷룄 짹720째 (2?뚯쟾) ?댁긽
 異쒕젰 諛⑹떇 : SENT, CAN ???붿????좏샇濡?ECU? ?곌껐
 遺꾪빐??: ??.1째
 ?묐룞 ?⑤룄 : -40 ??~ +125 ??
 ?묐떟 ?쒓컙 : ??ms
-而ㅻ꽖???뺤떇 : 2? / 3? / ?ㅽ? 而ㅻ꽖?? 
+而ㅻ꽖???뺤떇 : 2? / 3? / ?ㅽ? 而ㅻ꽖??` 
             },
             'transfer-case': { 
                 category: '?쇱꽌', 
                 title: 'Transfer Case Sensor (ESA)', 
                 img: '../assets/4.png', 
-                desc: '李⑤웾??二쇳뻾 議곌굔???곕씪 2瑜쒓낵 4瑜쒖쓣 ?꾪솚?섍굅?? ?욌뮘 諛뷀댁쓽 ?숇젰 諛곕텇??媛먯?쨌?쒖뼱?섎뒗 ?듭떖 遺??, 
+                desc: '李⑤웾??二쇳뻾 議곌굔???곕씪 2瑜쒓낵 4瑜쒖쓣 ?꾪솚?섍굅?? ?욌뮘 諛뷀댁쓽 ?숇젰 諛곕텇??媛먯?쨌?쒖뼱?섎뒗 ?듭떖 遺??', 
                 specs:[
-                    { icon: '<svg viewBox="0 0 24 24"><path d="M14 14.76V3.5a2.5 2.5 0 0 0-5 0v11.26a4.5 4.5 0 1 0 5 0z"></path></svg>', label: '?묐룞 ?⑤룄', value: '-40 ??~ +125 ?? },
+                    { icon: '<svg viewBox="0 0 24 24"><path d="M14 14.76V3.5a2.5 2.5 0 0 0-5 0v11.26a4.5 4.5 0 1 0 5 0z"></path></svg>', label: '?묐룞 ?⑤룄', value: '-40 ??~ +125 ??' },
                     { icon: '<svg viewBox="0 0 24 24"><path d="M9 3v18M15 3v18M3 9h18M3 15h18"></path></svg>', label: '而ㅻ꽖???뺤떇', value: '?ㅽ? 而ㅻ꽖??3~8 ?' },
                     { icon: '<svg viewBox="0 0 24 24"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>', label: '?묐룞 ?꾩븬', value: 'DC 9 ~ 16V' }
                 ], 
-                details:`李⑤웾??二쇳뻾 議곌굔???곕씪 2瑜쒓낵 4瑜쒖쓣 ?꾪솚?섍굅?? ?욌뮘 諛뷀댁쓽 ?숇젰 諛곕텇??媛먯?쨌?쒖뼱?섎뒗 ?듭떖 遺??
+                details: `李⑤웾??二쇳뻾 議곌굔???곕씪 2瑜쒓낵 4瑜쒖쓣 ?꾪솚?섍굅?? ?욌뮘 諛뷀댁쓽 ?숇젰 諛곕텇??媛먯?쨌?쒖뼱?섎뒗 ?듭떖 遺??
 二쇰줈 ?몃옖?ㅽ띁 耳?댁뒪(Transfer Case)???μ갑???꾩옄???≪텛?먯씠?곗? ?꾩튂 媛먯? ?쇱꽌媛 ?④퍡 ?묐룞
 (Electric Shift Control Sensor)
 
@@ -2172,15 +2120,15 @@ R/D 蹂??: ?꾨궇濡쒓렇 ?좏샇瑜??붿??몃줈 蹂??
                 img: '../assets/20.png', 
                 desc: '?꾩옄??4瑜?援щ룞 ?쒖뒪??(Electronic 4WD System) ?듭떖 ?쇱꽌濡? ?몃옖?ㅽ띁 耳?댁뒪 ???≪텛?먯씠?곗쓽 ?숈옉???뺣??섍쾶 媛먯??섏뿬 ECU???꾨떖', 
                 specs:[
-                    { icon: '<svg viewBox="0 0 24 24"><path d="M14 14.76V3.5a2.5 2.5 0 0 0-5 0v11.26a4.5 4.5 0 1 0 5 0z"></path></svg>', label: '?묐룞 ?⑤룄', value: '-40 ??~ +135 ?? },
+                    { icon: '<svg viewBox="0 0 24 24"><path d="M14 14.76V3.5a2.5 2.5 0 0 0-5 0v11.26a4.5 4.5 0 1 0 5 0z"></path></svg>', label: '?묐룞 ?⑤룄', value: '-40 ??~ +135 ??' },
                     { icon: '<svg viewBox="0 0 24 24"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>', label: '?꾩썝 ?꾩븬', value: 'DC 5V' },
-                    { icon: '<svg viewBox="0 0 24 24"><path d="M9 3v18M15 3v18M3 9h18M3 15h18"></path></svg>', label: '而ㅻ꽖?????, value: '3~8?' }
+                    { icon: '<svg viewBox="0 0 24 24"><path d="M9 3v18M15 3v18M3 9h18M3 15h18"></path></svg>', label: '而ㅻ꽖?????', value: '3~8?' }
                 ], 
                 details: `?꾩옄??4瑜?援щ룞 ?쒖뒪??(Electronic 4WD System) ?듭떖 ?쇱꽌濡? ?몃옖?ㅽ띁 耳?댁뒪 ???≪텛?먯씠?곗쓽 ?숈옉???뺣??섍쾶 媛먯??섏뿬 ECU???꾨떖?섎ŉ ???뺣낫瑜?諛뷀깢?쇰줈 李⑤웾? ?먮룞?쇰줈 援щ룞 紐⑤뱶瑜??꾪솚 (2WD ??4WD) ?섎뒗 ??븷
 
 ?꾩썝 ?꾩븬 : DC 5V
 異쒕젰 諛⑹떇 : Analog Voltage / PWM Signal
-痢≪젙 踰붿쐞 : 0째 ~ 360째
+痢≪젙 踰붿쓽 : 0째 ~ 360째
 ?뺣???: 짹1째 ?댄븯
 ?묐룞 ?⑤룄 : -40 ??~ +135 ??
 ??吏꾨룞??: SAE J1455 湲곗? 以??
@@ -2192,8 +2140,8 @@ R/D 蹂??: ?꾨궇濡쒓렇 ?좏샇瑜??붿??몃줈 蹂??
                 img: '../assets/6.png', 
                 desc: '?붿쭊 ?됯컖???⑤룄瑜?痢≪젙?섏뿬 ?붿쭊 ?쒖뼱 ?μ튂 (ECU)???뺣낫瑜??꾨떖, ?됯컖 ???묐룞 諛??곕즺 遺꾩궗??議곗젅?섎뒗 ??븷', 
                 specs:[
-                    { icon: '<svg viewBox="0 0 24 24"><path d="M14 14.76V3.5a2.5 2.5 0 0 0-5 0v11.26a4.5 4.5 0 1 0 5 0z"></path></svg>', label: '痢≪젙 ?⑤룄', value: '-40 ??~ +150 ?? },
-                    { icon: '<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>', label: '?묐떟 ?쒓컙', value: '??1.5 珥? },
+                    { icon: '<svg viewBox="0 0 24 24"><path d="M14 14.76V3.5a2.5 2.5 0 0 0-5 0v11.26a4.5 4.5 0 1 0 5 0z"></path></svg>', label: '痢≪젙 ?⑤룄', value: '-40 ??~ +150 ??' },
+                    { icon: '<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>', label: '?묐떟 ?쒓컙', value: '??1.5 珥?' },
                     { icon: '<svg viewBox="0 0 24 24"><path d="M9 3v18M15 3v18M3 9h18M3 15h18"></path></svg>', label: '而ㅻ꽖???뺤떇', value: '2? ?먮뒗 3?' }
                 ], 
                 details: `?붿쭊 ?됯컖???⑤룄瑜?痢≪젙?섏뿬 ?붿쭊 ?쒖뼱 ?μ튂 (ECU)???뺣낫瑜??꾨떖, ?됯컖 ???묐룞 諛??곕즺 遺꾩궗??議곗젅?섎뒗 ??븷
@@ -2213,11 +2161,11 @@ R/D 蹂??: ?꾨궇濡쒓렇 ?좏샇瑜??붿??몃줈 蹂??
                 img: '../assets/9.png', 
                 desc: '?붿쭊???щ옲???ㅽ봽???뚯쟾 ?띾룄? ?꾩튂瑜?媛먯??섏뿬 ?붿쭊 ?쒖뼱 ?μ튂 (ECU)濡??뺣낫瑜??꾨떖?섎뒗 ??븷', 
                 specs:[
-                    { icon: '<svg viewBox="0 0 24 24"><path d="M14 14.76V3.5a2.5 2.5 0 0 0-5 0v11.26a4.5 4.5 0 1 0 5 0z"></path></svg>', label: '?묐룞 ?⑤룄', value: '-40 ??~ +145 ?? },
+                    { icon: '<svg viewBox="0 0 24 24"><path d="M14 14.76V3.5a2.5 2.5 0 0 0-5 0v11.26a4.5 4.5 0 1 0 5 0z"></path></svg>', label: '?묐룞 ?⑤룄', value: '-40 ??~ +145 ??' },
                     { icon: '<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>', label: '?묐떟 ?쒓컙', value: '??1ms' },
                     { icon: '<svg viewBox="0 0 24 24"><path d="M9 3v18M15 3v18M3 9h18M3 15h18"></path></svg>', label: '而ㅻ꽖???뺤떇', value: '2? ?먮뒗 3?' }
                 ],
-                details:`?붿쭊???щ옲???ㅽ봽???뚯쟾 ?띾룄? ?꾩튂瑜?媛먯??섏뿬 ?붿쭊 ?쒖뼱 ?μ튂(ECU)濡??뺣낫瑜??꾨떖?섎뒗 ??븷.
+                details: `?붿쭊???щ옲???ㅽ봽???뚯쟾 ?띾룄? ?꾩튂瑜?媛먯??섏뿬 ?붿쭊 ?쒖뼱 ?μ튂(ECU)濡??뺣낫瑜??꾨떖?섎뒗 ??븷.
 ???뺣낫???먰솕 ?쒓린, ?곕즺 遺꾩궗 ??대컢, ?붿쭊 ?뚯쟾??RPM) ?쒖뼱???꾩닔
 
 ?쇱꽌 諛⑹떇 : Hall Sensor, Magnetic Inductive Sensor
@@ -2225,7 +2173,7 @@ R/D 蹂??: ?꾨궇濡쒓렇 ?좏샇瑜??붿??몃줈 蹂??
 異쒕젰 諛⑹떇 : ?붿????꾩뒪 ?좏샇
 媛먯? ???: ?щ옲???ㅽ봽???깅땲 ??(Reluctor Ring)
 ?묐룞 ?⑤룄 : -40 ??~ +145 ??
-異쒕젰 二쇳뙆??踰붿쐞 : 0 ~ 10 khz (?붿쭊 ?띾룄???곕씪)
+異쒕젰 二쇳뙆??踰붿쓽 : 0 ~ 10 khz (?붿쭊 ?띾룄???곕씪)
 ?묐떟 ?쒓컙 : ??ms
 而ㅻ꽖???뺤떇 : 2? ?먮뒗 3?`
             },
@@ -2235,7 +2183,7 @@ R/D 蹂??: ?꾨궇濡쒓렇 ?좏샇瑜??붿??몃줈 蹂??
                 img: '../assets/12.png', 
                 desc: '諛곌린 媛?????곗냼 ?띾룄瑜??ㅼ떆媛꾩쑝濡?媛먯??섏뿬 ECU???꾨떖?⑥쑝濡쒖뜥, ?곕즺? 怨듦린???쇳빀鍮꾨? ?쒖뼱?섎뒗 ??븷', 
                 specs:[
-                    { icon: '<svg viewBox="0 0 24 24"><path d="M14 14.76V3.5a2.5 2.5 0 0 0-5 0v11.26a4.5 4.5 0 1 0 5 0z"></path></svg>', label: '?묐룞 ?⑤룄', value: '300 ??~ 900 ?? },
+                    { icon: '<svg viewBox="0 0 24 24"><path d="M14 14.76V3.5a2.5 2.5 0 0 0-5 0v11.26a4.5 4.5 0 1 0 5 0z"></path></svg>', label: '?묐룞 ?⑤룄', value: '300 ??~ 900 ??' },
                     { icon: '<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>', label: '?묐떟 ?쒓컙', value: '??100ms' },
                     { icon: '<svg viewBox="0 0 24 24"><path d="M9 3v18M15 3v18M3 9h18M3 15h18"></path></svg>', label: '而ㅻ꽖???뺤떇', value: '1~4?' }
                 ],
@@ -2243,7 +2191,7 @@ R/D 蹂??: ?꾨궇濡쒓렇 ?좏샇瑜??붿??몃줈 蹂??
 ?곕즺? 怨듦린???쇳빀鍮꾨? ?쒖뼱?섎뒗 ??븷
 
 ?묐룞 ?꾩븬 : DC 12V / ?좏샇 ?꾩븬 0 ~ 1V 
-異쒕젰 ?꾩븬 踰붿쐞 : 0.1V (?щ컯 ?쇳빀) ~ 0.9V (?랁썑 ?쇳빀)
+異쒕젰 ?꾩븬 踰붿쓽 : 0.1V (?щ컯 ?쇳빀) ~ 0.9V (?랁썑 ?쇳빀)
 ?묐룞 ?⑤룄 : 300 ??~ 900 ??(?덊꽣 ?댁옣??
 ?묐떟 ?쒓컙 : ??00ms
 ?덊꽣 ???: ??6 ~ 12廓 (20??湲곗?)
@@ -2257,16 +2205,16 @@ R/D 蹂??: ?꾨궇濡쒓렇 ?좏샇瑜??붿??몃줈 蹂??
                 img: '../assets/7.png', 
                 desc: '?ㅻ줈? 諛몃툕??媛쒗룓 ?뺣룄瑜?媛먯???ECU(?붿쭊 ?쒖뼱 ?μ튂)???꾨떖?섎뒗 ?쇱꽌', 
                 specs:[
-                    { icon: '<svg viewBox="0 0 24 24"><path d="M14 14.76V3.5a2.5 2.5 0 0 0-5 0v11.26a4.5 4.5 0 1 0 5 0z"></path></svg>', label: '?묐룞 ?⑤룄', value: '-40??~ +145?? },
+                    { icon: '<svg viewBox="0 0 24 24"><path d="M14 14.76V3.5a2.5 2.5 0 0 0-5 0v11.26a4.5 4.5 0 1 0 5 0z"></path></svg>', label: '?묐룞 ?⑤룄', value: '-40??~ +145??' },
                     { icon: '<svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>', label: '蹂댄샇 ?깃툒', value: 'IP67 ?댁긽' },
                     { icon: '<svg viewBox="0 0 24 24"><path d="M9 3v18M15 3v18M3 9h18M3 15h18"></path></svg>', label: '而ㅻ꽖???뺤떇', value: '2? ?먮뒗 3?' }
                 ],
-                details:`?ㅻ줈? 諛몃툕??媛쒗룓 ?뺣룄瑜?媛먯???ECU(?붿쭊 ?쒖뼱 ?μ튂)???꾨떖?섎뒗 ?쇱꽌.
+                details: `?ㅻ줈? 諛몃툕??媛쒗룓 ?뺣룄瑜?媛먯???ECU(?붿쭊 ?쒖뼱 ?μ튂)???꾨떖?섎뒗 ?쇱꽌.
 ???뺣낫???곕즺 遺꾩궗?? ?먰솕 ?쒓린, 蹂???쒖젏 ?깆쓣 ?쒖뼱?섎뒗 ?듭떖 遺??
 
 ?쇱꽌 諛⑹떇 : ?묒큺???뱀? Hall Effect Sensor
 ?묐룞 ?꾩븬 : DC 5V 짹0.1V 
-異쒕젰 ?꾩븬 踰붿쐞 : 0.5V ~ 4.5V
+異쒕젰 ?꾩븬 踰붿쓽 : 0.5V ~ 4.5V
 異쒕젰 ?좏샇 : Linear Output Potentiometer
 ?묐룞 ?⑤룄 : -40??~ +145??
 蹂댄샇 ?깃툒 : IP67 ?댁긽
@@ -2279,8 +2227,8 @@ R/D 蹂??: ?꾨궇濡쒓렇 ?좏샇瑜??붿??몃줈 蹂??
                 img: '../assets/14.png', 
                 desc: '?붿쭊 ?대??먯꽌 諛쒖깮?섎뒗 ?댁긽 ??컻(?명궧, Detonation)??媛먯??섏뿬 ECU濡??꾨떖', 
                 specs:[
-                    { icon: '<svg viewBox="0 0 24 24"><path d="M14 14.76V3.5a2.5 2.5 0 0 0-5 0v11.26a4.5 4.5 0 1 0 5 0z"></path></svg>', label: '?묐룞 ?⑤룄', value: '-40??~ +145?? },
-                    { icon: '<svg viewBox="0 0 24 24"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>', label: '異쒕젰 ?꾩븬 踰붿쐞', value: '??.1 ~ 4.9 V' },
+                    { icon: '<svg viewBox="0 0 24 24"><path d="M14 14.76V3.5a2.5 2.5 0 0 0-5 0v11.26a4.5 4.5 0 1 0 5 0z"></path></svg>', label: '?묐룞 ?⑤룄', value: '-40??~ +145??' },
+                    { icon: '<svg viewBox="0 0 24 24"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>', label: '異쒕젰 ?꾩븬 踰붿쓽', value: '??.1 ~ 4.9 V' },
                     { icon: '<svg viewBox="0 0 24 24"><path d="M9 3v18M15 3v18M3 9h18M3 15h18"></path></svg>', label: '而ㅻ꽖???뺤떇', value: '2?' }
                 ],
                 details:`?붿쭊 ?대??먯꽌 諛쒖깮?섎뒗 ?댁긽 ??컻(?명궧, Detonation) ??媛먯??섏뿬 ECU濡??꾨떖?⑥쑝濡쒖뜥,  ?명궧??議곌린??媛먯? ?섍퀬 ?먰솕 ?쒓린瑜??쒖뼱?섎뒗 ??븷, ?붿쭊 ?먯긽怨?異쒕젰 ???諛⑹?
@@ -2288,8 +2236,8 @@ R/D 蹂??: ?꾨궇濡쒓렇 ?좏샇瑜??붿??몃줈 蹂??
 ?쇱떛 諛⑹떇 : ?뺤쟾??Piezoelectric)
 ?묐룞 ?꾩븬 : DC 5V 
 異쒕젰 ?좏샇 : 吏꾨룞 二쇳뙆??湲곕컲 ?꾨궇濡쒓렇 ?꾩븬 ?좏샇
-媛먯? 二쇳뙆??踰붿쐞 : 5 ~ 15kHz
-異쒕젰 ?꾩븬 踰붿쐞 : ??0.1 ~ 4.9 V
+媛먯? 二쇳뙆??踰붿쓽 : 5 ~ 15kHz
+異쒕젰 ?꾩븬 踰붿쓽 : ??0.1 ~ 4.9 V
 ?묐룞 ?⑤룄 : -40??~ +145??
 ?μ갑 ?뺤떇 : 蹂쇳듃 泥닿껐??
 而ㅻ꽖???뺤떇 : 2?`
@@ -2300,7 +2248,7 @@ R/D 蹂??: ?꾨궇濡쒓렇 ?좏샇瑜??붿??몃줈 蹂??
                 img: '../assets/13.png', 
                 desc: '?붿쭊 怨듯쉶????ECU???쒖뼱 ?좏샇???곕씪 怨듦린 ?좊웾??議곗젅?섏뿬 ?덉젙?곸씤 ?꾩씠???뚯쟾?섎? ?좎??섎뒗 ??븷', 
                 specs:[
-                    { icon: '<svg viewBox="0 0 24 24"><path d="M14 14.76V3.5a2.5 2.5 0 0 0-5 0v11.26a4.5 4.5 0 1 0 5 0z"></path></svg>', label: '?묐룞 ?⑤룄', value: '-40??~ +145?? },
+                    { icon: '<svg viewBox="0 0 24 24"><path d="M14 14.76V3.5a2.5 2.5 0 0 0-5 0v11.26a4.5 4.5 0 1 0 5 0z"></path></svg>', label: '?묐룞 ?⑤룄', value: '-40??~ +145??' },
                     { icon: '<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>', label: '?묐떟 ?쒓컙', value: '??10ms' },
                     { icon: '<svg viewBox="0 0 24 24"><path d="M9 3v18M15 3v18M3 9h18M3 15h18"></path></svg>', label: '而ㅻ꽖???뺤떇', value: '4?' }
                 ],
@@ -2317,12 +2265,12 @@ R/D 蹂??: ?꾨궇濡쒓렇 ?좏샇瑜??붿??몃줈 蹂??
             },
             // Actuators
             'bldc-motor': {
-                category: '?≪텛?먯씠??, 
+                category: '?≪텛?먯씠??', 
                 title: 'BLDC Motor', 
                 img: '../assets/25.png',
-                desc: '釉뚮윭?쒓? ?녿뒗 援ъ“濡?留덉같 ?먯떎怨??꾧린 ?몄씠利덈? 理쒖냼?뷀븳 怨좏슚???꾨룞湲곗씠硫??뺣? ?쒖뼱媛 媛??,
+                desc: '釉뚮윭?쒓? ?녿뒗 援ъ“濡?留덉같 ?먯떎怨??꾧린 ?몄씠利덈? 理쒖냼?뷀븳 怨좏슚???꾨룞湲곗씠硫??뺣? ?쒖뼱媛 媛??',
                 specs: [
-                    { icon: '<svg viewBox="0 0 24 24"><path d="M14 14.76V3.5a2.5 2.5 0 0 0-5 0v11.26a4.5 4.5 0 1 0 5 0z"></path></svg>', label: '?묐룞 ?⑤룄', value: '-40??~ +125?? },
+                    { icon: '<svg viewBox="0 0 24 24"><path d="M14 14.76V3.5a2.5 2.5 0 0 0-5 0v11.26a4.5 4.5 0 1 0 5 0z"></path></svg>', label: '?묐룞 ?⑤룄', value: '-40??~ +125??' },
                     { icon: '<svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>', label: '蹂댄샇 ?깃툒', value: 'IP65 ?댁긽' },
                     { icon: '<svg viewBox="0 0 24 24"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>', label: '?꾩썝 ?꾩븬', value: 'DC 12V / 24V / 48V' }
                 ],
@@ -2339,15 +2287,15 @@ R/D 蹂??: ?꾨궇濡쒓렇 ?좏샇瑜??붿??몃줈 蹂??
 ?묐룞 ?⑤룄 : -40??~ +125??
 蹂댄샇 ?깃툒 : IP65 ?댁긽
 踰좎뼱留????: 怨??닿뎄??踰좎뼱留?
-而ㅻ꽖???뺤떇 : 留욎땄???ㅽ? 而ㅻ꽖??
+而ㅻ꽖???뺤떇 : 留욎땄???ㅽ? 而ㅻ꽖??`
             },
             'digital-shift': {
-                category: '?≪텛?먯씠??, 
+                category: '?≪텛?먯씠??', 
                 title: 'Digital-Electric Shift Control Actuator', 
                 img: '../assets/22.png',
                 desc: '?먮룞蹂?띻린??湲곗뼱 蹂?띿쓣 ?꾩옄?곸쑝濡??쒖뼱?섎뒗 ?≪텛?먯씠?곕줈 4WD ?몃옖?ㅽ띁 耳?댁뒪??蹂??紐⑤뱶 (2H / 4H / 4L ??瑜??꾩옄?곸쑝濡??꾪솚?섎뒗 ?듭떖 援щ룞 ?μ튂',
                 specs: [
-                     { icon: '<svg viewBox="0 0 24 24"><path d="M14 14.76V3.5a2.5 2.5 0 0 0-5 0v11.26a4.5 4.5 0 1 0 5 0z"></path></svg>', label: '?묐룞 ?⑤룄', value: '-40??~ +145?? },
+                     { icon: '<svg viewBox="0 0 24 24"><path d="M14 14.76V3.5a2.5 2.5 0 0 0-5 0v11.26a4.5 4.5 0 1 0 5 0z"></path></svg>', label: '?묐룞 ?⑤룄', value: '-40??~ +145??' },
                      { icon: '<svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>', label: '蹂댄샇 ?깃툒', value: 'IP67 ?댁긽' },
                      { icon: '<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>', label: '?묐떟 ?쒓컙', value: '??500ms' }
                 ],
@@ -2364,12 +2312,12 @@ R/D 蹂??: ?꾨궇濡쒓렇 ?좏샇瑜??붿??몃줈 蹂??
 而ㅻ꽖???뺤떇 : ?ㅽ? 而ㅻ꽖??(4 ~ 8? 援ъ꽦)`
             },
             'ac-motor': {
-                category: '?≪텛?먯씠??, 
+                category: '?≪텛?먯씠??', 
                 title: 'AC Motor', 
                 img: '../assets/24.png',
                 desc: '援먮쪟 ?꾩썝???댁슜???뚯쟾 ?대룞???앹꽦?섎뒗 ?꾨룞湲??대ŉ ?믪? ?닿뎄?깃낵 ?덉젙?곸씤 ?뱀꽦??媛뽰텛??HVAC ?쒖뒪???곸슜',
                 specs: [
-                     { icon: '<svg viewBox="0 0 24 24"><path d="M14 14.76V3.5a2.5 2.5 0 0 0-5 0v11.26a4.5 4.5 0 1 0 5 0z"></path></svg>', label: '?묐룞 ?⑤룄', value: '-20??~ +80?? },
+                      { icon: '<svg viewBox="0 0 24 24"><path d="M14 14.76V3.5a2.5 2.5 0 0 0-5 0v11.26a4.5 4.5 0 1 0 5 0z"></path></svg>', label: '?묐룞 ?⑤룄', value: '-20??~ +80??' },
                      { icon: '<svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>', label: '蹂댄샇 ?깃툒', value: 'IP54 ~ IP65' },
                      { icon: '<svg viewBox="0 0 24 24"><path d="M9 3v18M15 3v18M3 9h18M3 15h18"></path></svg>', label: '而ㅻ꽖???뺤떇', value: '留욎땄??而ㅻ꽖??/ 由щ뱶??異쒕젰' }
                 ],
@@ -2385,12 +2333,12 @@ R/D 蹂??: ?꾨궇濡쒓렇 ?좏샇瑜??붿??몃줈 蹂??
 而ㅻ꽖???뺤떇 : 留욎땄??而ㅻ꽖??/ 由щ뱶??異쒕젰`
             },
             'fan-clutch': {
-                category: '?≪텛?먯씠??, 
+                category: '?≪텛?먯씠??', 
                 title: 'Electronic Fan Clutch Actuator', 
                 img: '../assets/21.png',
-                desc: '?ㅼ떆媛??붿쭊 ?됯컖?ъ쓽 ?뚯쟾 ?띾룄瑜??쒖뼱?섎뒗 ?꾩옄???≪텛?먯씠??,
+                desc: '?ㅼ떆媛??붿쭊 ?됯컖?ъ쓽 ?뚯쟾 ?띾룄瑜??쒖뼱?섎뒗 ?꾩옄???≪텛?먯씠??',
                 specs: [
-                     { icon: '<svg viewBox="0 0 24 24"><path d="M14 14.76V3.5a2.5 2.5 0 0 0-5 0v11.26a4.5 4.5 0 1 0 5 0z"></path></svg>', label: '?묐룞 ?⑤룄', value: '-40??~ +145?? },
+                     { icon: '<svg viewBox="0 0 24 24"><path d="M14 14.76V3.5a2.5 2.5 0 0 0-5 0v11.26a4.5 4.5 0 1 0 5 0z"></path></svg>', label: '?묐룞 ?⑤룄', value: '-40??~ +145??' },
                      { icon: '<svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>', label: '蹂댄샇 ?깃툒', value: 'IP65 ?댁긽' },
                      { icon: '<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>', label: '?묐떟 ?쒓컙', value: '??300ms' }
                 ],
@@ -2677,7 +2625,7 @@ R/D 蹂??: ?꾨궇濡쒓렇 ?좏샇瑜??붿??몃줈 蹂??
             const nav = document.getElementById('mobileNav');
             nav.classList.toggle('open');
             const btn = document.querySelector('.mobile-menu-btn');
-            btn.innerHTML = nav.classList.contains('open') ? '?? : '??;
+            btn.innerHTML = nav.classList.contains('open') ? '✕' : '☰';
         }
 
         // Touch Swipe Logic
