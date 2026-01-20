@@ -1118,17 +1118,17 @@
                         <div style="display: flex; gap: 20px; margin-top: 60px;">
                             <div style="flex:1;">
                                 <div style="font-size: 16px; color: #000; margin-bottom: 8px; font-weight: 600; opacity:0.8;">연구개발 경험</div>
-                                <div style="font-size: 32px; font-weight: 700; color: #000; margin-bottom: 10px;">100여 개</div>
+                                <div style="font-weight: 700; color: #000; margin-bottom: 10px;"><span style="font-size: 42px;">100</span><span style="font-size: 20px;">여 개</span></div>
                                 <p class="stats-desc" style="font-size: 14px; color: #555; line-height: 1.4;">30년 이상 축적된 연구개발 경험으로 스마트 모빌리티 제어 기술을 지속적으로 혁신하며, 산업 전반의 효율성과 안전성을 높입니다</p>
                             </div>
                             <div style="flex:1;">
                                 <div style="font-size: 16px; color: #000; margin-bottom: 8px; font-weight: 600; opacity:0.8;">글로벌 고객사 협력</div>
-                                <div style="font-size: 32px; font-weight: 700; color: #000; margin-bottom: 10px;">30여 개</div>
+                                <div style="font-weight: 700; color: #000; margin-bottom: 10px;"><span style="font-size: 42px;">30</span><span style="font-size: 20px;">여 개</span></div>
                                 <p class="stats-desc" style="font-size: 14px; color: #555; line-height: 1.4;">전 세계 100여 개 고객사와 협력하며 맞춤형 솔루션을 제공, 다양한 산업 환경에서 신뢰받는 파트너로 자리매김하고 있습니다.</p>
                             </div>
                             <div style="flex:1;">
                                 <div style="font-size: 16px; color: #000; margin-bottom: 8px; font-weight: 600; opacity:0.8;">특허 및 기술 인증 보유</div>
-                                <div style="font-size: 32px; font-weight: 700; color: #000; margin-bottom: 10px;">50여 건</div>
+                                <div style="font-weight: 700; color: #000; margin-bottom: 10px;"><span style="font-size: 42px;">50</span><span style="font-size: 20px;">여 건</span></div>
                                 <p class="stats-desc" style="font-size: 14px; color: #555; line-height: 1.4;">50여 건 이상의 특허와 기술 인증을 통해 EMT의 독자적 기술력과 글로벌 경쟁력을 입증하며, 혁신적 솔루션을 제공합니다</p>
                             </div>
                         </div>
@@ -1968,20 +1968,20 @@
                     <div style="height:15px"></div>
                     <p>전자유도현상을 이용해 기계적인 각도 변위를 전기신호로 변환하는 아날로그 각도 검출 센서</p>
                 </div>
-                <!-- 4. Torque Sensor -->
+                <!-- 4. Position Indicator Switch -->
+                <div class="p-card" onclick="openProductModal('pos-indicator')">
+                    <img src="../assets/5.png">
+                    <h3>Position Indicator Switch</h3>
+                    <div style="height:15px"></div>
+                    <p>Transfer Case에 장착되어, 현재 구동 모드(2H, 4H, 4L 등)를 감지하고 ECU에 신호를 전달하는 센서/스위치</p>
+                </div>
+                 <!-- 5. Torque Sensor -->
                 <div class="p-card" onclick="openProductModal('torque-sensor')">
                    <img src="../assets/15.png">
                    <h3>Torque Sensor</h3>
                    <div style="height:15px"></div>
                    <p>회전축에 가해지는 비틀림 변형을 감지하여 토크 값을 전기 신호로 변환하는 역할</p>
                </div>
-                 <!-- 5. Position Indicator Switch -->
-                 <div class="p-card" onclick="openProductModal('pos-indicator')">
-                    <img src="../assets/5.png">
-                    <h3>Position Indicator Switch</h3>
-                    <div style="height:15px"></div>
-                    <p>Transfer Case에 장착되어, 현재 구동 모드(2H, 4H, 4L 등)를 감지하고 ECU에 신호를 전달하는 센서/스위치</p>
-                </div>
             </div>
         </div>
 
@@ -2151,7 +2151,9 @@
                 </div>
                  <!-- 6. Hidden Door Handle Actuator (New) -->
                  <div class="p-card" onclick="openProductModal('hidden-door-handle')" style="padding-top: 15px;">
-                    <img src="../assets/Hidden Door Image 824.png" onerror="this.src='../assets/29.png'">
+                    <div style="background: #1a1a1a; border-radius: 8px; padding: 20px; margin-bottom: 30px;">
+                        <img src="../assets/Hidden Door Image 824.png" onerror="this.src='../assets/29.png'" style="height: 240px; margin-bottom: 0;">
+                    </div>
                     <h3>Hidden Door Handle Actuator</h3>
                     <div style="height:15px"></div>
                     <p>도어와 일체화된 히든 핸들은 차문 개폐시 자동으로 돌출되어 공기 저항 감소, 고급 스러운 디자인, 향상된 보안성을 제공</p>
