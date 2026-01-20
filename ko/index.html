@@ -648,7 +648,10 @@
         }
         .product-modal-right {
             flex: 1; display: flex; align-items: center; justify-content: center; position: relative;
-            background: #1a1a1a; border-radius: 12px;
+            background: #1a1a1a !important; border-radius: 12px;
+        }
+        body.light-mode .product-modal-right {
+            background: #222 !important;
         }
         .product-modal-right img {
             max-width: 90%; max-height: 50vh; object-fit: contain;
