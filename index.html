@@ -1208,32 +1208,64 @@
                     <h2 style="color:var(--neon-green); font-size:16px; font-family:var(--font-sub); margin-bottom: 25px; margin-top: -10px;">CORE VALUES</h2>
                     <div style="display:flex; gap:5px; justify-content: space-between; align-items: center; width: 100%;">
                         <!-- Value 1 -->
-                        <div class="cv-circle" style="width:130px; height:130px; flex-shrink: 1; border-radius:50%; border:2px solid #333; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; transition: 0.3s; padding: 10px;">
+                        <div class="cv-circle active" style="width:130px; height:130px; flex-shrink: 1; border-radius:50%; border:2px solid #333; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; transition: all 0.3s ease; padding: 10px;">
                             <span style="font-size:13px; color:white; font-weight:700; margin-bottom:6px; line-height:1.1;">Customer Value</span>
                             <span style="font-size:10px; color:#aaa; line-height:1.2;">Customer Success<br>is our success</span>
                         </div>
                         <!-- Value 2 -->
-                        <div class="cv-circle" style="width:130px; height:130px; flex-shrink: 1; border-radius:50%; border:2px solid #333; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; transition: 0.3s; padding: 10px;">
+                        <div class="cv-circle" style="width:130px; height:130px; flex-shrink: 1; border-radius:50%; border:2px solid #333; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; transition: all 0.3s ease; padding: 10px;">
                             <span style="font-size:13px; color:white; font-weight:700; margin-bottom:6px; line-height:1.1;">Diligence</span>
                             <span style="font-size:10px; color:#aaa; line-height:1.2;">Sincere and<br>dedicated work</span>
                         </div>
                         <!-- Value 3 -->
-                        <div class="cv-circle" style="width:130px; height:130px; flex-shrink: 1; border-radius:50%; border:2px solid #333; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; transition: 0.3s; padding: 10px;">
+                        <div class="cv-circle" style="width:130px; height:130px; flex-shrink: 1; border-radius:50%; border:2px solid #333; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; transition: all 0.3s ease; padding: 10px;">
                             <span style="font-size:13px; color:white; font-weight:700; margin-bottom:6px; line-height:1.1;">Creativity</span>
                             <span style="font-size:10px; color:#aaa; line-height:1.2;">Creating value<br>through innovation</span>
                         </div>
-                        <!-- Value 4: Highlighted -->
-                        <div class="cv-circle" style="width:130px; height:130px; flex-shrink: 1; border-radius:50%; border:3px solid var(--neon-green); display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; box-shadow: 0 0 20px rgba(0,255,136,0.15); transition: 0.3s; padding: 10px;">
+                        <!-- Value 4 -->
+                        <div class="cv-circle" style="width:130px; height:130px; flex-shrink: 1; border-radius:50%; border:2px solid #333; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; transition: all 0.3s ease; padding: 10px;">
                             <span style="font-size:13px; color:white; font-weight:700; margin-bottom:6px; line-height:1.1;">Harmony</span>
                             <span style="font-size:10px; color:#aaa; line-height:1.2;">Collaboration<br>mutual respect</span>
                         </div>
                     </div>
                     <style>
+                        /* CV Animation Styles */
+                        .cv-circle.active {
+                            border: 6px solid transparent !important;
+                            background-image: linear-gradient(#000, #000), linear-gradient(135deg, #a8ff78 0%, #06b6d4 100%);
+                            background-origin: border-box;
+                            background-clip: content-box, border-box;
+                            box-shadow: 0 0 20px rgba(0,255,136,0.15);
+                            transform: scale(1.05);
+                        }
+                        
                         body.light-mode .cv-circle { border-color: var(--border) !important; background: rgba(0,0,0,0.02); }
-                        body.light-mode .cv-circle:last-child { border-color: var(--neon-green) !important; box-shadow: 0 5px 15px rgba(33, 179, 114, 0.1); }
+                        body.light-mode .cv-circle.active { border-color: var(--neon-green) !important; box-shadow: 0 5px 15px rgba(33, 179, 114, 0.2); }
                         body.light-mode .cv-circle span { color: var(--text-primary) !important; }
-                        body.light-mode .cv-circle span:last-child { color: var(--text-secondary) !important; }
+                        body.light-mode .cv-circle.active span:last-child { color: var(--text-secondary) !important; }
                     </style>
+                    <script>
+                        (function() {
+                            let cvIndex = 0;
+                            const cvCircles = document.querySelectorAll('.cv-circle');
+                            
+                            // Initialize
+                            if(cvCircles.length > 0) {
+                                setInterval(() => {
+                                    // Remove active from all
+                                    cvCircles.forEach(c => c.classList.remove('active'));
+                                    
+                                    // Add active to current
+                                    if(cvCircles[cvIndex]) {
+                                        cvCircles[cvIndex].classList.add('active');
+                                    }
+                                    
+                                    // Increment index
+                                    cvIndex = (cvIndex + 1) % cvCircles.length;
+                                }, 1000);
+                            }
+                        })();
+                    </script>
                 </div>
                 
                 <!-- OUR GOALS -->
