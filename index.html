@@ -2107,44 +2107,51 @@
         <div class="slide">
             <span class="slide-tag">MOBILITY PRODUCTS</span>
             <h1 class="slide-title">ACTUATORS</h1>
-            <div class="product-grid">
-                <div class="p-card" onclick="openProductModal('bldc-motor')">
+            <div class="product-grid" style="grid-template-columns: repeat(6, 1fr) !important; gap: 15px;">
+                <div class="p-card" onclick="openProductModal('bldc-motor')" style="padding-top: 15px;">
                     <img src="assets/25.png">
                     <h3>BLDC Motor</h3>
                     <div style="height:15px"></div>
                     <p>A high efficiency motor with a brushless structure that minimizes friction loss and electrical noise and enables precise control</p>
                 </div>
-                <div class="p-card" onclick="openProductModal('digital-shift')">
+                <div class="p-card" onclick="openProductModal('digital-shift')" style="padding-top: 15px;">
                     <img src="assets/22.png">
                     <h3>Digital-Electric Shift Control Actuator</h3>
                     <div style="height:15px"></div>
                     <p>An actuator that electronically controls gear shifting in automatic transmissions and switches 4WD transfer case modes such as 2H 4H and 4L</p>
                 </div>
-                <div class="p-card" onclick="openProductModal('ac-motor')">
+                <div class="p-card" onclick="openProductModal('ac-motor')" style="padding-top: 15px;">
                     <img src="assets/24.png">
                     <h3>AC Motor</h3>
                     <div style="height:15px"></div>
                     <p>An electric motor that generates rotational motion using AC power and provides high durability and stable performance for HVAC systems</p>
                 </div>
-                <div class="p-card" onclick="openProductModal('fan-clutch')">
+                <div class="p-card" onclick="openProductModal('fan-clutch')" style="padding-top: 15px;">
                     <img src="assets/21.png">
                     <h3>Electronic Fan Clutch Actuator</h3>
                     <div style="height:15px"></div>
                     <p>An electronic actuator that controls the rotational speed of the engine cooling fan</p>
                 </div>
-                <div class="p-card" onclick="openProductModal('4wd-geared')">
+                <div class="p-card" onclick="openProductModal('4wd-geared')" style="padding-top: 15px;">
                     <img src="assets/23.png">
                     <h3>4WD Geared Actuator</h3>
                     <div style="height:15px"></div>
                     <p>A drive unit that shifts the gears inside the transfer case in an electronic 4WD system</p>
                 </div>
-                <div class="p-card" onclick="openProductModal('hidden-door-handle')" style="display:none">
-                    <img src="assets/hidden_door_handle.png">
+                <div class="p-card" onclick="openProductModal('hidden-door-handle')" style="padding-top: 15px;">
+                    <img src="assets/Hidden Door Image 824.png" onerror="this.src='assets/29.png'" style="background: #1a1a1a;">
                     <h3>Hidden Door Handle Actuator</h3>
                     <div style="height:15px"></div>
                     <p>An integrated hidden handle flush with the door that automatically protrudes when opening, reducing air resistance and providing a premium design with enhanced security</p>
                 </div>
             </div>
+            <!-- Custom Style for Actuator Grid to fit 6 items -->
+            <style>
+                /* Unify image height for 6-column grid */
+                .product-grid[style*="repeat(6"] .p-card img {
+                    height: 220px !important;
+                }
+            </style>
         </div>
 
         <!-- 12. CONTROLLERS -->
