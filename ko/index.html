@@ -2159,13 +2159,10 @@
             </div>
             <!-- Custom Style for Actuator Grid to fit 6 items -->
             <style>
-                /* Override grid just for this section if needed, or rely on flex/scroll */
-                /* If the main grid is 5 cols, we force 6 here */
-                 .slide:has(.slide-title:contains('액추에이터')) .product-grid,
-                 /* Fallback selector if :has isn't supported or reliable, targeting by order usually risky but... */
-                 /* Let's use a more specific trick or just inline style on the div if possible. I'll use inline style on the div in next step if I can't target it. 
-                    Actually, I'll update the div class below. 
-                 */
+                /* 6열 그리드용 이미지 높이 통일 */
+                .product-grid[style*="repeat(6"] .p-card img {
+                    height: 220px !important;
+                }
             </style>
         </div>
 
