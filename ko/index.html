@@ -950,6 +950,8 @@
                 padding-top: 35vh !important;
             }
         }
+            /* Degree Symbol Alignment Fix */
+            .deg { display: inline-block; vertical-align: top; font-size: 0.75em; margin-top: 1px; }
     </style>
 </head>
 <body>
@@ -1124,7 +1126,7 @@
                             <div style="flex:1;">
                                 <div style="font-size: 16px; color: #000; margin-bottom: 8px; font-weight: 600; opacity:0.8;">글로벌 고객사 협력</div>
                                 <div style="font-weight: 700; color: #000; margin-bottom: 10px;"><span style="font-size: 42px;">30</span><span style="font-size: 24px; color: #999; font-weight: 400;"> 여 개</span></div>
-                                <p class="stats-desc" style="font-size: 14px; color: #555; line-height: 1.4;">전 세계 100여 개 고객사와 협력하며 맞춤형 솔루션을 제공, 다양한 산업 환경에서 신뢰받는 파트너로 자리매김하고 있습니다.</p>
+                                <p class="stats-desc" style="font-size: 14px; color: #555; line-height: 1.4;">전 세계 30여 개 고객사와 협력하며 맞춤형 솔루션을 제공, 다양한 산업 환경에서 신뢰받는 파트너로 자리매김하고 있습니다.</p>
                             </div>
                             <div style="flex:1;">
                                 <div style="font-size: 16px; color: #000; margin-bottom: 8px; font-weight: 600; opacity:0.8;">특허 및 기술 인증 보유</div>
@@ -2645,7 +2647,7 @@
                 title: 'PTC Heater',
                 desc: '세라믹 반도체의 저항 특성을 이용하여 일정 온도 이상에서는 전류를 자동으로 제한 하는 자기제어형 전기히터',
                 specs: [
-                    { icon: '<svg viewBox="0 0 24 24"><path d="M14 14.76V3.5a2.5 2.5 0 0 0-5 0v11.26a4.5 4.5 0 1 0 5 0z"></path></svg>', label: '작동 온도', value: '-30 °C ~ +85 °C' },
+                    { icon: '<svg viewBox="0 0 24 24"><path d="M14 14.76V3.5a2.5 2.5 0 0 0-5 0v11.26a4.5 4.5 0 1 0 5 0z"></path></svg>', label: '작동 온도', value: '-30 <span class="deg">&deg;</span>C ~ +85 <span class="deg">&deg;</span>C' },
                     { icon: '<svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>', label: '보호 등급', value: 'IP50' },
                     { icon: '<svg viewBox="0 0 24 24"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>', label: '작동 전압 범위', value: '8V ~ 16V' }
                 ],
@@ -2657,8 +2659,8 @@
 정격 출력 : 1200 W (+5% / -10%)
 작동 전압 범위 : 8V ~ 16V
 보호 등급 : IP50
-작동 온도 : -30 ℃ ~ +85 ℃
-보관 온도 : -40 ℃ ~ +90 ℃
+작동 온도 : -30 <span class="deg">&deg;</span>C ~ +85 <span class="deg">&deg;</span>C
+보관 온도 : -40 <span class="deg">&deg;</span>C ~ +90 <span class="deg">&deg;</span>C
 온도 상승 : 13 ~ 15K`
             },
             'limit-sensor': {
@@ -2666,7 +2668,7 @@
                 title: 'Limit Sensor',
                 desc: '기계 장치의 동작 범위를 감지하거나, 설정된 한계 위치에 도달했을 때 스위칭 신호를 출력하는 정밀 감지 센서',
                 specs: [
-                    { icon: '<svg viewBox="0 0 24 24"><path d="M14 14.76V3.5a2.5 2.5 0 0 0-5 0v11.26a4.5 4.5 0 1 0 5 0z"></path></svg>', label: '작동 온도', value: '-40 °C ~ +150 °C' },
+                    { icon: '<svg viewBox="0 0 24 24"><path d="M14 14.76V3.5a2.5 2.5 0 0 0-5 0v11.26a4.5 4.5 0 1 0 5 0z"></path></svg>', label: '작동 온도', value: '-40 <span class="deg">&deg;</span>C ~ +150 <span class="deg">&deg;</span>C' },
                     { icon: '<svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>', label: '보호 등급', value: 'IP67 이상' },
                     { icon: '<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>', label: '반응 시간', value: '≤ 1ms' }
                 ],
@@ -2679,7 +2681,7 @@
 감지 방식 : 기계식 플런저 또는 비접촉식 자기 센서
 반응 시간 : ≤1ms
 반복 정밀도 : ±0.01mm 이하
-작동 온도 : -40 ℃ ~ +150 ℃
+작동 온도 : -40 <span class="deg">&deg;</span>C ~ +150 <span class="deg">&deg;</span>C
 보호 등급 : IP67 이상
 커넥터 형식 : 항공 커넥터 또는 커스텀형`
             },
@@ -2688,7 +2690,7 @@
                 title: 'Resolver Sensor',
                 desc: '전자유도현상을 이용해 기계적인 각도 변위를 전기신호로 변환하는 아날로그 각도 검출 센서',
                 specs: [
-                    { icon: '<svg viewBox="0 0 24 24"><path d="M14 14.76V3.5a2.5 2.5 0 0 0-5 0v11.26a4.5 4.5 0 1 0 5 0z"></path></svg>', label: '작동 온도', value: '-40 °C ~ +125 °C' },
+                    { icon: '<svg viewBox="0 0 24 24"><path d="M14 14.76V3.5a2.5 2.5 0 0 0-5 0v11.26a4.5 4.5 0 1 0 5 0z"></path></svg>', label: '작동 온도', value: '-40 <span class="deg">&deg;</span>C ~ +125 <span class="deg">&deg;</span>C' },
                     { icon: '<svg viewBox="0 0 24 24"><path d="M9 3v18M15 3v18M3 9h18M3 15h18"></path></svg>', label: '커넥터 형식', value: '6핀 또는 8핀' },
                     { icon: '<svg viewBox="0 0 24 24"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>', label: '입력 전압', value: '7V rms' }
                 ],
@@ -2699,7 +2701,7 @@
 출력 방식 : Speed 1X, 32X
 정확도 : ± 20 Arc sec
 작동 주파수 : 2,000±100 Hz
-작동 온도 : -40 ℃ ~ +125 ℃
+작동 온도 : -40 <span class="deg">&deg;</span>C ~ +125 <span class="deg">&deg;</span>C
 출력 신호 : 두 개의 직교 코일 sin θ, cos θ 형태 전압
 R/D 변환 : 아날로그 신호를 디지털로 변환
 커넥터 형식 : 6핀 또는 8핀`
@@ -2712,7 +2714,7 @@ R/D 변환 : 아날로그 신호를 디지털로 변환
                 img: '../assets/5.png', 
                 desc: 'Transfer Case에 장착되어, 현재 구동 모드(2H, 4H, 4L 등)를 감지하고 ECU에 신호를 전달하는 센서/스위치', 
                 specs:[
-                    { icon: '<svg viewBox="0 0 24 24"><path d="M14 14.76V3.5a2.5 2.5 0 0 0-5 0v11.26a4.5 4.5 0 1 0 5 0z"></path></svg>', label: '작동 온도', value: '-40 °C ~ +135 °C' },
+                    { icon: '<svg viewBox="0 0 24 24"><path d="M14 14.76V3.5a2.5 2.5 0 0 0-5 0v11.26a4.5 4.5 0 1 0 5 0z"></path></svg>', label: '작동 온도', value: '-40 <span class="deg">&deg;</span>C ~ +135 <span class="deg">&deg;</span>C' },
                     { icon: '<svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>', label: '보호 등급', value: 'IP67 이상' },
                     { icon: '<svg viewBox="0 0 24 24"><path d="M9 3v18M15 3v18M3 9h18M3 15h18"></path></svg>', label: '커넥터 형식', value: '2핀 또는 3핀' }
                 ], 
@@ -2723,7 +2725,7 @@ R/D 변환 : 아날로그 신호를 디지털로 변환
 출력 방식 : Linear Potentiometer Output
 감지 방식 : 기계식 접점 타입 (위치 감지)
 나사 규격 : M16 x 1.5 (차종별 상이)
-작동 온도 : -40 ℃ ~ +135 ℃
+작동 온도 : -40 <span class="deg">&deg;</span>C ~ +135 <span class="deg">&deg;</span>C
 보호 등급 : IP67 이상
 커넥터 형식 : 2핀 또는 3핀`
             },
@@ -2733,7 +2735,7 @@ R/D 변환 : 아날로그 신호를 디지털로 변환
                 img: '../assets/15.png', 
                 desc: '회전축에 가해지는 비틀림 변형을 감지하여 토크 값을 전기 신호로 변환하는 역할', 
                 specs:[
-                    { icon: '<svg viewBox="0 0 24 24"><path d="M14 14.76V3.5a2.5 2.5 0 0 0-5 0v11.26a4.5 4.5 0 1 0 5 0z"></path></svg>', label: '작동 온도', value: '-40 °C ~ +145 °C' },
+                    { icon: '<svg viewBox="0 0 24 24"><path d="M14 14.76V3.5a2.5 2.5 0 0 0-5 0v11.26a4.5 4.5 0 1 0 5 0z"></path></svg>', label: '작동 온도', value: '-40 <span class="deg">&deg;</span>C ~ +145 <span class="deg">&deg;</span>C' },
                     { icon: '<svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>', label: '보호 등급', value: 'IP67' },
                     { icon: '<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>', label: '응답 시간', value: '≤ 1ms' }
                 ], 
@@ -2747,7 +2749,7 @@ R/D 변환 : 아날로그 신호를 디지털로 변환
 출력 신호 : 아날로그 전압 또는 PWM
 정확도 : ±1% F.S. 이하
 응답 시간 : ≤1ms
-작동 온도 : -40 ℃ ~ +145 ℃
+작동 온도 : -40 <span class="deg">&deg;</span>C ~ +145 <span class="deg">&deg;</span>C
 보호 등급 : IP67 
 출력 선 구성 : 3선식 또는 5선식` 
             },
@@ -2758,7 +2760,7 @@ R/D 변환 : 아날로그 신호를 디지털로 변환
                 desc: '압전 효과를 이용해 압력을 전기 신호로 변환하는 센서', 
                 specs:[
                     { icon: '<svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>', label: '보호 등급', value: 'IP67 이상' },
-                    { icon: '<svg viewBox="0 0 24 24"><path d="M14 14.76V3.5a2.5 2.5 0 0 0-5 0v11.26a4.5 4.5 0 1 0 5 0z"></path></svg>', label: '작동 온도', value: '-40 °C ~ +125 °C' },
+                    { icon: '<svg viewBox="0 0 24 24"><path d="M14 14.76V3.5a2.5 2.5 0 0 0-5 0v11.26a4.5 4.5 0 1 0 5 0z"></path></svg>', label: '작동 온도', value: '-40 <span class="deg">&deg;</span>C ~ +125 <span class="deg">&deg;</span>C' },
                     { icon: '<svg viewBox="0 0 24 24"><path d="M9 3v18M15 3v18M3 9h18M3 15h18"></path></svg>', label: '커넥터 형식', value: '2핀 또는 3핀' }
                 ],
                 details: `압전 효과를 이용해 압력을 전기 신호로 변환하는 센서로, 내구성과 내식성이 뛰어나 자동차산업·의료·환경 제어 등 다양한 분야에서 활용. 세라믹 다이어프램 구조로 압력이 다이어프램에 작용하면 변형이 생기고, 후막 저항기(휘트스톤 브리지)가 이를 전기 신호로 변환
@@ -2767,7 +2769,7 @@ R/D 변환 : 아날로그 신호를 디지털로 변환
 출력 방식 : mV/V 또는 0.5–4.5V 비례 출력 신호 
 압력 범위 : 0~600bar(0~60MPa)
 센서 정도 : 0.05~0.5% linearity 
-작동 온도 : -40 ℃ ~ +125 ℃
+작동 온도 : -40 <span class="deg">&deg;</span>C ~ +125 <span class="deg">&deg;</span>C
 보호 등급 : IP67 이상
 커넥터 형식 : 2핀 또는 3핀`
             },
@@ -2777,7 +2779,7 @@ R/D 변환 : 아날로그 신호를 디지털로 변환
                 img: '../assets/16.png', 
                 desc: '타이어 내부의 공기압 및 온도를 실시간으로 감지하여 운전자에게 전달 하는 역할', 
                 specs:[
-                    { icon: '<svg viewBox="0 0 24 24"><path d="M14 14.76V3.5a2.5 2.5 0 0 0-5 0v11.26a4.5 4.5 0 1 0 5 0z"></path></svg>', label: '작동 온도', value: '-40 °C ~ +135 °C' },
+                    { icon: '<svg viewBox="0 0 24 24"><path d="M14 14.76V3.5a2.5 2.5 0 0 0-5 0v11.26a4.5 4.5 0 1 0 5 0z"></path></svg>', label: '작동 온도', value: '-40 <span class="deg">&deg;</span>C ~ +135 <span class="deg">&deg;</span>C' },
                     { icon: '<svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg>', label: '출력 신호', value: '디지털 전송' },
                     { icon: '<svg viewBox="0 0 24 24"><path d="M4.93 4.93a10 10 0 0 1 14.14 0"></path><path d="M7.76 7.76a6 6 0 0 1 8.48 0"></path><path d="M10.59 10.59a2 2 0 0 1 2.82 0"></path></svg>', label: '통신 방식', value: 'RF 무선 통신' }
                 ], 
@@ -2787,8 +2789,8 @@ R/D 변환 : 아날로그 신호를 디지털로 변환
 작동 전압: DC 3V
 압력 범위: 0 ~ 800 kPa
 압력 정확도: ±7 kPa
-온도 범위: −40°C ~ +135°C
-온도 정확도: ±2°C
+온도 범위: −40<span class="deg">&deg;</span>C ~ +135<span class="deg">&deg;</span>C
+온도 정확도: ±2<span class="deg">&deg;</span>C
 통신 방식: RF 무선 통신
 출력 신호: 디지털 전송
 응답 간격: 주행 중 약 1초, 정지 시 약 60초`
@@ -2799,7 +2801,7 @@ R/D 변환 : 아날로그 신호를 디지털로 변환
                 img: '../assets/3.png', 
                 desc: '운전자가 밟는 페달의 깊이(각도)를 전기 신호로 변환해 ECU에 전달하는 장치로 차량의 속도를 제어하는데 사용', 
                 specs:[
-                    { icon: '<svg viewBox="0 0 24 24"><path d="M14 14.76V3.5a2.5 2.5 0 0 0-5 0v11.26a4.5 4.5 0 1 0 5 0z"></path></svg>', label: '작동 온도', value: '-40 °C ~ +125 °C' },
+                    { icon: '<svg viewBox="0 0 24 24"><path d="M14 14.76V3.5a2.5 2.5 0 0 0-5 0v11.26a4.5 4.5 0 1 0 5 0z"></path></svg>', label: '작동 온도', value: '-40 <span class="deg">&deg;</span>C ~ +125 <span class="deg">&deg;</span>C' },
                     { icon: '<svg viewBox="0 0 24 24"><path d="M9 3v18M15 3v18M3 9h18M3 15h18"></path></svg>', label: '커넥터 형식', value: '4 핀 또는 6 핀' },
                     { icon: '<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>', label: '응답 시간', value: '5ms 이하' }
                 ],
@@ -2808,7 +2810,7 @@ R/D 변환 : 아날로그 신호를 디지털로 변환
 센서 유형 : 접촉식 센서 또는 듀얼 포텐쇼미터
 출력 전압 범위 : 0.5V ~ 4.5V
 작동 전압 : DC 5V ±10%
-작동 온도 : -40 ℃ ~ +125 ℃
+작동 온도 : -40 <span class="deg">&deg;</span>C ~ +125 <span class="deg">&deg;</span>C
 반응 시간 : 5ms 이하
 환경 성능 : 진동, 습기 및 EMI를 견디도록 설계됨
 커넥터 형식 : 4핀 또는 6핀`
@@ -2819,7 +2821,7 @@ R/D 변환 : 아날로그 신호를 디지털로 변환
                 img: '../assets/18.png', 
                 desc: '차량의 주행 속도를 측정해 ECU와 계기판에 전달하는 센서', 
                 specs:[
-                    { icon: '<svg viewBox="0 0 24 24"><path d="M14 14.76V3.5a2.5 2.5 0 0 0-5 0v11.26a4.5 4.5 0 1 0 5 0z"></path></svg>', label: '작동 온도', value: '-40 ℃ ~ +135 ℃' },
+                    { icon: '<svg viewBox="0 0 24 24"><path d="M14 14.76V3.5a2.5 2.5 0 0 0-5 0v11.26a4.5 4.5 0 1 0 5 0z"></path></svg>', label: '작동 온도', value: '-40 <span class="deg">&deg;</span>C ~ +135 <span class="deg">&deg;</span>C' },
                     { icon: '<svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>', label: '보호 등급', value: 'IP67' },
                     { icon: '<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>', label: '응답 시간', value: '≤ 1ms' }
                 ], 
@@ -2831,7 +2833,7 @@ R/D 변환 : 아날로그 신호를 디지털로 변환
 출력 신호 : 디지털 펄스 또는 아날로그 전압
 감지 범위 : 0 ~ 15,000 rpm
 응답 시간 : ≤1ms
-온도 측정 : -40 ℃ ~ +135 ℃
+온도 측정 : -40 <span class="deg">&deg;</span>C ~ +135 <span class="deg">&deg;</span>C
 커넥터 형식 : 2핀 또는 3핀
 보호 등급 : IP67`
             },
@@ -2842,7 +2844,7 @@ R/D 변환 : 아날로그 신호를 디지털로 변환
                 img: '../assets/10.png', 
                 desc: '흡기 매니폴드 내부의 절대 압력을 감지하여 ECU로 전달하는 핵심 센서', 
                 specs:[
-                    { icon: '<svg viewBox="0 0 24 24"><path d="M14 14.76V3.5a2.5 2.5 0 0 0-5 0v11.26a4.5 4.5 0 1 0 5 0z"></path></svg>', label: '작동 온도', value: '-40 ℃ ~ +135 ℃' },
+                    { icon: '<svg viewBox="0 0 24 24"><path d="M14 14.76V3.5a2.5 2.5 0 0 0-5 0v11.26a4.5 4.5 0 1 0 5 0z"></path></svg>', label: '작동 온도', value: '-40 <span class="deg">&deg;</span>C ~ +135 <span class="deg">&deg;</span>C' },
                     { icon: '<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>', label: '응답 시간', value: '≤ 1ms' },
                     { icon: '<svg viewBox="0 0 24 24"><path d="M9 3v18M15 3v18M3 9h18M3 15h18"></path></svg>', label: '커넥터 형식', value: '3핀' }
                 ],
@@ -2852,9 +2854,9 @@ R/D 변환 : 아날로그 신호를 디지털로 변환
 작동 전압 : DC 5V ±0.1V 
 출력 범위 : 20 ~ 250kPa (차종별 상이)
 출력 방식 : 아날로그 전압 출력
-정확도 : ±1.5 kPa (25 ℃ 기준)
+정확도 : ±1.5 kPa (25 <span class="deg">&deg;</span>C 기준)
 응답 시간 : ≤1ms
-작동 온도 : -40 ℃ ~ +135 ℃
+작동 온도 : -40 <span class="deg">&deg;</span>C ~ +135 <span class="deg">&deg;</span>C
 커넥터 형식 : 3핀`
             },
             'trans-position': { 
@@ -2863,7 +2865,7 @@ R/D 변환 : 아날로그 신호를 디지털로 변환
                 img: '../assets/17.png', 
                 desc: '전기 자동차 변속 시스템에서 기어 레버 위치 (P, R, N, D 등)를 감지하여 ECU와 계기판에 전달하는 센서', 
                 specs:[
-                    { icon: '<svg viewBox="0 0 24 24"><path d="M14 14.76V3.5a2.5 2.5 0 0 0-5 0v11.26a4.5 4.5 0 1 0 5 0z"></path></svg>', label: '작동 온도', value: '-40 ℃ ~ +200 ℃' },
+                    { icon: '<svg viewBox="0 0 24 24"><path d="M14 14.76V3.5a2.5 2.5 0 0 0-5 0v11.26a4.5 4.5 0 1 0 5 0z"></path></svg>', label: '작동 온도', value: '-40 <span class="deg">&deg;</span>C ~ +200 <span class="deg">&deg;</span>C' },
                     { icon: '<svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>', label: '보호 등급', value: 'IP67' },
                     { icon: '<svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg>', label: '응답 시간', value: '≤ 5ms' }
                 ],
@@ -2876,7 +2878,7 @@ R/D 변환 : 아날로그 신호를 디지털로 변환
 감지 범위 : P / R / N / D / M 등 변속 위치
 정확도 : ±1°
 응답 시간 : ≤5ms
-온도 측정 : -40 ℃ ~ +200 ℃
+온도 측정 : -40 <span class="deg">&deg;</span>C ~ +200 <span class="deg">&deg;</span>C
 커넥터 형식 : 3핀 또는 6핀
 보호 등급 : IP67`
             },
@@ -2886,7 +2888,7 @@ R/D 변환 : 아날로그 신호를 디지털로 변환
                 img: '../assets/8.png', 
                 desc: '운전자가 핸들을 돌린 각도와 방향, 회전 속도를 측정해 ECU에 전달하는 센서', 
                 specs:[
-                    { icon: '<svg viewBox="0 0 24 24"><path d="M14 14.76V3.5a2.5 2.5 0 0 0-5 0v11.26a4.5 4.5 0 1 0 5 0z"></path></svg>', label: '작동 온도', value: '-40 ℃ ~ +125 ℃' },
+                    { icon: '<svg viewBox="0 0 24 24"><path d="M14 14.76V3.5a2.5 2.5 0 0 0-5 0v11.26a4.5 4.5 0 1 0 5 0z"></path></svg>', label: '작동 온도', value: '-40 <span class="deg">&deg;</span>C ~ +125 <span class="deg">&deg;</span>C' },
                     { icon: '<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>', label: '응답 시간', value: '≤ 5ms' },
                     { icon: '<svg viewBox="0 0 24 24"><path d="M9 3v18M15 3v18M3 9h18M3 15h18"></path></svg>', label: '커넥터 형식', value: '2핀 / 3핀 / 다핀 커넥터' }
                 ],
@@ -2899,7 +2901,7 @@ R/D 변환 : 아날로그 신호를 디지털로 변환
 측정 범위 : 회전각도 ±720° (2회전) 이상
 출력 방식 : SENT, CAN 등 디지털 신호로 ECU와 연결
 분해능 : ≤0.1°
-작동 온도 : -40 ℃ ~ +125 ℃
+작동 온도 : -40 <span class="deg">&deg;</span>C ~ +125 <span class="deg">&deg;</span>C
 응답 시간 : ≤5ms
 커넥터 형식 : 2핀 / 3핀 / 다핀 커넥터` 
             },
@@ -2909,7 +2911,7 @@ R/D 변환 : 아날로그 신호를 디지털로 변환
                 img: '../assets/4.png', 
                 desc: '차량의 주행 조건에 따라 2륜과 4륜을 전환하거나, 앞뒤 바퀴의 동력 배분을 감지·제어하는 핵심 부품', 
                 specs:[
-                    { icon: '<svg viewBox="0 0 24 24"><path d="M14 14.76V3.5a2.5 2.5 0 0 0-5 0v11.26a4.5 4.5 0 1 0 5 0z"></path></svg>', label: '작동 온도', value: '-40 ℃ ~ +125 ℃' },
+                    { icon: '<svg viewBox="0 0 24 24"><path d="M14 14.76V3.5a2.5 2.5 0 0 0-5 0v11.26a4.5 4.5 0 1 0 5 0z"></path></svg>', label: '작동 온도', value: '-40 <span class="deg">&deg;</span>C ~ +125 <span class="deg">&deg;</span>C' },
                     { icon: '<svg viewBox="0 0 24 24"><path d="M9 3v18M15 3v18M3 9h18M3 15h18"></path></svg>', label: '커넥터 형식', value: '다핀 커넥터 3~8 핀' },
                     { icon: '<svg viewBox="0 0 24 24"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>', label: '작동 전압', value: 'DC 9 ~ 16V' }
                 ], 
@@ -2920,7 +2922,7 @@ R/D 변환 : 아날로그 신호를 디지털로 변환
 작동 전압 : DC 9 ~ 16V
 출력 방식 : 4-bit output signal
 접점 방식 : 기계식 접점 또는 홀 센서식
-작동 온도 : -40 ℃ ~ +135 ℃
+작동 온도 : -40 <span class="deg">&deg;</span>C ~ +135 <span class="deg">&deg;</span>C
 커넥터 형식 : 다핀 커넥터 3~8 핀 (차종별 상이)`
             },
             '4wd-shift': { 
@@ -2929,7 +2931,7 @@ R/D 변환 : 아날로그 신호를 디지털로 변환
                 img: '../assets/20.png', 
                 desc: '전자식 4륜 구동 시스템 (Electronic 4WD System) 핵심 센서로, 트랜스퍼 케이스 내 액추에이터의 동작을 정밀하게 감지하여 ECU에 전달', 
                 specs:[
-                    { icon: '<svg viewBox="0 0 24 24"><path d="M14 14.76V3.5a2.5 2.5 0 0 0-5 0v11.26a4.5 4.5 0 1 0 5 0z"></path></svg>', label: '작동 온도', value: '-40 ℃ ~ +135 ℃' },
+                    { icon: '<svg viewBox="0 0 24 24"><path d="M14 14.76V3.5a2.5 2.5 0 0 0-5 0v11.26a4.5 4.5 0 1 0 5 0z"></path></svg>', label: '작동 온도', value: '-40 <span class="deg">&deg;</span>C ~ +135 <span class="deg">&deg;</span>C' },
                     { icon: '<svg viewBox="0 0 24 24"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>', label: '전원 전압', value: 'DC 5V' },
                     { icon: '<svg viewBox="0 0 24 24"><path d="M9 3v18M15 3v18M3 9h18M3 15h18"></path></svg>', label: '커넥터 타입', value: '3~8핀' }
                 ], 
@@ -2939,7 +2941,7 @@ R/D 변환 : 아날로그 신호를 디지털로 변환
 출력 방식 : Analog Voltage / PWM Signal
 측정 범위 : 0° ~ 360°
 정밀도 : ±1° 이하
-작동 온도 : -40 ℃ ~ +135 ℃
+작동 온도 : -40 <span class="deg">&deg;</span>C ~ +135 <span class="deg">&deg;</span>C
 내 진동성 : SAE J1455 기준 준수 
 커넥터 타입 : 3~8핀 (차종별 상이)`
             },
@@ -2949,7 +2951,7 @@ R/D 변환 : 아날로그 신호를 디지털로 변환
                 img: '../assets/6.png', 
                 desc: '엔진 냉각수 온도를 측정하여 엔진 제어 장치 (ECU)에 정보를 전달, 냉각 팬 작동 및 연료 분사량 조절하는 역할', 
                 specs:[
-                    { icon: '<svg viewBox="0 0 24 24"><path d="M14 14.76V3.5a2.5 2.5 0 0 0-5 0v11.26a4.5 4.5 0 1 0 5 0z"></path></svg>', label: '측정 온도', value: '-40 ℃ ~ +150 ℃' },
+                    { icon: '<svg viewBox="0 0 24 24"><path d="M14 14.76V3.5a2.5 2.5 0 0 0-5 0v11.26a4.5 4.5 0 1 0 5 0z"></path></svg>', label: '측정 온도', value: '-40 <span class="deg">&deg;</span>C ~ +150 <span class="deg">&deg;</span>C' },
                     { icon: '<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>', label: '응답 시간', value: '≤ 1.5 초' },
                     { icon: '<svg viewBox="0 0 24 24"><path d="M9 3v18M15 3v18M3 9h18M3 15h18"></path></svg>', label: '커넥터 형식', value: '2핀 또는 3핀' }
                 ], 
@@ -2959,8 +2961,8 @@ R/D 변환 : 아날로그 신호를 디지털로 변환
 출력 방식 : 저항 변화형 (온도 상승 시 저항 감소)
 센서 타입 : NTC 서미스터 센서, 혹은 Bi-metal
 나사 규격 : M12 x 1.5 (차종별 상이)
-측정 온도 : -40 ℃ ~ +150 ℃
-정확도 : ±2 ℃ (25 ℃ 기준)
+측정 온도 : -40 <span class="deg">&deg;</span>C ~ +150 <span class="deg">&deg;</span>C
+정확도 : ±2 <span class="deg">&deg;</span>C (25 <span class="deg">&deg;</span>C 기준)
 응답 시간 : ≤1.5 초 (냉각수 유동 상태 기준)
 커넥터 형식 : 2핀 또는 3핀`
             },
@@ -2970,7 +2972,7 @@ R/D 변환 : 아날로그 신호를 디지털로 변환
                 img: '../assets/9.png', 
                 desc: '엔진의 크랭크 샤프트 회전 속도와 위치를 감지하여 엔진 제어 장치 (ECU)로 정보를 전달하는 역할', 
                 specs:[
-                    { icon: '<svg viewBox="0 0 24 24"><path d="M14 14.76V3.5a2.5 2.5 0 0 0-5 0v11.26a4.5 4.5 0 1 0 5 0z"></path></svg>', label: '작동 온도', value: '-40 ℃ ~ +145 ℃' },
+                    { icon: '<svg viewBox="0 0 24 24"><path d="M14 14.76V3.5a2.5 2.5 0 0 0-5 0v11.26a4.5 4.5 0 1 0 5 0z"></path></svg>', label: '작동 온도', value: '-40 <span class="deg">&deg;</span>C ~ +145 <span class="deg">&deg;</span>C' },
                     { icon: '<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>', label: '응답 시간', value: '≤ 1ms' },
                     { icon: '<svg viewBox="0 0 24 24"><path d="M9 3v18M15 3v18M3 9h18M3 15h18"></path></svg>', label: '커넥터 형식', value: '2핀 또는 3핀' }
                 ],
@@ -2981,7 +2983,7 @@ R/D 변환 : 아날로그 신호를 디지털로 변환
 작동 전압 : DC 5V ±0.1V 
 출력 방식 : 디지털 펄스 신호
 감지 대상 : 크랭크 샤프트 톱니 휠((Reluctor Ring)
-작동 온도 : -40 ℃ ~ +145 ℃
+작동 온도 : -40 <span class="deg">&deg;</span>C ~ +145 <span class="deg">&deg;</span>C
 출력 주파수 범위 : 0 ~ 10 khz (엔진 속도에 따라)
 응답 시간 : ≤1ms
 커넥터 형식 : 2핀 또는 3핀`
@@ -2992,7 +2994,7 @@ R/D 변환 : 아날로그 신호를 디지털로 변환
                 img: '../assets/12.png', 
                 desc: '배기 가스 내 산소 농도를 실시간으로 감지하여 ECU에 전달함으로써, 연료와 공기의 혼합비를 제어하는 역할', 
                 specs:[
-                    { icon: '<svg viewBox="0 0 24 24"><path d="M14 14.76V3.5a2.5 2.5 0 0 0-5 0v11.26a4.5 4.5 0 1 0 5 0z"></path></svg>', label: '작동 온도', value: '300 ℃ ~ 900 ℃' },
+                    { icon: '<svg viewBox="0 0 24 24"><path d="M14 14.76V3.5a2.5 2.5 0 0 0-5 0v11.26a4.5 4.5 0 1 0 5 0z"></path></svg>', label: '작동 온도', value: '300 <span class="deg">&deg;</span>C ~ 900 <span class="deg">&deg;</span>C' },
                     { icon: '<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>', label: '응답 시간', value: '≤ 100ms' },
                     { icon: '<svg viewBox="0 0 24 24"><path d="M9 3v18M15 3v18M3 9h18M3 15h18"></path></svg>', label: '커넥터 형식', value: '1~4핀' }
                 ],
@@ -3001,9 +3003,9 @@ R/D 변환 : 아날로그 신호를 디지털로 변환
 
 작동 전압 : DC 12V / 신호 전압 0 ~ 1V 
 출력 전압 범위 : 0.1V (희박 혼합) ~ 0.9V (농후 혼합)
-작동 온도 : 300 ℃ ~ 900 ℃ (히터 내장형)
+작동 온도 : 300 <span class="deg">&deg;</span>C ~ 900 <span class="deg">&deg;</span>C (히터 내장형)
 응답 시간 : ≤100ms
-히터 저항 : 약 6 ~ 12Ω (20 °C 기준)
+히터 저항 : 약 6 ~ 12Ω (20 <span class="deg">&deg;</span>C 기준)
 커넥터 형식 : 1~4핀
 출력 신호 타입 : 아날로그 전압 또는 광대역형`
             },
@@ -3014,7 +3016,7 @@ R/D 변환 : 아날로그 신호를 디지털로 변환
                 img: '../assets/7.png', 
                 desc: '스로틀 밸브의 개폐 정도를 감지해 ECU(엔진 제어 장치)에 전달하는 센서', 
                 specs:[
-                    { icon: '<svg viewBox="0 0 24 24"><path d="M14 14.76V3.5a2.5 2.5 0 0 0-5 0v11.26a4.5 4.5 0 1 0 5 0z"></path></svg>', label: '작동 온도', value: '-40 °C ~ +145 °C' },
+                    { icon: '<svg viewBox="0 0 24 24"><path d="M14 14.76V3.5a2.5 2.5 0 0 0-5 0v11.26a4.5 4.5 0 1 0 5 0z"></path></svg>', label: '작동 온도', value: '-40 <span class="deg">&deg;</span>C ~ +145 <span class="deg">&deg;</span>C' },
                     { icon: '<svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>', label: '보호 등급', value: 'IP67 이상' },
                     { icon: '<svg viewBox="0 0 24 24"><path d="M9 3v18M15 3v18M3 9h18M3 15h18"></path></svg>', label: '커넥터 형식', value: '2핀 또는 3핀' }
                 ],
@@ -3025,7 +3027,7 @@ R/D 변환 : 아날로그 신호를 디지털로 변환
 작동 전압 : DC 5V ±0.1V 
 출력 전압 범위 : 0.5V ~ 4.5V
 출력 신호 : Linear Output Potentiometer
-작동 온도 : -40 °C ~ +145 °C
+작동 온도 : -40 <span class="deg">&deg;</span>C ~ +145 <span class="deg">&deg;</span>C
 보호 등급 : IP67 이상
 응답 시간 : ≤5ms
 커넥터 형식 : 2핀 또는 3핀`
@@ -3036,7 +3038,7 @@ R/D 변환 : 아날로그 신호를 디지털로 변환
                 img: '../assets/14.png', 
                 desc: '엔진 내부에서 발생하는 이상 폭발(노킹, Detonation)을 감지하여 ECU로 전달', 
                 specs:[
-                    { icon: '<svg viewBox="0 0 24 24"><path d="M14 14.76V3.5a2.5 2.5 0 0 0-5 0v11.26a4.5 4.5 0 1 0 5 0z"></path></svg>', label: '작동 온도', value: '-40 °C ~ +145 °C' },
+                    { icon: '<svg viewBox="0 0 24 24"><path d="M14 14.76V3.5a2.5 2.5 0 0 0-5 0v11.26a4.5 4.5 0 1 0 5 0z"></path></svg>', label: '작동 온도', value: '-40 <span class="deg">&deg;</span>C ~ +145 <span class="deg">&deg;</span>C' },
                     { icon: '<svg viewBox="0 0 24 24"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>', label: '출력 전압 범위', value: '약0.1 ~ 4.9 V' },
                     { icon: '<svg viewBox="0 0 24 24"><path d="M9 3v18M15 3v18M3 9h18M3 15h18"></path></svg>', label: '커넥터 형식', value: '2핀' }
                 ],
@@ -3047,7 +3049,7 @@ R/D 변환 : 아날로그 신호를 디지털로 변환
 출력 신호 : 진동 주파수 기반 아날로그 전압 신호
 감지 주파수 범위 : 5 ~ 15kHz
 출력 전압 범위 : 약 0.1 ~ 4.9 V
-작동 온도 : -40 °C ~ +145 °C
+작동 온도 : -40 <span class="deg">&deg;</span>C ~ +145 <span class="deg">&deg;</span>C
 장착 형식 : 볼트 체결형 
 커넥터 형식 : 2핀`
             },
@@ -3057,7 +3059,7 @@ R/D 변환 : 아날로그 신호를 디지털로 변환
                 img: '../assets/13.png', 
                 desc: '엔진 공회전 시 ECU의 제어 신호에 따라 공기 유량을 조절하여 안정적인 아이들 회전수를 유지하는 역할', 
                 specs:[
-                    { icon: '<svg viewBox="0 0 24 24"><path d="M14 14.76V3.5a2.5 2.5 0 0 0-5 0v11.26a4.5 4.5 0 1 0 5 0z"></path></svg>', label: '작동 온도', value: '-40 °C ~ +145 °C' },
+                    { icon: '<svg viewBox="0 0 24 24"><path d="M14 14.76V3.5a2.5 2.5 0 0 0-5 0v11.26a4.5 4.5 0 1 0 5 0z"></path></svg>', label: '작동 온도', value: '-40 <span class="deg">&deg;</span>C ~ +145 <span class="deg">&deg;</span>C' },
                     { icon: '<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>', label: '응답 시간', value: '≤ 10ms' },
                     { icon: '<svg viewBox="0 0 24 24"><path d="M9 3v18M15 3v18M3 9h18M3 15h18"></path></svg>', label: '커넥터 형식', value: '4핀' }
                 ],
@@ -3069,7 +3071,7 @@ R/D 변환 : 아날로그 신호를 디지털로 변환
 제어 신호 : 펄스 입력
 밸브 스트로크 : 약 8 ~ 12mm
 응답 시간 : ≤10ms
-작동 온도 : -40 °C ~ +145 °C
+작동 온도 : -40 <span class="deg">&deg;</span>C ~ +145 <span class="deg">&deg;</span>C
 커넥터 형식 : 4핀`
             },
             // Actuators
@@ -3079,7 +3081,7 @@ R/D 변환 : 아날로그 신호를 디지털로 변환
                 img: '../assets/25.png',
                 desc: '브러시가 없는 구조로 마찰 손실과 전기 노이즈를 최소화한 고효율 전동기이며 정밀 제어가 가능',
                 specs: [
-                    { icon: '<svg viewBox="0 0 24 24"><path d="M14 14.76V3.5a2.5 2.5 0 0 0-5 0v11.26a4.5 4.5 0 1 0 5 0z"></path></svg>', label: '작동 온도', value: '-40 °C ~ +125 °C' },
+                    { icon: '<svg viewBox="0 0 24 24"><path d="M14 14.76V3.5a2.5 2.5 0 0 0-5 0v11.26a4.5 4.5 0 1 0 5 0z"></path></svg>', label: '작동 온도', value: '-40 <span class="deg">&deg;</span>C ~ +125 <span class="deg">&deg;</span>C' },
                     { icon: '<svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>', label: '보호 등급', value: 'IP65 이상' },
                     { icon: '<svg viewBox="0 0 24 24"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>', label: '전원 전압', value: 'DC 12V / 24V / 48V' }
                 ],
@@ -3093,7 +3095,7 @@ R/D 변환 : 아날로그 신호를 디지털로 변환
 제어 방식 : 홀 센서 피드백 / 센서리스 제어 (PWM, FOC)
 효율 : ≥85%
 토크 특성 : High torque, 고출력 저 진동
-작동 온도 : -40 °C ~ +125 °C
+작동 온도 : -40 <span class="deg">&deg;</span>C ~ +125 <span class="deg">&deg;</span>C
 보호 등급 : IP65 이상
 베어링 타입 : 고 내구성 베어링
 커넥터 형식 : 맞춤형 다핀 커넥터`
@@ -3104,7 +3106,7 @@ R/D 변환 : 아날로그 신호를 디지털로 변환
                 img: '../assets/22.png',
                 desc: '자동변속기의 기어 변속을 전자적으로 제어하는 액추에이터로 4WD 트랜스퍼 케이스의 변속 모드 (2H / 4H / 4L 등)를 전자적으로 전환하는 핵심 구동 장치',
                 specs: [
-                     { icon: '<svg viewBox="0 0 24 24"><path d="M14 14.76V3.5a2.5 2.5 0 0 0-5 0v11.26a4.5 4.5 0 1 0 5 0z"></path></svg>', label: '작동 온도', value: '-40 °C ~ +145 °C' },
+                     { icon: '<svg viewBox="0 0 24 24"><path d="M14 14.76V3.5a2.5 2.5 0 0 0-5 0v11.26a4.5 4.5 0 1 0 5 0z"></path></svg>', label: '작동 온도', value: '-40 <span class="deg">&deg;</span>C ~ +145 <span class="deg">&deg;</span>C' },
                      { icon: '<svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>', label: '보호 등급', value: 'IP67 이상' },
                      { icon: '<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>', label: '응답 시간', value: '≤ 500ms' }
                 ],
@@ -3116,7 +3118,7 @@ R/D 변환 : 아날로그 신호를 디지털로 변환
 제어 방식 : PWM 신호 제어, Linear Output 제어
 위치 검출 : 홀 센서 / 포텐셔미터 내장
 응답 시간 : ≤500ms
-작동 온도 : -40 °C ~ +145 °C
+작동 온도 : -40 <span class="deg">&deg;</span>C ~ +145 <span class="deg">&deg;</span>C
 보호 등급 : IP67 이상
 커넥터 형식 : 다핀 커넥터 (4 ~ 8핀 구성)`
             },
@@ -3126,7 +3128,7 @@ R/D 변환 : 아날로그 신호를 디지털로 변환
                 img: '../assets/24.png',
                 desc: '교류 전원을 이용해 회전 운동을 생성하는 전동기 이며 높은 내구성과 안정적인 특성을 갖추어 HVAC 시스템 적용',
                 specs: [
-                     { icon: '<svg viewBox="0 0 24 24"><path d="M14 14.76V3.5a2.5 2.5 0 0 0-5 0v11.26a4.5 4.5 0 1 0 5 0z"></path></svg>', label: '작동 온도', value: '-20 °C ~ +80 °C' },
+                     { icon: '<svg viewBox="0 0 24 24"><path d="M14 14.76V3.5a2.5 2.5 0 0 0-5 0v11.26a4.5 4.5 0 1 0 5 0z"></path></svg>', label: '작동 온도', value: '-20 <span class="deg">&deg;</span>C ~ +80 <span class="deg">&deg;</span>C' },
                      { icon: '<svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>', label: '보호 등급', value: 'IP54 ~ IP65' },
                      { icon: '<svg viewBox="0 0 24 24"><path d="M9 3v18M15 3v18M3 9h18M3 15h18"></path></svg>', label: '커넥터 형식', value: '맞춤형 커넥터 / 리드선 출력' }
                 ],
@@ -3138,7 +3140,7 @@ R/D 변환 : 아날로그 신호를 디지털로 변환
 회전 방향 : 정 / 역회전 (양방향 제어 가능)
 절연 등급 : Class B / F
 보호 등급 : IP54 ~ IP65
-작동 온도 : -40 °C ~ +135 °C
+작동 온도 : -40 <span class="deg">&deg;</span>C ~ +135 <span class="deg">&deg;</span>C
 커넥터 형식 : 맞춤형 커넥터 / 리드선 출력`
             },
             'fan-clutch': {
@@ -3147,7 +3149,7 @@ R/D 변환 : 아날로그 신호를 디지털로 변환
                 img: '../assets/21.png',
                 desc: '실시간 엔진 냉각팬의 회전 속도를 제어하는 전자식 액추에이터',
                 specs: [
-                     { icon: '<svg viewBox="0 0 24 24"><path d="M14 14.76V3.5a2.5 2.5 0 0 0-5 0v11.26a4.5 4.5 0 1 0 5 0z"></path></svg>', label: '작동 온도', value: '-40 °C ~ +145 °C' },
+                     { icon: '<svg viewBox="0 0 24 24"><path d="M14 14.76V3.5a2.5 2.5 0 0 0-5 0v11.26a4.5 4.5 0 1 0 5 0z"></path></svg>', label: '작동 온도', value: '-40 <span class="deg">&deg;</span>C ~ +145 <span class="deg">&deg;</span>C' },
                      { icon: '<svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>', label: '보호 등급', value: 'IP65 이상' },
                      { icon: '<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>', label: '응답 시간', value: '≤ 300ms' }
                 ],
@@ -3156,7 +3158,7 @@ R/D 변환 : 아날로그 신호를 디지털로 변환
 작동 방식 : 전자식 구동 제어
 제어 신호 : PWM 신호 ECU 제어
 전원 전압 : DC 12V 또는 24V
-작동 온도 : -40 °C ~ +145 °C
+작동 온도 : -40 <span class="deg">&deg;</span>C ~ +145 <span class="deg">&deg;</span>C
 응답 시간 : ≤300ms
 클러치 유체 : 실리콘 오일
 베어링 타입 : 고 내구 베어링 내장
@@ -3168,7 +3170,7 @@ R/D 변환 : 아날로그 신호를 디지털로 변환
                 img: '../assets/23.png',
                 desc: '전자식 4륜구동 시스템에서 트랜스퍼 케이스(Transfer Case)의 기어를 전환하는 액추에이터',
                 specs: [
-                     { icon: '<svg viewBox="0 0 24 24"><path d="M14 14.76V3.5a2.5 2.5 0 0 0-5 0v11.26a4.5 4.5 0 1 0 5 0z"></path></svg>', label: '작동 온도', value: '-40 °C ~ +145 °C' },
+                     { icon: '<svg viewBox="0 0 24 24"><path d="M14 14.76V3.5a2.5 2.5 0 0 0-5 0v11.26a4.5 4.5 0 1 0 5 0z"></path></svg>', label: '작동 온도', value: '-40 <span class="deg">&deg;</span>C ~ +145 <span class="deg">&deg;</span>C' },
                      { icon: '<svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>', label: '보호 등급', value: 'IP67' },
                      { icon: '<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>', label: '응답 시간', value: '≤ 300ms' }
                 ],
@@ -3181,7 +3183,7 @@ R/D 변환 : 아날로그 신호를 디지털로 변환
 응답 시간 : ≤300ms
 위치 검출 : 홀 센서 / 포텐셔미터
 제어 방식 : 전압 제어 또는 PWM ECU 제어
-작동 온도 : -40 °C ~ +145 °C
+작동 온도 : -40 <span class="deg">&deg;</span>C ~ +145 <span class="deg">&deg;</span>C
 보호 등급 : IP67
 커넥터 형식 : 2핀 / 3핀 / 다핀`
             },
@@ -3191,7 +3193,7 @@ R/D 변환 : 아날로그 신호를 디지털로 변환
                 img: '../assets/hidden_door_handle.png',
                 desc: '도어와 일체화된 히든 핸들은 개폐시 자동으로 돌출되어 공기 저항 감소, 고급스러운 디자인, 향상된 보안성을 제공',
                 specs: [
-                     { icon: '<svg viewBox="0 0 24 24"><path d="M14 14.76V3.5a2.5 2.5 0 0 0-5 0v11.26a4.5 4.5 0 1 0 5 0z"></path></svg>', label: '작동 온도', value: '-40 °C ~ +125 °C' },
+                     { icon: '<svg viewBox="0 0 24 24"><path d="M14 14.76V3.5a2.5 2.5 0 0 0-5 0v11.26a4.5 4.5 0 1 0 5 0z"></path></svg>', label: '작동 온도', value: '-40 <span class="deg">&deg;</span>C ~ +125 <span class="deg">&deg;</span>C' },
                      { icon: '<svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>', label: '보호 등급', value: 'IP67' },
                      { icon: '<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>', label: '응답 시간', value: '≤ 500ms' }
                 ],
@@ -3213,7 +3215,7 @@ R/D 변환 : 아날로그 신호를 디지털로 변환
                 img: '../assets/26.png',
                 desc: '자기장, 정전용량 또는 초음파 원리를 이용해 물체의 접근을 감지하는 비접촉식 감지 센서',
                 specs: [
-                     { icon: '<svg viewBox="0 0 24 24"><path d="M14 14.76V3.5a2.5 2.5 0 0 0-5 0v11.26a4.5 4.5 0 1 0 5 0z"></path></svg>', label: '작동 온도', value: '-40 °C ~ +125 °C' },
+                     { icon: '<svg viewBox="0 0 24 24"><path d="M14 14.76V3.5a2.5 2.5 0 0 0-5 0v11.26a4.5 4.5 0 1 0 5 0z"></path></svg>', label: '작동 온도', value: '-40 <span class="deg">&deg;</span>C ~ +125 <span class="deg">&deg;</span>C' },
                      { icon: '<svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>', label: '보호 등급', value: 'IP67' },
                      { icon: '<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>', label: '응답 시간', value: '≤ 1ms' }
                 ],
@@ -3224,7 +3226,7 @@ R/D 변환 : 아날로그 신호를 디지털로 변환
 감지 방식 : 자기유도 / 정전용량 / 초음파형 
 출력 신호 : 디지털 또는 아날로그 전압 출력
 응답 시간 : ≤1ms
-작동 온도 : -40 °C ~ +125 °C
+작동 온도 : -40 <span class="deg">&deg;</span>C ~ +125 <span class="deg">&deg;</span>C
 통신 인터페이스 (옵션) : UART / CAN / LIN / I²C
 보호 등급 : IP67`
             },
@@ -3235,7 +3237,7 @@ R/D 변환 : 아날로그 신호를 디지털로 변환
                 desc: '스마트키 신호, 근접 감지, 차량 잠금 상태 등을 기반으로 도어 핸들의 자동 돌출 및 수납을 제어하는 역할',
                 specs: [
                      { icon: '<svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg>', label: '통신 인터페이스', value: 'CAN / LIN / UART' },
-                     { icon: '<svg viewBox="0 0 24 24"><path d="M14 14.76V3.5a2.5 2.5 0 0 0-5 0v11.26a4.5 4.5 0 1 0 5 0z"></path></svg>', label: '작동 온도', value: '-40 °C ~ +125 °C' },
+                     { icon: '<svg viewBox="0 0 24 24"><path d="M14 14.76V3.5a2.5 2.5 0 0 0-5 0v11.26a4.5 4.5 0 1 0 5 0z"></path></svg>', label: '작동 온도', value: '-40 <span class="deg">&deg;</span>C ~ +125 <span class="deg">&deg;</span>C' },
                      { icon: '<svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>', label: '보호 등급', value: 'IP67' }
                 ],
                 details: `스마트키 신호, 근접 감지, 차량 잠금 상태 등을 기반으로 도어 핸들의 자동 돌출 및 수납을 제어하는 역할
@@ -3248,7 +3250,7 @@ R/D 변환 : 아날로그 신호를 디지털로 변환
 제어 기능 : 도어 핸들 돌출·수납 제어, 위치 감지, 안전 차단
 보호 기능 : 과전류 / 과전압 / 과열 보호
 응답 시간 : ≤300ms
-작동 온도 : -40 °C ~ +125 °C
+작동 온도 : -40 <span class="deg">&deg;</span>C ~ +125 <span class="deg">&deg;</span>C
 보호 등급 : IP67`
             },
             'smart-key': {
@@ -3257,7 +3259,7 @@ R/D 변환 : 아날로그 신호를 디지털로 변환
                 img: '../assets/27.png',
                 desc: 'RF 통신 및 암호화 기술을 이용하여 차량의 도어 잠금 해제와 시동 제어를 수행하는 전자 제어 모듈',
                 specs: [
-                     { icon: '<svg viewBox="0 0 24 24"><path d="M14 14.76V3.5a2.5 2.5 0 0 0-5 0v11.26a4.5 4.5 0 1 0 5 0z"></path></svg>', label: '작동 온도', value: '-40 °C ~ +125 °C' },
+                     { icon: '<svg viewBox="0 0 24 24"><path d="M14 14.76V3.5a2.5 2.5 0 0 0-5 0v11.26a4.5 4.5 0 1 0 5 0z"></path></svg>', label: '작동 온도', value: '-40 <span class="deg">&deg;</span>C ~ +125 <span class="deg">&deg;</span>C' },
                      { icon: '<svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>', label: '보호 등급', value: 'EMC / ESD / IP65 수준' },
                      { icon: '<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>', label: '응답 속도', value: '≤100ms' }
                 ],
@@ -3269,7 +3271,7 @@ R/D 변환 : 아날로그 신호를 디지털로 변환
 작동 거리 : 약 1 ~ 3m
 응답 속도 : ≤100ms
 입출력 인터페이스 : 도어락 릴레이, 시동 릴레이, RF 수신 안테나
-작동 온도 : -40 °C ~ +125 °C
+작동 온도 : -40 <span class="deg">&deg;</span>C ~ +125 <span class="deg">&deg;</span>C
 보호 등급 : EMC / ESD / IP65 수준
 프로 세서 : 32-bit MCU 내장, 저전력 대기 모드 지원`
             },
@@ -3279,7 +3281,7 @@ R/D 변환 : 아날로그 신호를 디지털로 변환
                 img: '../assets/28.png',
                 desc: '차량의 구동력을 전륜과 후륜에 적절히 분배하여 주행 안정성과 트랙션을 최적화 하는 제어 장치',
                 specs: [
-                     { icon: '<svg viewBox="0 0 24 24"><path d="M14 14.76V3.5a2.5 2.5 0 0 0-5 0v11.26a4.5 4.5 0 1 0 5 0z"></path></svg>', label: '작동 온도', value: '-40 °C ~ +125 °C' },
+                     { icon: '<svg viewBox="0 0 24 24"><path d="M14 14.76V3.5a2.5 2.5 0 0 0-5 0v11.26a4.5 4.5 0 1 0 5 0z"></path></svg>', label: '작동 온도', value: '-40 <span class="deg">&deg;</span>C ~ +125 <span class="deg">&deg;</span>C' },
                      { icon: '<svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg>', label: '프로세서', value: '32bit 마이크로 컨트롤러' },
                      { icon: '<svg viewBox="0 0 24 24"><path d="M9 3v18M15 3v18M3 9h18M3 15h18"></path></svg>', label: '커넥터', value: '20~30핀' }
                 ],
@@ -3290,7 +3292,7 @@ R/D 변환 : 아날로그 신호를 디지털로 변환
 입출력 : 아날로그 / 디지털 입력, PWM 출력, CAN/LIN 통신
 전원 전압 : DC 9V ~ 16V
 보호 회로 : 과전압, 과전류, 역극성 보호 회로 내장
-작동 온도 : -40 °C ~ +125 °C
+작동 온도 : -40 <span class="deg">&deg;</span>C ~ +125 <span class="deg">&deg;</span>C
 커넥터 : 20~30핀`
             },
             'smart-hvac': {
