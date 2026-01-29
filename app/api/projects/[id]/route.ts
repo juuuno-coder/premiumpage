@@ -6,8 +6,10 @@ import { join } from 'path'
 
 export async function DELETE(
     request: NextRequest,
-    { params }: { params: { id: string } }
+    props: { params: Promise<{ id: string }> }
 ) {
+    const params = await props.params;
+    const { id } = params;
     try {
         const session = await auth()
 
@@ -18,7 +20,7 @@ export async function DELETE(
             )
         }
 
-        const { id } = params
+
 
         // 프로젝트 존재 및 소유권 확인
         const project = await prisma.project.findUnique({

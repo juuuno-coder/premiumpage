@@ -1,16 +1,16 @@
-import type { Metadata } from 'next'
-import { Inter } from 'next/font/google'
+import { Inter, Outfit } from 'next/font/google'
 import './globals.css'
 
 import { ThemeProvider } from "@/components/theme-provider"
 import { ThemeToggle } from "@/components/theme-toggle"
-import Link from 'next/link' // Added Link import
+import Link from 'next/link'
 
-const inter = Inter({ subsets: ["latin"] })
+const inter = Inter({ subsets: ["latin"], variable: '--font-inter' })
+const outfit = Outfit({ subsets: ["latin"], variable: '--font-outfit' })
 
 export const metadata: Metadata = {
-  title: "Premium Page | 전자 카탈로그 전문 서비스",
-  description: "고품격 디자인과 인터랙티브 기술이 결합된 전자 카탈로그 솔루션",
+  title: "Premium Page | Digital Identity & E-Catalog Agency",
+  description: "Beyond PDF. The Art of Interactive Digital Experience for Global Brands.",
 }
 
 export default function RootLayout({
@@ -20,7 +20,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="ko" suppressHydrationWarning>
-      <body className={`${inter.className} min-h-screen bg-background text-foreground transition-colors duration-300`}>
+      <body className={`${inter.variable} ${outfit.variable} font-sans min-h-screen bg-background text-foreground transition-colors duration-300`}>
         <ThemeProvider
           attribute="class"
           defaultTheme="dark"

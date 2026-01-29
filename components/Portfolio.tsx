@@ -34,7 +34,7 @@ const portfolioItems = [
         description: '글로벌 제조사를 위한 반응형 다국어 제품 카탈로그 제작',
         image: '/portfolio/standard-case.jpg',
         tags: ['Interactive UI', 'Global Export', 'Product Search'],
-        link: '#'
+        link: '/portfolio/nexus-industrial'
     },
     {
         id: 4,
