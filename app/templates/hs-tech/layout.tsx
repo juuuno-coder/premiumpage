@@ -54,7 +54,7 @@ function HSTechLayoutContent({ children }: { children: React.ReactNode }) {
             {/* 1. Header (Fixed, Dark) - Z-Index 100 */}
             <header className="fixed top-0 left-0 right-0 z-[100] flex items-center justify-between px-6 md:px-12 h-20 dark:bg-neutral-950/80 bg-white/80 backdrop-blur-md border-b dark:border-white/5 border-neutral-200 transition-all">
                 {/* Logo */}
-                <Link href="/templates/hs-tech?tab=cover" className="flex items-center gap-2 group">
+                <Link href="/" className="flex items-center gap-2 group">
                     <div className="w-10 h-10 bg-cyan-500 rounded-sm flex items-center justify-center text-white font-black text-xl group-hover:bg-cyan-400 transition-colors shadow-lg shadow-cyan-500/20">H</div>
                     <div className="flex flex-col">
                         <span className="text-lg font-black tracking-tighter leading-none dark:text-white text-neutral-900 group-hover:text-cyan-400 transition-colors">HS TECH</span>

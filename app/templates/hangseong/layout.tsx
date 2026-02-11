@@ -120,7 +120,7 @@ function HangseongLayoutContent({ children }: { children: React.ReactNode }) {
             {/* Sidebar */}
             <aside className="w-[260px] h-full bg-slate-950/95 backdrop-blur-md border-r border-slate-800 flex flex-col z-[100] flex-shrink-0 relative shadow-2xl">
                 <div className="p-8 pb-8 pt-10 flex-shrink-0">
-                    <Link href="/templates/hangseong?tab=cover" className="block hover:opacity-80 transition-opacity">
+                    <Link href="/" className="block hover:opacity-80 transition-opacity">
                         <div className="bg-white p-3 rounded-xl w-full">
                             <img src="/templates/hangseong/images/logo.png" alt="HANGSEONG" className="w-full h-auto object-contain" />
                         </div>
@@ -130,7 +130,7 @@ function HangseongLayoutContent({ children }: { children: React.ReactNode }) {
                 <nav className="flex-1 overflow-y-auto px-6 py-4 space-y-8 scrollbar-hide pb-20">
                     <div>
                         <Link
-                            href="/templates/hangseong?tab=cover"
+                            href="/"
                             className={cn(
                                 "text-sm font-bold uppercase tracking-wider block transition-colors py-2",
                                 (!activeTab || activeTab === 'cover') ? "text-blue-400" : "text-slate-500 hover:text-white"

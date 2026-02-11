@@ -107,7 +107,7 @@ function GentopLayoutContent({ children }: { children: React.ReactNode }) {
             <aside className="w-[260px] h-full bg-slate-900/95 backdrop-blur-md border-r border-slate-800 flex flex-col z-[100] flex-shrink-0 relative shadow-2xl">
                 {/* Logo */}
                 <div className="p-8 pb-8 pt-10 flex-shrink-0">
-                    <Link href="/templates/gentop?tab=cover" className="flex items-center gap-3 hover:opacity-80 transition-opacity">
+                    <Link href="/" className="flex items-center gap-3 hover:opacity-80 transition-opacity">
                         <div className="w-8 h-8 bg-indigo-600 rounded flex items-center justify-center text-white font-black">G</div>
                         <span className="text-xl font-black text-white tracking-tight">GENTOP</span>
                     </Link>
@@ -118,7 +118,7 @@ function GentopLayoutContent({ children }: { children: React.ReactNode }) {
                     {/* Home Link */}
                     <div>
                         <Link
-                            href="/templates/gentop?tab=cover"
+                            href="/"
                             className={cn(
                                 "text-sm font-bold uppercase tracking-wider block transition-colors py-2",
                                 activeTab === 'cover' ? "text-indigo-400" : "text-slate-500 hover:text-white"
