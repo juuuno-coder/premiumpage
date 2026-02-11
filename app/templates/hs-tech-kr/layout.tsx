@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, Suspense } from 'react'
 import Link from 'next/link'
 import { useSearchParams } from 'next/navigation'
 import { motion, AnimatePresence } from 'framer-motion'
@@ -8,7 +8,7 @@ import { Menu, X, Facebook, Instagram, Youtube, ArrowRight, ChevronRight, Phone,
 import { cn } from '@/lib/utils'
 import { useTheme } from 'next-themes'
 
-export default function HSTechViewerLayout({ children }: { children: React.ReactNode }) {
+function HSTechLayoutContent({ children }: { children: React.ReactNode }) {
     const [isMenuOpen, setIsMenuOpen] = useState(false)
     const searchParams = useSearchParams()
 
@@ -107,7 +107,7 @@ export default function HSTechViewerLayout({ children }: { children: React.React
                     <div className={cn("absolute inset-0 flex items-center justify-center transition-all duration-300", isMenuOpen ? "rotate-90 opacity-0" : "opacity-100 rotate-0")}>
                         <Menu className="w-8 h-8 dark:text-white text-neutral-900 group-hover:text-cyan-400 transition-colors" />
                     </div>
-                    <div className={cn("absolute inset-0 flex items-center justify-center transition-all duration-300", isMenuOpen ? "opacity-100 rotate-0" : "opacity-0 -rotate-90")}>
+                    <div className="absolute inset-0 flex items-center justify-center transition-all duration-300" style={{ opacity: isMenuOpen ? 1 : 0, transform: isMenuOpen ? 'rotate(0deg)' : 'rotate(-90deg)' }}>
                         <X className="w-8 h-8 dark:text-white text-neutral-900 group-hover:text-cyan-400 transition-colors" />
                     </div>
                 </div>
@@ -225,5 +225,13 @@ export default function HSTechViewerLayout({ children }: { children: React.React
             </main>
 
         </div>
+    )
+}
+
+export default function HSTechViewerLayout({ children }: { children: React.ReactNode }) {
+    return (
+        <Suspense fallback={<div className="h-screen w-screen bg-neutral-950 flex items-center justify-center text-white">Loading Layout...</div>}>
+            <HSTechLayoutContent>{children}</HSTechLayoutContent>
+        </Suspense>
     )
 }
