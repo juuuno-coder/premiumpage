@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useState, useEffect, useCallback, useRef, useMemo } from 'react'
+import React, { useState, useEffect, useCallback, useRef, useMemo, Suspense } from 'react'
 import Link from 'next/link'
 import { useRouter, useSearchParams } from 'next/navigation'
 import { motion, AnimatePresence } from 'framer-motion'
@@ -8,7 +8,7 @@ import { X, ChevronRight, ChevronLeft, Globe, Grid } from 'lucide-react'
 import { cn } from '@/lib/utils'
 import { GENTOP_MENU } from './data'
 
-export default function GentopViewerLayout({ children }: { children: React.ReactNode }) {
+function GentopLayoutContent({ children }: { children: React.ReactNode }) {
     const router = useRouter()
     const searchParams = useSearchParams()
 
@@ -234,5 +234,13 @@ export default function GentopViewerLayout({ children }: { children: React.React
             </main>
 
         </div>
+    )
+}
+
+export default function GentopViewerLayout({ children }: { children: React.ReactNode }) {
+    return (
+        <Suspense fallback={<div className="h-screen w-screen bg-slate-900 flex items-center justify-center text-white">Loading Layout...</div>}>
+            <GentopLayoutContent>{children}</GentopLayoutContent>
+        </Suspense>
     )
 }
