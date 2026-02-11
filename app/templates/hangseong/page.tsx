@@ -1,7 +1,6 @@
-
 'use client'
 
-import React from 'react'
+import React, { Suspense } from 'react'
 import { ArrowRight, FileText, Download, ChevronRight, ChevronLeft, Globe, CheckCircle2, Phone, Mail, MapPin, Factory, ShieldCheck, Cog } from 'lucide-react'
 import Link from 'next/link'
 import Image from 'next/image'
@@ -104,7 +103,7 @@ const CatalogPage = ({
     )
 }
 
-export default function HangseongPage() {
+function HangseongContent() {
     const searchParams = useSearchParams()
     const router = useRouter()
     const activeTab = searchParams.get('tab') || 'cover'
@@ -711,5 +710,13 @@ export default function HangseongPage() {
                 <h1 className="text-white">Page Not Found</h1>
             </div>
         </CatalogPage>
+    )
+}
+
+export default function HangseongPage() {
+    return (
+        <Suspense fallback={<div className="h-screen w-screen bg-slate-900 flex items-center justify-center text-white">Loading Hangseong Catalog...</div>}>
+            <HangseongContent />
+        </Suspense>
     )
 }
