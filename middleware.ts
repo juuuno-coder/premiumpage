@@ -7,9 +7,29 @@ export function middleware(request: NextRequest) {
 
     // 1. 항성산업사 (Hangseong) 도메인 처리
     if (hostname.includes('hangseong.premiumpage.kr') || hostname.includes('hangseong.vercel.app')) {
-        // 루트(/) 경로로 접속한 경우 /templates/hangseong으로 내부 rewrite
         if (url.pathname === '/') {
             return NextResponse.rewrite(new URL('/templates/hangseong', request.url))
+        }
+    }
+
+    // 2. HS-TECH (영문) 도메인 처리
+    if (hostname.includes('hstech.premiumpage.kr')) {
+        if (url.pathname === '/') {
+            return NextResponse.rewrite(new URL('/templates/hs-tech', request.url))
+        }
+    }
+
+    // 3. HS-TECH (국문) 도메인 처리
+    if (hostname.includes('hstech-kr.premiumpage.kr')) {
+        if (url.pathname === '/') {
+            return NextResponse.rewrite(new URL('/templates/hs-tech-kr', request.url))
+        }
+    }
+
+    // 4. GENTOP 도메인 처리
+    if (hostname.includes('gentop.premiumpage.kr')) {
+        if (url.pathname === '/') {
+            return NextResponse.rewrite(new URL('/templates/gentop', request.url))
         }
     }
 
