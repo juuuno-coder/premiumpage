@@ -2,14 +2,6 @@
 
 import React from 'react'
 import { motion } from 'framer-motion'
-import { ShieldCheck, Award, FileText, Globe, Zap, Cpu, Search, CheckCircle2, Star, BadgeCheck } from 'lucide-react'
-
-const QUALITY_DATA = [
-    { title: 'IATF 16949:2016', desc: 'Automotive Global Quality System', date: '2018.11', icon: <Globe className="w-8 h-8" /> },
-    { title: 'ISO 9001:2015', desc: 'International Quality Management', date: '2015.06', icon: <Award className="w-8 h-8" /> },
-    { title: 'ISO 14001', desc: 'Environmental Control System', date: '2015.06', icon: <ShieldCheck className="w-8 h-8" /> },
-    { title: 'SQ Certificate', desc: 'Supplier Quality Tier-2 Certified', date: 'Certified', icon: <BadgeCheck className="w-8 h-8" /> }
-]
 
 export default function CertificationView() {
     return (
@@ -34,19 +26,19 @@ export default function CertificationView() {
                     </motion.p>
                 </div>
 
-                {/* 1. Quality Standards - Original Image Display */}
+                {/* Certifications Grid - Original Image with Labels */}
                 <div className="pb-20">
                     <motion.div
                         initial={{ opacity: 0, scale: 0.95 }}
                         whileInView={{ opacity: 1, scale: 1 }}
                         viewport={{ once: true }}
-                        className="relative rounded-[4rem] overflow-hidden bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-2xl p-8 md:p-12 lg:p-20 flex justify-center"
+                        className="relative rounded-3xl overflow-hidden bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-2xl p-6 md:p-10 lg:p-16"
                     >
-                        <div className="relative max-w-5xl w-full">
+                        <div className="relative max-w-6xl mx-auto">
                             <img
-                                src="/templates/hangseong/images/certification.png"
-                                alt="Certifications"
-                                className="w-full h-auto rounded-2xl shadow-lg dark:brightness-90 hover:brightness-100 transition-all duration-500"
+                                src="/templates/hangseong/images/certifications_grid.png"
+                                alt="Hangseong Industrial Certifications"
+                                className="w-full h-auto dark:brightness-95 hover:brightness-100 transition-all duration-500"
                             />
                         </div>
                     </motion.div>
