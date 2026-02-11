@@ -278,14 +278,14 @@ function HangseongLayoutContent({ children }: { children: React.ReactNode }) {
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
                             exit={{ opacity: 0, y: 20 }}
-                            className="fixed bottom-0 left-[260px] right-0 z-40 p-8 flex items-end justify-between pointer-events-none bg-gradient-to-t from-white via-white/80 to-transparent dark:from-slate-950 dark:via-slate-950/80 h-40"
+                            className="fixed bottom-0 left-0 lg:left-[260px] right-0 z-40 p-4 md:p-8 flex items-end justify-between pointer-events-none bg-gradient-to-t from-white via-white/80 to-transparent dark:from-slate-950 dark:via-slate-950/80 h-24 md:h-40"
                         >
                             {/* Page Info */}
                             <div className="flex flex-col gap-1 pointer-events-auto">
                                 <div className="text-[10px] font-black text-blue-600 dark:text-blue-400 uppercase tracking-[0.3em]">
                                     {currentSlide?.label}
                                 </div>
-                                <div className="text-3xl font-black text-slate-900 dark:text-white leading-none">
+                                <div className="text-xl md:text-3xl font-black text-slate-900 dark:text-white leading-none">
                                     {(activeSlideIndex + 1).toString().padStart(2, '0')}
                                     <span className="text-sm text-slate-400 dark:text-slate-500 ml-1 font-medium italic">/ {totalSlides.toString().padStart(2, '0')}</span>
                                 </div>
@@ -302,22 +302,22 @@ function HangseongLayoutContent({ children }: { children: React.ReactNode }) {
                             </div>
 
                             {/* Action Buttons */}
-                            <div className="flex gap-4 pointer-events-auto">
+                            <div className="flex gap-2 md:gap-4 pointer-events-auto">
                                 <button
                                     onClick={() => navigateTo(activeSlideIndex - 1)}
                                     disabled={activeSlideIndex === 0}
-                                    className="p-4 rounded-2xl bg-white dark:bg-slate-900 shadow-2xl border border-slate-200 dark:border-slate-800 text-slate-900 dark:text-white hover:bg-blue-600 hover:text-white hover:border-blue-600 disabled:opacity-0 disabled:pointer-events-none transition-all"
+                                    className="p-3 md:p-4 rounded-xl md:rounded-2xl bg-white dark:bg-slate-900 shadow-2xl border border-slate-200 dark:border-slate-800 text-slate-900 dark:text-white hover:bg-blue-600 hover:text-white hover:border-blue-600 disabled:opacity-0 disabled:pointer-events-none transition-all"
                                 >
-                                    <ChevronLeft className="w-6 h-6" />
+                                    <ChevronLeft className="w-5 h-5 md:w-6 md:h-6" />
                                 </button>
                                 <button
                                     onClick={() => navigateTo(activeSlideIndex + 1)}
                                     disabled={activeSlideIndex === totalSlides - 1}
-                                    className="p-4 rounded-2xl bg-blue-600 shadow-[0_0_30px_rgba(37,99,235,0.4)] border border-blue-500 text-white hover:bg-blue-700 disabled:opacity-0 disabled:pointer-events-none transition-all group"
+                                    className="p-3 md:p-4 rounded-xl md:rounded-2xl bg-blue-600 shadow-[0_0_30px_rgba(37,99,235,0.4)] border border-blue-500 text-white hover:bg-blue-700 disabled:opacity-0 disabled:pointer-events-none transition-all group"
                                 >
                                     <div className="flex items-center gap-2">
                                         <span className="text-xs font-black uppercase tracking-widest ml-2 hidden sm:block">Next Page</span>
-                                        <ChevronRight className="w-6 h-6 group-hover:translate-x-1 transition-transform" />
+                                        <ChevronRight className="w-5 h-5 md:w-6 md:h-6 group-hover:translate-x-1 transition-transform" />
                                     </div>
                                 </button>
                             </div>
