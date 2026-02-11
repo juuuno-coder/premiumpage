@@ -20,6 +20,7 @@ import QualityView from './components/QualityView'
 import EquipmentView from './components/EquipmentView'
 import ProcessView from './components/ProcessView'
 import CertificationView from './components/CertificationView'
+import MainMenuGrid from './components/MainMenuGrid'
 
 // Premium UI Components
 import { Spotlight } from './components/ui/Spotlight'
@@ -203,6 +204,11 @@ function HangseongContent() {
     // --- VIEW 1: COVER ---
     if (activeTab === 'cover') {
         return <CoverView />
+    }
+
+    // --- VIEW 1.5: MENU OVERVIEW ---
+    if (activeTab === 'menu') {
+        return <MainMenuGrid />
     }
 
     // --- VIEW 2: ABOUT US (Company) ---
@@ -669,14 +675,7 @@ function HangseongContent() {
                         </div>
                     )}
 
-                    <AnimatePresence>
-                        {selectedProduct && (
-                            <ProductDetailModal
-                                product={selectedProduct}
-                                onClose={onCloseModal}
-                            />
-                        )}
-                    </AnimatePresence>
+
                 </div>
             </CatalogPage>
         )

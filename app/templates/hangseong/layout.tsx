@@ -58,6 +58,9 @@ function HangseongLayoutContent({ children }: { children: React.ReactNode }) {
         // Cover Slide
         slides.push({ catId: 'cover', id: 'cover', label: 'HOME', href: '/templates/hangseong?tab=cover' })
 
+        // 2. Menu Overview Slide (New)
+        slides.push({ catId: 'menu', id: 'menu', label: 'MENU', href: '/templates/hangseong?tab=menu' })
+
         HANGSEONG_MENU.forEach(brand => {
             brand.items.forEach(item => {
                 // If item has subs (like About, Products)
