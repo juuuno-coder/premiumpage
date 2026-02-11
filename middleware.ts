@@ -5,8 +5,8 @@ export function middleware(request: NextRequest) {
     const url = request.nextUrl
     const hostname = request.headers.get('host') || ''
 
-    // 1. hangseong.vercel.app 도메인 처리
-    if (hostname.includes('hangseong.vercel.app')) {
+    // 1. 항성산업사 (Hangseong) 도메인 처리
+    if (hostname.includes('hangseong.premiumpage.kr') || hostname.includes('hangseong.vercel.app')) {
         // 루트(/) 경로로 접속한 경우 /templates/hangseong으로 내부 rewrite
         if (url.pathname === '/') {
             return NextResponse.rewrite(new URL('/templates/hangseong', request.url))
