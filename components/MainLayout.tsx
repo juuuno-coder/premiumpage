@@ -7,11 +7,23 @@ import { Button } from '@/components/ui/button'
 
 export function MainLayout({ children }: { children: React.ReactNode }) {
     const pathname = usePathname()
-    // 개별 템플릿 페이지는 공통 레이아웃 제외 (단, /templates 목록 페이지는 포함)
-    const isIndividualTemplate = pathname?.startsWith('/templates/hangseong') ||
+
+    // 개별 템플릿 페이지 감지: 경로 기반 + 서브도메인 기반
+    const isIndividualTemplate =
+        // 경로 기반 감지 (직접 /templates/xxx 접근)
+        pathname?.startsWith('/templates/hangseong') ||
         pathname?.startsWith('/templates/hs-tech') ||
         pathname?.startsWith('/templates/gentop') ||
-        pathname?.startsWith('/templates/emt')
+        pathname?.startsWith('/templates/emt') ||
+        // 서브도메인 기반 감지 (xxx.premiumpage.kr 접근)
+        (typeof window !== 'undefined' && (
+            window.location.hostname.includes('hangseong.premiumpage.kr') ||
+            window.location.hostname.includes('hstech.premiumpage.kr') ||
+            window.location.hostname.includes('hstech-kr.premiumpage.kr') ||
+            window.location.hostname.includes('gentop.premiumpage.kr') ||
+            window.location.hostname.includes('emt.premiumpage.kr') ||
+            window.location.hostname.includes('emt-ko.premiumpage.kr')
+        ))
 
     return (
         <>

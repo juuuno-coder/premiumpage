@@ -8,42 +8,54 @@ export function middleware(request: NextRequest) {
     // 1. 항성산업사 (Hangseong) 도메인 처리
     if (hostname.includes('hangseong.premiumpage.kr') || hostname.includes('hangseong.vercel.app')) {
         if (url.pathname === '/') {
-            return NextResponse.rewrite(new URL('/templates/hangseong', request.url))
+            const response = NextResponse.rewrite(new URL('/templates/hangseong', request.url))
+            response.headers.set('x-template-page', 'true')
+            return response
         }
     }
 
     // 2. HS-TECH (영문) 도메인 처리
     if (hostname.includes('hstech.premiumpage.kr')) {
         if (url.pathname === '/') {
-            return NextResponse.rewrite(new URL('/templates/hs-tech', request.url))
+            const response = NextResponse.rewrite(new URL('/templates/hs-tech', request.url))
+            response.headers.set('x-template-page', 'true')
+            return response
         }
     }
 
     // 3. HS-TECH (국문) 도메인 처리
     if (hostname.includes('hstech-kr.premiumpage.kr')) {
         if (url.pathname === '/') {
-            return NextResponse.rewrite(new URL('/templates/hs-tech-kr', request.url))
+            const response = NextResponse.rewrite(new URL('/templates/hs-tech-kr', request.url))
+            response.headers.set('x-template-page', 'true')
+            return response
         }
     }
 
     // 4. GENTOP 도메인 처리
     if (hostname.includes('gentop.premiumpage.kr')) {
         if (url.pathname === '/') {
-            return NextResponse.rewrite(new URL('/templates/gentop', request.url))
+            const response = NextResponse.rewrite(new URL('/templates/gentop', request.url))
+            response.headers.set('x-template-page', 'true')
+            return response
         }
     }
 
     // 5. EMT (영문) 도메인 처리
     if (hostname.includes('emt.premiumpage.kr')) {
         if (url.pathname === '/') {
-            return NextResponse.rewrite(new URL('/templates/emt-en', request.url))
+            const response = NextResponse.rewrite(new URL('/templates/emt-en', request.url))
+            response.headers.set('x-template-page', 'true')
+            return response
         }
     }
 
     // 6. EMT (국문) 도메인 처리
     if (hostname.includes('emt-ko.premiumpage.kr')) {
         if (url.pathname === '/') {
-            return NextResponse.rewrite(new URL('/templates/emt-ko', request.url))
+            const response = NextResponse.rewrite(new URL('/templates/emt-ko', request.url))
+            response.headers.set('x-template-page', 'true')
+            return response
         }
     }
 
