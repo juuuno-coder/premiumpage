@@ -15,6 +15,42 @@ function HangseongLayoutContent({ children }: { children: React.ReactNode }) {
     const [isAtBottom, setIsAtBottom] = useState(true)
     const [hasScroll, setHasScroll] = useState(false)
 
+    // Set meta tags for SEO and Open Graph
+    useEffect(() => {
+        // Update document title
+        document.title = 'Hangseong Industrial | Global Automotive Partner'
+
+        // Helper function to set or update meta tags
+        const setMetaTag = (property: string, content: string, isProperty = true) => {
+            const attr = isProperty ? 'property' : 'name'
+            let meta = document.querySelector(`meta[${attr}="${property}"]`)
+            if (!meta) {
+                meta = document.createElement('meta')
+                meta.setAttribute(attr, property)
+                document.head.appendChild(meta)
+            }
+            meta.setAttribute('content', content)
+        }
+
+        // Basic SEO
+        setMetaTag('description', 'Innovation, Quality, Trust since 1993. Leading manufacturer of HVAC blower motors and all-in-one motors for the global automotive industry.', false)
+        setMetaTag('keywords', 'Hangseong Industrial, HVAC Blower Motors, Automotive Parts, All-in-one Motors, Korean Automotive Supplier', false)
+
+        // Open Graph
+        setMetaTag('og:title', 'Hangseong Industrial | Global Automotive Partner')
+        setMetaTag('og:description', 'Innovation, Quality, Trust since 1993. Leading manufacturer of HVAC blower motors and all-in-one motors for the global automotive industry.')
+        setMetaTag('og:image', 'https://hangseong.premiumpage.kr/templates/hangseong/images/slider_01.PNG')
+        setMetaTag('og:url', 'https://hangseong.premiumpage.kr')
+        setMetaTag('og:type', 'website')
+        setMetaTag('og:site_name', 'Hangseong Industrial')
+
+        // Twitter Card
+        setMetaTag('twitter:card', 'summary_large_image', false)
+        setMetaTag('twitter:title', 'Hangseong Industrial | Global Automotive Partner', false)
+        setMetaTag('twitter:description', 'Innovation, Quality, Trust since 1993. Leading manufacturer of HVAC blower motors and all-in-one motors.', false)
+        setMetaTag('twitter:image', 'https://hangseong.premiumpage.kr/templates/hangseong/images/slider_01.PNG', false)
+    }, [])
+
     // Dynamic Slide Generation
     const SLIDES = useMemo(() => {
         const slides: { catId: string; id: string; label: string; href: string }[] = []
