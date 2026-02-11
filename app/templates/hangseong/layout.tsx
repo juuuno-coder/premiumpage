@@ -201,7 +201,7 @@ function HangseongLayoutContent({ children }: { children: React.ReactNode }) {
                     {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
                 </button>
 
-                <Link href="/" className="absolute left-1/2 -translate-x-1/2 block" onClick={() => setIsMobileMenuOpen(false)}>
+                <Link href="/templates/hangseong?tab=cover" className="absolute left-1/2 -translate-x-1/2 block" onClick={() => setIsMobileMenuOpen(false)}>
                     <div className="bg-white px-3 py-1.5 rounded-lg h-10 flex items-center justify-center">
                         <img src="/templates/hangseong/images/logo.png" alt="HANGSEONG" className="h-full w-auto object-contain" />
                     </div>
@@ -226,7 +226,7 @@ function HangseongLayoutContent({ children }: { children: React.ReactNode }) {
                         )}
                     >
                         <div className="p-8 pb-8 pt-10 flex-shrink-0">
-                            <Link href="/" className="block hover:opacity-80 transition-opacity">
+                            <Link href="/templates/hangseong?tab=cover" className="block hover:opacity-80 transition-opacity">
                                 <div className="bg-white p-3 rounded-xl w-full">
                                     <img src="/templates/hangseong/images/logo.png" alt="HANGSEONG" className="w-full h-auto object-contain" />
                                 </div>
@@ -236,7 +236,7 @@ function HangseongLayoutContent({ children }: { children: React.ReactNode }) {
                         <nav className="flex-1 overflow-y-auto px-6 py-4 space-y-8 scrollbar-hide pb-20">
                             <div>
                                 <Link
-                                    href="/"
+                                    href="/templates/hangseong?tab=cover"
                                     className={cn(
                                         "text-sm font-bold uppercase tracking-wider block transition-colors py-2",
                                         (!activeTab || activeTab === 'cover') ? "text-blue-400" : "text-slate-500 hover:text-white"
