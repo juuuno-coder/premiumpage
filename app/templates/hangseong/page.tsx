@@ -120,19 +120,84 @@ function HangseongContent() {
     const productId = searchParams.get('product')
     const selectedProduct = productId ? findProduct(productId, activeCategory || activeTab) : null
 
-    const onCloseModal = () => {
-        const params = new URLSearchParams(searchParams.toString())
-        params.delete('product')
-        router.push(`/templates/hangseong?${params.toString()}`, { scroll: false })
-    }
+    const [activeImg, setActiveImg] = React.useState<string | null>(null)
 
-    // Determine current product info for detailed view
-    let productInfo: any = null
-    let productCategory = ''
+    React.useEffect(() => {
+        if (selectedProduct) {
+            setActiveImg(selectedProduct.image)
+        }
+    }, [selectedProduct])
 
-    if (activeCategory && !['cover', 'company', 'process', 'quality', 'products', 'contact'].includes(activeTab)) {
-        // If tab is 'motor_parts', it might be a direct category
-        // logic handled below in VIEW 6 equivalent
+    // --- VIEW: SINGLE PRODUCT DETAIL PAGE ---
+    if (selectedProduct) {
+        return (
+            <CatalogPage
+                title={selectedProduct.title}
+                currentTab={activeTab} // Keep the category tab active
+                breadcrumb={{ label: 'List', href: `/templates/hangseong?category=${activeCategory || activeTab}&tab=${activeTab}` }}
+            >
+                <div className="py-8 px-4 md:px-12 max-w-[1800px] mx-auto min-h-[80vh] flex flex-col justify-center">
+                    <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+                        {/* Left: Image Gallery */}
+                        <div className="lg:col-span-7 space-y-6">
+                            <motion.div
+                                initial={{ opacity: 0, scale: 0.95 }}
+                                animate={{ opacity: 1, scale: 1 }}
+                                className="aspect-video w-full relative dark:bg-white/5 bg-neutral-50 rounded-3xl overflow-hidden border dark:border-white/5 border-neutral-200 flex items-center justify-center shadow-2xl"
+                            >
+                                <Image
+                                    src={activeImg || selectedProduct.image}
+                                    fill
+                                    className="object-contain p-8 md:p-16 transition-all duration-500"
+                                    alt={selectedProduct.title}
+                                    priority
+                                />
+                            </motion.div>
+                        </div>
+
+                        {/* Right: Info & Specs */}
+                        <div className="lg:col-span-5 space-y-10">
+                            <motion.div
+                                initial={{ opacity: 0, x: 20 }}
+                                animate={{ opacity: 1, x: 0 }}
+                                transition={{ delay: 0.1 }}
+                            >
+                                <div className="mb-6">
+                                    <h2 className="text-3xl md:text-5xl font-black dark:text-white text-slate-900 mb-2 leading-tight">{selectedProduct.title}</h2>
+                                    <p className="text-xl text-blue-500 font-bold tracking-wide">{selectedProduct.subtitle}</p>
+                                </div>
+
+                                <div className="prose dark:prose-invert max-w-none text-lg leading-relaxed text-slate-600 dark:text-slate-300 border-l-4 border-blue-500 pl-6 my-8">
+                                    {selectedProduct.desc}
+                                </div>
+
+                                <div className="space-y-6 bg-slate-50 dark:bg-slate-900/50 p-6 rounded-2xl border border-slate-200 dark:border-white/5">
+                                    <h3 className="text-lg font-bold flex items-center gap-2 mb-4 dark:text-white text-slate-900">
+                                        <FileText className="text-blue-500" /> Technical Specifications
+                                    </h3>
+                                    <div className="grid grid-cols-1 gap-4">
+                                        {selectedProduct.specs?.map((s: any, i: number) => (
+                                            <div key={i} className="flex justify-between items-center border-b border-slate-200 dark:border-white/5 pb-2 last:border-0 last:pb-0 group">
+                                                <span className="text-sm font-bold text-slate-400 uppercase tracking-wider">{s.label}</span>
+                                                <span className="font-mono text-lg font-medium dark:text-slate-200 text-slate-800 group-hover:text-blue-500 transition-colors">{s.value}</span>
+                                            </div>
+                                        ))}
+                                    </div>
+                                </div>
+
+                                <div className="flex flex-wrap gap-2 mt-8">
+                                    {selectedProduct.tags?.map((tag: string, i: number) => (
+                                        <span key={i} className="px-4 py-2 bg-blue-50 dark:bg-slate-800 text-blue-600 dark:text-blue-400 rounded-full text-sm font-bold border border-blue-100 dark:border-blue-900/30">
+                                            #{tag}
+                                        </span>
+                                    ))}
+                                </div>
+                            </motion.div>
+                        </div>
+                    </div>
+                </div>
+            </CatalogPage>
+        )
     }
 
     // --- VIEW 1: COVER ---

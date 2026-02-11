@@ -6,7 +6,7 @@ import { useRouter, useSearchParams } from 'next/navigation'
 import { motion, AnimatePresence } from 'framer-motion'
 import { X, ChevronRight, ChevronLeft, Globe, Grid, Menu } from 'lucide-react'
 import { cn } from '@/lib/utils'
-import { HANGSEONG_MENU } from './data'
+import { HANGSEONG_MENU, DB } from './data'
 
 function HangseongLayoutContent({ children }: { children: React.ReactNode }) {
     const router = useRouter()
@@ -54,36 +54,51 @@ function HangseongLayoutContent({ children }: { children: React.ReactNode }) {
 
     // Dynamic Slide Generation
     const SLIDES = useMemo(() => {
-        const slides: { catId: string; id: string; label: string; href: string }[] = []
+        const slides: { catId: string; id: string; label: string; href: string; isProduct?: boolean }[] = []
         // Cover Slide
         slides.push({ catId: 'cover', id: 'cover', label: 'HOME', href: '/templates/hangseong?tab=cover' })
 
         HANGSEONG_MENU.forEach(brand => {
             brand.items.forEach(item => {
+                // If item has subs (like About, Products)
                 if (item.subs && item.subs.length > 0) {
-                    // Special: 'products' category page acts as a slide itself (e.g. Page 8)
-                    if (item.id === 'products') {
-                        slides.push({
-                            catId: item.id,
-                            id: item.id,
-                            label: item.label,
-                            href: item.href
-                        })
-                    }
+
+                    // Add Category Main Page (e.g. Products Intro)
+                    slides.push({
+                        catId: item.id,
+                        id: item.id,
+                        label: item.label,
+                        href: item.href
+                    })
 
                     item.subs.forEach(sub => {
+                        // Add Sub-category Page (e.g. HVAC Intro)
                         slides.push({
                             catId: item.id,
                             id: sub.id,
                             label: sub.label,
                             href: `/templates/hangseong?category=${item.id}&tab=${sub.id}`
                         })
+
+                        // If it's a product category, add individual products as slides
+                        if (item.id === 'products' && sub.id in DB) {
+                            DB[sub.id].forEach(product => {
+                                slides.push({
+                                    catId: item.id,
+                                    id: product.id,
+                                    label: product.title,
+                                    href: `/templates/hangseong?category=${item.id}&tab=${sub.id}&product=${product.id}`,
+                                    isProduct: true
+                                })
+                            })
+                        }
                     })
                 } else {
+                    // Items without subs (simple pages)
                     slides.push({
                         catId: item.id,
                         id: item.id,
-                        label: item.label,
+                        label: item.label, // Use item.label instead of item.id for label
                         href: item.href
                     })
                 }
@@ -95,12 +110,25 @@ function HangseongLayoutContent({ children }: { children: React.ReactNode }) {
     // Current State
     const activeCate = searchParams.get('category')
     const activeTab = searchParams.get('tab')
+    const activeProduct = searchParams.get('product')
 
     const activeSlideIndex = useMemo(() => {
         if (!activeTab || activeTab === 'cover') return 0
-        const idx = SLIDES.findIndex(s => s.id === activeTab)
+
+        // Try to match by product ID first
+        if (activeProduct) {
+            const idx = SLIDES.findIndex(s => s.id === activeProduct)
+            if (idx !== -1) return idx
+        }
+
+        // Match by Tab ID (exclude product slides if possible or just find first match)
+        const idx = SLIDES.findIndex(s => s.id === activeTab && !s.isProduct)
+
+        // If exact tab match not found, try finding by tab but without strict checks?
+        // Actually, some pages like 'about' sub-tabs reuse IDs? No, IDs are unique.
+
         return idx === -1 ? 0 : idx
-    }, [activeTab, SLIDES])
+    }, [activeTab, activeProduct, SLIDES])
 
     const currentSlide = SLIDES[activeSlideIndex]
     const totalSlides = SLIDES.length
