@@ -51,7 +51,7 @@ export default function PremiumLandingPage() {
             <div className="mb-8">
               <TextGenerateEffect
                 words="GLOBAL SUCCESS BEYOND DISCOVERY"
-                className="text-5xl md:text-7xl lg:text-8xl font-black tracking-tighter leading-[0.9] text-gray-900 dark:text-white"
+                className="text-4xl md:text-6xl lg:text-7xl font-black tracking-tighter leading-[0.9] text-gray-900 dark:text-white"
               />
             </div>
 
