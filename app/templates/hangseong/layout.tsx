@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useState, useEffect, useCallback, useRef, useMemo } from 'react'
+import React, { useState, useEffect, useCallback, useRef, useMemo, Suspense } from 'react'
 import Link from 'next/link'
 import { useRouter, useSearchParams } from 'next/navigation'
 import { motion, AnimatePresence } from 'framer-motion'
@@ -8,7 +8,7 @@ import { X, ChevronRight, ChevronLeft, Globe, Grid } from 'lucide-react'
 import { cn } from '@/lib/utils'
 import { HANGSEONG_MENU } from './data'
 
-export default function HangseongViewerLayout({ children }: { children: React.ReactNode }) {
+function HangseongLayoutContent({ children }: { children: React.ReactNode }) {
     const router = useRouter()
     const searchParams = useSearchParams()
     const mainRef = useRef<HTMLElement>(null)
@@ -246,5 +246,13 @@ export default function HangseongViewerLayout({ children }: { children: React.Re
                 </AnimatePresence>
             </main>
         </div>
+    )
+}
+
+export default function HangseongViewerLayout({ children }: { children: React.ReactNode }) {
+    return (
+        <Suspense fallback={<div className="h-screen w-screen bg-slate-900 flex items-center justify-center text-white">Loading Layout...</div>}>
+            <HangseongLayoutContent>{children}</HangseongLayoutContent>
+        </Suspense>
     )
 }
