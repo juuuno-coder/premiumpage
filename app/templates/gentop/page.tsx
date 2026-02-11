@@ -1,6 +1,6 @@
 'use client'
 
-import React from 'react'
+import React, { Suspense } from 'react'
 import Image from 'next/image'
 import { useSearchParams } from 'next/navigation'
 import { motion, AnimatePresence } from 'framer-motion'
@@ -8,7 +8,7 @@ import { ArrowRight, MapPin, Phone, Mail, Globe, Download, AlertCircle } from 'l
 import { cn } from '@/lib/utils'
 import { DB, GENTOP_MENU } from './data'
 
-export default function GentopPage() {
+function GentopContent() {
     const searchParams = useSearchParams()
 
     // Resolve Active Tab
@@ -158,5 +158,13 @@ export default function GentopPage() {
                 GENTOP
             </div>
         </div>
+    )
+}
+
+export default function GentopPage() {
+    return (
+        <Suspense fallback={<div className="w-full h-screen flex items-center justify-center">Loading Gentop Catalog...</div>}>
+            <GentopContent />
+        </Suspense>
     )
 }
