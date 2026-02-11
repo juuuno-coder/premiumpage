@@ -1,11 +1,11 @@
 'use client'
 
-import React from 'react'
+import React, { Suspense } from 'react'
 import Image from 'next/image'
 import { MapPin, Phone, Mail, Clock } from 'lucide-react'
 import HSTechTabs from '../components/HSTechTabs'
 
-export default function ContactPage() {
+function ContactContent() {
     return (
         <div className="w-full pb-20">
             {/* 1. Page Title */}
@@ -64,5 +64,13 @@ export default function ContactPage() {
                 </div>
             </div>
         </div>
+    )
+}
+
+export default function ContactPage() {
+    return (
+        <Suspense fallback={<div className="h-screen w-full flex items-center justify-center">Loading Contact...</div>}>
+            <ContactContent />
+        </Suspense>
     )
 }

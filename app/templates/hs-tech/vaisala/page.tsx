@@ -1,12 +1,12 @@
 'use client'
 
-import React from 'react'
+import React, { Suspense } from 'react'
 import Image from 'next/image'
 import { motion } from 'framer-motion'
 import { ArrowRight, CheckCircle2 } from 'lucide-react'
 import Link from 'next/link'
 
-export default function VaisalaPage() {
+function VaisalaContent() {
     return (
         <div className="max-w-5xl mx-auto">
             {/* Hero Section */}
@@ -76,5 +76,13 @@ export default function VaisalaPage() {
                 </motion.div>
             </div>
         </div>
+    )
+}
+
+export default function VaisalaPage() {
+    return (
+        <Suspense fallback={<div className="h-screen w-full flex items-center justify-center">Loading Vaisala...</div>}>
+            <VaisalaContent />
+        </Suspense>
     )
 }

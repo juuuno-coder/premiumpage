@@ -1,12 +1,12 @@
 'use client'
 
-import React from 'react'
+import React, { Suspense } from 'react'
 import Image from 'next/image'
 import { motion } from 'framer-motion'
 import { ArrowRight, CheckCircle2 } from 'lucide-react'
 import Link from 'next/link'
 
-export default function SetraPage() {
+function SetraContent() {
     return (
         <div className="max-w-5xl mx-auto">
             {/* Hero Section */}
@@ -72,5 +72,13 @@ export default function SetraPage() {
                 </motion.div>
             </div>
         </div>
+    )
+}
+
+export default function SetraPage() {
+    return (
+        <Suspense fallback={<div className="h-screen w-full flex items-center justify-center">Loading Setra...</div>}>
+            <SetraContent />
+        </Suspense>
     )
 }

@@ -1,6 +1,6 @@
 'use client'
 
-import React from 'react'
+import React, { Suspense } from 'react'
 import Image from 'next/image'
 
 const SERVICES = [
@@ -31,7 +31,7 @@ const SERVICES = [
     }
 ]
 
-export default function SupportPage() {
+function SupportContent() {
     return (
         <div className="w-full pb-20">
             {/* 1. Page Title */}
@@ -78,6 +78,14 @@ export default function SupportPage() {
                 </div>
             </div>
         </div>
+    )
+}
+
+export default function SupportPage() {
+    return (
+        <Suspense fallback={<div className="h-screen w-full flex items-center justify-center">Loading Support...</div>}>
+            <SupportContent />
+        </Suspense>
     )
 }
 

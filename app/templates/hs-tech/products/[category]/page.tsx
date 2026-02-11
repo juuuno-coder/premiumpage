@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useMemo } from 'react'
+import React, { useMemo, Suspense } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import { useParams, useSearchParams, useRouter, usePathname } from 'next/navigation'
@@ -9,7 +9,7 @@ import { cn } from '@/lib/utils'
 import { motion } from 'framer-motion'
 import { ChevronRight, ExternalLink } from 'lucide-react'
 
-export default function CategoryPage() {
+function CategoryContent() {
     const params = useParams()
     const searchParams = useSearchParams()
     const router = useRouter()
@@ -350,5 +350,13 @@ export default function CategoryPage() {
                 </div>
             </div>
         </div>
+    )
+}
+
+export default function CategoryPage() {
+    return (
+        <Suspense fallback={<div className="h-screen w-screen bg-white flex items-center justify-center text-slate-900">Loading Product Category...</div>}>
+            <CategoryContent />
+        </Suspense>
     )
 }

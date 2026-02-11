@@ -1,6 +1,6 @@
 'use client'
 
-import React from 'react'
+import React, { Suspense } from 'react'
 import Image from 'next/image'
 import HSTechTabs from '../components/HSTechTabs'
 import { motion } from 'framer-motion'
@@ -16,7 +16,7 @@ const SECTORS = [
     { title: 'MACHINERY', img: '/downloads/hs-tech/images/33a1535c2c0e7.png' },
 ]
 
-export default function AboutPage() {
+function AboutContent() {
     return (
         <div className="w-full pb-20">
             {/* 1. Page Title */}
@@ -102,5 +102,13 @@ export default function AboutPage() {
                 </section>
             </div>
         </div>
+    )
+}
+
+export default function AboutPage() {
+    return (
+        <Suspense fallback={<div className="h-screen w-full flex items-center justify-center">Loading About...</div>}>
+            <AboutContent />
+        </Suspense>
     )
 }
