@@ -4,7 +4,7 @@ import React, { useState, useEffect, useCallback, useRef, useMemo, Suspense } fr
 import Link from 'next/link'
 import { useRouter, useSearchParams } from 'next/navigation'
 import { motion, AnimatePresence } from 'framer-motion'
-import { X, ChevronRight, ChevronLeft, Globe, Grid } from 'lucide-react'
+import { X, ChevronRight, ChevronLeft, Globe, Grid, Menu } from 'lucide-react'
 import { cn } from '@/lib/utils'
 import { HANGSEONG_MENU } from './data'
 
@@ -14,11 +14,12 @@ function HangseongLayoutContent({ children }: { children: React.ReactNode }) {
     const mainRef = useRef<HTMLElement>(null)
     const [isAtBottom, setIsAtBottom] = useState(true)
     const [hasScroll, setHasScroll] = useState(false)
+    const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
 
     // Set meta tags for SEO and Open Graph
     useEffect(() => {
         // Update document title
-        document.title = 'Hangseong Industrial | Global Automotive Partner'
+        document.title = '항성산업사 (hangseong)'
 
         // Helper function to set or update meta tags
         const setMetaTag = (property: string, content: string, isProperty = true) => {
@@ -33,12 +34,12 @@ function HangseongLayoutContent({ children }: { children: React.ReactNode }) {
         }
 
         // Basic SEO
-        setMetaTag('description', 'Innovation, Quality, Trust since 1993. Leading manufacturer of HVAC blower motors and all-in-one motors for the global automotive industry.', false)
-        setMetaTag('keywords', 'Hangseong Industrial, HVAC Blower Motors, Automotive Parts, All-in-one Motors, Korean Automotive Supplier', false)
+        setMetaTag('description', 'Challenging To The Future', false)
+        setMetaTag('keywords', '항성산업사, Hangseong, 자동차 부품, HVAC Motor, Blower Motor', false)
 
         // Open Graph
-        setMetaTag('og:title', 'Hangseong Industrial | Global Automotive Partner')
-        setMetaTag('og:description', 'Innovation, Quality, Trust since 1993. Leading manufacturer of HVAC blower motors and all-in-one motors for the global automotive industry.')
+        setMetaTag('og:title', '항성산업사 (hangseong)')
+        setMetaTag('og:description', 'Challenging To The Future')
         setMetaTag('og:image', 'https://hangseong.premiumpage.kr/templates/hangseong/images/slider_01.PNG')
         setMetaTag('og:url', 'https://hangseong.premiumpage.kr')
         setMetaTag('og:type', 'website')
@@ -46,8 +47,8 @@ function HangseongLayoutContent({ children }: { children: React.ReactNode }) {
 
         // Twitter Card
         setMetaTag('twitter:card', 'summary_large_image', false)
-        setMetaTag('twitter:title', 'Hangseong Industrial | Global Automotive Partner', false)
-        setMetaTag('twitter:description', 'Innovation, Quality, Trust since 1993. Leading manufacturer of HVAC blower motors and all-in-one motors.', false)
+        setMetaTag('twitter:title', '항성산업사 (hangseong)', false)
+        setMetaTag('twitter:description', 'Challenging To The Future', false)
         setMetaTag('twitter:image', 'https://hangseong.premiumpage.kr/templates/hangseong/images/slider_01.PNG', false)
     }, [])
 
@@ -153,66 +154,98 @@ function HangseongLayoutContent({ children }: { children: React.ReactNode }) {
     return (
         <div className="h-screen w-screen overflow-hidden bg-slate-900 text-slate-900 font-sans selection:bg-blue-500 selection:text-white relative flex">
 
-            {/* Sidebar */}
-            <aside className="w-[260px] h-full bg-slate-950/95 backdrop-blur-md border-r border-slate-800 flex flex-col z-[100] flex-shrink-0 relative shadow-2xl">
-                <div className="p-8 pb-8 pt-10 flex-shrink-0">
-                    <Link href="/" className="block hover:opacity-80 transition-opacity">
-                        <div className="bg-white p-3 rounded-xl w-full">
-                            <img src="/templates/hangseong/images/logo.png" alt="HANGSEONG" className="w-full h-auto object-contain" />
-                        </div>
-                    </Link>
-                </div>
+            {/* Mobile Hamburger Button */}
+            <button
+                onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+                className="lg:hidden fixed top-4 left-4 z-[110] p-3 bg-slate-950/95 backdrop-blur-md border border-slate-800 rounded-xl text-white hover:bg-slate-900 transition-colors shadow-xl"
+                aria-label="Toggle menu"
+            >
+                {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+            </button>
 
-                <nav className="flex-1 overflow-y-auto px-6 py-4 space-y-8 scrollbar-hide pb-20">
-                    <div>
-                        <Link
-                            href="/"
-                            className={cn(
-                                "text-sm font-bold uppercase tracking-wider block transition-colors py-2",
-                                (!activeTab || activeTab === 'cover') ? "text-blue-400" : "text-slate-500 hover:text-white"
-                            )}
-                        >
-                            HOME
-                        </Link>
-                    </div>
-
-                    {HANGSEONG_MENU.map(brand => brand.items.map(item => (
-                        <div key={item.id}>
-                            <Link
-                                href={(item.subs && item.subs.length > 0 && item.id !== 'products') ? `/templates/hangseong?category=${item.id}&tab=${item.subs[0].id}` : item.href}
-                                className={cn(
-                                    "block text-xs font-black uppercase tracking-[0.2em] mb-3 hover:text-blue-400 transition-colors cursor-pointer",
-                                    (activeCate === item.id || (activeTab === item.id && !activeCate)) ? "text-blue-500" : "text-slate-600"
-                                )}
-                            >
-                                {item.label}
+            {/* Sidebar - Desktop: Always visible, Mobile: Overlay when open */}
+            <AnimatePresence>
+                {(isMobileMenuOpen || true) && (
+                    <motion.aside
+                        initial={{ x: -260 }}
+                        animate={{ x: 0 }}
+                        exit={{ x: -260 }}
+                        transition={{ type: "spring", damping: 25, stiffness: 200 }}
+                        className={cn(
+                            "w-[260px] h-full bg-slate-950/95 backdrop-blur-md border-r border-slate-800 flex flex-col z-[100] flex-shrink-0 relative shadow-2xl",
+                            "lg:relative lg:translate-x-0",
+                            "fixed lg:flex",
+                            !isMobileMenuOpen && "hidden lg:flex"
+                        )}
+                    >
+                        <div className="p-8 pb-8 pt-10 flex-shrink-0">
+                            <Link href="/" className="block hover:opacity-80 transition-opacity">
+                                <div className="bg-white p-3 rounded-xl w-full">
+                                    <img src="/templates/hangseong/images/logo.png" alt="HANGSEONG" className="w-full h-auto object-contain" />
+                                </div>
                             </Link>
-
-                            <div className="space-y-1 pl-1 border-l border-slate-800">
-                                {item.subs ? item.subs.map(sub => (
-                                    <Link
-                                        key={sub.id}
-                                        href={`/templates/hangseong?category=${item.id}&tab=${sub.id}`}
-                                        className={cn(
-                                            "block text-sm py-1.5 pl-4 border-l-2 transition-all",
-                                            activeTab === sub.id
-                                                ? "border-blue-500 text-white font-bold bg-white/5 rounded-r"
-                                                : "border-transparent text-slate-400 hover:text-white"
-                                        )}
-                                        scroll={false}
-                                    >
-                                        {sub.label}
-                                    </Link>
-                                )) : null}
-                            </div>
                         </div>
-                    )))}
-                </nav>
 
-                <div className="p-6 border-t border-slate-800 text-[10px] text-slate-600 flex-shrink-0 bg-slate-950">
-                    © 2026 Hangseong Ind.<br />All rights reserved.
-                </div>
-            </aside>
+                        <nav className="flex-1 overflow-y-auto px-6 py-4 space-y-8 scrollbar-hide pb-20">
+                            <div>
+                                <Link
+                                    href="/"
+                                    className={cn(
+                                        "text-sm font-bold uppercase tracking-wider block transition-colors py-2",
+                                        (!activeTab || activeTab === 'cover') ? "text-blue-400" : "text-slate-500 hover:text-white"
+                                    )}
+                                >
+                                    HOME
+                                </Link>
+                            </div>
+
+                            {HANGSEONG_MENU.map(brand => brand.items.map(item => (
+                                <div key={item.id}>
+                                    <Link
+                                        href={(item.subs && item.subs.length > 0 && item.id !== 'products') ? `/templates/hangseong?category=${item.id}&tab=${item.subs[0].id}` : item.href}
+                                        className={cn(
+                                            "block text-xs font-black uppercase tracking-[0.2em] mb-3 hover:text-blue-400 transition-colors cursor-pointer",
+                                            (activeCate === item.id || (activeTab === item.id && !activeCate)) ? "text-blue-500" : "text-slate-600"
+                                        )}
+                                    >
+                                        {item.label}
+                                    </Link>
+
+                                    <div className="space-y-1 pl-1 border-l border-slate-800">
+                                        {item.subs ? item.subs.map(sub => (
+                                            <Link
+                                                key={sub.id}
+                                                href={`/templates/hangseong?category=${item.id}&tab=${sub.id}`}
+                                                className={cn(
+                                                    "block text-sm py-1.5 pl-4 border-l-2 transition-all",
+                                                    activeTab === sub.id
+                                                        ? "border-blue-500 text-white font-bold bg-white/5 rounded-r"
+                                                        : "border-transparent text-slate-400 hover:text-white"
+                                                )}
+                                                scroll={false}
+                                            >
+                                                {sub.label}
+                                            </Link>
+                                        )) : null}
+                                    </div>
+                                </div>
+                            )))}
+                        </nav>
+
+                        <div className="p-6 border-t border-slate-800 text-[10px] text-slate-600 flex-shrink-0 bg-slate-950">
+                            © 2026 Hangseong Ind.<br />All rights reserved.
+                        </div>
+                    </motion.aside>
+                )}
+            </AnimatePresence>
+
+            {/* Mobile Overlay */}
+            {isMobileMenuOpen && (
+                <div
+                    className="lg:hidden fixed inset-0 bg-black/50 z-[90]"
+                    onClick={() => setIsMobileMenuOpen(false)}
+                />
+            )}
 
             {/* Main Content */}
             <main
