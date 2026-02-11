@@ -33,6 +33,13 @@ export function middleware(request: NextRequest) {
         }
     }
 
+    // 5. EMT 도메인 처리 (정적 HTML)
+    if (hostname.includes('emt.premiumpage.kr')) {
+        if (url.pathname === '/') {
+            return NextResponse.rewrite(new URL('/emt/index.html', request.url))
+        }
+    }
+
     return NextResponse.next()
 }
 
