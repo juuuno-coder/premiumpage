@@ -3,8 +3,9 @@
 import React, { Suspense } from 'react'
 import Link from 'next/link'
 import { motion } from 'framer-motion'
-import { ArrowRight, Zap, Globe, Layers, MousePointer2 } from 'lucide-react'
+import { ArrowRight, Globe, Layers, MousePointer2, ShieldCheck, TrendingUp, Sparkles, MessageSquare } from 'lucide-react'
 import { Button } from '@/components/ui/button'
+import Image from 'next/image'
 
 import { AuroraBackground } from '@/components/ui/aurora-background'
 import { SparklesCore } from '@/components/ui/sparkles'
@@ -13,129 +14,265 @@ import { cn } from '@/lib/utils'
 
 export default function PremiumLandingPage() {
   return (
-    <div className="flex flex-col w-full bg-background text-foreground transition-colors duration-300">
+    <div className="flex flex-col w-full bg-background text-foreground selection:bg-purple-500/30">
 
-      {/* 🚀 Hero Section: Aurora + Sparkles */}
-      <section className="relative w-full h-screen min-h-[800px] flex items-center justify-center overflow-hidden">
-        <div className="absolute inset-0 z-0 transition-colors duration-300">
-          <AuroraBackground className="h-full w-full opacity-50 dark:opacity-100">
+      {/* 🚀 Hero Section: Premium Agency Identity */}
+      <section className="relative w-full h-screen min-h-[900px] flex items-center justify-center overflow-hidden">
+        <div className="absolute inset-0 z-0">
+          <AuroraBackground className="h-full w-full opacity-40 dark:opacity-100">
             <div className="absolute inset-0 w-full h-full">
               <SparklesCore
                 id="hero-particles"
                 background="transparent"
                 minSize={0.6}
                 maxSize={1.4}
-                particleDensity={100}
+                particleDensity={70}
                 className="w-full h-full"
-                particleColor="currentColor"
+                particleColor="#a855f7"
               />
             </div>
-            <span className="hidden">Background Animation Layer</span>
           </AuroraBackground>
+          {/* Subtle Overlay Gradient */}
+          <div className="absolute inset-0 bg-gradient-to-b from-transparent via-background/20 to-background z-[1]" />
         </div>
 
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, ease: "easeOut" }}
-          className="relative z-10 container mx-auto px-6 text-center"
-        >
-          <div className="mb-8">
-            <TextGenerateEffect
-              words="THE ART OF DIGITAL CATALOG"
-              className="text-5xl md:text-8xl font-black tracking-tighter leading-tight filter drop-shadow-lg dark:drop-shadow-[0_0_30px_rgba(168,85,247,0.3)] text-gray-900 dark:text-white"
-            />
-          </div>
+        <div className="relative z-10 container mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+          <motion.div
+            initial={{ opacity: 0, x: -50 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 1, ease: "easeOut" }}
+            className="text-left"
+          >
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 mb-8">
+              <Sparkles className="w-4 h-4 text-primary" />
+              <span className="text-xs font-black tracking-widest uppercase text-primary">Global Growth Partner</span>
+            </div>
 
-          <p className="text-xl md:text-2xl text-muted-foreground max-w-2xl mx-auto mb-12 font-medium leading-relaxed">
-            평범한 PDF를 넘어선 압도적인 인터랙티브 경험. <br />
-            글로벌 시장을 매료시키는 전자 카탈로그의 새로운 기준.
-          </p>
+            <div className="mb-8">
+              <TextGenerateEffect
+                words="GLOBAL SUCCESS BEYOND DISCOVERY"
+                className="text-5xl md:text-7xl lg:text-8xl font-black tracking-tighter leading-[0.9] text-gray-900 dark:text-white"
+              />
+            </div>
 
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
-            <Button asChild className="relative inline-flex h-14 overflow-hidden rounded-full p-[2px] focus:outline-none focus:ring-2 focus:ring-purple-400 focus:ring-offset-2">
-              <Link href="/pdf-converter">
-                <span className="absolute inset-[-1000%] animate-[spin_3s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,#E2CBFF_0%,#393BB2_50%,#E2CBFF_100%)]" />
-                <span className="inline-flex h-full w-full cursor-pointer items-center justify-center rounded-full bg-slate-950 px-10 py-2 text-lg font-bold text-white backdrop-blur-3xl gap-2 transition-all hover:bg-slate-900">
-                  PDF 변환 시작하기 <ArrowRight className="w-5 h-5" />
-                </span>
+            <p className="text-xl md:text-2xl text-muted-foreground max-w-xl mb-12 font-medium leading-relaxed">
+              수출 유망 기업의 가치를 세계 시장에 각인시키는 <br />
+              하이엔드 인터랙티브 전자 카탈로그 에이전시, <br />
+              <span className="text-foreground font-bold">Premium Page</span>입니다.
+            </p>
+
+            <div className="flex flex-col sm:flex-row items-center gap-6">
+              <Button asChild size="lg" className="h-16 px-10 rounded-full bg-primary hover:bg-primary/90 text-primary-foreground font-black text-lg gap-3 shadow-[0_20px_40px_rgba(168,85,247,0.3)] transition-all hover:-translate-y-1">
+                <Link href="/templates">
+                  포트폴리오 보기 <ArrowRight className="w-6 h-6" />
+                </Link>
+              </Button>
+
+              <Link href="/quote" className="group text-muted-foreground hover:text-foreground transition-all flex items-center gap-3 font-bold px-8 py-4 rounded-full border border-border hover:bg-secondary/50 backdrop-blur-sm">
+                글로벌 컨설팅 요청 <MessageSquare className="w-5 h-5 group-hover:scale-110 transition-transform" />
               </Link>
-            </Button>
+            </div>
+          </motion.div>
 
-            <Link href="/quote" className="text-muted-foreground hover:text-foreground transition-all flex items-center gap-3 font-bold bg-secondary/50 px-8 py-4 rounded-full border border-border hover:bg-secondary/80 backdrop-blur-sm">
-              무료 견적 요청하기 <ArrowRight className="w-5 h-5" />
-            </Link>
-          </div>
-        </motion.div>
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9, x: 50 }}
+            animate={{ opacity: 1, scale: 1, x: 0 }}
+            transition={{ duration: 1.2, delay: 0.2, ease: "easeOut" }}
+            className="hidden lg:block relative"
+          >
+            <div className="relative aspect-square w-full max-w-[600px] ml-auto">
+              {/* Decorative Elements */}
+              <div className="absolute -top-10 -right-10 w-40 h-40 bg-purple-500/20 blur-[80px] rounded-full animate-pulse" />
+              <div className="absolute -bottom-10 -left-10 w-60 h-60 bg-cyan-500/10 blur-[100px] rounded-full animate-pulse" />
 
-        {/* Scroll Indicator */}
-        <div className="absolute bottom-10 left-1/2 -translate-x-1/2 z-10 text-muted-foreground animate-bounce">
-          <MousePointer2 className="w-6 h-6" />
-        </div>
-      </section>
-
-      {/* 💎 3D Masterpiece Preview: 블랙박스 해결을 위해 고정 높이 부여 */}
-      <section className="py-32 relative bg-background border-y border-border">
-        <div className="container mx-auto px-6">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-6xl font-black mb-6">Masterpiece <span className="gradient-text">Edition</span></h2>
-            <p className="text-muted-foreground text-lg md:text-xl max-w-2xl mx-auto">가장 진보된 Three.js 기술로 구현된 3D 마스터피스 템플릿입니다.</p>
-          </div>
-
-          <div className="max-w-6xl mx-auto glass-card p-4 md:p-8 relative min-h-[500px] flex flex-col items-center justify-center overflow-hidden">
-            <div className="relative z-10 text-center">
-              <h3 className="text-3xl md:text-5xl font-black text-white mb-8">EMT Global 사례</h3>
-              <p className="text-gray-400 text-lg mb-10 max-w-2xl mx-auto">
-                글로벌 시장을 겨냥한 하이엔드 3D 전자 카탈로그의 정석. <br />
-                언어별 최적화된 인터페이스를 직접 확인해보세요.
-              </p>
-              <div className="flex flex-col sm:flex-row gap-6 justify-center">
-                <Button asChild size="lg" className="h-16 px-10 rounded-full bg-white/10 hover:bg-white/20 border border-white/20 text-xl font-bold transition-all">
-                  <a href="https://emt-ko.vercel.app" target="_blank" rel="noopener noreferrer">국문 한글 버전</a>
-                </Button>
-                <Button asChild size="lg" className="h-16 px-10 rounded-full bg-gradient-to-r from-purple-600 to-pink-600 hover:opacity-90 text-xl font-bold transition-all">
-                  <a href="https://emt-en.vercel.app" target="_blank" rel="noopener noreferrer">English Version</a>
-                </Button>
+              <div className="relative h-full w-full rounded-[3rem] overflow-hidden border border-white/10 shadow-2xl glass-card p-2">
+                <Image
+                  src="/premium_agency_hero_1770798018285.png"
+                  alt="Premium Agency Concept"
+                  fill
+                  className="object-cover rounded-[2.5rem]"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+                <div className="absolute bottom-10 left-10 right-10">
+                  <div className="bg-white/10 backdrop-blur-md border border-white/20 p-6 rounded-2xl">
+                    <div className="text-white font-bold text-lg mb-1">Modern Luxury Display</div>
+                    <div className="text-white/60 text-sm">Interactive 3D Masterpiece Preview</div>
+                  </div>
+                </div>
               </div>
             </div>
-            {/* 배경용 더미 오로라 효과 */}
-            <div className="absolute inset-0 bg-gradient-to-br from-purple-900/20 via-black to-blue-900/20 z-0" />
+          </motion.div>
+        </div>
+
+        {/* Scroll Indicator */}
+        <div className="absolute bottom-10 left-1/2 -translate-x-1/2 z-10 text-muted-foreground flex flex-col items-center gap-2 opacity-50">
+          <span className="text-[10px] font-black tracking-widest uppercase">Discover More</span>
+          <div className="w-[1px] h-12 bg-gradient-to-b from-primary to-transparent" />
+        </div>
+      </section>
+
+      {/* 💎 Masterpiece Exhibition: Real Case Studies */}
+      <section className="py-40 relative bg-background overflow-hidden">
+        <div className="container mx-auto px-6">
+          <div className="flex flex-col md:flex-row items-end justify-between mb-24 gap-8">
+            <div className="max-w-3xl">
+              <div className="text-primary font-black tracking-[0.3em] uppercase text-sm mb-6 flex items-center gap-3">
+                <Layers className="w-5 h-5" /> Curated Masterpieces
+              </div>
+              <h2 className="text-5xl md:text-7xl font-black mb-8 leading-[1.1] tracking-tighter">
+                우리는 단순한 웹사이트를 <br />
+                만들지 않습니다. <span className="gradient-text">경험을 설계합니다.</span>
+              </h2>
+              <p className="text-muted-foreground text-xl md:text-2xl font-medium leading-relaxed">
+                글로벌 챔피언을 위한 가장 진보된 3D 엔진과 인터랙티브 스토리텔링. <br />
+                해외 바이어를 매료시키는 압도적인 퀄리티를 확인하세요.
+              </p>
+            </div>
+            <Button asChild variant="outline" className="rounded-full border-2 h-16 px-10 text-lg font-bold hover:bg-primary hover:text-white transition-all">
+              <Link href="/templates">전체 포트폴리오 <ArrowRight className="w-5 h-5 ml-2" /></Link>
+            </Button>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+            {/* Showcase 1: EMT Global */}
+            <motion.div
+              whileHover={{ y: -10 }}
+              className="group relative h-[600px] rounded-[3rem] overflow-hidden border border-border bg-black"
+            >
+              <div className="absolute inset-0 opacity-40 group-hover:opacity-60 transition-opacity">
+                <Image src="/emt/assets/19.png" alt="EMT Global" fill className="object-contain p-20" />
+              </div>
+              <div className="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent" />
+              <div className="absolute bottom-12 left-12 right-12">
+                <div className="text-cyan-400 font-black tracking-widest text-xs mb-4 uppercase">Automotive Tech / 3D HUD Interface</div>
+                <h3 className="text-4xl font-bold text-white mb-6 font-['Syncopate']">EMT GLOBAL</h3>
+                <div className="flex gap-4">
+                  <Button asChild className="rounded-full bg-white text-black font-bold h-12 px-8">
+                    <a href="https://emt.premiumpage.kr" target="_blank">영문 버전</a>
+                  </Button>
+                  <Button asChild className="rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-white font-bold h-12 px-8">
+                    <a href="https://emt-ko.premiumpage.kr" target="_blank">한글 버전</a>
+                  </Button>
+                </div>
+              </div>
+            </motion.div>
+
+            {/* Showcase 2: GENTOP */}
+            <motion.div
+              whileHover={{ y: -10 }}
+              className="group relative h-[600px] rounded-[3rem] overflow-hidden border border-border bg-[#0f172a]"
+            >
+              <div className="absolute inset-0 bg-gradient-to-br from-blue-900/20 to-transparent" />
+              <div className="absolute inset-0 flex items-center justify-center p-20 opacity-30 group-hover:opacity-50 transition-all group-hover:scale-110">
+                <img src="/templates/hangseong/images/logo.png" alt="GENTOP" className="w-full h-auto object-contain invert" />
+              </div>
+              <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/20 to-transparent" />
+              <div className="absolute bottom-12 left-12 right-12">
+                <div className="text-blue-400 font-black tracking-widest text-xs mb-4 uppercase">Security Solution / Grid System</div>
+                <h3 className="text-4xl font-bold text-white mb-6 font-['Syncopate']">GENTOP IND.</h3>
+                <Button asChild className="rounded-full bg-blue-600 hover:bg-blue-500 text-white font-bold h-12 px-8">
+                  <a href="https://gentop.premiumpage.kr" target="_blank">브랜드 쇼케이스</a>
+                </Button>
+              </div>
+            </motion.div>
           </div>
         </div>
       </section>
 
-      {/* ✨ Features Grid */}
-      <section className="py-40 bg-muted/30">
+      {/* ✨ Strategic Process: The Agency Way */}
+      <section className="py-40 bg-muted/20 border-y border-border relative overflow-hidden">
+        {/* Decor */}
+        <div className="absolute top-0 right-0 w-1/2 h-full bg-primary/5 blur-[120px] rounded-full translate-x-1/2 -translate-y-1/2" />
+
         <div className="container mx-auto px-6">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
-            <FeatureCard
-              icon={<Zap className="w-10 h-10 text-yellow-500 dark:text-yellow-400" />}
-              title="초고속 웹 변환"
-              description="준비된 PDF 파일을 1분 안에 인터랙티브한 웹 뷰어로 변환하여 즉시 배포하세요."
+          <div className="text-center mb-32">
+            <h2 className="text-5xl md:text-7xl font-black mb-8 tracking-tighter">THE STRATEGIC <span className="gradient-text">PROCESS</span></h2>
+            <p className="text-muted-foreground text-xl md:text-2xl max-w-3xl mx-auto font-medium">단순 변환을 넘어선 가치 창출, 글로벌 1등 사를 위한 프리미엄 페이지의 여정.</p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+            <ProcessCard
+              number="01"
+              title="Strategy"
+              desc="해외 시장 분석 및 기업의 핵심 경쟁력을 도출하여 맞춤형 스토리텔링 전략을 수립합니다."
+              icon={<TrendingUp className="w-6 h-6" />}
             />
-            <FeatureCard
-              icon={<Globe className="w-10 h-10 text-blue-500 dark:text-blue-400" />}
-              title="글로벌 수출 최적화"
-              description="다국어 지원은 물론, 해외 어디서나 끊김 없는 초고속 글로벌 CDN 네트워크를 제공합니다."
+            <ProcessCard
+              number="02"
+              title="Creative"
+              desc="브랜드 아이덴티티를 극대화하는 하이엔드 UI/UX 디자인과 독보적인 그래픽을 설계합니다."
+              icon={<Layers className="w-6 h-6" />}
             />
-            <FeatureCard
-              icon={<Layers className="w-10 h-10 text-purple-500 dark:text-purple-400" />}
-              title="압도적 인터랙션"
-              description="스크롤 애니메이션, 3D 모델링 연동 등 하이엔드 에이전시 수준의 UX를 제공합니다."
+            <ProcessCard
+              number="03"
+              title="Interaction"
+              desc="Three.js와 스크롤 애니메이션 등 최신 기술을 활용해 바이어의 몰입감을 극대화합니다."
+              icon={<MousePointer2 className="w-6 h-6" />}
+            />
+            <ProcessCard
+              number="04"
+              title="Global"
+              desc="초고속 글로벌 CDN과 다국어 최적화를 통해 전 세계 어디서든 완벽한 경험을 제공합니다."
+              icon={<Globe className="w-6 h-6" />}
             />
           </div>
         </div>
+      </section>
+
+      {/* 🚀 Bottom CTA */}
+      <section className="py-40 bg-background relative flex flex-col items-center justify-center overflow-hidden">
+        <div className="container mx-auto px-6 text-center relative z-10">
+          <h2 className="text-6xl md:text-9xl font-black mb-12 tracking-tighter leading-none">
+            READY TO <br />
+            <span className="gradient-text">GO GLOBAL?</span>
+          </h2>
+          <p className="text-2xl md:text-3xl text-muted-foreground mb-16 max-w-4xl mx-auto font-medium">
+            귀사의 제품이 세계 시장에서 가장 빛나는 순간을 만듭니다. <br />
+            프리미엄 페이지와 함께 수출의 새로운 역사를 쓰세요.
+          </p>
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-8">
+            <Button asChild size="lg" className="h-20 px-16 rounded-full bg-foreground text-background font-black text-2xl hover:scale-105 transition-all shadow-2xl">
+              <Link href="/quote">무료 컨설팅 신청하기</Link>
+            </Button>
+          </div>
+        </div>
+        {/* Glow */}
+        <div className="absolute bottom-[-20%] left-1/2 -translate-x-1/2 w-full h-[600px] bg-primary/20 blur-[150px] rounded-full opacity-50" />
       </section>
 
       {/* Footer */}
-      <footer className="py-20 border-t border-border bg-background">
-        <div className="container mx-auto px-6 text-center">
-          <div className="text-2xl font-black mb-2 gradient-text">Premium Page</div>
-          <p className="text-muted-foreground text-sm mb-8 font-medium">© 2026 Premium Page Inc. All rights reserved.</p>
-          <div className="flex justify-center gap-10 text-muted-foreground text-sm font-bold">
-            <a href="#" className="hover:text-foreground transition-colors">이용약관</a>
-            <a href="#" className="hover:text-foreground transition-colors">개인정보처리방침</a>
-            <a href="#" className="hover:text-foreground transition-colors">문의하기</a>
+      <footer className="py-20 border-t border-border bg-background relative z-10">
+        <div className="container mx-auto px-6 grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+          <div>
+            <div className="text-3xl font-black mb-4 gradient-text tracking-tighter uppercase">Premium Page</div>
+            <p className="text-muted-foreground font-medium max-w-sm">
+              Global Interactive Digital Catalog Agency for Export-Champion Companies.
+            </p>
+          </div>
+          <div className="flex flex-col md:flex-row md:justify-end gap-12 mb-8">
+            <div>
+              <div className="font-black text-sm uppercase tracking-widest mb-6">Services</div>
+              <ul className="space-y-3 text-muted-foreground font-medium">
+                <li><Link href="/templates" className="hover:text-primary transition-colors">Digital Catalog</Link></li>
+                <li><Link href="/templates" className="hover:text-primary transition-colors">3D Showcase</Link></li>
+                <li><Link href="/quote" className="hover:text-primary transition-colors">Strategy Consulting</Link></li>
+              </ul>
+            </div>
+            <div>
+              <div className="font-black text-sm uppercase tracking-widest mb-6">Company</div>
+              <ul className="space-y-3 text-muted-foreground font-medium">
+                <li><a href="#" className="hover:text-primary transition-colors">About Us</a></li>
+                <li><a href="#" className="hover:text-primary transition-colors">Contact</a></li>
+                <li><a href="#" className="hover:text-primary transition-colors">Careers</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div className="container mx-auto px-6 pt-12 mt-12 border-t border-border/50 text-center md:text-left flex flex-col md:flex-row justify-between gap-6">
+          <p className="text-muted-foreground text-sm font-medium">© 2026 Premium Page Inc. All rights reserved.</p>
+          <div className="flex justify-center gap-8 text-muted-foreground text-xs font-bold uppercase tracking-widest">
+            <a href="#" className="hover:text-foreground transition-colors">Terms</a>
+            <a href="#" className="hover:text-foreground transition-colors">Privacy</a>
           </div>
         </div>
       </footer>
@@ -143,12 +280,15 @@ export default function PremiumLandingPage() {
   )
 }
 
-function FeatureCard({ icon, title, description }: { icon: React.ReactNode, title: string, description: string }) {
+function ProcessCard({ number, title, desc, icon }: { number: string, title: string, desc: string, icon: React.ReactNode }) {
   return (
-    <div className="p-12 rounded-[2rem] bg-card border border-border hover:border-primary/20 transition-all group shadow-sm hover:shadow-md dark:shadow-none dark:bg-zinc-900/50 dark:backdrop-blur-sm">
-      <div className="mb-10 transform group-hover:scale-110 transition-transform duration-300">{icon}</div>
-      <h3 className="text-2xl font-bold mb-4 text-foreground">{title}</h3>
-      <p className="text-muted-foreground leading-relaxed text-lg group-hover:text-foreground/80 transition-colors font-medium">{description}</p>
+    <div className="relative p-10 rounded-[2.5rem] bg-card/50 border border-border transition-all hover:border-primary/30 group">
+      <div className="text-4xl font-black text-primary/10 mb-8 group-hover:text-primary/20 transition-colors">{number}</div>
+      <div className="w-12 h-12 rounded-2xl bg-primary/10 flex items-center justify-center text-primary mb-6">
+        {icon}
+      </div>
+      <h3 className="text-2xl font-bold mb-4">{title}</h3>
+      <p className="text-muted-foreground leading-relaxed font-medium">{desc}</p>
     </div>
   )
 }

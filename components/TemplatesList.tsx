@@ -10,6 +10,16 @@ import { Button } from '@/components/ui/button'
 
 const templateItems = [
     {
+        id: 0,
+        title: 'EMT Masterpiece (Global)',
+        category: 'Masterpiece 3D',
+        slug: 'emt',
+        description: '하이엔드 모빌리티 테크 기업을 위한 최상위 3D HUD 인터페이스. Three.js 기반의 몰입형 경험을 선사합니다.',
+        image: '/emt/assets/19.png',
+        tags: ['3D Engine', 'HUD Interface', 'Global Standard'],
+        link: 'https://emt.premiumpage.kr'
+    },
+    {
         id: 1,
         title: 'HS TECH Premium',
         category: 'Standard Interactive',
@@ -35,14 +45,14 @@ const templateItems = [
         category: 'Standard Interactive',
         slug: 'gentop',
         description: 'ICT/SI 솔루션 기업을 위한 스마트 시스템 테마. 상단 라인 탭과 와이드 비주얼로 기술력을 강조합니다.',
-        image: '/assets/gentop/cctv_01.jpg', // Fallback to a known image if needed
+        image: '/assets/gentop/cctv_01.jpg',
         tags: ['ICT Solution', 'Smart System', 'Wide Layout'],
         link: '/templates/gentop'
     }
 ]
 
 
-const categories = ['All', 'Basic Viewer', 'Standard Interactive', 'Masterpiece 3D']
+const categories = ['All', 'Standard Interactive', 'Masterpiece 3D']
 
 export function TemplatesList() {
     const [selectedCategory, setSelectedCategory] = useState('All')
@@ -52,23 +62,8 @@ export function TemplatesList() {
         : templateItems.filter(item => item.category === selectedCategory)
 
     return (
-        <section className="py-32 relative">
-            <div className="container mx-auto px-4">
-                {/* 헤더 */}
-                <motion.div
-                    initial={{ opacity: 0, y: 30 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    className="text-center mb-16"
-                >
-                    <div className="flex items-center justify-center gap-3 mb-6">
-                        <Sparkles className="w-12 h-12 text-blue-400" />
-                        <h2 className="text-6xl md:text-8xl font-black gradient-text">템플릿</h2>
-                    </div>
-                    <p className="text-2xl text-gray-400 font-light max-w-3xl mx-auto">
-                        다양한 산업군에 최적화된 프리미엄 전자 카탈로그 템플릿입니다.
-                    </p>
-                </motion.div>
+        <section className="relative">
+            <div className="container mx-auto">
 
                 {/* 카테고리 필터 */}
                 <motion.div

@@ -3,59 +3,62 @@
 import { usePathname } from 'next/navigation'
 import Link from 'next/link'
 import { ThemeToggle } from "@/components/theme-toggle"
+import { Button } from '@/components/ui/button'
 
 export function MainLayout({ children }: { children: React.ReactNode }) {
     const pathname = usePathname()
-    // 템플릿 경로는 공통 레이아웃 제외
-    const isTemplate = pathname?.startsWith('/templates')
+    // 개별 템플릿 페이지는 공통 레이아웃 제외 (단, /templates 목록 페이지는 포함)
+    const isIndividualTemplate = pathname?.startsWith('/templates/hangseong') ||
+        pathname?.startsWith('/templates/hs-tech') ||
+        pathname?.startsWith('/templates/gentop') ||
+        pathname?.startsWith('/templates/emt')
 
     return (
         <>
-            {!isTemplate && (
-                <nav className="fixed top-0 left-0 right-0 z-50 transition-all duration-300 border-b border-white/5 bg-background/50 backdrop-blur-xl">
-                    <div className="flex items-center justify-between h-16 px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
-                        <div className="flex items-center gap-8">
-                            <Link href="/" className="text-2xl font-black gradient-text">
+            {!isIndividualTemplate && (
+                <nav className="fixed top-0 left-0 right-0 z-50 transition-all duration-500 border-b border-white/5 bg-background/70 backdrop-blur-2xl">
+                    <div className="flex items-center justify-between h-20 px-6 mx-auto max-w-screen-2xl">
+                        <div className="flex items-center gap-12">
+                            <Link href="/" className="text-2xl font-black gradient-text tracking-tighter">
                                 Premium Page
                             </Link>
-                            <div className="items-center hidden gap-6 md:flex">
-                                <Link href="/pdf-converter" className="text-sm font-medium transition-colors hover:text-primary-500">
-                                    PDF 변환
+                            <div className="items-center hidden gap-8 lg:flex">
+                                <Link href="/templates" className="text-sm font-black uppercase tracking-widest transition-all hover:text-primary text-muted-foreground">
+                                    Digital Catalog
                                 </Link>
-                                <Link href="/quote" className="text-sm font-medium transition-colors hover:text-primary-500">
-                                    제작 의뢰
+                                <Link href="/about" className="text-sm font-black uppercase tracking-widest transition-all hover:text-primary text-muted-foreground">
+                                    Strategy
                                 </Link>
-                                <Link href="/templates" className="text-sm font-medium transition-colors hover:text-primary-500">
-                                    템플릿 (All)
+                                <Link href="/templates" className="text-sm font-black uppercase tracking-widest transition-all hover:text-primary text-muted-foreground">
+                                    Portfolios
                                 </Link>
-                                <Link href="/portfolio" className="text-sm font-medium transition-colors hover:text-primary-500">
-                                    포트폴리오
-                                </Link>
-                                <Link href="/dashboard" className="text-sm font-medium transition-colors hover:text-primary-500">
-                                    대시보드
-                                </Link>
-                                <Link href="/about" className="text-sm font-medium transition-colors hover:text-primary-500">
-                                    서비스 소개
+                                <Link href="/quote" className="text-sm font-black uppercase tracking-widest transition-all hover:text-primary text-muted-foreground">
+                                    Contact
                                 </Link>
                             </div>
                         </div>
-                        <div className="flex items-center gap-4">
-                            <ThemeToggle />
-                            <Link href="/login" className="text-sm font-medium transition-colors hover:text-primary-500">
-                                로그인
-                            </Link>
+                        <div className="flex items-center gap-6">
+                            <div className="hidden sm:block">
+                                <ThemeToggle />
+                            </div>
                             <Link
-                                href="/quote"
-                                className="px-5 py-2 text-sm font-bold text-black transition-all bg-white rounded-full hover:bg-gray-200 active:scale-95"
+                                href="/login"
+                                className="text-sm font-black uppercase tracking-widest text-muted-foreground hover:text-foreground transition-colors"
                             >
-                                시작하기
+                                Member
                             </Link>
+                            <Button
+                                asChild
+                                className="h-10 px-8 text-xs font-black uppercase tracking-widest transition-all rounded-full bg-foreground text-background hover:scale-105"
+                            >
+                                <Link href="/quote">Consulting</Link>
+                            </Button>
                         </div>
                     </div>
                 </nav>
             )}
 
-            <main className={isTemplate ? "min-h-screen" : "pt-16 min-h-screen"}>
+            <main className={isIndividualTemplate ? "min-h-screen" : "pt-20 min-h-screen"}>
                 {children}
             </main>
         </>
