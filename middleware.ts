@@ -33,10 +33,17 @@ export function middleware(request: NextRequest) {
         }
     }
 
-    // 5. EMT 도메인 처리 (정적 HTML)
+    // 5. EMT (영문) 도메인 처리
     if (hostname.includes('emt.premiumpage.kr')) {
         if (url.pathname === '/') {
-            return NextResponse.rewrite(new URL('/emt/index.html', request.url))
+            return NextResponse.rewrite(new URL('/templates/emt-en', request.url))
+        }
+    }
+
+    // 6. EMT (국문) 도메인 처리
+    if (hostname.includes('emt-ko.premiumpage.kr')) {
+        if (url.pathname === '/') {
+            return NextResponse.rewrite(new URL('/templates/emt-ko', request.url))
         }
     }
 
