@@ -66,22 +66,27 @@ function HangseongLayoutContent({ children }: { children: React.ReactNode }) {
                 // If item has subs (like About, Products)
                 if (item.subs && item.subs.length > 0) {
 
-                    // Add Category Main Page (e.g. Products Intro)
-                    slides.push({
-                        catId: item.id,
-                        id: item.id,
-                        label: item.label,
-                        href: item.href
-                    })
-
-                    item.subs.forEach(sub => {
-                        // Add Sub-category Page (e.g. HVAC Intro)
+                    // 1. Add Category Main Page (ONLY for Products, skip for others to reduce page count)
+                    if (item.id === 'products') {
                         slides.push({
                             catId: item.id,
-                            id: sub.id,
-                            label: sub.label,
-                            href: `/templates/hangseong?category=${item.id}&tab=${sub.id}`
+                            id: item.id,
+                            label: item.label,
+                            href: item.href
                         })
+                    }
+
+                    item.subs.forEach(sub => {
+                        // 2. Add Sub-category Pages
+                        // For 'products', SKIP the sub-category list page (e.g. HVAC list) to reduce page count
+                        if (item.id !== 'products') {
+                            slides.push({
+                                catId: item.id,
+                                id: sub.id,
+                                label: sub.label,
+                                href: `/templates/hangseong?category=${item.id}&tab=${sub.id}`
+                            })
+                        }
 
                         // If it's a product category, add individual products as slides
                         if (item.id === 'products' && sub.id in DB) {
