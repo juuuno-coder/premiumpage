@@ -154,14 +154,25 @@ function HangseongLayoutContent({ children }: { children: React.ReactNode }) {
     return (
         <div className="h-screen w-screen overflow-hidden bg-slate-900 text-slate-900 font-sans selection:bg-blue-500 selection:text-white relative flex">
 
-            {/* Mobile Hamburger Button */}
-            <button
-                onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-                className="lg:hidden fixed top-4 left-4 z-[110] p-3 bg-slate-950/95 backdrop-blur-md border border-slate-800 rounded-xl text-white hover:bg-slate-900 transition-colors shadow-xl"
-                aria-label="Toggle menu"
-            >
-                {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-            </button>
+
+            {/* Mobile Header Bar (Sticky Top) */}
+            <div className="lg:hidden fixed top-0 left-0 w-full z-[100] h-16 bg-slate-950/90 backdrop-blur-md border-b border-slate-800 flex items-center px-4 justify-between shadow-lg">
+                <button
+                    onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+                    className="p-2 text-white hover:bg-slate-800 rounded-lg transition-colors"
+                    aria-label="Toggle menu"
+                >
+                    {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+                </button>
+
+                <Link href="/" className="absolute left-1/2 -translate-x-1/2 block" onClick={() => setIsMobileMenuOpen(false)}>
+                    <div className="bg-white px-3 py-1.5 rounded-lg h-10 flex items-center justify-center">
+                        <img src="/templates/hangseong/images/logo.png" alt="HANGSEONG" className="h-full w-auto object-contain" />
+                    </div>
+                </Link>
+
+                <div className="w-10"></div> {/* Spacer for centering logo */}
+            </div>
 
             {/* Sidebar - Desktop: Always visible, Mobile: Overlay when open */}
             <AnimatePresence>
@@ -172,7 +183,7 @@ function HangseongLayoutContent({ children }: { children: React.ReactNode }) {
                         exit={{ x: -260 }}
                         transition={{ type: "spring", damping: 25, stiffness: 200 }}
                         className={cn(
-                            "w-[260px] h-full bg-slate-950/95 backdrop-blur-md border-r border-slate-800 flex flex-col z-[100] flex-shrink-0 relative shadow-2xl",
+                            "w-[260px] h-full bg-slate-950/95 backdrop-blur-md border-r border-slate-800 flex flex-col z-[150] flex-shrink-0 relative shadow-2xl",
                             "lg:relative lg:translate-x-0",
                             "fixed lg:flex",
                             !isMobileMenuOpen && "hidden lg:flex"
@@ -250,9 +261,9 @@ function HangseongLayoutContent({ children }: { children: React.ReactNode }) {
             {/* Main Content */}
             <main
                 ref={mainRef}
-                className="flex-1 h-full relative bg-white dark:bg-slate-950 overflow-y-auto z-10 scroll-smooth"
+                className="flex-1 h-full relative bg-white dark:bg-slate-950 overflow-y-auto z-10 scroll-smooth pt-16 lg:pt-0"
             >
-                <div className="absolute top-6 right-6 z-50 flex gap-3 pointer-events-auto">
+                <div className="absolute top-20 lg:top-6 right-6 z-50 flex gap-3 pointer-events-auto">
                     <button className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/80 backdrop-blur shadow-sm border border-slate-200 text-xs font-bold hover:bg-slate-900 hover:text-white transition-all">
                         <Globe className="w-3.5 h-3.5" /> EN
                     </button>

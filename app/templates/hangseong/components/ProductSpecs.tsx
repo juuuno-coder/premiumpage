@@ -55,19 +55,19 @@ export default function ProductSpecs({ product }: { product: any }) {
             {product.specs && product.specs.length > 0 && (
                 <div className="space-y-6">
                     <h4 className="text-xl font-bold dark:text-white text-slate-900 border-l-4 border-blue-500 pl-4">Technical Specifications</h4>
-                    <div className="overflow-hidden rounded-xl border dark:border-slate-700 border-slate-200">
-                        <table className="w-full text-left text-sm md:text-base">
+                    <div className="overflow-hidden rounded-xl border dark:border-slate-700 border-slate-200 overflow-x-auto">
+                        <table className="w-full text-left text-sm md:text-base min-w-[320px]">
                             <thead className="dark:bg-slate-800 bg-slate-100 dark:text-slate-200 text-slate-700 uppercase font-bold">
                                 <tr>
-                                    <th className="px-6 py-4">Parameter</th>
-                                    <th className="px-6 py-4">Value</th>
+                                    <th className="px-4 py-3 md:px-6 md:py-4 whitespace-nowrap">Parameter</th>
+                                    <th className="px-4 py-3 md:px-6 md:py-4 whitespace-nowrap">Value</th>
                                 </tr>
                             </thead>
                             <tbody className="divide-y dark:divide-slate-800 divide-slate-200 dark:bg-slate-900/50 bg-white">
                                 {product.specs.map((spec: any, idx: number) => (
                                     <tr key={idx} className="hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors">
-                                        <td className="px-6 py-4 font-medium dark:text-slate-300 text-slate-900 w-1/3">{spec.label}</td>
-                                        <td className="px-6 py-4 dark:text-slate-400 text-slate-600 font-mono">{spec.value}</td>
+                                        <td className="px-4 py-3 md:px-6 md:py-4 font-medium dark:text-slate-300 text-slate-900 w-1/3 whitespace-nowrap">{spec.label}</td>
+                                        <td className="px-4 py-3 md:px-6 md:py-4 dark:text-slate-400 text-slate-600 font-mono whitespace-nowrap">{spec.value}</td>
                                     </tr>
                                 ))}
                             </tbody>

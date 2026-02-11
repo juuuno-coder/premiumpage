@@ -79,9 +79,9 @@ const CatalogPage = ({
     }, [])
 
     return (
-        <div className="min-h-screen w-full dark:bg-slate-950 bg-white antialiased dark:bg-grid-white/[0.02] bg-grid-black/[0.02] relative overflow-hidden dark:text-slate-300 text-slate-700 pt-8 pb-12 transition-colors duration-300">
+        <div className="min-h-screen w-full dark:bg-slate-950 bg-white antialiased dark:bg-grid-white/[0.02] bg-grid-black/[0.02] relative overflow-hidden dark:text-slate-300 text-slate-700 pt-4 md:pt-8 pb-12 transition-colors duration-300">
             {/* Sub Visual / Breadcrumb Area */}
-            <div className="absolute top-4 left-0 right-0 z-40 px-6 md:px-12 py-4 pointer-events-none">
+            <div className="absolute top-2 md:top-4 left-0 right-0 z-40 px-4 md:px-12 py-4 pointer-events-none">
                 <div className="flex items-center gap-2 text-xs font-mono tracking-widest uppercase dark:text-slate-500 text-slate-400 pointer-events-auto">
                     <Link href="/templates/hangseong?tab=cover" className="hover:text-blue-400 transition-colors">Home</Link>
                     <ChevronRight className="w-3 h-3" />
@@ -407,7 +407,7 @@ function HangseongContent() {
                                 const info = CATEGORY_INFO[sub.id] || { desc: sub.label, image: 'https://images.unsplash.com/photo-1565514020176-6c2235c887c0?auto=format&fit=crop&w=800&q=80' }
                                 return (
                                     <Link key={idx} href={sub.href}>
-                                        <BackgroundGradient className="rounded-[22px] max-w-sm bg-white dark:bg-zinc-900 h-full cursor-pointer hover:shadow-2xl transition-all overflow-hidden flex flex-col">
+                                        <BackgroundGradient className="rounded-[22px] w-full max-w-sm bg-white dark:bg-zinc-900 h-full cursor-pointer hover:shadow-2xl transition-all overflow-hidden flex flex-col">
                                             {/* Card Image */}
                                             <div className="relative w-full h-48 overflow-hidden rounded-t-[22px]">
                                                 <Image
@@ -540,7 +540,7 @@ function HangseongContent() {
                                     </div>
 
                                     {/* Product Grid */}
-                                    <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+                                    <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 md:gap-6">
                                         {sub.items?.map((item: any) => {
                                             // Resolve Product Data
                                             const pData = findProduct(item.id, targetCat)
