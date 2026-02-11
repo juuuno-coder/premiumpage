@@ -5,7 +5,7 @@ import Link from 'next/link'
 import { motion } from 'framer-motion'
 import { ArrowRight, Zap, Globe, Layers, MousePointer2 } from 'lucide-react'
 import { Button } from '@/components/ui/button'
-import { EMTMasterpiece } from '@/components/catalog/EMTMasterpiece'
+
 import { AuroraBackground } from '@/components/ui/aurora-background'
 import { SparklesCore } from '@/components/ui/sparkles'
 import { TextGenerateEffect } from '@/components/ui/text-generate-effect'
@@ -82,12 +82,24 @@ export default function PremiumLandingPage() {
             <p className="text-muted-foreground text-lg md:text-xl max-w-2xl mx-auto">가장 진보된 Three.js 기술로 구현된 3D 마스터피스 템플릿입니다.</p>
           </div>
 
-          <div className="max-w-6xl mx-auto glass-card p-4 md:p-8 relative min-h-[600px] flex items-center justify-center overflow-hidden">
-            <Suspense fallback={<div className="text-muted-foreground animate-pulse font-bold">3D 시뮬레이션 로딩 중...</div>}>
-              <div className="w-full h-[600px] md:h-[700px] bg-black rounded-2xl border border-white/10 shadow-inner relative z-0 overflow-hidden">
-                <EMTMasterpiece />
+          <div className="max-w-6xl mx-auto glass-card p-4 md:p-8 relative min-h-[500px] flex flex-col items-center justify-center overflow-hidden">
+            <div className="relative z-10 text-center">
+              <h3 className="text-3xl md:text-5xl font-black text-white mb-8">EMT Global 사례</h3>
+              <p className="text-gray-400 text-lg mb-10 max-w-2xl mx-auto">
+                글로벌 시장을 겨냥한 하이엔드 3D 전자 카탈로그의 정석. <br />
+                언어별 최적화된 인터페이스를 직접 확인해보세요.
+              </p>
+              <div className="flex flex-col sm:flex-row gap-6 justify-center">
+                <Button asChild size="lg" className="h-16 px-10 rounded-full bg-white/10 hover:bg-white/20 border border-white/20 text-xl font-bold transition-all">
+                  <a href="https://emt-ko.vercel.app" target="_blank" rel="noopener noreferrer">국문 한글 버전</a>
+                </Button>
+                <Button asChild size="lg" className="h-16 px-10 rounded-full bg-gradient-to-r from-purple-600 to-pink-600 hover:opacity-90 text-xl font-bold transition-all">
+                  <a href="https://emt-en.vercel.app" target="_blank" rel="noopener noreferrer">English Version</a>
+                </Button>
               </div>
-            </Suspense>
+            </div>
+            {/* 배경용 더미 오로라 효과 */}
+            <div className="absolute inset-0 bg-gradient-to-br from-purple-900/20 via-black to-blue-900/20 z-0" />
           </div>
         </div>
       </section>

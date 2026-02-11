@@ -1,0 +1,76 @@
+'use client'
+
+import React from 'react'
+import Image from 'next/image'
+import { motion } from 'framer-motion'
+import { ArrowRight, CheckCircle2 } from 'lucide-react'
+import Link from 'next/link'
+
+export default function SetraPage() {
+    return (
+        <div className="max-w-5xl mx-auto">
+            {/* Hero Section */}
+            <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                className="text-center mb-20"
+            >
+                <div className="inline-block mb-6 p-4 bg-slate-50 rounded-2xl">
+                    <h1 className="text-4xl md:text-6xl font-black text-slate-900 tracking-tight text-blue-800">SETRA</h1>
+                </div>
+                <p className="text-2xl text-slate-500 font-light max-w-3xl mx-auto leading-relaxed">
+                    Sensing Solutions for a Changing World.
+                </p>
+            </motion.div>
+
+            {/* Content Grid */}
+            <div className="grid md:grid-cols-2 gap-16 items-center mb-24">
+                <motion.div
+                    initial={{ opacity: 0, x: -20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: 0.2 }}
+                    className="relative aspect-video bg-slate-100 rounded-3xl overflow-hidden shadow-2xl"
+                >
+                    <Image
+                        src="/hstech/HS-TECH_files/b2209059580dc.jpg"
+                        alt="Setra Tech"
+                        fill
+                        className="object-cover"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end p-8">
+                        <span className="text-white font-bold text-lg">Pressure Measurement</span>
+                    </div>
+                </motion.div>
+
+                <motion.div
+                    initial={{ opacity: 0, x: 20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: 0.3 }}
+                    className="space-y-8"
+                >
+                    <div>
+                        <h2 className="text-3xl font-bold text-slate-900 mb-4">Setra Systems</h2>
+                        <p className="text-slate-600 leading-relaxed text-lg">
+                            Setra Systems, Inc. was founded in 1967 and designs and manufactures a broad line of sensing devices, including humidity, current, vacuum, and pressure sensors.
+                        </p>
+                    </div>
+
+                    <ul className="space-y-4">
+                        {['Differential Pressure', 'Room Pressure Monitor', 'Power Meter', 'Vacuum Sensing'].map((item, i) => (
+                            <li key={i} className="flex items-center gap-3 text-slate-700 font-medium">
+                                <CheckCircle2 className="w-5 h-5 text-blue-600" />
+                                {item}
+                            </li>
+                        ))}
+                    </ul>
+
+                    <Link href="/templates/hs-tech/products/setra_diff">
+                        <button className="flex items-center gap-2 text-blue-600 font-bold hover:gap-4 transition-all mt-4">
+                            View Products <ArrowRight className="w-5 h-5" />
+                        </button>
+                    </Link>
+                </motion.div>
+            </div>
+        </div>
+    )
+}

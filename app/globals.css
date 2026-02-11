@@ -1,4 +1,7 @@
 @import "tailwindcss";
+@config "../tailwind.config.ts";
+
+@variant dark (&:where(.dark, .dark *));
 
 @theme {
   --font-sans: "Inter", "Pretendard", system-ui, -apple-system, sans-serif;
@@ -107,6 +110,15 @@
   .neon-border {
     border-color: hsl(270 95% 75% / 0.5);
     box-shadow: 0 0 15px hsl(270 95% 75% / 0.4);
+  }
+
+  .scrollbar-hide {
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+  }
+
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none; /* Chrome, Safari and Opera */
   }
 }
 

@@ -6,7 +6,7 @@ import { prisma } from '@/lib/prisma'
 import { z } from 'zod'
 
 export const { handlers, auth, signIn, signOut } = NextAuth({
-    adapter: PrismaAdapter(prisma),
+    adapter: PrismaAdapter(prisma) as any,
     session: { strategy: 'jwt' },
     pages: {
         signIn: '/login',
@@ -42,10 +42,14 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
         async session({ session, token }) {
             if (token.sub && session.user) {
                 session.user.id = token.sub
+                session.user.role = token.role as string
             }
             return session
         },
-        async jwt({ token }) {
+        async jwt({ token, user }) {
+            if (user) {
+                token.role = (user as any).role
+            }
             return token
         }
     }

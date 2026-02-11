@@ -1,7 +1,11 @@
 
 import os
 
-files = [r"d:\코딩\EMT\ko\index.html", r"d:\코딩\EMT\index.html"]
+files = [
+    "/Users/admin/Desktop/jcatalog/extracted_data.json",
+    "/Users/admin/Desktop/jcatalog/app/templates/hs-tech/data.ts",
+    "/Users/admin/Desktop/jcatalog/app/templates/hs-tech/page.tsx"
+]
 
 def run():
     for file_path in files:

@@ -44,3 +44,7 @@ next-env.d.ts
 
 # Uploaded files
 public/uploads/
+
+# Crawled / Large Data Folders
+public/gentop/
+public/hstech/
