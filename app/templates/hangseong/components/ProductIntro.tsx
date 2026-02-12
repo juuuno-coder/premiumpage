@@ -33,9 +33,11 @@ export default function ProductIntro({ title, subtitle, image, specs }: ProductI
                 <h2 className="text-3xl md:text-5xl font-black text-slate-900 dark:text-white mb-4 leading-tight tracking-tight uppercase">
                     {title}
                 </h2>
-                <div className="text-xl md:text-2xl text-blue-600 dark:text-blue-400 font-bold tracking-wide whitespace-pre-wrap">
-                    {subtitle}
-                </div>
+                {subtitle && (
+                    <div className="text-xl md:text-2xl text-blue-600 dark:text-blue-400 font-bold tracking-wide whitespace-pre-wrap">
+                        {subtitle}
+                    </div>
+                )}
             </div>
 
             {/* Specs Table (Clean & Readable) */}

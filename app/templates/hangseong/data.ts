@@ -240,39 +240,38 @@ export const DB: Record<string, any[]> = {
         },
         {
             id: 'hvac_bracket_03',
-            title: 'Motor Case Ass\'y (With Bracket)',
-            subtitle: 'With Separable Bracket',
+            title: 'MOTOR CASE ASM(WITH BRACKET)',
+            subtitle: '',
             category: 'hvac',
-            // Updated to 1000px wide JPG (New Upload)
             image: '/templates/hangseong/images/products/hvac_wide_bracket.jpg',
-            desc: 'DC-Motor bracket assembly for plate-type motor attachment. Uses a fixture exclusive for position fixing to attach brackets to separable motors. Supports plating and painting custom orders.',
+            desc: '',
             specs: [
-                { label: 'Purpose', value: 'Automobile DC-Motor bracket ASM\nDC-Motor bracket ASM for home appliances' },
-                { label: 'DC Diameter', value: 'Ø56.5 ~ 76 mm (Case Only)' },
-                { label: 'Length', value: '70 ~ 84 mm (Case Only)' },
-                { label: 'Feature', value: 'Plate-type motor attachment\nExclusive fixture for position fixing\nPlating/Painting custom order available' }
+                {
+                    label: 'Purpose',
+                    value: '• Automobile DC-Motor bracket ASM\n• DC-Motor bracket ASM for home appliances\n• Out Diameter : Ø 56.5 ~ 76 mm(Case Only)\n• Length : 70 ~ 84 mm(Case Only)'
+                },
+                {
+                    label: 'Feature',
+                    value: '• Bracket for plate-type motor attachment (plating/painting → custom order)\n• Attaching a bracket for separable motors using a fixture exclusive for position fixing by product'
+                }
             ],
             tags: ['Bracket', 'Mounting', 'Assembly', 'Automotive']
         },
         {
             id: 'hvac_core_04',
             title: 'CORE & PARTS FOR VARIOUS MOTORS',
-            subtitle: 'Rotor/Stator & Small Parts',
+            subtitle: 'Core     Parts',
             category: 'hvac',
             image: '/templates/hangseong/images/products/hvac_wide_core.jpg',
             desc: '',
             specs: [
                 {
                     label: 'Purpose',
-                    value: '• Automobile DC-MOTOR core\n• Core for BLDC motors (Hybrid Vehicles)\n• Base, brush holder, oil pan'
-                },
-                {
-                    label: 'Core O.D',
-                    value: 'Ø44, Ø50, Ø55, Ø64, Ø74 mm'
+                    value: '• Automobile DC-MOTOR core\n• Core for BLDC motors for hybrid vehicles\n• Base, brush holder and oil pan for automobile DC-Motors\n• Core O.D : Ø44 , Ø50 , Ø55 , Ø64 , Ø74 mm'
                 },
                 {
                     label: 'Feature',
-                    value: '• Rotor/stator cover custom order\n• Small precision parts custom order'
+                    value: '• Rotor/stator cover for various DC/BLDC motors (custom-order production)\n• Small parts for various DC-Motors (custom-order production)'
                 }
             ],
             tags: ['Core', 'BLDC', 'Hybrid Vehicle', 'Rotor', 'Stator']
