@@ -204,7 +204,8 @@ export const DB: Record<string, any[]> = {
             title: "Fitting Type Motor Case Ass'y",
             subtitle: 'Case, Cover & Magnet Asm',
             category: 'hvac',
-            image: '/templates/hangseong/images/products/hvac_wide_case.png',
+            // Updated to 1000px wide JPG (New Upload)
+            image: '/templates/hangseong/images/products/hvac_wide_case.jpg',
             desc: 'Numerical fitting type motor case assembly composed of case, cover, and magnet. Manufactured by bending boards 360° with a tooth form structure for interference fit, preventing spring-back and guaranteeing 0.1 level roundness.',
             specs: [
                 { label: 'Purpose', value: 'Automobile DC-MOTOR Case (Housing)\nDC-MOTOR case for home appliances' },
@@ -219,7 +220,8 @@ export const DB: Record<string, any[]> = {
             title: "Rear & Front Cover Ass'y",
             subtitle: 'For Various Motors',
             category: 'hvac',
-            image: '/templates/hangseong/images/products/hvac_wide_cover.jpg',
+            // Using Case image temporarily (Waiting for Cover image)
+            image: '/templates/hangseong/images/products/hvac_wide_case.jpg',
             desc: 'Precision assembled rear and front covers for automotive DC motors. Ensures concentricity of bolt and bearing assembly parts. Support for plating and painting custom orders.',
             specs: [
                 { label: 'Purpose', value: 'Automobile DC-MOTOR Rear & Front Cover\nDC-MOTOR Cover for Home Appliances' },
@@ -233,6 +235,7 @@ export const DB: Record<string, any[]> = {
             title: 'Motor Case Ass\'y (With Bracket)',
             subtitle: 'With Separable Bracket',
             category: 'hvac',
+            // Updated to 1000px wide JPG (New Upload)
             image: '/templates/hangseong/images/products/hvac_wide_bracket.jpg',
             desc: 'DC-Motor bracket assembly for plate-type motor attachment. Uses a fixture exclusive for position fixing to attach brackets to separable motors. Supports plating and painting custom orders.',
             specs: [
@@ -248,7 +251,7 @@ export const DB: Record<string, any[]> = {
             title: 'Core & Parts for Various Motors',
             subtitle: 'Rotor/Stator & Small Parts',
             category: 'hvac',
-            // Using bracket image temporarily as requested image for core is missing/ambiguous
+            // Using Bracket image temporarily (Waiting for Core image)
             image: '/templates/hangseong/images/products/hvac_wide_bracket.jpg',
             desc: 'Cores and small precision parts for automotive DC motors and hybrid vehicle BLDC motors. Includes rotor/stator covers produced via custom order.',
             specs: [
