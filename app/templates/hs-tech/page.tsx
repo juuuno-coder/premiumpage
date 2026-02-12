@@ -11,6 +11,7 @@ import { cn } from '@/lib/utils'
 import ProductDetailModal from './components/ProductDetailModal'
 import ProductSpecs from './components/ProductSpecs'
 import CoverView from './components/CoverView'
+import ProductIntro from './components/ProductIntro' // Added ProductIntro
 
 // Premium UI Components
 import { Spotlight } from './components/ui/Spotlight'
@@ -183,6 +184,40 @@ function HSTechContent() {
                 break
             }
         }
+    }
+
+
+    // --- VIEW 0: PRODUCT INTRO ---
+    if (productId && selectedProduct) {
+        // Find parent brand/category for breadcrumb
+        let parentBrand = 'products'
+        let parentLabel = 'Product'
+        // Simplified parent finding logic
+        const catKey = selectedProduct.category || 'products'
+
+        // Try to find brand
+        for (const [bKey, bData] of Object.entries(BRANDS)) {
+            // Check if category belongs to brand
+            if ((bData as any).categories.includes(catKey) || bKey === catKey) {
+                parentBrand = bKey
+                parentLabel = (bData as any).label
+                break
+            }
+        }
+
+        return (
+            <CatalogPage title={selectedProduct.title} currentTab={activeTab} breadcrumb={{ label: parentLabel, href: `/templates/hs-tech?tab=${parentBrand}` }}>
+                <div className="pt-12 pb-20">
+                    <ProductIntro
+                        title={selectedProduct.title}
+                        subtitle={selectedProduct.subtitle || ''}
+                        image={selectedProduct.image}
+                        specs={selectedProduct.specs || []}
+                        datasheet={selectedProduct.datasheet}
+                    />
+                </div>
+            </CatalogPage>
+        )
     }
 
     // --- VIEW 1: COVER ---

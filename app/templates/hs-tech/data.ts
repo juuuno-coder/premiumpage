@@ -298,9 +298,57 @@ export const DB: Record<string, any[]> = {
         { id: 'hm40', title: 'HM40', subtitle: 'Compact', category: 'handheld', image: '/hstech/HM40_files/0fc29cc5cdc18.png', gallery: ["/hstech/HM40_files/0fc29cc5cdc18.png", "/hstech/HM40_files/4789ab851dd25.png", "/hstech/HM40_files/a96fc6c9bbd7a.png"], desc: 'Compact handheld.', specs: [{ label: 'Size', value: 'Small' }], datasheet: 'https://www.vaisala.com/sites/default/files/documents/HM40-Datasheet-B210975EN.pdf' },
         { id: 'shm40', title: 'SHM40', subtitle: 'Concrete', category: 'handheld', image: '/hstech/SHM40_files/cdd5adeb7afcc.png', gallery: ["/hstech/SHM40_files/cdd5adeb7afcc.png", "/hstech/SHM40_files/6658f45c3305f.png", "/hstech/SHM40_files/9a60152e8f2db.jpg"], desc: 'Concrete moisture.', specs: [{ label: 'App', value: 'Flooring' }] },
         { id: 'hmk15', title: 'HMK15', subtitle: 'Calibrator', category: 'handheld', image: '/hstech/HMK15_files/d7a623c5cb8e0.png', gallery: ["/hstech/HMK15_files/d7a623c5cb8e0.png", "/hstech/HMK15_files/7089ce49da5b9.png"], desc: 'Salt calibrator.', specs: [{ label: 'Type', value: 'Salts' }] },
-        { id: 'hmt330', title: 'HMT330', subtitle: 'Flagship', category: 'industrial', image: '/hstech/HMT330_files/6d2ba9e2a3f71.png', gallery: ["/hstech/HMT330_files/6d2ba9e2a3f71.png", "/hstech/HMT330_files/6b84ea881fad7.png", "/hstech/HMT330_files/cffbaca7b6b82.jpg"], desc: 'Top industrial transmitter.', specs: [{ label: 'Acc', value: '1%' }], datasheet: 'https://www.vaisala.com/sites/default/files/documents/HMT330-Datasheet-B211735EN.pdf' },
-        { id: 'hmt310', title: 'HMT310', subtitle: 'Compact', category: 'industrial', image: '/hstech/HMT310_files/3f0c5783f8d85.png', gallery: ["/hstech/HMT310_files/3f0c5783f8d85.png", "/hstech/HMT310_files/0a9dc3cf1ab69.png"], desc: 'Compact transmitter.', specs: [{ label: 'Size', value: 'Small' }], datasheet: 'https://www.vaisala.com/sites/default/files/documents/HMT310-Datasheet-B211734EN.pdf' },
-        { id: 'hmt120', title: 'HMT120', subtitle: 'Standard', category: 'industrial', image: '/hstech/HMT120_files/8a6f9fcd6843b.png', gallery: ["/hstech/HMT120_files/8a6f9fcd6843b.png", "/hstech/HMT120_files/aff8250c900e2.png"], desc: 'Standard transmitter.', specs: [{ label: 'Probe', value: 'Interchangeable' }], datasheet: 'https://www.vaisala.com/sites/default/files/documents/HMT120-Datasheet-B211733EN.pdf' }
+        {
+            id: 'hmt330',
+            title: 'HMT330 Series',
+            subtitle: 'HUMIDITY AND TEMPERATURE TRANSMITTERS',
+            category: 'industrial',
+            image: '/templates/hs-tech/images/products/hmt330_v1.jpg',
+            gallery: [],
+            desc: 'Designed for demanding industrial applications. Six models available for various installation needs.',
+            specs: [
+                { label: 'Application', value: 'Demanding industrial applications\nCleanrooms, Pharmaceutical processes' },
+                { label: 'Models', value: 'HMT331 (Wall), HMT333 (Duct), HMT334 (High Pressure)\nHMT335 (High Temp), HMT337 (High Humidity), HMT338 (Pipeline)' },
+                { label: 'Features', value: '• Excellent stability & extensive customization\n• Six models for various installation needs\n• Optional integrated data logging and graphical display' },
+                { label: 'Measurement Range', value: '0 ... 100 %RH\n-70 ... +180 °C (Model dependent)' },
+                { label: 'Output', value: 'RH, T, Td, Tdf, a, x, Tw, ppm, pw, pws, h, dT' }
+            ],
+            datasheet: 'https://www.vaisala.com/sites/default/files/documents/HMT330-Datasheet-B211735EN.pdf'
+        },
+        {
+            id: 'hmt310',
+            title: 'HMT310',
+            subtitle: 'HUMIDITY AND TEMPERATURE TRANSMITTER',
+            category: 'industrial',
+            image: '/templates/hs-tech/images/products/hmt310_v1.jpg',
+            gallery: [],
+            desc: 'Compact transmitter with excellent stability for demanding industrial applications.',
+            specs: [
+                { label: 'Application', value: 'Industrial applications where compact size is needed' },
+                { label: 'Features', value: '• Latest generation VAISALA HUMICAP® sensor\n• Small size for easy installation\n• High accuracy & excellent long-term stability' },
+                { label: 'Range', value: '0 ... 100 %RH\n-40 ... +80 °C (up to +120 °C)' },
+                { label: 'Accuracy', value: '±1 %RH (0...90 %RH)' },
+                { label: 'Output', value: 'Analog outputs, RS232/RS485' }
+            ],
+            datasheet: 'https://www.vaisala.com/sites/default/files/documents/HMT310-Datasheet-B211734EN.pdf'
+        },
+        {
+            id: 'hmt120',
+            title: 'HMT120 / HMT130',
+            subtitle: 'HUMIDITY AND TEMPERATURE TRANSMITTERS',
+            category: 'industrial',
+            image: '/templates/hs-tech/images/products/hmt120_v1.jpg',
+            gallery: [],
+            desc: 'Optimized for cleanrooms and light industrial applications with interchangeable probes.',
+            specs: [
+                { label: 'Application', value: 'Cleanrooms, Light industrial applications' },
+                { label: 'Features', value: '• Interchangeable probes (HMP110)\n• Resistant to dust and most chemicals\n• Display option available' },
+                { label: 'Models', value: 'HMT120: Loop powered (2-wire)\nHMT130: Voltage powered (3-wire)' },
+                { label: 'Range', value: '0 ... 100 %RH\n-40 ... +80 °C' },
+                { label: 'Output', value: '4...20 mA (HMT120)\n0...1V / 0...5V / 0...10V (HMT130)' }
+            ],
+            datasheet: 'https://www.vaisala.com/sites/default/files/documents/HMT120-Datasheet-B211733EN.pdf'
+        },
     ],
     dewpoint: [
         { id: 'dmp1', title: 'DMP1', subtitle: 'Probe', category: 'fixed', image: '/hstech/Fixed installed type_files/8d82c9181b510.png', gallery: ["/hstech/Fixed installed type_files/8d82c9181b510.png", "/hstech/Fixed installed type_files/1cf31d9cedd49.png", "/hstech/Fixed installed type_files/59c0762fc592a.jpg", "/hstech/Fixed installed type_files/fac6fcd73a683.png"], desc: 'Dewpoint probe.', specs: [{ label: 'Range', value: '-60...+60' }] },
