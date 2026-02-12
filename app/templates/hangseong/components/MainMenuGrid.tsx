@@ -100,14 +100,14 @@ export default function MainMenuGrid() {
                             className={`${item.bgColor} w-full h-[300px] lg:h-auto flex flex-col items-center justify-center text-center p-6 group relative overflow-hidden`}
                         >
                             <Link href={item.href!} className="relative z-10 w-full h-full flex flex-col items-center justify-center">
-                                <h2 className="text-2xl xl:text-3xl font-bold text-white mb-4 whitespace-pre-line leading-tight">
+                                <h2 className="text-xl lg:text-2xl font-bold text-white mb-3 whitespace-pre-line leading-tight">
                                     {item.title}
                                 </h2>
-                                <div className="w-8 h-0.5 bg-white/50 mb-4 group-hover:w-16 transition-all duration-300" />
-                                <p className="text-white/80 text-sm xl:text-base mb-6 max-w-[90%] whitespace-pre-line leading-relaxed line-clamp-3">
+                                <div className="w-8 h-0.5 bg-white/50 mb-3 group-hover:w-16 transition-all duration-300" />
+                                <p className="text-white/80 text-xs lg:text-sm mb-5 max-w-[90%] whitespace-pre-line leading-relaxed line-clamp-3">
                                     {item.desc}
                                 </p>
-                                <span className="inline-flex items-center text-white font-bold text-xs tracking-widest uppercase border border-white/30 px-6 py-2 rounded-full group-hover:bg-white group-hover:text-blue-900 transition-all duration-300">
+                                <span className="inline-flex items-center text-white font-bold text-[10px] lg:text-xs tracking-widest uppercase border border-white/30 px-4 py-1.5 rounded-full group-hover:bg-white group-hover:text-blue-900 transition-all duration-300">
                                     More <ArrowRight className="w-3 h-3 ml-2" />
                                 </span>
                             </Link>
