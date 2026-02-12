@@ -77,16 +77,14 @@ function HangseongLayoutContent({ children }: { children: React.ReactNode }) {
                     }
 
                     item.subs.forEach(sub => {
-                        // 2. Add Sub-category Pages
-                        // For 'products', SKIP the sub-category list page (e.g. HVAC list) to reduce page count
-                        if (item.id !== 'products') {
-                            slides.push({
-                                catId: item.id,
-                                id: sub.id,
-                                label: sub.label,
-                                href: `/templates/hangseong?category=${item.id}&tab=${sub.id}`
-                            })
-                        }
+                        // 2. Add Sub-category Pages (Intro/List pages)
+                        // Enable for ALL categories including products to increase page count and provide section covers
+                        slides.push({
+                            catId: item.id,
+                            id: sub.id,
+                            label: sub.label,
+                            href: `/templates/hangseong?category=${item.id}&tab=${sub.id}`
+                        })
 
                         // If it's a product category, add individual products as slides
                         if (item.id === 'products' && sub.id in DB) {
