@@ -262,7 +262,7 @@ export const DB: Record<string, any[]> = {
             title: 'CORE & PARTS FOR VARIOUS MOTORS',
             subtitle: 'Core     Parts',
             category: 'hvac',
-            image: '/templates/hangseong/images/products/hvac_wide_core.jpg',
+            image: '/templates/hangseong/images/products/hvac_wide_core_v2.jpg',
             desc: '',
             specs: [
                 {
