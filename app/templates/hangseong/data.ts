@@ -318,22 +318,38 @@ export const DB: Record<string, any[]> = {
     other_press: [
         {
             id: 'mount_bracket_01',
-            title: 'Mount Bracket',
-            subtitle: 'Welded Products',
+            title: 'MOUNT BRACKET WELDING PRODUCTS',
+            subtitle: '',
             category: 'other_press',
-            image: 'https://images.unsplash.com/photo-1535970793482-07de93762dc4?auto=format&fit=crop&w=800&q=80',
-            desc: 'Mount adapters for automotive transmissions and interior components. Features vibration absorption and robust connection.',
-            specs: [{ label: 'Feature', value: 'Vibration Absorption' }, { label: 'Usage', value: 'Transmission/Interior' }],
+            image: '/templates/hangseong/images/products/other_wide_mount.jpg',
+            specs: [
+                {
+                    label: 'Purpose',
+                    value: '• Installed on the transmission and internal parts of a vehicle\n• Mount Adapter Bracket'
+                },
+                {
+                    label: 'Feature',
+                    value: '• Mount bracket connecting and installing the main body and internal parts of a vehicle\n• Possessing the function of absorbing vibration while driving a car'
+                }
+            ],
             tags: ['Mounting', 'Welding', 'Vibration Control', 'Transmission']
         },
         {
             id: 'trunk_bonnet_01',
-            title: 'Trunk & Bonnet Parts',
-            subtitle: 'Shock Absorber Brackets',
+            title: 'BRACKETS FOR TRUNKS AND BONNET SHOCK ABSORBERS',
+            subtitle: '',
             category: 'other_press',
-            image: 'https://images.unsplash.com/photo-1502877338535-766e1452684a?auto=format&fit=crop&w=800&q=80',
-            desc: 'Components for vehicle trunk and bonnet shock absorbers. Precision management of floor flatness and rivet hole positioning.',
-            specs: [{ label: 'Usage', value: 'Trunk/Bonnet Shock' }, { label: 'Process', value: 'Precision Press' }],
+            image: '/templates/hangseong/images/products/other_wide_shock.jpg',
+            specs: [
+                {
+                    label: 'Purpose',
+                    value: '• Shock absorber components of automobile trunks, bonnets, etc.'
+                },
+                {
+                    label: 'Feature',
+                    value: '• Producing various types of products depending on car models\n• Focusing on managing the floor-framing plan of the bracket attached part, the angle of a bracket and the position of the hole of a rivet.'
+                }
+            ],
             tags: ['Shock Absorber', 'Trunk', 'Bonnet', 'Precision Press']
         }
     ],
