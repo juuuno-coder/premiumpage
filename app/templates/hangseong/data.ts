@@ -256,16 +256,24 @@ export const DB: Record<string, any[]> = {
         },
         {
             id: 'hvac_core_04',
-            title: 'Core & Parts for Various Motors',
+            title: 'CORE & PARTS FOR VARIOUS MOTORS',
             subtitle: 'Rotor/Stator & Small Parts',
             category: 'hvac',
-            // Using Bracket image temporarily (Waiting for Core image)
-            image: '/templates/hangseong/images/products/hvac_wide_bracket.jpg',
-            desc: 'Cores and small precision parts for automotive DC motors and hybrid vehicle BLDC motors. Includes rotor/stator covers produced via custom order.',
+            image: '/templates/hangseong/images/products/hvac_wide_core.jpg',
+            desc: '',
             specs: [
-                { label: 'Purpose', value: 'Automobile DC-MOTOR core\nCore for BLDC motors (Hybrid Vehicles)\nBase, brush holder, oil pan' },
-                { label: 'Core O.D', value: 'Ø44, Ø50, Ø55, Ø64, Ø74 mm' },
-                { label: 'Feature', value: 'Rotor/stator cover custom order\nSmall precision parts custom order' }
+                {
+                    label: 'Purpose',
+                    value: '• Automobile DC-MOTOR core\n• Core for BLDC motors (Hybrid Vehicles)\n• Base, brush holder, oil pan'
+                },
+                {
+                    label: 'Core O.D',
+                    value: 'Ø44, Ø50, Ø55, Ø64, Ø74 mm'
+                },
+                {
+                    label: 'Feature',
+                    value: '• Rotor/stator cover custom order\n• Small precision parts custom order'
+                }
             ],
             tags: ['Core', 'BLDC', 'Hybrid Vehicle', 'Rotor', 'Stator']
         }
