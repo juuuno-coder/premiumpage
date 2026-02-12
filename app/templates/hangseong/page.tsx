@@ -21,6 +21,7 @@ import EquipmentView from './components/EquipmentView'
 import ProcessView from './components/ProcessView'
 import CertificationView from './components/CertificationView'
 import MainMenuGrid from './components/MainMenuGrid'
+import ProductIntro from './components/ProductIntro'
 
 // Premium UI Components
 import { Spotlight } from './components/ui/Spotlight'
@@ -138,73 +139,12 @@ function HangseongContent() {
                 breadcrumb={{ label: 'List', href: `/templates/hangseong?category=${activeCategory || activeTab}&tab=${activeTab}` }}
             >
                 <div className="py-8 px-4 md:px-12 max-w-[1400px] mx-auto min-h-[80vh] flex flex-col justify-start pt-20">
-                    <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
-                        {/* Top: Wide Image Display */}
-                        <div className="lg:col-span-12 space-y-6">
-                            <motion.div
-                                initial={{ opacity: 0, scale: 0.95 }}
-                                animate={{ opacity: 1, scale: 1 }}
-                                className="w-full relative dark:bg-white/5 bg-white rounded-3xl overflow-hidden border dark:border-white/5 border-neutral-200 flex items-center justify-center shadow-lg"
-                            >
-                                <div className="relative w-full aspect-[2.8/1] min-h-[300px]">
-                                    <Image
-                                        src={activeImg || selectedProduct.image}
-                                        fill
-                                        className="object-contain p-4 md:p-8 transition-all duration-500"
-                                        alt={selectedProduct.title}
-                                        priority
-                                    />
-                                </div>
-                            </motion.div>
-                        </div>
-
-                        {/* Bottom: Info & Specs */}
-                        <div className="lg:col-span-12 space-y-10 px-2 lg:px-4">
-                            <motion.div
-                                initial={{ opacity: 0, y: 20 }}
-                                animate={{ opacity: 1, y: 0 }}
-                                transition={{ delay: 0.1 }}
-                            >
-                                <div className="mb-8 border-b border-slate-200 dark:border-white/10 pb-6">
-                                    <h2 className="text-3xl md:text-5xl font-black dark:text-white text-slate-900 mb-3 leading-tight tracking-tight">{selectedProduct.title}</h2>
-                                    <p className="text-xl md:text-2xl text-blue-600 dark:text-blue-400 font-bold tracking-wide">{selectedProduct.subtitle}</p>
-                                </div>
-
-                                <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-stretch">
-                                    {/* Description */}
-                                    <div className="lg:col-span-5 prose dark:prose-invert max-w-none text-lg leading-relaxed text-slate-600 dark:text-slate-300 bg-slate-50 dark:bg-slate-900/50 p-8 rounded-3xl border border-slate-200 dark:border-white/5 shadow-sm h-full flex flex-col">
-                                        <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-4">Product Overview</h3>
-                                        <p className="whitespace-pre-line">{selectedProduct.desc}</p>
-
-                                        <div className="flex flex-wrap gap-2 mt-auto pt-8">
-                                            {selectedProduct.tags?.map((tag: string, i: number) => (
-                                                <span key={i} className="px-4 py-2 bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 rounded-full text-sm font-bold border border-slate-200 dark:border-slate-700">
-                                                    #{tag}
-                                                </span>
-                                            ))}
-                                        </div>
-                                    </div>
-
-                                    {/* Specs Table */}
-                                    <div className="lg:col-span-7 space-y-6 bg-slate-50 dark:bg-slate-900/50 p-8 rounded-3xl border border-slate-200 dark:border-white/5 shadow-sm h-full flex flex-col">
-                                        <h3 className="text-xl font-bold flex items-center gap-2 mb-6 dark:text-white text-slate-900">
-                                            <FileText className="text-blue-500" /> Technical Specifications
-                                        </h3>
-                                        <div className="grid grid-cols-1 gap-6">
-                                            {selectedProduct.specs?.map((s: any, i: number) => (
-                                                <div key={i} className="grid grid-cols-1 md:grid-cols-12 gap-4 border-b border-slate-200 dark:border-white/5 pb-4 last:border-0 last:pb-0 group items-start">
-                                                    <span className="md:col-span-4 text-sm font-bold text-slate-500 uppercase tracking-wider pt-1">{s.label}</span>
-                                                    <span className="md:col-span-8 font-mono text-base lg:text-lg font-medium dark:text-slate-200 text-slate-900 whitespace-pre-line leading-relaxed">
-                                                        {s.value}
-                                                    </span>
-                                                </div>
-                                            ))}
-                                        </div>
-                                    </div>
-                                </div>
-                            </motion.div>
-                        </div>
-                    </div>
+                    <ProductIntro
+                        title={selectedProduct.title}
+                        subtitle={selectedProduct.subtitle}
+                        image={activeImg || selectedProduct.image}
+                        specs={selectedProduct.specs}
+                    />
                 </div>
             </CatalogPage>
         )

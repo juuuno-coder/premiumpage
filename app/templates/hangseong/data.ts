@@ -201,17 +201,21 @@ export const DB: Record<string, any[]> = {
     hvac: [
         {
             id: 'hvac_case_01',
-            title: "Fitting Type Motor Case Ass'y",
+            title: "FIT-TYPE MOTOR CASE ASM",
             subtitle: 'Case, Cover & Magnet Asm',
             category: 'hvac',
-            // Updated to 1000px wide JPG (New Upload)
+            // Updated to 1000px wide JPG (Correct Image)
             image: '/templates/hangseong/images/products/hvac_wide_case.jpg',
-            desc: 'Numerical fitting type motor case assembly composed of case, cover, and magnet. Manufactured by bending boards 360° with a tooth form structure for interference fit, preventing spring-back and guaranteeing 0.1 level roundness.',
+            desc: '', // Description is not used in the new layout
             specs: [
-                { label: 'Purpose', value: 'Automobile DC-MOTOR Case (Housing)\nDC-MOTOR case for home appliances' },
-                { label: 'Out Diameter', value: 'Ø50 ~ 76 mm' },
-                { label: 'Length', value: '45.5 ~ 84 mm' },
-                { label: 'Feature', value: '360° board bending\nTooth form structure interference fit\nRoundness level 0.1 guaranteed' }
+                {
+                    label: 'Purpose',
+                    value: '• Automobile DC-MOTOR Case (Housing)\n• DC-MOTOR case for home appliances\n• Out Diameter : Ø50 ~ 76 mm\n• Length : 45.5 ~ 84 mm'
+                },
+                {
+                    label: 'Feature',
+                    value: '• Cases are manufactured by bending boards 360°.\n  As a spring back phenomenon is prevented by connecting both ends easily using interference fit by applying a tooth form structure, the roundness level of 0.1 is guaranteed.'
+                }
             ],
             tags: ['Automotive', 'EV Motor', 'Fitting Type', 'Housing']
         },
