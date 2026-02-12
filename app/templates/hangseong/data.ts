@@ -221,16 +221,20 @@ export const DB: Record<string, any[]> = {
         },
         {
             id: 'hvac_cover_02',
-            title: "Rear & Front Cover Ass'y",
-            subtitle: 'For Various Motors',
+            title: "REAR & FRONT COVER ASM FOR VARIOUS MOTORS",
+            subtitle: 'Front Cover & Rear Cover',
             category: 'hvac',
-            // Using Case image temporarily (Waiting for Cover image)
-            image: '/templates/hangseong/images/products/hvac_wide_case.jpg',
-            desc: 'Precision assembled rear and front covers for automotive DC motors. Ensures concentricity of bolt and bearing assembly parts. Support for plating and painting custom orders.',
+            image: '/templates/hangseong/images/products/hvac_wide_cover.jpg',
+            desc: '',
             specs: [
-                { label: 'Purpose', value: 'Automobile DC-MOTOR Rear & Front Cover\nDC-MOTOR Cover for Home Appliances' },
-                { label: 'O.D', value: 'Ø61 ~ 76 mm' },
-                { label: 'Feature', value: 'Concentricity guarantee\nProgressive work process\nPlating/Painting custom order available' }
+                {
+                    label: 'Purpose',
+                    value: '• Automobile DC-MOTOR Rear & Front Cover\n• DC-MOTOR Cover for Home Appliances\n• O.D : Ø 61 ~ 76mm'
+                },
+                {
+                    label: 'Feature',
+                    value: '• Guaranteeing concentricity of bolt and bearing assembly parts for attaching various automobile DC-MOTOR rear covers (plating and painting → custom order)\n• Manufacturing cover assemblies for DC-Motor which is worked progressively'
+                }
             ],
             tags: ['DC Motor', 'Cover Assembly', 'Precision', 'Custom Order']
         },
