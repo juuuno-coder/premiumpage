@@ -280,22 +280,38 @@ export const DB: Record<string, any[]> = {
     all_in_one: [
         {
             id: 'cooling_case_01',
-            title: 'Drawing Motor Case Ass\'y',
-            subtitle: 'Seamless Drawing',
+            title: 'DRAWING MOTOR CASE ASM',
+            subtitle: 'All-in-one condenser DC motor & blower DC Motor',
             category: 'all_in_one',
-            image: 'https://images.unsplash.com/photo-1596496181938-958b4da48a52?auto=format&fit=crop&w=800&q=80',
-            desc: 'Case for integrated condenser and blower DC motors. Produced via seamless drawing and progressive processing to prevent cracks and ensure precision.',
-            specs: [{ label: 'Process', value: 'Seamless Drawing' }, { label: 'Usage', value: 'Condenser/Blower' }],
+            image: '/templates/hangseong/images/products/cooling_wide_case.jpg',
+            specs: [
+                {
+                    label: 'Purpose',
+                    value: '• Automobile condenser DC-MOTOR case & blower DC motor\n• Out Diameter : Ø 98 ~ 82 mm, Ø 30~52㎜\n• Length : 36 ~ 69 mm'
+                },
+                {
+                    label: 'Feature',
+                    value: '• It is a process of making jointless container-shaped products. It reduces, as much as possible, progressive drawing processes using the property of metal and the character of a press process to the maximum and the number of drawings without making wrinkles and cracks.'
+                }
+            ],
             tags: ['Cooling', 'Drawing Process', 'Seamless', 'Condenser']
         },
         {
             id: 'cooling_bracket_01',
-            title: 'Support Bracket',
-            subtitle: 'Motor Support',
+            title: 'SUPPORT BRACKET FOR VARIOUS MOTORS',
+            subtitle: 'Bracket Parts',
             category: 'all_in_one',
-            image: 'https://images.unsplash.com/photo-1530971013997-e06bb52a2372?auto=format&fit=crop&w=800&q=80',
-            desc: 'Brackets for supporting motor cases and external mounting. Strictly managed bolt hole position and concentricity.',
-            specs: [{ label: 'Function', value: 'Support & Mounting' }, { label: 'Quality', value: 'High Concentricity' }],
+            image: '/templates/hangseong/images/products/cooling_wide_bracket.jpg',
+            specs: [
+                {
+                    label: 'Purpose',
+                    value: '• It is used to attach a motor case to a counterpart while supporting it.'
+                },
+                {
+                    label: 'Feature',
+                    value: '• Producing various types of brackets depending on motor types\n• Focusing on managing the position of a bolt hole and concentricity of a bracket'
+                }
+            ],
             tags: ['Support', 'Mounting', 'Precision', 'High Concentricity']
         }
     ],
