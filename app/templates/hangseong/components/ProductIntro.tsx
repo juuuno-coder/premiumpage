@@ -17,12 +17,12 @@ export default function ProductIntro({ title, subtitle, image, specs }: ProductI
         <div className="w-full max-w-6xl mx-auto p-4 bg-white dark:bg-slate-900">
             {/* Image Section (Top as requested) */}
             <div className="w-full mb-12 flex justify-center">
-                <div className="relative w-full aspect-[2.8/1] min-h-[250px] bg-white dark:bg-slate-800/50 rounded-2xl overflow-hidden">
+                <div className="relative w-full aspect-[16/10] md:aspect-[2.8/1] min-h-[250px] bg-white dark:bg-slate-800/50 rounded-2xl overflow-hidden">
                     <Image
                         src={image}
                         alt={title}
                         fill
-                        className="object-contain p-4"
+                        className="object-contain p-2 md:p-4"
                         priority
                     />
                 </div>
