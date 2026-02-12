@@ -201,43 +201,61 @@ export const DB: Record<string, any[]> = {
     hvac: [
         {
             id: 'hvac_case_01',
-            title: 'Fitting Type Motor Case Ass\'y',
+            title: "Fitting Type Motor Case Ass'y",
             subtitle: 'Case, Cover & Magnet Asm',
             category: 'hvac',
-            image: 'https://images.unsplash.com/photo-1565514020176-6c2235c887c0?auto=format&fit=crop&w=800&q=80',
-            desc: 'Numerical fitting type motor case assembly including case, cover, and magnet. Optimized for automated assembly lines.',
-            specs: [{ label: 'Type', value: 'Fitting Type' }, { label: 'Components', value: 'Case, Cover, Magnet' }],
-            tags: ['Automotive', 'EV Motor', 'Fitting Type', 'Assembly Line']
+            image: '/templates/hangseong/images/products/hvac_case_01.png',
+            desc: 'Numerical fitting type motor case assembly composed of case, cover, and magnet. Manufactured by bending boards 360° with a tooth form structure for interference fit, preventing spring-back and guaranteeing 0.1 level roundness.',
+            specs: [
+                { label: 'Purpose', value: 'Automobile DC-MOTOR Case (Housing)\nDC-MOTOR case for home appliances' },
+                { label: 'Out Diameter', value: 'Ø50 ~ 76 mm' },
+                { label: 'Length', value: '45.5 ~ 84 mm' },
+                { label: 'Feature', value: '360° board bending\nTooth form structure interference fit\nRoundness level 0.1 guaranteed' }
+            ],
+            tags: ['Automotive', 'EV Motor', 'Fitting Type', 'Housing']
         },
         {
-            id: 'hvac_cover_01',
-            title: 'Rear & Front Cover Ass\'y',
+            id: 'hvac_cover_02',
+            title: "Rear & Front Cover Ass'y",
             subtitle: 'For Various Motors',
             category: 'hvac',
-            image: 'https://images.unsplash.com/photo-1589793463308-65868f6d2316?auto=format&fit=crop&w=800&q=80',
-            desc: 'Precision assembled rear and front covers for automotive motors. Ensures dust protection and structural integrity.',
-            specs: [{ label: 'Process', value: 'Assembly' }, { label: 'Application', value: 'DC Motors' }],
-            tags: ['DC Motor', 'Protection', 'Cover Assembly', 'Precision']
+            image: '/templates/hangseong/images/products/hvac_cover_02.png',
+            desc: 'Precision assembled rear and front covers for automotive DC motors. Ensures concentricity of bolt and bearing assembly parts. Support for plating and painting custom orders.',
+            specs: [
+                { label: 'Purpose', value: 'Automobile DC-MOTOR Rear & Front Cover\nDC-MOTOR Cover for Home Appliances' },
+                { label: 'O.D', value: 'Ø61 ~ 76 mm' },
+                { label: 'Feature', value: 'Concentricity guarantee\nProgressive work process\nPlating/Painting custom order available' }
+            ],
+            tags: ['DC Motor', 'Cover Assembly', 'Precision', 'Custom Order']
         },
         {
-            id: 'hvac_bracket_01',
-            title: 'Motor Case with Bracket',
-            subtitle: 'DC-Motor Bracket Asm',
+            id: 'hvac_bracket_03',
+            title: 'Motor Case Ass\'y (With Bracket)',
+            subtitle: 'With Separable Bracket',
             category: 'hvac',
-            image: 'https://images.unsplash.com/photo-1616401784845-180882ba9ba8?auto=format&fit=crop&w=800&q=80',
-            desc: 'DC-Motor bracket assembly for automobiles and home appliances. Plate type motor mounting bracket attached using specialized jigs.',
-            specs: [{ label: 'O.D', value: 'Φ56.5 ~ 76mm' }, { label: 'Usage', value: 'Auto & Appliance' }],
-            tags: ['Mounting', 'Bracket', 'Automotive', 'Appliance']
+            image: '/templates/hangseong/images/products/hvac_bracket_03.png',
+            desc: 'DC-Motor bracket assembly for plate-type motor attachment. Uses a fixture exclusive for position fixing to attach brackets to separable motors. Supports plating and painting custom orders.',
+            specs: [
+                { label: 'Purpose', value: 'Automobile DC-Motor bracket ASM\nDC-Motor bracket ASM for home appliances' },
+                { label: 'DC Diameter', value: 'Ø56.5 ~ 76 mm (Case Only)' },
+                { label: 'Length', value: '70 ~ 84 mm (Case Only)' },
+                { label: 'Feature', value: 'Plate-type motor attachment\nExclusive fixture for position fixing\nPlating/Painting custom order available' }
+            ],
+            tags: ['Bracket', 'Mounting', 'Assembly', 'Automotive']
         },
         {
-            id: 'hvac_core_01',
-            title: 'Motor Core & Parts',
-            subtitle: 'Rotor/Stator Components',
+            id: 'hvac_core_04',
+            title: 'Core & Parts for Various Motors',
+            subtitle: 'Rotor/Stator & Small Parts',
             category: 'hvac',
-            image: 'https://images.unsplash.com/photo-1558346490-a72e53ae2d4f?auto=format&fit=crop&w=800&q=80',
-            desc: 'Cores for automotive DC motors and hybrid BLDC motors. Includes rotor/stator covers and small precision parts.',
-            specs: [{ label: 'O.D', value: 'Φ44 ~ 74mm' }, { label: 'Type', value: 'DC & BLDC' }],
-            tags: ['Core', 'Rotor', 'Stator', 'BLDC Motor', 'Hybrid']
+            image: '/templates/hangseong/images/products/hvac_core_04.png',
+            desc: 'Cores and small precision parts for automotive DC motors and hybrid vehicle BLDC motors. Includes rotor/stator covers produced via custom order.',
+            specs: [
+                { label: 'Purpose', value: 'Automobile DC-MOTOR core\nCore for BLDC motors (Hybrid Vehicles)\nBase, brush holder, oil pan' },
+                { label: 'Core O.D', value: 'Ø44, Ø50, Ø55, Ø64, Ø74 mm' },
+                { label: 'Feature', value: 'Rotor/stator cover custom order\nSmall precision parts custom order' }
+            ],
+            tags: ['Core', 'BLDC', 'Hybrid Vehicle', 'Rotor', 'Stator']
         }
     ],
     all_in_one: [

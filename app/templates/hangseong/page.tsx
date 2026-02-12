@@ -176,11 +176,13 @@ function HangseongContent() {
                                     <h3 className="text-lg font-bold flex items-center gap-2 mb-4 dark:text-white text-slate-900">
                                         <FileText className="text-blue-500" /> Technical Specifications
                                     </h3>
-                                    <div className="grid grid-cols-1 gap-4">
+                                    <div className="grid grid-cols-1 gap-6">
                                         {selectedProduct.specs?.map((s: any, i: number) => (
-                                            <div key={i} className="flex justify-between items-center border-b border-slate-200 dark:border-white/5 pb-2 last:border-0 last:pb-0 group">
-                                                <span className="text-sm font-bold text-slate-400 uppercase tracking-wider">{s.label}</span>
-                                                <span className="font-mono text-lg font-medium dark:text-slate-200 text-slate-800 group-hover:text-blue-500 transition-colors">{s.value}</span>
+                                            <div key={i} className="grid grid-cols-1 md:grid-cols-12 gap-2 border-b border-slate-200 dark:border-white/5 pb-4 last:border-0 last:pb-0 group items-start">
+                                                <span className="md:col-span-4 text-sm font-bold text-slate-400 uppercase tracking-wider pt-1">{s.label}</span>
+                                                <span className="md:col-span-8 font-mono text-base lg:text-lg font-medium dark:text-slate-200 text-slate-800 group-hover:text-blue-500 transition-colors whitespace-pre-line leading-relaxed">
+                                                    {s.value}
+                                                </span>
                                             </div>
                                         ))}
                                     </div>
