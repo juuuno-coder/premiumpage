@@ -21,7 +21,7 @@ const MENU_ITEMS = [
     {
         id: 'img_about',
         type: 'image',
-        image: '/templates/hangseong/images/hvac_products.png', // Temporary
+        image: '/templates/hangseong/images/background_01.png',
         alt: 'About Hangseong'
     },
     {
@@ -35,7 +35,7 @@ const MENU_ITEMS = [
     {
         id: 'img_process',
         type: 'image',
-        image: 'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=800&q=80',
+        image: '/templates/hangseong/images/background_02.png',
         alt: 'Manufacturing'
     },
     {
@@ -51,7 +51,7 @@ const MENU_ITEMS = [
     {
         id: 'img_reliability',
         type: 'image',
-        image: 'https://images.unsplash.com/photo-1581093458791-9f3c3900df4b?auto=format&fit=crop&w=800&q=80',
+        image: '/templates/hangseong/images/background_03.png',
         alt: 'Reliability Lab'
     },
     {
@@ -65,7 +65,7 @@ const MENU_ITEMS = [
     {
         id: 'img_products',
         type: 'image',
-        image: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=800&q=80',
+        image: '/templates/hangseong/images/background_04.png',
         alt: 'Factory View'
     },
     {
@@ -79,7 +79,7 @@ const MENU_ITEMS = [
     {
         id: 'img_equipment',
         type: 'image',
-        image: 'https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?auto=format&fit=crop&w=800&q=80',
+        image: '/templates/hangseong/images/background_05.png',
         alt: 'Equipment'
     }
 ]
