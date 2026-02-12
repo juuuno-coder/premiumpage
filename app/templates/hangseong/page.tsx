@@ -170,13 +170,13 @@ function HangseongContent() {
                                     <p className="text-xl md:text-2xl text-blue-600 dark:text-blue-400 font-bold tracking-wide">{selectedProduct.subtitle}</p>
                                 </div>
 
-                                <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                                <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-stretch">
                                     {/* Description */}
-                                    <div className="prose dark:prose-invert max-w-none text-lg leading-relaxed text-slate-600 dark:text-slate-300">
+                                    <div className="prose dark:prose-invert max-w-none text-lg leading-relaxed text-slate-600 dark:text-slate-300 bg-slate-50 dark:bg-slate-900/50 p-8 rounded-3xl border border-slate-200 dark:border-white/5 shadow-sm h-full flex flex-col">
                                         <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-4">Product Overview</h3>
                                         <p className="whitespace-pre-line">{selectedProduct.desc}</p>
 
-                                        <div className="flex flex-wrap gap-2 mt-8">
+                                        <div className="flex flex-wrap gap-2 mt-auto pt-8">
                                             {selectedProduct.tags?.map((tag: string, i: number) => (
                                                 <span key={i} className="px-4 py-2 bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 rounded-full text-sm font-bold border border-slate-200 dark:border-slate-700">
                                                     #{tag}
@@ -186,7 +186,7 @@ function HangseongContent() {
                                     </div>
 
                                     {/* Specs Table */}
-                                    <div className="space-y-6 bg-slate-50 dark:bg-slate-900/50 p-8 rounded-3xl border border-slate-200 dark:border-white/5 shadow-sm">
+                                    <div className="space-y-6 bg-slate-50 dark:bg-slate-900/50 p-8 rounded-3xl border border-slate-200 dark:border-white/5 shadow-sm h-full flex flex-col">
                                         <h3 className="text-xl font-bold flex items-center gap-2 mb-6 dark:text-white text-slate-900">
                                             <FileText className="text-blue-500" /> Technical Specifications
                                         </h3>
