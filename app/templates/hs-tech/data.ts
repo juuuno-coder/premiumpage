@@ -19,8 +19,8 @@ export interface BrandItem {
     items: MenuItem[];
 }
 
-export const ABOUT_IMG = '/hstech/information_files/c391896046650.jpg' // Updated
-export const ABOUT_IMG_2 = '/hstech/information_files/054fc84ad679e.jpg' // Updated
+export const ABOUT_IMG = '' // Updated
+export const ABOUT_IMG_2 = '' // Updated
 
 // Brand Structure Definition for Top-Level Navigation
 export const BRANDS = {
@@ -52,18 +52,18 @@ export const BRANDS = {
 
 // Category Information - Updated with existing images
 export const CATEGORY_INFO: Record<string, any> = {
-    humidity: { title: "Humidity", desc: "Best-in-class humidity instruments.", images: ['/hstech/HMT330_files/cffbaca7b6b82.jpg'] },
-    dewpoint: { title: "Dewpoint", desc: "Reliable dewpoint measurement.", images: ['/hstech/DMT340_files/41afb17e01092.jpg'] },
-    co2: { title: "Carbon Dioxide", desc: "Accurate CO2 monitoring.", images: ['/hstech/GMP251_files/a7ce17262895c.png'] },
-    oil: { title: "Moisture in Oil", desc: "Transformer oil monitoring.", images: ['/hstech/MHT410_files/c49c396f6025a.png'] },
-    barometer: { title: "Barometric Pressure", desc: "Digital barometers.", images: ['/hstech/Barometer_files/0a866df8da84d.png'] },
-    weather: { title: "Weather", desc: "Meteorological sensors.", images: ['/hstech/Weather_files/c0bb8f87ce4d3.png'] },
-    h2o2: { title: "H2O2", desc: "Bio-decontamination monitoring.", images: ['/hstech/H2O2 sensor_files/387404d86d157.png'] },
+    humidity: { title: "Humidity", desc: "Best-in-class humidity instruments.", images: [] },
+    dewpoint: { title: "Dewpoint", desc: "Reliable dewpoint measurement.", images: [] },
+    co2: { title: "Carbon Dioxide", desc: "Accurate CO2 monitoring.", images: [] },
+    oil: { title: "Moisture in Oil", desc: "Transformer oil monitoring.", images: [] },
+    barometer: { title: "Barometric Pressure", desc: "Digital barometers.", images: [] },
+    weather: { title: "Weather", desc: "Meteorological sensors.", images: [] },
+    h2o2: { title: "H2O2", desc: "Bio-decontamination monitoring.", images: [] },
 
     // Brands
     setra: { title: "SETRA Systems", desc: "Differential & Industrial Pressure.", images: ['/hstech/HS-TECH_files/2ddb0a75a50e4.jpg'] },
-    jumo: { title: "JUMO", desc: "Liquid Analysis & Control.", images: ['/hstech/Control & Recording_files/6f9b65b068db1.jpg'] },
-    knick: { title: "KNICK", desc: "Process Analysis.", images: ['/templates/hs-tech/images/brands/setra_PLACEHOLDER트랜스미터_files/5fa3377dc5c8d.png'] }
+    jumo: { title: "JUMO", desc: "Liquid Analysis & Control.", images: [] },
+    knick: { title: "KNICK", desc: "Process Analysis.", images: [] }
 }
 
 // Sub-Category Definitions
@@ -573,72 +573,72 @@ export const DB: Record<string, any[]> = {
         },
     ],
     dewpoint: [
-        { id: 'dmp1', title: 'DMP1', subtitle: 'Probe', category: 'fixed', image: '/hstech/Fixed installed type_files/8d82c9181b510.png', gallery: ["/hstech/Fixed installed type_files/8d82c9181b510.png", "/hstech/Fixed installed type_files/1cf31d9cedd49.png", "/hstech/Fixed installed type_files/59c0762fc592a.jpg", "/hstech/Fixed installed type_files/fac6fcd73a683.png"], desc: 'Dewpoint probe.', specs: [{ label: 'Range', value: '-60...+60' }] },
-        { id: 'dmt340', title: 'DMT340', subtitle: 'Condensation', category: 'fixed', image: '/hstech/DMT340_files/d00a6a6b07790.jpg', gallery: ["/hstech/DMT340_files/d00a6a6b07790.jpg", "/hstech/DMT340_files/41afb17e01092.jpg"], desc: 'For condensation.', specs: [{ label: 'Heat', value: 'Yes' }] },
-        { id: 'dmt345', title: 'DMT345', subtitle: 'High Temp', category: 'fixed', image: '/hstech/DMT345_346_files/ae969438460ed.png', gallery: ["/hstech/DMT345_346_files/ae969438460ed.png", "/hstech/DMT345_346_files/10441c47a09dd.png"], desc: 'High temp.', specs: [{ label: 'T', value: '180C' }] },
-        { id: 'dmt152', title: 'DMT152', subtitle: 'Low Dewpoint', category: 'module', image: '/hstech/DMT152_files/0f35966bd5477.jpg', gallery: ["/hstech/DMT152_files/0f35966bd5477.jpg", "/hstech/DMT152_files/de0a57ad75f01.jpg"], desc: 'Low dewpoint.', specs: [{ label: 'Range', value: '-80' }] },
-        { id: 'dmt143', title: 'DMT143', subtitle: 'OEM', category: 'module', image: '/hstech/DMT143_files/ab716f1764e30.jpg', gallery: ["/hstech/DMT143_files/ab716f1764e30.jpg", "/hstech/DMT143_files/c34db2bf240d5.jpg"], desc: 'OEM module.', specs: [{ label: 'Size', value: 'Small' }] },
-        { id: 'dmt143l', title: 'DMT143L', subtitle: 'Long Probe', category: 'module', image: '/hstech/DMT143L_files/ab716f1764e30.jpg', gallery: ["/hstech/DMT143L_files/ab716f1764e30.jpg", "/hstech/DMT143L_files/c34db2bf240d5.jpg"], desc: 'Long probe.', specs: [{ label: 'Probe', value: 'Long' }] },
-        { id: 'dpt146', title: 'DPT146', subtitle: 'Td + P', category: 'module', image: '/hstech/DPT146_files/05f58fd7c537f.jpg', gallery: ["/hstech/DPT146_files/05f58fd7c537f.jpg", "/hstech/DPT146_files/5a4a0bfe8938d.jpg"], desc: 'Dewpoint and Pressure.', specs: [{ label: 'Dual', value: 'Yes' }] },
-        { id: 'dpt145', title: 'DPT145', subtitle: 'SF6', category: 'module', image: '/hstech/DPT145_files/bf2d78586f3ab.png', gallery: ["/hstech/DPT145_files/bf2d78586f3ab.png", "/hstech/DPT145_files/be4cdd8761747.png"], desc: 'SF6 monitoring.', specs: [{ label: 'Gas', value: 'SF6' }] },
-        { id: 'indigo80_dmp80', title: 'Indigo80', subtitle: 'DMP80', category: 'portable', image: '/hstech/Indigo80+HMP80_files/00483e18767ab.png', gallery: ["/hstech/Indigo80+HMP80_files/00483e18767ab.png", "/hstech/Indigo80+HMP80_files/c1358d36f4818.jpg", "/hstech/Indigo80+HMP80_files/05563b2ff0eab.jpg", "/hstech/Indigo80+HMP80_files/2a7da2aa2c468.jpg"], desc: 'Portable set.', specs: [{ label: 'New', value: 'Yes' }] },
-        { id: 'dm70', title: 'DM70', subtitle: 'Handheld', category: 'portable', image: '/hstech/DM70_files/8b02981cef6e7.png', gallery: ["/hstech/DM70_files/8b02981cef6e7.png", "/hstech/DM70_files/dd502ed8d2267.png"], desc: 'Standard handheld.', specs: [{ label: 'Acc', value: '2C' }] },
-        { id: 'dss70a', title: 'DSS70A', subtitle: 'Sampling', category: 'portable', image: '/hstech/DSS70A_files/55d32f1efd620.png', gallery: ["/hstech/DSS70A_files/55d32f1efd620.png", "/hstech/DSS70A_files/45afe13a54723.png"], desc: 'Sampling cell.', specs: [{ label: 'use', value: 'DM70' }] }
+        { id: 'dmp1', title: 'DMP1', subtitle: 'Probe', category: 'fixed', image: '', gallery: [], desc: 'Dewpoint probe.', specs: [{ label: 'Range', value: '-60...+60' }] },
+        { id: 'dmt340', title: 'DMT340', subtitle: 'Condensation', category: 'fixed', image: '', gallery: [], desc: 'For condensation.', specs: [{ label: 'Heat', value: 'Yes' }] },
+        { id: 'dmt345', title: 'DMT345', subtitle: 'High Temp', category: 'fixed', image: '', gallery: [], desc: 'High temp.', specs: [{ label: 'T', value: '180C' }] },
+        { id: 'dmt152', title: 'DMT152', subtitle: 'Low Dewpoint', category: 'module', image: '', gallery: [], desc: 'Low dewpoint.', specs: [{ label: 'Range', value: '-80' }] },
+        { id: 'dmt143', title: 'DMT143', subtitle: 'OEM', category: 'module', image: '', gallery: [], desc: 'OEM module.', specs: [{ label: 'Size', value: 'Small' }] },
+        { id: 'dmt143l', title: 'DMT143L', subtitle: 'Long Probe', category: 'module', image: '', gallery: [], desc: 'Long probe.', specs: [{ label: 'Probe', value: 'Long' }] },
+        { id: 'dpt146', title: 'DPT146', subtitle: 'Td + P', category: 'module', image: '', gallery: [], desc: 'Dewpoint and Pressure.', specs: [{ label: 'Dual', value: 'Yes' }] },
+        { id: 'dpt145', title: 'DPT145', subtitle: 'SF6', category: 'module', image: '', gallery: [], desc: 'SF6 monitoring.', specs: [{ label: 'Gas', value: 'SF6' }] },
+        { id: 'indigo80_dmp80', title: 'Indigo80', subtitle: 'DMP80', category: 'portable', image: '', gallery: [], desc: 'Portable set.', specs: [{ label: 'New', value: 'Yes' }] },
+        { id: 'dm70', title: 'DM70', subtitle: 'Handheld', category: 'portable', image: '', gallery: [], desc: 'Standard handheld.', specs: [{ label: 'Acc', value: '2C' }] },
+        { id: 'dss70a', title: 'DSS70A', subtitle: 'Sampling', category: 'portable', image: '', gallery: [], desc: 'Sampling cell.', specs: [{ label: 'use', value: 'DM70' }] }
     ],
     co2: [
-        { id: 'gmw90', title: 'GMW90', subtitle: 'Wall', category: 'transmitter', image: '/hstech/GMW90_files/578bd0532de82.png', gallery: ["/hstech/GMW90_files/578bd0532de82.png", "/hstech/GMW90_files/39d53e2ee7d40.png"], desc: 'CO2+T+RH.', specs: [{ label: 'Param', value: '3' }] },
-        { id: 'gmw80', title: 'GMW80', subtitle: 'Standard', category: 'transmitter', image: '/hstech/GMW80_files/44a4824984296.png', gallery: ["/hstech/GMW80_files/44a4824984296.png", "/hstech/GMW80_files/28fdc25e3be6c.png"], desc: 'CO2 only.', specs: [{ label: 'Cost', value: 'Low' }] },
-        { id: 'gmd110', title: 'GMD110', subtitle: 'Duct', category: 'transmitter', image: '/hstech/GMD110_files/3b7a3de8bace1.png', gallery: ["/hstech/GMD110_files/3b7a3de8bace1.png", "/hstech/GMD110_files/69e2511f64be7.jpg", "/hstech/GMD110_files/706edef97b7d7.jpg"], desc: 'Duct mount.', specs: [{ label: 'Install', value: 'Duct' }] },
-        { id: 'gmp343', title: 'GMP343', subtitle: 'Eco', category: 'probe', image: '/hstech/GMP343_files/258b7fda6de74.png', gallery: ["/hstech/GMP343_files/258b7fda6de74.png", "/hstech/GMP343_files/f5a82cfb2e232.png"], desc: 'Flow through.', specs: [{ label: 'Flow', value: 'Yes' }] },
-        { id: 'gmp251', title: 'GMP251', subtitle: 'High range', category: 'probe', image: '/hstech/GMP251_files/a7ce17262895c.png', gallery: ["/hstech/GMP251_files/a7ce17262895c.png", "/hstech/GMP251_files/3581001bd127c.png"], desc: '% level.', specs: [{ label: 'Range', value: '%' }] },
-        { id: 'gmp231', title: 'GMP231', subtitle: 'Incubator', category: 'probe', image: '/hstech/GMP231_files/44a2e51ae782c.png', gallery: ["/hstech/GMP231_files/44a2e51ae782c.png", "/hstech/GMP231_files/bb1e49a2e2992.png"], desc: 'Incubators.', specs: [{ label: 'Heat', value: '180' }] },
-        { id: 'indigo80_gmp252', title: 'Indigo80', subtitle: 'GMP252', category: 'handheld', image: '/hstech/Indigo80+HMP80_files/00483e18767ab.png', gallery: ["/hstech/Indigo80+HMP80_files/00483e18767ab.png", "/hstech/Indigo80+HMP80_files/c1358d36f4818.jpg", "/hstech/Indigo80+HMP80_files/05563b2ff0eab.jpg", "/hstech/Indigo80+HMP80_files/2a7da2aa2c468.jpg"], desc: 'Portable CO2.', specs: [{ label: 'ppm', value: 'Yes' }] }
+        { id: 'gmw90', title: 'GMW90', subtitle: 'Wall', category: 'transmitter', image: '', gallery: [], desc: 'CO2+T+RH.', specs: [{ label: 'Param', value: '3' }] },
+        { id: 'gmw80', title: 'GMW80', subtitle: 'Standard', category: 'transmitter', image: '', gallery: [], desc: 'CO2 only.', specs: [{ label: 'Cost', value: 'Low' }] },
+        { id: 'gmd110', title: 'GMD110', subtitle: 'Duct', category: 'transmitter', image: '', gallery: [], desc: 'Duct mount.', specs: [{ label: 'Install', value: 'Duct' }] },
+        { id: 'gmp343', title: 'GMP343', subtitle: 'Eco', category: 'probe', image: '', gallery: [], desc: 'Flow through.', specs: [{ label: 'Flow', value: 'Yes' }] },
+        { id: 'gmp251', title: 'GMP251', subtitle: 'High range', category: 'probe', image: '', gallery: [], desc: '% level.', specs: [{ label: 'Range', value: '%' }] },
+        { id: 'gmp231', title: 'GMP231', subtitle: 'Incubator', category: 'probe', image: '', gallery: [], desc: 'Incubators.', specs: [{ label: 'Heat', value: '180' }] },
+        { id: 'indigo80_gmp252', title: 'Indigo80', subtitle: 'GMP252', category: 'handheld', image: '', gallery: [], desc: 'Portable CO2.', specs: [{ label: 'ppm', value: 'Yes' }] }
     ],
     oil: [
-        { id: 'mht410', title: 'MHT410', subtitle: 'Transformer', category: 'transformer', image: '/hstech/MHT410_files/c49c396f6025a.png', gallery: ["/hstech/MHT410_files/c49c396f6025a.png", "/hstech/MHT410_files/bfac7e7723aaa.png"], desc: 'H2+H2O.', specs: [{ label: 'H2', value: 'Yes' }] },
-        { id: 'mmt330', title: 'MMT330', subtitle: 'Online', category: 'fixed', image: '/hstech/MMT330_files/ccc57b9af50bd.png', gallery: ["/hstech/MMT330_files/ccc57b9af50bd.png", "/hstech/MMT330_files/5a125cc0f1c5c.png"], desc: 'Online oil moisture.', specs: [{ label: 'Oil', value: 'All' }] },
-        { id: 'mmt310', title: 'MMT310', subtitle: 'Compact', category: 'fixed', image: '/hstech/MMT310_files/432206a80e9bc.png', gallery: ["/hstech/MMT310_files/432206a80e9bc.png", "/hstech/MMT310_files/ec172bcd0e98b.png"], desc: 'Compact oil.', specs: [{ label: 'Size', value: 'Small' }] },
-        { id: 'mm70', title: 'MM70', subtitle: 'Handheld', category: 'handheld', image: '/hstech/MM70_files/fc768c014c897.png', gallery: ["/hstech/MM70_files/fc768c014c897.png", "/hstech/MM70_files/7935687cb906c.png", "/hstech/MM70_files/4c5fadfc80ddb.png"], desc: 'Spot check.', specs: [{ label: 'Spot', value: 'Yes' }] }
+        { id: 'mht410', title: 'MHT410', subtitle: 'Transformer', category: 'transformer', image: '', gallery: [], desc: 'H2+H2O.', specs: [{ label: 'H2', value: 'Yes' }] },
+        { id: 'mmt330', title: 'MMT330', subtitle: 'Online', category: 'fixed', image: '', gallery: [], desc: 'Online oil moisture.', specs: [{ label: 'Oil', value: 'All' }] },
+        { id: 'mmt310', title: 'MMT310', subtitle: 'Compact', category: 'fixed', image: '', gallery: [], desc: 'Compact oil.', specs: [{ label: 'Size', value: 'Small' }] },
+        { id: 'mm70', title: 'MM70', subtitle: 'Handheld', category: 'handheld', image: '', gallery: [], desc: 'Spot check.', specs: [{ label: 'Spot', value: 'Yes' }] }
     ],
     barometer: [
-        { id: 'ptb330', title: 'PTB330', subtitle: 'Class A', category: 'barometer', image: '/hstech/Barometer_files/3c357ce18ac04.jpg', gallery: ["/hstech/Barometer_files/3c357ce18ac04.jpg", "/hstech/Barometer_files/0a866df8da84d.png", "/hstech/Barometer_files/c30d3af67b366.png", "/hstech/Barometer_files/58fc71d7c2be5.png"], desc: 'Class A barometer.', specs: [{ label: 'Class', value: 'A' }] },
-        { id: 'ptb210', title: 'PTB210', subtitle: 'Class B', category: 'barometer', image: '/hstech/Barometer_files/3c357ce18ac04.jpg', gallery: ["/hstech/Barometer_files/3c357ce18ac04.jpg", "/hstech/Barometer_files/0a866df8da84d.png", "/hstech/Barometer_files/c30d3af67b366.png", "/hstech/Barometer_files/58fc71d7c2be5.png"], desc: 'Class B barometer.', specs: [{ label: 'Class', value: 'B' }] },
-        { id: 'ptb110', title: 'PTB110', subtitle: 'Analog', category: 'barometer', image: '/hstech/Barometer_files/3c357ce18ac04.jpg', gallery: ["/hstech/Barometer_files/3c357ce18ac04.jpg", "/hstech/Barometer_files/0a866df8da84d.png", "/hstech/Barometer_files/c30d3af67b366.png", "/hstech/Barometer_files/58fc71d7c2be5.png"], desc: 'Analog output.', specs: [{ label: 'Out', value: 'V' }] },
-        { id: 'ptu300', title: 'PTU300', subtitle: 'Combined', category: 'barometer', image: '/hstech/Combined Transmitter_files/7eaf1b6002b98.jpg', gallery: ["/hstech/Combined Transmitter_files/7eaf1b6002b98.jpg", "/hstech/Combined Transmitter_files/9a8123d37ddcc.jpg", "/hstech/Combined Transmitter_files/fade6e3a0a1b0.png"], desc: 'P, T, RH.', specs: [{ label: 'All', value: 'Yes' }] }
+        { id: 'ptb330', title: 'PTB330', subtitle: 'Class A', category: 'barometer', image: '', gallery: [], desc: 'Class A barometer.', specs: [{ label: 'Class', value: 'A' }] },
+        { id: 'ptb210', title: 'PTB210', subtitle: 'Class B', category: 'barometer', image: '', gallery: [], desc: 'Class B barometer.', specs: [{ label: 'Class', value: 'B' }] },
+        { id: 'ptb110', title: 'PTB110', subtitle: 'Analog', category: 'barometer', image: '', gallery: [], desc: 'Analog output.', specs: [{ label: 'Out', value: 'V' }] },
+        { id: 'ptu300', title: 'PTU300', subtitle: 'Combined', category: 'barometer', image: '', gallery: [], desc: 'P, T, RH.', specs: [{ label: 'All', value: 'Yes' }] }
     ],
     weather: [
-        { id: 'wxt530', title: 'WXT530', subtitle: 'Multiparameter', category: 'trans', image: '/hstech/Weather_files/c0bb8f87ce4d3.png', gallery: ["/hstech/Weather_files/c0bb8f87ce4d3.png"], desc: 'Weather station.', specs: [{ label: 'All', value: 'Yes' }] },
-        { id: 'hmp155_w', title: 'HMP155', subtitle: 'Probe', category: 'trans', image: '/hstech/Weather_files/c0bb8f87ce4d3.png', gallery: ["/hstech/Weather_files/c0bb8f87ce4d3.png"], desc: 'Weather probe.', specs: [{ label: 'Acc', value: 'High' }] }
+        { id: 'wxt530', title: 'WXT530', subtitle: 'Multiparameter', category: 'trans', image: '', gallery: [], desc: 'Weather station.', specs: [{ label: 'All', value: 'Yes' }] },
+        { id: 'hmp155_w', title: 'HMP155', subtitle: 'Probe', category: 'trans', image: '', gallery: [], desc: 'Weather probe.', specs: [{ label: 'Acc', value: 'High' }] }
     ],
     h2o2: [
-        { id: 'hpp271', title: 'HPP271', subtitle: 'Probe', category: 'sensor', image: '/hstech/H2O2 sensor_files/144c294c268ca.png', gallery: ["/hstech/H2O2 sensor_files/144c294c268ca.png", "/hstech/H2O2 sensor_files/387404d86d157.png", "/hstech/H2O2 sensor_files/287b582ba2d0a.jpg"], desc: 'Vaporized H2O2.', specs: [{ label: 'Gas', value: 'H2O2' }] }
+        { id: 'hpp271', title: 'HPP271', subtitle: 'Probe', category: 'sensor', image: '', gallery: [], desc: 'Vaporized H2O2.', specs: [{ label: 'Gas', value: 'H2O2' }] }
     ],
 
     // SETRA
     setra: [
-        { id: 'setra_lite', title: 'Setra Lite', subtitle: 'Visual', category: 'diff_ind', image: '/hstech/Differential Pressure Transmitter_files/5700cc7e29087.png', gallery: ["/hstech/Differential Pressure Transmitter_files/5700cc7e29087.png", "/hstech/Differential Pressure Transmitter_files/2621dcf1a7753.png", "/hstech/Differential Pressure Transmitter_files/34b14a9205705.png", "/hstech/Differential Pressure Transmitter_files/33ee2e1a7bf7f.png"], desc: 'Visual pressure.', specs: [{ label: 'Light', value: 'LED' }] },
-        { id: 'setra_flex', title: 'Setra Flex', subtitle: 'Monitor', category: 'diff_ind', image: '/hstech/Differential Pressure Transmitter_files/5700cc7e29087.png', gallery: ["/hstech/Differential Pressure Transmitter_files/5700cc7e29087.png", "/hstech/Differential Pressure Transmitter_files/2621dcf1a7753.png", "/hstech/Differential Pressure Transmitter_files/34b14a9205705.png", "/hstech/Differential Pressure Transmitter_files/33ee2e1a7bf7f.png"], desc: 'Room monitor.', specs: [{ label: 'Touch', value: 'Yes' }] },
+        { id: 'setra_lite', title: 'Setra Lite', subtitle: 'Visual', category: 'diff_ind', image: '', gallery: [], desc: 'Visual pressure.', specs: [{ label: 'Light', value: 'LED' }] },
+        { id: 'setra_flex', title: 'Setra Flex', subtitle: 'Monitor', category: 'diff_ind', image: '', gallery: [], desc: 'Room monitor.', specs: [{ label: 'Touch', value: 'Yes' }] },
         { id: 'model_mrc', title: 'Model MRC', subtitle: 'Multi-range', category: 'diff_sen', image: '/hstech/HVAC_files/0173971661ad2.png', gallery: ["/hstech/HVAC_files/0173971661ad2.png", "/hstech/HVAC_files/0b98ec3d71c52.png", "/hstech/HVAC_files/866d1ed724ffa.png", "/hstech/HVAC_files/ba117fd1862c9.png", "/hstech/HVAC_files/20542e1ba6c31.png"], desc: 'Multi range.', specs: [{ label: 'Range', value: 'Adj' }] },
         { id: 'model_mrg', title: 'Model MRG', subtitle: 'General', category: 'diff_sen', image: '/hstech/HVAC_files/0173971661ad2.png', gallery: ["/hstech/HVAC_files/0173971661ad2.png", "/hstech/HVAC_files/0b98ec3d71c52.png", "/hstech/HVAC_files/866d1ed724ffa.png", "/hstech/HVAC_files/ba117fd1862c9.png", "/hstech/HVAC_files/20542e1ba6c31.png"], desc: 'General purpose.', specs: [{ label: 'Cost', value: 'Low' }] },
         { id: 'model_264', title: 'Model 264', subtitle: 'HVAC', category: 'diff_sen', image: '/hstech/HVAC_files/0173971661ad2.png', gallery: ["/hstech/HVAC_files/0173971661ad2.png", "/hstech/HVAC_files/0b98ec3d71c52.png", "/hstech/HVAC_files/866d1ed724ffa.png", "/hstech/HVAC_files/ba117fd1862c9.png", "/hstech/HVAC_files/20542e1ba6c31.png"], desc: 'Standard HVAC.', specs: [{ label: 'Std', value: 'Yes' }] },
         { id: 'pdt101', title: 'PDT101', subtitle: 'Filter', category: 'diff_sen', image: '/hstech/HVAC_files/0173971661ad2.png', gallery: ["/hstech/HVAC_files/0173971661ad2.png", "/hstech/HVAC_files/0b98ec3d71c52.png", "/hstech/HVAC_files/866d1ed724ffa.png", "/hstech/HVAC_files/ba117fd1862c9.png", "/hstech/HVAC_files/20542e1ba6c31.png"], desc: 'Filter monitor.', specs: [{ label: 'OEM', value: 'Yes' }] },
-        { id: 'model_axd', title: 'Model AXD', subtitle: 'High Perf', category: 'industrial', image: '/hstech/Transmitter_files/a4e6b2a1d6fae.png', gallery: ["/hstech/Transmitter_files/a4e6b2a1d6fae.png", "/hstech/Transmitter_files/f89e8d9c59420.png", "/hstech/Transmitter_files/9b1c1d008fa6f.png", "/hstech/Transmitter_files/14e752cebbd26.png", "/hstech/Transmitter_files/95eb308cc5c30.jpg"], desc: 'Industrial pressure.', specs: [{ label: 'Acc', value: 'High' }] },
-        { id: 'model_206', title: 'Model 206', subtitle: 'Rugged', category: 'industrial', image: '/hstech/Transmitter_files/a4e6b2a1d6fae.png', gallery: ["/hstech/Transmitter_files/a4e6b2a1d6fae.png", "/hstech/Transmitter_files/f89e8d9c59420.png", "/hstech/Transmitter_files/9b1c1d008fa6f.png", "/hstech/Transmitter_files/14e752cebbd26.png", "/hstech/Transmitter_files/95eb308cc5c30.jpg"], desc: 'Rugged transducer.', specs: [{ label: 'Case', value: 'Steel' }] },
-        { id: 'model_209', title: 'Model 209', subtitle: 'OEM', category: 'industrial', image: '/hstech/Transmitter_files/a4e6b2a1d6fae.png', gallery: ["/hstech/Transmitter_files/a4e6b2a1d6fae.png", "/hstech/Transmitter_files/f89e8d9c59420.png", "/hstech/Transmitter_files/9b1c1d008fa6f.png", "/hstech/Transmitter_files/14e752cebbd26.png", "/hstech/Transmitter_files/95eb308cc5c30.jpg"], desc: 'OEM sensor.', specs: [{ label: 'Cost', value: 'Low' }] }
+        { id: 'model_axd', title: 'Model AXD', subtitle: 'High Perf', category: 'industrial', image: '', gallery: [], desc: 'Industrial pressure.', specs: [{ label: 'Acc', value: 'High' }] },
+        { id: 'model_206', title: 'Model 206', subtitle: 'Rugged', category: 'industrial', image: '', gallery: [], desc: 'Rugged transducer.', specs: [{ label: 'Case', value: 'Steel' }] },
+        { id: 'model_209', title: 'Model 209', subtitle: 'OEM', category: 'industrial', image: '', gallery: [], desc: 'OEM sensor.', specs: [{ label: 'Cost', value: 'Low' }] }
     ],
 
     // JUMO
     jumo: [
-        { id: 'ph_sensor', title: 'tecline pH', subtitle: 'Sensor', category: 'liquid', image: '/hstech/pH Combination Electrodes_files/753bf8377c185.jpg', gallery: ["/hstech/pH Combination Electrodes_files/753bf8377c185.jpg", "/hstech/pH Combination Electrodes_files/ef7bd18cf5385.jpg", "/hstech/pH Combination Electrodes_files/eafd8e806719f.jpg"], desc: 'pH electrode.', specs: [{ label: 'Mat', value: 'Glass' }] },
-        { id: 'ph_trans', title: 'ecoTRANS pH 03', subtitle: 'Transmitter', category: 'liquid', image: '/hstech/pH Transmitter_files/aa865065122f5.jpg', gallery: ["/hstech/pH Transmitter_files/aa865065122f5.jpg", "/hstech/pH Transmitter_files/a060ea13cbbba.jpg", "/hstech/pH Transmitter_files/146d68f730ab5.jpg"], desc: 'pH transmitter.', specs: [{ label: 'Rail', value: 'DIN' }] },
-        { id: 'dtrans_ph02', title: 'dTRANS pH 02', subtitle: 'Transmitter', category: 'liquid', image: '/hstech/pH Transmitter_files/aa865065122f5.jpg', gallery: ["/hstech/pH Transmitter_files/aa865065122f5.jpg", "/hstech/pH Transmitter_files/a060ea13cbbba.jpg", "/hstech/pH Transmitter_files/146d68f730ab5.jpg"], desc: 'pH controller.', specs: [{ label: 'IP', value: '65' }] },
-        { id: 'cond_trans', title: 'ecoTRANS Lf 03', subtitle: 'Conductivity', category: 'liquid', image: '/hstech/Conductivity Transmitter_files/5077fcd34a51e.jpg', gallery: ["/hstech/Conductivity Transmitter_files/5077fcd34a51e.jpg", "/hstech/Conductivity Transmitter_files/443324204fa2e.jpg", "/hstech/Conductivity Transmitter_files/9fb9479ee58d9.jpg"], desc: 'Conductivity.', specs: [{ label: 'Out', value: 'mA' }] },
-        { id: 'recording', title: 'LOGOSCREEN', subtitle: 'Recorder', category: 'control', image: '/hstech/Control & Recording_files/6f9b65b068db1.jpg', gallery: ["/hstech/Control & Recording_files/6f9b65b068db1.jpg", "/hstech/Control & Recording_files/ef7d890a33431.jpg", "/hstech/Control & Recording_files/fc36ca7fd150f.jpg"], desc: 'Data recorder.', specs: [{ label: 'LCD', value: 'Touch' }] },
-        { id: 'dtron_300', title: 'dTRON 300', subtitle: 'Controller', category: 'control', image: '/hstech/Control & Recording_files/6f9b65b068db1.jpg', gallery: ["/hstech/Control & Recording_files/6f9b65b068db1.jpg", "/hstech/Control & Recording_files/ef7d890a33431.jpg", "/hstech/Control & Recording_files/fc36ca7fd150f.jpg"], desc: 'PID Controller.', specs: [{ label: 'PID', value: 'Yes' }] }
+        { id: 'ph_sensor', title: 'tecline pH', subtitle: 'Sensor', category: 'liquid', image: '', gallery: [], desc: 'pH electrode.', specs: [{ label: 'Mat', value: 'Glass' }] },
+        { id: 'ph_trans', title: 'ecoTRANS pH 03', subtitle: 'Transmitter', category: 'liquid', image: '', gallery: [], desc: 'pH transmitter.', specs: [{ label: 'Rail', value: 'DIN' }] },
+        { id: 'dtrans_ph02', title: 'dTRANS pH 02', subtitle: 'Transmitter', category: 'liquid', image: '', gallery: [], desc: 'pH controller.', specs: [{ label: 'IP', value: '65' }] },
+        { id: 'cond_trans', title: 'ecoTRANS Lf 03', subtitle: 'Conductivity', category: 'liquid', image: '', gallery: [], desc: 'Conductivity.', specs: [{ label: 'Out', value: 'mA' }] },
+        { id: 'recording', title: 'LOGOSCREEN', subtitle: 'Recorder', category: 'control', image: '', gallery: [], desc: 'Data recorder.', specs: [{ label: 'LCD', value: 'Touch' }] },
+        { id: 'dtron_300', title: 'dTRON 300', subtitle: 'Controller', category: 'control', image: '', gallery: [], desc: 'PID Controller.', specs: [{ label: 'PID', value: 'Yes' }] }
     ],
 
     // KNICK
     knick: [
-        { id: 'stratos', title: 'Stratos Pro', subtitle: 'Analysis', category: 'analysis', image: '/templates/hs-tech/images/brands/setra_PLACEHOLDER트랜스미터_files/5fa3377dc5c8d.png', desc: 'Process analyzer.', specs: [{ label: 'Ex', value: 'Zone 1' }] }
+        { id: 'stratos', title: 'Stratos Pro', subtitle: 'Analysis', category: 'analysis', image: '', desc: 'Process analyzer.', specs: [{ label: 'Ex', value: 'Zone 1' }] }
     ]
 }

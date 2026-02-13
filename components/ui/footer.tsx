@@ -35,25 +35,24 @@ export const Footer = () => {
 
             {/* Expanded Content (Visible on Hover) */}
             <div className="max-h-0 overflow-hidden group-hover:max-h-[300px] transition-all duration-500 ease-in-out bg-white dark:bg-black w-full">
-                <div className="max-w-[1400px] mx-auto p-8 grid grid-cols-1 md:grid-cols-2 gap-8 border-t border-black/5 dark:border-white/5">
+                <div className="max-w-[1400px] mx-auto p-8 border-t border-black/5 dark:border-white/5">
                     <div className="space-y-4">
                         <div className="flex items-center gap-4 mb-2">
                             <span className="text-gentop-green font-bold text-sm">GENTOP Co., Ltd.</span>
                         </div>
                         <div className="text-xs md:text-sm text-neutral-500 dark:text-neutral-400 space-y-2 font-light">
-                            <p>{t.footer.address}</p>
-                            <div className="flex flex-wrap gap-x-6 gap-y-1">
-                                <span>CEO: {t.footer.ceo}</span>
-                                <span>Reg No: {t.footer.regNo}</span>
+                            <div className="flex flex-wrap items-center gap-x-6 gap-y-1">
+                                <p>{t.footer.address}</p>
+                                <div className="flex gap-x-6">
+                                    <span>CEO: {t.footer.ceo}</span>
+                                    <span>Reg No: {t.footer.regNo}</span>
+                                </div>
                             </div>
                             <div className="flex flex-wrap gap-x-6 gap-y-1 text-neutral-500 dark:text-neutral-400">
                                 <span className="font-mono">T. {t.footer.tel}</span>
                                 <span className="font-mono">E. {t.footer.email}</span>
                             </div>
                         </div>
-                    </div>
-                    <div className="flex flex-col justify-end items-start md:items-end gap-2 text-xs md:text-sm text-neutral-500 pr-32 md:pr-40">
-                        {/* Right side content intentionally left minimal or empty to avoid overlap with Global Navigator */}
                     </div>
                 </div>
             </div>
