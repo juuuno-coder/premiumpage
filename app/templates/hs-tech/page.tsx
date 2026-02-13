@@ -262,7 +262,7 @@ function HSTechContent() {
     }
 
     // VIEW: COVER
-    if (activeTab === 'cover') return <CatalogPage title="HOME" currentTab="cover" hideUI><CoverView /></CatalogPage>
+    if (activeTab === 'cover') return <CatalogPage title="HOME" currentTab="cover"><CoverView /></CatalogPage>
 
     // VIEW: ABOUT
     if (activeTab === 'about') return (

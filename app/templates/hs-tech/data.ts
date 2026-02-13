@@ -28,25 +28,25 @@ export const BRANDS = {
         label: 'VAISALA',
         desc: 'World leader in environmental and industrial measurement.',
         categories: ['humidity', 'dewpoint', 'co2', 'oil', 'barometer', 'weather', 'h2o2'],
-        logo: '/hstech/new_images/vaisala_banner.png'
+        logo: '/templates/hs-tech/images/brands/vaisala.svg'
     },
     setra: {
         label: 'SETRA',
         desc: 'Premium pressure transducers and current switches.',
         categories: ['setra'],
-        logo: '/hstech/Knick 트랜스미터_files/8c9ecbadfaf53.png'
+        logo: '/templates/hs-tech/images/brands/setra.svg'
     },
     jumo: {
         label: 'JUMO',
         desc: 'Innovative sensors and automation solutions.',
         categories: ['jumo'],
-        logo: '/hstech/Control & Recording_files/a94c4545e6c72.png'
+        logo: '/templates/hs-tech/images/brands/jumo.svg'
     },
     knick: {
         label: 'KNICK',
         desc: 'High-quality interface and process analysis.',
         categories: ['knick'],
-        logo: '/hstech/HS-TECH_files/50e31ebdea359.png' // HS TECH logo as fallback for now
+        logo: '/templates/hs-tech/images/brands/knick.svg'
     }
 }
 
@@ -63,7 +63,7 @@ export const CATEGORY_INFO: Record<string, any> = {
     // Brands
     setra: { title: "SETRA Systems", desc: "Differential & Industrial Pressure.", images: ['/hstech/HS-TECH_files/2ddb0a75a50e4.jpg'] },
     jumo: { title: "JUMO", desc: "Liquid Analysis & Control.", images: ['/hstech/Control & Recording_files/6f9b65b068db1.jpg'] },
-    knick: { title: "KNICK", desc: "Process Analysis.", images: ['/hstech/Knick 트랜스미터_files/5fa3377dc5c8d.png'] }
+    knick: { title: "KNICK", desc: "Process Analysis.", images: ['/templates/hs-tech/images/brands/setra_PLACEHOLDER트랜스미터_files/5fa3377dc5c8d.png'] }
 }
 
 // Sub-Category Definitions
@@ -639,6 +639,6 @@ export const DB: Record<string, any[]> = {
 
     // KNICK
     knick: [
-        { id: 'stratos', title: 'Stratos Pro', subtitle: 'Analysis', category: 'analysis', image: '/hstech/Knick 트랜스미터_files/5fa3377dc5c8d.png', desc: 'Process analyzer.', specs: [{ label: 'Ex', value: 'Zone 1' }] }
+        { id: 'stratos', title: 'Stratos Pro', subtitle: 'Analysis', category: 'analysis', image: '/templates/hs-tech/images/brands/setra_PLACEHOLDER트랜스미터_files/5fa3377dc5c8d.png', desc: 'Process analyzer.', specs: [{ label: 'Ex', value: 'Zone 1' }] }
     ]
 }
