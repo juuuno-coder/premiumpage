@@ -13,7 +13,11 @@ import { useTheme } from "next-themes";
 
 export const Header = () => {
     const pathname = usePathname();
-    const lang = pathname.split("/")[1] || "en";
+    // Extract language from pathname: /gentop/en -> "en", /gentop/ko -> "ko"
+    const pathSegments = pathname.split("/").filter(Boolean);
+    const lang = pathSegments.length >= 2 && (pathSegments[1] === "en" || pathSegments[1] === "ko")
+        ? pathSegments[1]
+        : "en";
     const menuItems = getMenuItems(lang);
     const { resolvedTheme } = useTheme();
     const [mounted, setMounted] = useState(false);
@@ -58,6 +62,8 @@ export const Header = () => {
 
     // Determine logo source and inversion state
     const logoSrc = "/images/logo-original.png";
+    // Determine home link based on current path structure
+    const homeLink = `/gentop/${lang}`;
     // Invert to white if:
     // 1. Not scrolled (Header is on top of dark hero)
     // 2. Scrolled but in dark mode
@@ -73,7 +79,7 @@ export const Header = () => {
             >
                 <div className="max-w-[1400px] mx-auto px-4 md:px-8 flex justify-between items-center relative">
                     {/* Logo */}
-                    <Link href="/en" className="z-50 relative flex items-center gap-2 group">
+                    <Link href={homeLink} className="z-50 relative flex items-center gap-2 group">
                         <div className="relative w-32 h-8 md:w-36 md:h-9 transition-all duration-300">
                             <Image
                                 src={logoSrc}
