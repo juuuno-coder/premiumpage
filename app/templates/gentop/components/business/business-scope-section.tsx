@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { Cpu, Megaphone, CircleParking, IdCard, Camera, Monitor, ArrowRight } from 'lucide-react';
 import { getTranslation } from "@/lib/translations";
 
-export const BusinessScopeSection = ({ lang }: { lang: string }) => {
+export const BusinessScopeSection = ({ categoryId, lang }: { categoryId?: string; lang: string }) => {
     const t = getTranslation(lang);
 
     const businessItems = [
