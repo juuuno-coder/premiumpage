@@ -35,18 +35,16 @@ export const Footer = () => {
 
             {/* Expanded Content (Visible on Hover) */}
             <div className="max-h-0 overflow-hidden group-hover:max-h-[300px] transition-all duration-500 ease-in-out bg-white dark:bg-black w-full">
-                <div className="max-w-[1400px] mx-auto p-8 border-t border-black/5 dark:border-white/5">
+                <div className="w-full px-8 py-8 border-t border-black/5 dark:border-white/5">
                     <div className="space-y-4">
                         <div className="flex items-center gap-4 mb-2">
                             <span className="text-gentop-green font-bold text-sm">GENTOP Co., Ltd.</span>
                         </div>
                         <div className="text-xs md:text-sm text-neutral-500 dark:text-neutral-400 space-y-2 font-light">
-                            <div className="flex flex-wrap items-center gap-x-6 gap-y-1">
-                                <p>{t.footer.address}</p>
-                                <div className="flex gap-x-6">
-                                    <span>CEO: {t.footer.ceo}</span>
-                                    <span>Reg No: {t.footer.regNo}</span>
-                                </div>
+                            <p className="whitespace-nowrap">{t.footer.address}</p>
+                            <div className="flex flex-wrap items-center gap-x-8 gap-y-1">
+                                <span>CEO: {t.footer.ceo}</span>
+                                <span>Reg No: {t.footer.regNo}</span>
                             </div>
                             <div className="flex flex-wrap gap-x-6 gap-y-1 text-neutral-500 dark:text-neutral-400">
                                 <span className="font-mono">T. {t.footer.tel}</span>
