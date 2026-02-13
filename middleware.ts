@@ -33,7 +33,7 @@ export function middleware(request: NextRequest) {
     }
 
     // 4. GENTOP 도메인 처리
-    if (hostname.includes('gentop')) {
+    if (hostname.includes('gentop.premiumpage.kr')) {
         const pathParts = url.pathname.split('/').filter(Boolean);
 
         // Handle routes like /en/company/greeting or /company/greeting
