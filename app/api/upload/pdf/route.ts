@@ -33,7 +33,8 @@ export async function POST(request: NextRequest) {
         }
 
         // 업로드 디렉토리 생성
-        const uploadDir = join(process.cwd(), 'public', 'uploads', 'pdfs')
+        // Only join with public/uploads to avoid tracing the entire public directory
+        const uploadDir = join(process.cwd(), 'public/uploads/pdfs')
         if (!existsSync(uploadDir)) {
             await mkdir(uploadDir, { recursive: true })
         }

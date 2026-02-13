@@ -31,7 +31,8 @@ export async function POST(request: NextRequest) {
 
         // 파일 처리
         const files: string[] = []
-        const uploadDir = join(process.cwd(), 'public', 'uploads', 'quotes')
+        // Only join with public/uploads to avoid tracing the entire public directory
+        const uploadDir = join(process.cwd(), 'public/uploads/quotes')
 
         // 업로드 디렉토리 생성
         if (!existsSync(uploadDir)) {
