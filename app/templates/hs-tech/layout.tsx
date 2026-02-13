@@ -7,6 +7,7 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { Menu, X, Facebook, Instagram, Youtube, ArrowRight, ChevronRight, Phone, MapPin, Mail, Sun, Moon, Globe } from 'lucide-react'
 import { cn } from '@/lib/utils'
 import { useTheme } from 'next-themes'
+import { ThemeProvider } from '@/components/theme-provider'
 
 function HSTechLayoutContent({ children }: { children: React.ReactNode }) {
     const [isMenuOpen, setIsMenuOpen] = useState(false)
@@ -37,7 +38,7 @@ function HSTechLayoutContent({ children }: { children: React.ReactNode }) {
         { label: 'Home', href: '/templates/hs-tech?tab=cover', desc: 'Main Page' },
         { label: 'About Us', href: '/templates/hs-tech?tab=about', desc: 'Company Overview' },
         { label: 'Business', href: '/templates/hs-tech?tab=business', desc: 'Solutions' },
-        { label: 'Product', href: '/templates/hs-tech?tab=vaisala', desc: 'Product Lines' }, // Default to Vaisala or generic Product Landing? User says "Brands". I'll link to Vaisala as it's the main one, or better, the Product Page which lists brands? No, I'll link to Vaisala for now as "Product" usually implies the main catalog.
+        { label: 'Product', href: '/templates/hs-tech?tab=vaisala', desc: 'Product Lines' },
         { label: 'Contact', href: '/templates/hs-tech?tab=contact', desc: 'Get in Touch' },
     ]
 
@@ -185,7 +186,7 @@ function HSTechLayoutContent({ children }: { children: React.ReactNode }) {
                                         </nav>
                                     </div>
 
-                                    {/* Column 2: Brands - Restored as per User Request */}
+                                    {/* Column 2: Brands */}
                                     <div className="flex flex-col justify-center">
                                         <h3 className="text-xs font-bold text-neutral-500 uppercase tracking-widest mb-8 border-b border-white/10 pb-4">Official Partners</h3>
                                         <nav className="space-y-3">
@@ -230,8 +231,15 @@ function HSTechLayoutContent({ children }: { children: React.ReactNode }) {
 
 export default function HSTechViewerLayout({ children }: { children: React.ReactNode }) {
     return (
-        <Suspense fallback={<div className="h-screen w-screen bg-neutral-950 flex items-center justify-center text-white">Loading Layout...</div>}>
-            <HSTechLayoutContent>{children}</HSTechLayoutContent>
-        </Suspense>
+        <ThemeProvider
+            attribute="class"
+            defaultTheme="dark"
+            enableSystem={false}
+            disableTransitionOnChange
+        >
+            <Suspense fallback={<div className="h-screen w-screen bg-neutral-950 flex items-center justify-center text-white">Loading Layout...</div>}>
+                <HSTechLayoutContent>{children}</HSTechLayoutContent>
+            </Suspense>
+        </ThemeProvider>
     )
 }
