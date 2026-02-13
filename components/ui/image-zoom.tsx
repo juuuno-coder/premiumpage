@@ -3,7 +3,7 @@
 
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { IconX, IconZoomIn } from "@tabler/icons-react";
+import { X, ZoomIn } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 interface ImageZoomProps {
@@ -43,7 +43,7 @@ export const ImageZoom = ({ src, alt, className }: ImageZoomProps) => {
                         {/* Overlay on hover */}
                         <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-300 flex items-center justify-center opacity-0 group-hover:opacity-100">
                             <div className="bg-black/50 backdrop-blur-sm p-3 rounded-full text-white">
-                                <IconZoomIn size={24} />
+                                <ZoomIn size={24} />
                             </div>
                         </div>
                     </motion.div>
@@ -70,7 +70,7 @@ export const ImageZoom = ({ src, alt, className }: ImageZoomProps) => {
                             className="absolute top-5 right-5 p-2 bg-white/10 hover:bg-white/20 rounded-full text-white transition-colors"
                             onClick={() => setIsOpen(false)}
                         >
-                            <IconX size={24} />
+                            <X size={24} />
                         </button>
 
                         <motion.div
