@@ -34,7 +34,7 @@ export function middleware(request: NextRequest) {
 
     // 4. GENTOP 도메인 처리
     if (hostname.includes('gentop.premiumpage.kr')) {
-        // Root path: redirect to /en
+        // Root path: redirect to /gentop/en
         if (url.pathname === '/') {
             const response = NextResponse.rewrite(new URL('/gentop/en', request.url))
             response.headers.set('x-template-page', 'true')

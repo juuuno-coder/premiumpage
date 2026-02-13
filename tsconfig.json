@@ -27,7 +27,7 @@
         "./*"
       ],
       "@gentop/*": [
-        "./app/gentop/*"
+        "./app/(gentop)/gentop/*"
       ]
     }
   },
