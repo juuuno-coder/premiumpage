@@ -46,5 +46,13 @@ next-env.d.ts
 public/uploads/
 
 # Crawled / Large Data Folders
-public/gentop/
+public/gentop/*.html
+public/gentop/*_files/
+public/gentop/*.py
+public/gentop/*.sh
+public/gentop/EMT_files/
+public/gentop/Contact_files/
+public/gentop/information_files/
+public/gentop/HS-TECH_files/
+public/gentop/public/
 public/hstech/
