@@ -319,8 +319,8 @@ export const DB: Record<string, any[]> = {
             title: 'HMP155',
             subtitle: 'METEOROLOGICAL PROBE',
             category: 'probe',
-            image: '/templates/hs-tech/images/products/hmk15_v1.png', // Fallback
-            gallery: [],
+            image: '/templates/hs-tech/images/products/hmp155_v1.png',
+            gallery: ["/templates/hs-tech/images/products/hmp155_v1.png"],
             desc: 'Premium humidity and temperature probe for meteorological applications.',
             specs: [
                 { label: 'Application', value: 'Meteorology, Aviation, Roads' },
@@ -467,8 +467,8 @@ export const DB: Record<string, any[]> = {
             title: 'HM70',
             subtitle: 'HANDHELD METER',
             category: 'handheld',
-            image: '/templates/hs-tech/images/products/indigo80_hmp80_v1.jpg', // Fallback
-            gallery: [],
+            image: '/templates/hs-tech/images/products/hm70_v1.jpg',
+            gallery: ["/templates/hs-tech/images/products/hm70_v1.jpg"],
             desc: 'Professional handheld humidity and temperature meter.',
             specs: [
                 { label: 'Application', value: 'Demanding industrial spot-checking' },
@@ -482,8 +482,8 @@ export const DB: Record<string, any[]> = {
             title: 'HM40',
             subtitle: 'COMPACT HANDHELD',
             category: 'handheld',
-            image: '/templates/hs-tech/images/products/shm40_v1.jpg', // Fallback
-            gallery: [],
+            image: '/templates/hs-tech/images/products/hm40_v1.png',
+            gallery: ["/templates/hs-tech/images/products/hm40_v1.png"],
             desc: 'Compact and easy-to-use handheld meter.',
             specs: [
                 { label: 'Application', value: 'Quick spot-checking' },
@@ -542,8 +542,8 @@ export const DB: Record<string, any[]> = {
             title: 'HMT310',
             subtitle: 'HUMIDITY AND TEMPERATURE TRANSMITTER',
             category: 'industrial',
-            image: '/templates/hs-tech/images/products/hmt360_v1.png', // Fallback for hmt310
-            gallery: [],
+            image: '/templates/hs-tech/images/products/hmt310_v1.jpg',
+            gallery: ["/templates/hs-tech/images/products/hmt310_v1.jpg"],
             desc: 'Compact transmitter with excellent stability for demanding industrial applications.',
             specs: [
                 { label: 'Application', value: 'Industrial applications where compact size is needed' },
@@ -559,8 +559,8 @@ export const DB: Record<string, any[]> = {
             title: 'HMT120 / HMT130',
             subtitle: 'HUMIDITY AND TEMPERATURE TRANSMITTERS',
             category: 'industrial',
-            image: '/templates/hs-tech/images/products/hmw90_v1.png', // Fallback for hmt120
-            gallery: [],
+            image: '/templates/hs-tech/images/products/hmt120_v1.jpg',
+            gallery: ["/templates/hs-tech/images/products/hmt120_v1.jpg"],
             desc: 'Optimized for cleanrooms and light industrial applications with interchangeable probes.',
             specs: [
                 { label: 'Application', value: 'Cleanrooms, Light industrial applications' },
