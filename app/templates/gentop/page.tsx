@@ -7,6 +7,9 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { ArrowRight, MapPin, Phone, Mail, Globe, Download, AlertCircle } from 'lucide-react'
 import { cn } from '@/lib/utils'
 import { DB, GENTOP_MENU } from './data'
+import { SparklesCore } from '@/components/ui/sparkles'
+import { BackgroundBeams } from '@/components/ui/background-beams'
+import { usePathname } from 'next/navigation'
 
 // Premium Components Integration
 import { CompanyGreeting } from './components/company/greeting'
@@ -19,15 +22,37 @@ import { CompanyGlobalNetwork } from './components/company/global-network'
 import { BusinessScopeSection } from './components/business/business-scope-section'
 
 function GentopContent() {
+    const pathname = usePathname()
     const searchParams = useSearchParams()
 
     // Resolve Active Tab
-    const activeCate = searchParams.get('category')
-    let activeTab = searchParams.get('tab')
+    const activeCateParam = searchParams.get('category')
+    const activeTabParam = searchParams.get('tab')
+
+    let activeCate = activeCateParam
+    let activeTab = activeTabParam
+
+    // Path based resolution fallback (for direct URLs like /en/company/greeting)
+    if (!activeTab && pathname.includes('/templates/gentop')) {
+        const parts = pathname.split('/').filter(Boolean)
+        // Check if it's a pretty URL structure after the language/templates part
+        // Format common: /templates/gentop/company/greeting or /en/company/greeting
+        // Our middleware rewrites these, but client-side needs to know too
+
+        // Find which part is 'company', 'business', etc based on GENTOP_MENU
+        const menuIds = GENTOP_MENU[0].items.map(i => i.id)
+        const cateIdx = parts.findIndex(p => menuIds.includes(p))
+
+        if (cateIdx !== -1) {
+            activeCate = parts[cateIdx]
+            if (parts.length > cateIdx + 1) {
+                activeTab = parts[cateIdx + 1]
+            }
+        }
+    }
 
     // If no tab but category exists, find the first sub-item
     if (!activeTab && activeCate) {
-        // Flat search across all brand items
         for (const brand of GENTOP_MENU) {
             const foundCat = brand.items.find(item => item.id === activeCate)
             if (foundCat && foundCat.subs && foundCat.subs.length > 0) {
@@ -78,23 +103,41 @@ function GentopContent() {
     // 1. Cover Slide
     if (activeTab === 'cover') {
         return (
-            <div className="w-full h-full flex items-center justify-center relative bg-slate-900 overflow-hidden">
-                <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-20"></div>
-                <div className="absolute inset-0 bg-gradient-to-br from-slate-900 via-indigo-950 to-slate-900"></div>
+            <div className="w-full h-full flex items-center justify-center relative bg-slate-950 overflow-hidden">
+                <div className="absolute inset-0 w-full h-full">
+                    <SparklesCore
+                        id="tsparticlesfullpage"
+                        background="transparent"
+                        minSize={0.6}
+                        maxSize={1.4}
+                        particleDensity={100}
+                        className="w-full h-full"
+                        particleColor="#6366f1"
+                    />
+                </div>
 
-                <div className="relative z-10 text-center text-white px-6">
-                    <div>
-                        <div className="inline-block px-4 py-1.5 border border-indigo-400/30 rounded-full bg-indigo-500/10 backdrop-blur-sm text-indigo-300 font-bold tracking-[0.3em] text-xs mb-8 uppercase">
-                            E-Catalog 2026
+                <BackgroundBeams className="opacity-40" />
+
+                <div className="relative z-10 text-center px-6">
+                    <motion.div
+                        initial={{ opacity: 0, y: 30 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.8, ease: "easeOut" }}
+                    >
+                        <div className="inline-block px-4 py-1.5 border border-indigo-500/30 rounded-full bg-indigo-500/10 backdrop-blur-md text-indigo-400 font-bold tracking-[0.4em] text-[10px] mb-10 uppercase">
+                            Smart ICT & Energy Solution
                         </div>
-                        <h1 className="text-7xl md:text-9xl font-black tracking-tighter mb-6 text-white">
+                        <h1 className="text-8xl md:text-[12rem] font-black tracking-tighter mb-8 bg-clip-text text-transparent bg-gradient-to-b from-white to-slate-500 leading-none">
                             GENTOP
                         </h1>
-                        <p className="text-xl md:text-2xl text-slate-400 font-light tracking-wide max-w-2xl mx-auto">
-                            Smart ICT & Energy Solution Provider
+                        <p className="text-base md:text-lg text-slate-400 font-medium tracking-[0.2em] max-w-2xl mx-auto uppercase">
+                            Providing the Best System & Follow-up Management
                         </p>
-                    </div>
+                    </motion.div>
                 </div>
+
+                {/* Visual Accent */}
+                <div className="absolute bottom-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-indigo-500/50 to-transparent"></div>
             </div>
         )
     }
