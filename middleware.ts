@@ -34,6 +34,31 @@ export function middleware(request: NextRequest) {
 
     // 4. GENTOP 도메인 처리
     if (hostname.includes('gentop.premiumpage.kr')) {
+        const pathParts = url.pathname.split('/').filter(Boolean);
+
+        // Handle routes like /en/company/greeting or /company/greeting
+        if (pathParts.length >= 2) {
+            let category = '';
+            let tab = '';
+
+            // If first part is language (en/ko)
+            if (pathParts[0] === 'en' || pathParts[0] === 'ko') {
+                if (pathParts.length >= 3) {
+                    category = pathParts[1];
+                    tab = pathParts[2];
+                }
+            } else {
+                category = pathParts[0];
+                tab = pathParts[1];
+            }
+
+            if (category && tab) {
+                const response = NextResponse.rewrite(new URL(`/templates/gentop?category=${category}&tab=${tab}`, request.url))
+                response.headers.set('x-template-page', 'true')
+                return response
+            }
+        }
+
         if (url.pathname === '/') {
             const response = NextResponse.rewrite(new URL('/templates/gentop', request.url))
             response.headers.set('x-template-page', 'true')
