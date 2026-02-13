@@ -8,6 +8,16 @@ import { ArrowRight, MapPin, Phone, Mail, Globe, Download, AlertCircle } from 'l
 import { cn } from '@/lib/utils'
 import { DB, GENTOP_MENU } from './data'
 
+// Premium Components Integration
+import { CompanyGreeting } from './components/company/greeting'
+import { CompanyIntroduction } from './components/company/introduction'
+import { CompanyCiBi } from './components/company/ci-bi'
+import { CompanyOrganization } from './components/company/organization'
+import { CompanyCertification } from './components/company/certification'
+import { CompanyLocation } from './components/company/location'
+import { CompanyGlobalNetwork } from './components/company/global-network'
+import { BusinessScopeSection } from './components/business/business-scope-section'
+
 function GentopContent() {
     const searchParams = useSearchParams()
 
@@ -30,14 +40,40 @@ function GentopContent() {
     // Default fallback
     if (!activeTab) activeTab = 'cover'
 
-    // Get Content with SAFETY FALLBACK
-    // This prevents runtime crashes if DB[activeTab] is undefined
-    const content = DB[activeTab] || {
-        title: 'Page Not Found',
-        desc: `Unable to find content for ID: "${activeTab}".\nPlease check data.ts or contact administrator.`,
-        image: null,
-        isError: true
+    // Premium UI Mapping
+    const renderPremiumUI = () => {
+        switch (activeTab) {
+            case 'greeting':
+                return <CompanyGreeting />
+            case 'overview':
+                return <CompanyIntroduction lang="en" />
+            case 'ci':
+                return <CompanyCiBi />
+            case 'org':
+                return <CompanyOrganization />
+            case 'cert':
+                return <CompanyCertification />
+            case 'location':
+                return <CompanyLocation />
+            case 'global_network':
+                return <CompanyGlobalNetwork lang="en" />
+            // Business sections
+            case 'infra':
+            case 'fm':
+            case 'pa':
+            case 'parking':
+            case 'access':
+            case 'cctv':
+            case 'led':
+            case 'eco':
+            case 'defense':
+                return <BusinessScopeSection categoryId={activeTab} lang="en" />
+            default:
+                return null
+        }
     }
+
+    const premiumUI = renderPremiumUI()
 
     // 1. Cover Slide
     if (activeTab === 'cover') {
@@ -63,7 +99,36 @@ function GentopContent() {
         )
     }
 
-    // 2. Error Fallback UI (Rendered if isError is true)
+    // 2. Premium Content UI (If mapped)
+    if (premiumUI) {
+        return (
+            <div className="w-full h-full bg-white overflow-y-auto overflow-x-hidden relative">
+                <div className="min-h-full pb-32 pt-16">
+                    <AnimatePresence mode="wait">
+                        <motion.div
+                            key={activeTab}
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            exit={{ opacity: 0, y: -20 }}
+                            transition={{ duration: 0.4 }}
+                        >
+                            {premiumUI}
+                        </motion.div>
+                    </AnimatePresence>
+                </div>
+            </div>
+        )
+    }
+
+    // Get Content with SAFETY FALLBACK for non-premium tabs
+    const content = DB[activeTab] || {
+        title: 'Page Not Found',
+        desc: `Unable to find content for ID: "${activeTab}".\nPlease check data.ts or contact administrator.`,
+        image: null,
+        isError: true
+    }
+
+    // 3. Error Fallback UI
     if (content.isError) {
         return (
             <div className="w-full h-full flex flex-col items-center justify-center bg-slate-50 text-slate-400 p-10 text-center">
@@ -82,11 +147,11 @@ function GentopContent() {
         )
     }
 
-    // 3. Standard Content Slide
+    // 4. Standard Content Slide (Old Slider Style fallback)
     return (
         <div className="w-full h-full flex flex-col md:flex-row bg-white overflow-hidden relative">
             {/* Left: Text Area */}
-            <div className="w-full md:w-5/12 h-full flex flex-col justify-center p-12 md:p-16 lg:p-20 bg-white relative z-10 overflow-y-auto">
+            <div className="w-full md:w-5/12 h-full flex flex-col justify-center p-12 md:p-16 lg:p-20 bg-white relative z-10 overflow-y-auto border-r border-slate-100">
                 <div>
                     <div className="w-12 h-1 bg-indigo-600 mb-8"></div>
                     <div className="text-xs font-bold text-slate-400 tracking-widest uppercase mb-4">
@@ -99,37 +164,11 @@ function GentopContent() {
                         {content.desc}
                     </p>
 
-                    {/* Action Buttons */}
-                    {activeTab === 'location' ? (
-                        <div className="space-y-4">
-                            <div className="flex items-center gap-4 text-slate-700">
-                                <div className="w-10 h-10 bg-slate-100 rounded-full flex items-center justify-center text-indigo-600 flex-shrink-0"><MapPin className="w-5 h-5" /></div>
-                                <span className="font-bold">Busan HQ, South Korea</span>
-                            </div>
-                            <div className="flex items-center gap-4 text-slate-700">
-                                <div className="w-10 h-10 bg-slate-100 rounded-full flex items-center justify-center text-indigo-600 flex-shrink-0"><Phone className="w-5 h-5" /></div>
-                                <span className="font-bold">+82 51-123-4567</span>
-                            </div>
-                        </div>
-                    ) : (
-                        <div className="flex flex-wrap gap-4">
-                            {content.title.includes('Inquiry') || activeTab === 'contact_form' ? (
-                                <button className="px-8 py-4 bg-indigo-600 text-white font-bold text-sm tracking-wider uppercase hover:bg-indigo-700 transition-colors shadow-lg">
-                                    Send Message
-                                </button>
-                            ) : (
-                                <button className="px-8 py-4 bg-slate-900 text-white font-bold text-sm tracking-wider uppercase hover:bg-indigo-600 transition-colors flex items-center gap-2 group">
-                                    Inquire Now <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                                </button>
-                            )}
-
-                            {(activeTab.includes('catalog') || activeTab.includes('cert')) && (
-                                <button className="px-8 py-4 border border-slate-200 text-slate-900 font-bold text-sm tracking-wider uppercase hover:border-indigo-600 hover:text-indigo-600 transition-colors flex items-center gap-2">
-                                    Download PDF <Download className="w-4 h-4" />
-                                </button>
-                            )}
-                        </div>
-                    )}
+                    <div className="flex flex-wrap gap-4">
+                        <button className="px-8 py-4 bg-slate-900 text-white font-bold text-sm tracking-wider uppercase hover:bg-indigo-600 transition-colors flex items-center gap-2 group">
+                            Inquire Now <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                        </button>
+                    </div>
                 </div>
             </div>
 
@@ -148,8 +187,6 @@ function GentopContent() {
                         {content.title} Image
                     </div>
                 )}
-
-                {/* Overlay Text/Deco */}
                 <div className="absolute inset-0 bg-gradient-to-l from-transparent via-transparent to-white/10"></div>
             </div>
 
@@ -168,3 +205,4 @@ export default function GentopPage() {
         </Suspense>
     )
 }
+
