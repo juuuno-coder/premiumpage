@@ -90,7 +90,7 @@ function HSTechLayoutContent({ children }: { children: React.ReactNode }) {
                     {/* Language Toggle */}
                     <button
                         onClick={switchLanguage}
-                        className="flex items-center gap-1 px-3 py-1 rounded-full border dark:border-neutral-700 border-neutral-300 text-xs font-bold dark:text-neutral-400 text-neutral-600 hover:text-cyan-500 dark:hover:text-cyan-400 hover:border-cyan-500 transition-all uppercase"
+                        className="hidden flex items-center gap-1 px-3 py-1 rounded-full border dark:border-neutral-700 border-neutral-300 text-xs font-bold dark:text-neutral-400 text-neutral-600 hover:text-cyan-500 dark:hover:text-cyan-400 hover:border-cyan-500 transition-all uppercase"
                     >
                         <Globe className="w-3 h-3" />
                         <span>KR</span>

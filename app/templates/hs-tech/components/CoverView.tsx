@@ -52,7 +52,7 @@ export default function CoverView() {
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: 0.2, duration: 0.8 }}
-                        className="text-6xl md:text-8xl font-black bg-clip-text text-transparent bg-gradient-to-b from-neutral-950 to-neutral-500 dark:from-neutral-50 dark:to-neutral-400 bg-opacity-50 mt-4 mb-8 tracking-tighter uppercase italic"
+                        className="text-4xl md:text-6xl font-black bg-clip-text text-transparent bg-gradient-to-b from-neutral-950 to-neutral-500 dark:from-neutral-50 dark:to-neutral-400 bg-opacity-50 mt-4 mb-8 tracking-tighter uppercase italic"
                     >
                         THE STANDARD<br />
                         OF PRECISION.

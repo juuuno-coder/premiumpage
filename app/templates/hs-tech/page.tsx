@@ -173,7 +173,7 @@ const CatalogPage = ({ title, children, currentTab, breadcrumb, hideUI }: {
                         {children}
                         {/* FOOTER is now part of the scrolling content to avoid overlap with floating nav */}
                         {!hideUI && (
-                            <footer className="w-full pt-32 pb-48 px-6 bg-neutral-950 border-t border-white/5">
+                            <footer className="hidden w-full pt-32 pb-48 px-6 bg-neutral-950 border-t border-white/5">
                                 <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-20">
                                     <div className="md:col-span-2 space-y-8">
                                         <h3 className="text-4xl font-black text-white italic tracking-tighter uppercase">HS TECH</h3>
