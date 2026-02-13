@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect } from 'react'
+import { Suspense, useEffect } from 'react'
 import { useSearchParams } from 'next/navigation'
 import { DndContext, DragEndEvent, closestCenter } from '@dnd-kit/core'
 import { SortableContext, verticalListSortingStrategy } from '@dnd-kit/sortable'
@@ -10,7 +10,7 @@ import { BuilderCanvas } from '@/components/builder/BuilderCanvas'
 import { PropertiesPanel } from '@/components/builder/PropertiesPanel'
 import { Toolbar } from '@/components/builder/Toolbar'
 
-export default function BuilderPage() {
+function BuilderContent() {
     const searchParams = useSearchParams()
     const projectId = searchParams.get('id')
     const { components, reorderComponents, loadComponents } = useBuilderStore()
@@ -65,5 +65,13 @@ export default function BuilderPage() {
                 </aside>
             </div>
         </div>
+    )
+}
+
+export default function BuilderPage() {
+    return (
+        <Suspense fallback={<div className="h-screen flex items-center justify-center">Loading...</div>}>
+            <BuilderContent />
+        </Suspense>
     )
 }

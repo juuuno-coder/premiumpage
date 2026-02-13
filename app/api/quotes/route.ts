@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server'
+import { auth } from '@/lib/auth'
 import { prisma } from '@/lib/prisma'
 import { writeFile, mkdir } from 'fs/promises'
 import { join } from 'path'
@@ -17,11 +18,11 @@ export async function POST(request: NextRequest) {
         const contactName = formData.get('contactName') as string
         const contactEmail = formData.get('contactEmail') as string
         const contactPhone = formData.get('contactPhone') as string
-        const projectDetails = formData.get('projectDetails') as string
+        const projectDetails = (formData.get('projectDetails') as string) || '상세 내용 없음'
 
-        // 필수 필드 검증
+        // 필수 필드 검증 (상세 내용은 선택 항목으로 변경)
         if (!templateId || !developmentPlanId || !maintenancePlanId ||
-            !contactName || !contactEmail || !contactPhone || !projectDetails) {
+            !contactName || !contactEmail || !contactPhone) {
             return NextResponse.json(
                 { error: '모든 필수 항목을 입력해주세요.' },
                 { status: 400 }
@@ -115,6 +116,11 @@ export async function POST(request: NextRequest) {
 // GET: 모든 견적 요청 조회 (관리자용)
 export async function GET() {
     try {
+        const session = await auth()
+        if (!session?.user || session.user.role !== 'admin') {
+            return NextResponse.json({ error: 'Unauthorized' }, { status: 403 })
+        }
+
         const quotes = await prisma.quoteRequest.findMany({
             orderBy: {
                 createdAt: 'desc'
@@ -128,5 +134,26 @@ export async function GET() {
             { error: '견적 목록 조회 중 오류가 발생했습니다.' },
             { status: 500 }
         )
+    }
+}
+
+// PATCH: 견적 상태 업데이트
+export async function PATCH(request: NextRequest) {
+    try {
+        const session = await auth()
+        if (!session?.user || session.user.role !== 'admin') {
+            return NextResponse.json({ error: 'Unauthorized' }, { status: 403 })
+        }
+
+        const { id, status } = await request.json()
+
+        const updated = await prisma.quoteRequest.update({
+            where: { id },
+            data: { status }
+        })
+
+        return NextResponse.json(updated)
+    } catch (error) {
+        return NextResponse.json({ error: '상태 업데이트 실패' }, { status: 500 })
     }
 }

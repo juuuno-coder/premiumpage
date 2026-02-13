@@ -1,89 +1,68 @@
-import { NextResponse } from 'next/server'
+import { NextRequest, NextResponse } from 'next/server'
 import { auth } from '@/lib/auth'
 import { prisma } from '@/lib/prisma'
-import { z } from 'zod'
-
-const projectUpdateSchema = z.object({
-    name: z.string().min(1).optional(),
-    components: z.any().optional(),
-    description: z.string().optional(),
-})
-
-export async function GET(
-    req: Request,
-    { params }: { params: Promise<{ id: string }> }
-) {
-    try {
-        const session = await auth()
-        if (!session?.user?.id) return new NextResponse('Unauthorized', { status: 401 })
-
-        const { id } = await params
-        const project = await prisma.project.findUnique({
-            where: {
-                id,
-                userId: session.user.id,
-            },
-        })
-
-        if (!project) return new NextResponse('Not Found', { status: 404 })
-
-        return NextResponse.json({
-            ...project,
-            components: JSON.parse(project.components),
-        })
-    } catch (error) {
-        return new NextResponse('Internal Server Error', { status: 500 })
-    }
-}
-
-export async function PUT(
-    req: Request,
-    { params }: { params: Promise<{ id: string }> }
-) {
-    try {
-        const session = await auth()
-        if (!session?.user?.id) return new NextResponse('Unauthorized', { status: 401 })
-
-        const { id } = await params
-        const body = await req.json()
-        const { name, components, description } = projectUpdateSchema.parse(body)
-
-        const project = await prisma.project.update({
-            where: {
-                id,
-                userId: session.user.id,
-            },
-            data: {
-                name,
-                components: components ? JSON.stringify(components) : undefined,
-                description,
-            },
-        })
-
-        return NextResponse.json(project)
-    } catch (error) {
-        return new NextResponse('Internal Server Error', { status: 500 })
-    }
-}
+import { unlink } from 'fs/promises'
+import { join } from 'path'
 
 export async function DELETE(
-    req: Request,
-    { params }: { params: Promise<{ id: string }> }
+    request: NextRequest,
+    props: { params: Promise<{ id: string }> }
 ) {
+    const params = await props.params;
+    const { id } = params;
     try {
         const session = await auth()
-        if (!session?.user?.id) return new NextResponse('Unauthorized', { status: 401 })
 
-        const { id } = await params
-        await prisma.project.delete({
-            where: {
-                id,
-                userId: session.user.id,
-            },
+        if (!session?.user?.id) {
+            return NextResponse.json(
+                { error: '로그인이 필요합니다.' },
+                { status: 401 }
+            )
+        }
+
+
+
+        // 프로젝트 존재 및 소유권 확인
+        const project = await prisma.project.findUnique({
+            where: { id }
         })
 
-        return new NextResponse(null, { status: 204 })
+        if (!project) {
+            return NextResponse.json(
+                { error: '프로젝트를 찾을 수 없습니다.' },
+                { status: 404 }
+            )
+        }
+
+        if (project.userId !== session.user.id) {
+            return NextResponse.json(
+                { error: '삭제 권한이 없습니다.' },
+                { status: 403 }
+            )
+        }
+
+        // 파일 삭제 (선택 사항 리스크가 있을 수 있으므로 신중히)
+        try {
+            const components = JSON.parse(project.components)
+            if (components.fileUrl) {
+                const filePath = join(process.cwd(), 'public', components.fileUrl)
+                await unlink(filePath).catch(e => console.warn('File deletion failed:', e))
+            }
+        } catch (e) {
+            console.warn('Could not parse components for file deletion:', e)
+        }
+
+        // DB 레코드 삭제
+        await prisma.project.delete({
+            where: { id }
+        })
+
+        return NextResponse.json({ success: true })
     } catch (error) {
-        return new NextResponse('Internal Server Error', { status: 500 })
+        console.error('Failed to delete project:', error)
+        return NextResponse.json(
+            { error: '프로젝트를 삭제하는 중 오류가 발생했습니다.' },
+            { status: 500 }
+        )
     }
 }

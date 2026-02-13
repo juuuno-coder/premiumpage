@@ -32,19 +32,40 @@ export default function RegisterPage() {
         }
 
         try {
+            // 1. Firebase Auth에 사용자 생성
+            const { auth } = await import('@/lib/firebase')
+            const { createUserWithEmailAndPassword } = await import('firebase/auth')
+
+            let firebaseUser;
+            try {
+                const userCredential = await createUserWithEmailAndPassword(
+                    auth,
+                    formData.email,
+                    formData.password
+                )
+                firebaseUser = userCredential.user
+            } catch (fbErr: any) {
+                if (fbErr.code === 'auth/email-already-in-use') {
+                    throw new Error('이미 사용 중인 이메일입니다.')
+                }
+                throw fbErr
+            }
+
+            // 2. 우리 DB에 정보 저장 및 Firebase UID 연동
             const res = await fetch('/api/register', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
                     name: formData.name,
                     email: formData.email,
-                    password: formData.password
+                    password: formData.password,
+                    firebaseUid: firebaseUser.uid // 연동을 위해 UID 전달
                 })
             })
 
             if (!res.ok) {
                 const data = await res.json()
-                throw new Error(data.error || '회원가입 실패')
+                throw new Error(data.error || '내부 데이터베이스 저장 실패')
             }
 
             router.push('/login')

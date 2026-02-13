@@ -6,16 +6,16 @@ import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/com
 import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
 import { Progress } from '@/components/ui/progress'
-import { MessageSquare, Calendar, CheckCircle, Clock } from 'lucide-react'
+import { MessageSquare, Calendar, CheckCircle, Clock, FileText } from 'lucide-react'
 
 interface Project {
     id: string
     name: string
-    status: string
-    progress: number
-    quoteRequest: any
-    messages: any[]
-    milestones: any[]
+    description: string
+    components: string
+    thumbnail: string | null
+    createdAt: string
+    updatedAt: string
 }
 
 export default function CustomerDashboard() {
@@ -23,19 +23,15 @@ export default function CustomerDashboard() {
     const [loading, setLoading] = useState(true)
 
     useEffect(() => {
-        // 실제로는 로그인한 사용자의 프로젝트만 가져와야 함
-        // 지금은 데모용으로 모든 프로젝트 표시
         fetchProjects()
     }, [])
 
     const fetchProjects = async () => {
         try {
-            // 임시: 견적 요청에서 프로젝트가 있는 것만 필터링
-            const response = await fetch('/api/quotes')
-            const quotes = await response.json()
-
-            // 프로젝트가 있는 견적만 표시 (실제로는 별도 API 필요)
-            setProjects([])
+            const response = await fetch('/api/projects')
+            if (!response.ok) throw new Error('Failed to fetch')
+            const data = await response.json()
+            setProjects(data)
         } catch (error) {
             console.error('Failed to fetch projects:', error)
         } finally {
@@ -43,24 +39,30 @@ export default function CustomerDashboard() {
         }
     }
 
-    const getStatusBadge = (status: string) => {
-        const styles = {
-            in_progress: 'bg-blue-500/20 text-blue-300 border-blue-500/30',
-            completed: 'bg-green-500/20 text-green-300 border-green-500/30',
-            cancelled: 'bg-red-500/20 text-red-300 border-red-500/30'
-        }
+    const deleteProject = async (id: string) => {
+        if (!confirm('정말로 이 프로젝트를 삭제하시겠습니까?')) return
 
-        const labels = {
-            in_progress: '진행중',
-            completed: '완료',
-            cancelled: '취소'
+        try {
+            const response = await fetch(`/api/projects/${id}`, {
+                method: 'DELETE'
+            })
+            if (response.ok) {
+                setProjects(projects.filter(p => p.id !== id))
+            } else {
+                alert('삭제에 실패했습니다.')
+            }
+        } catch (error) {
+            console.error('Delete failed:', error)
+            alert('오류가 발생했습니다.')
         }
+    }
 
-        return (
-            <Badge className={styles[status as keyof typeof styles] || styles.in_progress}>
-                {labels[status as keyof typeof labels] || status}
-            </Badge>
-        )
+    const parseComponents = (componentsStr: string) => {
+        try {
+            return JSON.parse(componentsStr)
+        } catch (e) {
+            return {}
+        }
     }
 
     return (
@@ -114,109 +116,104 @@ export default function CustomerDashboard() {
                     </Card>
                 ) : (
                     <div className="space-y-6">
-                        {projects.map((project) => (
-                            <Card key={project.id} className="bg-card/50 backdrop-blur border-white/10 hover:border-purple-500/50 transition">
-                                <CardHeader>
-                                    <div className="flex items-start justify-between mb-4">
-                                        <div>
-                                            <CardTitle className="text-2xl mb-2">{project.name}</CardTitle>
-                                            <CardDescription>프로젝트 ID: {project.id}</CardDescription>
+                        {projects.map((project) => {
+                            const components = parseComponents(project.components)
+                            return (
+                                <Card key={project.id} className="bg-card/50 backdrop-blur border-white/10 hover:border-purple-500/50 transition">
+                                    <CardHeader>
+                                        <div className="flex items-start justify-between mb-4">
+                                            <div className="flex gap-4">
+                                                <div className="w-16 h-16 rounded-xl bg-purple-500/20 flex items-center justify-center">
+                                                    <FileText className="w-8 h-8 text-purple-400" />
+                                                </div>
+                                                <div>
+                                                    <CardTitle className="text-2xl mb-2">{project.name}</CardTitle>
+                                                    <CardDescription>
+                                                        {components.fileName || 'PDF 변환 프로젝트'} • {(components.fileSize / 1024 / 1024).toFixed(2)} MB
+                                                    </CardDescription>
+                                                </div>
+                                            </div>
+                                            <Badge className="bg-green-500/20 text-green-300 border-green-500/30">
+                                                완료
+                                            </Badge>
                                         </div>
-                                        {getStatusBadge(project.status)}
-                                    </div>
+                                    </CardHeader>
 
-                                    <div className="space-y-2">
-                                        <div className="flex items-center justify-between text-sm">
-                                            <span className="text-gray-400">진행률</span>
-                                            <span className="text-white font-bold">{project.progress}%</span>
-                                        </div>
-                                        <Progress value={project.progress} className="h-2" />
-                                    </div>
-                                </CardHeader>
+                                    <CardContent>
+                                        <div className="grid md:grid-cols-2 gap-4 mb-6">
+                                            <div className="flex items-center gap-3">
+                                                <div className="w-10 h-10 rounded-lg bg-blue-500/20 flex items-center justify-center">
+                                                    <Calendar className="w-5 h-5 text-blue-400" />
+                                                </div>
+                                                <div>
+                                                    <p className="text-sm text-gray-400">생성일</p>
+                                                    <p className="text-white font-bold">
+                                                        {new Date(project.createdAt).toLocaleDateString('ko-KR', {
+                                                            year: 'numeric',
+                                                            month: 'long',
+                                                            day: 'numeric',
+                                                            hour: '2-digit',
+                                                            minute: '2-digit'
+                                                        })}
+                                                    </p>
+                                                </div>
+                                            </div>
 
-                                <CardContent>
-                                    <div className="grid md:grid-cols-3 gap-4 mb-6">
-                                        <div className="flex items-center gap-3">
-                                            <div className="w-10 h-10 rounded-lg bg-blue-500/20 flex items-center justify-center">
-                                                <MessageSquare className="w-5 h-5 text-blue-400" />
-                                            </div>
-                                            <div>
-                                                <p className="text-sm text-gray-400">메시지</p>
-                                                <p className="text-white font-bold">{project.messages?.length || 0}개</p>
-                                            </div>
-                                        </div>
-
-                                        <div className="flex items-center gap-3">
-                                            <div className="w-10 h-10 rounded-lg bg-green-500/20 flex items-center justify-center">
-                                                <CheckCircle className="w-5 h-5 text-green-400" />
-                                            </div>
-                                            <div>
-                                                <p className="text-sm text-gray-400">완료된 마일스톤</p>
-                                                <p className="text-white font-bold">
-                                                    {project.milestones?.filter((m: any) => m.status === 'completed').length || 0} / {project.milestones?.length || 0}
-                                                </p>
-                                            </div>
-                                        </div>
-
-                                        <div className="flex items-center gap-3">
-                                            <div className="w-10 h-10 rounded-lg bg-purple-500/20 flex items-center justify-center">
-                                                <Clock className="w-5 h-5 text-purple-400" />
-                                            </div>
-                                            <div>
-                                                <p className="text-sm text-gray-400">시작일</p>
-                                                <p className="text-white font-bold">
-                                                    {new Date(project.quoteRequest?.createdAt).toLocaleDateString('ko-KR')}
-                                                </p>
+                                            <div className="flex items-center gap-3">
+                                                <div className="w-10 h-10 rounded-lg bg-purple-500/20 flex items-center justify-center">
+                                                    <Clock className="w-5 h-5 text-purple-400" />
+                                                </div>
+                                                <div>
+                                                    <p className="text-sm text-gray-400">마지막 수정</p>
+                                                    <p className="text-white font-bold">
+                                                        {new Date(project.updatedAt).toLocaleDateString('ko-KR')}
+                                                    </p>
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
 
-                                    <div className="flex gap-2">
-                                        <Button className="bg-gradient-to-r from-purple-500 to-pink-500 hover:opacity-90">
-                                            프로젝트 상세보기
-                                        </Button>
-                                        <Button variant="outline" className="border-gray-700 hover:bg-gray-800">
-                                            <MessageSquare className="w-4 h-4 mr-2" />
-                                            메시지 보내기
-                                        </Button>
-                                    </div>
-                                </CardContent>
-                            </Card>
-                        ))}
+                                        <div className="flex gap-2">
+                                            <Button asChild className="bg-gradient-to-r from-purple-500 to-pink-500 hover:opacity-90">
+                                                <Link href={components.fileUrl || '#'}>
+                                                    실시간 뷰어로 보기
+                                                </Link>
+                                            </Button>
+                                            <Button
+                                                variant="outline"
+                                                className="border-red-500/50 text-red-400 hover:bg-red-500/10"
+                                                onClick={() => deleteProject(project.id)}
+                                            >
+                                                삭제하기
+                                            </Button>
+                                        </div>
+                                    </CardContent>
+                                </Card>
+                            )
+                        })}
                     </div>
                 )}
 
                 {/* 견적 요청 현황 */}
                 <div className="mt-12">
-                    <h2 className="text-2xl font-bold mb-6 text-white">견적 요청 현황</h2>
-                    <div className="grid md:grid-cols-3 gap-6">
+                    <h2 className="text-2xl font-bold mb-6 text-white">서비스 이용 현황</h2>
+                    <div className="grid md:grid-cols-2 gap-6">
                         <Card className="bg-card/50 backdrop-blur border-white/10">
                             <CardHeader>
-                                <CardTitle className="text-yellow-400">대기중</CardTitle>
+                                <CardTitle className="text-purple-400">내 카탈로그 프로젝트</CardTitle>
                             </CardHeader>
                             <CardContent>
-                                <p className="text-4xl font-bold text-white">0</p>
-                                <p className="text-sm text-gray-400 mt-2">검토 대기 중인 견적</p>
+                                <p className="text-4xl font-bold text-white">{projects.length}</p>
+                                <p className="text-sm text-gray-400 mt-2">지금까지 변환된 전자 카탈로그 개수</p>
                             </CardContent>
                         </Card>
 
                         <Card className="bg-card/50 backdrop-blur border-white/10">
                             <CardHeader>
-                                <CardTitle className="text-blue-400">진행중</CardTitle>
+                                <CardTitle className="text-blue-400">계정 등급</CardTitle>
                             </CardHeader>
                             <CardContent>
-                                <p className="text-4xl font-bold text-white">0</p>
-                                <p className="text-sm text-gray-400 mt-2">현재 진행 중인 프로젝트</p>
-                            </CardContent>
-                        </Card>
-
-                        <Card className="bg-card/50 backdrop-blur border-white/10">
-                            <CardHeader>
-                                <CardTitle className="text-green-400">완료</CardTitle>
-                            </CardHeader>
-                            <CardContent>
-                                <p className="text-4xl font-bold text-white">0</p>
-                                <p className="text-sm text-gray-400 mt-2">완료된 프로젝트</p>
+                                <p className="text-4xl font-bold text-white">Free</p>
+                                <p className="text-sm text-gray-400 mt-2">현재 이용 중인 플랜</p>
                             </CardContent>
                         </Card>
                     </div>

@@ -1,20 +1,23 @@
-import type { Metadata } from 'next'
-import { Inter, Noto_Sans_KR } from 'next/font/google'
+import type { Metadata } from "next";
+import { Inter, Outfit } from 'next/font/google'
 import './globals.css'
-import { Providers } from '@/components/Providers'
-import { ScrollProgress } from '@/components/ScrollProgress'
 
-const inter = Inter({ subsets: ['latin'], variable: '--font-inter' })
-const notoSansKr = Noto_Sans_KR({
-  weight: ['100', '300', '400', '500', '700', '900'],
-  subsets: ['latin'],
-  variable: '--font-noto-sans-kr',
-})
+import { ThemeProvider } from "@/components/theme-provider"
+import { ThemeToggle } from "@/components/theme-toggle"
+import { Toaster } from "sonner"
+import Link from 'next/link'
+
+const inter = Inter({ subsets: ["latin"], variable: '--font-inter' })
+const outfit = Outfit({ subsets: ["latin"], variable: '--font-outfit' })
 
 export const metadata: Metadata = {
-  title: 'Premium Page - 고품격 웹사이트 제작',
-  description: '당신의 비즈니스를 위한 최고의 웹사이트를 만드세요.',
+  title: "Premium Page | Digital Identity & E-Catalog Agency",
+  description: "Beyond PDF. The Art of Interactive Digital Experience for Global Brands.",
 }
+
+import { MainLayout } from "@/components/MainLayout"
+
+// ... imports
 
 export default function RootLayout({
   children,
@@ -22,13 +25,21 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="ko" className="scroll-smooth">
-      <body className={`${inter.variable} ${notoSansKr.variable} font-sans antialiased text-gray-900 bg-white`}>
-        <Providers>
-          <ScrollProgress />
-          {children}
-        </Providers>
+    <html lang="ko" suppressHydrationWarning>
+      <body className={`${inter.variable} ${outfit.variable} font-sans min-h-screen bg-background text-foreground transition-colors duration-300`}>
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="dark"
+          enableSystem
+          disableTransitionOnChange
+        >
+          <Toaster position="top-center" richColors />
+          <MainLayout>
+            {children}
+          </MainLayout>
+        </ThemeProvider>
       </body>
     </html>
   )
 }
+

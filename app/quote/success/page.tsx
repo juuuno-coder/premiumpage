@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useState } from 'react'
+import { Suspense, useEffect, useState } from 'react'
 import { useSearchParams } from 'next/navigation'
 import Link from 'next/link'
 import { motion } from 'framer-motion'
@@ -8,7 +8,7 @@ import { CheckCircle2, ArrowRight, Mail, Phone, Home, Sparkles } from 'lucide-re
 import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card'
 
-export default function QuoteSuccessPage() {
+function QuoteSuccessContent() {
     const searchParams = useSearchParams()
     const quoteId = searchParams.get('id')
     const [confetti, setConfetti] = useState(true)
@@ -209,5 +209,13 @@ export default function QuoteSuccessPage() {
                 </motion.div>
             </div>
         </div>
+    )
+}
+
+export default function QuoteSuccessPage() {
+    return (
+        <Suspense fallback={<div className="min-h-screen bg-black flex items-center justify-center text-white">Loading...</div>}>
+            <QuoteSuccessContent />
+        </Suspense>
     )
 }

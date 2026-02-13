@@ -21,379 +21,155 @@ export type Template = {
     popular?: boolean
 }
 
+export type DevelopmentPlan = {
+    id: string
+    name: string
+    type: string
+    price: number
+    features: string[]
+    popular?: boolean
+}
+
+export type MaintenancePlan = {
+    id: string
+    name: string
+    type: string
+    price: number
+    features: string[]
+    popular?: boolean
+}
+
 export const categories: Category[] = [
     {
         id: '1',
-        name: 'Artist',
-        slug: 'artist',
-        description: 'Templates for photographers, painters, and sculptors'
+        name: 'Basic Viewer',
+        slug: 'basic-viewer',
+        description: 'PDF 리플렛을 웹뷰어로 즉시 변환 (페이지 넘김 효과)'
     },
     {
         id: '2',
-        name: 'Small Business',
-        slug: 'small-business',
-        description: 'Templates for local businesses and shops'
+        name: 'Standard Interactive',
+        slug: 'interactive',
+        description: '반응형 디자인과 애니메이션이 결합된 전문 전자 카탈로그'
     },
     {
         id: '3',
-        name: 'SME',
-        slug: 'sme',
-        description: 'Templates for small and medium enterprises'
+        name: 'Masterpiece 3D',
+        slug: 'masterpiece',
+        description: 'Three.js 기술이 집약된 압도적 비주얼의 3D 전자 카탈로그'
     }
 ]
 
 export const templates: Template[] = [
-    // Artist templates
+    // Basic Viewer templates
     {
         id: '1',
-        name: 'Photographer Portfolio',
-        slug: 'photographer-portfolio',
-        description: 'Stunning portfolio template for professional photographers with gallery and booking features',
+        name: 'Classic Flyer Viewer',
+        slug: 'classic-viewer',
+        description: '심플하고 빠른 로딩의 PDF 변환 뷰어입니다.',
         categoryId: '1',
-        category: 'Artist',
-        imageUrl: '/templates/photographer-portfolio.png',
-        features: ['Image Gallery', 'Booking System', 'Client Portal', 'Blog'],
+        category: 'Basic Viewer',
+        imageUrl: '/templates/viewer-basic.png',
+        features: ['PDF Upload', 'Flip Effect', 'Mobile Optimized', 'Link Sharing'],
         demoUrl: '#'
     },
+    // Standard Interactive templates
     {
         id: '2',
-        name: 'Painter Showcase',
-        slug: 'painter-showcase',
-        description: 'Elegant template to showcase paintings and artwork with online store integration',
-        categoryId: '1',
-        category: 'Artist',
-        imageUrl: '/templates/painter-showcase.png',
-        features: ['Artwork Gallery', 'E-commerce', 'Exhibition Calendar', 'Artist Bio'],
+        name: 'Global Export Standard',
+        slug: 'export-standard',
+        description: '해외 수출 기업을 위한 다국어 지원 및 세련된 레이아웃의 카탈로그입니다.',
+        categoryId: '2',
+        category: 'Standard Interactive',
+        imageUrl: '/templates/interactive-standard.png',
+        features: ['Multilingual Support', 'Interactive UI', 'Product Search', 'Inquiry Form'],
         demoUrl: '#'
     },
+    // Masterpiece templates
     {
         id: '3',
-        name: 'Sculptor Studio',
-        slug: 'sculptor-studio',
-        description: '3D-ready template for sculptors with immersive viewing experience',
-        categoryId: '1',
-        category: 'Artist',
-        imageUrl: '/templates/sculptor-studio.png',
-        features: ['3D Gallery', 'Commission Form', 'Portfolio', 'Contact'],
-        demoUrl: '#'
-    },
-    // Small Business templates
-    {
-        id: '4',
-        name: 'Flower Shop',
-        slug: 'flower-shop',
-        description: 'Beautiful template for flower shops with online ordering and delivery',
-        categoryId: '2',
-        category: 'Small Business',
-        imageUrl: '/templates/flower-shop.png',
-        features: ['Product Catalog', 'Online Ordering', 'Delivery Tracking', 'Gift Cards'],
-        demoUrl: '#'
-    },
-    {
-        id: '5',
-        name: 'Interior Design',
-        slug: 'interior-design',
-        description: 'Professional template for interior designers with project showcase',
-        categoryId: '2',
-        category: 'Small Business',
-        imageUrl: '/templates/interior-design.png',
-        features: ['Project Gallery', 'Before/After', 'Consultation Booking', 'Services'],
-        demoUrl: '#'
-    },
-    {
-        id: '6',
-        name: 'Cafe & Coffee Shop',
-        slug: 'cafe-coffee',
-        description: 'Cozy template for cafes with menu and reservation system',
-        categoryId: '2',
-        category: 'Small Business',
-        imageUrl: '/templates/cafe-coffee-shop.png',
-        features: ['Digital Menu', 'Reservations', 'Events Calendar', 'Location Map'],
-        demoUrl: '#'
-    },
-    {
-        id: '7',
-        name: 'Bakery',
-        slug: 'bakery',
-        description: 'Sweet template for bakeries with online ordering',
-        categoryId: '2',
-        category: 'Small Business',
-        imageUrl: '/templates/bakery.png',
-        features: ['Product Showcase', 'Pre-orders', 'Custom Cakes', 'Catering'],
-        demoUrl: '#'
-    },
-    {
-        id: '8',
-        name: 'Hair Salon',
-        slug: 'hair-salon',
-        description: 'Stylish template for hair salons with booking system',
-        categoryId: '2',
-        category: 'Small Business',
-        imageUrl: '/templates/hair-salon.png',
-        features: ['Service Menu', 'Online Booking', 'Stylist Profiles', 'Gallery'],
-        demoUrl: '#'
-    },
-    {
-        id: '9',
-        name: 'Nail Salon',
-        slug: 'nail-salon',
-        description: 'Chic template for nail salons with appointment scheduling',
-        categoryId: '2',
-        category: 'Small Business',
-        imageUrl: '/templates/nail-salon.png',
-        features: ['Service Catalog', 'Appointments', 'Nail Art Gallery', 'Pricing'],
-        demoUrl: '#'
-    },
-    {
-        id: '10',
-        name: 'Yoga Studio',
-        slug: 'yoga-studio',
-        description: 'Zen template for yoga studios with class schedules',
-        categoryId: '2',
-        category: 'Small Business',
-        imageUrl: '/templates/yoga-studio.png',
-        features: ['Class Schedule', 'Instructor Bios', 'Membership', 'Blog'],
-        demoUrl: '#'
-    },
-    {
-        id: '11',
-        name: 'Pet Shop',
-        slug: 'pet-shop',
-        description: 'Friendly template for pet shops with product catalog',
-        categoryId: '2',
-        category: 'Small Business',
-        imageUrl: '/templates/pet-shop.png',
-        features: ['Product Store', 'Pet Services', 'Grooming Booking', 'Pet Care Tips'],
-        demoUrl: '#'
-    },
-    {
-        id: '12',
-        name: 'Clothing Store',
-        slug: 'clothing-store',
-        description: 'Fashion-forward template for clothing stores with e-commerce',
-        categoryId: '2',
-        category: 'Small Business',
-        imageUrl: '/templates/clothing-store.png',
-        features: ['Online Store', 'Size Guide', 'Lookbook', 'Wishlist'],
-        demoUrl: '#'
-    },
-    {
-        id: '13',
-        name: 'Restaurant',
-        slug: 'restaurant',
-        description: 'Delicious template for restaurants with menu and reservations',
-        categoryId: '2',
-        category: 'Small Business',
-        imageUrl: '/templates/restaurant.png',
-        features: ['Digital Menu', 'Table Reservations', 'Online Ordering', 'Reviews'],
-        demoUrl: '#'
-    },
-    // SME templates
-    {
-        id: '14',
-        name: 'Manufacturing Company',
-        slug: 'manufacturing',
-        description: 'Professional template for manufacturing companies',
+        name: 'EMT Tech Masterpiece',
+        slug: 'emt-masterpiece',
+        description: '압도적인 3D 비주얼과 인터랙티브 경험을 제공하는 최고급 카탈로그입니다.',
         categoryId: '3',
-        category: 'SME',
-        imageUrl: '/templates/manufacturing-company.png',
-        features: ['Product Catalog', 'Capabilities', 'Quality Certifications', 'Contact'],
-        demoUrl: '#'
-    },
-    {
-        id: '15',
-        name: 'IT Services',
-        slug: 'it-services',
-        description: 'Modern template for IT service providers',
-        categoryId: '3',
-        category: 'SME',
-        imageUrl: '/templates/it-services.png',
-        features: ['Services Portfolio', 'Case Studies', 'Tech Stack', 'Support Portal'],
-        demoUrl: '#'
-    },
-    {
-        id: '16',
-        name: 'Construction Company',
-        slug: 'construction',
-        description: 'Robust template for construction companies',
-        categoryId: '3',
-        category: 'SME',
-        imageUrl: '/templates/construction-company.png',
-        features: ['Project Gallery', 'Services', 'Team', 'Quote Request'],
-        demoUrl: '#'
-    },
-    {
-        id: '17',
-        name: 'Logistics & Transport',
-        slug: 'logistics',
-        description: 'Efficient template for logistics companies',
-        categoryId: '3',
-        category: 'SME',
-        imageUrl: '/templates/logistics-transport.png',
-        features: ['Tracking System', 'Services', 'Coverage Map', 'Quote Calculator'],
-        demoUrl: '#'
-    },
-    {
-        id: '18',
-        name: 'Consulting Firm',
-        slug: 'consulting',
-        description: 'Professional template for consulting firms',
-        categoryId: '3',
-        category: 'SME',
-        imageUrl: '/templates/consulting-firm.png',
-        features: ['Services', 'Case Studies', 'Team Profiles', 'Blog'],
-        demoUrl: '#'
-    },
-    {
-        id: '19',
-        name: 'Education & Training',
-        slug: 'education',
-        description: 'Educational template for training centers',
-        categoryId: '3',
-        category: 'SME',
-        imageUrl: '/templates/education-training.png',
-        features: ['Course Catalog', 'Enrollment', 'Instructor Profiles', 'Resources'],
-        demoUrl: '#'
-    },
-    {
-        id: '20',
-        name: 'Healthcare Clinic',
-        slug: 'healthcare',
-        description: 'Medical template for healthcare providers',
-        categoryId: '3',
-        category: 'SME',
-        imageUrl: '/templates/healthcare-clinic.png',
-        features: ['Services', 'Doctor Profiles', 'Appointments', 'Patient Portal'],
-        demoUrl: '#'
-    },
-    {
-        id: '21',
-        name: 'Law Firm',
-        slug: 'law-firm',
-        description: 'Professional template for law firms',
-        categoryId: '3',
-        category: 'SME',
-        imageUrl: '/templates/law-firm.png',
-        features: ['Practice Areas', 'Attorney Profiles', 'Case Results', 'Consultation'],
-        demoUrl: '#'
-    },
-    {
-        id: '22',
-        name: 'Real Estate Agency',
-        slug: 'real-estate',
-        description: 'Dynamic template for real estate agencies',
-        categoryId: '3',
-        category: 'SME',
-        imageUrl: '/templates/real-estate.jpg',
-        features: ['Property Listings', 'Search Filters', 'Agent Profiles', 'Virtual Tours'],
-        demoUrl: '#'
-    },
-    {
-        id: '23',
-        name: 'Marketing Agency',
-        slug: 'marketing-agency',
-        description: 'Creative template for marketing agencies',
-        categoryId: '3',
-        category: 'SME',
-        imageUrl: '/templates/marketing.jpg',
-        features: ['Portfolio', 'Services', 'Case Studies', 'Team', 'Blog'],
-        demoUrl: '#'
+        category: 'Masterpiece 3D',
+        imageUrl: '/templates/emt-style.png',
+        features: ['Three.js 3D Models', 'Scroll Animation', 'Dark/Light Theme', 'Premium UX'],
+        demoUrl: '#',
+        popular: true
     }
 ]
 
-export const developmentPlans = [
+export const developmentPlans: DevelopmentPlan[] = [
     {
         id: '1',
-        name: 'Basic',
-        slug: 'dev-basic',
-        type: 'development',
+        name: 'Lite (PDF 변환)',
+        type: 'Lite',
         price: 500000,
         features: [
-            'Template customization',
-            'Basic SEO setup',
-            'Mobile responsive',
-            'Contact form',
-            '1 month support'
-        ],
-        popular: false
+            '기존 PDF 1건 웹 변환',
+            '페이지 넘김(Flip) 효과 적용',
+            '모바일 최적화 뷰어',
+            '전용 QR 코드 제공',
+            '1개월 무료 유지보수'
+        ]
     },
     {
         id: '2',
-        name: 'Standard',
-        slug: 'dev-standard',
-        type: 'development',
-        price: 1500000,
+        name: 'Standard (전문 제작)',
+        type: 'Pro',
+        price: 3000000,
         features: [
-            'Custom design',
-            'Advanced SEO',
-            'E-commerce integration',
-            'Blog system',
-            'Analytics setup',
-            '3 months support'
+            '맞춤형 인터랙티브 디자인',
+            '다국어 지원 (최대 3개국어)',
+            '제품 검색 및 필터링 기능',
+            '문의하기 폼 연동',
+            'SEO 검색 엔진 최적화',
+            'SNS 공유 기능 최적화'
         ],
         popular: true
     },
     {
         id: '3',
-        name: 'Premium',
-        slug: 'dev-premium',
-        type: 'development',
-        price: 3000000,
+        name: 'Master (3D 하이엔드)',
+        type: 'Master',
+        price: 15000000,
         features: [
-            'Fully custom development',
-            'Advanced features',
-            'API integrations',
-            'Custom CMS',
-            'Performance optimization',
-            '6 months support'
-        ],
-        popular: false
+            'EMT 스타일 3D 모델링 지원',
+            '스크롤 기반 인터랙티브 UX',
+            '다국어 무제한 지원',
+            '실시간 제품 시뮬레이션',
+            '고급 애니메이션 효과',
+            '글로벌 전용 CDN 배포'
+        ]
     }
 ]
 
-export const maintenancePlans = [
+export const maintenancePlans: MaintenancePlan[] = [
     {
-        id: '4',
+        id: '1',
         name: 'Basic',
-        slug: 'maint-basic',
-        type: 'maintenance',
-        price: 50000,
+        type: 'Basic',
+        price: 30000,
         features: [
-            'Basic hosting',
-            '1 content update/month',
-            'Basic analytics',
-            'Email support'
-        ],
-        popular: false
+            '안정적인 호스팅 제공',
+            '월 1회 스펙 정보 수정',
+            '기본 접속 통계 제공',
+            '이메일 고객 지원'
+        ]
     },
     {
-        id: '5',
-        name: 'Professional',
-        slug: 'maint-pro',
-        type: 'maintenance',
-        price: 150000,
+        id: '2',
+        name: 'Premium',
+        type: 'Premium',
+        price: 100000,
         features: [
-            'Premium hosting',
-            'Unlimited updates',
-            'Advanced analytics',
-            'SEO monitoring',
-            'Priority support'
+            '고속 글로벌 CDN 적용',
+            '월 5회 상세 정보 수정',
+            '상세 유입 경로 분석 보고서',
+            '실시간 기술 지원',
+            '멀티 도메인 지원'
         ],
         popular: true
-    },
-    {
-        id: '6',
-        name: 'Enterprise',
-        slug: 'maint-enterprise',
-        type: 'maintenance',
-        price: 300000,
-        features: [
-            'Dedicated hosting',
-            'Dedicated manager',
-            'Custom features',
-            'A/B testing',
-            '24/7 support'
-        ],
-        popular: false
     }
 ]

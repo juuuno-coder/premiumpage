@@ -19,6 +19,7 @@ export default function LoginPage() {
         setError('')
 
         try {
+            // 1. NextAuth 로그인 (세션 관리용)
             const result = await signIn('credentials', {
                 email,
                 password,
@@ -28,6 +29,16 @@ export default function LoginPage() {
             if (result?.error) {
                 setError('이메일 또는 비밀번호가 올바르지 않습니다.')
             } else {
+                // 2. Firebase Auth 로그인 (클라이언트 사이드 Storage/Firestore 권한용)
+                try {
+                    const { auth } = await import('@/lib/firebase')
+                    const { signInWithEmailAndPassword } = await import('firebase/auth')
+                    await signInWithEmailAndPassword(auth, email, password)
+                } catch (fbErr) {
+                    console.warn('Firebase sync login failed:', fbErr)
+                    // 계정 동기화 전의 구사용자인 경우 등... 여기서는 무시하거나 세션 유지
+                }
+
                 router.push('/')
                 router.refresh()
             }
@@ -39,26 +50,26 @@ export default function LoginPage() {
     }
 
     return (
-        <div className="min-h-screen flex items-center justify-center bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
-            <div className="max-w-md w-full space-y-8 bg-white p-8 rounded-xl shadow-lg">
+        <div className="min-h-screen flex items-center justify-center bg-background py-12 px-4 sm:px-6 lg:px-8 transition-colors duration-300">
+            <div className="max-w-md w-full space-y-8 glass-card p-8 rounded-xl shadow-2xl">
                 <div>
-                    <div className="mx-auto w-12 h-12 rounded-xl bg-gradient-to-br from-blue-500 to-blue-600 flex items-center justify-center text-white font-bold text-xl mb-6">
+                    <div className="mx-auto w-12 h-12 rounded-xl bg-gradient-to-br from-blue-500 to-blue-600 flex items-center justify-center text-white font-bold text-xl mb-6 shadow-lg shadow-blue-500/30">
                         P
                     </div>
-                    <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900">
+                    <h2 className="mt-6 text-center text-3xl font-extrabold text-foreground">
                         로그인
                     </h2>
-                    <p className="mt-2 text-center text-sm text-gray-600">
+                    <p className="mt-2 text-center text-sm text-muted-foreground">
                         Premium Page에 오신 것을 환영합니다
                     </p>
                 </div>
                 <form className="mt-8 space-y-6" onSubmit={handleSubmit}>
-                    <div className="rounded-md shadow-sm -space-y-px">
+                    <div className="rounded-md shadow-sm space-y-4">
                         <div>
                             <input
                                 type="email"
                                 required
-                                className="imweb-input rounded-b-none mb-0"
+                                className="imweb-input w-full"
                                 placeholder="이메일 주소"
                                 value={email}
                                 onChange={(e) => setEmail(e.target.value)}
@@ -68,7 +79,7 @@ export default function LoginPage() {
                             <input
                                 type="password"
                                 required
-                                className="imweb-input rounded-t-none"
+                                className="imweb-input w-full"
                                 placeholder="비밀번호"
                                 value={password}
                                 onChange={(e) => setPassword(e.target.value)}
@@ -77,7 +88,7 @@ export default function LoginPage() {
                     </div>
 
                     {error && (
-                        <div className="text-red-500 text-sm text-center bg-red-50 p-2 rounded">
+                        <div className="text-destructive text-sm text-center bg-destructive/10 p-2 rounded border border-destructive/20">
                             {error}
                         </div>
                     )}
@@ -86,7 +97,7 @@ export default function LoginPage() {
                         <button
                             type="submit"
                             disabled={isLoading}
-                            className="w-full imweb-btn imweb-btn-primary flex justify-center py-3"
+                            className="w-full imweb-btn imweb-btn-primary flex justify-center py-3 shadow-lg hover:shadow-xl transition-all active:scale-[0.98]"
                         >
                             {isLoading ? <LoadingSpinner size="sm" /> : '로그인'}
                         </button>
@@ -94,9 +105,9 @@ export default function LoginPage() {
                 </form>
 
                 <div className="text-center text-sm">
-                    <p className="text-gray-600">
+                    <p className="text-muted-foreground">
                         계정이 없으신가요?{' '}
-                        <Link href="/register" className="font-medium text-blue-600 hover:text-blue-500">
+                        <Link href="/register" className="font-medium text-primary hover:text-primary/80 transition-colors">
                             회원가입
                         </Link>
                     </p>

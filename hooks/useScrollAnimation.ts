@@ -2,32 +2,29 @@
 
 import { useEffect, useRef, useState } from 'react'
 
-interface UseScrollAnimationOptions {
+interface UseScrollAnimationProps {
     threshold?: number
     rootMargin?: string
     triggerOnce?: boolean
 }
 
-export function useScrollAnimation(options: UseScrollAnimationOptions = {}) {
-    const {
-        threshold = 0.1,
-        rootMargin = '0px',
-        triggerOnce = true
-    } = options
-
-    const [isVisible, setIsVisible] = useState(false)
+export function useScrollAnimation({
+    threshold = 0.1,
+    rootMargin = '0px',
+    triggerOnce = true
+}: UseScrollAnimationProps = {}) {
     const ref = useRef<HTMLDivElement>(null)
+    const [isVisible, setIsVisible] = useState(false)
 
     useEffect(() => {
-        const element = ref.current
-        if (!element) return
+        const currentRef = ref.current
 
         const observer = new IntersectionObserver(
             ([entry]) => {
                 if (entry.isIntersecting) {
                     setIsVisible(true)
-                    if (triggerOnce) {
-                        observer.unobserve(element)
+                    if (triggerOnce && currentRef) {
+                        observer.unobserve(currentRef)
                     }
                 } else if (!triggerOnce) {
                     setIsVisible(false)
@@ -39,54 +36,16 @@ export function useScrollAnimation(options: UseScrollAnimationOptions = {}) {
             }
         )
 
-        observer.observe(element)
+        if (currentRef) {
+            observer.observe(currentRef)
+        }
 
         return () => {
-            observer.unobserve(element)
+            if (currentRef) {
+                observer.unobserve(currentRef)
+            }
         }
     }, [threshold, rootMargin, triggerOnce])
 
     return { ref, isVisible }
-}
-
-// 마우스 위치 추적 훅
-export function useMousePosition() {
-    const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 })
-
-    useEffect(() => {
-        const updateMousePosition = (e: MouseEvent) => {
-            setMousePosition({ x: e.clientX, y: e.clientY })
-        }
-
-        window.addEventListener('mousemove', updateMousePosition)
-
-        return () => {
-            window.removeEventListener('mousemove', updateMousePosition)
-        }
-    }, [])
-
-    return mousePosition
-}
-
-// 스크롤 진행률 훅
-export function useScrollProgress() {
-    const [scrollProgress, setScrollProgress] = useState(0)
-
-    useEffect(() => {
-        const updateScrollProgress = () => {
-            const scrollHeight = document.documentElement.scrollHeight - window.innerHeight
-            const scrolled = window.scrollY
-            const progress = (scrolled / scrollHeight) * 100
-            setScrollProgress(progress)
-        }
-
-        window.addEventListener('scroll', updateScrollProgress)
-        updateScrollProgress()
-
-        return () => {
-            window.removeEventListener('scroll', updateScrollProgress)
-        }
-    }, [])
-
-    return scrollProgress
 }

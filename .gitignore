@@ -41,3 +41,10 @@ yarn-error.log*
 next-env.d.ts
 
 /app/generated/prisma
+
+# Uploaded files
+public/uploads/
+
+# Crawled / Large Data Folders
+public/gentop/
+public/hstech/
