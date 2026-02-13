@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
-import { ExternalLink, Download, ChevronLeft, ChevronRight } from 'lucide-react';
-import { DB } from '../../data';
+import { ExternalLink, Download } from 'lucide-react';
+import { DB, CATEGORY_INFO } from '../../data';
 import { ProductNavigator } from '../../components/ProductNavigator';
 
 interface ProductPageProps {
@@ -35,6 +35,7 @@ function findProductContext(productId: string) {
     return {
         product,
         categoryKey,
+        allProducts,
         prevProduct,
         nextProduct,
         currentIndex,
@@ -49,15 +50,18 @@ export default function ProductPage({ params }: ProductPageProps) {
         notFound();
     }
 
-    const { product, prevProduct, nextProduct } = context;
+    const { product, categoryKey, allProducts } = context;
+    const categoryInfo = CATEGORY_INFO[categoryKey];
 
     return (
         <div className="min-h-screen bg-white dark:bg-neutral-950 text-neutral-900 dark:text-neutral-100">
             <div className="max-w-7xl mx-auto px-6 py-12">
-                {/* Product Navigator (without page counter) */}
+                {/* Product Navigator */}
                 <ProductNavigator
-                    productId={params.productId}
-                    showPageCounter={false}
+                    currentProduct={product}
+                    categoryProducts={allProducts}
+                    categoryTitle={categoryInfo?.title || categoryKey}
+                    categoryPath={`/templates/hs-tech/category/${categoryKey}`}
                     className="mb-12"
                 />
 
@@ -149,59 +153,6 @@ export default function ProductPage({ params }: ProductPageProps) {
                             </div>
                         )}
                     </section>
-                </div>
-
-                {/* Product Navigation Footer */}
-                <div className="border-t border-neutral-200 dark:border-neutral-800 pt-8">
-                    <div className="flex items-center justify-between">
-                        {/* Previous Product */}
-                        <div className="flex-1">
-                            {prevProduct ? (
-                                <Link
-                                    href={`/templates/hs-tech/product/${prevProduct.id}`}
-                                    className="group flex items-center gap-3 text-neutral-700 dark:text-neutral-300 hover:text-neutral-900 dark:hover:text-neutral-100 transition-colors"
-                                >
-                                    <ChevronLeft
-                                        size={24}
-                                        className="group-hover:-translate-x-1 transition-transform"
-                                    />
-                                    <div className="flex flex-col items-start">
-                                        <span className="text-xs text-neutral-500">Previous Product</span>
-                                        <span className="font-semibold">{prevProduct.title}</span>
-                                    </div>
-                                </Link>
-                            ) : (
-                                <div className="opacity-30 cursor-not-allowed flex items-center gap-2">
-                                    <ChevronLeft size={24} />
-                                    <span className="text-sm">First Product</span>
-                                </div>
-                            )}
-                        </div>
-
-                        {/* Next Product */}
-                        <div className="flex-1 flex justify-end">
-                            {nextProduct ? (
-                                <Link
-                                    href={`/templates/hs-tech/product/${nextProduct.id}`}
-                                    className="group flex items-center gap-3 text-neutral-700 dark:text-neutral-300 hover:text-neutral-900 dark:hover:text-neutral-100 transition-colors"
-                                >
-                                    <div className="flex flex-col items-end">
-                                        <span className="text-xs text-neutral-500">Next Product</span>
-                                        <span className="font-semibold">{nextProduct.title}</span>
-                                    </div>
-                                    <ChevronRight
-                                        size={24}
-                                        className="group-hover:translate-x-1 transition-transform"
-                                    />
-                                </Link>
-                            ) : (
-                                <div className="opacity-30 cursor-not-allowed flex items-center gap-2">
-                                    <span className="text-sm">Last Product</span>
-                                    <ChevronRight size={24} />
-                                </div>
-                            )}
-                        </div>
-                    </div>
                 </div>
             </div>
         </div>

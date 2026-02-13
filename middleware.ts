@@ -79,7 +79,10 @@ export const config = {
          * - _next/static (정적 파일)
          * - _next/image (이미지 최적화 파일)
          * - favicon.ico (파비콘 파일)
+         * - images (정적 이미지 파일)
+         * - downloads (정적 다운로드 파일)
+         * - assets (정적 에셋 파일)
          */
-        '/((?!api|_next/static|_next/image|favicon.ico).*)',
+        '/((?!api|_next/static|_next/image|favicon.ico|images|downloads|assets|emt|gentop/gentop-next).*)',
     ],
 }
