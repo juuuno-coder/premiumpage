@@ -56,8 +56,8 @@ export const CATEGORY_INFO: Record<string, any> = {
     dewpoint: { title: "Dewpoint", desc: "Reliable dewpoint measurement.", images: [] },
     co2: { title: "Carbon Dioxide", desc: "Accurate CO2 monitoring.", images: [] },
     oil: { title: "Moisture in Oil", desc: "Transformer oil monitoring.", images: [] },
-    barometer: { title: "Barometric Pressure", desc: "Digital barometers.", images: [] },
-    weather: { title: "Weather", desc: "Meteorological sensors.", images: [] },
+    barometer: { title: "Barometric Pressure", desc: "Digital barometers.", images: ['/hstech/HS-TECH_files/3ca83569b6d00.jpg'] },
+    weather: { title: "Weather", desc: "Meteorological sensors.", images: ['/hstech/HS-TECH_files/2ddb0a75a50e4.jpg'] },
     h2o2: { title: "H2O2", desc: "Bio-decontamination monitoring.", images: [] },
 
     // Brands
@@ -601,14 +601,14 @@ export const DB: Record<string, any[]> = {
         { id: 'mm70', title: 'MM70', subtitle: 'Handheld', category: 'handheld', image: '', gallery: [], desc: 'Spot check.', specs: [{ label: 'Spot', value: 'Yes' }] }
     ],
     barometer: [
-        { id: 'ptb330', title: 'PTB330', subtitle: 'Class A', category: 'barometer', image: '', gallery: [], desc: 'Class A barometer.', specs: [{ label: 'Class', value: 'A' }] },
+        { id: 'ptb330', title: 'PTB330', subtitle: 'Class A', category: 'barometer', image: '/hstech/HS-TECH_files/3ca83569b6d00.jpg', gallery: ['/hstech/HS-TECH_files/3ca83569b6d00.jpg', '/hstech/HS-TECH_files/2ddb0a75a50e4.jpg'], desc: 'Class A barometer.', specs: [{ label: 'Class', value: 'A' }] },
         { id: 'ptb210', title: 'PTB210', subtitle: 'Class B', category: 'barometer', image: '', gallery: [], desc: 'Class B barometer.', specs: [{ label: 'Class', value: 'B' }] },
         { id: 'ptb110', title: 'PTB110', subtitle: 'Analog', category: 'barometer', image: '', gallery: [], desc: 'Analog output.', specs: [{ label: 'Out', value: 'V' }] },
-        { id: 'ptu300', title: 'PTU300', subtitle: 'Combined', category: 'barometer', image: '', gallery: [], desc: 'P, T, RH.', specs: [{ label: 'All', value: 'Yes' }] }
+        { id: 'ptu300', title: 'PTU300', subtitle: 'Combined', category: 'barometer', image: '/hstech/HS-TECH_files/deffa2b1b398f.jpg', gallery: ['/hstech/HS-TECH_files/deffa2b1b398f.jpg', '/hstech/HS-TECH_files/2e8820b69ea2b.jpg'], desc: 'P, T, RH.', specs: [{ label: 'All', value: 'Yes' }] }
     ],
     weather: [
         { id: 'wxt530', title: 'WXT530', subtitle: 'Multiparameter', category: 'trans', image: '', gallery: [], desc: 'Weather station.', specs: [{ label: 'All', value: 'Yes' }] },
-        { id: 'hmp155_w', title: 'HMP155', subtitle: 'Probe', category: 'trans', image: '', gallery: [], desc: 'Weather probe.', specs: [{ label: 'Acc', value: 'High' }] }
+        { id: 'hmp155_w', title: 'HMP155', subtitle: 'Probe', category: 'trans', image: '/hstech/HS-TECH_files/2ddb0a75a50e4.jpg', gallery: ['/hstech/HS-TECH_files/2ddb0a75a50e4.jpg'], desc: 'Weather probe.', specs: [{ label: 'Acc', value: 'High' }] }
     ],
     h2o2: [
         { id: 'hpp271', title: 'HPP271', subtitle: 'Probe', category: 'sensor', image: '', gallery: [], desc: 'Vaporized H2O2.', specs: [{ label: 'Gas', value: 'H2O2' }] }
