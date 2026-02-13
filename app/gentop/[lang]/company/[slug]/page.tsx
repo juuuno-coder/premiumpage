@@ -40,9 +40,9 @@ export default async function CompanyDetailPage({ params }: { params: Promise<{ 
     // Dynamically load language specific data
     let data;
     try {
-        data = (await import(`@/lib/data/content_${lang}.json`)).default;
+        data = (await import(`@gentop/lib/data/content_${lang}.json`)).default;
     } catch {
-        data = (await import(`@/lib/data/content_en.json`)).default;
+        data = (await import(`@gentop/lib/data/content_en.json`)).default;
     }
 
     const pageData = data[slug];
