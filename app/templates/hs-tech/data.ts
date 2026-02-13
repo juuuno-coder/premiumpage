@@ -283,28 +283,250 @@ export const SUB_CATEGORIES: Record<string, any[]> = {
 export const DB: Record<string, any[]> = {
     // VAISALA
     humidity: [
-        { id: 'hmp1_9', title: 'HMP1-9 Series', subtitle: 'Smart Probes', category: 'probe', image: '/hstech/Module_Probe_files/6f8eb52ffc86b.png', gallery: ["/hstech/Module_Probe_files/6f8eb52ffc86b.png", "/hstech/Module_Probe_files/b58dbd9f84491.png", "/hstech/Module_Probe_files/1246dad7ceaa6.jpg", "/hstech/Module_Probe_files/94dd0b2cc067e.jpg", "/hstech/Module_Probe_files/49d1814917fb4.png", "/hstech/Module_Probe_files/47644de215289.jpg"], desc: 'Vaisala INDIGO compatible.', specs: [{ label: 'Acc', value: '±0.8 %RH' }], datasheet: 'https://www.vaisala.com/sites/default/files/documents/HMP1-9-Datasheet-B211706EN.pdf' },
-        { id: 'hmm170', title: 'HMM170', subtitle: 'High Temp', category: 'probe', image: '/hstech/Module_Probe_files/6f8eb52ffc86b.png', gallery: ["/hstech/Module_Probe_files/6f8eb52ffc86b.png", "/hstech/Module_Probe_files/b58dbd9f84491.png", "/hstech/Module_Probe_files/1246dad7ceaa6.jpg", "/hstech/Module_Probe_files/94dd0b2cc067e.jpg", "/hstech/Module_Probe_files/49d1814917fb4.png", "/hstech/Module_Probe_files/47644de215289.jpg"], desc: 'For high temperature.', specs: [{ label: 'Temp', value: '180C' }], datasheet: 'https://www.vaisala.com/sites/default/files/documents/HMM170-Datasheet-B211698EN.pdf' },
-        { id: 'hmp155', title: 'HMP155', subtitle: 'Weather', category: 'probe', image: '/hstech/Weather_files/c0bb8f87ce4d3.png', gallery: ["/hstech/Weather_files/c0bb8f87ce4d3.png"], desc: 'Meteorological probe.', specs: [{ label: 'Sensor', value: 'HUMICAP 180R' }], datasheet: 'https://www.vaisala.com/sites/default/files/documents/HMP155-Datasheet-B210993EN.pdf' },
-        { id: 'hmp60', title: 'HMP60', subtitle: 'Miniature', category: 'probe', image: '/hstech/Module_Probe_files/6f8eb52ffc86b.png', gallery: ["/hstech/Module_Probe_files/6f8eb52ffc86b.png", "/hstech/Module_Probe_files/b58dbd9f84491.png", "/hstech/Module_Probe_files/1246dad7ceaa6.jpg", "/hstech/Module_Probe_files/94dd0b2cc067e.jpg", "/hstech/Module_Probe_files/49d1814917fb4.png", "/hstech/Module_Probe_files/47644de215289.jpg"], desc: 'Miniature probe.', specs: [{ label: 'Size', value: 'Compact' }], datasheet: 'https://www.vaisala.com/sites/default/files/documents/HMP60-Datasheet-B210973EN.pdf' },
-        { id: 'hmt370ex', title: 'HMT370EX', subtitle: 'Ex-Proof', category: 'industrial', image: '/hstech/HMT370EX_files/c3c7360ce3fb0.png', gallery: ["/hstech/HMT370EX_files/c3c7360ce3fb0.png", "/hstech/HMT370EX_files/08da9ee263466.jpg", "/hstech/HMT370EX_files/1e86fdf77cdc0.png", "/hstech/HMT370EX_files/2fcdf2496223e.jpg", "/hstech/HMT370EX_files/3b9e6cab13d4f.jpeg"], desc: 'Explosion proof.', specs: [{ label: 'Zone', value: '0' }], datasheet: 'https://www.vaisala.com/sites/default/files/documents/HMT370EX-Datasheet-B211738EN.pdf' },
-        { id: 'hmt360', title: 'HMT360', subtitle: 'Ex-Proof', category: 'industrial', image: '/hstech/HMT360_files/ffb709fd729cd.png', gallery: ["/hstech/HMT360_files/ffb709fd729cd.png", "/hstech/HMT360_files/08da9ee263466.jpg", "/hstech/HMT360_files/6b84ea881fad7.png", "/hstech/HMT360_files/2fcdf2496223e.jpg", "/hstech/HMT360_files/4c75cd7f13af5.png"], desc: 'Intrinsically safe.', specs: [{ label: 'Zone', value: '0' }], datasheet: 'https://www.vaisala.com/sites/default/files/documents/HMT360-Datasheet-B211737EN.pdf' },
-        { id: 'hmd60', title: 'HMD60', subtitle: 'Duct Mount', category: 'hvac', image: '/hstech/HMD60_files/21b4bdad4a29e.png', gallery: ["/hstech/HMD60_files/21b4bdad4a29e.png", "/hstech/HMD60_files/84fb2f49cb789.png"], desc: 'Duct mount HVAC.', specs: [{ label: 'Acc', value: '1.5%' }], datasheet: 'https://www.vaisala.com/sites/default/files/documents/HMD60-Datasheet-B211704EN.pdf' },
-        { id: 'hmw90', title: 'HMW90', subtitle: 'Wall Mount', category: 'hvac', image: '/hstech/HMW90_files/626f320e9c53f.png', gallery: ["/hstech/HMW90_files/626f320e9c53f.png", "/hstech/HMW90_files/2fdd5444d44e3.png"], desc: 'Wall mount HVAC.', specs: [{ label: 'Use', value: 'Indoor' }], datasheet: 'https://www.vaisala.com/sites/default/files/documents/HMW90-Datasheet-B211703EN.pdf' },
-        { id: 'hmdw110', title: 'HMDW110', subtitle: 'IP65', category: 'hvac', image: '/hstech/HMDW110_files/3b230a65bef40.png', gallery: ["/hstech/HMDW110_files/3b230a65bef40.png", "/hstech/HMDW110_files/4b5480e31f81b.png"], desc: 'IP65 transmitter.', specs: [{ label: 'IP', value: '65' }], datasheet: 'https://www.vaisala.com/sites/default/files/documents/HMDW110-Datasheet-B211705EN.pdf' },
-        { id: 'hmdw80', title: 'HMDW80', subtitle: 'Handheld', category: 'hvac', image: '/hstech/HMDW110_files/3b230a65bef40.png', gallery: ["/hstech/HMDW110_files/3b230a65bef40.png", "/hstech/HMDW110_files/4b5480e31f81b.png"], desc: 'Handheld meter.', specs: [{ label: 'Type', value: 'Handheld' }] },
-        { id: 'indigo80_hmp80', title: 'Indigo80', subtitle: 'HMP80', category: 'handheld', image: '/hstech/Indigo80+HMP80_files/00483e18767ab.png', gallery: ["/hstech/Indigo80+HMP80_files/00483e18767ab.png", "/hstech/Indigo80+HMP80_files/c1358d36f4818.jpg", "/hstech/Indigo80+HMP80_files/05563b2ff0eab.jpg", "/hstech/Indigo80+HMP80_files/2a7da2aa2c468.jpg"], desc: 'High-end handheld.', specs: [{ label: 'Display', value: 'Color' }], datasheet: 'https://www.vaisala.com/sites/default/files/documents/Indigo80-Datasheet-B211699EN.pdf' },
-        { id: 'hm70', title: 'HM70', subtitle: 'Handheld', category: 'handheld', image: '/hstech/HM70_files/00483e18767ab.png', gallery: ["/hstech/HM70_files/00483e18767ab.png", "/hstech/HM70_files/25de5b7035b19.png", "/hstech/HM70_files/2dc64cbd01088.jpg"], desc: 'Professional handheld.', specs: [{ label: 'Acc', value: 'High' }], datasheet: 'https://www.vaisala.com/sites/default/files/documents/HM70-Datasheet-B210974EN.pdf' },
-        { id: 'hm40', title: 'HM40', subtitle: 'Compact', category: 'handheld', image: '/hstech/HM40_files/0fc29cc5cdc18.png', gallery: ["/hstech/HM40_files/0fc29cc5cdc18.png", "/hstech/HM40_files/4789ab851dd25.png", "/hstech/HM40_files/a96fc6c9bbd7a.png"], desc: 'Compact handheld.', specs: [{ label: 'Size', value: 'Small' }], datasheet: 'https://www.vaisala.com/sites/default/files/documents/HM40-Datasheet-B210975EN.pdf' },
-        { id: 'shm40', title: 'SHM40', subtitle: 'Concrete', category: 'handheld', image: '/hstech/SHM40_files/cdd5adeb7afcc.png', gallery: ["/hstech/SHM40_files/cdd5adeb7afcc.png", "/hstech/SHM40_files/6658f45c3305f.png", "/hstech/SHM40_files/9a60152e8f2db.jpg"], desc: 'Concrete moisture.', specs: [{ label: 'App', value: 'Flooring' }] },
-        { id: 'hmk15', title: 'HMK15', subtitle: 'Calibrator', category: 'handheld', image: '/hstech/HMK15_files/d7a623c5cb8e0.png', gallery: ["/hstech/HMK15_files/d7a623c5cb8e0.png", "/hstech/HMK15_files/7089ce49da5b9.png"], desc: 'Salt calibrator.', specs: [{ label: 'Type', value: 'Salts' }] },
+        {
+            id: 'hmp1_9',
+            title: 'Indigo Smart Probes',
+            subtitle: 'HMP1-HMP9 SERIES',
+            category: 'probe',
+            image: '/templates/hs-tech/images/products/hmp1_9_v1.png',
+            gallery: ["/templates/hs-tech/images/products/hmp1_9_v1.png"],
+            desc: 'Intelligent, interchangeable probes for the Vaisala Indigo family.',
+            specs: [
+                { label: 'Application', value: 'Various industrial processes' },
+                { label: 'Models', value: 'HMP1, HMP3, HMP4, HMP5, HMP7, HMP8, HMP9' },
+                { label: 'Features', value: '• Indigo compatible\n• RS-485 Modbus RTU' },
+                { label: 'Accuracy', value: '±0.8 %RH (at 23 °C)' }
+            ],
+            datasheet: 'https://www.vaisala.com/sites/default/files/documents/HMP1-9-Datasheet-B211706EN.pdf'
+        },
+        {
+            id: 'hmm170',
+            title: 'HMM170',
+            subtitle: 'HIGH TEMP MODULE',
+            category: 'probe',
+            image: '/templates/hs-tech/images/products/hmm170_v1.png',
+            gallery: ["/templates/hs-tech/images/products/hmm170_v1.png"],
+            desc: 'Robust humidity module for high temperature applications.',
+            specs: [
+                { label: 'Application', value: 'Food processing, Baking, Drying' },
+                { label: 'Temp', value: '-70 ... +180 °C' },
+                { label: 'Sensor', value: 'HUMICAP R2' }
+            ],
+            datasheet: 'https://www.vaisala.com/sites/default/files/documents/HMM170-Datasheet-B211698EN.pdf'
+        },
+        {
+            id: 'hmp155',
+            title: 'HMP155',
+            subtitle: 'METEOROLOGICAL PROBE',
+            category: 'probe',
+            image: '/templates/hs-tech/images/products/hmk15_v1.png', // Fallback
+            gallery: [],
+            desc: 'Premium humidity and temperature probe for meteorological applications.',
+            specs: [
+                { label: 'Application', value: 'Meteorology, Aviation, Roads' },
+                { label: 'Range', value: '0 ... 100 %RH\n-80 ... +60 °C' },
+                { label: 'Accuracy', value: '±1.0 %RH' },
+                { label: 'Protection', value: 'IP66' }
+            ],
+            datasheet: 'https://www.vaisala.com/sites/default/files/documents/HMP155-Datasheet-B210993EN.pdf'
+        },
+        {
+            id: 'hmp60',
+            title: 'HMP60 / HMP110',
+            subtitle: 'COMPACT PROBE',
+            category: 'probe',
+            image: '/templates/hs-tech/images/products/hmp60_v1.png',
+            gallery: ["/templates/hs-tech/images/products/hmp60_v1.png"],
+            desc: 'Miniature and compact probes for volume applications.',
+            specs: [
+                { label: 'Application', value: 'OEM, Volume applications' },
+                { label: 'Models', value: 'HMP60 (Intercap), HMP110 (Humicap)' },
+                { label: 'Accuracy', value: '±3 %RH (HMP60)\n±1.5 %RH (HMP110)' },
+                { label: 'Housing', value: 'Stainless steel (IP65)' }
+            ],
+            datasheet: 'https://www.vaisala.com/sites/default/files/documents/HMP60-Datasheet-B210973EN.pdf'
+        },
+        {
+            id: 'hmt370ex',
+            title: 'HMT370EX Series',
+            subtitle: 'EXPLOSION PROOF TRANSMITTER',
+            category: 'industrial',
+            image: '/templates/hs-tech/images/products/hmt370ex_v1.png',
+            gallery: [],
+            desc: 'Designed for hazardous areas. Ideal for fuel storage, chemicals, and pharmaceutical manufacturing.',
+            specs: [
+                { label: 'Application', value: 'Hazardous areas (Zone 0, 1, 2, 20, 21, 22)\nFuel storage, Biogas, Paint booths' },
+                { label: 'Features', value: '• KTL KCS Explosion Proof Certification\n• ATEX, IECEx, FM, CSA, TIIS, EAC certified' },
+                { label: 'Accuracy', value: '±0.8 %RH (0...90 %RH)\n±0.1 °C @ 23 °C' },
+                { label: 'Output', value: '2-Wire Current (4...20 mA)' },
+                { label: 'Protection', value: 'IP66 (NEMA4)' }
+            ],
+            datasheet: 'https://www.vaisala.com/sites/default/files/documents/HMT370EX-Datasheet-B211738EN.pdf'
+        },
+        {
+            id: 'hmt360',
+            title: 'HMT360 Series',
+            subtitle: 'INTRINSICALLY SAFE TRANSMITTER',
+            category: 'industrial',
+            image: '/templates/hs-tech/images/products/hmt360_v1.png',
+            gallery: [],
+            desc: 'Intrinsically safe humidity and temperature transmitter for hazardous environments.',
+            specs: [
+                { label: 'Application', value: 'Explosion-risk areas (Zone 0)\nHydrogen, Solvents, etc.' },
+                { label: 'Features', value: '• Entire transmitter can be installed in Zone 0\n• Measures Td, x, a, Tw' },
+                { label: 'Accuracy', value: '±1 %RH (0...90 %RH)' },
+                { label: 'Output', value: '2-Wire Current (4...20 mA)' },
+                { label: 'Protection', value: 'IP66 (NEMA4)' }
+            ],
+            datasheet: 'https://www.vaisala.com/sites/default/files/documents/HMT360-Datasheet-B211737EN.pdf'
+        },
+        {
+            id: 'hmd60',
+            title: 'HMD60 Series',
+            subtitle: 'HVAC TRANSMITTER (DUCT)',
+            category: 'hvac',
+            image: '/templates/hs-tech/images/products/hmd60_v1.png',
+            gallery: [],
+            desc: 'All-metal body transmitter optimized for building automation and industrial HVAC.',
+            specs: [
+                { label: 'Application', value: 'Building automation, Industrial HVAC' },
+                { label: 'Features', value: '• Robust metal body\n• Vaisala HUMICAP® R2 sensor' },
+                { label: 'Range', value: '0 ... 100 %RH\n-40 ... +80 °C' },
+                { label: 'Accuracy', value: '±1.5 %RH\n±0.1 °C' },
+                { label: 'Output', value: '4...20 mA' }
+            ],
+            datasheet: 'https://www.vaisala.com/sites/default/files/documents/HMD60-Datasheet-B211704EN.pdf'
+        },
+        {
+            id: 'hmw90',
+            title: 'HMW90 Series',
+            subtitle: 'HVAC TRANSMITTER (WALL)',
+            category: 'hvac',
+            image: '/templates/hs-tech/images/products/hmw90_v1.png',
+            gallery: [],
+            desc: 'Indoor humidity and temperature transmitter for high-end environments.',
+            specs: [
+                { label: 'Application', value: 'Museums, Laboratories, Data centers' },
+                { label: 'Features', value: '• Slide-down cover for easy calibration\n• User exchangeable Intercap sensor' },
+                { label: 'Range', value: '0 ... 100 %RH\n-5 ... +55 °C' },
+                { label: 'Accuracy', value: '±1.7 %RH\n±0.2 °C' },
+                { label: 'Output', value: '4...20 mA, 0...5V, 0...10V (Configurable)' }
+            ],
+            datasheet: 'https://www.vaisala.com/sites/default/files/documents/HMW90-Datasheet-B211703EN.pdf'
+        },
+        {
+            id: 'hmdw110',
+            title: 'HMDW110 Series',
+            subtitle: 'IP65 HVAC TRANSMITTER',
+            category: 'hvac',
+            image: '/templates/hs-tech/images/products/hmdw110_v1.png',
+            gallery: [],
+            desc: 'Versatile transmitter for duct, wall, and outdoor applications with IP65 protection.',
+            specs: [
+                { label: 'Application', value: 'Outdoor, Wash-down areas, Wet environments' },
+                { label: 'Features', value: '• IP65 Protection\n• Radiation shield option for outdoor use' },
+                { label: 'Accuracy', value: '±2 %RH\n±0.2 °C' },
+                { label: 'Output', value: '4...20 mA (HMD110), 0...10V (HMD112)' }
+            ],
+            datasheet: 'https://www.vaisala.com/sites/default/files/documents/HMDW110-Datasheet-B211705EN.pdf'
+        },
+        {
+            id: 'hmdw80',
+            title: 'HMDW80 Series',
+            subtitle: 'VERSATILE HVAC TRANSMITTER',
+            category: 'hvac',
+            image: '/templates/hs-tech/images/products/hmdw80_v1.png',
+            gallery: [],
+            desc: 'Versatile wall and duct mounting for standard HVAC applications.',
+            specs: [
+                { label: 'Application', value: 'Standard HVAC building automation' },
+                { label: 'Range', value: '0 ... 100 %RH\n-5 ... +55 °C' },
+                { label: 'Accuracy', value: '±3 %RH\n±0.5 °C' },
+                { label: 'Output', value: '4...20 mA, 0...10V' }
+            ],
+            datasheet: 'https://www.vaisala.com/sites/default/files/documents/HMDW80-Datasheet-B211603EN.pdf'
+        },
+        {
+            id: 'indigo80_hmp80',
+            title: 'Indigo80',
+            subtitle: 'HANDHELD INDICATOR',
+            category: 'handheld',
+            image: '/templates/hs-tech/images/products/indigo80_hmp80_v1.jpg',
+            gallery: [],
+            desc: 'High-end handheld indicator and probe.',
+            specs: [
+                { label: 'Application', value: 'Industrial spot-checking, Calibration' },
+                { label: 'Range', value: '0 ... 100 %RH\n-20 ... +50 °C' },
+                { label: 'Logging', value: '5.5M values' },
+                { label: 'Display', value: 'Color' }
+            ],
+            datasheet: 'https://www.vaisala.com/sites/default/files/documents/Indigo80-Datasheet-B211699EN.pdf'
+        },
+        {
+            id: 'hm70',
+            title: 'HM70',
+            subtitle: 'HANDHELD METER',
+            category: 'handheld',
+            image: '/templates/hs-tech/images/products/indigo80_hmp80_v1.jpg', // Fallback
+            gallery: [],
+            desc: 'Professional handheld humidity and temperature meter.',
+            specs: [
+                { label: 'Application', value: 'Demanding industrial spot-checking' },
+                { label: 'Features', value: '• MI70 Indicator + HMP7x Probe\n• Multilingual user interface' },
+                { label: 'Accuracy', value: 'High accuracy' }
+            ],
+            datasheet: 'https://www.vaisala.com/sites/default/files/documents/HM70-Datasheet-B210974EN.pdf'
+        },
+        {
+            id: 'hm40',
+            title: 'HM40',
+            subtitle: 'COMPACT HANDHELD',
+            category: 'handheld',
+            image: '/templates/hs-tech/images/products/shm40_v1.jpg', // Fallback
+            gallery: [],
+            desc: 'Compact and easy-to-use handheld meter.',
+            specs: [
+                { label: 'Application', value: 'Quick spot-checking' },
+                { label: 'Models', value: 'HM41, HM42, HM45, HM46' },
+                { label: 'Accuracy', value: '±1.5 %RH (0...90 %RH)' }
+            ],
+            datasheet: 'https://www.vaisala.com/sites/default/files/documents/HM40-Datasheet-B210975EN.pdf'
+        },
+        {
+            id: 'shm40',
+            title: 'SHM40',
+            subtitle: 'CONCRETE MOISTURE',
+            category: 'handheld',
+            image: '/templates/hs-tech/images/products/shm40_v1.jpg',
+            gallery: [],
+            desc: 'Specialized for structural humidity measurement (concrete).',
+            specs: [
+                { label: 'Application', value: 'Construction sites, Concrete flooring' },
+                { label: 'Probe', value: 'HMP40S' },
+                { label: 'Range', value: '0 ... 100 %RH\n-40 ... +80 °C' }
+            ]
+        },
+        {
+            id: 'hmk15',
+            title: 'HMK15',
+            subtitle: 'HUMIDITY CALIBRATOR',
+            category: 'handheld',
+            image: '/templates/hs-tech/images/products/hmk15_v1.png',
+            gallery: [],
+            desc: 'Saturated salt calibrator for on-site humidity probe calibration.',
+            specs: [
+                { label: 'Type', value: 'Saturated salt solution' },
+                { label: 'Safety', value: 'Complies with ASTM E104-02' },
+                { label: 'Features', value: '• No external power required\n• Portable case' }
+            ]
+        },
         {
             id: 'hmt330',
             title: 'HMT330 Series',
             subtitle: 'HUMIDITY AND TEMPERATURE TRANSMITTERS',
             category: 'industrial',
             image: '/templates/hs-tech/images/products/hmt330_v1.jpg',
-            gallery: [],
+            gallery: ["/templates/hs-tech/images/products/hmt330_v1.jpg"],
             desc: 'Designed for demanding industrial applications. Six models available for various installation needs.',
             specs: [
                 { label: 'Application', value: 'Demanding industrial applications\nCleanrooms, Pharmaceutical processes' },
@@ -320,7 +542,7 @@ export const DB: Record<string, any[]> = {
             title: 'HMT310',
             subtitle: 'HUMIDITY AND TEMPERATURE TRANSMITTER',
             category: 'industrial',
-            image: '/templates/hs-tech/images/products/hmt310_v1.jpg',
+            image: '/templates/hs-tech/images/products/hmt360_v1.png', // Fallback for hmt310
             gallery: [],
             desc: 'Compact transmitter with excellent stability for demanding industrial applications.',
             specs: [
@@ -337,7 +559,7 @@ export const DB: Record<string, any[]> = {
             title: 'HMT120 / HMT130',
             subtitle: 'HUMIDITY AND TEMPERATURE TRANSMITTERS',
             category: 'industrial',
-            image: '/templates/hs-tech/images/products/hmt120_v1.jpg',
+            image: '/templates/hs-tech/images/products/hmw90_v1.png', // Fallback for hmt120
             gallery: [],
             desc: 'Optimized for cleanrooms and light industrial applications with interchangeable probes.',
             specs: [

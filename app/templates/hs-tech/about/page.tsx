@@ -19,13 +19,23 @@ const SECTORS = [
 function AboutContent() {
     return (
         <div className="w-full pb-20">
-            {/* 1. Page Title */}
-            <div className="bg-white border-b border-slate-200 dark:bg-slate-900 dark:border-slate-800">
-                <div className="max-w-7xl mx-auto px-6 py-8">
-                    <h1 className="text-3xl md:text-4xl font-black text-slate-900 dark:text-white uppercase tracking-tight flex items-center gap-3">
-                        회사소개 <span className="text-slate-300 dark:text-slate-600 font-light text-2xl">|</span> <span className="text-teal-600">ABOUT US</span>
-                    </h1>
-                </div>
+            {/* Standardized Header */}
+            <div className="pt-20 pb-12 text-center">
+                <motion.h1
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    className="text-3xl md:text-5xl font-black dark:text-white text-slate-900 mb-4 tracking-tight uppercase"
+                >
+                    ABOUT US
+                </motion.h1>
+                <motion.p
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.1 }}
+                    className="text-base md:text-lg dark:text-slate-400 text-slate-600 max-w-3xl mx-auto"
+                >
+                    A leading manufacturer and distributor of high-precision industrial sensors since 2005.
+                </motion.p>
             </div>
 
             <div className="max-w-7xl mx-auto px-6 mt-12 space-y-20">

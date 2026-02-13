@@ -36,7 +36,25 @@ export default function ProductSpecs({ product }: { product: any }) {
         <div className="h-4 bg-white/5 rounded w-5/6"></div>
     </div>
 
-    if (!specHtml) return null
+    // Fallback: If no HTML file, show specs from data.ts
+    if (!specHtml) {
+        if (!product?.specs || product.specs.length === 0) return null;
+
+        return (
+            <div className="w-full border-t border-neutral-800 mt-8">
+                {product.specs.map((spec: any, index: number) => (
+                    <div key={index} className="flex flex-col md:flex-row border-b border-neutral-800 min-h-[60px]">
+                        <div className="w-full md:w-[180px] p-4 font-bold flex items-center bg-neutral-900/50 text-cyan-500 uppercase tracking-wider text-xs border-b md:border-b-0 md:border-r border-neutral-800 shrink-0">
+                            {spec.label}
+                        </div>
+                        <div className="flex-grow p-4 text-neutral-300 whitespace-pre-line leading-relaxed flex items-center text-sm md:text-base">
+                            {spec.value}
+                        </div>
+                    </div>
+                ))}
+            </div>
+        )
+    }
 
     return (
         <div className="prose prose-invert max-w-none 

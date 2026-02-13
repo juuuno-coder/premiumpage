@@ -60,12 +60,14 @@ const CatalogPage = ({
     title,
     children,
     currentTab,
-    breadcrumb
+    breadcrumb,
+    hideUI
 }: {
     title: string,
     children: React.ReactNode,
     currentTab: string,
-    breadcrumb?: { label: string, href: string }
+    breadcrumb?: { label: string, href: string },
+    hideUI?: boolean
 }) => {
     // Find index in main flow
     const currentIndex = PAGE_FLOW.findIndex(p => p.id === currentTab)
@@ -78,12 +80,15 @@ const CatalogPage = ({
     // Scroll to top on mount/change
     React.useEffect(() => {
         window.scrollTo(0, 0)
-    }, [])
+    }, [currentTab])
 
     return (
         <div className="min-h-screen w-full dark:bg-slate-950 bg-white antialiased dark:bg-grid-white/[0.02] bg-grid-black/[0.02] relative overflow-hidden dark:text-slate-300 text-slate-700 pt-0 pb-12 transition-colors duration-300">
             {/* Sub Visual / Breadcrumb Area */}
-            <div className="relative md:absolute top-0 md:top-4 left-0 right-0 z-40 px-4 md:px-12 py-4 pointer-events-none mb-4 md:mb-0 bg-gradient-to-b from-white dark:from-slate-950 to-transparent md:bg-none">
+            <div className={cn(
+                "fixed top-4 left-0 right-0 z-40 px-4 md:px-12 py-4 pointer-events-none transition-opacity duration-300",
+                hideUI ? "opacity-0" : "opacity-100"
+            )}>
                 <div className="flex items-center gap-2 text-xs font-mono tracking-widest uppercase dark:text-slate-500 text-slate-400 pointer-events-auto">
                     <Link href="/templates/hangseong?tab=cover" className="hover:text-blue-400 transition-colors">Home</Link>
                     <ChevronRight className="w-3 h-3" />
@@ -101,6 +106,75 @@ const CatalogPage = ({
             <main className="relative z-10 w-full min-h-screen">
                 {children}
             </main>
+
+            {/* Smart Floating Dock Navigator (Only visible on Main Tabs) */}
+            {isMainTab && !hideUI && (
+                <div className="fixed bottom-8 right-8 z-[50] flex items-center gap-4">
+                    <div className="hidden md:flex bg-slate-900/60 backdrop-blur-xl border border-white/10 px-4 py-2 rounded-full text-xs font-mono text-slate-400 shadow-[0_20px_50px_rgba(0,0,0,0.5)]">
+                        <span className="text-blue-400 mr-2">{String(safeIndex + 1).padStart(2, '0')}</span>
+                        <span className="opacity-30">/</span>
+                        <span className="ml-2">{String(PAGE_FLOW.length).padStart(2, '0')}</span>
+                    </div>
+
+                    <div className="flex bg-slate-900/60 backdrop-blur-xl border border-white/10 rounded-full p-1 shadow-[0_20px_50px_rgba(0,0,0,0.5)] gap-1">
+                        <Link
+                            href={prevPage ? `/templates/hangseong?tab=${prevPage.id}` : '#'}
+                            className={cn(
+                                "w-10 h-10 flex items-center justify-center rounded-full transition-all duration-300 hover:bg-blue-500/20 hover:text-blue-400 border border-transparent hover:border-blue-500/50",
+                                !prevPage && "opacity-20 pointer-events-none"
+                            )}
+                            aria-label="Previous Page"
+                        >
+                            <ChevronLeft className="w-5 h-5" />
+                        </Link>
+                        <Link
+                            href={nextPage ? `/templates/hangseong?tab=${nextPage.id}` : '#'}
+                            className={cn(
+                                "w-10 h-10 flex items-center justify-center rounded-full transition-all duration-300 hover:bg-blue-500/20 hover:text-blue-400 border border-transparent hover:border-blue-500/50",
+                                !nextPage && "opacity-20 pointer-events-none"
+                            )}
+                            aria-label="Next Page"
+                        >
+                            <ChevronRight className="w-5 h-5" />
+                        </Link>
+                    </div>
+                </div>
+            )}
+
+            {/* Premium Global Footer */}
+            {!hideUI && (
+                <footer className="relative z-10 w-full pt-16 pb-24 px-6 border-t dark:border-white/5 border-slate-200 bg-slate-50 dark:bg-slate-950/50 mt-12">
+                    <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-12 text-center md:text-left">
+                        <div className="md:col-span-2 space-y-6">
+                            <h3 className="text-2xl font-black dark:text-white text-slate-900 tracking-tighter">HANG SEONG</h3>
+                            <p className="text-sm dark:text-slate-400 text-slate-600 max-w-sm leading-relaxed mx-auto md:mx-0">
+                                항성공업(주)는 40년 이상의 축적된 기술력을 바탕으로 자동차용 모터 부품 산업을 선도하는 정밀 프레스 전문 기업입니다.
+                            </p>
+                        </div>
+
+                        <div className="space-y-4">
+                            <h4 className="text-xs font-bold uppercase tracking-widest text-blue-500">Contact</h4>
+                            <div className="space-y-2 text-sm dark:text-slate-300 text-slate-700 font-medium">
+                                <p className="flex items-center justify-center md:justify-start gap-2"><Phone className="w-4 h-4 text-blue-500" /> 051-972-9935 ~ 6</p>
+                                <p className="flex items-center justify-center md:justify-start gap-2"><Mail className="w-4 h-4 text-blue-500" /> hs@hangseong.co.kr</p>
+                            </div>
+                        </div>
+
+                        <div className="space-y-4">
+                            <h4 className="text-xs font-bold uppercase tracking-widest text-blue-500">Address</h4>
+                            <p className="text-sm dark:text-slate-300 text-slate-700 leading-relaxed font-medium">
+                                <MapPin className="w-4 h-4 text-blue-500 inline mr-2" />
+                                부산광역시 강서구 지사동 1200-1
+                            </p>
+                        </div>
+                    </div>
+                    <div className="max-w-7xl mx-auto mt-16 pt-8 border-t dark:border-white/5 border-slate-200 text-center">
+                        <p className="text-[10px] dark:text-slate-600 text-slate-400 uppercase tracking-widest font-bold">
+                            &copy; {new Date().getFullYear()} HANG SEONG INDUSTRIAL CO., LTD. ALL RIGHTS RESERVED.
+                        </p>
+                    </div>
+                </footer>
+            )}
         </div>
     )
 }
@@ -300,25 +374,37 @@ function HangseongContent() {
             <CatalogPage title="Contact" currentTab="contact">
                 <div className="py-20 px-6">
                     <div className="max-w-5xl mx-auto flex flex-col items-center text-center">
-                        <h2 className="text-4xl md:text-6xl font-black dark:text-white text-slate-900 mb-6">Partner With Us</h2>
-                        <p className="text-xl dark:text-slate-400 text-slate-600 mb-12 max-w-2xl">
-                            Contact us for quotes, factory visits, and partnership opportunities.
-                        </p>
+                        <motion.h2
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            className="text-4xl md:text-6xl font-black dark:text-white text-slate-900 mb-6 tracking-tight"
+                        >
+                            Partner With Us
+                        </motion.h2>
+                        <motion.p
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ delay: 0.1 }}
+                            className="text-xl dark:text-slate-400 text-slate-600 mb-12 max-w-2xl"
+                        >
+                            견적 문의, 공장 방문 및 파트너십 상담을 환영합니다.
+                        </motion.p>
 
-                        <div className="bg-slate-50 dark:bg-slate-900 rounded-[2rem] p-10 md:p-16 w-full border border-slate-200 dark:border-white/5 shadow-xl">
-                            <div className="space-y-6">
-                                <p className="text-lg md:text-xl font-bold dark:text-white text-slate-900 leading-relaxed">
-                                    1200-1, Jisa-dong, Gangseo-gu, Busan Metropolitan City <br className="hidden md:block" />
-                                    <span className="text-blue-600 dark:text-blue-400">Contact Us</span> | Representative Park Myung-gyu
-                                </p>
-                                <div className="h-px w-24 bg-slate-200 dark:bg-white/10 mx-auto my-6"></div>
-                                <p className="text-base md:text-lg dark:text-slate-400 text-slate-600 font-medium">
-                                    <span className="mr-6">Main Telephone: <span className="text-slate-900 dark:text-white font-bold">051-972-9935 ~ 6</span></span>
-                                    <span>Fax: <span className="text-slate-900 dark:text-white font-bold">051-972-9930</span></span>
-                                </p>
-                                <p className="text-sm text-slate-400 uppercase tracking-widest mt-12 pt-12 border-t border-slate-200 dark:border-white/5">
-                                    COPYRIGHT © hangseong. All RIGHTS RESERVED.
-                                </p>
+                        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 w-full">
+                            <div className="dark:bg-slate-900/50 bg-slate-50 p-8 rounded-3xl border dark:border-white/5 border-slate-200 hover:border-blue-500/50 transition-all group shadow-xl">
+                                <Phone className="w-8 h-8 text-blue-500 mx-auto mb-4 group-hover:scale-110 transition-transform" />
+                                <h3 className="text-lg font-bold dark:text-white text-slate-900 mb-2">Telephone</h3>
+                                <p className="dark:text-slate-400 text-slate-600 font-medium">051-972-9935 ~ 6</p>
+                            </div>
+                            <div className="dark:bg-slate-900/50 bg-slate-50 p-8 rounded-3xl border dark:border-white/5 border-slate-200 hover:border-blue-500/50 transition-all group shadow-xl">
+                                <Mail className="w-8 h-8 text-blue-500 mx-auto mb-4 group-hover:scale-110 transition-transform" />
+                                <h3 className="text-lg font-bold dark:text-white text-slate-900 mb-2">Email</h3>
+                                <p className="dark:text-slate-400 text-slate-600 font-medium">hs@hangseong.co.kr</p>
+                            </div>
+                            <div className="dark:bg-slate-900/50 bg-slate-50 p-8 rounded-3xl border dark:border-white/5 border-slate-200 hover:border-blue-500/50 transition-all group shadow-xl">
+                                <MapPin className="w-8 h-8 text-blue-500 mx-auto mb-4 group-hover:scale-110 transition-transform" />
+                                <h3 className="text-lg font-bold dark:text-white text-slate-900 mb-2">Location</h3>
+                                <p className="dark:text-slate-400 text-slate-600 font-medium text-sm leading-relaxed">부산광역시 강서구 지사동 1200-1</p>
                             </div>
                         </div>
                     </div>

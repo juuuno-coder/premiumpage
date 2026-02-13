@@ -9,19 +9,24 @@ import Link from 'next/link'
 function JumoContent() {
     return (
         <div className="max-w-5xl mx-auto">
-            {/* Hero Section */}
-            <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                className="text-center mb-20"
-            >
-                <div className="inline-block mb-6 p-4 bg-slate-50 rounded-2xl">
-                    <h1 className="text-4xl md:text-6xl font-black text-slate-900 tracking-tight text-red-700">JUMO</h1>
-                </div>
-                <p className="text-2xl text-slate-500 font-light max-w-3xl mx-auto leading-relaxed">
-                    Your System Solution Provider.
-                </p>
-            </motion.div>
+            {/* Standardized Header */}
+            <div className="mb-12 text-center">
+                <motion.h1
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    className="text-3xl md:text-5xl font-black dark:text-white text-slate-900 mb-4 tracking-tight"
+                >
+                    JUMO GmbH & Co. KG
+                </motion.h1>
+                <motion.p
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.1 }}
+                    className="text-base md:text-lg dark:text-slate-400 text-slate-600 max-w-3xl mx-auto"
+                >
+                    Your System Solution Provider. JUMO is a leading manufacturer of industrial sensor and automation technology.
+                </motion.p>
+            </div>
 
             {/* Content Grid */}
             <div className="grid md:grid-cols-2 gap-16 items-center mb-24">

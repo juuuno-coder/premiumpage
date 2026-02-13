@@ -3,18 +3,29 @@
 import React, { Suspense } from 'react'
 import Image from 'next/image'
 import { MapPin, Phone, Mail, Clock } from 'lucide-react'
+import { motion } from 'framer-motion'
 import HSTechTabs from '../components/HSTechTabs'
 
 function ContactContent() {
     return (
         <div className="w-full pb-20">
-            {/* 1. Page Title */}
-            <div className="bg-white border-b border-slate-200 dark:bg-slate-900 dark:border-slate-800">
-                <div className="max-w-7xl mx-auto px-6 py-8">
-                    <h1 className="text-3xl md:text-4xl font-black text-slate-900 dark:text-white uppercase tracking-tight flex items-center gap-3">
-                        오시는 길 <span className="text-slate-300 dark:text-slate-600 font-light text-2xl">|</span> <span className="text-teal-600">CONTACT</span>
-                    </h1>
-                </div>
+            {/* Standardized Header */}
+            <div className="pt-20 pb-12 text-center">
+                <motion.h1
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    className="text-3xl md:text-5xl font-black dark:text-white text-slate-900 mb-4 tracking-tight uppercase"
+                >
+                    CONTACT US
+                </motion.h1>
+                <motion.p
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.1 }}
+                    className="text-base md:text-lg dark:text-slate-400 text-slate-600 max-w-3xl mx-auto"
+                >
+                    Get in touch with our experts for professional sensing solutions and technical support.
+                </motion.p>
             </div>
 
             <div className="max-w-7xl mx-auto px-4 md:px-10 py-12">
