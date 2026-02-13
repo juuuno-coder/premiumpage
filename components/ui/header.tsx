@@ -4,7 +4,7 @@ import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
-import { IconMenu2, IconX } from "@tabler/icons-react";
+import { Menu, X } from "lucide-react";
 import { getMenuItems } from "@/lib/nav-data";
 import { ModeToggle } from "@/components/ui/mode-toggle";
 
@@ -171,7 +171,7 @@ export const Header = () => {
                             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
                             className="p-2 dark:text-white text-black hover:text-gentop-green transition-colors"
                         >
-                            {isMobileMenuOpen ? <IconX size={28} /> : <IconMenu2 size={28} />}
+                            {isMobileMenuOpen ? <X size={28} /> : <Menu size={28} />}
                         </button>
                     </div>
                 </div>
