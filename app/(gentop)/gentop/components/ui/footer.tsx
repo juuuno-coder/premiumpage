@@ -12,7 +12,7 @@ import { useState, useEffect } from "react";
 
 export const Footer = () => {
     const pathname = usePathname();
-    const lang = pathname.split("/")[1] || "ko";
+    const lang = pathname.split("/")[1] || "en";
     const t = getTranslation(lang);
     const { resolvedTheme } = useTheme();
     const [mounted, setMounted] = useState(false);
