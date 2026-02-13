@@ -1,11 +1,11 @@
 
 import Link from 'next/link';
 import Image from 'next/image';
-import { HeroSection } from "@/components/hero-section";
-import { getTranslation } from "@/lib/translations";
-import { BackgroundBeams } from '@/components/ui/background-beams';
-import { GlobalCatalogNavigator } from '@/components/global-catalog-navigator';
-import { getPrevNextPages } from '@/lib/catalog-pages';
+import { HeroSection } from "@gentop/components/hero-section";
+import { getTranslation } from "@gentop/lib/translations";
+import { BackgroundBeams } from '@gentop/components/ui/background-beams';
+import { GlobalCatalogNavigator } from '@gentop/components/global-catalog-navigator';
+import { getPrevNextPages } from '@gentop/lib/catalog-pages';
 
 export async function generateStaticParams() {
   return [{ lang: "en" }, { lang: "ko" }];

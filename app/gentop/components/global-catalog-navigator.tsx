@@ -3,7 +3,7 @@
 import React from "react";
 import Link from "next/link";
 import { ChevronLeft, ChevronRight } from "lucide-react";
-import { cn } from "@/lib/utils";
+import { cn } from "@gentop/lib/utils";
 
 interface GlobalCatalogNavigatorProps {
     prevPage: string | null;

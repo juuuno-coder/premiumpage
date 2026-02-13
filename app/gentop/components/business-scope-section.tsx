@@ -2,7 +2,7 @@
 import React from 'react';
 import Link from 'next/link';
 import { Cpu, Megaphone, CircleParking, IdCard, Camera, Monitor, ArrowRight } from 'lucide-react';
-import { getTranslation } from "@/lib/translations";
+import { getTranslation } from "@gentop/lib/translations";
 
 export const BusinessScopeSection = ({ lang }: { lang: string }) => {
     const t = getTranslation(lang);

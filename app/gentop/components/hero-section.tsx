@@ -1,7 +1,7 @@
 
 "use client";
 import React from "react";
-import { getTranslation } from "@/lib/translations";
+import { getTranslation } from "@gentop/lib/translations";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import Image from "next/image";

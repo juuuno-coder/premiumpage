@@ -1,8 +1,8 @@
 "use client";
 import React from "react";
-import { HeroHighlight } from "@/components/ui/hero-highlight";
-import { Spotlight } from "@/components/ui/spotlight";
-import { BackgroundBeams } from "@/components/ui/background-beams";
+import { HeroHighlight } from "@gentop/components/ui/hero-highlight";
+import { Spotlight } from "@gentop/components/ui/spotlight";
+import { BackgroundBeams } from "@gentop/components/ui/background-beams";
 
 interface HeroSubProps {
     title: string;

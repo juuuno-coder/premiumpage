@@ -1,6 +1,6 @@
 "use client";
 import React, { useEffect, useRef } from "react";
-import { cn } from "@/lib/utils";
+import { cn } from "@gentop/lib/utils";
 
 export const BackgroundBeams = ({ className }: { className?: string }) => {
     const beamsRef = useRef<HTMLCanvasElement>(null);

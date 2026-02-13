@@ -5,8 +5,8 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import { IconMenu2, IconX } from "@tabler/icons-react";
-import { getMenuItems } from "@/lib/nav-data";
-import { ModeToggle } from "@/components/ui/mode-toggle";
+import { getMenuItems } from "@gentop/lib/nav-data";
+import { ModeToggle } from "@gentop/components/ui/mode-toggle";
 
 import Image from "next/image";
 import { useTheme } from "next-themes";

@@ -4,7 +4,7 @@
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { IconX, IconZoomIn } from "@tabler/icons-react";
-import { cn } from "@/lib/utils";
+import { cn } from "@gentop/lib/utils";
 
 interface ImageZoomProps {
     src: string;

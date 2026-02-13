@@ -1,11 +1,11 @@
 
 import React from 'react';
-import { BackgroundBeams } from '@/components/ui/background-beams';
-import { HeroSub } from '@/components/hero-sub';
-import { BusinessScopeSection } from '@/components/business-scope-section';
-import { GlobalCatalogNavigator } from '@/components/global-catalog-navigator';
-import { getPrevNextPages } from '@/lib/catalog-pages';
-import { getTranslation } from '@/lib/translations';
+import { BackgroundBeams } from '@gentop/components/ui/background-beams';
+import { HeroSub } from '@gentop/components/hero-sub';
+import { BusinessScopeSection } from '@gentop/components/business-scope-section';
+import { GlobalCatalogNavigator } from '@gentop/components/global-catalog-navigator';
+import { getPrevNextPages } from '@gentop/lib/catalog-pages';
+import { getTranslation } from '@gentop/lib/translations';
 
 export async function generateStaticParams() {
     return [{ lang: "en" }, { lang: "ko" }];

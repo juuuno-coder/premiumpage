@@ -4,8 +4,8 @@ import React from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
-import { getTranslation } from "@/lib/translations";
-import { getMenuItems } from "@/lib/nav-data";
+import { getTranslation } from "@gentop/lib/translations";
+import { getMenuItems } from "@gentop/lib/nav-data";
 
 import { useTheme } from "next-themes";
 import { useState, useEffect } from "react";

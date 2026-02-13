@@ -2,7 +2,7 @@
 "use client";
 import React, { useState } from "react";
 import { motion, useScroll, useMotionValueEvent } from "framer-motion";
-import { cn } from "@/lib/utils";
+import { cn } from "@gentop/lib/utils";
 import Link from "next/link";
 
 export const FloatingNav = ({

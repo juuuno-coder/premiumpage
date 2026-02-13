@@ -5,7 +5,7 @@ import Link from "next/link";
 import { useParams } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import { IconMenu2, IconX } from "@tabler/icons-react";
-import { getMenuItems } from "@/lib/nav-data";
+import { getMenuItems } from "@gentop/lib/nav-data";
 
 export const SiteMenu = () => {
     const [isOpen, setIsOpen] = useState(false);

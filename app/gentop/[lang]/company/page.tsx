@@ -1,7 +1,7 @@
 
 import React from "react";
-import { TracingBeam } from "@/components/ui/tracing-beam";
-import { getTranslation } from "@/lib/translations";
+import { TracingBeam } from "@gentop/components/ui/tracing-beam";
+import { getTranslation } from "@gentop/lib/translations";
 
 export async function generateStaticParams() {
     return [{ lang: "en" }, { lang: "ko" }];
