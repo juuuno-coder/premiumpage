@@ -45,7 +45,11 @@ export async function DELETE(
         try {
             const components = JSON.parse(project.components)
             if (components.fileUrl) {
-                const filePath = join(process.cwd(), 'public', components.fileUrl)
+                // Only join with public/uploads to avoid tracing the entire public directory
+                const relativePath = components.fileUrl.startsWith('/uploads/')
+                    ? components.fileUrl.replace('/uploads/', '')
+                    : components.fileUrl;
+                const filePath = join(process.cwd(), 'public', 'uploads', relativePath)
                 await unlink(filePath).catch(e => console.warn('File deletion failed:', e))
             }
         } catch (e) {

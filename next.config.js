@@ -28,6 +28,19 @@ const nextConfig = {
     // 실험적 기능
     experimental: {
         optimizePackageImports: ['lucide-react', 'framer-motion'],
+        outputFileTracingExcludes: {
+            '*': [
+                'public/emt/**/*',
+                'public/assets/2026/**/*',
+                'public/templates/hangseong/**/*',
+                'public/assets/hs-tech/**/*',
+                'public/images/EMT_files/**/*',
+                'public/images/Contact_files/**/*',
+                'public/downloads/hs-tech/**/*',
+                'public/images/HS-TECH_files/**/*',
+                'public/images/information_files/**/*'
+            ]
+        }
     },
 
     // 헤더 설정
