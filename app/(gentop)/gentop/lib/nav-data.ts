@@ -13,6 +13,7 @@ export const getMenuItems = (lang: string) => [
             { name: lang === "ko" ? "인증현황" : "Certification", link: `/${lang}/company/certification` },
             { name: lang === "ko" ? "CI/BI" : "CI/BI", link: `/${lang}/company/ci_bi` },
             { name: lang === "ko" ? "오시는 길" : "Location", link: `/${lang}/company/location` },
+            { name: lang === "ko" ? "문의하기" : "Contact", link: `/${lang}/company/contact` },
         ]
     },
     {

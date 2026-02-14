@@ -15,6 +15,7 @@ export const CATALOG_PAGES = [
     'company/certification',
     'company/ci_bi',
     'company/location',
+    'company/contact',
 
     // Business Scope Section Summary
     'business',
