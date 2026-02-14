@@ -125,7 +125,7 @@ export const CompanyCiBi = () => {
                         <div className="max-w-4xl mx-auto">
                             <div className="text-center leading-relaxed text-sm md:text-base text-gray-600 dark:text-gray-400 font-light space-y-2">
                                 <p>Our symbol mark is combination of a lion, the king of beasts, and a hawk with sharp and</p>
-                                <p>exact eyes and visualization of ‘LISCON’ as a leader of the industry and as a smart system with advanced technology.</p>
+                                <p>exact eyes and visualization of 'LISCON' as a leader of the industry and as a smart system with advanced technology.</p>
                                 <p>This mark expresses a correct and reliable system using the deep blue color.</p>
                                 <p>The mark also describes an honest and strong automatic control system brand using the dark gray color</p>
                                 <p>and a Gothic type word mark stressing round.</p>
@@ -138,30 +138,22 @@ export const CompanyCiBi = () => {
                             <div className="flex flex-col items-center group">
                                 <div className="relative w-full aspect-square md:aspect-[4/3] border border-gray-100 dark:border-white/5 bg-white p-8 rounded-2xl shadow-sm hover:shadow-xl transition-all duration-500">
                                     <Image
-                                        src="/images/company/ci_bi/bi_liscon01.jpg"
+                                        src="/images/company/ci_bi/bi_logo01.jpg"
                                         alt="LISCON Symbol"
                                         fill
                                         className="object-contain p-4"
-                                        onError={(e) => {
-                                            const target = e.target as any;
-                                            target.src = "https://placehold.co/600x400/FFFFFF/999999?text=BI+Symbol";
-                                        }}
                                     />
                                 </div>
-                                <span className="mt-6 text-xs font-bold text-gray-400 uppercase tracking-widest">Signature</span>
+                                <span className="mt-6 text-xs font-bold text-gray-400 uppercase tracking-widest">Symbol</span>
                             </div>
                             {/* Signature */}
                             <div className="flex flex-col items-center group">
                                 <div className="relative w-full aspect-square md:aspect-[4/3] border border-gray-100 dark:border-white/5 bg-white p-8 rounded-2xl shadow-sm hover:shadow-xl transition-all duration-500">
                                     <Image
-                                        src="/images/company/ci_bi/bi_liscon02.jpg"
+                                        src="/images/company/ci_bi/bi_logo02.jpg"
                                         alt="LISCON Signature"
                                         fill
                                         className="object-contain p-4"
-                                        onError={(e) => {
-                                            const target = e.target as any;
-                                            target.src = "https://placehold.co/600x400/FFFFFF/999999?text=BI+Signature";
-                                        }}
                                     />
                                 </div>
                                 <span className="mt-6 text-xs font-bold text-gray-400 uppercase tracking-widest">Signature</span>
@@ -170,14 +162,10 @@ export const CompanyCiBi = () => {
                             <div className="flex flex-col items-center group">
                                 <div className="relative w-full aspect-square md:aspect-[4/3] border border-gray-100 dark:border-white/5 bg-white p-8 rounded-2xl shadow-sm hover:shadow-xl transition-all duration-500">
                                     <Image
-                                        src="/images/company/ci_bi/bi_liscon03.jpg"
+                                        src="/images/company/ci_bi/bi_logo03.jpg"
                                         alt="LISCON Grid System"
                                         fill
                                         className="object-contain p-4"
-                                        onError={(e) => {
-                                            const target = e.target as any;
-                                            target.src = "https://placehold.co/600x400/FFFFFF/999999?text=Grid+System";
-                                        }}
                                     />
                                 </div>
                                 <span className="mt-6 text-xs font-bold text-gray-400 uppercase tracking-widest">Grid System</span>
@@ -193,10 +181,6 @@ export const CompanyCiBi = () => {
                                         alt={`BI Application ${num}`}
                                         fill
                                         className="object-cover"
-                                        onError={(e) => {
-                                            const target = e.target as any;
-                                            target.src = `https://placehold.co/800x600/FFFFFF/EEEEEE?text=BI+Example+${num}`;
-                                        }}
                                     />
                                 </div>
                             ))}
