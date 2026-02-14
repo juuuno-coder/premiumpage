@@ -13,7 +13,6 @@ export const getMenuItems = (lang: string) => [
             { name: lang === "ko" ? "인증현황" : "Certification", link: `/${lang}/company/certification` },
             { name: lang === "ko" ? "CI/BI" : "CI/BI", link: `/${lang}/company/ci_bi` },
             { name: lang === "ko" ? "오시는 길" : "Location", link: `/${lang}/company/location` },
-            { name: lang === "ko" ? "문의하기" : "Contact", link: `/${lang}/company/contact` },
         ]
     },
     {
@@ -28,5 +27,10 @@ export const getMenuItems = (lang: string) => [
             { name: lang === "ko" ? "LED Display 솔루션" : "LED Display Solution", link: `/${lang}/business/led_display` },
             { name: lang === "ko" ? "친환경 에너지" : "Eco-Friendly", link: `/${lang}/business/eco_friendly` },
         ]
+    },
+    {
+        title: lang === "ko" ? "문의하기" : "CONTACT",
+        link: `/${lang}/contact`,
+        items: []
     },
 ];

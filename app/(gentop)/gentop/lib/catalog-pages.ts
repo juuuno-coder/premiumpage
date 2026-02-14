@@ -15,7 +15,6 @@ export const CATALOG_PAGES = [
     'company/certification',
     'company/ci_bi',
     'company/location',
-    'company/contact',
 
     // Business Scope Section Summary
     'business',
@@ -41,6 +40,9 @@ export const CATALOG_PAGES = [
     'business/eco_friendly.html_1', // Geothermal
     'business/eco_friendly.html_2', // Wind
     'business/eco_friendly.html_3', // Water
+
+    // Contact (Last Page)
+    'contact',
 
 ] as const;
 

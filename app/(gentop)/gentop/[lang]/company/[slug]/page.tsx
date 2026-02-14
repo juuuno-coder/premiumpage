@@ -11,7 +11,6 @@ import { CompanyBusinessScope } from '@gentop/components/company/business-scope'
 import { CompanyCertification } from '@gentop/components/company/certification';
 import { CompanyCiBi } from '@gentop/components/company/ci-bi';
 import { CompanyLocation } from '@gentop/components/company/location';
-import { CompanyContact } from '@gentop/components/company/contact';
 import { HeroSub } from '@gentop/components/hero-sub';
 import { CompanyGlobalNetwork } from '@gentop/components/company/global-network';
 import { CompanyView } from '@gentop/components/company/company-view';
@@ -32,7 +31,6 @@ export async function generateStaticParams() {
         { lang, slug: 'certification' },
         { lang, slug: 'location' },
         { lang, slug: 'ci_bi' },
-        { lang, slug: 'contact' },
     ]);
 }
 
@@ -49,9 +47,9 @@ export default async function CompanyDetailPage({ params }: { params: Promise<{ 
 
     const pageData = data[slug];
 
-    // Page data might be missing for our new custom pages (global_network, company_view, contact)
+    // Page data might be missing for our new custom pages (global_network, company_view)
     // We should handle that.
-    const isCustomPage = ['global_network', 'company_view', 'contact'].includes(slug);
+    const isCustomPage = ['global_network', 'company_view'].includes(slug);
 
     if (!pageData && !isCustomPage) {
         notFound();
@@ -103,8 +101,6 @@ export default async function CompanyDetailPage({ params }: { params: Promise<{ 
         content = <CompanyCiBi />;
     } else if (slug === 'location') {
         content = <CompanyLocation />;
-    } else if (slug === 'contact') {
-        content = <CompanyContact />;
     } else {
         content = parse(pageData.content, options);
     }
@@ -131,8 +127,7 @@ export default async function CompanyDetailPage({ params }: { params: Promise<{ 
                     badge={lang === 'ko' ? '회사소개' : 'Company'}
                     title={pageData?.title || (
                         slug === 'global_network' ? 'Global Network' :
-                            slug === 'company_view' ? 'Company View' :
-                                slug === 'contact' ? (lang === 'ko' ? '문의하기' : 'Contact') : ''
+                            slug === 'company_view' ? 'Company View' : ''
                     )}
                 />
 
