@@ -2,7 +2,6 @@
 import React from "react";
 import { HeroHighlight } from "@gentop/components/ui/hero-highlight";
 import { Spotlight } from "@gentop/components/ui/spotlight";
-import { BackgroundBeams } from "@gentop/components/ui/background-beams";
 
 interface HeroSubProps {
     title: string;
@@ -26,8 +25,6 @@ export const HeroSub = ({ title, badge }: HeroSubProps) => {
                         {title}
                     </h1>
                 </div>
-
-                <BackgroundBeams className="opacity-10 dark:opacity-30" />
             </div>
         </HeroHighlight>
     );
