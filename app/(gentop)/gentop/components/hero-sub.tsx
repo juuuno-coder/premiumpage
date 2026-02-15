@@ -11,7 +11,7 @@ interface HeroSubProps {
 export const HeroSub = ({ title, badge }: HeroSubProps) => {
     return (
         <HeroHighlight containerClassName="w-full">
-            <div className="relative w-full pb-8 px-4 text-center overflow-hidden" style={{ paddingTop: '140px' }}>
+            <div className="relative w-full pb-6 px-4 text-center overflow-hidden" style={{ paddingTop: '80px' }}>
                 <Spotlight
                     className="-top-40 left-0 md:left-60 md:-top-20 opacity-0 dark:opacity-60 transition-opacity duration-1000"
                     fill="white"

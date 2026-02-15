@@ -175,7 +175,7 @@ export default async function BusinessDetailPage({ params }: { params: Promise<{
                     title={pageData?.title}
                 />
 
-                <article className="max-w-[1440px] mx-auto px-6 md:px-12 lg:px-20 py-12 pb-40 legacy-content">
+                <article className="max-w-[1440px] mx-auto px-6 md:px-12 lg:px-20 py-8 pb-24 legacy-content">
 
                     {/* Sub Navigation */}
                     <div className="mb-12">

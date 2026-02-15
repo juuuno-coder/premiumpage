@@ -26,7 +26,7 @@ export default async function BusinessSummaryPage({ params }: { params: Promise<
                     title={lang === 'ko' ? '주요 사업 영역' : 'Our Business Areas'}
                 />
 
-                <article className="max-w-[1440px] mx-auto px-6 md:px-12 lg:px-20 py-12 pb-40">
+                <article className="max-w-[1440px] mx-auto px-6 md:px-12 lg:px-20 py-8 pb-24">
                     <BusinessScopeSection lang={lang} />
                 </article>
             </div>

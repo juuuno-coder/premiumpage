@@ -47,7 +47,7 @@ export const BusinessScopeSection = ({ lang }: { lang: string }) => {
     ];
 
     return (
-        <section className="w-full bg-muted/10 py-32 border-t border-border">
+        <section className="w-full bg-muted/10 py-20 border-t border-border">
             <div className="max-w-7xl mx-auto px-6 text-center">
                 <div className="inline-block px-4 py-1.5 mb-6 rounded-full glass text-xs font-bold tracking-widest text-gentop-green uppercase border border-gentop-green/20">
                     {t.business.badge}
