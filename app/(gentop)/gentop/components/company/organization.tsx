@@ -17,7 +17,6 @@ export const CompanyOrganization = () => {
                         height={0}
                         sizes="100vw"
                         className="w-full h-auto object-contain"
-                        style={{ clipPath: "inset(1.5% 0)" }}
                         priority
                     />
                 </div>

@@ -91,7 +91,7 @@ export const CompanyCertification = () => {
                                     src={item.img}
                                     alt={item.title}
                                     fill
-                                    className="object-contain p-1 transition-transform duration-500 group-hover:scale-105"
+                                    className="object-contain transition-transform duration-500 group-hover:scale-105"
                                 />
                             </div>
                             <h4 className="text-center text-[10px] md:text-xs font-bold text-gray-500 dark:text-gray-400 group-hover:text-foreground uppercase tracking-wider leading-relaxed px-2">

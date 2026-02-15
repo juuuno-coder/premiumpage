@@ -60,21 +60,21 @@ export const CompanyCiBi = () => {
                         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-end">
                             {/* Symbol */}
                             <div className="flex flex-col items-center">
-                                <div className="relative w-full aspect-[2/1] border border-gray-100 bg-white p-4">
+                                <div className="relative w-full aspect-[2/1] border border-gray-100 bg-white">
                                     <Image src={CI_IMAGES.symbol} alt="Symbol" fill className="object-contain" />
                                 </div>
                                 <span className="mt-2 text-sm font-medium text-gray-500">Symbol Mark</span>
                             </div>
                             {/* Signature */}
                             <div className="flex flex-col items-center">
-                                <div className="relative w-full aspect-[2/1] border border-gray-100 bg-white p-4">
+                                <div className="relative w-full aspect-[2/1] border border-gray-100 bg-white">
                                     <Image src={CI_IMAGES.signature} alt="Signature" fill className="object-contain" />
                                 </div>
                                 <span className="mt-2 text-sm font-medium text-gray-500">Signature</span>
                             </div>
                             {/* Grid */}
                             <div className="flex flex-col items-center">
-                                <div className="relative w-full aspect-[2/1] border border-gray-100 bg-white p-4">
+                                <div className="relative w-full aspect-[2/1] border border-gray-100 bg-white">
                                     <Image src={CI_IMAGES.grid} alt="Grid System" fill className="object-contain" />
                                 </div>
                                 <span className="mt-2 text-sm font-medium text-gray-500">Grid System</span>
@@ -136,36 +136,36 @@ export const CompanyCiBi = () => {
                         <div className="grid grid-cols-1 md:grid-cols-3 gap-12 items-end pt-8">
                             {/* Symbol */}
                             <div className="flex flex-col items-center group">
-                                <div className="relative w-full aspect-square md:aspect-[4/3] border border-gray-100 dark:border-white/5 bg-white p-8 rounded-2xl shadow-sm hover:shadow-xl transition-all duration-500">
+                                <div className="relative w-full aspect-square md:aspect-[4/3] border border-gray-100 dark:border-white/5 bg-white rounded-2xl shadow-sm hover:shadow-xl transition-all duration-500">
                                     <Image
                                         src="/images/company/ci_bi/bi_logo01.jpg"
                                         alt="LISCON Symbol"
                                         fill
-                                        className="object-contain p-4"
+                                        className="object-contain"
                                     />
                                 </div>
                                 <span className="mt-6 text-xs font-bold text-gray-400 uppercase tracking-widest">Symbol</span>
                             </div>
                             {/* Signature */}
                             <div className="flex flex-col items-center group">
-                                <div className="relative w-full aspect-square md:aspect-[4/3] border border-gray-100 dark:border-white/5 bg-white p-8 rounded-2xl shadow-sm hover:shadow-xl transition-all duration-500">
+                                <div className="relative w-full aspect-square md:aspect-[4/3] border border-gray-100 dark:border-white/5 bg-white rounded-2xl shadow-sm hover:shadow-xl transition-all duration-500">
                                     <Image
                                         src="/images/company/ci_bi/bi_logo02.jpg"
                                         alt="LISCON Signature"
                                         fill
-                                        className="object-contain p-4"
+                                        className="object-contain"
                                     />
                                 </div>
                                 <span className="mt-6 text-xs font-bold text-gray-400 uppercase tracking-widest">Signature</span>
                             </div>
                             {/* Grid */}
                             <div className="flex flex-col items-center group">
-                                <div className="relative w-full aspect-square md:aspect-[4/3] border border-gray-100 dark:border-white/5 bg-white p-8 rounded-2xl shadow-sm hover:shadow-xl transition-all duration-500">
+                                <div className="relative w-full aspect-square md:aspect-[4/3] border border-gray-100 dark:border-white/5 bg-white rounded-2xl shadow-sm hover:shadow-xl transition-all duration-500">
                                     <Image
                                         src="/images/company/ci_bi/bi_logo03.jpg"
                                         alt="LISCON Grid System"
                                         fill
-                                        className="object-contain p-4"
+                                        className="object-contain"
                                     />
                                 </div>
                                 <span className="mt-6 text-xs font-bold text-gray-400 uppercase tracking-widest">Grid System</span>
