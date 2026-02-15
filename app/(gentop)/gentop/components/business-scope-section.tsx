@@ -49,13 +49,6 @@ export const BusinessScopeSection = ({ lang }: { lang: string }) => {
     return (
         <section className="w-full bg-muted/10 py-20 border-t border-border">
             <div className="max-w-7xl mx-auto px-6 text-center">
-                <div className="inline-block px-4 py-1.5 mb-6 rounded-full glass text-xs font-bold tracking-widest text-gentop-green uppercase border border-gentop-green/20">
-                    {t.business.badge}
-                </div>
-                <h2 className="text-4xl md:text-6xl font-black text-foreground tracking-tighter mb-8 transition-colors duration-300">
-                    {t.business.title}
-                </h2>
-
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                     {businessItems.map((item, idx) => (
                         <Link
