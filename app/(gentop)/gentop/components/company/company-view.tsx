@@ -38,7 +38,7 @@ export const CompanyView = ({ lang }: { lang: string }) => {
 const ViewImage = ({ src, alt }: { src: string, alt: string }) => (
     <div className="relative w-full aspect-[4/3] max-w-[300px] group">
         <div className="absolute -inset-1 bg-gradient-to-r from-gentop-green/20 to-blue-500/20 rounded-xl blur opacity-0 group-hover:opacity-100 transition duration-500" />
-        <div className="relative w-full h-full overflow-hidden rounded-lg bg-white dark:bg-neutral-800 border border-black/5 dark:border-white/5 shadow-lg group-hover:shadow-2xl transition-all duration-500">
+        <div className="relative w-full h-full overflow-hidden rounded-lg shadow-lg group-hover:shadow-2xl transition-all duration-500">
             <Image
                 src={src}
                 alt={alt}
