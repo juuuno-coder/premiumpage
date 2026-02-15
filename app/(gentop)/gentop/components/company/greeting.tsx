@@ -1,7 +1,6 @@
 "use client";
 
 import React from "react";
-import Image from "next/image";
 
 export const CompanyGreeting = () => {
     return (
@@ -48,12 +47,11 @@ export const CompanyGreeting = () => {
 
                 {/* Right: Image - 3 columns (30% of 10) */}
                 <div className="lg:col-span-3 relative w-full aspect-[4/3] rounded-2xl overflow-hidden border border-gray-200 dark:border-gray-700">
-                    <Image
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img
                         src="/images/company/greeting/greeting_bg.jpg"
                         alt="GENTOP Vision"
-                        fill
-                        className="object-cover"
-                        priority
+                        className="absolute inset-0 w-full h-full object-cover"
                     />
                     <div className="absolute inset-0 bg-gradient-to-br from-[#F47920]/5 to-transparent" />
                 </div>
