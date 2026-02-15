@@ -171,20 +171,6 @@ export const CompanyCiBi = () => {
                                 <span className="mt-6 text-xs font-bold text-gray-400 uppercase tracking-widest">Grid System</span>
                             </div>
                         </div>
-
-                        {/* Examples */}
-                        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 pt-12">
-                            {[1, 2, 3].map((num) => (
-                                <div key={num} className="relative w-full aspect-square md:aspect-video rounded-2xl overflow-hidden border border-gray-100 dark:border-white/5 shadow-sm hover:shadow-xl transition-all duration-500">
-                                    <Image
-                                        src={`/images/company/ci_bi/bi0${num}.jpg`}
-                                        alt={`BI Application ${num}`}
-                                        fill
-                                        className="object-cover"
-                                    />
-                                </div>
-                            ))}
-                        </div>
                     </motion.div>
                 )}
             </AnimatePresence>
