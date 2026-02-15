@@ -18,6 +18,8 @@ export default async function Home({ params }: { params: Promise<{ lang: string 
 
   return (
     <div className="h-screen bg-background relative transition-colors duration-300 overflow-hidden flex flex-col">
+      <BackgroundBeams className="fixed top-0 left-0 w-full h-screen z-0 pointer-events-none opacity-50 dark:opacity-100" />
+
       {/* Hero Section Container */}
       <div className="flex-1 overflow-hidden relative z-10">
         <HeroSection lang={lang} />
