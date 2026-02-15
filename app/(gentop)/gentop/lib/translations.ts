@@ -4,9 +4,11 @@ export const translations = {
         hero: {
             title: "Total Solution Provider",
             subtitle: "Construction & Facilities Management Industry Leader.",
-            description: "GENTOP believes that technology can make people’s lives wiser and be filled with smiles. Through challenges and leaps, GENTOP will be a business that offers happiness to your lives with technology that precedes always.",
+            description: "GENTOP believes that technology can make people's lives wiser and be filled with smiles. Through challenges and leaps, GENTOP will be a business that offers happiness to your lives with technology that precedes always.",
             cta_company: "Company Info",
-            cta_business: "Our Business"
+            cta_business: "Our Business",
+            scroll_hint: "Scroll down to continue",
+            scroll_ready: "Scroll again to next page"
         },
         business: {
             badge: "Business Scope",
@@ -34,7 +36,9 @@ export const translations = {
             subtitle: "공사 및 시설관리 산업의 선두주자.",
             description: "젠탑은 기술이 사람들의 삶을 더욱 현명하고 미소 짓게 한다고 믿습니다. 끊임없는 도전과 도약을 통해 항상 앞서가는 기술로 여러분의 삶에 행복을 드리는 기업이 되겠습니다.",
             cta_company: "회사소개",
-            cta_business: "사업분야"
+            cta_business: "사업분야",
+            scroll_hint: "아래로 스크롤하여 계속",
+            scroll_ready: "다시 스크롤하여 다음 페이지로"
         },
         business: {
             badge: "사업영역",

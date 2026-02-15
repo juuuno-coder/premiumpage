@@ -3,11 +3,18 @@
 import React from "react";
 import { getTranslation } from "@gentop/lib/translations";
 import Link from "next/link";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
+import { useWheelNavigation } from "@gentop/hooks/use-wheel-navigation";
 
-export function HeroSection({ lang }: { lang: string }) {
+export function HeroSection({ lang, nextPage }: { lang: string; nextPage: string | null }) {
     const t = getTranslation(lang);
+    const { isAtBottom, isReadyToNavigate, scrollProgress } = useWheelNavigation({
+        nextPage,
+        isEnabled: true,
+        threshold: 50, // Reduced for trackpad friendliness
+        isFullScreenPage: true // Intro page has no scroll
+    });
 
     return (
         <section className="relative w-full h-screen flex items-center justify-center overflow-hidden bg-black">
@@ -84,15 +91,86 @@ export function HeroSection({ lang }: { lang: string }) {
             </div>
 
             {/* Scroll Indicator */}
-            <motion.div
-                animate={{ y: [0, 10, 0] }}
-                transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-                className="absolute bottom-12 left-1/2 -translate-x-1/2 z-30 opacity-40"
-            >
-                <div className="w-6 h-10 rounded-full border-2 border-white flex justify-center p-1">
-                    <div className="w-1 h-2 bg-white rounded-full" />
-                </div>
-            </motion.div>
+            <div className="absolute bottom-12 left-1/2 -translate-x-1/2 z-30 flex flex-col items-center gap-4">
+                {/* Mouse Wheel Icon */}
+                <motion.div
+                    animate={
+                        isReadyToNavigate
+                            ? { y: [0, 15, 0], scale: [1, 1.1, 1] }
+                            : { y: [0, 10, 0] }
+                    }
+                    transition={{
+                        duration: isReadyToNavigate ? 1 : 2,
+                        repeat: Infinity,
+                        ease: "easeInOut"
+                    }}
+                    className={`transition-all duration-500 ${
+                        isReadyToNavigate
+                            ? "opacity-100 scale-110"
+                            : isAtBottom
+                            ? "opacity-70"
+                            : "opacity-40"
+                    }`}
+                >
+                    <div
+                        className={`w-6 h-10 rounded-full border-2 flex justify-center p-1 transition-all duration-500 ${
+                            isReadyToNavigate
+                                ? "border-gentop-green shadow-[0_0_20px_rgba(173,232,19,0.6)]"
+                                : "border-white"
+                        }`}
+                    >
+                        <motion.div
+                            className={`w-1 h-2 rounded-full transition-all duration-500 ${
+                                isReadyToNavigate ? "bg-gentop-green" : "bg-white"
+                            }`}
+                            animate={
+                                isReadyToNavigate
+                                    ? { y: [0, 4, 0], opacity: [1, 0.5, 1] }
+                                    : {}
+                            }
+                            transition={{
+                                duration: 0.8,
+                                repeat: Infinity,
+                                ease: "easeInOut"
+                            }}
+                        />
+                    </div>
+                </motion.div>
+
+                {/* Hint Text */}
+                <AnimatePresence mode="wait">
+                    {(isAtBottom || isReadyToNavigate) && (
+                        <motion.div
+                            initial={{ opacity: 0, y: -10 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            exit={{ opacity: 0, y: -10 }}
+                            transition={{ duration: 0.3 }}
+                            className="text-center"
+                        >
+                            <p
+                                className={`text-xs md:text-sm font-medium tracking-wide transition-all duration-500 ${
+                                    isReadyToNavigate
+                                        ? "text-gentop-green font-bold"
+                                        : "text-white/60"
+                                }`}
+                            >
+                                {isReadyToNavigate
+                                    ? t.hero.scroll_ready
+                                    : t.hero.scroll_hint}
+                            </p>
+                            {/* Progress Indicator */}
+                            {!isReadyToNavigate && scrollProgress > 0 && (
+                                <motion.div
+                                    initial={{ width: 0 }}
+                                    animate={{ width: `${scrollProgress * 100}%` }}
+                                    className="h-0.5 bg-white/40 mt-2 rounded-full mx-auto"
+                                    style={{ maxWidth: "80px" }}
+                                />
+                            )}
+                        </motion.div>
+                    )}
+                </AnimatePresence>
+            </div>
 
             {/* Bottom Gradient Fade to Content */}
             <div className="absolute bottom-0 left-0 right-0 h-48 bg-gradient-to-t from-black via-black/80 to-transparent z-20" />
