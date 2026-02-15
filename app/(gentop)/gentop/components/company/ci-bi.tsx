@@ -60,21 +60,21 @@ export const CompanyCiBi = () => {
                         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-end">
                             {/* Symbol */}
                             <div className="flex flex-col items-center">
-                                <div className="relative w-full aspect-[2/1] border border-gray-100 bg-white">
+                                <div className="relative w-full aspect-[2/1] ">
                                     <Image src={CI_IMAGES.symbol} alt="Symbol" fill className="object-contain" />
                                 </div>
                                 <span className="mt-2 text-sm font-medium text-gray-500">Symbol Mark</span>
                             </div>
                             {/* Signature */}
                             <div className="flex flex-col items-center">
-                                <div className="relative w-full aspect-[2/1] border border-gray-100 bg-white">
+                                <div className="relative w-full aspect-[2/1] ">
                                     <Image src={CI_IMAGES.signature} alt="Signature" fill className="object-contain" />
                                 </div>
                                 <span className="mt-2 text-sm font-medium text-gray-500">Signature</span>
                             </div>
                             {/* Grid */}
                             <div className="flex flex-col items-center">
-                                <div className="relative w-full aspect-[2/1] border border-gray-100 bg-white">
+                                <div className="relative w-full aspect-[2/1] ">
                                     <Image src={CI_IMAGES.grid} alt="Grid System" fill className="object-contain" />
                                 </div>
                                 <span className="mt-2 text-sm font-medium text-gray-500">Grid System</span>
@@ -101,7 +101,7 @@ export const CompanyCiBi = () => {
                                 <div key={idx} className="flex flex-col">
                                     {color.name && <span className="text-xs font-bold mb-1 uppercase text-gray-400 h-4 block">{color.name}</span>}
                                     {!color.name && <span className="h-4 block md:h-5"></span>}
-                                    <div className="relative w-full aspect-square bg-white mb-2 border border-gray-100">
+                                    <div className="relative w-full aspect-square mb-2">
                                         <Image src={color.img} alt={color.code} fill className="object-cover" />
                                     </div>
                                     <div className="text-xs text-center">
@@ -136,7 +136,7 @@ export const CompanyCiBi = () => {
                         <div className="grid grid-cols-1 md:grid-cols-3 gap-12 items-end pt-8">
                             {/* Symbol */}
                             <div className="flex flex-col items-center group">
-                                <div className="relative w-full aspect-square md:aspect-[4/3] border border-gray-100 dark:border-white/5 bg-white rounded-2xl shadow-sm hover:shadow-xl transition-all duration-500">
+                                <div className="relative w-full aspect-square md:aspect-[4/3]  rounded-2xl shadow-sm hover:shadow-xl transition-all duration-500">
                                     <Image
                                         src="/images/company/ci_bi/bi_logo01.jpg"
                                         alt="LISCON Symbol"
@@ -148,7 +148,7 @@ export const CompanyCiBi = () => {
                             </div>
                             {/* Signature */}
                             <div className="flex flex-col items-center group">
-                                <div className="relative w-full aspect-square md:aspect-[4/3] border border-gray-100 dark:border-white/5 bg-white rounded-2xl shadow-sm hover:shadow-xl transition-all duration-500">
+                                <div className="relative w-full aspect-square md:aspect-[4/3]  rounded-2xl shadow-sm hover:shadow-xl transition-all duration-500">
                                     <Image
                                         src="/images/company/ci_bi/bi_logo02.jpg"
                                         alt="LISCON Signature"
@@ -160,7 +160,7 @@ export const CompanyCiBi = () => {
                             </div>
                             {/* Grid */}
                             <div className="flex flex-col items-center group">
-                                <div className="relative w-full aspect-square md:aspect-[4/3] border border-gray-100 dark:border-white/5 bg-white rounded-2xl shadow-sm hover:shadow-xl transition-all duration-500">
+                                <div className="relative w-full aspect-square md:aspect-[4/3]  rounded-2xl shadow-sm hover:shadow-xl transition-all duration-500">
                                     <Image
                                         src="/images/company/ci_bi/bi_logo03.jpg"
                                         alt="LISCON Grid System"

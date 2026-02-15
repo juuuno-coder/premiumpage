@@ -9,7 +9,7 @@ export const CompanyOrganization = () => {
         <div className="w-full">
             {/* Image Section with Padding Constraints */}
             <div className="w-full max-w-[1400px] mx-auto px-4 md:px-12 py-4 md:py-8">
-                <div className="bg-white rounded-xl overflow-hidden">
+                <div className="rounded-xl overflow-hidden">
                     <Image
                         src="/images/company/organization/organization_img.jpg"
                         alt="Organization Chart"

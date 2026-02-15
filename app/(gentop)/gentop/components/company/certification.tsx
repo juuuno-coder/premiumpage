@@ -86,7 +86,7 @@ export const CompanyCertification = () => {
                             transition={{ duration: 0.3 }}
                             className="group bg-white dark:bg-neutral-900/40 p-4 rounded-2xl border border-neutral-100 dark:border-white/5 flex flex-col items-center hover:border-gentop-green hover:shadow-2xl transition-all duration-500"
                         >
-                            <div className="relative w-full aspect-[3/4] mb-4 overflow-hidden rounded-xl bg-neutral-50 dark:bg-black/20 group-hover:bg-white dark:group-hover:bg-black transition-colors duration-500">
+                            <div className="relative w-full aspect-[3/4] mb-4 overflow-hidden rounded-xl transition-colors duration-500">
                                 <Image
                                     src={item.img}
                                     alt={item.title}

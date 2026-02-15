@@ -46,7 +46,7 @@ export const CompanyGreeting = () => {
                 </div>
 
                 {/* Right: Image - 3 columns (30% of 10) */}
-                <div className="lg:col-span-3 relative w-full aspect-[4/3] rounded-2xl overflow-hidden border border-gray-200 dark:border-gray-700">
+                <div className="lg:col-span-3 relative w-full aspect-[4/3] rounded-2xl overflow-hidden">
                     {/* eslint-disable-next-line @next/next/no-img-element */}
                     <img
                         src="/images/company/greeting/greeting_bg.jpg"
