@@ -68,27 +68,6 @@ export const CompanyContact = () => {
 
     return (
         <div className="w-full max-w-7xl mx-auto px-4 md:px-8 py-12 md:py-20 space-y-20">
-            {/* Header */}
-            <div className="text-center space-y-4">
-                <motion.h2
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.5 }}
-                    className="text-4xl md:text-5xl font-bold tracking-tight"
-                >
-                    Get in Touch
-                </motion.h2>
-                <motion.p
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.5, delay: 0.1 }}
-                    className="text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto"
-                >
-                    We're here to help and answer any question you might have.<br />
-                    We look forward to hearing from you.
-                </motion.p>
-            </div>
-
             {/* Contact Cards */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
                 {contactInfo.map((item, index) => (
