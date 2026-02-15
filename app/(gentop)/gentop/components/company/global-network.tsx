@@ -14,7 +14,7 @@ export const CompanyGlobalNetwork = ({ lang }: { lang: string }) => {
                     src="/images/company/introduction/global_pic.jpg"
                     alt="Global Network Map"
                     fill
-                    className="object-contain p-4 dark:invert-[0.05]"
+                    className="object-contain dark:invert-[0.05]"
                 />
             </div>
         </div>

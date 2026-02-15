@@ -166,7 +166,7 @@ export const CompanyBusinessScope = ({ lang = "en" }: { lang?: string }) => {
                                     src={partner.img}
                                     alt={isEn ? partner.nameEn : partner.nameKo}
                                     fill
-                                    className="object-contain p-2"
+                                    className="object-contain"
                                 />
                             </div>
                             <div className="text-center pt-2">
