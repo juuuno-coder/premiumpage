@@ -32,6 +32,7 @@ export default async function Home({ params }: { params: Promise<{ lang: string 
         nextPage={navigation.next}
         currentPage={navigation.current}
         totalPages={navigation.total}
+        disableWheelNavigation={true} // HeroSection handles wheel navigation
       />
     </div>
   );
