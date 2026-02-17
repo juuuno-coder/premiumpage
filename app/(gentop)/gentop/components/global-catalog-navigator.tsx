@@ -36,7 +36,7 @@ export const GlobalCatalogNavigator = ({
         <div className={cn(
             "fixed z-[100] flex flex-col pointer-events-none transition-all duration-300",
             "bottom-6 left-0 right-0 items-center",
-            "md:bottom-8 md:right-10 md:left-auto md:items-end",
+            "md:bottom-16 md:right-10 md:left-auto md:items-end",
             className
         )}>
             {/* Navigation Controls */}
