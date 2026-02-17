@@ -4,7 +4,7 @@ import React, { Suspense, useState, useEffect, useRef, useMemo } from 'react'
 import { ChevronRight, ChevronLeft, Phone, Mail, MapPin, Globe, CheckCircle2 } from 'lucide-react'
 import Link from 'next/link'
 import Image from 'next/image'
-import { useRouter, useSearchParams } from 'next/navigation'
+import { useSearchParams } from 'next/navigation'
 import { motion, AnimatePresence } from 'framer-motion'
 import { DB, CATEGORY_INFO, SUB_CATEGORIES, BRANDS } from './data'
 import { cn } from '@/lib/utils'
@@ -153,40 +153,8 @@ const CatalogPage = ({ title, children, currentTab, breadcrumb, hideUI }: {
     }
 
     return (
-        <div className="min-h-screen w-full dark:bg-neutral-950 bg-white antialiased relative overflow-x-hidden dark:text-slate-300 text-slate-700 transition-colors duration-500">
-            {/* 1. Header (Fixed) */}
-            <header className="fixed top-0 left-0 right-0 z-[100] bg-black/60 backdrop-blur-2xl border-b border-white/5 px-6 md:px-12 py-4">
-                <div className="max-w-7xl mx-auto flex items-center justify-between">
-                    <Link href="/templates/hs-tech?tab=cover" className="flex items-center gap-3 group" onClick={() => setDirection(-1)}>
-                        {/* eslint-disable-next-line @next/next/no-img-element */}
-                        <img src="/hstech/HS-TECH_files/f038c293907b8.png" alt="HS TECH" width={110} className="h-auto object-contain group-hover:opacity-80 transition-opacity" />
-                    </Link>
-
-                    <nav className="hidden md:flex items-center gap-10">
-                        {['cover', 'about', 'business', 'products', 'contact'].map((id) => {
-                            const label = id === 'products' ? 'BRANDS' : id.toUpperCase();
-                            const isActive = currentTab === id || (id === 'products' && (BRANDS[currentTab as keyof typeof BRANDS] || CATEGORY_INFO[currentTab] || productId));
-                            return (
-                                <Link
-                                    key={id}
-                                    href={`/templates/hs-tech?tab=${id}`}
-                                    className={cn(
-                                        "text-xs font-black tracking-widest uppercase transition-all hover:text-cyan-400 relative py-2",
-                                        isActive ? "text-cyan-500" : "text-white/60"
-                                    )}
-                                >
-                                    {label}
-                                    {isActive && <motion.div layoutId="header-active" className="absolute bottom-0 left-0 right-0 h-0.5 bg-cyan-500 shadow-[0_0_10px_rgba(6,182,212,1)]" />}
-                                </Link>
-                            )
-                        })}
-                    </nav>
-
-                    {/* KR version hidden - English only */}
-                </div>
-            </header>
-
-            {/* 2. Main Sequential Flow Content */}
+        <div className="w-full dark:bg-neutral-950 bg-white antialiased relative overflow-x-hidden dark:text-slate-300 text-slate-700 transition-colors duration-500">
+            {/* Main Sequential Flow Content */}
             <main className="relative z-10 w-full min-h-screen">
                 <AnimatePresence mode="wait" custom={direction} initial={false}>
                     <motion.div
@@ -279,7 +247,7 @@ function HSTechContent() {
     if (productId && selectedProduct) {
         return (
             <CatalogPage title={selectedProduct.title.toUpperCase()} currentTab={activeTab} breadcrumb={{ label: 'Back', href: `/templates/hs-tech?tab=${categoryId}` }}>
-                <div className="pt-40 pb-20">
+                <div className="pt-6 pb-16">
                     <ProductIntro title={selectedProduct.title} subtitle={selectedProduct.subtitle || ''} image={selectedProduct.image} specs={selectedProduct.specs || []} datasheet={selectedProduct.datasheet} />
                     <div className="max-w-6xl mx-auto px-6 mt-16 border-t border-white/5 pt-20">
                         <h3 className="text-3xl font-black text-white italic tracking-tighter uppercase mb-12 underline decoration-cyan-500/30 underline-offset-8">Specifications</h3>
@@ -296,7 +264,7 @@ function HSTechContent() {
     // VIEW: ABOUT
     if (activeTab === 'about') return (
         <CatalogPage title="ABOUT US" currentTab="about">
-            <div className="pt-48 pb-32 px-6 max-w-5xl mx-auto">
+            <div className="pt-8 pb-20 px-6 max-w-5xl mx-auto">
                 <h4 className="text-[10px] font-black text-cyan-500 tracking-[0.5em] mb-4">ESTABLISHED 2016 · PANGYO TECHNO VALLEY</h4>
                 <h2 className="text-5xl md:text-9xl font-black text-white mb-12 tracking-tighter uppercase italic leading-none">Environmental<br /><span className="text-cyan-500">Sensor.</span></h2>
                 <BentoGrid>
@@ -312,7 +280,7 @@ function HSTechContent() {
     // VIEW: BUSINESS
     if (activeTab === 'business') return (
         <CatalogPage title="BUSINESS" currentTab="business">
-            <div className="pt-48 pb-32 px-6 max-w-6xl mx-auto">
+            <div className="pt-8 pb-20 px-6 max-w-6xl mx-auto">
                 <h2 className="text-6xl md:text-9xl font-black text-white mb-20 tracking-tighter uppercase italic leading-none">Market<br />Scopes.</h2>
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
                     {[
@@ -338,7 +306,7 @@ function HSTechContent() {
     // VIEW: BRAND LIST
     if (activeTab === 'products') return (
         <CatalogPage title="BRANDS" currentTab="products">
-            <div className="max-w-6xl mx-auto px-8 pt-48 pb-32">
+            <div className="max-w-6xl mx-auto px-8 pt-8 pb-20">
                 <h2 className="text-6xl md:text-9xl font-black text-white text-center mb-20 tracking-tighter uppercase italic">Strategic<br />Partners.</h2>
                 <HoverEffect items={Object.entries(BRANDS).map(([key, data]: [string, any]) => ({ title: data.label, description: data.desc, link: `/templates/hs-tech?tab=${key}`, image: data.logo }))} />
             </div>
@@ -351,7 +319,7 @@ function HSTechContent() {
         const items = categoryInfo ? (SUB_CATEGORIES[activeTab as keyof typeof SUB_CATEGORIES] || SUB_CATEGORIES[categoryId as keyof typeof SUB_CATEGORIES] || []) : (brandData?.categories || [])
         return (
             <CatalogPage title={title.toUpperCase()} currentTab={activeTab}>
-                <div className="pt-40 pb-12 text-center">
+                <div className="pt-8 pb-8 text-center">
                     <motion.h1
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
@@ -391,7 +359,7 @@ function HSTechContent() {
     // VIEW: CONTACT
     if (activeTab === 'contact') return (
         <CatalogPage title="CONTACT" currentTab="contact">
-            <div className="pt-56 pb-32 px-6 flex flex-col items-center justify-center min-h-[80vh] text-center">
+            <div className="pt-8 pb-20 px-6 flex flex-col items-center justify-center min-h-[60vh] text-center">
                 <h2 className="text-6xl md:text-9xl font-black text-white mb-16 tracking-tighter uppercase italic leading-none">Reach<br /><span className="text-cyan-500">Out.</span></h2>
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 w-full max-w-6xl font-mono">
                     <div className="p-10 border border-white/10 rounded-[40px] bg-neutral-900 group shadow-2xl hover:border-cyan-500/50 transition-all">

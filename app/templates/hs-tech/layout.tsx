@@ -34,12 +34,14 @@ function HSTechLayoutContent({ children }: { children: React.ReactNode }) {
         window.location.href = url
     }
 
+    const activeTab = searchParams.get('tab') || 'cover'
+
     const MAIN_MENU = [
-        { label: 'Home', href: '/templates/hs-tech?tab=cover', desc: 'Main Page' },
-        { label: 'About Us', href: '/templates/hs-tech?tab=about', desc: 'Company Overview' },
-        { label: 'Business', href: '/templates/hs-tech?tab=business', desc: 'Solutions' },
-        { label: 'Product', href: '/templates/hs-tech?tab=vaisala', desc: 'Product Lines' },
-        { label: 'Contact', href: '/templates/hs-tech?tab=contact', desc: 'Get in Touch' },
+        { label: 'Home', href: '/templates/hs-tech?tab=cover', tab: 'cover', desc: 'Main Page' },
+        { label: 'About', href: '/templates/hs-tech?tab=about', tab: 'about', desc: 'Company Overview' },
+        { label: 'Business', href: '/templates/hs-tech?tab=business', tab: 'business', desc: 'Solutions' },
+        { label: 'Products', href: '/templates/hs-tech?tab=products', tab: 'products', desc: 'Product Lines' },
+        { label: 'Contact', href: '/templates/hs-tech?tab=contact', tab: 'contact', desc: 'Get in Touch' },
     ]
 
     const BRAND_MENU = [
@@ -62,15 +64,19 @@ function HSTechLayoutContent({ children }: { children: React.ReactNode }) {
                 {/* Placeholder for button spacing if needed */}
                 {/* Desktop Menu */}
                 <nav className="hidden md:flex items-center gap-8 mr-auto ml-12">
-                    {MAIN_MENU.map((item) => (
-                        <Link
-                            key={item.href}
-                            href={item.href}
-                            className="text-sm font-bold dark:text-neutral-400 text-neutral-600 hover:text-cyan-500 dark:hover:text-cyan-400 transition-colors tracking-wide uppercase"
-                        >
-                            {item.label}
-                        </Link>
-                    ))}
+                    {MAIN_MENU.map((item) => {
+                        const isActive = activeTab === item.tab ||
+                            (item.tab === 'products' && ['vaisala', 'setra', 'jumo', 'knick', 'humidity', 'dewpoint', 'co2', 'oil', 'barometer', 'weather', 'h2o2', 'cms'].includes(activeTab))
+                        return (
+                            <Link
+                                key={item.href}
+                                href={item.href}
+                                className={`text-sm font-bold tracking-wide uppercase transition-colors ${isActive ? 'text-cyan-500' : 'dark:text-neutral-400 text-neutral-600 hover:text-cyan-500 dark:hover:text-cyan-400'}`}
+                            >
+                                {item.label}
+                            </Link>
+                        )
+                    })}
                 </nav>
 
                 {/* Right Side: Empty for clean layout */}
