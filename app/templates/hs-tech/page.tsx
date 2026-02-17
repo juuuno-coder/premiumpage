@@ -215,6 +215,22 @@ function HSTechContent() {
     const brandData = BRANDS[activeTab as keyof typeof BRANDS]
     const selectedProduct = productId ? findProduct(productId, categoryId) : null
 
+    // Find subcategory data (for SETRA/JUMO/KNICK subcategory pages)
+    const subCatEntry = useMemo(() => {
+        // Check parent category first (URL has ?category=setra&tab=diff_ind)
+        const parentSubs = SUB_CATEGORIES[categoryId as keyof typeof SUB_CATEGORIES]
+        if (parentSubs) {
+            const found = (parentSubs as any[]).find((sub: any) => sub.id === activeTab)
+            if (found) return { parentKey: categoryId, subcat: found }
+        }
+        // Fallback: search all subcategories
+        for (const [parentKey, subcats] of Object.entries(SUB_CATEGORIES)) {
+            const found = (subcats as any[]).find((sub: any) => sub.id === activeTab)
+            if (found) return { parentKey, subcat: found }
+        }
+        return null
+    }, [activeTab, categoryId])
+
     // VIEW: PRODUCT DETAIL
     if (productId && selectedProduct) {
         return (
@@ -342,13 +358,52 @@ function HSTechContent() {
                         {items.map((item: any) => {
                             const id = typeof item === 'string' ? item : item.id
                             const cat = CATEGORY_INFO[id] || item
+                            // If item is a subcategory (has items property), link with parent category context
+                            const isSubCat = typeof item === 'object' && item.items
+                            const href = isSubCat
+                                ? `/templates/hs-tech?tab=${id}&category=${activeTab}`
+                                : `/templates/hs-tech?category=${id}&tab=${id}`
                             return (
-                                <Link key={id} href={`/templates/hs-tech?category=${id}&tab=${id}`} className="group block p-6 border border-neutral-200 rounded-xl bg-white hover:border-cyan-500 hover:shadow-sm transition-all">
+                                <Link key={id} href={href} className="group block p-6 border border-neutral-200 rounded-xl bg-white hover:border-cyan-500 hover:shadow-sm transition-all">
                                     <h3 className="text-lg font-black text-neutral-900 mb-2 uppercase tracking-tight group-hover:text-cyan-600 transition-colors leading-tight">{cat.title || cat.label}</h3>
                                     <p className="text-xs text-neutral-500 leading-relaxed">{cat.desc}</p>
                                 </Link>
                             )
                         })}
+                    </div>
+                </div>
+            </CatalogPage>
+        )
+    }
+
+    // VIEW: SUB-CATEGORY PRODUCT LIST (e.g. SETRA > Differential Pressure > products)
+    if (subCatEntry) {
+        const { parentKey, subcat } = subCatEntry
+        const parentLabel = CATEGORY_INFO[parentKey]?.title || BRANDS[parentKey as keyof typeof BRANDS]?.label || parentKey
+        const products = (subcat.items || []).map((item: any) => findProduct(item.id, parentKey)).filter(Boolean)
+        return (
+            <CatalogPage title={subcat.title.toUpperCase()} currentTab={parentKey}>
+                <div className="pt-8 pb-8 px-6 max-w-6xl mx-auto border-b border-neutral-100 mb-8">
+                    <Link href={`/templates/hs-tech?tab=${parentKey}`} className="text-xs text-cyan-600 hover:text-cyan-700 mb-4 block uppercase tracking-widest">← {parentLabel}</Link>
+                    <h1 className="text-3xl md:text-5xl font-black text-neutral-900 mb-3 tracking-tight uppercase">{subcat.title}</h1>
+                    <p className="text-base text-neutral-500 max-w-2xl">{subcat.desc}</p>
+                </div>
+                <div className="pb-24 px-6 max-w-6xl mx-auto">
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                        {products.map((product: any) => (
+                            <Link key={product.id} href={`/templates/hs-tech?tab=${parentKey}&category=${parentKey}&product=${product.id}`}
+                                className="group flex items-start gap-4 p-6 border border-neutral-200 rounded-xl bg-white hover:border-cyan-500 hover:shadow-sm transition-all">
+                                {product.image && (
+                                    // eslint-disable-next-line @next/next/no-img-element
+                                    <img src={product.image} alt={product.title} className="w-20 h-20 object-contain rounded-lg bg-neutral-50 p-2 shrink-0" />
+                                )}
+                                <div>
+                                    <h3 className="text-base font-black text-neutral-900 mb-1 uppercase tracking-tight group-hover:text-cyan-600 transition-colors">{product.title}</h3>
+                                    <p className="text-xs text-neutral-400 uppercase tracking-wider">{product.subtitle}</p>
+                                    <p className="text-xs text-neutral-500 mt-2 leading-relaxed line-clamp-2">{product.desc}</p>
+                                </div>
+                            </Link>
+                        ))}
                     </div>
                 </div>
             </CatalogPage>
@@ -387,7 +442,19 @@ function HSTechContent() {
         </CatalogPage>
     )
 
-    return <CatalogPage title="HOME" currentTab="cover" hideUI><CoverView /></CatalogPage>
+    // Fallback: product ID set but not found
+    if (productId && !selectedProduct) {
+        return (
+            <CatalogPage title={activeTab.toUpperCase()} currentTab={activeTab}>
+                <div className="pt-32 pb-20 px-6 max-w-4xl mx-auto text-center">
+                    <p className="text-neutral-400 text-sm mb-6 uppercase tracking-widest">Product not found</p>
+                    <Link href={`/templates/hs-tech?tab=${activeTab}`} className="text-cyan-600 hover:text-cyan-700 text-sm uppercase tracking-widest">← Back</Link>
+                </div>
+            </CatalogPage>
+        )
+    }
+
+    return <CatalogPage title="HOME" currentTab="cover"><CoverView /></CatalogPage>
 }
 
 export default function HSTechViewerPage() {

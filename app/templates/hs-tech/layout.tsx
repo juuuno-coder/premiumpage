@@ -40,7 +40,7 @@ function HSTechLayoutContent({ children }: { children: React.ReactNode }) {
                 {/* Logo */}
                 <Link href="/templates/hs-tech?tab=cover" className="flex items-center group shrink-0">
                     {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img src="/hstech/HS-TECH_files/f038c293907b8.png" alt="HS TECH" width={150} className="h-auto object-contain group-hover:opacity-70 transition-opacity" />
+                    <img src="/templates/hs-tech/images/products/f038c293907b8.png" alt="HS TECH" width={150} className="h-auto object-contain group-hover:opacity-70 transition-opacity" />
                 </Link>
 
                 {/* Desktop Menu */}
