@@ -19,13 +19,19 @@ export default function ProductIntro({ title, subtitle, image, specs, datasheet 
             {/* Image Section */}
             <div className="w-full mb-12 flex justify-center">
                 <div className="relative w-full aspect-[16/10] md:aspect-[2.8/1] min-h-[250px] bg-neutral-50 dark:bg-neutral-800/50 rounded-2xl overflow-hidden border border-neutral-200 dark:border-white/5">
-                    <Image
-                        src={image}
-                        alt={title}
-                        fill
-                        className="object-contain p-2 md:p-4"
-                        priority
-                    />
+                    {image ? (
+                        <Image
+                            src={image}
+                            alt={title}
+                            fill
+                            className="object-contain p-2 md:p-4"
+                            priority
+                        />
+                    ) : (
+                        <div className="flex items-center justify-center h-full">
+                            <span className="text-neutral-400 dark:text-neutral-600 font-black text-2xl tracking-widest uppercase opacity-40">{title}</span>
+                        </div>
+                    )}
                 </div>
             </div>
 

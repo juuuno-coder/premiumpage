@@ -17,7 +17,7 @@ import { BentoGrid, BentoGridItem } from './components/ui/BentoGrid'
 import { BackgroundGradient } from './components/ui/background-gradient'
 import { HoverEffect } from './components/ui/card-hover-effect'
 
-// 1. ALL DYNAMIC PATHS GENERATOR (Master Brochure Flow)
+// 1. MASTER BROCHURE FLOW (~27 pages, slightly more than 24)
 const useMasterFlow = () => {
     return useMemo(() => {
         const flow: { tab: string, category?: string, product?: string, label: string }[] = [
@@ -27,28 +27,60 @@ const useMasterFlow = () => {
             { tab: 'products', label: 'BRANDS' },
         ];
 
-        // Add Individual Brand Pages
+        // Brand overview pages
         Object.entries(BRANDS).forEach(([id, data]: [string, any]) => {
             flow.push({ tab: id, label: data.label });
         });
 
-        // Add Category (Series) & Product Pages sequentially
-        Object.entries(BRANDS).forEach(([brandId, brandData]: [string, any]) => {
-            const categories = brandData.categories || [];
-            categories.forEach((catKey: string) => {
-                const catInfo = CATEGORY_INFO[catKey];
-                if (catInfo) {
-                    // Category Landing (Series Intro)
-                    flow.push({ tab: catKey, category: catKey, label: catInfo.title });
+        // VAISALA: all category pages + 1 featured product for key categories
+        const vaisalaFeatured: Record<string, string> = {
+            humidity: 'hmt330',
+            dewpoint: 'dmp1',
+            co2: 'gmw90',
+            weather: 'wxt530',
+        };
 
-                    // Individual Products in this category
-                    const products = DB[catKey] || [];
-                    products.forEach(p => {
-                        flow.push({ tab: catKey, category: catKey, product: p.id, label: p.title });
-                    });
+        (BRANDS.vaisala.categories || []).forEach((catKey: string) => {
+            const catInfo = CATEGORY_INFO[catKey];
+            if (!catInfo) return;
+            flow.push({ tab: catKey, category: catKey, label: catInfo.title });
+            // Add one featured product for select categories
+            const featuredId = vaisalaFeatured[catKey];
+            if (featuredId) {
+                const catDb = DB[catKey] || [];
+                const product = catDb.find((p: any) => p.id === featuredId);
+                if (product) {
+                    flow.push({ tab: catKey, category: catKey, product: featuredId, label: product.title });
                 }
-            });
+            }
         });
+
+        // SETRA: 3 featured products
+        const setraFeatured = ['setra_lite', 'model_mrc', 'model_axd'];
+        setraFeatured.forEach(id => {
+            const catDb = DB['setra'] || [];
+            const product = catDb.find((p: any) => p.id === id);
+            if (product) {
+                flow.push({ tab: 'setra', category: 'setra', product: id, label: product.title });
+            }
+        });
+
+        // JUMO: 2 featured products
+        const jumoFeatured = ['ph_trans', 'recording'];
+        jumoFeatured.forEach(id => {
+            const catDb = DB['jumo'] || [];
+            const product = catDb.find((p: any) => p.id === id);
+            if (product) {
+                flow.push({ tab: 'jumo', category: 'jumo', product: id, label: product.title });
+            }
+        });
+
+        // KNICK: 1 featured product
+        const knickDb = DB['knick'] || [];
+        const stratosProduct = knickDb.find((p: any) => p.id === 'stratos');
+        if (stratosProduct) {
+            flow.push({ tab: 'knick', category: 'knick', product: 'stratos', label: stratosProduct.title });
+        }
 
         flow.push({ tab: 'contact', label: 'CONTACT' });
         return flow;
@@ -126,11 +158,8 @@ const CatalogPage = ({ title, children, currentTab, breadcrumb, hideUI }: {
             <header className="fixed top-0 left-0 right-0 z-[100] bg-black/60 backdrop-blur-2xl border-b border-white/5 px-6 md:px-12 py-4">
                 <div className="max-w-7xl mx-auto flex items-center justify-between">
                     <Link href="/templates/hs-tech?tab=cover" className="flex items-center gap-3 group" onClick={() => setDirection(-1)}>
-                        <div className="w-10 h-10 bg-cyan-500 rounded-lg flex items-center justify-center font-black text-white text-xl shadow-[0_0_20px_rgba(6,182,212,0.5)] group-hover:scale-110 transition-transform">H</div>
-                        <div className="hidden sm:block">
-                            <h1 className="text-sm font-black text-white tracking-widest leading-none uppercase">HS TECH</h1>
-                            <p className="text-[10px] text-cyan-500 font-bold tracking-tighter">GLOBAL SENSOR SOLUTION</p>
-                        </div>
+                        {/* eslint-disable-next-line @next/next/no-img-element */}
+                        <img src="/hstech/HS-TECH_files/f038c293907b8.png" alt="HS TECH" width={110} className="h-auto object-contain group-hover:opacity-80 transition-opacity" />
                     </Link>
 
                     <nav className="hidden md:flex items-center gap-10">
@@ -153,7 +182,7 @@ const CatalogPage = ({ title, children, currentTab, breadcrumb, hideUI }: {
                         })}
                     </nav>
 
-                    <Link href="/templates/hs-tech-kr" className="text-[10px] font-black border border-white/20 px-4 py-1.5 rounded-full text-white/50 hover:border-cyan-400 hover:text-cyan-400 transition-colors">KR</Link>
+                    {/* KR version hidden - English only */}
                 </div>
             </header>
 

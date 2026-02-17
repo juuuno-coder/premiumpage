@@ -55,12 +55,9 @@ function HSTechLayoutContent({ children }: { children: React.ReactNode }) {
             {/* 1. Header (Fixed, Dark) - Z-Index 100 */}
             <header className="fixed top-0 left-0 right-0 z-[100] flex items-center justify-between px-6 md:px-12 h-20 dark:bg-neutral-950/80 bg-white/80 backdrop-blur-md border-b dark:border-white/5 border-neutral-200 transition-all">
                 {/* Logo */}
-                <Link href="/" className="flex items-center gap-2 group">
-                    <div className="w-10 h-10 bg-cyan-500 rounded-sm flex items-center justify-center text-white font-black text-xl group-hover:bg-cyan-400 transition-colors shadow-lg shadow-cyan-500/20">H</div>
-                    <div className="flex flex-col">
-                        <span className="text-lg font-black tracking-tighter leading-none dark:text-white text-neutral-900 group-hover:text-cyan-400 transition-colors">HS TECH</span>
-                        <span className="text-[10px] dark:text-zinc-500 text-zinc-400 font-bold tracking-widest uppercase leading-none">Corp.</span>
-                    </div>
+                <Link href="/templates/hs-tech?tab=cover" className="flex items-center gap-2 group">
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img src="/hstech/HS-TECH_files/f038c293907b8.png" alt="HS TECH" width={120} className="h-auto object-contain group-hover:opacity-80 transition-opacity" />
                 </Link>
                 {/* Placeholder for button spacing if needed */}
                 {/* Desktop Menu */}
@@ -76,25 +73,8 @@ function HSTechLayoutContent({ children }: { children: React.ReactNode }) {
                     ))}
                 </nav>
 
-                {/* Right Side: Theme & Lang Toggles */}
+                {/* Right Side: Empty for clean layout */}
                 <div className="flex items-center gap-2 md:gap-4 ml-auto mr-10 md:mr-0 z-[110]">
-                    {/* Theme Toggle */}
-                    <button
-                        onClick={toggleTheme}
-                        className="p-2 rounded-full hover:bg-neutral-200 dark:hover:bg-white/10 transition-colors dark:text-neutral-400 text-neutral-600 hover:text-cyan-500 dark:hover:text-cyan-400"
-                        aria-label="Toggle Theme"
-                    >
-                        {mounted && currentTheme === 'dark' ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
-                    </button>
-
-                    {/* Language Toggle */}
-                    <button
-                        onClick={switchLanguage}
-                        className="hidden flex items-center gap-1 px-3 py-1 rounded-full border dark:border-neutral-700 border-neutral-300 text-xs font-bold dark:text-neutral-400 text-neutral-600 hover:text-cyan-500 dark:hover:text-cyan-400 hover:border-cyan-500 transition-all uppercase"
-                    >
-                        <Globe className="w-3 h-3" />
-                        <span>KR</span>
-                    </button>
                 </div>
             </header>
 
