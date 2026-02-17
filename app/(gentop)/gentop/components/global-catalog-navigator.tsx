@@ -28,7 +28,7 @@ export const GlobalCatalogNavigator = ({
         nextPage,
         prevPage,
         isEnabled: !disableWheelNavigation,
-        threshold: 80,
+        threshold: 200,
         isFullScreenPage: false // Auto-detect scroll position
     });
 

@@ -21,7 +21,7 @@ interface WheelNavigationState {
 }
 
 // How long the user must pause at edge before extra scroll triggers navigation (ms)
-const PAUSE_DELAY = 450;
+const PAUSE_DELAY = 700;
 
 export function useWheelNavigation({
   nextPage,
@@ -86,6 +86,11 @@ export function useWheelNavigation({
       }
 
       lastScrollTime.current = now;
+
+      // The "unlock" event itself should not accumulate — user must make a
+      // deliberate second scroll after stopping. (Fullscreen pages skip this
+      // because there is no content to scroll past.)
+      if (scrollPaused && !isFullScreenPage) return;
 
       // If no longer at edge, revoke ready flag and reset accumulator
       if (!atBottom) {
