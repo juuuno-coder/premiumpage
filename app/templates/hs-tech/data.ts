@@ -618,40 +618,413 @@ export const DB: Record<string, any[]> = {
         },
     ],
     dewpoint: [
-        { id: 'dmp1', title: 'DMP1-8', subtitle: 'DEWPOINT PROBE SERIES', category: 'fixed', image: '/templates/hs-tech/images/products/38af1f4961a7a.png', gallery: ['/templates/hs-tech/images/products/38af1f4961a7a.png'], desc: 'Intelligent dewpoint probes for compressed air and industrial drying.', specs: [{ label: 'Range', value: '-60...+60 °Ctd' }, { label: 'Application', value: 'Dryers, Cleanrooms, Compressed air' }] },
-        { id: 'dmt340', title: 'DMT340', subtitle: 'DEWPOINT TRANSMITTER', category: 'fixed', image: '/templates/hs-tech/images/products/50e31ebdea359.png', gallery: ['/templates/hs-tech/images/products/50e31ebdea359.png'], desc: 'Dewpoint transmitter for condensing environments.', specs: [{ label: 'Application', value: 'Condensing environments' }, { label: 'Features', value: 'Heated sensor head' }] },
-        { id: 'dmt345', title: 'DMT345/346', subtitle: 'HIGH TEMP DEWPOINT', category: 'fixed', image: '/templates/hs-tech/images/products/5cf3bcd453c32.png', gallery: ['/templates/hs-tech/images/products/5cf3bcd453c32.png'], desc: 'High temperature dewpoint transmitter for demanding applications.', specs: [{ label: 'Temp', value: 'Up to +180 °C' }, { label: 'Application', value: 'Plastic dryers, Industrial ovens' }] },
-        { id: 'dmt132', title: 'DMT132', subtitle: 'DEWPOINT HUMIDITY MODULE', category: 'module', image: '/templates/hs-tech/images/products/2d44fea596554.png', gallery: [], desc: 'OEM dewpoint and humidity module for integration into instruments and systems.', specs: [{ label: 'Type', value: 'OEM Module' }, { label: 'Range', value: '-60...+60 °Ctd' }, { label: 'Output', value: 'Analog / Digital' }, { label: 'Application', value: 'OEM integration, Instruments' }] },
-        { id: 'dmt152', title: 'DMT152', subtitle: 'LOW DEWPOINT MODULE', category: 'module', image: '/templates/hs-tech/images/products/2d44fea596554.png', gallery: ['/templates/hs-tech/images/products/2d44fea596554.png'], desc: 'OEM module for low dewpoint measurement.', specs: [{ label: 'Range', value: 'Down to -80 °Ctd' }, { label: 'Application', value: 'OEM, Dry air systems' }] },
-        { id: 'dmt143', title: 'DMT143', subtitle: 'COMPACT OEM MODULE', category: 'module', image: '/templates/hs-tech/images/products/6d596692e24f1.png', gallery: ['/templates/hs-tech/images/products/6d596692e24f1.png'], desc: 'Compact dewpoint module for OEM applications.', specs: [{ label: 'Size', value: 'Ultra-compact' }, { label: 'Output', value: 'Analog & Digital' }] },
-        { id: 'dmt143l', title: 'DMT143L', subtitle: 'EXTENDED PROBE', category: 'module', image: '/templates/hs-tech/images/products/289587707561d.png', gallery: ['/templates/hs-tech/images/products/289587707561d.png'], desc: 'DMT143 with extended probe length.', specs: [{ label: 'Probe', value: 'Extended length' }, { label: 'Application', value: 'Deep installations' }] },
-        { id: 'dpt146', title: 'DPT146', subtitle: 'DEWPOINT & PRESSURE', category: 'module', image: '/templates/hs-tech/images/products/f038c293907b8.png', gallery: ['/templates/hs-tech/images/products/f038c293907b8.png'], desc: 'Combined dewpoint and pressure measurement.', specs: [{ label: 'Dual', value: 'Td + P measurement' }, { label: 'Application', value: 'Compressed air systems' }] },
-        { id: 'dpt145', title: 'DPT145', subtitle: 'SF6 GAS MONITOR', category: 'module', image: '/templates/hs-tech/images/products/04ad79c254fa2.png', gallery: ['/templates/hs-tech/images/products/04ad79c254fa2.png'], desc: 'Dewpoint measurement in SF6 gas systems.', specs: [{ label: 'Gas', value: 'SF6 compatible' }, { label: 'Application', value: 'High voltage switchgear' }] },
-        { id: 'indigo80_dmp80', title: 'Indigo80+DMP80', subtitle: 'PORTABLE DEWPOINT', category: 'portable', image: '/templates/hs-tech/images/products/1388fffe59c2e.png', gallery: ['/templates/hs-tech/images/products/1388fffe59c2e.png'], desc: 'Portable dewpoint measurement system with Indigo indicator.', specs: [{ label: 'System', value: 'Indicator + Probe' }, { label: 'Application', value: 'Spot-checking, Calibration' }] },
-        { id: 'dm70', title: 'DM70', subtitle: 'HANDHELD DEWPOINT', category: 'portable', image: '/templates/hs-tech/images/products/fc840485431f5.png', gallery: ['/templates/hs-tech/images/products/fc840485431f5.png'], desc: 'Professional handheld dewpoint meter.', specs: [{ label: 'Accuracy', value: '±2 °Ctd' }, { label: 'Application', value: 'Field measurement' }] },
-        { id: 'dss70a', title: 'DSS70A', subtitle: 'SAMPLING SYSTEM', category: 'portable', image: '/templates/hs-tech/images/products/96ddd2e578412.png', gallery: ['/templates/hs-tech/images/products/96ddd2e578412.png'], desc: 'Sampling cell for use with DM70.', specs: [{ label: 'Use with', value: 'DM70 meter' }, { label: 'Application', value: 'Pressurized gas sampling' }] }
+        {
+            id: 'dmp1', title: 'DMP1-8', subtitle: 'DEWPOINT PROBE SERIES', category: 'fixed',
+            image: '/templates/hs-tech/images/products/38af1f4961a7a.png',
+            gallery: ['/templates/hs-tech/images/products/38af1f4961a7a.png'],
+            desc: 'Intelligent Indigo-compatible dewpoint probes for compressed air, dryers, and process gas applications. The DRYCAP® sensor provides fast response and excellent stability.',
+            specs: [
+                { label: 'Measurement Range', value: '-60 ... +60 °Ctd (DMP1, DMP3, DMP5)\n-40 ... +60 °Ctd (DMP7, DMP8)' },
+                { label: 'Accuracy', value: '±2 °Ctd (@ 20 °Ctd)\n±3 °Ctd (@ -60 °Ctd)' },
+                { label: 'Sensor', value: 'Vaisala DRYCAP® 180' },
+                { label: 'Output', value: 'RS-485 Modbus RTU (Indigo compatible)' },
+                { label: 'Response time', value: '< 15 s (90% step change)' },
+                { label: 'Application', value: 'Compressed air, Industrial dryers\nCleanrooms, Process gas' },
+                { label: 'Protection', value: 'IP65' },
+            ],
+            datasheet: 'https://www.vaisala.com/sites/default/files/documents/DMP1-8-Datasheet-B211707EN.pdf'
+        },
+        {
+            id: 'dmt340', title: 'DMT340', subtitle: 'DEWPOINT TRANSMITTER', category: 'fixed',
+            image: '/templates/hs-tech/images/products/50e31ebdea359.png',
+            gallery: ['/templates/hs-tech/images/products/50e31ebdea359.png'],
+            desc: 'Dewpoint transmitter for condensing environments. The heated sensor head prevents condensation on the sensor, enabling accurate measurement even in 100% RH conditions.',
+            specs: [
+                { label: 'Measurement Range', value: '0 ... +60 °Ctd' },
+                { label: 'Accuracy', value: '±2 °Ctd (0...40 °Ctd)' },
+                { label: 'Sensor', value: 'Vaisala DRYCAP® (heated)' },
+                { label: 'Output', value: 'RS-232, RS-485, 4...20 mA, 0...10 V' },
+                { label: 'Application', value: 'Condensing environments\nSteam processes, Wet gas' },
+                { label: 'Protection', value: 'IP65' },
+            ],
+            datasheet: 'https://www.vaisala.com/sites/default/files/documents/DMT340-Datasheet-B211742EN.pdf'
+        },
+        {
+            id: 'dmt345', title: 'DMT345/346', subtitle: 'HIGH TEMPERATURE DEWPOINT', category: 'fixed',
+            image: '/templates/hs-tech/images/products/5cf3bcd453c32.png',
+            gallery: ['/templates/hs-tech/images/products/5cf3bcd453c32.png'],
+            desc: 'High temperature dewpoint transmitter for process streams up to +180 °C. Ideal for plastic drying, industrial ovens, and compressed air systems with high temperatures.',
+            specs: [
+                { label: 'Process Temperature', value: 'Up to +180 °C' },
+                { label: 'Measurement Range', value: '-40 ... +20 °Ctd' },
+                { label: 'Accuracy', value: '±3 °Ctd' },
+                { label: 'Sensor', value: 'Vaisala DRYCAP® 180' },
+                { label: 'Output', value: 'RS-232, RS-485, 4...20 mA' },
+                { label: 'Application', value: 'Plastic dryers, Industrial ovens\nHigh-temperature compressed air' },
+                { label: 'Protection', value: 'IP65' },
+            ],
+            datasheet: 'https://www.vaisala.com/sites/default/files/documents/DMT345-Datasheet-B211743EN.pdf'
+        },
+        {
+            id: 'dmt132', title: 'DMT132', subtitle: 'DEWPOINT & HUMIDITY MODULE', category: 'module',
+            image: '/templates/hs-tech/images/products/2d44fea596554.png', gallery: [],
+            desc: 'OEM dewpoint and humidity module for integration into instruments and systems. Measures both dewpoint temperature and relative humidity.',
+            specs: [
+                { label: 'Type', value: 'OEM Module' },
+                { label: 'Dewpoint Range', value: '-60 ... +60 °Ctd' },
+                { label: 'RH Range', value: '0 ... 100 %RH' },
+                { label: 'Output', value: 'Analog / RS-485 Digital' },
+                { label: 'Supply Voltage', value: '5 V / 10...35 V DC' },
+                { label: 'Application', value: 'OEM integration\nInstruments, Portable meters' },
+            ]
+        },
+        {
+            id: 'dmt152', title: 'DMT152', subtitle: 'LOW DEWPOINT MODULE', category: 'module',
+            image: '/templates/hs-tech/images/products/2d44fea596554.png',
+            gallery: ['/templates/hs-tech/images/products/2d44fea596554.png'],
+            desc: 'OEM module for very low dewpoint measurement in dry air and inert gas applications.',
+            specs: [
+                { label: 'Type', value: 'OEM Module' },
+                { label: 'Dewpoint Range', value: '-100 ... +20 °Ctd' },
+                { label: 'Accuracy', value: '±2 °Ctd' },
+                { label: 'Output', value: 'Analog & Digital' },
+                { label: 'Application', value: 'Dry air systems\nInert gas, OEM integration' },
+            ]
+        },
+        {
+            id: 'dmt143', title: 'DMT143', subtitle: 'COMPACT OEM MODULE', category: 'module',
+            image: '/templates/hs-tech/images/products/6d596692e24f1.png',
+            gallery: ['/templates/hs-tech/images/products/6d596692e24f1.png'],
+            desc: 'Ultra-compact dewpoint transmitter module for OEM and space-limited applications.',
+            specs: [
+                { label: 'Size', value: 'Ultra-compact (OEM)' },
+                { label: 'Dewpoint Range', value: '-70 ... +60 °Ctd' },
+                { label: 'Accuracy', value: '±2 °Ctd' },
+                { label: 'Output', value: 'Analog 0...1 V / Digital RS-485' },
+                { label: 'Supply Voltage', value: '3.3 ... 5 V DC' },
+                { label: 'Application', value: 'OEM instruments\nPortable devices' },
+            ]
+        },
+        {
+            id: 'dmt143l', title: 'DMT143L', subtitle: 'EXTENDED PROBE MODULE', category: 'module',
+            image: '/templates/hs-tech/images/products/289587707561d.png',
+            gallery: ['/templates/hs-tech/images/products/289587707561d.png'],
+            desc: 'DMT143 module with extended probe for deep installation into pipelines and vessels.',
+            specs: [
+                { label: 'Probe Length', value: 'Extended (selectable)' },
+                { label: 'Dewpoint Range', value: '-70 ... +60 °Ctd' },
+                { label: 'Output', value: 'Analog / Digital' },
+                { label: 'Application', value: 'Pipelines, Deep installations\nPressure vessels' },
+            ]
+        },
+        {
+            id: 'dpt146', title: 'DPT146', subtitle: 'DEWPOINT & PRESSURE TRANSMITTER', category: 'module',
+            image: '/templates/hs-tech/images/products/04ad79c254fa2.png',
+            gallery: ['/templates/hs-tech/images/products/04ad79c254fa2.png'],
+            desc: 'Combined dewpoint and pressure transmitter for compressed air quality monitoring (ISO 8573 compliance).',
+            specs: [
+                { label: 'Parameters', value: 'Dewpoint (Td) + Pressure (P)' },
+                { label: 'Dewpoint Range', value: '-40 ... +60 °Ctd' },
+                { label: 'Pressure Range', value: '0 ... 12 bar (abs)' },
+                { label: 'Output', value: '4...20 mA × 2, RS-485' },
+                { label: 'Application', value: 'Compressed air systems\nISO 8573 quality monitoring' },
+            ]
+        },
+        {
+            id: 'dpt145', title: 'DPT145', subtitle: 'SF6 GAS DEWPOINT MONITOR', category: 'module',
+            image: '/templates/hs-tech/images/products/04ad79c254fa2.png',
+            gallery: [],
+            desc: 'Dewpoint measurement in SF6 gas systems for high-voltage switchgear monitoring.',
+            specs: [
+                { label: 'Gas Type', value: 'SF6 (Sulfur hexafluoride)' },
+                { label: 'Dewpoint Range', value: '-60 ... +20 °Ctd' },
+                { label: 'Output', value: '4...20 mA, RS-485' },
+                { label: 'Application', value: 'High voltage switchgear\nGas-insulated substations (GIS)' },
+                { label: 'Certification', value: 'IEC 60376, IEC 60480 compliant' },
+            ]
+        },
+        {
+            id: 'indigo80_dmp80', title: 'Indigo80 + DMP80', subtitle: 'PORTABLE DEWPOINT SYSTEM', category: 'portable',
+            image: '/templates/hs-tech/images/products/1388fffe59c2e.png',
+            gallery: ['/templates/hs-tech/images/products/1388fffe59c2e.png'],
+            desc: 'Portable dewpoint measurement system combining the Indigo80 handheld indicator with the DMP80 probe. Color display, data logging, and Bluetooth connectivity.',
+            specs: [
+                { label: 'System', value: 'Indigo80 indicator + DMP80 probe' },
+                { label: 'Dewpoint Range', value: '-60 ... +60 °Ctd' },
+                { label: 'Accuracy', value: '±2 °Ctd' },
+                { label: 'Display', value: 'Color touchscreen (3.5")' },
+                { label: 'Data logging', value: 'Internal memory (5.5M data points)' },
+                { label: 'Connectivity', value: 'Bluetooth, USB' },
+                { label: 'Application', value: 'Spot-checking, Verification\nField calibration' },
+            ],
+            datasheet: 'https://www.vaisala.com/sites/default/files/documents/Indigo80-Datasheet-B211699EN.pdf'
+        },
+        {
+            id: 'dm70', title: 'DM70', subtitle: 'HANDHELD DEWPOINT METER', category: 'portable',
+            image: '/templates/hs-tech/images/products/fc840485431f5.png',
+            gallery: ['/templates/hs-tech/images/products/fc840485431f5.png'],
+            desc: 'Professional handheld dewpoint meter with interchangeable probe. Used for field measurement, calibration verification, and spot-checking in industrial processes.',
+            specs: [
+                { label: 'Probe options', value: 'DMP5, DMP7, DMP8 (interchangeable)' },
+                { label: 'Dewpoint Range', value: '-60 ... +60 °Ctd' },
+                { label: 'Accuracy', value: '±2 °Ctd' },
+                { label: 'Display', value: 'Graphical LCD with backlight' },
+                { label: 'Data logging', value: '60,000 points' },
+                { label: 'Battery', value: '40 h (typical)' },
+                { label: 'Application', value: 'Field measurement\nCalibration verification' },
+            ],
+            datasheet: 'https://www.vaisala.com/sites/default/files/documents/DM70-Datasheet-B210978EN.pdf'
+        },
+        {
+            id: 'dss70a', title: 'DSS70A', subtitle: 'SAMPLING SYSTEM FOR DM70', category: 'portable',
+            image: '/templates/hs-tech/images/products/96ddd2e578412.png',
+            gallery: ['/templates/hs-tech/images/products/96ddd2e578412.png'],
+            desc: 'Sampling cell accessory for use with the DM70 meter to measure dewpoint in pressurized gas lines.',
+            specs: [
+                { label: 'Use with', value: 'DM70 handheld meter' },
+                { label: 'Pressure', value: 'Up to 20 bar (g)' },
+                { label: 'Connection', value: '6 mm Swagelok fittings' },
+                { label: 'Material', value: 'Stainless steel body' },
+                { label: 'Application', value: 'Pressurized gas lines\nCompressed air sampling' },
+            ]
+        },
     ],
     co2: [
-        { id: 'gmw90', title: 'GMW90', subtitle: 'WALL TRANSMITTER', category: 'transmitter', image: '/templates/hs-tech/images/products/6251932a0e954.png', gallery: ['/templates/hs-tech/images/products/6251932a0e954.png'], desc: 'CO2, temperature and humidity transmitter for indoor environments.', specs: [{ label: 'Parameters', value: 'CO2 + T + RH' }, { label: 'Application', value: 'HVAC, Building automation' }] },
-        { id: 'gmw80', title: 'GMW80', subtitle: 'BASIC CO2 TRANSMITTER', category: 'transmitter', image: '/templates/hs-tech/images/products/cfd2828db31bd.png', gallery: ['/templates/hs-tech/images/products/cfd2828db31bd.png'], desc: 'Economical CO2 transmitter for standard applications.', specs: [{ label: 'Parameter', value: 'CO2 only' }, { label: 'Range', value: '0...2000 ppm' }] },
-        { id: 'gmd110', title: 'GMD110', subtitle: 'DUCT TRANSMITTER', category: 'transmitter', image: '/templates/hs-tech/images/products/c846ecca3733c.png', gallery: ['/templates/hs-tech/images/products/c846ecca3733c.png'], desc: 'CO2 transmitter for duct mounting in HVAC systems.', specs: [{ label: 'Installation', value: 'Duct mount' }, { label: 'Application', value: 'Demand control ventilation' }] },
-        { id: 'gmp343', title: 'GMP343', subtitle: 'INDUSTRIAL CO2 PROBE', category: 'probe', image: '/templates/hs-tech/images/products/eb130aca3df08.png', gallery: ['/templates/hs-tech/images/products/eb130aca3df08.png'], desc: 'Robust CO2 probe for industrial processes.', specs: [{ label: 'Flow', value: 'Flow-through design' }, { label: 'Range', value: '0...10000 ppm' }] },
-        { id: 'gmp251', title: 'GMP251', subtitle: 'HIGH RANGE CO2 PROBE', category: 'probe', image: '/templates/hs-tech/images/products/f6933d55699f3.png', gallery: ['/templates/hs-tech/images/products/f6933d55699f3.png'], desc: 'CO2 probe for percent-level measurement.', specs: [{ label: 'Range', value: '0...30 %vol' }, { label: 'Application', value: 'Incubators, Controlled atmosphere' }] },
-        { id: 'gmp231', title: 'GMP231', subtitle: 'INCUBATOR PROBE', category: 'probe', image: '/templates/hs-tech/images/products/8b82ea8dea629.png', gallery: ['/templates/hs-tech/images/products/8b82ea8dea629.png'], desc: 'CO2 probe specially designed for incubators.', specs: [{ label: 'Temp', value: 'Up to +180 °C' }, { label: 'Application', value: 'Life science incubators' }] },
-        { id: 'indigo80_gmp252', title: 'Indigo80+GMP252', subtitle: 'PORTABLE CO2 METER', category: 'handheld', image: '/templates/hs-tech/images/products/41a5c8353e901.png', gallery: ['/templates/hs-tech/images/products/41a5c8353e901.png'], desc: 'Portable CO2 measurement system with percent-level accuracy.', specs: [{ label: 'Range', value: '0...30 %vol (ppm available)' }, { label: 'Application', value: 'Spot-checking, Calibration' }] }
+        {
+            id: 'gmw90', title: 'GMW90', subtitle: 'WALL-MOUNT CO₂ TRANSMITTER', category: 'transmitter',
+            image: '/templates/hs-tech/images/products/6251932a0e954.png',
+            gallery: ['/templates/hs-tech/images/products/6251932a0e954.png'],
+            desc: 'Multi-parameter wall transmitter measuring CO2, temperature, and humidity. Features Vaisala CARBOCAP® dual-channel sensor for superior long-term stability — no zero drift.',
+            specs: [
+                { label: 'Parameters', value: 'CO₂, Temperature (T), Humidity (RH)' },
+                { label: 'CO₂ Range', value: '0 ... 2000 ppm (standard)\n0 ... 10000 ppm (optional)' },
+                { label: 'CO₂ Accuracy', value: '±(40 ppm + 3% of reading)' },
+                { label: 'T Range / Accuracy', value: '-40 ... +60 °C / ±0.2 °C' },
+                { label: 'RH Range / Accuracy', value: '0 ... 100 %RH / ±1.7 %RH' },
+                { label: 'Output', value: '4...20 mA, 0...10 V, RS-485 Modbus' },
+                { label: 'Application', value: 'HVAC, Building automation\nDemand-controlled ventilation' },
+            ],
+            datasheet: 'https://www.vaisala.com/sites/default/files/documents/GMW90-Datasheet-B211008EN.pdf'
+        },
+        {
+            id: 'gmw80', title: 'GMW80', subtitle: 'CO₂ TRANSMITTER', category: 'transmitter',
+            image: '/templates/hs-tech/images/products/cfd2828db31bd.png',
+            gallery: ['/templates/hs-tech/images/products/cfd2828db31bd.png'],
+            desc: 'Economical CO2 transmitter for standard indoor air quality monitoring and demand-controlled ventilation.',
+            specs: [
+                { label: 'Parameter', value: 'CO₂' },
+                { label: 'CO₂ Range', value: '0 ... 2000 ppm' },
+                { label: 'CO₂ Accuracy', value: '±(40 ppm + 3% of reading)' },
+                { label: 'Output', value: '0...10 V, 4...20 mA' },
+                { label: 'Application', value: 'Office buildings, Schools\nDemand-controlled ventilation' },
+            ],
+            datasheet: 'https://www.vaisala.com/sites/default/files/documents/GMW80-Datasheet-B211007EN.pdf'
+        },
+        {
+            id: 'gmd110', title: 'GMD110', subtitle: 'DUCT CO₂ TRANSMITTER', category: 'transmitter',
+            image: '/templates/hs-tech/images/products/c846ecca3733c.png',
+            gallery: ['/templates/hs-tech/images/products/c846ecca3733c.png'],
+            desc: 'CO2 transmitter for duct mounting in HVAC air handling units. Measures CO2 (and optionally T, RH) directly in the airflow.',
+            specs: [
+                { label: 'Installation', value: 'Duct mount (AHU / VAV)' },
+                { label: 'CO₂ Range', value: '0 ... 2000 ppm' },
+                { label: 'CO₂ Accuracy', value: '±(40 ppm + 3% of reading)' },
+                { label: 'Output', value: '0...10 V, 4...20 mA, RS-485' },
+                { label: 'Application', value: 'Air handling units\nDemand-controlled ventilation' },
+            ],
+            datasheet: 'https://www.vaisala.com/sites/default/files/documents/GMD110-Datasheet-B211006EN.pdf'
+        },
+        {
+            id: 'gmp343', title: 'GMP343', subtitle: 'INDUSTRIAL CO₂ PROBE', category: 'probe',
+            image: '/templates/hs-tech/images/products/eb130aca3df08.png',
+            gallery: ['/templates/hs-tech/images/products/eb130aca3df08.png'],
+            desc: 'High-accuracy CO2 probe for industrial processes and research. Flow-through design with temperature-compensated CARBOCAP® sensor for stable long-term measurements.',
+            specs: [
+                { label: 'CO₂ Range', value: '0 ... 10000 ppm' },
+                { label: 'Accuracy', value: '±(20 ppm + 2% of reading) @ 25 °C' },
+                { label: 'Response Time', value: 't90 < 40 s' },
+                { label: 'Pressure Compensation', value: 'Built-in, no recalibration needed' },
+                { label: 'Design', value: 'Flow-through / immersion' },
+                { label: 'Application', value: 'Industrial processes\nGreenhouses, Research, Food packaging' },
+            ],
+            datasheet: 'https://www.vaisala.com/sites/default/files/documents/GMP343-Datasheet-B210879EN.pdf'
+        },
+        {
+            id: 'gmp251', title: 'GMP251', subtitle: 'HIGH-RANGE CO₂ PROBE', category: 'probe',
+            image: '/templates/hs-tech/images/products/f6933d55699f3.png',
+            gallery: ['/templates/hs-tech/images/products/f6933d55699f3.png'],
+            desc: 'CO2 probe for high-concentration (percent-level) measurement in incubators, controlled atmospheres, and fermentation processes.',
+            specs: [
+                { label: 'CO₂ Range', value: '0 ... 30 %vol' },
+                { label: 'Accuracy', value: '±0.5 %vol (0...20 %vol)' },
+                { label: 'Output', value: 'Analog / RS-485' },
+                { label: 'Application', value: 'Cell culture incubators\nControlled atmosphere storage\nFermentation' },
+            ],
+            datasheet: 'https://www.vaisala.com/sites/default/files/documents/GMP251-Datasheet-B210878EN.pdf'
+        },
+        {
+            id: 'gmp231', title: 'GMP231', subtitle: 'INCUBATOR CO₂ PROBE', category: 'probe',
+            image: '/templates/hs-tech/images/products/8b82ea8dea629.png',
+            gallery: ['/templates/hs-tech/images/products/8b82ea8dea629.png'],
+            desc: 'CO2 probe designed for life science incubators. Withstands high-temperature autoclaving and provides accurate measurement in humid incubator environments.',
+            specs: [
+                { label: 'CO₂ Range', value: '0 ... 20 %vol' },
+                { label: 'Operating Temp', value: '+5 ... +45 °C' },
+                { label: 'Autoclave', value: 'Withstands 121 °C steam sterilization' },
+                { label: 'Output', value: 'Analog / RS-485' },
+                { label: 'Application', value: 'CO2 incubators\nLife science, Cell culture' },
+            ],
+            datasheet: 'https://www.vaisala.com/sites/default/files/documents/GMP231-Datasheet-B210877EN.pdf'
+        },
+        {
+            id: 'indigo80_gmp252', title: 'Indigo80 + GMP252', subtitle: 'PORTABLE CO₂ METER', category: 'handheld',
+            image: '/templates/hs-tech/images/products/41a5c8353e901.png',
+            gallery: ['/templates/hs-tech/images/products/41a5c8353e901.png'],
+            desc: 'Portable CO2 measurement system combining the Indigo80 handheld indicator with the GMP252 high-range CO2 probe. Ideal for spot-checking and verification.',
+            specs: [
+                { label: 'System', value: 'Indigo80 indicator + GMP252 probe' },
+                { label: 'CO₂ Range', value: '0 ... 30 %vol (ppm range available)' },
+                { label: 'Display', value: 'Color touchscreen (3.5")' },
+                { label: 'Data logging', value: 'Internal memory (5.5M data points)' },
+                { label: 'Connectivity', value: 'Bluetooth, USB' },
+                { label: 'Application', value: 'Spot-checking, Calibration verification\nFood storage, Greenhouses' },
+            ],
+            datasheet: 'https://www.vaisala.com/sites/default/files/documents/Indigo80-Datasheet-B211699EN.pdf'
+        },
     ],
     oil: [
-        { id: 'mht410', title: 'MHT410', subtitle: 'TRANSFORMER MONITOR', category: 'transformer', image: '/templates/hs-tech/images/products/deffa2b1b398f.jpg', gallery: ['/templates/hs-tech/images/products/deffa2b1b398f.jpg'], desc: 'Online monitoring of moisture and hydrogen in transformer oil.', specs: [{ label: 'Parameters', value: 'H2O + H2' }, { label: 'Application', value: 'Power transformers' }] },
-        { id: 'mmt330', title: 'MMT330', subtitle: 'OIL TRANSMITTER', category: 'fixed', image: '/templates/hs-tech/images/products/5980bfb1851a8.png', gallery: ['/templates/hs-tech/images/products/5980bfb1851a8.png'], desc: 'Online moisture measurement in insulating oils.', specs: [{ label: 'Oil types', value: 'Mineral, Synthetic, Ester' }, { label: 'Application', value: 'Transformer monitoring' }] },
-        { id: 'mmt310', title: 'MMT310', subtitle: 'COMPACT OIL TRANSMITTER', category: 'fixed', image: '/templates/hs-tech/images/products/3ca83569b6d00.jpg', gallery: ['/templates/hs-tech/images/products/3ca83569b6d00.jpg'], desc: 'Compact transmitter for oil moisture measurement.', specs: [{ label: 'Size', value: 'Compact design' }, { label: 'Application', value: 'Small transformers, OEM' }] },
-        { id: 'mm70', title: 'MM70', subtitle: 'HANDHELD OIL METER', category: 'handheld', image: '/templates/hs-tech/images/products/a39c6508f2ff2.png', gallery: ['/templates/hs-tech/images/products/a39c6508f2ff2.png'], desc: 'Portable instrument for spot-checking oil moisture.', specs: [{ label: 'Application', value: 'Field measurement' }, { label: 'Feature', value: 'Fast response' }] },
-        { id: 'mmt162', title: 'MMT162', subtitle: 'OEM OIL MOISTURE MODULE', category: 'oil_module', image: '/templates/hs-tech/images/products/deffa2b1b398f.jpg', gallery: [], desc: 'Compact OEM module for continuous oil moisture measurement in transformers and industrial machinery.', specs: [{ label: 'Type', value: 'OEM / Module' }, { label: 'Application', value: 'Transformers, Hydraulic systems, Industrial oil' }, { label: 'Output', value: '4...20 mA, Modbus' }] }
+        {
+            id: 'mht410', title: 'MHT410', subtitle: 'ONLINE TRANSFORMER MONITOR', category: 'transformer',
+            image: '/templates/hs-tech/images/products/deffa2b1b398f.jpg',
+            gallery: ['/templates/hs-tech/images/products/deffa2b1b398f.jpg'],
+            desc: 'Online multi-parameter monitor for power transformers. Simultaneously measures dissolved hydrogen gas and moisture in insulating oil to detect early-stage faults.',
+            specs: [
+                { label: 'Parameters', value: 'Moisture in oil (aw), Dissolved H2 gas, Temperature' },
+                { label: 'Moisture Range', value: '0 ... 1 aw (water activity)' },
+                { label: 'H2 Range', value: '0 ... 4000 ppm vol' },
+                { label: 'Output', value: '4...20 mA × 3, RS-485 Modbus' },
+                { label: 'Oil Types', value: 'Mineral oil, Silicone oil, Ester oil' },
+                { label: 'Application', value: 'Power transformers\nEarly fault detection' },
+                { label: 'Protection', value: 'IP65' },
+            ],
+            datasheet: 'https://www.vaisala.com/sites/default/files/documents/MHT410-Datasheet-B211757EN.pdf'
+        },
+        {
+            id: 'mmt330', title: 'MMT330', subtitle: 'ONLINE OIL MOISTURE TRANSMITTER', category: 'fixed',
+            image: '/templates/hs-tech/images/products/5980bfb1851a8.png',
+            gallery: ['/templates/hs-tech/images/products/5980bfb1851a8.png'],
+            desc: 'Online moisture measurement in insulating oils. Provides continuous monitoring of moisture content in transformer and hydraulic oils for predictive maintenance.',
+            specs: [
+                { label: 'Parameters', value: 'Water activity (aw), Temperature' },
+                { label: 'Oil Moisture Range', value: '0 ... 1 aw' },
+                { label: 'Temperature Range', value: '-40 ... +100 °C' },
+                { label: 'Output', value: 'RS-232, RS-485, 4...20 mA × 2' },
+                { label: 'Oil Types', value: 'Mineral, Synthetic, Ester oil' },
+                { label: 'Application', value: 'Power transformers, Hydraulic systems\nLubricant monitoring' },
+                { label: 'Protection', value: 'IP66' },
+            ],
+            datasheet: 'https://www.vaisala.com/sites/default/files/documents/MMT330-Datasheet-B210993EN.pdf'
+        },
+        {
+            id: 'mmt310', title: 'MMT310', subtitle: 'COMPACT OIL MOISTURE TRANSMITTER', category: 'fixed',
+            image: '/templates/hs-tech/images/products/3ca83569b6d00.jpg',
+            gallery: ['/templates/hs-tech/images/products/3ca83569b6d00.jpg'],
+            desc: 'Compact transmitter for continuous moisture measurement in oils. Suitable for small transformers and OEM integration.',
+            specs: [
+                { label: 'Parameters', value: 'Water activity (aw), Temperature' },
+                { label: 'Range', value: '0 ... 1 aw, -40 ... +100 °C' },
+                { label: 'Output', value: '4...20 mA × 2' },
+                { label: 'Application', value: 'Small transformers, OEM\nHydraulic and lubricant systems' },
+                { label: 'Protection', value: 'IP67' },
+            ]
+        },
+        {
+            id: 'mm70', title: 'MM70', subtitle: 'HANDHELD OIL MOISTURE METER', category: 'handheld',
+            image: '/templates/hs-tech/images/products/a39c6508f2ff2.png',
+            gallery: ['/templates/hs-tech/images/products/a39c6508f2ff2.png'],
+            desc: 'Portable handheld instrument for spot-checking moisture in insulating and industrial oils. Fast response time for field verification.',
+            specs: [
+                { label: 'Parameters', value: 'Water activity (aw), Temperature' },
+                { label: 'Range', value: '0 ... 1 aw, -40 ... +100 °C' },
+                { label: 'Response time', value: '< 30 s (t90)' },
+                { label: 'Display', value: 'Graphical LCD with backlight' },
+                { label: 'Data logging', value: '30,000 measurements' },
+                { label: 'Application', value: 'Field measurement\nTransformer oil spot-checking' },
+            ],
+            datasheet: 'https://www.vaisala.com/sites/default/files/documents/MM70-Datasheet-B210976EN.pdf'
+        },
+        {
+            id: 'mmt162', title: 'MMT162', subtitle: 'OEM OIL MOISTURE MODULE', category: 'oil_module',
+            image: '/templates/hs-tech/images/products/deffa2b1b398f.jpg', gallery: [],
+            desc: 'Compact OEM module for continuous oil moisture measurement. Designed for integration into transformer monitors, hydraulic systems, and industrial machinery.',
+            specs: [
+                { label: 'Type', value: 'OEM / Module (DIN rail)' },
+                { label: 'Parameters', value: 'Water activity (aw), Temperature' },
+                { label: 'Range', value: '0 ... 1 aw, -40 ... +100 °C' },
+                { label: 'Output', value: '4...20 mA, RS-485 Modbus' },
+                { label: 'Application', value: 'Transformers, Hydraulic systems\nIndustrial oil monitoring, OEM' },
+            ]
+        },
     ],
     barometer: [
-        { id: 'ptb330', title: 'PTB330', subtitle: 'CLASS A BAROMETER', category: 'barometer', image: '/templates/hs-tech/images/products/3ca83569b6d00.jpg', gallery: ['/templates/hs-tech/images/products/3ca83569b6d00.jpg', '/templates/hs-tech/images/products/2ddb0a75a50e4.jpg'], desc: 'High-accuracy Class A digital barometer.', specs: [{ label: 'Accuracy Class', value: 'A (±0.3 hPa)' }, { label: 'Application', value: 'Meteorology, Aviation' }] },
-        { id: 'ptb210', title: 'PTB210', subtitle: 'CLASS B BAROMETER', category: 'barometer', image: '/templates/hs-tech/images/products/2e8820b69ea2b.jpg', gallery: ['/templates/hs-tech/images/products/2e8820b69ea2b.jpg'], desc: 'Industrial Class B digital barometer.', specs: [{ label: 'Accuracy Class', value: 'B (±0.5 hPa)' }, { label: 'Application', value: 'Industrial, HVAC' }] },
-        { id: 'ptb110', title: 'PTB110', subtitle: 'ANALOG BAROMETER', category: 'barometer', image: '/templates/hs-tech/images/products/b2209059580dc.jpg', gallery: ['/templates/hs-tech/images/products/b2209059580dc.jpg'], desc: 'Barometric pressure transmitter with analog output.', specs: [{ label: 'Output', value: '0-1V, 0-5V, 0-10V' }, { label: 'Application', value: 'Building automation' }] },
-        { id: 'ptu300', title: 'PTU300', subtitle: 'COMBINED TRANSMITTER', category: 'barometer', image: '/templates/hs-tech/images/products/deffa2b1b398f.jpg', gallery: ['/templates/hs-tech/images/products/deffa2b1b398f.jpg', '/templates/hs-tech/images/products/2e8820b69ea2b.jpg'], desc: 'Combined pressure, temperature, and humidity transmitter.', specs: [{ label: 'Parameters', value: 'P + T + RH' }, { label: 'Application', value: 'Meteorology, Environmental monitoring' }] }
+        {
+            id: 'ptb330', title: 'PTB330', subtitle: 'CLASS A DIGITAL BAROMETER', category: 'barometer',
+            image: '/templates/hs-tech/images/products/3ca83569b6d00.jpg',
+            gallery: ['/templates/hs-tech/images/products/3ca83569b6d00.jpg', '/templates/hs-tech/images/products/2ddb0a75a50e4.jpg'],
+            desc: 'Reference-level Class A digital barometer for meteorology, aviation, and research. Dual-sensor design provides redundancy and highest accuracy.',
+            specs: [
+                { label: 'Accuracy Class', value: 'A (±0.3 hPa @ +20 °C, ref to WMO)' },
+                { label: 'Pressure Range', value: '500 ... 1100 hPa' },
+                { label: 'Stability', value: '< 0.1 hPa/year' },
+                { label: 'Output', value: 'RS-232, RS-485, 4...20 mA, 0...5 V' },
+                { label: 'Display', value: 'Graphical LCD (optional)' },
+                { label: 'Application', value: 'Meteorological networks\nAviation (METAR), Research' },
+                { label: 'Calibration', value: 'NIST-traceable, ISO/IEC 17025' },
+            ],
+            datasheet: 'https://www.vaisala.com/sites/default/files/documents/PTB330-Datasheet-B210982EN.pdf'
+        },
+        {
+            id: 'ptb210', title: 'PTB210', subtitle: 'CLASS B DIGITAL BAROMETER', category: 'barometer',
+            image: '/templates/hs-tech/images/products/2e8820b69ea2b.jpg',
+            gallery: ['/templates/hs-tech/images/products/2e8820b69ea2b.jpg'],
+            desc: 'Industrial-grade Class B digital barometer for HVAC, weather stations, and environmental monitoring.',
+            specs: [
+                { label: 'Accuracy Class', value: 'B (±0.5 hPa @ +20 °C)' },
+                { label: 'Pressure Range', value: '600 ... 1100 hPa' },
+                { label: 'Output', value: 'RS-232, 4...20 mA, 0...5 V' },
+                { label: 'Application', value: 'Weather stations, HVAC\nIndustrial environmental monitoring' },
+            ],
+            datasheet: 'https://www.vaisala.com/sites/default/files/documents/PTB210-Datasheet-B210981EN.pdf'
+        },
+        {
+            id: 'ptb110', title: 'PTB110', subtitle: 'BAROMETRIC PRESSURE TRANSMITTER', category: 'barometer',
+            image: '/templates/hs-tech/images/products/b2209059580dc.jpg',
+            gallery: ['/templates/hs-tech/images/products/b2209059580dc.jpg'],
+            desc: 'Compact barometric pressure transmitter with analog output for building automation and HVAC systems.',
+            specs: [
+                { label: 'Pressure Range', value: '600 ... 1100 hPa' },
+                { label: 'Accuracy', value: '±0.5 hPa' },
+                { label: 'Output', value: '0...1 V, 0...5 V, 0...10 V, 4...20 mA' },
+                { label: 'Application', value: 'Building automation, HVAC\nAltitude compensation' },
+                { label: 'Protection', value: 'IP65' },
+            ],
+            datasheet: 'https://www.vaisala.com/sites/default/files/documents/PTB110-Datasheet-B210980EN.pdf'
+        },
+        {
+            id: 'ptu300', title: 'PTU300', subtitle: 'COMBINED P + T + RH TRANSMITTER', category: 'barometer',
+            image: '/templates/hs-tech/images/products/deffa2b1b398f.jpg',
+            gallery: ['/templates/hs-tech/images/products/deffa2b1b398f.jpg', '/templates/hs-tech/images/products/2e8820b69ea2b.jpg'],
+            desc: 'Combined transmitter measuring barometric pressure, temperature, and relative humidity in a single unit. Calculates derived parameters such as absolute humidity and enthalpy.',
+            specs: [
+                { label: 'Parameters', value: 'Pressure (P), Temperature (T), Humidity (RH)' },
+                { label: 'Pressure Range', value: '600 ... 1100 hPa / Accuracy: ±0.5 hPa' },
+                { label: 'T Range / Accuracy', value: '-40 ... +60 °C / ±0.2 °C' },
+                { label: 'RH Range / Accuracy', value: '0 ... 100 %RH / ±1.5 %RH' },
+                { label: 'Output', value: 'RS-232, RS-485, 4...20 mA × 3' },
+                { label: 'Application', value: 'Meteorology, Weather stations\nEnvironmental monitoring' },
+            ],
+            datasheet: 'https://www.vaisala.com/sites/default/files/documents/PTU300-Datasheet-B210983EN.pdf'
+        },
     ],
     weather: [
         { id: 'wxt530', title: 'WXT530', subtitle: 'WEATHER STATION', category: 'trans', image: '/templates/hs-tech/images/products/2c2344f8b46d5.jpg', gallery: ['/templates/hs-tech/images/products/2c2344f8b46d5.jpg'], desc: 'All-in-one multi-parameter weather sensor measuring wind, rain, pressure, temperature, and humidity.', specs: [{ label: 'Parameters', value: 'Wind speed/direction, Rain, Pressure, T, RH' }, { label: 'Output', value: 'SDI-12, RS-232, RS-485, Modbus' }, { label: 'Application', value: 'Weather monitoring, Aviation, Marine' }], datasheet: 'https://www.vaisala.com/sites/default/files/documents/WXT530-Datasheet-B211961EN.pdf' },
@@ -662,36 +1035,273 @@ export const DB: Record<string, any[]> = {
         { id: 'hms80', title: 'HMS80', subtitle: 'COMPACT HVAC SENSOR', category: 'hvac_weather', image: '/templates/hs-tech/images/products/2ddb0a75a50e4.jpg', gallery: [], desc: 'Compact humidity and temperature transmitter for building automation and HVAC.', specs: [{ label: 'Range', value: '0...100 %RH' }, { label: 'Output', value: '4...20 mA, 0...10 V' }, { label: 'Application', value: 'HVAC, Building automation, Energy management' }] }
     ],
     h2o2: [
-        { id: 'hpp271', title: 'HPP271/272', subtitle: 'H2O2 VAPOR PROBE', category: 'sensor', image: '/templates/hs-tech/images/products/47e994f808c6a.png', gallery: ['/templates/hs-tech/images/products/47e994f808c6a.png'], desc: 'Vaporized hydrogen peroxide measurement for bio-decontamination.', specs: [{ label: 'Gas', value: 'H2O2 vapor' }, { label: 'Application', value: 'Bio-decontamination, Sterilization' }] }
+        {
+            id: 'hpp271', title: 'HPP271 / HPP272', subtitle: 'H₂O₂ VAPOR PROBE', category: 'sensor',
+            image: '/templates/hs-tech/images/products/47e994f808c6a.png',
+            gallery: ['/templates/hs-tech/images/products/47e994f808c6a.png'],
+            desc: 'Vaporized hydrogen peroxide (VHP/H2O2) measurement probe for bio-decontamination process monitoring. Enables real-time control of decontamination cycles in pharmaceutical and healthcare environments.',
+            specs: [
+                { label: 'Gas', value: 'H₂O₂ vapor (VHP)' },
+                { label: 'H₂O₂ Range', value: 'HPP271: 0 ... 2000 ppm\nHPP272: 0 ... 1000 ppm' },
+                { label: 'Accuracy', value: '± 10 % of reading (at steady state)' },
+                { label: 'Response Time', value: 't90 < 30 s (HPP271)' },
+                { label: 'Output', value: 'RS-485 Modbus (Indigo compatible)\n4...20 mA (HPP272)' },
+                { label: 'Application', value: 'Pharmaceutical bio-decontamination\nIsolators, Cleanrooms, Hospital rooms' },
+                { label: 'Protection', value: 'IP65 (probe head H₂O₂-resistant)' },
+            ],
+            datasheet: 'https://www.vaisala.com/sites/default/files/documents/HPP270-Datasheet-B211876EN.pdf'
+        }
     ],
 
     // SETRA
     setra: [
-        { id: 'setra_lite', title: 'Setra Lite', subtitle: 'VISUAL PRESSURE INDICATOR', category: 'diff_ind', image: '/templates/hs-tech/images/products/849fee28dfdc5.png', gallery: ['/templates/hs-tech/images/products/849fee28dfdc5.png'], desc: 'Visual differential pressure indicator with LED lights.', specs: [{ label: 'Display', value: 'LED light indicators' }, { label: 'Application', value: 'Cleanrooms, Operating rooms' }] },
-        { id: 'setra_flex', title: 'Setra Flex', subtitle: 'ROOM PRESSURE MONITOR', category: 'diff_ind', image: '/templates/hs-tech/images/products/f038c293907b8.png', gallery: ['/templates/hs-tech/images/products/f038c293907b8.png'], desc: 'Touchscreen room pressure monitor for critical environments.', specs: [{ label: 'Display', value: 'Touchscreen' }, { label: 'Application', value: 'Isolation rooms, Cleanrooms' }] },
-        { id: 'model_mrc', title: 'Model MRC', subtitle: 'MULTI-RANGE SENSOR', category: 'diff_sen', image: '/templates/hs-tech/images/products/0173971661ad2.png', gallery: ["/templates/hs-tech/images/products/0173971661ad2.png", "/templates/hs-tech/images/products/0b98ec3d71c52.png", "/templates/hs-tech/images/products/866d1ed724ffa.png", "/templates/hs-tech/images/products/ba117fd1862c9.png", "/templates/hs-tech/images/products/20542e1ba6c31.png"], desc: 'Differential pressure sensor with adjustable range.', specs: [{ label: 'Range', value: 'Field adjustable' }, { label: 'Application', value: 'HVAC, Filter monitoring' }] },
-        { id: 'model_mrg', title: 'Model MRG', subtitle: 'GENERAL PURPOSE SENSOR', category: 'diff_sen', image: '/templates/hs-tech/images/products/0b98ec3d71c52.png', gallery: ["/templates/hs-tech/images/products/0b98ec3d71c52.png", "/templates/hs-tech/images/products/866d1ed724ffa.png"], desc: 'Cost-effective differential pressure sensor.', specs: [{ label: 'Type', value: 'General purpose' }, { label: 'Application', value: 'Building automation' }] },
-        { id: 'model_264', title: 'Model 264', subtitle: 'HVAC TRANSDUCER', category: 'diff_sen', image: '/templates/hs-tech/images/products/866d1ed724ffa.png', gallery: ["/templates/hs-tech/images/products/866d1ed724ffa.png", "/templates/hs-tech/images/products/ba117fd1862c9.png"], desc: 'Standard differential pressure transducer for HVAC.', specs: [{ label: 'Type', value: 'Standard HVAC' }, { label: 'Output', value: '4-20mA, 0-5V, 0-10V' }] },
-        { id: 'pdt101', title: 'PDT101', subtitle: 'FILTER MONITOR', category: 'diff_sen', image: '/templates/hs-tech/images/products/20542e1ba6c31.png', gallery: ["/templates/hs-tech/images/products/20542e1ba6c31.png"], desc: 'Compact OEM differential pressure sensor for filter monitoring.', specs: [{ label: 'Type', value: 'OEM sensor' }, { label: 'Application', value: 'Filter condition monitoring' }] },
-        { id: 'pdt102', title: 'PDT102', subtitle: 'DIFFERENTIAL PRESSURE TRANSMITTER', category: 'diff_sen', image: '/templates/hs-tech/images/products/20542e1ba6c31.png', gallery: [], desc: 'High-accuracy differential pressure transmitter for HVAC and filter condition monitoring.', specs: [{ label: 'Type', value: 'Differential pressure transmitter' }, { label: 'Output', value: '4...20 mA, 0...10 V' }, { label: 'Application', value: 'HVAC, Cleanrooms, Filter monitoring' }] },
-        { id: 'model_axd', title: 'Model AXD', subtitle: 'HIGH PERFORMANCE TRANSDUCER', category: 'industrial', image: '/templates/hs-tech/images/products/af2c3e1c0d3d0.png', gallery: ['/templates/hs-tech/images/products/af2c3e1c0d3d0.png'], desc: 'High accuracy industrial pressure transducer.', specs: [{ label: 'Accuracy', value: 'High precision' }, { label: 'Application', value: 'Industrial processes' }] },
-        { id: 'model_206', title: 'Model 206', subtitle: 'RUGGED TRANSDUCER', category: 'industrial', image: '/templates/hs-tech/images/products/5175822708f3a.png', gallery: ['/templates/hs-tech/images/products/5175822708f3a.png'], desc: 'Rugged industrial pressure transducer with stainless steel construction.', specs: [{ label: 'Housing', value: 'Stainless steel' }, { label: 'Application', value: 'Harsh environments' }] },
-        { id: 'model_209', title: 'Model 209', subtitle: 'OEM PRESSURE SENSOR', category: 'industrial', image: '/templates/hs-tech/images/products/a153aa767ba86.png', gallery: ['/templates/hs-tech/images/products/a153aa767ba86.png'], desc: 'Compact OEM pressure sensor for industrial applications.', specs: [{ label: 'Type', value: 'OEM compact' }, { label: 'Application', value: 'OEM integration' }] }
+        {
+            id: 'setra_lite', title: 'Setra Lite', subtitle: 'ROOM PRESSURE VISUAL INDICATOR', category: 'diff_ind',
+            image: '/templates/hs-tech/images/products/849fee28dfdc5.png',
+            gallery: ['/templates/hs-tech/images/products/849fee28dfdc5.png'],
+            desc: 'Simple and reliable visual differential pressure indicator using tri-color LED lights to show positive, negative, or neutral room pressure at a glance.',
+            specs: [
+                { label: 'Display', value: 'Tri-color LED (Green / Red / Amber)' },
+                { label: 'Pressure Range', value: '0 ... ±0.25" WC (±62.3 Pa)' },
+                { label: 'Accuracy', value: '±2% FS' },
+                { label: 'Input Power', value: '24 VDC / VAC' },
+                { label: 'Application', value: 'Cleanrooms (ISO Class 1-8)\nOperating rooms, Isolation rooms' },
+                { label: 'Installation', value: 'Wall mount' },
+            ]
+        },
+        {
+            id: 'setra_flex', title: 'Setra Flex', subtitle: 'TOUCHSCREEN ROOM PRESSURE MONITOR', category: 'diff_ind',
+            image: '/templates/hs-tech/images/products/849fee28dfdc5.png',
+            gallery: ['/templates/hs-tech/images/products/849fee28dfdc5.png'],
+            desc: 'Advanced touchscreen room pressure monitor with numeric display and configurable alarms. Provides visual and audible alerts when room pressure goes out of range.',
+            specs: [
+                { label: 'Display', value: '4.3" color touchscreen' },
+                { label: 'Pressure Range', value: '0 ... ±1.25" WC (±311 Pa)' },
+                { label: 'Accuracy', value: '±1% FS' },
+                { label: 'Alarms', value: 'Visual (LED) + Audible + Relay output' },
+                { label: 'Output', value: '4...20 mA, 0...10 V' },
+                { label: 'Application', value: 'Isolation rooms, Cleanrooms\nPharmaceutical, Healthcare' },
+            ]
+        },
+        {
+            id: 'model_mrc', title: 'Model MRC', subtitle: 'MULTI-RANGE CONFIGURABLE DP SENSOR', category: 'diff_sen',
+            image: '/templates/hs-tech/images/products/0173971661ad2.png',
+            gallery: ['/templates/hs-tech/images/products/0173971661ad2.png', '/templates/hs-tech/images/products/0b98ec3d71c52.png', '/templates/hs-tech/images/products/866d1ed724ffa.png', '/templates/hs-tech/images/products/ba117fd1862c9.png', '/templates/hs-tech/images/products/20542e1ba6c31.png'],
+            desc: 'Field-configurable multi-range differential pressure sensor with selectable ranges. No hardware changes required — range selected via DIP switch.',
+            specs: [
+                { label: 'Pressure Ranges', value: '0...0.1", 0...0.25", 0...0.5", 0...1.0" WC\n(Bi-directional options available)' },
+                { label: 'Accuracy', value: '±1% FS' },
+                { label: 'Output', value: '4...20 mA, 0...5 V, 0...10 V' },
+                { label: 'Input Power', value: '24 VDC / VAC' },
+                { label: 'Application', value: 'HVAC air handling units\nFilter condition monitoring' },
+                { label: 'Protection', value: 'IP65 (NEMA 4)' },
+            ]
+        },
+        {
+            id: 'model_mrg', title: 'Model MRG', subtitle: 'GENERAL PURPOSE DP SENSOR', category: 'diff_sen',
+            image: '/templates/hs-tech/images/products/0b98ec3d71c52.png',
+            gallery: ['/templates/hs-tech/images/products/0b98ec3d71c52.png', '/templates/hs-tech/images/products/866d1ed724ffa.png'],
+            desc: 'Cost-effective differential pressure sensor for standard HVAC and building automation applications.',
+            specs: [
+                { label: 'Pressure Ranges', value: '0...0.1" to 0...10" WC (fixed range)' },
+                { label: 'Accuracy', value: '±2% FS' },
+                { label: 'Output', value: '4...20 mA, 0...5 V, 0...10 V' },
+                { label: 'Input Power', value: '24 VDC / VAC' },
+                { label: 'Application', value: 'Building automation\nVAV boxes, Fan control' },
+            ]
+        },
+        {
+            id: 'model_264', title: 'Model 264', subtitle: 'LOW DIFFERENTIAL PRESSURE TRANSDUCER', category: 'diff_sen',
+            image: '/templates/hs-tech/images/products/866d1ed724ffa.png',
+            gallery: ['/templates/hs-tech/images/products/866d1ed724ffa.png', '/templates/hs-tech/images/products/ba117fd1862c9.png'],
+            desc: 'Low differential pressure transducer with exceptional stability. Used for HVAC pressure measurement in VAV boxes, fan pressure control, and filter monitoring.',
+            specs: [
+                { label: 'Pressure Ranges', value: '0...±0.25" WC to 0...±10" WC' },
+                { label: 'Accuracy', value: '±1% FS (±0.5% optional)' },
+                { label: 'Output', value: '4...20 mA, 0...5 V, 0...10 V' },
+                { label: 'Input Power', value: '24 VDC / VAC' },
+                { label: 'Application', value: 'HVAC VAV boxes, Fan pressure\nFilter monitoring, Cleanrooms' },
+            ]
+        },
+        {
+            id: 'pdt101', title: 'PDT101', subtitle: 'OEM DIFFERENTIAL PRESSURE SENSOR', category: 'diff_sen',
+            image: '/templates/hs-tech/images/products/20542e1ba6c31.png',
+            gallery: ['/templates/hs-tech/images/products/20542e1ba6c31.png'],
+            desc: 'Compact OEM differential pressure sensor for filter condition monitoring and HVAC OEM applications.',
+            specs: [
+                { label: 'Type', value: 'OEM sensor (PCB mount)' },
+                { label: 'Pressure Range', value: '0...0.5" WC to 0...10" WC' },
+                { label: 'Output', value: '0.5...4.5 V (ratiometric)' },
+                { label: 'Supply', value: '5 VDC' },
+                { label: 'Application', value: 'Filter condition monitoring\nOEM HVAC equipment' },
+            ]
+        },
+        {
+            id: 'pdt102', title: 'PDT102', subtitle: 'DIFFERENTIAL PRESSURE TRANSMITTER', category: 'diff_sen',
+            image: '/templates/hs-tech/images/products/20542e1ba6c31.png', gallery: [],
+            desc: 'High-accuracy differential pressure transmitter for HVAC and cleanroom filter condition monitoring with industry-standard 4-20 mA output.',
+            specs: [
+                { label: 'Pressure Range', value: '0...0.1" to 0...10" WC' },
+                { label: 'Accuracy', value: '±1% FS' },
+                { label: 'Output', value: '4...20 mA, 0...10 V' },
+                { label: 'Input Power', value: '24 VDC' },
+                { label: 'Application', value: 'HVAC, Cleanrooms\nFilter monitoring' },
+                { label: 'Protection', value: 'IP65' },
+            ]
+        },
+        {
+            id: 'model_axd', title: 'Model AXD', subtitle: 'HIGH ACCURACY INDUSTRIAL TRANSDUCER', category: 'industrial',
+            image: '/templates/hs-tech/images/products/af2c3e1c0d3d0.png',
+            gallery: ['/templates/hs-tech/images/products/af2c3e1c0d3d0.png'],
+            desc: 'High accuracy, ultra-stable industrial pressure transducer for demanding process applications. Stainless steel wetted parts for corrosive media.',
+            specs: [
+                { label: 'Pressure Ranges', value: '0...100 inH2O to 0...10,000 PSI' },
+                { label: 'Accuracy', value: '±0.11% FS BSL (incl. linearity, hysteresis, repeatability)' },
+                { label: 'Output', value: '4...20 mA, 0...5 V, 0...10 V, 1...5 V' },
+                { label: 'Material', value: '316L stainless steel wetted parts' },
+                { label: 'Application', value: 'Industrial process control\nHigh-accuracy measurement' },
+                { label: 'Protection', value: 'IP65 (NEMA 4)' },
+            ]
+        },
+        {
+            id: 'model_206', title: 'Model 206', subtitle: 'RUGGED STAINLESS STEEL TRANSDUCER', category: 'industrial',
+            image: '/templates/hs-tech/images/products/5175822708f3a.png',
+            gallery: ['/templates/hs-tech/images/products/5175822708f3a.png'],
+            desc: 'Rugged stainless steel pressure transducer for harsh industrial environments. Fully welded, hermetic construction for maximum reliability.',
+            specs: [
+                { label: 'Pressure Ranges', value: '0...15 to 0...3000 PSI (gauge/absolute)' },
+                { label: 'Accuracy', value: '±0.25% FS' },
+                { label: 'Output', value: '4...20 mA, 0...5 V, 1...5 V' },
+                { label: 'Material', value: '316 stainless steel (all wetted parts)' },
+                { label: 'Application', value: 'Chemical, Petrochemical\nHarsh environments, Corrosive media' },
+                { label: 'Protection', value: 'IP67' },
+            ]
+        },
+        {
+            id: 'model_209', title: 'Model 209', subtitle: 'COMPACT OEM PRESSURE SENSOR', category: 'industrial',
+            image: '/templates/hs-tech/images/products/a153aa767ba86.png',
+            gallery: ['/templates/hs-tech/images/products/a153aa767ba86.png'],
+            desc: 'Compact, cost-effective OEM pressure sensor for industrial equipment integration.',
+            specs: [
+                { label: 'Type', value: 'OEM compact sensor' },
+                { label: 'Pressure Range', value: '0...15 to 0...300 PSI' },
+                { label: 'Accuracy', value: '±0.25% FS' },
+                { label: 'Output', value: '4...20 mA, 0...5 V' },
+                { label: 'Application', value: 'OEM equipment integration\nIndustrial machines' },
+            ]
+        },
     ],
 
     // JUMO
     jumo: [
-        { id: 'ph_sensor', title: 'tecline pH', subtitle: 'PH ELECTRODE', category: 'liquid', image: '/templates/hs-tech/images/products/1c2022c06d474.png', gallery: ['/templates/hs-tech/images/products/1c2022c06d474.png'], desc: 'High-quality pH electrode for liquid analysis.', specs: [{ label: 'Material', value: 'Glass body' }, { label: 'Application', value: 'Water treatment, Process' }] },
-        { id: 'ph_trans', title: 'ecoTRANS pH 03', subtitle: 'PH TRANSMITTER', category: 'liquid', image: '/templates/hs-tech/images/products/94259b4509a1f.png', gallery: ['/templates/hs-tech/images/products/94259b4509a1f.png'], desc: 'Compact pH transmitter with DIN rail mounting.', specs: [{ label: 'Mounting', value: 'DIN rail' }, { label: 'Output', value: '4-20mA, Relay' }] },
-        { id: 'dtrans_ph02', title: 'dTRANS pH 02', subtitle: 'PROCESS PH TRANSMITTER', category: 'liquid', image: '/templates/hs-tech/images/products/8d15ded8da6eb.png', gallery: ['/templates/hs-tech/images/products/8d15ded8da6eb.png'], desc: 'Industrial pH transmitter with IP65 protection.', specs: [{ label: 'Protection', value: 'IP65' }, { label: 'Application', value: 'Industrial processes' }] },
-        { id: 'cond_trans', title: 'ecoTRANS Lf 03', subtitle: 'CONDUCTIVITY TRANSMITTER', category: 'liquid', image: '/templates/hs-tech/images/products/75b212a123a21.png', gallery: ['/templates/hs-tech/images/products/75b212a123a21.png'], desc: 'Conductivity transmitter for water quality monitoring.', specs: [{ label: 'Output', value: '4-20 mA' }, { label: 'Application', value: 'Water treatment' }] },
-        { id: 'recording', title: 'LOGOSCREEN 600', subtitle: 'PAPERLESS RECORDER', category: 'control', image: '/templates/hs-tech/images/products/85b44cdd77766.png', gallery: ['/templates/hs-tech/images/products/85b44cdd77766.png'], desc: 'Touchscreen paperless recorder for data logging.', specs: [{ label: 'Display', value: 'Touch LCD' }, { label: 'Channels', value: 'Multi-channel' }] },
-        { id: 'dtron_300', title: 'dTRON 300', subtitle: 'TEMPERATURE CONTROLLER', category: 'control', image: '/templates/hs-tech/images/products/2ddb0a75a50e4.jpg', gallery: ['/templates/hs-tech/images/products/2ddb0a75a50e4.jpg'], desc: 'Compact PID controller for temperature control.', specs: [{ label: 'Control', value: 'PID algorithm' }, { label: 'Application', value: 'Temperature processes' }] }
+        {
+            id: 'ph_sensor', title: 'tecline pH', subtitle: 'pH COMBINATION ELECTRODE', category: 'liquid',
+            image: '/templates/hs-tech/images/products/1c2022c06d474.png',
+            gallery: ['/templates/hs-tech/images/products/1c2022c06d474.png'],
+            desc: 'High-quality combination pH electrode for liquid analysis in water treatment and process industries. Available in glass and plastics (PEI, PVDF) for various media.',
+            specs: [
+                { label: 'Measurement', value: 'pH 0 ... 14' },
+                { label: 'Temperature Range', value: '0 ... +80 °C' },
+                { label: 'Electrode body', value: 'Glass / PEI / PVDF (application-specific)' },
+                { label: 'Reference system', value: 'Ag/AgCl double junction' },
+                { label: 'Connector', value: 'BNC connector (standard)' },
+                { label: 'Application', value: 'Water treatment, Process industry\nChemical, Food & Beverage' },
+            ]
+        },
+        {
+            id: 'ph_trans', title: 'ecoTRANS pH 03', subtitle: 'pH TRANSMITTER (DIN RAIL)', category: 'liquid',
+            image: '/templates/hs-tech/images/products/94259b4509a1f.png',
+            gallery: ['/templates/hs-tech/images/products/94259b4509a1f.png'],
+            desc: 'Compact panel/DIN rail pH transmitter with display. Converts electrode signal to standard 4-20 mA output for PLC/SCADA integration.',
+            specs: [
+                { label: 'Measurement', value: 'pH 0 ... 14 / Temperature' },
+                { label: 'Accuracy', value: '±0.05 pH' },
+                { label: 'Input', value: 'pH electrode (BNC/S7/Pg13.5)' },
+                { label: 'Output', value: '4...20 mA (active/passive), 2× relay' },
+                { label: 'Mounting', value: 'DIN rail 35 mm / Panel cut-out' },
+                { label: 'Display', value: 'LCD (pH, temp, mV)' },
+                { label: 'Application', value: 'Water treatment, Process monitoring\nPLC/SCADA integration' },
+            ]
+        },
+        {
+            id: 'dtrans_ph02', title: 'dTRANS pH 02', subtitle: 'PROCESS pH TRANSMITTER', category: 'liquid',
+            image: '/templates/hs-tech/images/products/8d15ded8da6eb.png',
+            gallery: ['/templates/hs-tech/images/products/8d15ded8da6eb.png'],
+            desc: 'Industrial field-mount pH transmitter with IP65 protection. HART communication for smart instrumentation integration. Supports JUMO and third-party electrodes.',
+            specs: [
+                { label: 'Measurement', value: 'pH 0 ... 14 / ORP / Temperature' },
+                { label: 'Accuracy', value: '±0.01 pH' },
+                { label: 'Output', value: '4...20 mA (HART 5.x/6.x), 2× relay' },
+                { label: 'Mounting', value: 'Field mount (wall/pipe)' },
+                { label: 'Protection', value: 'IP65 / IP67 (optional)' },
+                { label: 'Communication', value: 'HART 5.x / 6.x' },
+                { label: 'Application', value: 'Industrial processes\nWaste water, Chemical' },
+            ]
+        },
+        {
+            id: 'cond_trans', title: 'ecoTRANS Lf 03', subtitle: 'CONDUCTIVITY TRANSMITTER', category: 'liquid',
+            image: '/templates/hs-tech/images/products/75b212a123a21.png',
+            gallery: ['/templates/hs-tech/images/products/75b212a123a21.png'],
+            desc: 'Compact conductivity and temperature transmitter for water quality monitoring. DIN rail mounting with 4-20 mA output for integration into PLC/BMS systems.',
+            specs: [
+                { label: 'Measurement', value: 'Conductivity (μS/cm ... mS/cm) / Temperature' },
+                { label: 'Conductivity Range', value: '0 ... 500 μS/cm to 0 ... 500 mS/cm (cell constant dependent)' },
+                { label: 'Accuracy', value: '±1% FS' },
+                { label: 'Output', value: '4...20 mA, 2× relay' },
+                { label: 'Mounting', value: 'DIN rail 35 mm' },
+                { label: 'Application', value: 'Drinking water, Process water\nWater treatment, Boiler feed water' },
+            ]
+        },
+        {
+            id: 'recording', title: 'LOGOSCREEN 600', subtitle: 'PAPERLESS CHART RECORDER', category: 'control',
+            image: '/templates/hs-tech/images/products/85b44cdd77766.png',
+            gallery: ['/templates/hs-tech/images/products/85b44cdd77766.png'],
+            desc: 'High-performance paperless chart recorder with large touchscreen. Up to 12 universal inputs for temperature, process, and digital signals. Data stored on internal flash + SD card.',
+            specs: [
+                { label: 'Display', value: '10.4" color TFT touchscreen' },
+                { label: 'Inputs', value: 'Up to 12 universal inputs\n(T/C, RTD, mV, mA, Resistance, Pulse)' },
+                { label: 'Sampling rate', value: 'Up to 500 ms per channel' },
+                { label: 'Memory', value: 'Internal flash 512 MB + SD card slot' },
+                { label: 'Communication', value: 'Ethernet, RS-485 (Modbus RTU/TCP)\nUSB, CF card' },
+                { label: 'Alarms', value: '4 relay outputs' },
+                { label: 'Application', value: 'Process visualization & recording\nGxP/FDA 21 CFR Part 11 compliant' },
+            ]
+        },
+        {
+            id: 'dtron_300', title: 'dTRON 300', subtitle: 'PANEL MOUNT PID CONTROLLER', category: 'control',
+            image: '/templates/hs-tech/images/products/2ddb0a75a50e4.jpg',
+            gallery: ['/templates/hs-tech/images/products/2ddb0a75a50e4.jpg'],
+            desc: 'Compact panel-mount PID controller for temperature and process variable control. Supports multiple sensor types with auto-tuning PID and ramp-soak programming.',
+            specs: [
+                { label: 'Panel cutout', value: '48 × 48 mm (1/16 DIN)' },
+                { label: 'Input', value: 'Thermocouple (T/C), RTD (Pt100)\n4...20 mA, 0...10 V' },
+                { label: 'Control', value: 'PID with auto-tuning\nRamp/Soak program (up to 99 segments)' },
+                { label: 'Output', value: 'Relay, SSR, 4...20 mA (controller-dependent)' },
+                { label: 'Communication', value: 'RS-485 Modbus RTU (optional)' },
+                { label: 'Application', value: 'Temperature process control\nOvens, Furnaces, Incubators, Reactors' },
+            ]
+        },
     ],
 
     // KNICK
     knick: [
-        { id: 'stratos', title: 'Stratos Pro', subtitle: 'PROCESS ANALYZER', category: 'analysis', image: '/templates/hs-tech/images/products/322e267fafb41.png', gallery: ['/templates/hs-tech/images/products/322e267fafb41.png'], desc: 'High-end process analysis system with intrinsic safety.', specs: [{ label: 'Safety', value: 'Ex Zone 1 approved' }, { label: 'Application', value: 'Chemical, Pharmaceutical' }] }
+        {
+            id: 'stratos', title: 'Stratos Pro', subtitle: 'MULTI-PARAMETER PROCESS ANALYZER', category: 'analysis',
+            image: '/templates/hs-tech/images/products/322e267fafb41.png',
+            gallery: ['/templates/hs-tech/images/products/322e267fafb41.png'],
+            desc: 'High-performance multi-parameter process analyzer for pH, ORP, conductivity, dissolved oxygen, and turbidity measurement. Intrinsically safe Ex Zone 1 certification for use in hazardous areas.',
+            specs: [
+                { label: 'Parameters', value: 'pH / ORP / Conductivity\nDissolved O₂ / Turbidity (module-dependent)' },
+                { label: 'Sensor inputs', value: 'Up to 2 sensor modules (simultaneous)' },
+                { label: 'Interface', value: 'Sensoface® diagnostic system\n3.5" color TFT display' },
+                { label: 'Output', value: '2× 4...20 mA, 3× relay (alarm)' },
+                { label: 'Communication', value: 'PROFIBUS DP, Modbus RTU, HART' },
+                { label: 'Safety', value: 'Ex Zone 1 / Zone 21 (ATEX)\nIECEx, FM, CSA certified' },
+                { label: 'Protection', value: 'IP65 (wall / pipe / panel mount)' },
+                { label: 'Application', value: 'Chemical, Pharmaceutical\nWater treatment, Food & Beverage' },
+            ],
+            datasheet: 'https://www.knick.de/en/products/process-analysis/transmitters/stratos-pro-a401.html'
+        },
     ],
 
     // CMS (Data Logger / Continuous Monitoring System)
