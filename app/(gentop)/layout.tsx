@@ -23,8 +23,8 @@ export const metadata: Metadata = {
     images: [
       {
         url: "https://gentop.premiumpage.kr/images/og-image.png",
-        width: 3000,
-        height: 1418,
+        width: 1200,
+        height: 630,
         alt: "GENTOP Total Solution Provider",
       },
     ],
