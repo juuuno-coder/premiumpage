@@ -22,9 +22,9 @@ export const metadata: Metadata = {
     description: "Construction & Facilities Management Industry Leader",
     images: [
       {
-        url: "/images/og-image.png",
-        width: 1200,
-        height: 630,
+        url: "https://gentop.premiumpage.kr/images/og-image.png",
+        width: 3000,
+        height: 1418,
         alt: "GENTOP Total Solution Provider",
       },
     ],
