@@ -107,7 +107,8 @@ export function useWheelNavigation({
       const delta = Math.abs(e.deltaY);
 
       if (e.deltaY > 0) {
-        // Scrolling DOWN
+        // Scrolling DOWN → cancel any upward-navigation readiness
+        upReady.current = false;
         upAccumulator.current = 0;
         setScrollUpProgress(0);
 
@@ -128,7 +129,8 @@ export function useWheelNavigation({
         // If not ready: just let the page scroll naturally (do nothing extra)
 
       } else if (e.deltaY < 0) {
-        // Scrolling UP
+        // Scrolling UP → cancel any downward-navigation readiness
+        downReady.current = false;
         downAccumulator.current = 0;
         setScrollProgress(0);
 
