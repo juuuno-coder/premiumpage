@@ -194,26 +194,26 @@ const CatalogPage = ({ title, children, currentTab, breadcrumb, hideUI }: {
                 </AnimatePresence>
             </main>
 
-            {/* 3. ENHANCED MEGA NAVIGATOR (Numbers only, Large UI) */}
+            {/* 3. PAGE NAVIGATOR */}
             {!hideUI && (
-                <div className="fixed bottom-12 right-12 z-[150] flex items-center">
-                    <div className="flex items-center bg-black/80 backdrop-blur-3xl border border-white/10 rounded-2xl py-4 px-8 shadow-[0_20px_60px_-15px_rgba(0,0,0,0.7)] gap-8 font-black font-mono">
+                <div className="fixed bottom-4 right-4 md:bottom-8 md:right-8 z-[150] flex items-center">
+                    <div className="flex items-center bg-black/80 backdrop-blur-3xl border border-white/10 rounded-2xl py-3 px-5 md:py-4 md:px-8 shadow-[0_20px_60px_-15px_rgba(0,0,0,0.7)] gap-5 md:gap-8 font-black font-mono">
                         {/* Prev Arrow */}
                         <Link
                             href={prevPath || '#'}
                             className={cn("text-white/30 hover:text-cyan-400 transition-all transform hover:scale-125", !prevPath && "opacity-10 pointer-events-none")}
                             onClick={() => setDirection(-1)}
                         >
-                            <ChevronLeft className="w-8 h-8" strokeWidth={3} />
+                            <ChevronLeft className="w-6 h-6 md:w-8 md:h-8" strokeWidth={3} />
                         </Link>
 
-                        {/* Page Numbers - LARGE */}
-                        <div className="flex items-baseline gap-3">
-                            <span className="text-3xl md:text-4xl text-cyan-500 drop-shadow-[0_0_15px_rgba(6,182,212,0.4)]">
+                        {/* Page Numbers */}
+                        <div className="flex items-baseline gap-2 md:gap-3">
+                            <span className="text-2xl md:text-4xl text-cyan-500 drop-shadow-[0_0_15px_rgba(6,182,212,0.4)]">
                                 {String(safeIndex + 1).padStart(2, '0')}
                             </span>
-                            <span className="text-white/10 text-xl">/</span>
-                            <span className="text-xl text-white/40">
+                            <span className="text-white/10 text-lg">/</span>
+                            <span className="text-lg md:text-xl text-white/40">
                                 {String(totalPages).padStart(2, '0')}
                             </span>
                         </div>
@@ -224,7 +224,7 @@ const CatalogPage = ({ title, children, currentTab, breadcrumb, hideUI }: {
                             className={cn("text-white/30 hover:text-cyan-400 transition-all transform hover:scale-125", !nextPath && "opacity-10 pointer-events-none")}
                             onClick={() => setDirection(1)}
                         >
-                            <ChevronRight className="w-8 h-8" strokeWidth={3} />
+                            <ChevronRight className="w-6 h-6 md:w-8 md:h-8" strokeWidth={3} />
                         </Link>
                     </div>
                 </div>

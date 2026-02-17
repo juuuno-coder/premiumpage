@@ -55,15 +55,15 @@ function HSTechLayoutContent({ children }: { children: React.ReactNode }) {
         <div className="min-h-screen dark:bg-neutral-950 bg-white dark:text-slate-200 text-slate-900 font-sans selection:bg-cyan-500 selection:text-white relative transition-colors duration-300">
 
             {/* 1. Header (Fixed, Dark) - Z-Index 100 */}
-            <header className="fixed top-0 left-0 right-0 z-[100] flex items-center justify-between px-6 md:px-12 h-20 dark:bg-neutral-950/80 bg-white/80 backdrop-blur-md border-b dark:border-white/5 border-neutral-200 transition-all">
+            <header className="fixed top-0 left-0 right-0 z-[100] flex items-center justify-between px-6 md:px-12 h-20 dark:bg-neutral-950/90 bg-neutral-950/90 backdrop-blur-md border-b dark:border-white/5 border-white/5 transition-all">
                 {/* Logo */}
-                <Link href="/templates/hs-tech?tab=cover" className="flex items-center gap-2 group">
+                <Link href="/templates/hs-tech?tab=cover" className="flex items-center group shrink-0">
                     {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img src="/hstech/HS-TECH_files/f038c293907b8.png" alt="HS TECH" width={120} className="h-auto object-contain group-hover:opacity-80 transition-opacity" />
+                    <img src="/hstech/HS-TECH_files/logo-white.png" alt="HS TECH" width={110} className="h-auto object-contain group-hover:opacity-70 transition-opacity" />
                 </Link>
-                {/* Placeholder for button spacing if needed */}
-                {/* Desktop Menu */}
-                <nav className="hidden md:flex items-center gap-8 mr-auto ml-12">
+
+                {/* Desktop Menu - centered between logo and right edge */}
+                <nav className="hidden md:flex items-center gap-10">
                     {MAIN_MENU.map((item) => {
                         const isActive = activeTab === item.tab ||
                             (item.tab === 'products' && ['vaisala', 'setra', 'jumo', 'knick', 'humidity', 'dewpoint', 'co2', 'oil', 'barometer', 'weather', 'h2o2', 'cms'].includes(activeTab))
@@ -71,7 +71,7 @@ function HSTechLayoutContent({ children }: { children: React.ReactNode }) {
                             <Link
                                 key={item.href}
                                 href={item.href}
-                                className={`text-sm font-bold tracking-wide uppercase transition-colors ${isActive ? 'text-cyan-500' : 'dark:text-neutral-400 text-neutral-600 hover:text-cyan-500 dark:hover:text-cyan-400'}`}
+                                className={`text-xs font-bold tracking-widest uppercase transition-colors ${isActive ? 'text-cyan-400' : 'text-white/50 hover:text-white'}`}
                             >
                                 {item.label}
                             </Link>
@@ -79,9 +79,8 @@ function HSTechLayoutContent({ children }: { children: React.ReactNode }) {
                     })}
                 </nav>
 
-                {/* Right Side: Empty for clean layout */}
-                <div className="flex items-center gap-2 md:gap-4 ml-auto mr-10 md:mr-0 z-[110]">
-                </div>
+                {/* Right spacer (balances layout) */}
+                <div className="hidden md:block w-[110px]" />
             </header>
 
             {/* 2. Hamburger Button (Standalone Fixed) - Z-Index 200 */}
