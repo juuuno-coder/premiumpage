@@ -5,138 +5,132 @@ import { useRouter } from 'next/navigation';
 
 interface WheelNavigationOptions {
   nextPage: string | null;
+  prevPage?: string | null;
   isEnabled?: boolean;
-  threshold?: number; // Scroll threshold in pixels to trigger ready state
-  isFullScreenPage?: boolean; // For pages with no scroll (like intro)
+  threshold?: number;
+  isFullScreenPage?: boolean;
 }
 
 interface WheelNavigationState {
   isAtBottom: boolean;
+  isAtTop: boolean;
   isReadyToNavigate: boolean;
-  scrollProgress: number; // 0-1 value representing scroll threshold progress
+  isReadyToPrev: boolean;
+  scrollProgress: number;
+  scrollUpProgress: number;
 }
 
 export function useWheelNavigation({
   nextPage,
+  prevPage = null,
   isEnabled = true,
-  threshold = 50, // Reduced from 80 for trackpad friendliness
+  threshold = 80,
   isFullScreenPage = false
 }: WheelNavigationOptions): WheelNavigationState {
   const router = useRouter();
-  const [isAtBottom, setIsAtBottom] = useState(isFullScreenPage); // Full screen pages are always "at bottom"
-  const [isReadyToNavigate, setIsReadyToNavigate] = useState(false);
+  const [isAtBottom, setIsAtBottom] = useState(isFullScreenPage);
+  const [isAtTop, setIsAtTop] = useState(true);
   const [scrollProgress, setScrollProgress] = useState(0);
+  const [scrollUpProgress, setScrollUpProgress] = useState(0);
 
-  const scrollAccumulator = useRef(0);
+  const downAccumulator = useRef(0);
+  const upAccumulator = useRef(0);
   const lastScrollTime = useRef(Date.now());
-  const readyStateTimeout = useRef<NodeJS.Timeout | null>(null);
+  const isNavigating = useRef(false);
+
+  const isReadyToNavigate = scrollProgress > 0.2;
+  const isReadyToPrev = scrollUpProgress > 0.2;
 
   useEffect(() => {
-    if (!isEnabled || !nextPage) return;
+    if (!isEnabled) return;
 
     const handleWheel = (e: WheelEvent) => {
+      if (isNavigating.current) return;
+
       const now = Date.now();
       const timeDiff = now - lastScrollTime.current;
 
-      // Reset accumulator if too much time has passed (user stopped scrolling)
-      if (timeDiff > 200) {
-        scrollAccumulator.current = 0;
+      if (timeDiff > 300) {
+        downAccumulator.current = 0;
+        upAccumulator.current = 0;
         setScrollProgress(0);
-        setIsReadyToNavigate(false);
+        setScrollUpProgress(0);
       }
 
       lastScrollTime.current = now;
 
-      // Check if at bottom of page (or full screen page)
       let atBottom = isFullScreenPage;
+      let atTop = isFullScreenPage;
+
       if (!isFullScreenPage) {
         const scrollTop = window.scrollY || document.documentElement.scrollTop;
         const scrollHeight = document.documentElement.scrollHeight;
         const clientHeight = document.documentElement.clientHeight;
-        atBottom = scrollTop + clientHeight >= scrollHeight - 10; // 10px tolerance
+        atBottom = scrollTop + clientHeight >= scrollHeight - 10;
+        atTop = scrollTop <= 2;
       }
 
       setIsAtBottom(atBottom);
+      setIsAtTop(atTop);
 
-      // Only accumulate scroll when at bottom and scrolling down
-      // For trackpad: accept smaller deltaY values
-      if (atBottom && e.deltaY > 0) {
-        // Normalize deltaY for both mouse wheel and trackpad
-        // Mouse wheel typically gives ~100, trackpad gives ~1-10
-        const normalizedDelta = Math.abs(e.deltaY);
-        scrollAccumulator.current += normalizedDelta;
+      const normalizedDelta = Math.abs(e.deltaY);
 
-        // Calculate progress (0-1)
-        const progress = Math.min(scrollAccumulator.current / threshold, 1);
-        setScrollProgress(progress);
+      if (e.deltaY > 0) {
+        upAccumulator.current = 0;
+        setScrollUpProgress(0);
 
-        // Check if we've reached the threshold
-        if (scrollAccumulator.current >= threshold) {
-          if (!isReadyToNavigate) {
-            // First threshold reached - enter "ready to navigate" state
-            setIsReadyToNavigate(true);
-            scrollAccumulator.current = 0; // Reset for next phase
+        if (atBottom && nextPage) {
+          downAccumulator.current += normalizedDelta;
+          const progress = Math.min(downAccumulator.current / threshold, 1);
+          setScrollProgress(progress);
+
+          if (downAccumulator.current >= threshold) {
+            isNavigating.current = true;
+            downAccumulator.current = 0;
             setScrollProgress(0);
-
-            // Clear any existing timeout
-            if (readyStateTimeout.current) {
-              clearTimeout(readyStateTimeout.current);
-            }
-
-            // Auto-reset ready state after 3 seconds of no activity
-            readyStateTimeout.current = setTimeout(() => {
-              setIsReadyToNavigate(false);
-              setScrollProgress(0);
-            }, 3000);
-          } else {
-            // Already in ready state, second threshold reached - navigate!
             router.push(nextPage);
-
-            // Reset state
-            scrollAccumulator.current = 0;
-            setIsReadyToNavigate(false);
-            setScrollProgress(0);
-
-            if (readyStateTimeout.current) {
-              clearTimeout(readyStateTimeout.current);
-            }
+            setTimeout(() => { isNavigating.current = false; }, 1000);
           }
+        } else {
+          downAccumulator.current = 0;
+          setScrollProgress(0);
         }
       } else if (e.deltaY < 0) {
-        // Scrolling up - reset accumulator (but keep ready state if already ready)
-        if (!isReadyToNavigate) {
-          scrollAccumulator.current = 0;
-          setScrollProgress(0);
+        downAccumulator.current = 0;
+        setScrollProgress(0);
+
+        if (atTop && prevPage) {
+          upAccumulator.current += normalizedDelta;
+          const progress = Math.min(upAccumulator.current / threshold, 1);
+          setScrollUpProgress(progress);
+
+          if (upAccumulator.current >= threshold) {
+            isNavigating.current = true;
+            upAccumulator.current = 0;
+            setScrollUpProgress(0);
+            router.push(prevPage);
+            setTimeout(() => { isNavigating.current = false; }, 1000);
+          }
+        } else {
+          upAccumulator.current = 0;
+          setScrollUpProgress(0);
         }
       }
     };
 
     window.addEventListener('wheel', handleWheel, { passive: true });
 
-    // For debugging - remove after testing
-    if (typeof window !== 'undefined') {
-      (window as any).__wheelNavDebug = {
-        getAccumulator: () => scrollAccumulator.current,
-        getProgress: () => scrollProgress,
-        getReadyState: () => isReadyToNavigate,
-        getAtBottom: () => isAtBottom
-      };
-    }
-
     return () => {
       window.removeEventListener('wheel', handleWheel);
-      if (readyStateTimeout.current) {
-        clearTimeout(readyStateTimeout.current);
-      }
-      if (typeof window !== 'undefined') {
-        delete (window as any).__wheelNavDebug;
-      }
     };
-  }, [isEnabled, nextPage, threshold, router, isReadyToNavigate, isFullScreenPage, scrollProgress, isAtBottom]);
+  }, [isEnabled, nextPage, prevPage, threshold, router, isFullScreenPage]);
 
   return {
     isAtBottom,
+    isAtTop,
     isReadyToNavigate,
-    scrollProgress
+    isReadyToPrev,
+    scrollProgress,
+    scrollUpProgress,
   };
 }

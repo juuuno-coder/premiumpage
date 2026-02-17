@@ -11,8 +11,9 @@ export function HeroSection({ lang, nextPage }: { lang: string; nextPage: string
     const t = getTranslation(lang);
     const { isAtBottom, isReadyToNavigate, scrollProgress } = useWheelNavigation({
         nextPage,
+        prevPage: null, // Intro is the first page, no prev
         isEnabled: true,
-        threshold: 50, // Reduced for trackpad friendliness
+        threshold: 60,
         isFullScreenPage: true // Intro page has no scroll
     });
 
