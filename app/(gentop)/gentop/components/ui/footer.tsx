@@ -22,7 +22,7 @@ export const Footer = () => {
     }, []);
 
     return (
-        <footer className="group fixed bottom-0 left-0 w-full z-50 transition-all duration-500 hover:bg-white dark:hover:bg-black hover:shadow-[0_-5px_20px_rgba(0,0,0,0.1)]">
+        <footer className="hidden md:block group fixed bottom-0 left-0 w-full z-50 transition-all duration-500 hover:bg-white dark:hover:bg-black hover:shadow-[0_-5px_20px_rgba(0,0,0,0.1)]">
             {/* Base Minimal Footer (Always Visible) */}
             <div className="w-full bg-white/80 dark:bg-black/80 backdrop-blur-md border-t border-black/5 dark:border-white/10 py-3 px-6 flex justify-between items-center transition-colors duration-300">
                 <p className="text-[10px] md:text-xs text-neutral-500 dark:text-neutral-400 font-mono">

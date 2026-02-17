@@ -148,9 +148,70 @@ jcatalog/
 | `catalog-utils` | 데이터 추출, 레이아웃 생성, 디자인 시스템 | 모든 에이전트가 공유 |
 | `apply-all` | 모든 카탈로그 일괄 적용 오케스트레이터 | "모든 기업을 대상으로" 요청 시 |
 
-### 3단계 워크플로우
+### 자동화 파이프라인 에이전트
 
-각 에이전트는 다음 워크플로우를 따릅니다:
+도메인 URL 하나로 카탈로그 초안을 자동 생성하는 5-Phase 파이프라인:
+
+| 에이전트 | 역할 | Phase |
+|---------|------|-------|
+| `catalog-factory` | 원클릭 진입점 - `/catalog-factory "URL"` | 전체 조율 |
+| `scraper-agent` | 웹사이트 크롤링, 텍스트/이미지/표 추출 | Phase 1 |
+| `layout-agent` | 템플릿 선택 + Next.js 페이지 구조 자동 생성 | Phase 3 |
+| `design-agent` | 브랜드 색상, 애니메이션, 톤앤매너 적용 | Phase 4 |
+| `orchestrator-agent` | 파이프라인 전체 순차 실행 + 검증 | Phase 1-5 |
+
+**파이프라인 흐름:**
+
+```
+INPUT: 기업 도메인 URL
+  ↓
+[Phase 1] scraper-agent → 데이터 추출 (WebFetch + parseMarkdownContent)
+  ↓
+[Phase 2] catalog-utils → 데이터 구조화 (buildCompanyProfile + translations)
+  ↓
+[Phase 3] layout-agent → 레이아웃 생성 (템플릿 선택 + 페이지 컴포넌트)
+  ↓
+[Phase 4] design-agent → 디자인 적용 (색상 + 애니메이션 + 다크모드)
+  ↓
+[Phase 5] 검증 → npm run build + 이미지 매칭 + 품질 점수
+  ↓
+OUTPUT: 완성된 카탈로그 초안
+```
+
+### 공유 인프라
+
+#### 핵심 타입 시스템 (`lib/catalog-core/types.ts`)
+
+모든 에이전트가 공유하는 40+ 표준 데이터 타입:
+- `CompanyProfile`, `Product`, `CatalogConfig`, `BrandColorScheme`
+- `ScrapedData`, `PipelineStatus`, `ValidationResult`
+- Path alias: `@catalog-core/*`
+
+#### 공통 컴포넌트 (`components/catalog/`)
+
+```
+components/catalog/
+├── CatalogNavigator.tsx    # 통합 페이지 네비게이터
+├── CatalogLayout.tsx       # 통합 레이아웃 래퍼
+├── CatalogHero.tsx         # 4가지 변형 히어로 (fullscreen/split/video/minimal)
+├── CatalogFooter.tsx       # 2가지 변형 푸터 (hover-reveal/inline-grid)
+├── PageTransition.tsx      # 페이지 전환 (휠+키보드+스와이프)
+└── ui/                     # Aceternity UI 통합 소스
+```
+
+Path alias: `@catalog/*`
+
+#### 템플릿 블루프린트 (`templates/`)
+
+| 패턴 | 기반 | 적합한 경우 |
+|------|------|-----------|
+| `company-multi-page` | GENTOP | 10+ 섹션, 회사/사업/연락처 구분 |
+| `product-hierarchy` | HS-TECH | 브랜드/카테고리 계층, 50+ 제품 |
+| `single-page-tabs` | 항성산업사 | 소규모 사이트, 10페이지 미만 |
+
+### 3단계 워크플로우 (기업별 에이전트)
+
+각 기업별 에이전트는 다음 워크플로우를 따릅니다:
 
 ```
 1. 데이터 추출 (Data Extraction)

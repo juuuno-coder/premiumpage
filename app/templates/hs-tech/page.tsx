@@ -268,11 +268,13 @@ function HSTechContent() {
     if (activeTab === 'about') return (
         <CatalogPage title="ABOUT US" currentTab="about">
             <div className="pt-48 pb-32 px-6 max-w-5xl mx-auto">
-                <h4 className="text-[10px] font-black text-cyan-500 tracking-[0.5em] mb-4">ESTABLISHED 2005</h4>
-                <h2 className="text-5xl md:text-9xl font-black text-white mb-12 tracking-tighter uppercase italic leading-none">Global<br /><span className="text-cyan-500">Expertise.</span></h2>
+                <h4 className="text-[10px] font-black text-cyan-500 tracking-[0.5em] mb-4">ESTABLISHED 2016 · PANGYO TECHNO VALLEY</h4>
+                <h2 className="text-5xl md:text-9xl font-black text-white mb-12 tracking-tighter uppercase italic leading-none">Environmental<br /><span className="text-cyan-500">Sensor.</span></h2>
                 <BentoGrid>
-                    <BentoGridItem title="Partners" description="Authorized Distributor of Vaisala, Setra, Jumo, Knick." header={<div className="h-48 bg-neutral-900 rounded-2xl border border-white/5" />} icon={<Globe className="w-4 h-4 text-cyan-500" />} className="md:col-span-2" />
-                    <BentoGridItem title="Consultancy" description="Proactive technical support and maintenance." header={<div className="h-48 bg-neutral-900 rounded-2xl border border-white/5 shadow-inner" />} icon={<CheckCircle2 className="w-4 h-4 text-cyan-500" />} className="md:col-span-1" />
+                    <BentoGridItem title="Authorized Distributor" description="Certified distributor of Vaisala, Setra, JUMO, and KNICK — world-class environmental and industrial sensor brands." header={<div className="h-48 bg-neutral-900 rounded-2xl border border-white/5" />} icon={<Globe className="w-4 h-4 text-cyan-500" />} className="md:col-span-2" />
+                    <BentoGridItem title="Technical Consultancy" description="Proactive pre- and post-sales technical support, calibration, and maintenance services." header={<div className="h-48 bg-neutral-900 rounded-2xl border border-white/5 shadow-inner" />} icon={<CheckCircle2 className="w-4 h-4 text-cyan-500" />} className="md:col-span-1" />
+                    <BentoGridItem title="HS TECH Co., Ltd." description="주식회사 HS TECH — 환경센서 전문 기업. 반도체, 플랜트, 제약, 생명과학 분야의 정밀 측정 솔루션을 제공합니다." header={<div className="h-48 bg-neutral-900 rounded-2xl border border-white/5" />} icon={<MapPin className="w-4 h-4 text-cyan-500" />} className="md:col-span-1" />
+                    <BentoGridItem title="Business Reg." description="144-81-08640 · Pangyo Techno Valley, Seongnam-si, Gyeonggi-do" header={<div className="h-48 bg-neutral-900 rounded-2xl border border-white/5" />} icon={<CheckCircle2 className="w-4 h-4 text-cyan-500" />} className="md:col-span-2" />
                 </BentoGrid>
             </div>
         </CatalogPage>
@@ -283,11 +285,20 @@ function HSTechContent() {
         <CatalogPage title="BUSINESS" currentTab="business">
             <div className="pt-48 pb-32 px-6 max-w-6xl mx-auto">
                 <h2 className="text-6xl md:text-9xl font-black text-white mb-20 tracking-tighter uppercase italic leading-none">Market<br />Scopes.</h2>
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
-                    {['Semiconductor', 'EV Battery', 'Cleanroom HVAC'].map((b, i) => (
-                        <BackgroundGradient key={i} className="p-16 rounded-[40px] bg-neutral-900 border border-white/5">
-                            <h3 className="text-3xl font-black text-white mb-8 italic tracking-tighter uppercase">{b}</h3>
-                            <p className="text-sm text-slate-400 font-medium leading-relaxed">Dedicated sensing solutions for high-performance {b.toLowerCase()} infrastructures.</p>
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                    {[
+                        { name: 'Semiconductor', desc: 'Ultra-precise humidity & dewpoint monitoring for wafer fabrication and cleanroom environments.' },
+                        { name: 'Plant & Process', desc: 'Robust pressure, temperature, and gas sensors for oil & gas, chemical, and power plant operations.' },
+                        { name: 'Automotive', desc: 'Environmental sensors for EV battery manufacturing, paint booths, and automotive testing facilities.' },
+                        { name: 'Marine', desc: 'Weather stations and corrosion-resistant sensors designed for offshore and onboard applications.' },
+                        { name: 'Agriculture', desc: 'Soil moisture and microclimate monitoring to optimize crop yield and greenhouse conditions.' },
+                        { name: 'Power Industry', desc: 'SF6 gas monitoring and transformer oil sensors for electrical infrastructure reliability.' },
+                        { name: 'HVAC & Buildings', desc: 'Room pressure, CO2, and IAQ transmitters for smart buildings, hospitals, and data centers.' },
+                        { name: 'Life Science', desc: 'GMP-compliant humidity and temperature monitoring for pharmaceutical and biotech facilities.' },
+                    ].map((b, i) => (
+                        <BackgroundGradient key={i} className="p-10 rounded-[35px] bg-neutral-900 border border-white/5">
+                            <h3 className="text-xl font-black text-white mb-4 italic tracking-tighter uppercase">{b.name}</h3>
+                            <p className="text-xs text-slate-400 font-medium leading-relaxed">{b.desc}</p>
                         </BackgroundGradient>
                     ))}
                 </div>
@@ -353,20 +364,29 @@ function HSTechContent() {
         <CatalogPage title="CONTACT" currentTab="contact">
             <div className="pt-56 pb-32 px-6 flex flex-col items-center justify-center min-h-[80vh] text-center">
                 <h2 className="text-6xl md:text-9xl font-black text-white mb-16 tracking-tighter uppercase italic leading-none">Reach<br /><span className="text-cyan-500">Out.</span></h2>
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-12 w-full max-w-6xl font-mono uppercase">
-                    <div className="p-14 border border-white/10 rounded-[45px] bg-neutral-900 group shadow-2xl hover:border-cyan-500/50 transition-all">
-                        <Phone className="w-12 h-12 text-cyan-500 mx-auto mb-8 group-hover:scale-110 transition-transform" />
-                        <p className="text-2xl font-black text-white tracking-tighter">070-4346-1844</p>
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 w-full max-w-6xl font-mono">
+                    <div className="p-10 border border-white/10 rounded-[40px] bg-neutral-900 group shadow-2xl hover:border-cyan-500/50 transition-all">
+                        <Phone className="w-10 h-10 text-cyan-500 mx-auto mb-6 group-hover:scale-110 transition-transform" />
+                        <p className="text-xs text-slate-500 uppercase tracking-widest mb-2">견적문의</p>
+                        <p className="text-lg font-black text-white tracking-tighter">070-4346-1844</p>
                     </div>
-                    <div className="p-14 border border-white/10 rounded-[45px] bg-neutral-900 group shadow-2xl hover:border-cyan-500/50 transition-all">
-                        <Mail className="w-12 h-12 text-cyan-500 mx-auto mb-8 group-hover:scale-110 transition-transform" />
-                        <p className="text-xl font-black text-white tracking-tighter truncate">hs-tech@hs-tech.co.kr</p>
+                    <div className="p-10 border border-white/10 rounded-[40px] bg-neutral-900 group shadow-2xl hover:border-cyan-500/50 transition-all">
+                        <Phone className="w-10 h-10 text-cyan-500 mx-auto mb-6 group-hover:scale-110 transition-transform" />
+                        <p className="text-xs text-slate-500 uppercase tracking-widest mb-2">FAX</p>
+                        <p className="text-lg font-black text-white tracking-tighter">031-8016-3510</p>
                     </div>
-                    <div className="p-14 border border-white/10 rounded-[45px] bg-neutral-900 group shadow-2xl hover:border-cyan-500/50 transition-all">
-                        <MapPin className="w-12 h-12 text-cyan-500 mx-auto mb-8 group-hover:scale-110 transition-transform" />
-                        <p className="text-2xl font-black text-white tracking-tighter">PANGYO, KR</p>
+                    <div className="p-10 border border-white/10 rounded-[40px] bg-neutral-900 group shadow-2xl hover:border-cyan-500/50 transition-all">
+                        <Mail className="w-10 h-10 text-cyan-500 mx-auto mb-6 group-hover:scale-110 transition-transform" />
+                        <p className="text-xs text-slate-500 uppercase tracking-widest mb-2">기술문의</p>
+                        <p className="text-sm font-black text-white tracking-tighter break-all">hs-tech@hs-tech.co.kr</p>
+                    </div>
+                    <div className="p-10 border border-white/10 rounded-[40px] bg-neutral-900 group shadow-2xl hover:border-cyan-500/50 transition-all">
+                        <MapPin className="w-10 h-10 text-cyan-500 mx-auto mb-6 group-hover:scale-110 transition-transform" />
+                        <p className="text-xs text-slate-500 uppercase tracking-widest mb-2">주소</p>
+                        <p className="text-sm font-black text-white leading-relaxed">판교테크노밸리<br />유스페이스2 B동 4층 410호</p>
                     </div>
                 </div>
+                <p className="mt-10 text-xs text-slate-600 font-mono tracking-widest uppercase">13494 경기도 성남시 분당구 대왕판교로 670</p>
             </div>
         </CatalogPage>
     )

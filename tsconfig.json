@@ -28,6 +28,12 @@
       ],
       "@gentop/*": [
         "./app/(gentop)/gentop/*"
+      ],
+      "@catalog/*": [
+        "./components/catalog/*"
+      ],
+      "@catalog-core/*": [
+        "./lib/catalog-core/*"
       ]
     }
   },
