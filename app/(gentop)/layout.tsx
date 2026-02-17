@@ -17,6 +17,19 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "GENTOP | Total Solution Provider",
   description: "Construction & Facilities Management Industry Leader",
+  openGraph: {
+    title: "GENTOP | Total Solution Provider",
+    description: "Construction & Facilities Management Industry Leader",
+    images: [
+      {
+        url: "/images/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "GENTOP Total Solution Provider",
+      },
+    ],
+    type: "website",
+  },
 };
 
 export default function RootLayout({
