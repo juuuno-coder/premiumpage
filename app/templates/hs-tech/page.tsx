@@ -153,18 +153,32 @@ function ProductCard({ product, onOpen }: { product: any; onOpen: () => void }) 
     return (
         <button
             onClick={onOpen}
-            className="group text-left p-4 border border-neutral-200 rounded-xl bg-white hover:border-cyan-500 hover:shadow-md transition-all w-full"
+            className="group text-left border border-neutral-200 rounded-xl bg-white hover:border-cyan-500 hover:shadow-lg transition-all w-full overflow-hidden"
         >
-            <div className="bg-neutral-50 rounded-lg p-4 mb-3 aspect-[4/3] flex items-center justify-center overflow-hidden border border-neutral-100">
+            {/* Image area */}
+            <div className="bg-neutral-50 p-4 aspect-[4/3] flex items-center justify-center overflow-hidden border-b border-neutral-100 relative">
                 {product.image ? (
                     // eslint-disable-next-line @next/next/no-img-element
                     <img src={product.image} alt={product.title} className="max-h-24 object-contain group-hover:scale-105 transition-transform duration-300" />
                 ) : (
                     <div className="text-neutral-200 text-[10px] font-black uppercase tracking-widest text-center leading-tight">{product.title}</div>
                 )}
+                {/* Hover overlay */}
+                <div className="absolute inset-0 bg-cyan-500/0 group-hover:bg-cyan-500/5 transition-colors flex items-center justify-center">
+                    <span className="opacity-0 group-hover:opacity-100 transition-opacity bg-cyan-600 text-white text-[9px] font-black uppercase tracking-[0.2em] px-3 py-1.5 rounded-full flex items-center gap-1.5 shadow-lg">
+                        <ExternalLink className="w-2.5 h-2.5" /> View Details
+                    </span>
+                </div>
             </div>
-            <p className="text-[9px] text-cyan-600 font-black uppercase tracking-[0.25em] mb-0.5 line-clamp-1">{product.subtitle || ''}</p>
-            <h3 className="text-sm font-black text-neutral-800 group-hover:text-cyan-600 transition-colors leading-tight line-clamp-2">{product.title}</h3>
+            {/* Info area */}
+            <div className="p-3">
+                <p className="text-[9px] text-cyan-600 font-black uppercase tracking-[0.25em] mb-0.5 line-clamp-1">{product.subtitle || ''}</p>
+                <h3 className="text-sm font-black text-neutral-800 group-hover:text-cyan-600 transition-colors leading-tight line-clamp-2 mb-2">{product.title}</h3>
+                <div className="flex items-center gap-1 text-[9px] text-neutral-400 font-bold uppercase tracking-widest group-hover:text-cyan-500 transition-colors">
+                    <span>Specifications</span>
+                    <ChevronRight className="w-2.5 h-2.5" />
+                </div>
+            </div>
         </button>
     )
 }
