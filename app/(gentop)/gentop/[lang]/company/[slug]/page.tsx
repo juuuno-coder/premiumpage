@@ -132,18 +132,18 @@ export default async function CompanyDetailPage({ params }: { params: Promise<{ 
                 />
 
                 {/* Main Content Area */}
-                <article className="max-w-[1400px] mx-auto px-4 md:px-8 lg:px-12 py-6 pb-20 legacy-content">
+                <article className="max-w-[1400px] mx-auto px-2 md:px-8 lg:px-12 py-3 pb-16 legacy-content">
 
                     {/* Sub Navigation */}
-                    <div className="mb-8">
-                        <nav className="flex flex-wrap justify-center gap-2 md:gap-4">
+                    <div className="mb-3">
+                        <nav className="flex flex-wrap justify-center gap-1 md:gap-3">
                             {(NAV_DATA as any)[lang]?.company.items.map((item: any) => {
                                 const isActive = item.href.endsWith(slug);
                                 return (
                                     <Link
                                         key={item.href}
                                         href={item.href}
-                                        className={`px-4 py-2 rounded-full text-xs md:text-sm font-medium transition-all duration-300 ${isActive
+                                        className={`px-3 py-1 rounded-full text-xs md:text-sm font-medium transition-all duration-300 ${isActive
                                             ? 'bg-gentop-green text-white shadow-lg shadow-gentop-green/30 scale-105'
                                             : 'bg-white/5 hover:bg-white/10 text-muted-foreground hover:text-foreground border border-black/5 dark:border-white/10'
                                             }`}
@@ -156,7 +156,7 @@ export default async function CompanyDetailPage({ params }: { params: Promise<{ 
                     </div>
 
                     {/* Main Content */}
-                    <div className="bg-card/30 backdrop-blur-md rounded-3xl p-4 md:p-8 border border-black/5 dark:border-white/5 shadow-xl">
+                    <div className="bg-card/30 backdrop-blur-md rounded-3xl p-3 md:p-8 border border-black/5 dark:border-white/5 shadow-xl">
                         {content}
                     </div>
 

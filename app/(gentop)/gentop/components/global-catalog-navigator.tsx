@@ -24,7 +24,7 @@ export const GlobalCatalogNavigator = ({
     return (
         <div className={cn(
             "fixed z-[100] flex flex-col pointer-events-none transition-all duration-300",
-            "bottom-6 left-0 right-0 items-center",
+            "bottom-1 left-0 right-0 items-center",
             "md:bottom-16 md:right-10 md:left-auto md:items-end",
             className
         )}>

@@ -12,8 +12,8 @@ export default async function CompanyPage({ params }: { params: Promise<{ lang: 
     const t = getTranslation(lang);
 
     return (
-        <div className="w-full min-h-screen bg-background pt-40 pb-20 px-6 transition-colors duration-300">
-            <TracingBeam className="px-6">
+        <div className="w-full min-h-screen bg-background pt-24 md:pt-40 pb-20 px-2 md:px-6 transition-colors duration-300">
+            <TracingBeam className="px-2 md:px-6">
                 <div className="max-w-3xl mx-auto antialiased pt-4 relative">
                     <div className="inline-block px-4 py-1.5 mb-6 rounded-full glass text-xs font-bold tracking-widest text-gentop-green uppercase">
                         {lang === 'ko' ? '회사소개' : 'About Us'}

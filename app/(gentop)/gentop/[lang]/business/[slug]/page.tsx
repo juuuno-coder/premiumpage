@@ -175,11 +175,11 @@ export default async function BusinessDetailPage({ params }: { params: Promise<{
                     title={pageData?.title}
                 />
 
-                <article className="max-w-[1440px] mx-auto px-6 md:px-12 lg:px-20 py-8 pb-24 legacy-content">
+                <article className="max-w-[1440px] mx-auto px-2 md:px-12 lg:px-20 py-3 pb-16 legacy-content">
 
                     {/* Sub Navigation */}
-                    <div className="mb-12">
-                        <nav className="flex flex-wrap justify-center gap-2 md:gap-4">
+                    <div className="mb-3">
+                        <nav className="flex flex-wrap justify-center gap-1 md:gap-3">
                             {businessMenu?.items.map((item) => {
                                 // Logic to highlight parent menu items for sub-pages
                                 const isActive = item.link.endsWith(slug) ||
@@ -191,7 +191,7 @@ export default async function BusinessDetailPage({ params }: { params: Promise<{
                                     <Link
                                         key={item.link}
                                         href={item.link}
-                                        className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 ${isActive
+                                        className={`px-3 py-1 rounded-full text-xs md:text-sm font-medium transition-all duration-300 ${isActive
                                             ? 'bg-gentop-green text-white shadow-lg shadow-gentop-green/30 scale-105'
                                             : 'bg-white/5 hover:bg-white/10 text-muted-foreground hover:text-foreground border border-black/5 dark:border-white/10'
                                             }`}
@@ -232,7 +232,7 @@ export default async function BusinessDetailPage({ params }: { params: Promise<{
                             {slug === 'eco_friendly.html_3' && <EcoFriendlyWater />}
                         </div>
                     ) : (
-                        <div className="bg-card/30 backdrop-blur-md rounded-3xl p-6 md:p-12 border border-black/5 dark:border-white/5 shadow-xl">
+                        <div className="bg-card/30 backdrop-blur-md rounded-3xl p-3 md:p-12 border border-black/5 dark:border-white/5 shadow-xl">
                             {parse(pageData.content, options)}
                         </div>
                     )}

@@ -24,9 +24,9 @@ export default async function ContactPage({ params }: { params: Promise<{ lang: 
                 />
 
                 {/* Main Content Area */}
-                <article className="max-w-[1400px] mx-auto px-4 md:px-8 lg:px-12 py-6 pb-20 legacy-content">
+                <article className="max-w-[1400px] mx-auto px-2 md:px-8 lg:px-12 py-3 pb-16 legacy-content">
                     {/* Main Content */}
-                    <div className="bg-card/30 backdrop-blur-md rounded-3xl p-4 md:p-8 border border-black/5 dark:border-white/5 shadow-xl">
+                    <div className="bg-card/30 backdrop-blur-md rounded-3xl p-3 md:p-8 border border-black/5 dark:border-white/5 shadow-xl">
                         <CompanyContact />
                     </div>
                 </article>
