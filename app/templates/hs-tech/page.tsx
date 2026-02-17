@@ -140,6 +140,16 @@ const CatalogPage = ({ title, children, currentTab, breadcrumb, hideUI }: {
 
     return (
         <div className="w-full bg-white antialiased relative overflow-x-hidden text-slate-800">
+            {/* ─── Ambient background for inner pages ─── */}
+            <div className="absolute inset-0 pointer-events-none overflow-hidden">
+                {/* Top accent: soft cyan glow */}
+                <div className="absolute -top-24 left-1/2 -translate-x-1/2 w-[800px] h-[300px] rounded-full bg-cyan-100 opacity-50 blur-[90px] mix-blend-multiply" />
+                {/* Top-right: subtle sky tint */}
+                <div className="absolute -top-10 -right-20 w-[400px] h-[300px] rounded-full bg-sky-100 opacity-40 blur-[70px] mix-blend-multiply" />
+            </div>
+            {/* Thin top accent line */}
+            <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-cyan-400/50 to-transparent z-10" />
+
             {/* Main Content */}
             <main className="relative z-10 w-full min-h-screen">
                 <AnimatePresence mode="wait" initial={false}>
@@ -228,7 +238,7 @@ function HSTechContent() {
         <CatalogPage title="ABOUT US" currentTab="about">
             <div className="pt-8 pb-20 px-6 max-w-5xl mx-auto">
                 <p className="text-xs font-bold text-cyan-600 tracking-[0.5em] mb-4 uppercase">Established 2016 · Pangyo Techno Valley</p>
-                <h2 className="text-4xl md:text-7xl font-black text-neutral-900 mb-12 tracking-tighter uppercase leading-none">Environmental<br /><span className="text-cyan-600">Sensor.</span></h2>
+                <h2 className="text-4xl md:text-7xl font-black text-neutral-900 mb-12 tracking-tighter uppercase leading-none">Environmental<br /><span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-600 to-sky-400">Sensor.</span></h2>
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                     <div className="md:col-span-2 p-8 border border-neutral-200 rounded-xl bg-white">
                         <Globe className="w-5 h-5 text-cyan-600 mb-4" />
@@ -266,7 +276,7 @@ function HSTechContent() {
     if (activeTab === 'business') return (
         <CatalogPage title="BUSINESS" currentTab="business">
             <div className="pt-8 pb-20 px-6 max-w-6xl mx-auto">
-                <h2 className="text-4xl md:text-7xl font-black text-neutral-900 mb-16 tracking-tighter uppercase leading-none">Market<br />Scopes.</h2>
+                <h2 className="text-4xl md:text-7xl font-black text-neutral-900 mb-16 tracking-tighter uppercase leading-none">Market<br /><span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-600 to-sky-400">Scopes.</span></h2>
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
                     {[
                         { name: 'Semiconductor', desc: 'Ultra-precise humidity & dewpoint monitoring for wafer fabrication and cleanroom environments.' },
@@ -292,7 +302,7 @@ function HSTechContent() {
     if (activeTab === 'products') return (
         <CatalogPage title="BRANDS" currentTab="products">
             <div className="max-w-6xl mx-auto px-8 pt-8 pb-20">
-                <h2 className="text-4xl md:text-7xl font-black text-neutral-900 text-center mb-16 tracking-tighter uppercase">Strategic<br />Partners.</h2>
+                <h2 className="text-4xl md:text-7xl font-black text-neutral-900 text-center mb-16 tracking-tighter uppercase">Strategic<br /><span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-600 to-sky-400">Partners.</span></h2>
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
                     {Object.entries(BRANDS).map(([key, data]: [string, any]) => (
                         <Link
@@ -349,7 +359,7 @@ function HSTechContent() {
     if (activeTab === 'contact') return (
         <CatalogPage title="CONTACT" currentTab="contact">
             <div className="pt-8 pb-20 px-6 flex flex-col items-center justify-center min-h-[60vh] text-center">
-                <h2 className="text-4xl md:text-7xl font-black text-neutral-900 mb-16 tracking-tighter uppercase leading-none">Reach<br /><span className="text-cyan-600">Out.</span></h2>
+                <h2 className="text-4xl md:text-7xl font-black text-neutral-900 mb-16 tracking-tighter uppercase leading-none">Reach<br /><span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-600 to-sky-400">Out.</span></h2>
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 w-full max-w-4xl">
                     <div className="p-8 border border-neutral-200 rounded-xl bg-white hover:border-cyan-500/40 transition-colors">
                         <Phone className="w-8 h-8 text-cyan-600 mx-auto mb-4" />
