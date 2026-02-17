@@ -20,11 +20,14 @@ interface WheelNavigationState {
   scrollUpProgress: number;
 }
 
+// How long the user must pause at edge before extra scroll triggers navigation (ms)
+const PAUSE_DELAY = 450;
+
 export function useWheelNavigation({
   nextPage,
   prevPage = null,
   isEnabled = true,
-  threshold = 80,
+  threshold = 120,
   isFullScreenPage = false
 }: WheelNavigationOptions): WheelNavigationState {
   const router = useRouter();
@@ -38,8 +41,13 @@ export function useWheelNavigation({
   const lastScrollTime = useRef(Date.now());
   const isNavigating = useRef(false);
 
-  const isReadyToNavigate = scrollProgress > 0.2;
-  const isReadyToPrev = scrollUpProgress > 0.2;
+  // "Ready" flags: only true after user paused scrolling while at edge.
+  // This prevents continuous scroll momentum from triggering navigation.
+  const downReady = useRef(isFullScreenPage); // fullscreen pages are always ready
+  const upReady = useRef(isFullScreenPage);
+
+  const isReadyToNavigate = scrollProgress > 0.1;
+  const isReadyToPrev = scrollUpProgress > 0.1;
 
   useEffect(() => {
     if (!isEnabled) return;
@@ -49,16 +57,9 @@ export function useWheelNavigation({
 
       const now = Date.now();
       const timeDiff = now - lastScrollTime.current;
+      const scrollPaused = timeDiff > PAUSE_DELAY;
 
-      if (timeDiff > 300) {
-        downAccumulator.current = 0;
-        upAccumulator.current = 0;
-        setScrollProgress(0);
-        setScrollUpProgress(0);
-      }
-
-      lastScrollTime.current = now;
-
+      // Detect edge position
       let atBottom = isFullScreenPage;
       let atTop = isFullScreenPage;
 
@@ -73,48 +74,74 @@ export function useWheelNavigation({
       setIsAtBottom(atBottom);
       setIsAtTop(atTop);
 
-      const normalizedDelta = Math.abs(e.deltaY);
+      // If user has been paused (scrolling stopped), re-evaluate ready flags
+      if (scrollPaused) {
+        downAccumulator.current = 0;
+        upAccumulator.current = 0;
+        setScrollProgress(0);
+        setScrollUpProgress(0);
+        // After pause: allow navigation only if currently at the edge
+        downReady.current = atBottom;
+        upReady.current = atTop;
+      }
+
+      lastScrollTime.current = now;
+
+      // If no longer at edge, revoke ready flag and reset accumulator
+      if (!atBottom) {
+        downReady.current = false;
+        downAccumulator.current = 0;
+        setScrollProgress(0);
+      }
+      if (!atTop) {
+        upReady.current = false;
+        upAccumulator.current = 0;
+        setScrollUpProgress(0);
+      }
+
+      const delta = Math.abs(e.deltaY);
 
       if (e.deltaY > 0) {
+        // Scrolling DOWN
         upAccumulator.current = 0;
         setScrollUpProgress(0);
 
-        if (atBottom && nextPage) {
-          downAccumulator.current += normalizedDelta;
+        if (atBottom && nextPage && downReady.current) {
+          downAccumulator.current += delta;
           const progress = Math.min(downAccumulator.current / threshold, 1);
           setScrollProgress(progress);
 
           if (downAccumulator.current >= threshold) {
             isNavigating.current = true;
             downAccumulator.current = 0;
+            downReady.current = false;
             setScrollProgress(0);
             router.push(nextPage);
-            setTimeout(() => { isNavigating.current = false; }, 1000);
+            setTimeout(() => { isNavigating.current = false; }, 1200);
           }
-        } else {
-          downAccumulator.current = 0;
-          setScrollProgress(0);
         }
+        // If not ready: just let the page scroll naturally (do nothing extra)
+
       } else if (e.deltaY < 0) {
+        // Scrolling UP
         downAccumulator.current = 0;
         setScrollProgress(0);
 
-        if (atTop && prevPage) {
-          upAccumulator.current += normalizedDelta;
+        if (atTop && prevPage && upReady.current) {
+          upAccumulator.current += delta;
           const progress = Math.min(upAccumulator.current / threshold, 1);
           setScrollUpProgress(progress);
 
           if (upAccumulator.current >= threshold) {
             isNavigating.current = true;
             upAccumulator.current = 0;
+            upReady.current = false;
             setScrollUpProgress(0);
             router.push(prevPage);
-            setTimeout(() => { isNavigating.current = false; }, 1000);
+            setTimeout(() => { isNavigating.current = false; }, 1200);
           }
-        } else {
-          upAccumulator.current = 0;
-          setScrollUpProgress(0);
         }
+        // If not ready: just let the page scroll naturally (do nothing extra)
       }
     };
 
