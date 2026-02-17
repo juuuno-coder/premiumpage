@@ -4,7 +4,6 @@ import React from "react";
 import Link from "next/link";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { cn } from "@gentop/lib/utils";
-import { useWheelNavigation } from "@gentop/hooks/use-wheel-navigation";
 
 interface GlobalCatalogNavigatorProps {
     prevPage: string | null;
@@ -12,7 +11,6 @@ interface GlobalCatalogNavigatorProps {
     currentPage: number;
     totalPages: number;
     className?: string;
-    disableWheelNavigation?: boolean; // For pages that handle wheel navigation separately (e.g. intro)
 }
 
 export const GlobalCatalogNavigator = ({
@@ -21,16 +19,7 @@ export const GlobalCatalogNavigator = ({
     currentPage,
     totalPages,
     className,
-    disableWheelNavigation = false
 }: GlobalCatalogNavigatorProps) => {
-    // Enable wheel navigation for all pages (except when disabled)
-    useWheelNavigation({
-        nextPage,
-        prevPage,
-        isEnabled: !disableWheelNavigation,
-        threshold: 200,
-        isFullScreenPage: false // Auto-detect scroll position
-    });
 
     return (
         <div className={cn(
