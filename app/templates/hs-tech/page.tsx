@@ -1,164 +1,200 @@
 'use client'
 
-import React, { Suspense, useState, useEffect, useRef, useMemo } from 'react'
-import { ChevronRight, ChevronLeft, Phone, Mail, MapPin, Globe, CheckCircle2 } from 'lucide-react'
+import React, { Suspense, useState, useEffect, useMemo } from 'react'
+import {
+    ChevronRight, ChevronLeft, Phone, Mail, MapPin, Globe,
+    CheckCircle2, X, ExternalLink, Cpu, Factory, Car, Ship,
+    Leaf, Zap, Building2, FlaskConical
+} from 'lucide-react'
 import Link from 'next/link'
 import { useSearchParams } from 'next/navigation'
 import { motion, AnimatePresence } from 'framer-motion'
-import { DB, CATEGORY_INFO, SUB_CATEGORIES, BRANDS } from './data'
+import { DB, CATEGORY_INFO, BRANDS } from './data'
 import { cn } from '@/lib/utils'
-import ProductSpecs from './components/ProductSpecs'
 import CoverView from './components/CoverView'
-import ProductIntro from './components/ProductIntro'
 
-// 1. MASTER BROCHURE FLOW (~27 pages)
-const useMasterFlow = () => {
-    return useMemo(() => {
-        const flow: { tab: string, category?: string, product?: string, label: string }[] = [
-            { tab: 'cover', label: 'HOME' },
-            { tab: 'about', label: 'ABOUT US' },
-            { tab: 'business', label: 'BUSINESS' },
-            { tab: 'products', label: 'BRANDS' },
-        ];
-
-        // Brand overview pages
-        Object.entries(BRANDS).forEach(([id, data]: [string, any]) => {
-            flow.push({ tab: id, label: data.label });
-        });
-
-        // VAISALA: all category pages + 1 featured product for key categories
-        const vaisalaFeatured: Record<string, string> = {
-            humidity: 'hmt330',
-            dewpoint: 'dmp1',
-            co2: 'gmw90',
-            weather: 'wxt530',
-        };
-
-        (BRANDS.vaisala.categories || []).forEach((catKey: string) => {
-            const catInfo = CATEGORY_INFO[catKey];
-            if (!catInfo) return;
-            flow.push({ tab: catKey, category: catKey, label: catInfo.title });
-            const featuredId = vaisalaFeatured[catKey];
-            if (featuredId) {
-                const catDb = DB[catKey] || [];
-                const product = catDb.find((p: any) => p.id === featuredId);
-                if (product) {
-                    flow.push({ tab: catKey, category: catKey, product: featuredId, label: product.title });
-                }
-            }
-        });
-
-        // SETRA: 3 featured products
-        const setraFeatured = ['setra_lite', 'model_mrc', 'model_axd'];
-        setraFeatured.forEach(id => {
-            const catDb = DB['setra'] || [];
-            const product = catDb.find((p: any) => p.id === id);
-            if (product) {
-                flow.push({ tab: 'setra', category: 'setra', product: id, label: product.title });
-            }
-        });
-
-        // JUMO: 2 featured products
-        const jumoFeatured = ['ph_trans', 'recording'];
-        jumoFeatured.forEach(id => {
-            const catDb = DB['jumo'] || [];
-            const product = catDb.find((p: any) => p.id === id);
-            if (product) {
-                flow.push({ tab: 'jumo', category: 'jumo', product: id, label: product.title });
-            }
-        });
-
-        // KNICK: 1 featured product
-        const knickDb = DB['knick'] || [];
-        const stratosProduct = knickDb.find((p: any) => p.id === 'stratos');
-        if (stratosProduct) {
-            flow.push({ tab: 'knick', category: 'knick', product: 'stratos', label: stratosProduct.title });
-        }
-
-        flow.push({ tab: 'contact', label: 'CONTACT' });
-        return flow;
-    }, []);
-};
-
-// Helper: Find product in DB
-const findProduct = (id: string, category: string) => {
-    if (DB[category]) {
-        const found = DB[category].find(p => p.id === id)
-        if (found) return found
-    }
+// ─── Helper ──────────────────────────────────────────────────────────────────
+const findProduct = (id: string): any => {
     for (const cat in DB) {
-        const found = DB[cat].find(p => p.id === id)
+        const found = (DB[cat] as any[]).find((p: any) => p.id === id)
         if (found) return found
     }
     return null
 }
 
-// Catalog Page Wrapper
-const CatalogPage = ({ title, children, currentTab, breadcrumb, hideUI }: {
-    title: string,
-    children: React.ReactNode,
-    currentTab: string,
-    breadcrumb?: { label: string, href: string },
-    hideUI?: boolean
-}) => {
-    const searchParams = useSearchParams()
-    const masterFlow = useMasterFlow()
-    const productId = searchParams.get('product')
-    const categoryId = searchParams.get('category')
+// ─── 22-Page Brochure Flow ───────────────────────────────────────────────────
+const BROCHURE_FLOW = [
+    { tab: 'cover',         label: 'HOME' },
+    { tab: 'about',         label: 'ABOUT US' },
+    { tab: 'business',      label: 'BUSINESS' },
+    { tab: 'products',      label: 'BRANDS' },
+    // VAISALA
+    { tab: 'vaisala',       label: 'VAISALA' },
+    { tab: 'humidity',      label: 'HUMIDITY' },
+    { tab: 'dewpoint',      label: 'DEWPOINT' },
+    { tab: 'co2',           label: 'CO₂' },
+    { tab: 'oil',           label: 'OIL MOISTURE' },
+    { tab: 'barometer',     label: 'BAROMETER' },
+    { tab: 'weather',       label: 'WEATHER' },
+    { tab: 'h2o2',          label: 'H₂O₂' },
+    { tab: 'cms',           label: 'DATA LOGGER' },
+    // SETRA
+    { tab: 'setra',         label: 'SETRA' },
+    { tab: 'setra_visual',  label: 'DP VISUAL' },
+    { tab: 'setra_sensor',  label: 'DP SENSOR' },
+    { tab: 'setra_ind',     label: 'IND. PRESSURE' },
+    // JUMO
+    { tab: 'jumo',          label: 'JUMO' },
+    { tab: 'jumo_liquid',   label: 'LIQUID ANALYSIS' },
+    { tab: 'jumo_control',  label: 'CTRL & REC' },
+    // KNICK
+    { tab: 'knick',         label: 'KNICK' },
+    // Contact
+    { tab: 'contact',       label: 'CONTACT' },
+]
 
-    const currentIndex = useMemo(() => {
-        return masterFlow.findIndex(p => {
-            if (productId) return p.product === productId && p.category === categoryId;
-            if (categoryId) return p.category === categoryId && !p.product;
-            return p.tab === currentTab && !p.category && !p.product;
-        });
-    }, [masterFlow, currentTab, categoryId, productId]);
+const ALL_TABS = BROCHURE_FLOW.map(p => p.tab)
 
-    const safeIndex = currentIndex !== -1 ? currentIndex : 0
-    const totalPages = masterFlow.length
-
-    const getPath = (index: number) => {
-        const item = masterFlow[index]
-        if (!item) return '#'
-        let url = `/templates/hs-tech?tab=${item.tab}`
-        if (item.category) url += `&category=${item.category}`
-        if (item.product) url += `&product=${item.product}`
-        return url
-    }
-
-    const prevPath = safeIndex > 0 ? getPath(safeIndex - 1) : null
-    const nextPath = safeIndex < totalPages - 1 ? getPath(safeIndex + 1) : null
-
-    const [direction, setDirection] = useState(0)
-    const prevIndexRef = useRef(safeIndex)
-
+// ─── Product Modal ───────────────────────────────────────────────────────────
+function ProductModal({ product, onClose }: { product: any; onClose: () => void }) {
     useEffect(() => {
-        if (safeIndex > prevIndexRef.current) setDirection(1)
-        else if (safeIndex < prevIndexRef.current) setDirection(-1)
-        prevIndexRef.current = safeIndex
-    }, [safeIndex])
+        const handler = (e: KeyboardEvent) => { if (e.key === 'Escape') onClose() }
+        window.addEventListener('keydown', handler)
+        return () => window.removeEventListener('keydown', handler)
+    }, [onClose])
+
+    return (
+        <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.15 }}
+            className="fixed inset-0 z-[300] bg-black/50 backdrop-blur-sm flex items-center justify-center p-4"
+            onClick={onClose}
+        >
+            <motion.div
+                initial={{ opacity: 0, scale: 0.96, y: 16 }}
+                animate={{ opacity: 1, scale: 1, y: 0 }}
+                exit={{ opacity: 0, scale: 0.96, y: 16 }}
+                transition={{ duration: 0.2 }}
+                className="bg-white rounded-2xl w-full max-w-3xl max-h-[88vh] overflow-y-auto shadow-2xl border border-neutral-200"
+                onClick={e => e.stopPropagation()}
+            >
+                {/* Header */}
+                <div className="flex items-start justify-between p-6 border-b border-neutral-100">
+                    <div>
+                        <p className="text-[10px] text-cyan-600 font-black uppercase tracking-[0.3em] mb-1">{product.subtitle}</p>
+                        <h2 className="text-2xl font-black text-neutral-900 tracking-tight">{product.title}</h2>
+                    </div>
+                    <button onClick={onClose} className="p-2 hover:bg-neutral-100 rounded-lg transition-colors ml-4 shrink-0">
+                        <X className="w-5 h-5 text-neutral-400" />
+                    </button>
+                </div>
+
+                {/* Body */}
+                <div className="p-6 grid grid-cols-1 md:grid-cols-2 gap-6">
+                    {/* Image */}
+                    <div className="bg-neutral-50 rounded-xl p-6 flex items-center justify-center min-h-48 border border-neutral-100">
+                        {product.image ? (
+                            // eslint-disable-next-line @next/next/no-img-element
+                            <img src={product.image} alt={product.title} className="max-h-52 w-full object-contain" />
+                        ) : (
+                            <div className="text-neutral-300 text-2xl font-black tracking-tighter text-center">{product.title}</div>
+                        )}
+                    </div>
+
+                    {/* Info */}
+                    <div className="flex flex-col">
+                        {product.desc && (
+                            <p className="text-sm text-neutral-600 leading-relaxed mb-5">{product.desc}</p>
+                        )}
+                        {product.specs?.length > 0 && (
+                            <div className="border border-neutral-200 rounded-xl overflow-hidden mb-5">
+                                <table className="w-full text-xs">
+                                    <tbody>
+                                        {product.specs.map((spec: any, i: number) => (
+                                            <tr key={i} className={i % 2 === 0 ? 'bg-neutral-50' : 'bg-white'}>
+                                                <td className="py-2.5 px-4 text-neutral-400 font-bold uppercase tracking-wider w-2/5 border-r border-neutral-100">{spec.label}</td>
+                                                <td className="py-2.5 px-4 text-neutral-800 font-medium">{spec.value}</td>
+                                            </tr>
+                                        ))}
+                                    </tbody>
+                                </table>
+                            </div>
+                        )}
+                        {product.datasheet && (
+                            <a href={product.datasheet} target="_blank" rel="noreferrer"
+                                className="inline-flex items-center gap-2 text-xs font-black text-neutral-500 hover:text-cyan-600 uppercase tracking-widest border border-neutral-200 rounded-lg px-4 py-2.5 hover:border-cyan-500/40 transition-all self-start">
+                                <ExternalLink className="w-3.5 h-3.5" />
+                                Download Datasheet
+                            </a>
+                        )}
+                    </div>
+                </div>
+
+                {/* Gallery */}
+                {product.gallery?.length > 1 && (
+                    <div className="px-6 pb-6 flex gap-2 overflow-x-auto">
+                        {product.gallery.map((img: string, i: number) => (
+                            // eslint-disable-next-line @next/next/no-img-element
+                            <img key={i} src={img} alt="" className="h-16 w-16 object-contain rounded-lg border border-neutral-200 bg-neutral-50 p-1 shrink-0" />
+                        ))}
+                    </div>
+                )}
+            </motion.div>
+        </motion.div>
+    )
+}
+
+// ─── Product Card ─────────────────────────────────────────────────────────────
+function ProductCard({ product, onOpen }: { product: any; onOpen: () => void }) {
+    return (
+        <button
+            onClick={onOpen}
+            className="group text-left p-4 border border-neutral-200 rounded-xl bg-white hover:border-cyan-500 hover:shadow-md transition-all w-full"
+        >
+            <div className="bg-neutral-50 rounded-lg p-4 mb-3 aspect-[4/3] flex items-center justify-center overflow-hidden border border-neutral-100">
+                {product.image ? (
+                    // eslint-disable-next-line @next/next/no-img-element
+                    <img src={product.image} alt={product.title} className="max-h-24 object-contain group-hover:scale-105 transition-transform duration-300" />
+                ) : (
+                    <div className="text-neutral-200 text-[10px] font-black uppercase tracking-widest text-center leading-tight">{product.title}</div>
+                )}
+            </div>
+            <p className="text-[9px] text-cyan-600 font-black uppercase tracking-[0.25em] mb-0.5 line-clamp-1">{product.subtitle || ''}</p>
+            <h3 className="text-sm font-black text-neutral-800 group-hover:text-cyan-600 transition-colors leading-tight line-clamp-2">{product.title}</h3>
+        </button>
+    )
+}
+
+// ─── Catalog Page Wrapper ─────────────────────────────────────────────────────
+function CatalogPage({ children, currentTab }: {
+    children: React.ReactNode
+    currentTab: string
+}) {
+    const idx = BROCHURE_FLOW.findIndex(p => p.tab === currentTab)
+    const safeIdx = idx !== -1 ? idx : 0
+    const total = BROCHURE_FLOW.length
+    const prevTab = safeIdx > 0 ? BROCHURE_FLOW[safeIdx - 1].tab : null
+    const nextTab = safeIdx < total - 1 ? BROCHURE_FLOW[safeIdx + 1].tab : null
 
     return (
         <div className="w-full bg-white antialiased relative overflow-x-hidden text-slate-800">
-            {/* ─── Ambient background for inner pages ─── */}
+            {/* Ambient */}
             <div className="absolute inset-0 pointer-events-none overflow-hidden">
-                {/* Top accent: soft cyan glow */}
                 <div className="absolute -top-24 left-1/2 -translate-x-1/2 w-[800px] h-[300px] rounded-full bg-cyan-100 opacity-50 blur-[90px] mix-blend-multiply" />
-                {/* Top-right: subtle sky tint */}
                 <div className="absolute -top-10 -right-20 w-[400px] h-[300px] rounded-full bg-sky-100 opacity-40 blur-[70px] mix-blend-multiply" />
             </div>
-            {/* Thin top accent line */}
             <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-cyan-400/50 to-transparent z-10" />
 
-            {/* Main Content */}
             <main className="relative z-10 w-full min-h-screen">
                 <AnimatePresence mode="wait" initial={false}>
                     <motion.div
-                        key={currentTab + (productId || '') + (categoryId || '')}
+                        key={currentTab}
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         exit={{ opacity: 0 }}
-                        transition={{ duration: 0.2 }}
+                        transition={{ duration: 0.18 }}
                         className="w-full min-h-screen"
                     >
                         {children}
@@ -166,295 +202,427 @@ const CatalogPage = ({ title, children, currentTab, breadcrumb, hideUI }: {
                 </AnimatePresence>
             </main>
 
-            {/* Page Navigator */}
-            {!hideUI && (
-                <div className="fixed bottom-4 right-4 md:bottom-8 md:right-8 z-[150] flex items-center">
-                    <div className="flex items-center bg-white border border-neutral-200 rounded-lg py-2 px-4 md:py-3 md:px-6 shadow-md gap-4 md:gap-6 font-mono">
-                        {/* Prev Arrow */}
-                        <Link
-                            href={prevPath || '#'}
-                            className={cn("text-neutral-300 hover:text-cyan-600 transition-colors", !prevPath && "opacity-20 pointer-events-none")}
-                            onClick={() => setDirection(-1)}
-                        >
-                            <ChevronLeft className="w-5 h-5 md:w-6 md:h-6" strokeWidth={2.5} />
-                        </Link>
-
-                        {/* Page Numbers */}
-                        <div className="flex items-baseline gap-1 md:gap-2">
-                            <span className="text-lg md:text-2xl font-black text-cyan-600">
-                                {String(safeIndex + 1).padStart(2, '0')}
-                            </span>
-                            <span className="text-neutral-300 text-sm">/</span>
-                            <span className="text-sm md:text-base text-neutral-400 font-bold">
-                                {String(totalPages).padStart(2, '0')}
-                            </span>
-                        </div>
-
-                        {/* Next Arrow */}
-                        <Link
-                            href={nextPath || '#'}
-                            className={cn("text-neutral-300 hover:text-cyan-600 transition-colors", !nextPath && "opacity-20 pointer-events-none")}
-                            onClick={() => setDirection(1)}
-                        >
-                            <ChevronRight className="w-5 h-5 md:w-6 md:h-6" strokeWidth={2.5} />
-                        </Link>
+            {/* Navigator */}
+            <div className="fixed bottom-4 right-4 md:bottom-8 md:right-8 z-[150]">
+                <div className="flex items-center bg-white border border-neutral-200 rounded-lg py-2 px-4 md:py-3 md:px-6 shadow-md gap-4 md:gap-6 font-mono">
+                    <Link href={prevTab ? `/templates/hs-tech?tab=${prevTab}` : '#'}
+                        className={cn("text-neutral-300 hover:text-cyan-600 transition-colors", !prevTab && "opacity-20 pointer-events-none")}>
+                        <ChevronLeft className="w-5 h-5 md:w-6 md:h-6" strokeWidth={2.5} />
+                    </Link>
+                    <div className="flex items-baseline gap-1">
+                        <span className="text-lg md:text-2xl font-black text-cyan-600">{String(safeIdx + 1).padStart(2, '0')}</span>
+                        <span className="text-neutral-300 text-sm">/</span>
+                        <span className="text-sm md:text-base text-neutral-400 font-bold">{String(total).padStart(2, '0')}</span>
                     </div>
+                    <Link href={nextTab ? `/templates/hs-tech?tab=${nextTab}` : '#'}
+                        className={cn("text-neutral-300 hover:text-cyan-600 transition-colors", !nextTab && "opacity-20 pointer-events-none")}>
+                        <ChevronRight className="w-5 h-5 md:w-6 md:h-6" strokeWidth={2.5} />
+                    </Link>
                 </div>
-            )}
+            </div>
         </div>
     )
 }
 
-function HSTechContent() {
-    const searchParams = useSearchParams()
-    const activeTab = searchParams.get('tab') || 'cover'
-    const productId = searchParams.get('product')
-    const categoryId = searchParams.get('category') || activeTab
-
-    const categoryInfo = CATEGORY_INFO[activeTab] || CATEGORY_INFO[categoryId]
-    const brandData = BRANDS[activeTab as keyof typeof BRANDS]
-    const selectedProduct = productId ? findProduct(productId, categoryId) : null
-
-    // Find subcategory data (for SETRA/JUMO/KNICK subcategory pages)
-    const subCatEntry = useMemo(() => {
-        // Check parent category first (URL has ?category=setra&tab=diff_ind)
-        const parentSubs = SUB_CATEGORIES[categoryId as keyof typeof SUB_CATEGORIES]
-        if (parentSubs) {
-            const found = (parentSubs as any[]).find((sub: any) => sub.id === activeTab)
-            if (found) return { parentKey: categoryId, subcat: found }
-        }
-        // Fallback: search all subcategories
-        for (const [parentKey, subcats] of Object.entries(SUB_CATEGORIES)) {
-            const found = (subcats as any[]).find((sub: any) => sub.id === activeTab)
-            if (found) return { parentKey, subcat: found }
-        }
-        return null
-    }, [activeTab, categoryId])
-
-    // VIEW: PRODUCT DETAIL
-    if (productId && selectedProduct) {
-        return (
-            <CatalogPage title={selectedProduct.title.toUpperCase()} currentTab={activeTab} breadcrumb={{ label: 'Back', href: `/templates/hs-tech?tab=${categoryId}` }}>
-                <div className="pt-6 pb-16">
-                    <ProductIntro title={selectedProduct.title} subtitle={selectedProduct.subtitle || ''} image={selectedProduct.image} specs={selectedProduct.specs || []} datasheet={selectedProduct.datasheet} />
-                    <div className="max-w-6xl mx-auto px-6 mt-12 border-t border-neutral-200 pt-12">
-                        <h3 className="text-2xl font-black text-neutral-900 tracking-tight uppercase mb-8">Specifications</h3>
-                        <ProductSpecs product={selectedProduct} />
+// ─── Category Products Layout ─────────────────────────────────────────────────
+function CategoryPage({
+    tab, title, desc, products, parentBrand, onOpen
+}: {
+    tab: string; title: string; desc: string
+    products: any[]; parentBrand?: string; onOpen: (p: any) => void
+}) {
+    const parentLabel = parentBrand ? (BRANDS[parentBrand as keyof typeof BRANDS]?.label || parentBrand) : null
+    return (
+        <CatalogPage currentTab={tab}>
+            <div className="pt-8 px-6 max-w-6xl mx-auto">
+                {parentLabel && (
+                    <Link href={`/templates/hs-tech?tab=${parentBrand}`}
+                        className="text-[10px] text-cyan-600 font-black uppercase tracking-[0.3em] mb-3 block hover:text-cyan-700">
+                        ← {parentLabel}
+                    </Link>
+                )}
+                <h2 className="text-3xl md:text-5xl font-black text-neutral-900 mb-2 tracking-tighter uppercase">{title}</h2>
+                <p className="text-sm text-neutral-500 mb-8 max-w-2xl">{desc}</p>
+            </div>
+            <div className="px-6 pb-28 max-w-6xl mx-auto">
+                {products.length > 0 ? (
+                    <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-3">
+                        {products.map((product: any) => (
+                            <ProductCard key={product.id} product={product} onOpen={() => onOpen(product)} />
+                        ))}
                     </div>
-                </div>
-            </CatalogPage>
-        )
-    }
-
-    // VIEW: COVER
-    if (activeTab === 'cover') return <CatalogPage title="HOME" currentTab="cover"><CoverView /></CatalogPage>
-
-    // VIEW: ABOUT
-    if (activeTab === 'about') return (
-        <CatalogPage title="ABOUT US" currentTab="about">
-            <div className="pt-8 pb-20 px-6 max-w-5xl mx-auto">
-                <p className="text-xs font-bold text-cyan-600 tracking-[0.5em] mb-4 uppercase">Established 2016 · Pangyo Techno Valley</p>
-                <h2 className="text-4xl md:text-7xl font-black text-neutral-900 mb-12 tracking-tighter uppercase leading-none">Environmental<br /><span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-600 to-sky-400">Sensor.</span></h2>
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                    <div className="md:col-span-2 p-8 border border-neutral-200 rounded-xl bg-white">
-                        <Globe className="w-5 h-5 text-cyan-600 mb-4" />
-                        <h4 className="font-bold text-neutral-900 mb-2 uppercase tracking-wide text-sm">Authorized Distributor</h4>
-                        <p className="text-sm text-neutral-600 leading-relaxed">Certified distributor of Vaisala, Setra, JUMO, and KNICK — world-class environmental and industrial sensor brands.</p>
-                    </div>
-                    <div className="p-8 border border-neutral-200 rounded-xl bg-white">
-                        <CheckCircle2 className="w-5 h-5 text-cyan-600 mb-4" />
-                        <h4 className="font-bold text-neutral-900 mb-2 uppercase tracking-wide text-sm">Technical Consultancy</h4>
-                        <p className="text-sm text-neutral-600 leading-relaxed">Pre- and post-sales technical support, calibration, and maintenance services.</p>
-                    </div>
-                    <div className="p-8 border border-neutral-200 rounded-xl bg-white">
-                        <MapPin className="w-5 h-5 text-cyan-600 mb-4" />
-                        <h4 className="font-bold text-neutral-900 mb-2 uppercase tracking-wide text-sm">HS TECH Co., Ltd.</h4>
-                        <p className="text-sm text-neutral-600 leading-relaxed">주식회사 HS TECH — 환경센서 전문 기업. 반도체, 플랜트, 제약, 생명과학 분야의 정밀 측정 솔루션.</p>
-                    </div>
-                    <div className="p-8 border border-neutral-200 rounded-xl bg-white">
-                        <CheckCircle2 className="w-5 h-5 text-cyan-600 mb-4" />
-                        <h4 className="font-bold text-neutral-900 mb-2 uppercase tracking-wide text-sm">Business Reg.</h4>
-                        <p className="text-sm text-neutral-600 leading-relaxed">144-81-08640 · Pangyo Techno Valley, Seongnam-si, Gyeonggi-do</p>
-                    </div>
-                    <div className="p-8 border border-neutral-200 rounded-xl bg-neutral-50">
-                        <h4 className="font-bold text-neutral-900 mb-3 uppercase tracking-wide text-sm">Contact</h4>
-                        <div className="space-y-2 text-sm text-neutral-600">
-                            <p className="flex items-center gap-2"><Phone className="w-4 h-4 text-neutral-400" /> 070-4346-1844</p>
-                            <p className="flex items-center gap-2"><Mail className="w-4 h-4 text-neutral-400" /> hs-tech@hs-tech.co.kr</p>
-                        </div>
-                    </div>
-                </div>
+                ) : (
+                    <div className="text-center py-20 text-neutral-300 font-bold uppercase tracking-widest text-sm">No products listed</div>
+                )}
             </div>
         </CatalogPage>
     )
+}
 
-    // VIEW: BUSINESS
-    if (activeTab === 'business') return (
-        <CatalogPage title="BUSINESS" currentTab="business">
-            <div className="pt-8 pb-20 px-6 max-w-6xl mx-auto">
-                <h2 className="text-4xl md:text-7xl font-black text-neutral-900 mb-16 tracking-tighter uppercase leading-none">Market<br /><span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-600 to-sky-400">Scopes.</span></h2>
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-                    {[
-                        { name: 'Semiconductor', desc: 'Ultra-precise humidity & dewpoint monitoring for wafer fabrication and cleanroom environments.' },
-                        { name: 'Plant & Process', desc: 'Robust pressure, temperature, and gas sensors for oil & gas, chemical, and power plant operations.' },
-                        { name: 'Automotive', desc: 'Environmental sensors for EV battery manufacturing, paint booths, and automotive testing facilities.' },
-                        { name: 'Marine', desc: 'Weather stations and corrosion-resistant sensors designed for offshore and onboard applications.' },
-                        { name: 'Agriculture', desc: 'Soil moisture and microclimate monitoring to optimize crop yield and greenhouse conditions.' },
-                        { name: 'Power Industry', desc: 'SF6 gas monitoring and transformer oil sensors for electrical infrastructure reliability.' },
-                        { name: 'HVAC & Buildings', desc: 'Room pressure, CO2, and IAQ transmitters for smart buildings, hospitals, and data centers.' },
-                        { name: 'Life Science', desc: 'GMP-compliant humidity and temperature monitoring for pharmaceutical and biotech facilities.' },
-                    ].map((b, i) => (
-                        <div key={i} className="p-6 border border-neutral-200 rounded-xl bg-white hover:border-cyan-500/40 transition-colors">
-                            <h3 className="text-base font-black text-neutral-900 mb-3 uppercase tracking-tight">{b.name}</h3>
-                            <p className="text-xs text-neutral-500 leading-relaxed">{b.desc}</p>
-                        </div>
-                    ))}
-                </div>
-            </div>
-        </CatalogPage>
-    )
-
-    // VIEW: BRAND LIST
-    if (activeTab === 'products') return (
-        <CatalogPage title="BRANDS" currentTab="products">
-            <div className="max-w-6xl mx-auto px-8 pt-8 pb-20">
-                <h2 className="text-4xl md:text-7xl font-black text-neutral-900 text-center mb-16 tracking-tighter uppercase">Strategic<br /><span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-600 to-sky-400">Partners.</span></h2>
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-                    {Object.entries(BRANDS).map(([key, data]: [string, any]) => (
-                        <Link
-                            key={key}
-                            href={`/templates/hs-tech?tab=${key}`}
-                            className="group block p-8 border border-neutral-200 rounded-xl bg-white hover:border-cyan-500 hover:shadow-sm transition-all"
-                        >
-                            {data.logo && (
-                                // eslint-disable-next-line @next/next/no-img-element
-                                <img src={data.logo} alt={data.label} className="h-10 object-contain mb-6 grayscale group-hover:grayscale-0 transition-all" />
-                            )}
-                            <h3 className="text-xl font-black text-neutral-900 mb-2 uppercase tracking-tight group-hover:text-cyan-600 transition-colors">{data.label}</h3>
-                            <p className="text-xs text-neutral-500 leading-relaxed">{data.desc}</p>
+// ─── Brand Overview Layout ────────────────────────────────────────────────────
+function BrandPage({
+    tab, brandKey, headline, sub, desc, logo, categories, onOpen
+}: {
+    tab: string; brandKey: string; headline: string; sub: string; desc: string
+    logo: string; categories: { tab: string; title: string; desc: string; count: number }[]
+    onOpen?: (p: any) => void
+}) {
+    return (
+        <CatalogPage currentTab={tab}>
+            <div className="pt-8 pb-28 px-6 max-w-6xl mx-auto">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img src={logo} alt={brandKey} className="h-10 object-contain mb-8" />
+                <h2 className="text-4xl md:text-7xl font-black text-neutral-900 mb-4 tracking-tighter uppercase leading-none">
+                    {headline}<br />
+                    <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-600 to-sky-400">{sub}</span>
+                </h2>
+                <p className="text-sm text-neutral-500 mb-12 max-w-2xl">{desc}</p>
+                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+                    {categories.map(cat => (
+                        <Link key={cat.tab} href={`/templates/hs-tech?tab=${cat.tab}`}
+                            className="group p-6 border border-neutral-200 rounded-xl bg-white hover:border-cyan-500 hover:shadow-sm transition-all">
+                            <h3 className="text-sm font-black text-neutral-900 group-hover:text-cyan-600 transition-colors uppercase tracking-tight mb-2 leading-tight">{cat.title}</h3>
+                            <p className="text-xs text-neutral-400 leading-relaxed mb-3">{cat.desc}</p>
+                            <p className="text-[10px] text-neutral-300 font-bold uppercase tracking-widest">{cat.count} product{cat.count !== 1 ? 's' : ''}</p>
                         </Link>
                     ))}
                 </div>
             </div>
         </CatalogPage>
     )
+}
 
-    // VIEW: BRAND / CATEGORY LANDING
-    if (brandData || categoryInfo) {
-        const title = brandData?.label || categoryInfo?.title
-        const items = categoryInfo ? (SUB_CATEGORIES[activeTab as keyof typeof SUB_CATEGORIES] || SUB_CATEGORIES[categoryId as keyof typeof SUB_CATEGORIES] || []) : (brandData?.categories || [])
-        return (
-            <CatalogPage title={title.toUpperCase()} currentTab={activeTab}>
-                <div className="pt-8 pb-8 px-6 max-w-6xl mx-auto border-b border-neutral-100 mb-8">
-                    <h1 className="text-3xl md:text-5xl font-black text-neutral-900 mb-3 tracking-tight uppercase">
-                        {title}
-                    </h1>
-                    <p className="text-base text-neutral-500 max-w-2xl">
-                        {brandData?.desc || categoryInfo?.desc || `Professional ${title} solutions by HS TECH.`}
-                    </p>
-                </div>
-                <div className="pb-24 px-6 max-w-6xl mx-auto">
-                    <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4">
-                        {items.map((item: any) => {
-                            const id = typeof item === 'string' ? item : item.id
-                            const cat = CATEGORY_INFO[id] || item
-                            // If item is a subcategory (has items property), link with parent category context
-                            const isSubCat = typeof item === 'object' && item.items
-                            const href = isSubCat
-                                ? `/templates/hs-tech?tab=${id}&category=${activeTab}`
-                                : `/templates/hs-tech?category=${id}&tab=${id}`
-                            return (
-                                <Link key={id} href={href} className="group block p-6 border border-neutral-200 rounded-xl bg-white hover:border-cyan-500 hover:shadow-sm transition-all">
-                                    <h3 className="text-lg font-black text-neutral-900 mb-2 uppercase tracking-tight group-hover:text-cyan-600 transition-colors leading-tight">{cat.title || cat.label}</h3>
-                                    <p className="text-xs text-neutral-500 leading-relaxed">{cat.desc}</p>
-                                </Link>
-                            )
-                        })}
-                    </div>
-                </div>
-            </CatalogPage>
-        )
-    }
+// ─── Main Component ───────────────────────────────────────────────────────────
+function HSTechContent() {
+    const searchParams = useSearchParams()
+    const activeTab = searchParams.get('tab') || 'cover'
+    const [modalProduct, setModalProduct] = useState<any>(null)
 
-    // VIEW: SUB-CATEGORY PRODUCT LIST (e.g. SETRA > Differential Pressure > products)
-    if (subCatEntry) {
-        const { parentKey, subcat } = subCatEntry
-        const parentLabel = CATEGORY_INFO[parentKey]?.title || BRANDS[parentKey as keyof typeof BRANDS]?.label || parentKey
-        const products = (subcat.items || []).map((item: any) => findProduct(item.id, parentKey)).filter(Boolean)
-        return (
-            <CatalogPage title={subcat.title.toUpperCase()} currentTab={parentKey}>
-                <div className="pt-8 pb-8 px-6 max-w-6xl mx-auto border-b border-neutral-100 mb-8">
-                    <Link href={`/templates/hs-tech?tab=${parentKey}`} className="text-xs text-cyan-600 hover:text-cyan-700 mb-4 block uppercase tracking-widest">← {parentLabel}</Link>
-                    <h1 className="text-3xl md:text-5xl font-black text-neutral-900 mb-3 tracking-tight uppercase">{subcat.title}</h1>
-                    <p className="text-base text-neutral-500 max-w-2xl">{subcat.desc}</p>
-                </div>
-                <div className="pb-24 px-6 max-w-6xl mx-auto">
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                        {products.map((product: any) => (
-                            <Link key={product.id} href={`/templates/hs-tech?tab=${parentKey}&category=${parentKey}&product=${product.id}`}
-                                className="group flex items-start gap-4 p-6 border border-neutral-200 rounded-xl bg-white hover:border-cyan-500 hover:shadow-sm transition-all">
-                                {product.image && (
-                                    // eslint-disable-next-line @next/next/no-img-element
-                                    <img src={product.image} alt={product.title} className="w-20 h-20 object-contain rounded-lg bg-neutral-50 p-2 shrink-0" />
-                                )}
-                                <div>
-                                    <h3 className="text-base font-black text-neutral-900 mb-1 uppercase tracking-tight group-hover:text-cyan-600 transition-colors">{product.title}</h3>
-                                    <p className="text-xs text-neutral-400 uppercase tracking-wider">{product.subtitle}</p>
-                                    <p className="text-xs text-neutral-500 mt-2 leading-relaxed line-clamp-2">{product.desc}</p>
+    const open = (p: any) => setModalProduct(p)
+    const close = () => setModalProduct(null)
+
+    // Backward compat: if URL has ?product=xxx, auto-open modal
+    const urlProductId = searchParams.get('product')
+    useEffect(() => {
+        if (urlProductId) {
+            const found = findProduct(urlProductId)
+            if (found) setModalProduct(found)
+        }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [urlProductId])
+
+    // Category products helpers
+    const setraVisual = useMemo(() => (DB.setra as any[] || []).filter((p: any) => p.category === 'diff_ind'), [])
+    const setraSensor = useMemo(() => (DB.setra as any[] || []).filter((p: any) => p.category === 'diff_sen'), [])
+    const setraInd    = useMemo(() => (DB.setra as any[] || []).filter((p: any) => p.category === 'industrial'), [])
+    const jumoLiquid  = useMemo(() => (DB.jumo  as any[] || []).filter((p: any) => p.category === 'liquid'), [])
+    const jumoControl = useMemo(() => (DB.jumo  as any[] || []).filter((p: any) => p.category === 'control'), [])
+
+    return (
+        <>
+            {/* Modal */}
+            <AnimatePresence>
+                {modalProduct && <ProductModal product={modalProduct} onClose={close} />}
+            </AnimatePresence>
+
+            {/* ── 01. Cover ── */}
+            {activeTab === 'cover' && (
+                <CatalogPage currentTab="cover">
+                    <CoverView />
+                </CatalogPage>
+            )}
+
+            {/* ── 02. About ── */}
+            {activeTab === 'about' && (
+                <CatalogPage currentTab="about">
+                    <div className="pt-8 pb-28 px-6 max-w-5xl mx-auto">
+                        <p className="text-[10px] font-black text-cyan-600 tracking-[0.4em] mb-4 uppercase">Established 2016 · Pangyo Techno Valley, Korea</p>
+                        <h2 className="text-4xl md:text-7xl font-black text-neutral-900 mb-12 tracking-tighter uppercase leading-none">
+                            Precision<br />
+                            <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-600 to-sky-400">Measurement.</span>
+                        </h2>
+                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                            <div className="md:col-span-2 p-8 border border-neutral-200 rounded-xl bg-white">
+                                <Globe className="w-5 h-5 text-cyan-600 mb-4" />
+                                <h4 className="font-black text-neutral-900 mb-3 uppercase tracking-wide text-sm">Authorized Distributor</h4>
+                                <p className="text-sm text-neutral-600 leading-relaxed">
+                                    HS TECH is the certified exclusive distributor of Vaisala, Setra, JUMO, and KNICK in Korea — delivering world-class environmental and industrial measurement solutions to semiconductor, pharmaceutical, plant, and building industries.
+                                </p>
+                            </div>
+                            <div className="p-8 border border-neutral-200 rounded-xl bg-white">
+                                <CheckCircle2 className="w-5 h-5 text-cyan-600 mb-4" />
+                                <h4 className="font-black text-neutral-900 mb-3 uppercase tracking-wide text-sm">Technical Consultancy</h4>
+                                <p className="text-sm text-neutral-600 leading-relaxed">Full pre- and post-sales technical support including sensor selection, system integration, calibration, and on-site maintenance services.</p>
+                            </div>
+                            <div className="p-8 border border-neutral-200 rounded-xl bg-white">
+                                <MapPin className="w-5 h-5 text-cyan-600 mb-4" />
+                                <h4 className="font-black text-neutral-900 mb-3 uppercase tracking-wide text-sm">Location</h4>
+                                <p className="text-sm text-neutral-600 leading-relaxed">D-410, 670 Daewangpangyo-ro,<br />Bundang-gu, Seongnam-si,<br />Gyeonggi-do, Korea 13494</p>
+                            </div>
+                            <div className="p-8 border border-neutral-200 rounded-xl bg-white">
+                                <Phone className="w-5 h-5 text-cyan-600 mb-4" />
+                                <h4 className="font-black text-neutral-900 mb-3 uppercase tracking-wide text-sm">Contact</h4>
+                                <div className="space-y-1.5 text-sm text-neutral-600">
+                                    <p>Tel: 070-4346-1844</p>
+                                    <p>Fax: 031-8016-3510</p>
+                                    <p>hs-tech@hs-tech.co.kr</p>
                                 </div>
-                            </Link>
-                        ))}
+                            </div>
+                            <div className="p-8 border border-neutral-200 rounded-xl bg-neutral-50">
+                                <h4 className="font-black text-neutral-900 mb-4 uppercase tracking-wide text-sm">Company Info</h4>
+                                <div className="space-y-3 text-sm">
+                                    <div><p className="text-[10px] text-neutral-400 uppercase tracking-wider mb-0.5">Company</p><p className="text-neutral-700 font-bold">HS TECH Co., Ltd.</p></div>
+                                    <div><p className="text-[10px] text-neutral-400 uppercase tracking-wider mb-0.5">Founded</p><p className="text-neutral-700 font-bold">2016</p></div>
+                                    <div><p className="text-[10px] text-neutral-400 uppercase tracking-wider mb-0.5">Reg. No.</p><p className="text-neutral-700 font-bold">144-81-08640</p></div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                </div>
-            </CatalogPage>
-        )
-    }
+                </CatalogPage>
+            )}
 
-    // VIEW: CONTACT
-    if (activeTab === 'contact') return (
-        <CatalogPage title="CONTACT" currentTab="contact">
-            <div className="pt-8 pb-20 px-6 flex flex-col items-center justify-center min-h-[60vh] text-center">
-                <h2 className="text-4xl md:text-7xl font-black text-neutral-900 mb-16 tracking-tighter uppercase leading-none">Reach<br /><span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-600 to-sky-400">Out.</span></h2>
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 w-full max-w-4xl">
-                    <div className="p-8 border border-neutral-200 rounded-xl bg-white hover:border-cyan-500/40 transition-colors">
-                        <Phone className="w-8 h-8 text-cyan-600 mx-auto mb-4" />
-                        <p className="text-xs text-neutral-400 uppercase tracking-widest mb-2">견적문의</p>
-                        <p className="text-base font-black text-neutral-900 tracking-tighter">070-4346-1844</p>
+            {/* ── 03. Business ── */}
+            {activeTab === 'business' && (
+                <CatalogPage currentTab="business">
+                    <div className="pt-8 pb-28 px-6 max-w-6xl mx-auto">
+                        <h2 className="text-4xl md:text-7xl font-black text-neutral-900 mb-4 tracking-tighter uppercase leading-none">
+                            Market<br />
+                            <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-600 to-sky-400">Scopes.</span>
+                        </h2>
+                        <p className="text-sm text-neutral-500 mb-12 max-w-2xl">Precision environmental sensing solutions across 8 key industries — partnering with global leaders in measurement technology.</p>
+                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+                            {[
+                                { icon: Cpu,         name: 'Semiconductor',  desc: 'Ultra-precise humidity & dewpoint monitoring for wafer fabrication and cleanroom environments.' },
+                                { icon: Factory,     name: 'Plant & Process', desc: 'Robust pressure, temperature, and gas sensors for oil & gas, chemical, and power plant operations.' },
+                                { icon: Car,         name: 'Automotive',     desc: 'Environmental sensors for EV battery manufacturing, paint booths, and automotive testing facilities.' },
+                                { icon: Ship,        name: 'Marine',         desc: 'Weather stations and corrosion-resistant sensors designed for offshore and onboard applications.' },
+                                { icon: Leaf,        name: 'Agriculture',    desc: 'Soil moisture and microclimate monitoring to optimize crop yield and greenhouse conditions.' },
+                                { icon: Zap,         name: 'Power Industry', desc: 'SF6 gas monitoring and transformer oil sensors for electrical infrastructure reliability.' },
+                                { icon: Building2,   name: 'HVAC & Buildings',desc: 'Room pressure, CO2, and IAQ transmitters for smart buildings, hospitals, and data centers.' },
+                                { icon: FlaskConical, name: 'Life Science',  desc: 'GMP-compliant humidity and temperature monitoring for pharmaceutical and biotech facilities.' },
+                            ].map((b, i) => (
+                                <div key={i} className="p-6 border border-neutral-200 rounded-xl bg-white hover:border-cyan-500/40 transition-colors">
+                                    <b.icon className="w-5 h-5 text-cyan-500 mb-4" />
+                                    <h3 className="text-sm font-black text-neutral-900 mb-2 uppercase tracking-tight">{b.name}</h3>
+                                    <p className="text-xs text-neutral-500 leading-relaxed">{b.desc}</p>
+                                </div>
+                            ))}
+                        </div>
                     </div>
-                    <div className="p-8 border border-neutral-200 rounded-xl bg-white hover:border-cyan-500/40 transition-colors">
-                        <Phone className="w-8 h-8 text-cyan-600 mx-auto mb-4" />
-                        <p className="text-xs text-neutral-400 uppercase tracking-widest mb-2">FAX</p>
-                        <p className="text-base font-black text-neutral-900 tracking-tighter">031-8016-3510</p>
+                </CatalogPage>
+            )}
+
+            {/* ── 04. Brands ── */}
+            {activeTab === 'products' && (
+                <CatalogPage currentTab="products">
+                    <div className="max-w-6xl mx-auto px-6 pt-8 pb-28">
+                        <h2 className="text-4xl md:text-7xl font-black text-neutral-900 mb-4 tracking-tighter uppercase leading-none text-center">
+                            Strategic<br />
+                            <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-600 to-sky-400">Partners.</span>
+                        </h2>
+                        <p className="text-sm text-neutral-500 text-center mb-16 max-w-xl mx-auto">Official authorized distributor of four world-class precision measurement brands.</p>
+                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+                            {Object.entries(BRANDS).map(([key, data]: [string, any]) => (
+                                <Link key={key} href={`/templates/hs-tech?tab=${key}`}
+                                    className="group block p-8 border border-neutral-200 rounded-xl bg-white hover:border-cyan-500 hover:shadow-sm transition-all">
+                                    {data.logo && (
+                                        // eslint-disable-next-line @next/next/no-img-element
+                                        <img src={data.logo} alt={data.label} className="h-10 object-contain mb-6 grayscale group-hover:grayscale-0 transition-all" />
+                                    )}
+                                    <h3 className="text-xl font-black text-neutral-900 mb-2 uppercase tracking-tight group-hover:text-cyan-600 transition-colors">{data.label}</h3>
+                                    <p className="text-xs text-neutral-500 leading-relaxed">{data.desc}</p>
+                                </Link>
+                            ))}
+                        </div>
                     </div>
-                    <div className="p-8 border border-neutral-200 rounded-xl bg-white hover:border-cyan-500/40 transition-colors">
-                        <Mail className="w-8 h-8 text-cyan-600 mx-auto mb-4" />
-                        <p className="text-xs text-neutral-400 uppercase tracking-widest mb-2">기술문의</p>
-                        <p className="text-sm font-black text-neutral-900 tracking-tighter break-all">hs-tech@hs-tech.co.kr</p>
+                </CatalogPage>
+            )}
+
+            {/* ── 05. VAISALA Brand ── */}
+            {activeTab === 'vaisala' && (
+                <BrandPage
+                    tab="vaisala" brandKey="VAISALA"
+                    headline="World Leader in" sub="Measurement."
+                    desc="Vaisala has been a pioneer in environmental and industrial measurement for over 80 years, delivering reliable data across 8 core sensing disciplines including humidity, dewpoint, CO2, pressure, and weather."
+                    logo="/templates/hs-tech/images/brands/vaisala.svg"
+                    categories={(BRANDS.vaisala.categories || []).map((catKey: string) => ({
+                        tab: catKey,
+                        title: CATEGORY_INFO[catKey]?.title || catKey,
+                        desc: CATEGORY_INFO[catKey]?.desc || '',
+                        count: (DB[catKey] as any[] || []).length,
+                    }))}
+                    onOpen={open}
+                />
+            )}
+
+            {/* ── 06-13. VAISALA Categories ── */}
+            {activeTab === 'humidity' && (
+                <CategoryPage tab="humidity" title="Humidity" parentBrand="vaisala" onOpen={open}
+                    desc="Best-in-class humidity measurement instruments for industrial, HVAC, handheld, and OEM applications."
+                    products={DB.humidity as any[] || []} />
+            )}
+            {activeTab === 'dewpoint' && (
+                <CategoryPage tab="dewpoint" title="Dewpoint" parentBrand="vaisala" onOpen={open}
+                    desc="Reliable dewpoint measurement for compressed air dryers, cleanrooms, and industrial gas drying applications."
+                    products={DB.dewpoint as any[] || []} />
+            )}
+            {activeTab === 'co2' && (
+                <CategoryPage tab="co2" title="Carbon Dioxide" parentBrand="vaisala" onOpen={open}
+                    desc="Accurate CO2 monitoring for indoor air quality, HVAC systems, incubators, and industrial processes."
+                    products={DB.co2 as any[] || []} />
+            )}
+            {activeTab === 'oil' && (
+                <CategoryPage tab="oil" title="Moisture in Oil" parentBrand="vaisala" onOpen={open}
+                    desc="Transformer oil moisture and hydrogen gas monitoring for power industry asset protection."
+                    products={DB.oil as any[] || []} />
+            )}
+            {activeTab === 'barometer' && (
+                <CategoryPage tab="barometer" title="Barometric Pressure" parentBrand="vaisala" onOpen={open}
+                    desc="High-accuracy digital barometers for meteorological, aviation, and industrial pressure measurement."
+                    products={DB.barometer as any[] || []} />
+            )}
+            {activeTab === 'weather' && (
+                <CategoryPage tab="weather" title="Weather" parentBrand="vaisala" onOpen={open}
+                    desc="All-in-one weather stations and individual meteorological sensors for outdoor environmental monitoring."
+                    products={DB.weather as any[] || []} />
+            )}
+            {activeTab === 'h2o2' && (
+                <CategoryPage tab="h2o2" title="H₂O₂ Monitoring" parentBrand="vaisala" onOpen={open}
+                    desc="Hydrogen peroxide vapor concentration measurement for bio-decontamination processes in pharmaceutical and healthcare."
+                    products={DB.h2o2 as any[] || []} />
+            )}
+            {activeTab === 'cms' && (
+                <CategoryPage tab="cms" title="Data Logger / CMS" parentBrand="vaisala" onOpen={open}
+                    desc="Standalone and networked data loggers plus centralized monitoring software for GxP-compliant environmental monitoring."
+                    products={DB.cms as any[] || []} />
+            )}
+
+            {/* ── 14. SETRA Brand ── */}
+            {activeTab === 'setra' && (
+                <BrandPage
+                    tab="setra" brandKey="SETRA"
+                    headline="Premium" sub="Pressure."
+                    desc="SETRA Systems delivers precision pressure transducers and room pressure monitoring solutions for cleanrooms, hospitals, and industrial facilities."
+                    logo="/templates/hs-tech/images/brands/setra.svg"
+                    categories={[
+                        { tab: 'setra_visual', title: 'Differential Pressure (Visual)', desc: 'LED and touchscreen room pressure monitors.', count: setraVisual.length },
+                        { tab: 'setra_sensor', title: 'Differential Pressure (Sensor)', desc: 'High-accuracy DP sensors for HVAC and filtration.', count: setraSensor.length },
+                        { tab: 'setra_ind',    title: 'Industrial Pressure', desc: 'Rugged stainless steel industrial transducers.', count: setraInd.length },
+                    ]}
+                    onOpen={open}
+                />
+            )}
+
+            {/* ── 15-17. SETRA Categories ── */}
+            {activeTab === 'setra_visual' && (
+                <CategoryPage tab="setra_visual" title="Differential Pressure (Visual)" parentBrand="setra" onOpen={open}
+                    desc="LED-based and touchscreen room pressure monitors for cleanrooms, operating rooms, and isolation suites."
+                    products={setraVisual} />
+            )}
+            {activeTab === 'setra_sensor' && (
+                <CategoryPage tab="setra_sensor" title="Differential Pressure (Sensor)" parentBrand="setra" onOpen={open}
+                    desc="Precision differential pressure sensors and transmitters for HVAC, filter monitoring, and building management systems."
+                    products={setraSensor} />
+            )}
+            {activeTab === 'setra_ind' && (
+                <CategoryPage tab="setra_ind" title="Industrial Pressure" parentBrand="setra" onOpen={open}
+                    desc="High-performance stainless steel pressure transducers for harsh industrial and process environments."
+                    products={setraInd} />
+            )}
+
+            {/* ── 18. JUMO Brand ── */}
+            {activeTab === 'jumo' && (
+                <BrandPage
+                    tab="jumo" brandKey="JUMO"
+                    headline="Liquid" sub="Analysis."
+                    desc="JUMO specializes in innovative sensors and automation solutions for temperature, pH, conductivity, and process control across chemical, water treatment, and food industries."
+                    logo="/templates/hs-tech/images/brands/jumo.svg"
+                    categories={[
+                        { tab: 'jumo_liquid',  title: 'Liquid Analysis', desc: 'pH electrodes, transmitters, and conductivity sensors.', count: jumoLiquid.length },
+                        { tab: 'jumo_control', title: 'Control & Recording', desc: 'PID controllers and paperless recorders.', count: jumoControl.length },
+                    ]}
+                    onOpen={open}
+                />
+            )}
+
+            {/* ── 19-20. JUMO Categories ── */}
+            {activeTab === 'jumo_liquid' && (
+                <CategoryPage tab="jumo_liquid" title="Liquid Analysis" parentBrand="jumo" onOpen={open}
+                    desc="pH electrodes, transmitters, and conductivity sensors for water treatment, chemical, and food & beverage industries."
+                    products={jumoLiquid} />
+            )}
+            {activeTab === 'jumo_control' && (
+                <CategoryPage tab="jumo_control" title="Control & Recording" parentBrand="jumo" onOpen={open}
+                    desc="PID temperature controllers and touchscreen paperless recorders for comprehensive industrial process automation."
+                    products={jumoControl} />
+            )}
+
+            {/* ── 21. KNICK Brand ── */}
+            {activeTab === 'knick' && (
+                <CatalogPage currentTab="knick">
+                    <div className="pt-8 pb-28 px-6 max-w-6xl mx-auto">
+                        {/* eslint-disable-next-line @next/next/no-img-element */}
+                        <img src="/templates/hs-tech/images/brands/knick.svg" alt="KNICK" className="h-10 object-contain mb-8" />
+                        <h2 className="text-4xl md:text-7xl font-black text-neutral-900 mb-4 tracking-tighter uppercase leading-none">
+                            Process<br />
+                            <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-600 to-sky-400">Analysis.</span>
+                        </h2>
+                        <p className="text-sm text-neutral-500 mb-12 max-w-2xl">KNICK delivers high-quality interface modules and process analyzers for chemical, pharmaceutical, and hazardous environments — featuring intrinsic safety (Ex Zone 1) certification.</p>
+                        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
+                            {(DB.knick as any[] || []).map((product: any) => (
+                                <ProductCard key={product.id} product={product} onOpen={() => open(product)} />
+                            ))}
+                        </div>
                     </div>
-                    <div className="p-8 border border-neutral-200 rounded-xl bg-white hover:border-cyan-500/40 transition-colors">
-                        <MapPin className="w-8 h-8 text-cyan-600 mx-auto mb-4" />
-                        <p className="text-xs text-neutral-400 uppercase tracking-widest mb-2">주소</p>
-                        <p className="text-sm font-black text-neutral-900 leading-relaxed">판교테크노밸리<br />유스페이스2 B동 4층 410호</p>
+                </CatalogPage>
+            )}
+
+            {/* ── 22. Contact ── */}
+            {activeTab === 'contact' && (
+                <CatalogPage currentTab="contact">
+                    <div className="pt-8 pb-28 px-6 max-w-4xl mx-auto">
+                        <h2 className="text-4xl md:text-7xl font-black text-neutral-900 mb-4 tracking-tighter uppercase leading-none text-center">
+                            Reach<br />
+                            <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-600 to-sky-400">Out.</span>
+                        </h2>
+                        <p className="text-sm text-neutral-500 mb-12 max-w-sm mx-auto text-center">Get in touch for product inquiries, technical consultations, and pricing information.</p>
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div className="p-8 border border-neutral-200 rounded-xl bg-white">
+                                <Phone className="w-6 h-6 text-cyan-600 mb-4" />
+                                <p className="text-[10px] text-neutral-400 uppercase tracking-widest mb-1">Phone</p>
+                                <p className="text-xl font-black text-neutral-900">070-4346-1844</p>
+                            </div>
+                            <div className="p-8 border border-neutral-200 rounded-xl bg-white">
+                                <Phone className="w-6 h-6 text-cyan-600 mb-4" />
+                                <p className="text-[10px] text-neutral-400 uppercase tracking-widest mb-1">Fax</p>
+                                <p className="text-xl font-black text-neutral-900">031-8016-3510</p>
+                            </div>
+                            <div className="p-8 border border-neutral-200 rounded-xl bg-white">
+                                <Mail className="w-6 h-6 text-cyan-600 mb-4" />
+                                <p className="text-[10px] text-neutral-400 uppercase tracking-widest mb-1">Email</p>
+                                <p className="text-base font-black text-neutral-900">hs-tech@hs-tech.co.kr</p>
+                            </div>
+                            <div className="p-8 border border-neutral-200 rounded-xl bg-white">
+                                <MapPin className="w-6 h-6 text-cyan-600 mb-4" />
+                                <p className="text-[10px] text-neutral-400 uppercase tracking-widest mb-1">Address</p>
+                                <p className="text-sm font-bold text-neutral-900 leading-relaxed">D-410, 670 Daewangpangyo-ro,<br />Bundang-gu, Seongnam-si,<br />Gyeonggi-do, Korea 13494</p>
+                            </div>
+                        </div>
+                        <div className="mt-8 p-6 border border-neutral-100 rounded-xl bg-neutral-50 text-center">
+                            <p className="text-xs text-neutral-400 uppercase tracking-widest">HS TECH Co., Ltd. · Business Reg. 144-81-08640 · Pangyo Techno Valley</p>
+                        </div>
                     </div>
-                </div>
-                <p className="mt-8 text-xs text-neutral-400 tracking-widest uppercase">13494 경기도 성남시 분당구 대왕판교로 670</p>
-            </div>
-        </CatalogPage>
+                </CatalogPage>
+            )}
+
+            {/* Fallback */}
+            {!ALL_TABS.includes(activeTab) && (
+                <CatalogPage currentTab="cover">
+                    <CoverView />
+                </CatalogPage>
+            )}
+        </>
     )
-
-    // Fallback: product ID set but not found
-    if (productId && !selectedProduct) {
-        return (
-            <CatalogPage title={activeTab.toUpperCase()} currentTab={activeTab}>
-                <div className="pt-32 pb-20 px-6 max-w-4xl mx-auto text-center">
-                    <p className="text-neutral-400 text-sm mb-6 uppercase tracking-widest">Product not found</p>
-                    <Link href={`/templates/hs-tech?tab=${activeTab}`} className="text-cyan-600 hover:text-cyan-700 text-sm uppercase tracking-widest">← Back</Link>
-                </div>
-            </CatalogPage>
-        )
-    }
-
-    return <CatalogPage title="HOME" currentTab="cover"><CoverView /></CatalogPage>
 }
 
 export default function HSTechViewerPage() {
