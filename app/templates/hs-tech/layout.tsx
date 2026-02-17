@@ -59,10 +59,10 @@ function HSTechLayoutContent({ children }: { children: React.ReactNode }) {
                 {/* Logo */}
                 <Link href="/templates/hs-tech?tab=cover" className="flex items-center group shrink-0">
                     {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img src="/hstech/HS-TECH_files/logo-white.png" alt="HS TECH" width={110} className="h-auto object-contain group-hover:opacity-70 transition-opacity" />
+                    <img src="/hstech/HS-TECH_files/logo-white.png" alt="HS TECH" width={150} className="h-auto object-contain group-hover:opacity-70 transition-opacity" />
                 </Link>
 
-                {/* Desktop Menu - centered between logo and right edge */}
+                {/* Desktop Menu - right side */}
                 <nav className="hidden md:flex items-center gap-10">
                     {MAIN_MENU.map((item) => {
                         const isActive = activeTab === item.tab ||
@@ -78,9 +78,6 @@ function HSTechLayoutContent({ children }: { children: React.ReactNode }) {
                         )
                     })}
                 </nav>
-
-                {/* Right spacer (balances layout) */}
-                <div className="hidden md:block w-[110px]" />
             </header>
 
             {/* 2. Hamburger Button (Standalone Fixed) - Z-Index 200 */}
