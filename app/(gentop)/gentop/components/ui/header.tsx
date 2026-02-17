@@ -67,14 +67,15 @@ export const Header = () => {
     // Invert to white if:
     // 1. Not scrolled (Header is on top of dark hero)
     // 2. Scrolled but in dark mode
-    const isInverted = !isScrolled || (mounted && resolvedTheme === 'dark');
+    // Default to inverted (white) on server/before mount to avoid flicker on dark hero
+    const isInverted = !isScrolled || !mounted || resolvedTheme === 'dark';
 
     return (
         <>
             <header
-                className={`fixed top-0 left-0 w-full z-[8000] transition-all duration-300 ${isScrolled
+                className={`fixed top-0 left-0 w-full z-[8000] transition-all duration-500 ${isScrolled
                     ? "dark:bg-black/90 bg-white/90 border-b dark:border-white/10 border-black/5 backdrop-blur-md py-4 shadow-sm"
-                    : "bg-gradient-to-b from-black/80 via-black/40 to-transparent py-6"
+                    : "bg-gradient-to-b from-black/70 via-black/30 to-transparent backdrop-blur-[2px] py-6"
                     }`}
             >
                 <div className="max-w-[1400px] mx-auto px-4 md:px-8 flex justify-between items-center relative">
@@ -175,7 +176,9 @@ export const Header = () => {
                         {/* <ModeToggle /> */}
                         <button
                             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-                            className="p-2 dark:text-white text-black hover:text-gentop-green transition-colors"
+                            className={`p-2 hover:text-gentop-green transition-colors ${
+                                isScrolled ? "dark:text-white text-black" : "text-white drop-shadow-md"
+                            }`}
                         >
                             {isMobileMenuOpen ? <IconX size={28} /> : <IconMenu2 size={28} />}
                         </button>
