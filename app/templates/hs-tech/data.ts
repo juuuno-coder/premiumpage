@@ -46,7 +46,7 @@ export const BRANDS = {
 
 // Category Information - Updated with existing images
 export const CATEGORY_INFO: Record<string, any> = {
-    humidity: { title: "Humidity", desc: "Best-in-class humidity instruments.", images: ['/templates/hs-tech/images/products/hmt330_v1.jpg', '/templates/hs-tech/images/products/hmp1_9_v1.png'] },
+    humidity: { title: "Humidity", desc: "Best-in-class humidity instruments.", images: ['/templates/hs-tech/images/products/hmt330_v1.png', '/templates/hs-tech/images/products/hmp1_9_v1.png'] },
     dewpoint: { title: "Dewpoint", desc: "Reliable dewpoint measurement.", images: ['/templates/hs-tech/images/products/38af1f4961a7a.png', '/templates/hs-tech/images/products/50e31ebdea359.png'] },
     co2: { title: "Carbon Dioxide", desc: "Accurate CO2 monitoring.", images: ['/templates/hs-tech/images/products/6251932a0e954.png', '/templates/hs-tech/images/products/eb130aca3df08.png'] },
     oil: { title: "Moisture in Oil", desc: "Transformer oil monitoring.", images: ['/templates/hs-tech/images/products/deffa2b1b398f.jpg', '/templates/hs-tech/images/products/5980bfb1851a8.png'] },
@@ -554,8 +554,8 @@ export const DB: Record<string, any[]> = {
             title: 'HMT330 Series',
             subtitle: 'HUMIDITY AND TEMPERATURE TRANSMITTERS',
             category: 'industrial',
-            image: '/templates/hs-tech/images/products/hmt330_v1.jpg',
-            gallery: ["/templates/hs-tech/images/products/hmt330_v1.jpg"],
+            image: '/templates/hs-tech/images/products/hmt330_v1.png',
+            gallery: ["/templates/hs-tech/images/products/hmt330_v1.png"],
             desc: 'Designed for demanding industrial applications. Six models available for various installation needs.',
             specs: [
                 { label: 'Application', value: 'Demanding industrial applications\nCleanrooms, Pharmaceutical processes' },
@@ -571,8 +571,8 @@ export const DB: Record<string, any[]> = {
             title: 'HMT310',
             subtitle: 'HUMIDITY AND TEMPERATURE TRANSMITTER',
             category: 'industrial',
-            image: '/templates/hs-tech/images/products/hmt310_v1.jpg',
-            gallery: ["/templates/hs-tech/images/products/hmt310_v1.jpg"],
+            image: '/templates/hs-tech/images/products/hmt310_v1.png',
+            gallery: ["/templates/hs-tech/images/products/hmt310_v1.png"],
             desc: 'Compact transmitter with excellent stability for demanding industrial applications.',
             specs: [
                 { label: 'Application', value: 'Industrial applications where compact size is needed' },
@@ -588,8 +588,8 @@ export const DB: Record<string, any[]> = {
             title: 'HMT120 / HMT130',
             subtitle: 'HUMIDITY AND TEMPERATURE TRANSMITTERS',
             category: 'industrial',
-            image: '/templates/hs-tech/images/products/hmt120_v1.jpg',
-            gallery: ["/templates/hs-tech/images/products/hmt120_v1.jpg"],
+            image: '/templates/hs-tech/images/products/hmt120_v1.png',
+            gallery: ["/templates/hs-tech/images/products/hmt120_v1.png"],
             desc: 'Optimized for cleanrooms and light industrial applications with interchangeable probes.',
             specs: [
                 { label: 'Application', value: 'Cleanrooms, Light industrial applications' },
