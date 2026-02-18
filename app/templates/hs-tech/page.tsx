@@ -3,7 +3,7 @@
 import React, { Suspense, useState, useEffect, useMemo } from 'react'
 import {
     ChevronRight, ChevronLeft, Phone, Mail, MapPin, Globe,
-    CheckCircle2, X, ExternalLink, Cpu, Factory, Car, Ship,
+    X, ExternalLink, Cpu, Factory, Car, Ship,
     Leaf, Zap, Building2, FlaskConical
 } from 'lucide-react'
 import Link from 'next/link'
@@ -544,72 +544,99 @@ function HSTechContent() {
             {activeTab === 'business' && (
                 <CatalogPage currentTab="business">
                     <div className="pt-8 pb-28 px-6 max-w-6xl mx-auto">
-                        <p className="text-[10px] font-black text-cyan-600 tracking-[0.4em] mb-4 uppercase">Support & Services</p>
-                        <h2 className="text-4xl md:text-7xl font-black text-neutral-900 mb-10 tracking-tighter uppercase leading-none">
-                            What We<br />
-                            <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-600 to-sky-400">Provide.</span>
+                        <p className="text-[10px] font-black text-cyan-600 tracking-[0.4em] mb-4 uppercase">Industries We Serve</p>
+                        <h2 className="text-4xl md:text-7xl font-black text-neutral-900 mb-6 tracking-tighter uppercase leading-none">
+                            Business<br />
+                            <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-600 to-sky-400">Scope.</span>
                         </h2>
+                        <p className="text-sm text-neutral-500 mb-12 max-w-2xl">HS TECH delivers precision measurement solutions across key industrial sectors, providing authorized products, technical support, and calibration services.</p>
 
-                        {/* 5 Service Cards — imweb 레이아웃 */}
-                        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
+                        {/* 8 Industry Verticals */}
+                        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-14">
                             {[
                                 {
-                                    title: 'Product\nCustomization',
-                                    img: '/templates/hs-tech/images/products/biz_card1.png',
+                                    title: 'Semiconductor',
                                     icon: Cpu,
-                                    desc: 'Tailored sensor solutions configured to your exact process requirements and application environment.',
+                                    desc: 'Cleanroom humidity and dewpoint control for lithography, diffusion, and CVD processes.',
+                                    apps: ['Cleanroom', 'Lithography', 'Wafer Processing'],
                                 },
                                 {
-                                    title: 'Technical\nSupport',
-                                    img: '/templates/hs-tech/images/products/biz_card2.png',
-                                    icon: CheckCircle2,
-                                    desc: 'Expert pre- and post-sales technical consultation, product selection, and system integration guidance.',
+                                    title: 'Plant & Process',
+                                    icon: Factory,
+                                    desc: 'Industrial drying, coating, and chemical process monitoring for optimal yield and quality.',
+                                    apps: ['Drying', 'Coating', 'Chemical'],
                                 },
                                 {
-                                    title: 'Calibration\n& Repair',
-                                    img: '/templates/hs-tech/images/products/biz_card3.jpg',
-                                    icon: FlaskConical,
-                                    desc: 'Accredited on-site and in-lab calibration services to maintain measurement accuracy and traceability.',
+                                    title: 'Automotive',
+                                    icon: Car,
+                                    desc: 'Paint booth climate control, engine test cells, and EV battery production monitoring.',
+                                    apps: ['Paint Booths', 'Engine Test', 'EV Battery'],
                                 },
                                 {
-                                    title: 'Customer\nTraining',
-                                    img: '',
-                                    icon: Globe,
-                                    desc: 'Hands-on product training and application workshops designed for engineers and technicians.',
+                                    title: 'Marine & Offshore',
+                                    icon: Ship,
+                                    desc: 'Weather observation and atmospheric measurement for maritime operations and safety.',
+                                    apps: ['Navigation', 'Offshore', 'Port'],
                                 },
                                 {
-                                    title: 'Spare\nParts',
-                                    img: '',
+                                    title: 'Agriculture',
+                                    icon: Leaf,
+                                    desc: 'Crop storage humidity control and greenhouse climate management for maximum yield.',
+                                    apps: ['Greenhouse', 'Grain Storage', 'Cold Room'],
+                                },
+                                {
+                                    title: 'Power Industry',
                                     icon: Zap,
-                                    desc: 'Genuine spare parts and replacement probes to minimize downtime and maintain peak performance.',
+                                    desc: 'Transformer oil moisture and hydrogen monitoring for grid asset protection and reliability.',
+                                    apps: ['Transformer', 'Power Plant', 'Grid'],
                                 },
-                            ].map((s, i) => (
-                                <div key={i} className="group flex flex-col rounded-2xl overflow-hidden border border-neutral-200 hover:border-cyan-400 hover:shadow-xl transition-all duration-300">
-                                    {/* Cyan header */}
-                                    <div className="bg-gradient-to-br from-cyan-500 to-sky-600 px-5 pt-6 pb-4">
-                                        <h3 className="text-white font-black text-base leading-tight whitespace-pre-line tracking-tight">{s.title}</h3>
-                                    </div>
-                                    {/* Photo or icon area */}
-                                    <div className="bg-gradient-to-br from-cyan-400/20 to-sky-500/10 flex-1 flex items-center justify-center min-h-44 relative overflow-hidden">
-                                        {s.img ? (
-                                            // eslint-disable-next-line @next/next/no-img-element
-                                            <img
-                                                src={s.img}
-                                                alt={s.title}
-                                                className="w-full h-44 object-cover group-hover:scale-105 transition-transform duration-500"
-                                            />
-                                        ) : (
-                                            <div className="flex flex-col items-center justify-center p-6 gap-3">
-                                                <s.icon className="w-12 h-12 text-cyan-400/60" />
-                                            </div>
-                                        )}
-                                    </div>
-                                    {/* Description */}
-                                    <div className="p-4 bg-white">
-                                        <p className="text-xs text-neutral-500 leading-relaxed">{s.desc}</p>
+                                {
+                                    title: 'HVAC & Buildings',
+                                    icon: Building2,
+                                    desc: 'Indoor air quality monitoring and energy-efficient building automation systems.',
+                                    apps: ['IAQ', 'BAS', 'Energy Mgmt'],
+                                },
+                                {
+                                    title: 'Life Science',
+                                    icon: FlaskConical,
+                                    desc: 'Sterile environment monitoring, bio-decontamination, and incubator climate control.',
+                                    apps: ['GMP', 'Bio-decon', 'Incubator'],
+                                },
+                            ].map((sector, i) => (
+                                <div key={i} className="group flex flex-col rounded-2xl border border-neutral-200 bg-white hover:border-cyan-400 hover:shadow-lg transition-all duration-300">
+                                    <div className="p-6 flex-1">
+                                        <div className="w-10 h-10 rounded-xl bg-cyan-50 flex items-center justify-center mb-4 group-hover:bg-cyan-100 transition-colors">
+                                            <sector.icon className="w-5 h-5 text-cyan-600" />
+                                        </div>
+                                        <h3 className="text-sm font-black text-neutral-900 uppercase tracking-tight mb-2 group-hover:text-cyan-600 transition-colors">{sector.title}</h3>
+                                        <p className="text-xs text-neutral-500 leading-relaxed mb-4">{sector.desc}</p>
+                                        <div className="flex flex-wrap gap-1.5">
+                                            {sector.apps.map(app => (
+                                                <span key={app} className="text-[9px] font-bold uppercase tracking-wider text-neutral-400 bg-neutral-50 border border-neutral-100 px-2 py-0.5 rounded-full">{app}</span>
+                                            ))}
+                                        </div>
                                     </div>
                                 </div>
                             ))}
+                        </div>
+
+                        {/* Services */}
+                        <div className="border-t border-neutral-200 pt-10">
+                            <h3 className="text-base font-black text-neutral-900 uppercase tracking-tight mb-6">Our Services</h3>
+                            <div className="grid grid-cols-2 md:grid-cols-5 gap-3">
+                                {[
+                                    { label: 'Product Sales', desc: 'Authorized distributor for Korea & Vietnam' },
+                                    { label: 'Technical Support', desc: 'Expert consultation & product selection' },
+                                    { label: 'Calibration', desc: 'Accredited on-site & lab calibration' },
+                                    { label: 'Installation', desc: 'Full installation and system integration' },
+                                    { label: 'Training', desc: 'Hands-on product and application training' },
+                                ].map((s, i) => (
+                                    <div key={i} className="p-4 border border-neutral-200 rounded-xl bg-neutral-50">
+                                        <p className="text-[10px] font-black text-cyan-600 uppercase tracking-widest mb-1.5">{s.label}</p>
+                                        <p className="text-[10px] text-neutral-500 leading-relaxed">{s.desc}</p>
+                                    </div>
+                                ))}
+                            </div>
                         </div>
                     </div>
                 </CatalogPage>
@@ -711,7 +738,13 @@ function HSTechContent() {
                 <CategoryPage tab="oil" title="Moisture in Oil" parentBrand="vaisala" onOpen={open}
                     desc="Transformer oil moisture and hydrogen gas monitoring for power industry asset protection."
                     products={DB.oil as any[] || []}
-                    keyApps={['Power Transformer', 'Grid Substation', 'Industrial Oil System']} />
+                    keyApps={['Power Transformer', 'Grid Substation', 'Industrial Oil System']}
+                    subCategories={[
+                        { key: 'transformer', label: 'Transformer Monitor' },
+                        { key: 'fixed',       label: 'Oil Transmitter' },
+                        { key: 'handheld',    label: 'Handheld' },
+                        { key: 'oil_module',  label: 'Module / OEM' },
+                    ]} />
             )}
             {activeTab === 'barometer' && (
                 <CategoryPage tab="barometer" title="Barometric Pressure" parentBrand="vaisala" onOpen={open}
@@ -723,7 +756,11 @@ function HSTechContent() {
                 <CategoryPage tab="weather" title="Weather" parentBrand="vaisala" onOpen={open}
                     desc="All-in-one weather stations and individual meteorological sensors for outdoor environmental monitoring."
                     products={DB.weather as any[] || []}
-                    keyApps={['Airport', 'Road / Highway', 'Agriculture', 'Marine', 'Smart City']} />
+                    keyApps={['Airport', 'Road / Highway', 'Agriculture', 'Marine', 'Smart City']}
+                    subCategories={[
+                        { key: 'trans',        label: 'Weather Transmitter' },
+                        { key: 'hvac_weather', label: 'HVAC / Indoor Sensor' },
+                    ]} />
             )}
             {activeTab === 'h2o2' && (
                 <CategoryPage tab="h2o2" title="H₂O₂ Monitoring" parentBrand="vaisala" onOpen={open}
