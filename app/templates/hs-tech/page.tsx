@@ -71,7 +71,7 @@ function ProductModal({ product, onClose }: { product: any; onClose: () => void 
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.15 }}
-            className="fixed inset-0 z-[300] bg-black/60 backdrop-blur-sm flex items-center justify-center p-4 md:p-8"
+            className="fixed inset-0 z-[300] bg-black/60 backdrop-blur-sm flex items-center justify-center p-3 md:p-6"
             onClick={onClose}
         >
             <motion.div
@@ -79,27 +79,27 @@ function ProductModal({ product, onClose }: { product: any; onClose: () => void 
                 animate={{ opacity: 1, scale: 1, y: 0 }}
                 exit={{ opacity: 0, scale: 0.97, y: 20 }}
                 transition={{ duration: 0.2 }}
-                className="bg-white rounded-2xl w-full max-w-5xl max-h-[92vh] overflow-y-auto shadow-2xl border border-neutral-200 flex flex-col"
+                className="bg-white rounded-2xl w-full md:w-[80vw] max-h-[92vh] overflow-y-auto shadow-2xl border border-neutral-200 flex flex-col"
                 onClick={e => e.stopPropagation()}
             >
                 {/* Header */}
-                <div className="flex items-start justify-between px-8 py-6 border-b border-neutral-100 shrink-0">
+                <div className="flex items-start justify-between px-6 md:px-10 py-5 border-b border-neutral-100 shrink-0">
                     <div>
                         <p className="text-[10px] text-cyan-600 font-black uppercase tracking-[0.3em] mb-1">{product.subtitle}</p>
-                        <h2 className="text-3xl font-black text-neutral-900 tracking-tight">{product.title}</h2>
+                        <h2 className="text-2xl md:text-3xl font-black text-neutral-900 tracking-tight">{product.title}</h2>
                     </div>
                     <button onClick={onClose} className="p-2 hover:bg-neutral-100 rounded-lg transition-colors ml-6 shrink-0 mt-1">
                         <X className="w-6 h-6 text-neutral-400" />
                     </button>
                 </div>
 
-                {/* Body — top section: image left, desc+specs right */}
-                <div className="px-8 py-6 grid grid-cols-1 md:grid-cols-[2fr_3fr] gap-8">
+                {/* Body — 모바일: 위아래 / PC: 좌이미지 우스펙 2단 */}
+                <div className="px-6 md:px-10 py-6 grid grid-cols-1 md:grid-cols-[2fr_3fr] gap-6 md:gap-10">
                     {/* Image */}
-                    <div className="bg-neutral-50 rounded-2xl p-8 flex items-center justify-center min-h-64 border border-neutral-100">
+                    <div className="bg-neutral-50 rounded-2xl p-6 md:p-10 flex items-center justify-center min-h-56 md:min-h-72 border border-neutral-100">
                         {product.image ? (
                             // eslint-disable-next-line @next/next/no-img-element
-                            <img src={product.image} alt={product.title} className="max-h-72 w-full object-contain" />
+                            <img src={product.image} alt={product.title} className="max-h-56 md:max-h-80 w-full object-contain" />
                         ) : (
                             <div className="text-neutral-300 text-xl font-black tracking-tighter text-center uppercase">{product.title}</div>
                         )}
@@ -139,7 +139,7 @@ function ProductModal({ product, onClose }: { product: any; onClose: () => void 
 
                 {/* Gallery */}
                 {product.gallery?.length > 1 && (
-                    <div className="px-8 pb-8 flex gap-3 overflow-x-auto">
+                    <div className="px-6 md:px-10 pb-8 flex gap-3 overflow-x-auto">
                         {product.gallery.map((img: string, i: number) => (
                             // eslint-disable-next-line @next/next/no-img-element
                             <img key={i} src={img} alt="" className="h-20 w-20 object-contain rounded-xl border border-neutral-200 bg-neutral-50 p-2 shrink-0 hover:border-cyan-400 transition-colors cursor-pointer" />
