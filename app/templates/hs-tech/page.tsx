@@ -47,10 +47,9 @@ const BROCHURE_FLOW = [
     { tab: 'setra_ind',     label: 'IND. PRESSURE' },
     // JUMO
     { tab: 'jumo',          label: 'JUMO' },
+    { tab: 'jumo_temp',     label: 'TEMPERATURE' },
     { tab: 'jumo_liquid',   label: 'LIQUID ANALYSIS' },
     { tab: 'jumo_control',  label: 'CTRL & REC' },
-    // KNICK
-    { tab: 'knick',         label: 'KNICK' },
     // Contact
     { tab: 'contact',       label: 'CONTACT' },
 ]
@@ -443,7 +442,8 @@ function HSTechContent() {
     const setraVisual = useMemo(() => (DB.setra as any[] || []).filter((p: any) => p.category === 'diff_ind'), [])
     const setraSensor = useMemo(() => (DB.setra as any[] || []).filter((p: any) => p.category === 'diff_sen'), [])
     const setraInd    = useMemo(() => (DB.setra as any[] || []).filter((p: any) => p.category === 'industrial'), [])
-    const jumoLiquid  = useMemo(() => (DB.jumo  as any[] || []).filter((p: any) => p.category === 'liquid'), [])
+    const jumoTemp    = useMemo(() => (DB.jumo  as any[] || []).filter((p: any) => p.category === 'temperature'), [])
+    const jumoLiquid  = useMemo(() => (DB.jumo  as any[] || []).filter((p: any) => ['ph_electrode', 'ph_transmitter', 'conductivity'].includes(p.category)), [])
     const jumoControl = useMemo(() => (DB.jumo  as any[] || []).filter((p: any) => p.category === 'control'), [])
 
     return (
@@ -509,7 +509,6 @@ function HSTechContent() {
                                         { brand: 'VAISALA', region: 'Korea & Vietnam', type: 'Environmental Sensors' },
                                         { brand: 'SETRA', region: 'Korea', type: 'Pressure Transducers' },
                                         { brand: 'JUMO', region: 'Korea', type: 'Measurement & Control' },
-                                        { brand: 'KNICK', region: 'Korea', type: 'Process Analysis' },
                                     ].map((p, i) => (
                                         <div key={i} className="border border-neutral-100 rounded-lg p-3 bg-neutral-50">
                                             <p className="font-black text-neutral-900 text-xs tracking-wide">{p.brand}</p>
@@ -624,7 +623,7 @@ function HSTechContent() {
                             Strategic<br />
                             <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-600 to-sky-400">Partners.</span>
                         </h2>
-                        <p className="text-sm text-neutral-500 text-center mb-16 max-w-xl mx-auto">Official authorized distributor of four world-class precision measurement brands.</p>
+                        <p className="text-sm text-neutral-500 text-center mb-16 max-w-xl mx-auto">Official authorized distributor of world-class precision measurement brands.</p>
                         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
                             {Object.entries(BRANDS).map(([key, data]: [string, any]) => (
                                 <Link key={key} href={`/templates/hs-tech?tab=${key}`}
@@ -815,56 +814,54 @@ function HSTechContent() {
             {activeTab === 'jumo' && (
                 <BrandPage
                     tab="jumo" brandKey="JUMO"
-                    headline="Liquid" sub="Analysis."
-                    desc="JUMO specializes in innovative sensors and automation solutions for temperature, pH, conductivity, and process control across chemical, water treatment, and food industries."
+                    headline="Precision" sub="Measurement."
+                    desc="JUMO specializes in innovative sensors and automation solutions for temperature, pH, conductivity, and process control — trusted across chemical, water treatment, plastics, and food industries worldwide."
                     logo="/templates/hs-tech/images/brands/jumo.svg"
                     categories={[
+                        { tab: 'jumo_temp',    title: 'Temperature', desc: 'PlastoSENS precision temperature sensors for plastics processing.', count: jumoTemp.length },
                         { tab: 'jumo_liquid',  title: 'Liquid Analysis', desc: 'pH electrodes, transmitters, and conductivity sensors.', count: jumoLiquid.length },
                         { tab: 'jumo_control', title: 'Control & Recording', desc: 'PID controllers and paperless recorders.', count: jumoControl.length },
                     ]}
                     applicationSections={[{
                         label: 'Applications & Solutions',
                         items: [
-                            { title: 'Water & Wastewater', desc: 'pH, conductivity, and turbidity monitoring for drinking water treatment and effluent compliance.' },
-                            { title: 'Pharmaceutical & Biotech', desc: 'Precise liquid parameter control for sterile manufacturing and bioreactor processes.' },
-                            { title: 'Semiconductor', desc: 'Ultra-pure water quality monitoring for wafer cleaning and etching processes.' },
-                            { title: 'HVAC & Cooling Towers', desc: 'Water quality management to prevent corrosion and biological growth in cooling systems.' },
+                            { title: 'Water & Wastewater', desc: 'pH, conductivity, and turbidity monitoring for drinking water treatment plants and effluent compliance.' },
+                            { title: 'Shipbuilding', desc: 'Marine-grade sensors for seawater cooling systems, ballast water treatment, and shipboard process monitoring.' },
+                            { title: 'Pharmaceutical & Biotechnology', desc: 'Precise liquid parameter control for sterile manufacturing, bioreactor processes, and purified water systems.' },
+                            { title: 'Semiconductor & Display', desc: 'Ultra-pure water quality monitoring with high-accuracy conductivity and pH measurement for wafer cleaning and etching.' },
+                            { title: 'Heating & Air Conditioning', desc: 'Water quality management in HVAC systems and cooling towers to prevent corrosion, scaling, and biological growth.' },
+                            { title: 'Aquaculture', desc: 'Continuous pH, dissolved oxygen, and conductivity monitoring for fish farming and recirculating aquaculture systems.' },
                         ]
                     }]}
                     onOpen={open}
                 />
             )}
 
-            {/* ── 19-20. JUMO Categories ── */}
+            {/* ── 18a-20. JUMO Categories ── */}
+            {activeTab === 'jumo_temp' && (
+                <CategoryPage tab="jumo_temp" title="Temperature" parentBrand="jumo" onOpen={open}
+                    desc="PlastoSENS precision temperature sensors engineered for plastics processing — injection molding, extrusion, and hot runner systems."
+                    products={jumoTemp}
+                    keyApps={['Injection Molding', 'Extrusion', 'Hot Runner', 'Compounding', 'Plastics Processing']}
+                    subCategories={[
+                        { key: 'temperature', label: 'PlastoSENS' },
+                    ]} />
+            )}
             {activeTab === 'jumo_liquid' && (
                 <CategoryPage tab="jumo_liquid" title="Liquid Analysis" parentBrand="jumo" onOpen={open}
                     desc="pH electrodes, transmitters, and conductivity sensors for water treatment, chemical, and food & beverage industries."
-                    products={jumoLiquid} />
+                    products={jumoLiquid}
+                    keyApps={['Water Treatment', 'Chemical', 'Pharmaceutical', 'Food & Beverage', 'Semiconductor']}
+                    subCategories={[
+                        { key: 'ph_electrode',    label: 'pH Combination Electrodes' },
+                        { key: 'ph_transmitter',  label: 'pH Transmitter' },
+                        { key: 'conductivity',    label: 'Conductivity Transmitter' },
+                    ]} />
             )}
             {activeTab === 'jumo_control' && (
                 <CategoryPage tab="jumo_control" title="Control & Recording" parentBrand="jumo" onOpen={open}
                     desc="PID temperature controllers and touchscreen paperless recorders for comprehensive industrial process automation."
                     products={jumoControl} />
-            )}
-
-            {/* ── 21. KNICK Brand ── */}
-            {activeTab === 'knick' && (
-                <CatalogPage currentTab="knick">
-                    <div className="pt-8 pb-28 px-6 max-w-6xl mx-auto">
-                        {/* eslint-disable-next-line @next/next/no-img-element */}
-                        <img src="/templates/hs-tech/images/brands/knick.svg" alt="KNICK" className="h-10 object-contain mb-8" />
-                        <h2 className="text-4xl md:text-7xl font-black text-neutral-900 mb-4 tracking-tighter uppercase leading-none">
-                            Process<br />
-                            <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-600 to-sky-400">Analysis.</span>
-                        </h2>
-                        <p className="text-sm text-neutral-500 mb-12 max-w-2xl">KNICK delivers high-quality interface modules and process analyzers for chemical, pharmaceutical, and hazardous environments — featuring intrinsic safety (Ex Zone 1) certification.</p>
-                        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
-                            {(DB.knick as any[] || []).map((product: any) => (
-                                <ProductCard key={product.id} product={product} onOpen={() => open(product)} />
-                            ))}
-                        </div>
-                    </div>
-                </CatalogPage>
             )}
 
             {/* ── 22. Contact ── */}

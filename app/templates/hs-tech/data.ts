@@ -42,12 +42,6 @@ export const BRANDS = {
         categories: ['jumo'],
         logo: '/templates/hs-tech/images/brands/jumo.svg'
     },
-    knick: {
-        label: 'KNICK',
-        desc: 'High-quality interface and process analysis.',
-        categories: ['knick'],
-        logo: '/templates/hs-tech/images/brands/knick.svg'
-    }
 }
 
 // Category Information - Updated with existing images
@@ -63,6 +57,7 @@ export const CATEGORY_INFO: Record<string, any> = {
     // Brands
     setra: { title: "SETRA Systems", desc: "Differential & Industrial Pressure.", images: ['/templates/hs-tech/images/products/0173971661ad2.png', '/templates/hs-tech/images/products/849fee28dfdc5.png'] },
     jumo: { title: "JUMO", desc: "Liquid Analysis & Control.", images: ['/templates/hs-tech/images/products/94259b4509a1f.png', '/templates/hs-tech/images/products/85b44cdd77766.png'] },
+    jumo_temp: { title: "Temperature", desc: "PlastoSENS precision temperature sensors for plastics processing.", images: ['/templates/hs-tech/images/products/94259b4509a1f.png'] },
     knick: { title: "KNICK", desc: "Process Analysis.", images: ['/templates/hs-tech/images/products/322e267fafb41.png'] },
     cms: { title: "Data Logger / CMS", desc: "Continuous monitoring systems and wireless data loggers.", images: [] }
 }
@@ -1195,7 +1190,35 @@ export const DB: Record<string, any[]> = {
     // JUMO
     jumo: [
         {
-            id: 'ph_sensor', title: 'tecline pH', subtitle: 'pH COMBINATION ELECTRODE', category: 'liquid',
+            id: 'plastosens_pt0', title: 'PlastoSENS PT0', subtitle: 'SURFACE TEMPERATURE SENSOR', category: 'temperature',
+            image: '/templates/hs-tech/images/products/94259b4509a1f.png',
+            gallery: ['/templates/hs-tech/images/products/94259b4509a1f.png'],
+            desc: 'PlastoSENS PT0 — Flush-mount surface temperature sensor for plastics processing. Designed for injection molding machines, extruders, and hot runner systems. Provides direct melt temperature measurement for process optimization.',
+            specs: [
+                { label: 'Type', value: 'Thermocouple Type J / Type K (application-specific)' },
+                { label: 'Measuring range', value: '0 ... +400 °C (Type J)' },
+                { label: 'Response time', value: 't₀.₉ < 0.5 s' },
+                { label: 'Mounting', value: 'Flush-mount (screw-in, nozzle-tip)' },
+                { label: 'Protection', value: 'Stainless steel, food-grade versions available' },
+                { label: 'Application', value: 'Injection molding, Extrusion\nHot runner systems, Plastics processing' },
+            ]
+        },
+        {
+            id: 'plastosens_pt2', title: 'PlastoSENS PT2', subtitle: 'MELT TEMPERATURE SENSOR', category: 'temperature',
+            image: '/templates/hs-tech/images/products/94259b4509a1f.png',
+            gallery: ['/templates/hs-tech/images/products/94259b4509a1f.png'],
+            desc: 'PlastoSENS PT2 — High-pressure melt temperature sensor for continuous melt temperature measurement in high-temperature plastics processes. Spring-loaded tip ensures permanent contact with melt for reliable readings.',
+            specs: [
+                { label: 'Type', value: 'Thermocouple Type J / Type K' },
+                { label: 'Temperature range', value: '0 ... +450 °C' },
+                { label: 'Pressure rating', value: 'Up to 2,000 bar (melt pressure compatible)' },
+                { label: 'Tip design', value: 'Spring-loaded (permanent contact)' },
+                { label: 'Connection', value: 'Miniature thermocouple connector' },
+                { label: 'Application', value: 'Extrusion lines, Compounding\nHigh-pressure melt processes' },
+            ]
+        },
+        {
+            id: 'ph_sensor', title: 'tecline pH', subtitle: 'pH COMBINATION ELECTRODE', category: 'ph_electrode',
             image: '/templates/hs-tech/images/products/1c2022c06d474.png',
             gallery: ['/templates/hs-tech/images/products/1c2022c06d474.png'],
             desc: 'High-quality combination pH electrode for liquid analysis in water treatment and process industries. Available in glass and plastics (PEI, PVDF) for various media.',
@@ -1209,7 +1232,7 @@ export const DB: Record<string, any[]> = {
             ]
         },
         {
-            id: 'ph_trans', title: 'ecoTRANS pH 03', subtitle: 'pH TRANSMITTER (DIN RAIL)', category: 'liquid',
+            id: 'ph_trans', title: 'ecoTRANS pH 03', subtitle: 'pH TRANSMITTER (DIN RAIL)', category: 'ph_transmitter',
             image: '/templates/hs-tech/images/products/94259b4509a1f.png',
             gallery: ['/templates/hs-tech/images/products/94259b4509a1f.png'],
             desc: 'Compact panel/DIN rail pH transmitter with display. Converts electrode signal to standard 4-20 mA output for PLC/SCADA integration.',
@@ -1224,7 +1247,7 @@ export const DB: Record<string, any[]> = {
             ]
         },
         {
-            id: 'dtrans_ph02', title: 'dTRANS pH 02', subtitle: 'PROCESS pH TRANSMITTER', category: 'liquid',
+            id: 'dtrans_ph02', title: 'dTRANS pH 02', subtitle: 'PROCESS pH TRANSMITTER', category: 'ph_transmitter',
             image: '/templates/hs-tech/images/products/8d15ded8da6eb.png',
             gallery: ['/templates/hs-tech/images/products/8d15ded8da6eb.png'],
             desc: 'Industrial field-mount pH transmitter with IP65 protection. HART communication for smart instrumentation integration. Supports JUMO and third-party electrodes.',
@@ -1239,7 +1262,7 @@ export const DB: Record<string, any[]> = {
             ]
         },
         {
-            id: 'cond_trans', title: 'ecoTRANS Lf 03', subtitle: 'CONDUCTIVITY TRANSMITTER', category: 'liquid',
+            id: 'cond_trans', title: 'ecoTRANS Lf 03', subtitle: 'CONDUCTIVITY TRANSMITTER', category: 'conductivity',
             image: '/templates/hs-tech/images/products/75b212a123a21.png',
             gallery: ['/templates/hs-tech/images/products/75b212a123a21.png'],
             desc: 'Compact conductivity and temperature transmitter for water quality monitoring. DIN rail mounting with 4-20 mA output for integration into PLC/BMS systems.',

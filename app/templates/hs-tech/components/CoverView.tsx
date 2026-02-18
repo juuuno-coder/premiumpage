@@ -73,7 +73,7 @@ export default function CoverView() {
                         className="mt-6 text-sm text-neutral-500 max-w-sm mx-auto mb-12 tracking-widest uppercase font-medium leading-loose"
                     >
                         Authorized Partner for<br />
-                        <span className="text-neutral-800 font-bold">VAISALA · SETRA · JUMO · KNICK</span>
+                        <span className="text-neutral-800 font-bold">VAISALA · SETRA · JUMO</span>
                     </motion.p>
 
                     <motion.div
@@ -111,9 +111,6 @@ export default function CoverView() {
                         <span className="text-neutral-300 text-lg">·</span>
                         {/* eslint-disable-next-line @next/next/no-img-element */}
                         <img src="/templates/hs-tech/images/brands/jumo.svg" alt="JUMO" className="h-6 object-contain" />
-                        <span className="text-neutral-300 text-lg">·</span>
-                        {/* eslint-disable-next-line @next/next/no-img-element */}
-                        <img src="/templates/hs-tech/images/brands/knick.svg" alt="KNICK" className="h-6 object-contain" />
                     </motion.div>
 
                 </div>

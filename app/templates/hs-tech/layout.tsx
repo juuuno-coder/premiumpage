@@ -29,7 +29,6 @@ function HSTechLayoutContent({ children }: { children: React.ReactNode }) {
         { label: 'VAISALA', href: '/templates/hs-tech?tab=vaisala', desc: 'Humidity, Dewpoint, CO2, Oil' },
         { label: 'SETRA', href: '/templates/hs-tech?tab=setra', desc: 'Differential & Industrial Pressure' },
         { label: 'JUMO', href: '/templates/hs-tech?tab=jumo', desc: 'Liquid Analysis & Control' },
-        { label: 'KNICK', href: '/templates/hs-tech?tab=knick', desc: 'Interface & Analysis' },
     ]
 
     return (
@@ -47,7 +46,7 @@ function HSTechLayoutContent({ children }: { children: React.ReactNode }) {
                 <nav className="hidden md:flex items-center gap-10">
                     {MAIN_MENU.map((item) => {
                         const isActive = activeTab === item.tab ||
-                            (item.tab === 'products' && ['vaisala', 'setra', 'jumo', 'knick', 'humidity', 'dewpoint', 'co2', 'oil', 'barometer', 'weather', 'h2o2', 'cms'].includes(activeTab))
+                            (item.tab === 'products' && ['vaisala', 'setra', 'jumo', 'humidity', 'dewpoint', 'co2', 'oil', 'barometer', 'weather', 'h2o2', 'cms'].includes(activeTab))
                         return (
                             <Link
                                 key={item.href}
