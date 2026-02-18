@@ -321,10 +321,11 @@ export const DB: Record<string, any[]> = {
             gallery: ["/templates/hs-tech/images/products/hmp1_9_v1.png"],
             desc: 'Intelligent, interchangeable probes for the Vaisala Indigo family.',
             specs: [
-                { label: 'Application', value: 'Various industrial processes' },
                 { label: 'Models', value: 'HMP1, HMP3, HMP4, HMP5, HMP7, HMP8, HMP9' },
-                { label: 'Features', value: '• Indigo compatible\n• RS-485 Modbus RTU' },
-                { label: 'Accuracy', value: '±0.8 %RH (at 23 °C)' }
+                { label: 'HMP75 Probe (118 mm)', value: 'General purpose\nRH: 0…100% / T: -20…+60°C\nAccuracy: ±1 %RH (0…90%)' },
+                { label: 'HMP76 Probe (328 mm)', value: 'Duct spot-checking (stainless steel)\nRH: 0…100% / T: -50…+120°C\nAccuracy: ±1 %RH (0…90%)' },
+                { label: 'HMP77 Probe (5 m cable)', value: 'Difficult-to-reach areas, on-site calibration\nRH: 0…100% / T: -70…+180°C\nAccuracy: ±1 %RH (0…90%)' },
+                { label: 'Output', value: 'RS-485 Modbus RTU (Indigo compatible)' }
             ],
             datasheet: 'https://www.vaisala.com/sites/default/files/documents/HMP1-9-Datasheet-B211706EN.pdf'
         },
@@ -384,11 +385,17 @@ export const DB: Record<string, any[]> = {
             gallery: [],
             desc: 'Designed for hazardous areas. Ideal for fuel storage, chemicals, and pharmaceutical manufacturing.',
             specs: [
-                { label: 'Application', value: 'Hazardous areas (Zone 0, 1, 2, 20, 21, 22)\nFuel storage, Biogas, Paint booths' },
-                { label: 'Features', value: '• KTL KCS Explosion Proof Certification\n• ATEX, IECEx, FM, CSA, TIIS, EAC certified' },
-                { label: 'Accuracy', value: '±0.8 %RH (0...90 %RH)\n±0.1 °C @ 23 °C' },
-                { label: 'Output', value: '2-Wire Current (4...20 mA)' },
-                { label: 'Protection', value: 'IP66 (NEMA4)' }
+                { label: 'HMT371 (Wall)', value: 'RH: 0…100% RH\nT: -40...+60°C (-40...+140°F)\nProbe diameter: 12 mm' },
+                { label: 'HMT373 (Confined Spaces)', value: 'RH: 0…100% RH\nT (teflon): -40...+120°C\nT (rubber): -40...+80°C\nCable length: 2, 5 or 10 m' },
+                { label: 'HMT374 (Pressurized)', value: 'RH: 0…100% RH\nT: -70…+180°C (-94…+356°F)\nP: 0...10 MPa' },
+                { label: 'HMT375 (High Temp)', value: 'RH: 0…100% RH\nT: -70…+180°C (-94…+356°F)' },
+                { label: 'HMT377 (High Humidity)', value: 'RH: 0…100% RH\nT: -70…+180°C (-94…+356°F)' },
+                { label: 'HMT378 (Pipeline)', value: 'RH: 0…100% RH\nT: -70…+180°C (-94…+356°F)\nP: 0…4 MPa' },
+                { label: 'Accuracy', value: '±0.8 %RH (0…90%)\n±0.1°C @ 23°C PT1000' },
+                { label: 'Output', value: '2-Wire Current (4…20 mA)' },
+                { label: 'IP Rating', value: 'IP66 (NEMA4)' },
+                { label: 'Operating Environment', value: 'Electronics: -40…+60°C\nWith display: -20…+60°C\nStorage: -40…+70°C' },
+                { label: 'Classification', value: 'Korea (KTL): Ex ia IIC T4 Ga\nGlobal (IECEx): Ex ia IIC T4 Ga\nEU (ATEX): II 1G Ex ia IIC T4 Ga\nJapan (CML): Ex ia IIC T4 Ga\nChina (NEPSI): Ex ia IIC T4 Ga' }
             ],
             datasheet: 'https://www.vaisala.com/sites/default/files/documents/HMT370EX-Datasheet-B211738EN.pdf'
         },
@@ -401,11 +408,17 @@ export const DB: Record<string, any[]> = {
             gallery: [],
             desc: 'Intrinsically safe humidity and temperature transmitter for hazardous environments.',
             specs: [
-                { label: 'Application', value: 'Explosion-risk areas (Zone 0)\nHydrogen, Solvents, etc.' },
-                { label: 'Features', value: '• Entire transmitter can be installed in Zone 0\n• Measures Td, x, a, Tw' },
-                { label: 'Accuracy', value: '±1 %RH (0...90 %RH)' },
-                { label: 'Output', value: '2-Wire Current (4...20 mA)' },
-                { label: 'Protection', value: 'IP66 (NEMA4)' }
+                { label: 'HMT361 (Wall)', value: 'RH: 0…100% RH\nT: -40...+60°C (-40...+140°F)\nProbe diameter: 12 mm' },
+                { label: 'HMT363 (Duct)', value: 'RH: 0…100% RH\nT (teflon): -40...+120°C\nT (rubber): -40...+80°C\nCable length: 2, 5 or 10 m' },
+                { label: 'HMT364 (High Pressure)', value: 'RH: 0…100% RH\nT: -70…+180°C (-94…+356°F)\nP: 0...10 MPa' },
+                { label: 'HMT365 (High Temp)', value: 'RH: 0…100% RH\nT: -70…+180°C (-94…+356°F)' },
+                { label: 'HMT367 (High Humidity)', value: 'RH: 0…100% RH\nT: -70…+180°C (-94…+356°F)' },
+                { label: 'HMT368 (Pipeline)', value: 'RH: 0…100% RH\nT: -70…+180°C (-94…+356°F)\nP: 0…4 MPa' },
+                { label: 'Accuracy', value: '±1 %RH (0…90%)\n±0.2°C @ 20°C PT1000' },
+                { label: 'Output', value: '2-Wire Current (4…20 mA)' },
+                { label: 'IP Rating', value: 'IP66' },
+                { label: 'Operating Environment', value: 'Electronics: -40…+60°C\nWith display: -20…+60°C\nStorage: -40…+70°C (-40…+158°F)' },
+                { label: 'Classification', value: 'Korea (KOSHA): Ex ia IIC T4\nEU (ATEX): II 1G Ex ia IIC T4 Ga' }
             ],
             datasheet: 'https://www.vaisala.com/sites/default/files/documents/HMT360-Datasheet-B211737EN.pdf'
         },
@@ -418,11 +431,12 @@ export const DB: Record<string, any[]> = {
             gallery: [],
             desc: 'All-metal body transmitter optimized for building automation and industrial HVAC.',
             specs: [
-                { label: 'Application', value: 'Building automation, Industrial HVAC' },
-                { label: 'Features', value: '• Robust metal body\n• Vaisala HUMICAP® R2 sensor' },
-                { label: 'Range', value: '0 ... 100 %RH\n-40 ... +80 °C' },
-                { label: 'Accuracy', value: '±1.5 %RH\n±0.1 °C' },
-                { label: 'Output', value: '4...20 mA' }
+                { label: 'Application', value: 'HVAC, Cleanroom\nAluminium body, IP66 (NEMA 4X)\nProbe length: 250 mm (100 mm short probe option)' },
+                { label: 'HMD62 / HMD65 (RH+T, Duct)', value: 'RH: 0…100% RH\nT: -20...+80°C (-4...+176°F)\nAccuracy: ±1.5 %RH / ±0.1°C @ 20°C PT1000' },
+                { label: 'TMD62 (T-only, Duct)', value: 'T: -20...+80°C (-4...+176°F)\nAccuracy: ±0.1°C @ 20°C PT1000' },
+                { label: 'HMD62 Output', value: '2 analog outputs: 4…20 mA' },
+                { label: 'HMD65 Output', value: '2 analog outputs: 0…10 V\nDigital: BACnet MS/TP, Modbus RTU' },
+                { label: 'HMD60 Output', value: 'Configurable outputs and scale\nShort probe option available' }
             ],
             datasheet: 'https://www.vaisala.com/sites/default/files/documents/HMD60-Datasheet-B211704EN.pdf'
         },
@@ -435,11 +449,13 @@ export const DB: Record<string, any[]> = {
             gallery: [],
             desc: 'Indoor humidity and temperature transmitter for high-end environments.',
             specs: [
-                { label: 'Application', value: 'Museums, Laboratories, Data centers' },
-                { label: 'Features', value: '• Slide-down cover for easy calibration\n• User exchangeable Intercap sensor' },
-                { label: 'Range', value: '0 ... 100 %RH\n-5 ... +55 °C' },
-                { label: 'Accuracy', value: '±1.7 %RH\n±0.2 °C' },
-                { label: 'Output', value: '4...20 mA, 0...5V, 0...10V (Configurable)' }
+                { label: 'Application', value: 'HVAC, Cleanroom\nWall type transmitter\nDisplay option available (D: HMW92D, HMW93D)' },
+                { label: 'HMW92/93 Measurement Range', value: 'RH: 0…100% RH\nT: -5...+55°C (-23...+131°F)' },
+                { label: 'HMW92 (RH+T)', value: '2-Wire Current (4…20 mA)' },
+                { label: 'HMW93 (RH+T)', value: '3-Wire Voltage (0…5 or 10 V)' },
+                { label: 'HMW95 (RH+T)', value: 'Digital: BACnet / Modbus' },
+                { label: 'HMW90 (RH+T)', value: 'Configurable analog output' },
+                { label: 'TMW90 Series (T-only)', value: 'T only measurement\n2-Wire Current or 3-Wire Voltage or Configurable' }
             ],
             datasheet: 'https://www.vaisala.com/sites/default/files/documents/HMW90-Datasheet-B211703EN.pdf'
         },
@@ -452,10 +468,13 @@ export const DB: Record<string, any[]> = {
             gallery: [],
             desc: 'Versatile transmitter for duct, wall, and outdoor applications with IP65 protection.',
             specs: [
-                { label: 'Application', value: 'Outdoor, Wash-down areas, Wet environments' },
-                { label: 'Features', value: '• IP65 Protection\n• Radiation shield option for outdoor use' },
-                { label: 'Accuracy', value: '±2 %RH\n±0.2 °C' },
-                { label: 'Output', value: '4...20 mA (HMD110), 0...10V (HMD112)' }
+                { label: 'Measurement Range', value: 'RH: 0…100% RH\nT: -40...+60°C\nCalculated: Td, Mixing ratio, Absolute humidity, Wet bulb temp, Enthalpy' },
+                { label: 'HMW110 (Wall)', value: '2-Wire Current (4…20 mA) or Modbus RTU' },
+                { label: 'HMW112 (Wall)', value: '2-Wire Current (4…20 mA)' },
+                { label: 'HMD110 (Duct)', value: '2-Wire Current (4…20 mA) or Modbus RTU' },
+                { label: 'HMD112 (Duct)', value: '2-Wire Current (4…20 mA)' },
+                { label: 'HMS110 (Outdoor)', value: 'RH+T measurement\n2-Wire Current (4…20 mA) or Modbus RTU' },
+                { label: 'HMS112 (Outdoor)', value: 'RH+T measurement\n2-Wire Current (4…20 mA)' }
             ],
             datasheet: 'https://www.vaisala.com/sites/default/files/documents/HMDW110-Datasheet-B211705EN.pdf'
         },
@@ -484,10 +503,10 @@ export const DB: Record<string, any[]> = {
             gallery: [],
             desc: 'High-end handheld indicator and probe.',
             specs: [
-                { label: 'Application', value: 'Industrial spot-checking, Calibration' },
-                { label: 'Range', value: '0 ... 100 %RH\n-20 ... +50 °C' },
-                { label: 'Logging', value: '5.5M values' },
-                { label: 'Display', value: 'Color' }
+                { label: 'MI70 Indicator', value: 'Operating temp: -10…+40°C\nLCD with backlight\nData logging: 2,700 points\nAudible alarm' },
+                { label: 'HMP75 Probe (118 mm)', value: 'General purpose\nRH: 0…100% / T: -20…+60°C\nAccuracy: RH ±1 %RH (0…90%) / T ±0.2°C' },
+                { label: 'HMP76 Probe (328 mm)', value: 'Long stainless steel, duct spot-checking\nRH: 0…100% / T: -50…+120°C\nAccuracy: RH ±1 %RH (0…90%)' },
+                { label: 'HMP77 Probe (5 m cable)', value: 'Small probe for difficult-to-reach areas\nRH: 0…100% / T: -70…+180°C\nAccuracy: RH ±1 %RH (0…90%)' }
             ],
             datasheet: 'https://www.vaisala.com/sites/default/files/documents/Indigo80-Datasheet-B211699EN.pdf'
         },
@@ -500,9 +519,10 @@ export const DB: Record<string, any[]> = {
             gallery: ["/templates/hs-tech/images/products/hm70_v1.jpg"],
             desc: 'Professional handheld humidity and temperature meter.',
             specs: [
-                { label: 'Application', value: 'Demanding industrial spot-checking' },
-                { label: 'Features', value: '• MI70 Indicator + HMP7x Probe\n• Multilingual user interface' },
-                { label: 'Accuracy', value: 'High accuracy' }
+                { label: 'MI70 Indicator', value: 'Operating temp: -10…+40°C\nLCD with backlight\nData logging: 2,700 points\nAudible alarm' },
+                { label: 'HMP75 Probe (118 mm)', value: 'General purpose\nRH: 0…100% / T: -20…+60°C\nAccuracy: RH ±1 %RH (0…90%) / T ±0.2°C' },
+                { label: 'HMP76 Probe (328 mm)', value: 'Long stainless steel, duct spot-checking\nRH: 0…100% / T: -50…+120°C\nAccuracy: RH ±1 %RH (0…90%)' },
+                { label: 'HMP77 Probe (5 m cable)', value: 'Small probe for difficult-to-reach areas\nRH: 0…100% / T: -70…+180°C\nAccuracy: RH ±1 %RH (0…90%)' }
             ],
             datasheet: 'https://www.vaisala.com/sites/default/files/documents/HM70-Datasheet-B210974EN.pdf'
         },
@@ -515,9 +535,10 @@ export const DB: Record<string, any[]> = {
             gallery: ["/templates/hs-tech/images/products/hm40_v1.png"],
             desc: 'Compact and easy-to-use handheld meter.',
             specs: [
-                { label: 'Application', value: 'Quick spot-checking' },
-                { label: 'Models', value: 'HM41, HM42, HM45, HM46' },
-                { label: 'Accuracy', value: '±1.5 %RH (0...90 %RH)' }
+                { label: 'HM41 (General use)', value: 'Fixed probe, sensor replaceable\nRH: 0…100% / T: -10…+60°C\nAccuracy: ±1.5 %RH (0…90%)' },
+                { label: 'HM42 (Tight spaces)', value: 'Thin 4 mm diameter probe, 150 mm cable\nRH: 0…100% / T: -40…+100°C\nAccuracy: ±1.5 %RH (0…90%)' },
+                { label: 'HM45 (Remote probe)', value: 'Sensor replaceable, 120 mm cable\nRH: 0…100% / T: -40…+60°C\nAccuracy: ±1.5 %RH (0…90%)' },
+                { label: 'HM46 (Extra reach)', value: 'Stainless steel probe, brass filter, 150 mm cable\nRH: 0…100% / T: -40…+100°C\nAccuracy: ±1.5 %RH (0…90%)' }
             ],
             datasheet: 'https://www.vaisala.com/sites/default/files/documents/HM40-Datasheet-B210975EN.pdf'
         },
@@ -530,9 +551,8 @@ export const DB: Record<string, any[]> = {
             gallery: [],
             desc: 'Specialized for structural humidity measurement (concrete).',
             specs: [
-                { label: 'Application', value: 'Construction sites, Concrete flooring' },
-                { label: 'Probe', value: 'HMP40S' },
-                { label: 'Range', value: '0 ... 100 %RH\n-40 ... +80 °C' }
+                { label: 'HM40 Indicator', value: 'Alkaline batteries: 2×AA, 1.5 V\nLCD display\nCalculated variables: Td, Tw, a, x, h\nIP54' },
+                { label: 'HMP40S Probe', value: 'TRRS male 3.5 mm cable connector\nBorehole diameter needed: 16 mm\nStainless steel probe\nMeasurement range: 0…100% RH' }
             ]
         },
         {
@@ -544,9 +564,11 @@ export const DB: Record<string, any[]> = {
             gallery: [],
             desc: 'Saturated salt calibrator for on-site humidity probe calibration.',
             specs: [
-                { label: 'Type', value: 'Saturated salt solution' },
-                { label: 'Safety', value: 'Complies with ASTM E104-02' },
-                { label: 'Features', value: '• No external power required\n• Portable case' }
+                { label: 'Chamber', value: 'Covers for 12 / 13.5 / 18.5 mm probe diameter\nThermometer for temperature monitoring' },
+                { label: 'LiCl Solution', value: '11 %RH ± 1.3 %RH' },
+                { label: 'MgCl₂ Solution', value: '33 %RH ± 1.2 %RH' },
+                { label: 'NaCl Solution', value: '75 %RH ± 1.5 %RH' },
+                { label: 'K₂SO₄ Solution', value: '97 %RH ± 2.0 %RH' }
             ]
         },
         {
@@ -558,11 +580,17 @@ export const DB: Record<string, any[]> = {
             gallery: ["/templates/hs-tech/images/products/hmt330_v1.png"],
             desc: 'Designed for demanding industrial applications. Six models available for various installation needs.',
             specs: [
-                { label: 'Application', value: 'Demanding industrial applications\nCleanrooms, Pharmaceutical processes' },
-                { label: 'Models', value: 'HMT331 (Wall), HMT333 (Duct), HMT334 (High Pressure)\nHMT335 (High Temp), HMT337 (High Humidity), HMT338 (Pipeline)' },
-                { label: 'Features', value: '• Excellent stability & extensive customization\n• Six models for various installation needs\n• Optional integrated data logging and graphical display' },
-                { label: 'Measurement Range', value: '0 ... 100 %RH\n-70 ... +180 °C (Model dependent)' },
-                { label: 'Output', value: 'RH, T, Td, Tdf, a, x, Tw, ppm, pw, pws, h, dT' }
+                { label: 'HMT331 (Wall)', value: 'RH: 0…100% RH\nT: -40...+60°C (-40...+140°F)' },
+                { label: 'HMT333 (Duct)', value: 'RH: 0…100% RH\nT: -40...+80°C (rubber) / -40...+120°C (teflon)' },
+                { label: 'HMT334 (High Pressure)', value: 'RH: 0…100% RH\nT: -70...+180°C (-94...+356°F)\nP: 0...10 MPa (0...100 bar)' },
+                { label: 'HMT335 (High Temp)', value: 'RH: 0…100% RH\nT: -70...+180°C (-94...+356°F)' },
+                { label: 'HMT337 (High Humidity)', value: 'RH: 0…100% RH\nT: -70...+180°C (-94...+356°F)' },
+                { label: 'HMT338 (Pipeline)', value: 'RH: 0…100% RH\nT: -70...+180°C (-94...+356°F)\nP: 0...4 MPa (0…40 bar)' },
+                { label: 'Accuracy', value: '±1 %RH (0…90%)\n±0.2°C @ 20°C PT100' },
+                { label: 'Operating Voltage', value: '10...35 VDC, 24 VAC ±20%\n(optional: 100...240 VAC, 50/60 Hz)' },
+                { label: 'Output', value: 'Current: 0...20 mA or 4…20 mA\nVoltage: 0…1 V / 5 V / 10 V\nDigital: RS232, RS485 (optional)\n(optional) WLAN, Relay outputs: 0.5 A, 250 VAC' },
+                { label: 'IP Rating', value: 'IP66 / IP65 with local display' },
+                { label: 'Calculated Variables', value: 'Dew point (Td), Mixing ratio, Absolute humidity,\nWet bulb temperature, Enthalpy, Water vapor pressure' }
             ],
             datasheet: 'https://www.vaisala.com/sites/default/files/documents/HMT330-Datasheet-B211735EN.pdf'
         },
@@ -575,11 +603,16 @@ export const DB: Record<string, any[]> = {
             gallery: ["/templates/hs-tech/images/products/hmt310_v1.png"],
             desc: 'Compact transmitter with excellent stability for demanding industrial applications.',
             specs: [
-                { label: 'Application', value: 'Industrial applications where compact size is needed' },
-                { label: 'Features', value: '• Latest generation VAISALA HUMICAP® sensor\n• Small size for easy installation\n• High accuracy & excellent long-term stability' },
-                { label: 'Range', value: '0 ... 100 %RH\n-40 ... +80 °C (up to +120 °C)' },
-                { label: 'Accuracy', value: '±1 %RH (0...90 %RH)' },
-                { label: 'Output', value: 'Analog outputs, RS232/RS485' }
+                { label: 'HMT311 (Wall)', value: 'RH: 0…100% RH\nT: -40...+60°C (-40...+140°F)' },
+                { label: 'HMT313 (Duct)', value: 'RH: 0…100% RH\nT: -40...+80°C (rubber) / -40...+120°C (teflon)' },
+                { label: 'HMT314 (High Pressure)', value: 'RH: 0…100% RH\nT: -70...+180°C (-94...+356°F)\nP: 0...10 MPa (0...100 bar)' },
+                { label: 'HMT315 (High Temp)', value: 'RH: 0…100% RH\nT: -70...+180°C (-94...+356°F)' },
+                { label: 'HMT317 (High Humidity)', value: 'RH: 0…100% RH\nT: -70...+180°C (-94...+356°F)' },
+                { label: 'HMT318 (Pipeline)', value: 'RH: 0…100% RH\nT: -70...+180°C (-94...+356°F)\nP: 0...4 MPa (0…40 bar)' },
+                { label: 'Accuracy', value: '±1 %RH (0…90%)\n±0.2°C @ 20°C PT1000' },
+                { label: 'Operating Voltage', value: '12...28 V (with serial port: 15...28 V)' },
+                { label: 'Output', value: 'Two analog outputs (selectable & scalable)\n0...20 mA or 4...20 mA / 1...5 V, 0…5 V or 0…10 V\nSerial: RS-232 (M12/8 pin connector)' },
+                { label: 'IP Rating', value: 'IP66 / IP65 with local display' }
             ],
             datasheet: 'https://www.vaisala.com/sites/default/files/documents/HMT310-Datasheet-B211734EN.pdf'
         },
@@ -592,11 +625,12 @@ export const DB: Record<string, any[]> = {
             gallery: ["/templates/hs-tech/images/products/hmt120_v1.png"],
             desc: 'Optimized for cleanrooms and light industrial applications with interchangeable probes.',
             specs: [
-                { label: 'Application', value: 'Cleanrooms, Light industrial applications' },
-                { label: 'Features', value: '• Interchangeable probes (HMP110)\n• Resistant to dust and most chemicals\n• Display option available' },
-                { label: 'Models', value: 'HMT120: Loop powered (2-wire)\nHMT130: Voltage powered (3-wire)' },
-                { label: 'Range', value: '0 ... 100 %RH\n-40 ... +80 °C' },
-                { label: 'Output', value: '4...20 mA (HMT120)\n0...1V / 0...5V / 0...10V (HMT130)' }
+                { label: 'Application', value: 'Humidity and Temperature monitoring in cleanrooms\nWall / Duct / Outdoor installation' },
+                { label: 'Measurement Range', value: 'RH: 0…100% RH\nT: -40...+80°C (-40...+176°F)' },
+                { label: 'Accuracy', value: '±1.5 %RH (0…90%)\n±0.2°C @ 20°C PT1000' },
+                { label: 'HMT120', value: '2-Wire Current (4…20 mA)\nSensor one-to-one replaceable\nDisplay option available' },
+                { label: 'HMT130', value: '3-Wire Voltage (0…1 V / 5 V / 10 V), RS485\nMax cable length 20 m\nDewpoint output function' },
+                { label: 'IP Rating', value: 'IP65' }
             ],
             datasheet: 'https://www.vaisala.com/sites/default/files/documents/HMT120-Datasheet-B211733EN.pdf'
         },
@@ -624,12 +658,13 @@ export const DB: Record<string, any[]> = {
             gallery: ['/templates/hs-tech/images/products/50e31ebdea359.png'],
             desc: 'Dewpoint transmitter for condensing environments. The heated sensor head prevents condensation on the sensor, enabling accurate measurement even in 100% RH conditions.',
             specs: [
-                { label: 'Measurement Range', value: '0 ... +60 °Ctd' },
-                { label: 'Accuracy', value: '±2 °Ctd (0...40 °Ctd)' },
-                { label: 'Sensor', value: 'Vaisala DRYCAP® (heated)' },
-                { label: 'Output', value: 'RS-232, RS-485, 4...20 mA, 0...10 V' },
-                { label: 'Application', value: 'Condensing environments\nSteam processes, Wet gas' },
-                { label: 'Protection', value: 'IP65' },
+                { label: 'DMT341 (Wall)', value: 'Td: -70…+80°C (±2°C, up to 20 bar)\nT: 0…+80°C (±0.2°C)\nRH: 0…70% (±0.004 %RH + 20% of reading)\nGraphical LCD monitoring' },
+                { label: 'DMT342 (Flange Probe)', value: 'Large equipment or high pressure\nPressure range: 0…50 bar\nMechanical durability: up to 250 bar\n(option) Sampling cell' },
+                { label: 'DMT344 (High Pressure)', value: 'High pressure and vacuum (up to 100 bar)\nPressure range: 0…50 bar\nMechanical durability: up to 100 bar' },
+                { label: 'DMT347 (Thread Probe)', value: 'Small probe for tight spaces\nPressure range: 0…10 bar\nMechanical durability: up to 10 bar' },
+                { label: 'DMT348 (Pipeline)', value: 'Ball valve option for hot-swap\nPressure range: 0…40 bar\nMechanical durability: up to 70 bar\n(option) Ball-valve set or sampling cell' },
+                { label: 'Output', value: '0/4...20 mA, 0...1/5/10 V\n(2 analog outputs, 3rd optional)\nRS485 (option)' },
+                { label: 'Operating Temperature', value: 'Probe: -40...+80°C\nMechanical durability: up to +180°C\nTransmitter: -40...+60°C\nWith display: 0...+60°C' }
             ],
             datasheet: 'https://www.vaisala.com/sites/default/files/documents/DMT340-Datasheet-B211742EN.pdf'
         },
@@ -639,27 +674,22 @@ export const DB: Record<string, any[]> = {
             gallery: ['/templates/hs-tech/images/products/5cf3bcd453c32.png'],
             desc: 'High temperature dewpoint transmitter for process streams up to +180 °C. Ideal for plastic drying, industrial ovens, and compressed air systems with high temperatures.',
             specs: [
-                { label: 'Process Temperature', value: 'Up to +180 °C' },
-                { label: 'Measurement Range', value: '-40 ... +20 °Ctd' },
-                { label: 'Accuracy', value: '±3 °Ctd' },
-                { label: 'Sensor', value: 'Vaisala DRYCAP® 180' },
-                { label: 'Output', value: 'RS-232, RS-485, 4...20 mA' },
-                { label: 'Application', value: 'Plastic dryers, Industrial ovens\nHigh-temperature compressed air' },
-                { label: 'Protection', value: 'IP65' },
+                { label: 'DMT345 (High Temp)', value: 'Accurate in hot and dry environments (up to +180°C)\nTd: -40…+100°C (±2°C)\nT: 0…+180°C (±0.4°C @ 100°C)\nRH: 0…100% / Mixing ratio: 0…1000 g/kg' },
+                { label: 'DMT346 (Cooling Flange)', value: 'Reliable in very hot processes (up to +350°C)\nTd: -25…+100°C (±2°C)\nMixing ratio: 0…1000 g/kg' },
+                { label: 'Output', value: '0/4...20 mA, 0...1/5/10 V\n(2 analog outputs, 3rd optional)\nRS485 (option)' },
+                { label: 'Operating Environment', value: 'Mechanical durability: up to +180°C (DMT345)\nMechanical durability: up to +350°C (DMT346)' }
             ],
             datasheet: 'https://www.vaisala.com/sites/default/files/documents/DMT345-Datasheet-B211743EN.pdf'
         },
         {
             id: 'dmt132', title: 'DMT132', subtitle: 'DEWPOINT & HUMIDITY MODULE', category: 'module',
             image: '/templates/hs-tech/images/products/2d44fea596554.png', gallery: [],
-            desc: 'OEM dewpoint and humidity module for integration into instruments and systems. Measures both dewpoint temperature and relative humidity.',
+            desc: 'OEM dewpoint and humidity module for integration into instruments and systems.',
             specs: [
-                { label: 'Type', value: 'OEM Module' },
-                { label: 'Dewpoint Range', value: '-60 ... +60 °Ctd' },
-                { label: 'RH Range', value: '0 ... 100 %RH' },
-                { label: 'Output', value: 'Analog / RS-485 Digital' },
-                { label: 'Supply Voltage', value: '5 V / 10...35 V DC' },
-                { label: 'Application', value: 'OEM integration\nInstruments, Portable meters' },
+                { label: 'Features', value: 'For refrigerant dryers\nAuto-calibration\nChemical purging\nOptional LED warning light' },
+                { label: 'Measurement Range', value: 'Td: -30…+50°C (±1°C @ -3…+20°C)' },
+                { label: 'Output', value: '4...20 mA (2-wire)' },
+                { label: 'Operating Voltage', value: '10…28 VDC (low power)' }
             ]
         },
         {
@@ -668,11 +698,10 @@ export const DB: Record<string, any[]> = {
             gallery: ['/templates/hs-tech/images/products/2d44fea596554.png'],
             desc: 'OEM module for very low dewpoint measurement in dry air and inert gas applications.',
             specs: [
-                { label: 'Type', value: 'OEM Module' },
-                { label: 'Dewpoint Range', value: '-100 ... +20 °Ctd' },
-                { label: 'Accuracy', value: '±2 °Ctd' },
-                { label: 'Output', value: 'Analog & Digital' },
-                { label: 'Application', value: 'Dry air systems\nInert gas, OEM integration' },
+                { label: 'Features', value: 'Auto-calibration\nChemical purging\nCompressed air, dry chambers' },
+                { label: 'Measurement Range', value: 'Td: -100…+20°C (±2°C @ -80…-40°C)' },
+                { label: 'Output', value: '0/4...20 mA, 0...5/10 V (2 analog outputs)\nRS485 (option)' },
+                { label: 'Operating Environment', value: 'T: -40…+70°C / RH: 0…100%' }
             ]
         },
         {
@@ -681,12 +710,10 @@ export const DB: Record<string, any[]> = {
             gallery: ['/templates/hs-tech/images/products/6d596692e24f1.png'],
             desc: 'Ultra-compact dewpoint transmitter module for OEM and space-limited applications.',
             specs: [
-                { label: 'Size', value: 'Ultra-compact (OEM)' },
-                { label: 'Dewpoint Range', value: '-70 ... +60 °Ctd' },
-                { label: 'Accuracy', value: '±2 °Ctd' },
-                { label: 'Output', value: 'Analog 0...1 V / Digital RS-485' },
-                { label: 'Supply Voltage', value: '3.3 ... 5 V DC' },
-                { label: 'Application', value: 'OEM instruments\nPortable devices' },
+                { label: 'Features', value: 'Auto-calibration\nChemical purging\nLED alarm\nMiniature dewpoint measurement' },
+                { label: 'Measurement Range', value: 'Td: -70…+60°C (±2°C)' },
+                { label: 'Output', value: '4...20 mA, 0…1/5/10 V\nRS485 or Modbus RTU' },
+                { label: 'Operating Environment', value: 'T: -40…+60°C / RH: 0…100%' },
             ]
         },
         {
@@ -720,11 +747,10 @@ export const DB: Record<string, any[]> = {
             gallery: [],
             desc: 'Dewpoint measurement in SF6 gas systems for high-voltage switchgear monitoring.',
             specs: [
-                { label: 'Gas Type', value: 'SF6 (Sulfur hexafluoride)' },
-                { label: 'Dewpoint Range', value: '-60 ... +20 °Ctd' },
-                { label: 'Output', value: '4...20 mA, RS-485' },
-                { label: 'Application', value: 'High voltage switchgear\nGas-insulated substations (GIS)' },
-                { label: 'Certification', value: 'IEC 60376, IEC 60480 compliant' },
+                { label: 'Features', value: 'For SF6 gas measurement without sampling\nDetects leakage with pressure sensor' },
+                { label: 'Measurement Range', value: 'Td: -50…+30°C (±3°C)\nPressure (absolute): 1…12 bar (±0.5% FS)' },
+                { label: 'Output', value: 'RS-485, Modbus RTU' },
+                { label: 'Operating Environment', value: 'T: -40…+60°C / RH: 0…100%\nPressure: 0…50 bar' }
             ]
         },
         {
@@ -749,13 +775,10 @@ export const DB: Record<string, any[]> = {
             gallery: ['/templates/hs-tech/images/products/fc840485431f5.png'],
             desc: 'Professional handheld dewpoint meter with interchangeable probe. Used for field measurement, calibration verification, and spot-checking in industrial processes.',
             specs: [
-                { label: 'Probe options', value: 'DMP5, DMP7, DMP8 (interchangeable)' },
-                { label: 'Dewpoint Range', value: '-60 ... +60 °Ctd' },
-                { label: 'Accuracy', value: '±2 °Ctd' },
-                { label: 'Display', value: 'Graphical LCD with backlight' },
-                { label: 'Data logging', value: '60,000 points' },
-                { label: 'Battery', value: '40 h (typical)' },
-                { label: 'Application', value: 'Field measurement\nCalibration verification' },
+                { label: 'MI70 Indicator', value: 'Operating temp: -10…+40°C\nLCD with backlight\nData logging: 2,700 points\nAudible alarm' },
+                { label: 'DMP74A Probe (Higher Td)', value: 'Pressure tight probe\nTd: -50…+60°C Td (±2°C Td)\nT: -10…+60°C (±0.2°C @ 20°C)' },
+                { label: 'DMP74B Probe (Low Td)', value: 'Pressure tight probe\nTd: -70…+30°C Td (±2°C Td)\nT: -10…+60°C (±0.2°C @ 20°C)' },
+                { label: 'DMP74C Probe (SF6 Gas)', value: 'For SF6 gas measurement\nTd: -70…+30°C Td (±2°C Td)\nT: -10…+60°C (±0.2°C @ 20°C)' }
             ],
             datasheet: 'https://www.vaisala.com/sites/default/files/documents/DM70-Datasheet-B210978EN.pdf'
         },
@@ -763,13 +786,14 @@ export const DB: Record<string, any[]> = {
             id: 'dss70a', title: 'DSS70A', subtitle: 'SAMPLING SYSTEM FOR DM70', category: 'portable',
             image: '/templates/hs-tech/images/products/96ddd2e578412.png',
             gallery: ['/templates/hs-tech/images/products/96ddd2e578412.png'],
-            desc: 'Sampling cell accessory for use with the DM70 meter to measure dewpoint in pressurized gas lines.',
+            desc: 'Sampling cell system for dewpoint measurement in pressurized gas lines.',
             specs: [
-                { label: 'Use with', value: 'DM70 handheld meter' },
-                { label: 'Pressure', value: 'Up to 20 bar (g)' },
-                { label: 'Connection', value: '6 mm Swagelok fittings' },
-                { label: 'Material', value: 'Stainless steel body' },
-                { label: 'Application', value: 'Pressurized gas lines\nCompressed air sampling' },
+                { label: 'DSS70A', value: 'Metal treatment and plastics drying processes\nOperating gases: Air, N₂, and other non-toxic inert gases\nInlet/outlet connections for pressurized gas' },
+                { label: 'DSC74 (Sampling cell)', value: 'For pressurized gases\nPressure limit: 1 MPa\nMultiple connection adaptors' },
+                { label: 'DSC74B (Two pressure cell)', value: 'Pressure limit: 1 MPa\nSuitable for SF6 gas (with DMP74C)' },
+                { label: 'DSC74C', value: 'DSC74B + DMCOIL (cooling/venting coil)\nOptionally applicable to other sampling cells' },
+                { label: 'DMT242SC', value: 'Sampling cell, pressure limit: 10 MPa' },
+                { label: 'DMT242SC2', value: 'Sampling cell + Swagelok connectors (1/4" pipeline)\nPressure limit: 4 MPa' }
             ]
         },
     ],
@@ -780,13 +804,13 @@ export const DB: Record<string, any[]> = {
             gallery: ['/templates/hs-tech/images/products/6251932a0e954.png'],
             desc: 'Multi-parameter wall transmitter measuring CO2, temperature, and humidity. Features Vaisala CARBOCAP® dual-channel sensor for superior long-term stability — no zero drift.',
             specs: [
-                { label: 'Parameters', value: 'CO₂, Temperature (T), Humidity (RH)' },
-                { label: 'CO₂ Range', value: '0 ... 2000 ppm (standard)\n0 ... 10000 ppm (optional)' },
-                { label: 'CO₂ Accuracy', value: '±(40 ppm + 3% of reading)' },
-                { label: 'T Range / Accuracy', value: '-40 ... +60 °C / ±0.2 °C' },
-                { label: 'RH Range / Accuracy', value: '0 ... 100 %RH / ±1.7 %RH' },
-                { label: 'Output', value: '4...20 mA, 0...10 V, RS-485 Modbus' },
-                { label: 'Application', value: 'HVAC, Building automation\nDemand-controlled ventilation' },
+                { label: 'GMW93 / GMW93D (Wall)', value: 'CO₂+T measurement\n3-wire voltage output\nDisplay option (D suffix)' },
+                { label: 'GMW94 / GMW94D (Wall)', value: 'CO₂+T measurement\n3-wire current output' },
+                { label: 'GMW93R / GMW93RD / GMW93RA (Wall)', value: 'CO₂+T+RH measurement\n3-wire voltage output\nRA: Display + LED indicator' },
+                { label: 'GMW94R / GMW94RD (Wall)', value: 'CO₂+T+RH measurement\n3-wire current output' },
+                { label: 'GMW95 / GMW95D (Wall)', value: 'CO₂+T measurement\nDigital: BACnet / Modbus' },
+                { label: 'GMW95R / GMW95RD (Wall)', value: 'CO₂+T+RH measurement\nDigital: BACnet / Modbus' },
+                { label: 'GMW90 / GMW90R (Wall)', value: 'Configurable analog/digital output\nR suffix: +RH measurement' }
             ],
             datasheet: 'https://www.vaisala.com/sites/default/files/documents/GMW90-Datasheet-B211008EN.pdf'
         },
@@ -808,13 +832,11 @@ export const DB: Record<string, any[]> = {
             id: 'gmd110', title: 'GMD110', subtitle: 'DUCT CO₂ TRANSMITTER', category: 'transmitter',
             image: '/templates/hs-tech/images/products/c846ecca3733c.png',
             gallery: ['/templates/hs-tech/images/products/c846ecca3733c.png'],
-            desc: 'CO2 transmitter for duct mounting in HVAC air handling units. Measures CO2 (and optionally T, RH) directly in the airflow.',
+            desc: 'CO2 transmitter for duct mounting in HVAC air handling units. Measures CO2 directly in the airflow.',
             specs: [
-                { label: 'Installation', value: 'Duct mount (AHU / VAV)' },
-                { label: 'CO₂ Range', value: '0 ... 2000 ppm' },
-                { label: 'CO₂ Accuracy', value: '±(40 ppm + 3% of reading)' },
-                { label: 'Output', value: '0...10 V, 4...20 mA, RS-485' },
-                { label: 'Application', value: 'Air handling units\nDemand-controlled ventilation' },
+                { label: 'GMD20 (Duct)', value: 'IP65\nDisplay (optional)\nEasy one-to-one replacement\nExcellent long-term stability' },
+                { label: 'CO₂ Range / Accuracy', value: '0…2000 ppm (±2% + 2% of reading)' },
+                { label: 'Output', value: '0...20 mA, 4...20 mA\n0...10 V\nRelay (option)' }
             ],
             datasheet: 'https://www.vaisala.com/sites/default/files/documents/GMD110-Datasheet-B211006EN.pdf'
         },
@@ -822,14 +844,12 @@ export const DB: Record<string, any[]> = {
             id: 'gmp343', title: 'GMP343', subtitle: 'INDUSTRIAL CO₂ PROBE', category: 'probe',
             image: '/templates/hs-tech/images/products/eb130aca3df08.png',
             gallery: ['/templates/hs-tech/images/products/eb130aca3df08.png'],
-            desc: 'High-accuracy CO2 probe for industrial processes and research. Flow-through design with temperature-compensated CARBOCAP® sensor for stable long-term measurements.',
+            desc: 'High-accuracy CO2 probe for soil respiration, ambient monitoring, plant growth chambers and OEM applications.',
             specs: [
-                { label: 'CO₂ Range', value: '0 ... 10000 ppm' },
-                { label: 'Accuracy', value: '±(20 ppm + 2% of reading) @ 25 °C' },
-                { label: 'Response Time', value: 't90 < 40 s' },
-                { label: 'Pressure Compensation', value: 'Built-in, no recalibration needed' },
-                { label: 'Design', value: 'Flow-through / immersion' },
-                { label: 'Application', value: 'Industrial processes\nGreenhouses, Research, Food packaging' },
+                { label: 'Features', value: 'Excellent accuracy and stability\nSilicon-based NDIR sensor\nDual wavelength measurement\nDiffusion and flow-through design' },
+                { label: 'Measurement Range', value: '0…1000/2000/3000/4000/5000 ppm\n0…2%' },
+                { label: 'Accuracy', value: '±(3 ppm + 1% of reading) @ 1000 ppm' },
+                { label: 'IP Rating', value: 'IP65' }
             ],
             datasheet: 'https://www.vaisala.com/sites/default/files/documents/GMP343-Datasheet-B210879EN.pdf'
         },
@@ -837,12 +857,13 @@ export const DB: Record<string, any[]> = {
             id: 'gmp251', title: 'GMP251', subtitle: 'HIGH-RANGE CO₂ PROBE', category: 'probe',
             image: '/templates/hs-tech/images/products/f6933d55699f3.png',
             gallery: ['/templates/hs-tech/images/products/f6933d55699f3.png'],
-            desc: 'CO2 probe for high-concentration (percent-level) measurement in incubators, controlled atmospheres, and fermentation processes.',
+            desc: 'CO2 probe for life science incubators, cold storages, fruit and vegetable transportation.',
             specs: [
-                { label: 'CO₂ Range', value: '0 ... 30 %vol' },
-                { label: 'Accuracy', value: '±0.5 %vol (0...20 %vol)' },
-                { label: 'Output', value: 'Analog / RS-485' },
-                { label: 'Application', value: 'Cell culture incubators\nControlled atmosphere storage\nFermentation' },
+                { label: 'GMP251', value: 'Range: 0…20% (±0.1 %CO₂ @ 5% CO₂)\nIP65 classified housing\nSensor head heated for reliable operation\nOperating temp: -40…+60°C' },
+                { label: 'GMP (Agriculture/Refrigeration)', value: 'Range: 0…10,000 ppm (±40 ppm @ 0…3000 ppm)\nIP65 housing\nSensor head heated' },
+                { label: 'INDIGO201 Transmitter', value: 'Plug & Play transmitter\nCH3: Analog output (V & mA), 2 relays\nDisplay options\nIP65, 24 V input' },
+                { label: 'INDIGO202 Transmitter', value: 'RS485 isolated with Modbus RTU\n2 relays, display version only' },
+                { label: 'Output', value: 'Digital output via Indigo transmitter' }
             ],
             datasheet: 'https://www.vaisala.com/sites/default/files/documents/GMP251-Datasheet-B210878EN.pdf'
         },
@@ -850,13 +871,11 @@ export const DB: Record<string, any[]> = {
             id: 'gmp231', title: 'GMP231', subtitle: 'INCUBATOR CO₂ PROBE', category: 'probe',
             image: '/templates/hs-tech/images/products/8b82ea8dea629.png',
             gallery: ['/templates/hs-tech/images/products/8b82ea8dea629.png'],
-            desc: 'CO2 probe designed for life science incubators. Withstands high-temperature autoclaving and provides accurate measurement in humid incubator environments.',
+            desc: 'CO2 probe designed for life science incubators. High accuracy and stability at elevated temperatures.',
             specs: [
-                { label: 'CO₂ Range', value: '0 ... 20 %vol' },
-                { label: 'Operating Temp', value: '+5 ... +45 °C' },
-                { label: 'Autoclave', value: 'Withstands 121 °C steam sterilization' },
-                { label: 'Output', value: 'Analog / RS-485' },
-                { label: 'Application', value: 'CO2 incubators\nLife science, Cell culture' },
+                { label: 'Features', value: 'Max temperature durability in standby (sensor head only)\nHigh accuracy and stability as temp changes' },
+                { label: 'Measurement Range', value: '0…20% CO₂\nAccuracy: ±0.1% CO₂ (@ 5% CO₂)' },
+                { label: 'Output', value: 'Digital: I²C 5 V, RS-485 (2-wire w/ Modbus)' }
             ],
             datasheet: 'https://www.vaisala.com/sites/default/files/documents/GMP231-Datasheet-B210877EN.pdf'
         },
@@ -883,13 +902,10 @@ export const DB: Record<string, any[]> = {
             gallery: ['/templates/hs-tech/images/products/deffa2b1b398f.jpg'],
             desc: 'Online multi-parameter monitor for power transformers. Simultaneously measures dissolved hydrogen gas and moisture in insulating oil to detect early-stage faults.',
             specs: [
-                { label: 'Parameters', value: 'Moisture in oil (aw), Dissolved H2 gas, Temperature' },
-                { label: 'Moisture Range', value: '0 ... 1 aw (water activity)' },
-                { label: 'H2 Range', value: '0 ... 4000 ppm vol' },
-                { label: 'Output', value: '4...20 mA × 3, RS-485 Modbus' },
-                { label: 'Oil Types', value: 'Mineral oil, Silicone oil, Ester oil' },
-                { label: 'Application', value: 'Power transformers\nEarly fault detection' },
-                { label: 'Protection', value: 'IP65' },
+                { label: 'Features', value: 'Real-time transformer condition measurement\nDirect installation in transformers\nDNV certified for marine applications' },
+                { label: 'Hydrogen in Oil', value: '0...5000 ppmv (±20% of reading or ±25 ppmv)' },
+                { label: 'Moisture in Oil', value: 'Measurement range: aw 0…1\nTemperature: -40…+180°C' },
+                { label: 'Installation Type', value: 'Main: Online type\n(Option) Display: External installation' }
             ],
             datasheet: 'https://www.vaisala.com/sites/default/files/documents/MHT410-Datasheet-B211757EN.pdf'
         },
@@ -897,15 +913,13 @@ export const DB: Record<string, any[]> = {
             id: 'mmt330', title: 'MMT330', subtitle: 'ONLINE OIL MOISTURE TRANSMITTER', category: 'fixed',
             image: '/templates/hs-tech/images/products/5980bfb1851a8.png',
             gallery: ['/templates/hs-tech/images/products/5980bfb1851a8.png'],
-            desc: 'Online moisture measurement in insulating oils. Provides continuous monitoring of moisture content in transformer and hydraulic oils for predictive maintenance.',
+            desc: 'Online moisture measurement in insulating oils. MAN Diesel & Turbo certified, DNV certified.',
             specs: [
-                { label: 'Parameters', value: 'Water activity (aw), Temperature' },
-                { label: 'Oil Moisture Range', value: '0 ... 1 aw' },
-                { label: 'Temperature Range', value: '-40 ... +100 °C' },
-                { label: 'Output', value: 'RS-232, RS-485, 4...20 mA × 2' },
-                { label: 'Oil Types', value: 'Mineral, Synthetic, Ester oil' },
-                { label: 'Application', value: 'Power transformers, Hydraulic systems\nLubricant monitoring' },
-                { label: 'Protection', value: 'IP66' },
+                { label: 'Measurement Range', value: 'Water activity: aw 0…1\nTemperature: -40…+180°C' },
+                { label: 'Output', value: '2 analog outputs (3rd optional)\n0/4...20 mA, 0…5/10 V\nRS-485 Modbus (optional)' },
+                { label: 'MMT332 (Flange)', value: 'Pressure: 0…250 bar\nTemp: -40…+180°C' },
+                { label: 'MMT337 (Swagelok)', value: 'Pressure: 0…10 bar\nTemp: -40…+180°C\nFitting: R 3/8" ISO, 1/2" ISO or NPT 1/2"' },
+                { label: 'MMT338 (Ball Valve)', value: 'Pressure: 0…10 bar\nTemp: -40…+180°C\nFitting: R 1/2" ISO or NPT 1/2"' }
             ],
             datasheet: 'https://www.vaisala.com/sites/default/files/documents/MMT330-Datasheet-B210993EN.pdf'
         },
@@ -913,40 +927,35 @@ export const DB: Record<string, any[]> = {
             id: 'mmt310', title: 'MMT310', subtitle: 'COMPACT OIL MOISTURE TRANSMITTER', category: 'fixed',
             image: '/templates/hs-tech/images/products/3ca83569b6d00.jpg',
             gallery: ['/templates/hs-tech/images/products/3ca83569b6d00.jpg'],
-            desc: 'Compact transmitter for continuous moisture measurement in oils. Suitable for small transformers and OEM integration.',
+            desc: 'Compact transmitter for continuous moisture measurement in oils.',
             specs: [
-                { label: 'Parameters', value: 'Water activity (aw), Temperature' },
-                { label: 'Range', value: '0 ... 1 aw, -40 ... +100 °C' },
-                { label: 'Output', value: '4...20 mA × 2' },
-                { label: 'Application', value: 'Small transformers, OEM\nHydraulic and lubricant systems' },
-                { label: 'Protection', value: 'IP67' },
+                { label: 'Features', value: 'Continuous measurement of moisture in oil\nMax cable length: 10 m\nIP66' },
+                { label: 'Measurement Range', value: 'Water activity: aw 0…1 (0…100 %RS)\nTemperature: -40…+180°C' },
+                { label: 'Output', value: '2 analog outputs (3rd optional)' },
+                { label: 'MMT317', value: 'Small pressure tight probe\nSwagelok: NPT 1/2", ISO 3/8" or ISO 1/2"\nPressure: 0…10 bar' },
+                { label: 'MMT318', value: 'Pressurized pipelines\nFitting: ISO 1/2", NPT 1/2"' }
             ]
         },
         {
             id: 'mm70', title: 'MM70', subtitle: 'HANDHELD OIL MOISTURE METER', category: 'handheld',
             image: '/templates/hs-tech/images/products/a39c6508f2ff2.png',
             gallery: ['/templates/hs-tech/images/products/a39c6508f2ff2.png'],
-            desc: 'Portable handheld instrument for spot-checking moisture in insulating and industrial oils. Fast response time for field verification.',
+            desc: 'Portable handheld instrument for spot-checking moisture in insulating and industrial oils.',
             specs: [
-                { label: 'Parameters', value: 'Water activity (aw), Temperature' },
-                { label: 'Range', value: '0 ... 1 aw, -40 ... +100 °C' },
-                { label: 'Response time', value: '< 30 s (t90)' },
-                { label: 'Display', value: 'Graphical LCD with backlight' },
-                { label: 'Data logging', value: '30,000 measurements' },
-                { label: 'Application', value: 'Field measurement\nTransformer oil spot-checking' },
+                { label: 'MI70 Indicator', value: 'Operating temp: -10…+40°C\nLCD with backlight\nData logging: 2,700 points\nAudible alarm' },
+                { label: 'MM70 Probe (In-line)', value: 'Moisture in oil sensor\nIn-line process checking via ball valve\nAw measurement, ppm calculation' }
             ],
             datasheet: 'https://www.vaisala.com/sites/default/files/documents/MM70-Datasheet-B210976EN.pdf'
         },
         {
             id: 'mmt162', title: 'MMT162', subtitle: 'OEM OIL MOISTURE MODULE', category: 'oil_module',
             image: '/templates/hs-tech/images/products/deffa2b1b398f.jpg', gallery: [],
-            desc: 'Compact OEM module for continuous oil moisture measurement. Designed for integration into transformer monitors, hydraulic systems, and industrial machinery.',
+            desc: 'Economical online detection of moisture in oil. Direct installation in pipeline.',
             specs: [
-                { label: 'Type', value: 'OEM / Module (DIN rail)' },
-                { label: 'Parameters', value: 'Water activity (aw), Temperature' },
-                { label: 'Range', value: '0 ... 1 aw, -40 ... +100 °C' },
-                { label: 'Output', value: '4...20 mA, RS-485 Modbus' },
-                { label: 'Application', value: 'Transformers, Hydraulic systems\nIndustrial oil monitoring, OEM' },
+                { label: 'Features', value: 'Economical online moisture in oil detection\nDirect installation in pipeline\nMI70 compatible for display' },
+                { label: 'Metal Type - Working Range', value: 'Water activity: aw 0…1 (±0.02 aw)\nTemperature: -40…+80°C (±0.2°C)\nPressure: up to specified rating' },
+                { label: 'Plastic Type - Working Range', value: 'Water activity: aw 0…1 (±0.02 aw)\nTemperature: -40…+80°C (±0.2°C)' },
+                { label: 'Output', value: '2 analog outputs (3rd optional)\n0/4...20 mA, 0…5/10 V\nRS-485 non-isolated (Vaisala protocol)' }
             ]
         },
     ],
