@@ -58,7 +58,6 @@ export const CATEGORY_INFO: Record<string, any> = {
     setra: { title: "SETRA Systems", desc: "Differential & Industrial Pressure.", images: ['/templates/hs-tech/images/products/0173971661ad2.png', '/templates/hs-tech/images/products/849fee28dfdc5.png'] },
     jumo: { title: "JUMO", desc: "Liquid Analysis & Control.", images: ['/templates/hs-tech/images/products/94259b4509a1f.png', '/templates/hs-tech/images/products/85b44cdd77766.png'] },
     jumo_temp: { title: "Temperature", desc: "PlastoSENS precision temperature sensors for plastics processing.", images: ['/templates/hs-tech/images/products/94259b4509a1f.png'] },
-    knick: { title: "KNICK", desc: "Process Analysis.", images: ['/templates/hs-tech/images/products/322e267fafb41.png'] },
     cms: { title: "Data Logger / CMS", desc: "Continuous monitoring systems and wireless data loggers.", images: [] }
 }
 
@@ -277,16 +276,6 @@ export const SUB_CATEGORIES: Record<string, any[]> = {
             items: [
                 { id: 'recording', label: 'LOGOSCREEN 600' },
                 { id: 'dtron_300', label: 'dTRON 300' }
-            ]
-        }
-    ],
-
-    // === KNICK ===
-    knick: [
-        {
-            id: 'analysis', title: 'Process Analysis', desc: 'High-end interface',
-            items: [
-                { id: 'stratos', label: 'Stratos Pro' }
             ]
         }
     ],
@@ -1303,27 +1292,6 @@ export const DB: Record<string, any[]> = {
                 { label: 'Communication', value: 'RS-485 Modbus RTU (optional)' },
                 { label: 'Application', value: 'Temperature process control\nOvens, Furnaces, Incubators, Reactors' },
             ]
-        },
-    ],
-
-    // KNICK
-    knick: [
-        {
-            id: 'stratos', title: 'Stratos Pro', subtitle: 'MULTI-PARAMETER PROCESS ANALYZER', category: 'analysis',
-            image: '/templates/hs-tech/images/products/322e267fafb41.png',
-            gallery: ['/templates/hs-tech/images/products/322e267fafb41.png'],
-            desc: 'High-performance multi-parameter process analyzer for pH, ORP, conductivity, dissolved oxygen, and turbidity measurement. Intrinsically safe Ex Zone 1 certification for use in hazardous areas.',
-            specs: [
-                { label: 'Parameters', value: 'pH / ORP / Conductivity\nDissolved O₂ / Turbidity (module-dependent)' },
-                { label: 'Sensor inputs', value: 'Up to 2 sensor modules (simultaneous)' },
-                { label: 'Interface', value: 'Sensoface® diagnostic system\n3.5" color TFT display' },
-                { label: 'Output', value: '2× 4...20 mA, 3× relay (alarm)' },
-                { label: 'Communication', value: 'PROFIBUS DP, Modbus RTU, HART' },
-                { label: 'Safety', value: 'Ex Zone 1 / Zone 21 (ATEX)\nIECEx, FM, CSA certified' },
-                { label: 'Protection', value: 'IP65 (wall / pipe / panel mount)' },
-                { label: 'Application', value: 'Chemical, Pharmaceutical\nWater treatment, Food & Beverage' },
-            ],
-            datasheet: 'https://www.knick.de/en/products/process-analysis/transmitters/stratos-pro-a401.html'
         },
     ],
 
