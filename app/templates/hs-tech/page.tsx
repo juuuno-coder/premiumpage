@@ -437,26 +437,70 @@ function HSTechContent() {
             {activeTab === 'business' && (
                 <CatalogPage currentTab="business">
                     <div className="pt-8 pb-28 px-6 max-w-6xl mx-auto">
-                        <h2 className="text-4xl md:text-7xl font-black text-neutral-900 mb-4 tracking-tighter uppercase leading-none">
-                            Market<br />
-                            <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-600 to-sky-400">Scopes.</span>
+                        <p className="text-[10px] font-black text-cyan-600 tracking-[0.4em] mb-4 uppercase">Support & Services</p>
+                        <h2 className="text-4xl md:text-7xl font-black text-neutral-900 mb-10 tracking-tighter uppercase leading-none">
+                            What We<br />
+                            <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-600 to-sky-400">Provide.</span>
                         </h2>
-                        <p className="text-sm text-neutral-500 mb-12 max-w-2xl">Precision environmental sensing solutions across 8 key industries — partnering with global leaders in measurement technology.</p>
-                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+
+                        {/* 5 Service Cards — imweb 레이아웃 */}
+                        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
                             {[
-                                { icon: Cpu,         name: 'Semiconductor',  desc: 'Ultra-precise humidity & dewpoint monitoring for wafer fabrication and cleanroom environments.' },
-                                { icon: Factory,     name: 'Plant & Process', desc: 'Robust pressure, temperature, and gas sensors for oil & gas, chemical, and power plant operations.' },
-                                { icon: Car,         name: 'Automotive',     desc: 'Environmental sensors for EV battery manufacturing, paint booths, and automotive testing facilities.' },
-                                { icon: Ship,        name: 'Marine',         desc: 'Weather stations and corrosion-resistant sensors designed for offshore and onboard applications.' },
-                                { icon: Leaf,        name: 'Agriculture',    desc: 'Soil moisture and microclimate monitoring to optimize crop yield and greenhouse conditions.' },
-                                { icon: Zap,         name: 'Power Industry', desc: 'SF6 gas monitoring and transformer oil sensors for electrical infrastructure reliability.' },
-                                { icon: Building2,   name: 'HVAC & Buildings',desc: 'Room pressure, CO2, and IAQ transmitters for smart buildings, hospitals, and data centers.' },
-                                { icon: FlaskConical, name: 'Life Science',  desc: 'GMP-compliant humidity and temperature monitoring for pharmaceutical and biotech facilities.' },
-                            ].map((b, i) => (
-                                <div key={i} className="p-6 border border-neutral-200 rounded-xl bg-white hover:border-cyan-500/40 transition-colors">
-                                    <b.icon className="w-5 h-5 text-cyan-500 mb-4" />
-                                    <h3 className="text-sm font-black text-neutral-900 mb-2 uppercase tracking-tight">{b.name}</h3>
-                                    <p className="text-xs text-neutral-500 leading-relaxed">{b.desc}</p>
+                                {
+                                    title: 'Product\nCustomization',
+                                    img: '/templates/hs-tech/images/products/biz_card1.png',
+                                    icon: Cpu,
+                                    desc: 'Tailored sensor solutions configured to your exact process requirements and application environment.',
+                                },
+                                {
+                                    title: 'Technical\nSupport',
+                                    img: '/templates/hs-tech/images/products/biz_card2.png',
+                                    icon: CheckCircle2,
+                                    desc: 'Expert pre- and post-sales technical consultation, product selection, and system integration guidance.',
+                                },
+                                {
+                                    title: 'Calibration\n& Repair',
+                                    img: '/templates/hs-tech/images/products/biz_card3.jpg',
+                                    icon: FlaskConical,
+                                    desc: 'Accredited on-site and in-lab calibration services to maintain measurement accuracy and traceability.',
+                                },
+                                {
+                                    title: 'Customer\nTraining',
+                                    img: '',
+                                    icon: Globe,
+                                    desc: 'Hands-on product training and application workshops designed for engineers and technicians.',
+                                },
+                                {
+                                    title: 'Spare\nParts',
+                                    img: '',
+                                    icon: Zap,
+                                    desc: 'Genuine spare parts and replacement probes to minimize downtime and maintain peak performance.',
+                                },
+                            ].map((s, i) => (
+                                <div key={i} className="group flex flex-col rounded-2xl overflow-hidden border border-neutral-200 hover:border-cyan-400 hover:shadow-xl transition-all duration-300">
+                                    {/* Cyan header */}
+                                    <div className="bg-gradient-to-br from-cyan-500 to-sky-600 px-5 pt-6 pb-4">
+                                        <h3 className="text-white font-black text-base leading-tight whitespace-pre-line tracking-tight">{s.title}</h3>
+                                    </div>
+                                    {/* Photo or icon area */}
+                                    <div className="bg-gradient-to-br from-cyan-400/20 to-sky-500/10 flex-1 flex items-center justify-center min-h-44 relative overflow-hidden">
+                                        {s.img ? (
+                                            // eslint-disable-next-line @next/next/no-img-element
+                                            <img
+                                                src={s.img}
+                                                alt={s.title}
+                                                className="w-full h-44 object-cover group-hover:scale-105 transition-transform duration-500"
+                                            />
+                                        ) : (
+                                            <div className="flex flex-col items-center justify-center p-6 gap-3">
+                                                <s.icon className="w-12 h-12 text-cyan-400/60" />
+                                            </div>
+                                        )}
+                                    </div>
+                                    {/* Description */}
+                                    <div className="p-4 bg-white">
+                                        <p className="text-xs text-neutral-500 leading-relaxed">{s.desc}</p>
+                                    </div>
                                 </div>
                             ))}
                         </div>
