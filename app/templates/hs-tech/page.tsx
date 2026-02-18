@@ -356,44 +356,76 @@ function HSTechContent() {
             {activeTab === 'about' && (
                 <CatalogPage currentTab="about">
                     <div className="pt-8 pb-28 px-6 max-w-5xl mx-auto">
+                        {/* Headline */}
                         <p className="text-[10px] font-black text-cyan-600 tracking-[0.4em] mb-4 uppercase">Established 2016 · Pangyo Techno Valley, Korea</p>
-                        <h2 className="text-4xl md:text-7xl font-black text-neutral-900 mb-12 tracking-tighter uppercase leading-none">
-                            Precision<br />
-                            <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-600 to-sky-400">Measurement.</span>
+                        <h2 className="text-4xl md:text-7xl font-black text-neutral-900 mb-10 tracking-tighter uppercase leading-none">
+                            About<br />
+                            <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-600 to-sky-400">HS TECH.</span>
                         </h2>
+
+                        {/* Company Description — imweb 원문 */}
+                        <div className="mb-10 space-y-5 border-l-2 border-cyan-500 pl-6">
+                            <p className="text-base text-neutral-700 leading-relaxed">
+                                HS TECH Co., Ltd. is an official distributor with rights to sell in <strong className="text-neutral-900">Korea and Vietnam</strong> by <strong className="text-neutral-900">VAISALA of Finland</strong>, which specializes in environmental sensors. We support sales, technical support, calibration, installation, and A/S for all VAISALA products.
+                            </p>
+                            <p className="text-base text-neutral-700 leading-relaxed">
+                                We are also an agent of <strong className="text-neutral-900">JUMO</strong>, which provides stable measurement, control and monitoring systems for temperature and water quality and pressure. To efficiently manage simple tasks in the industry, <strong className="text-neutral-900">WECON</strong> provides effective management measures by supplying HMI and PLC of WECON.
+                            </p>
+                            <p className="text-base text-neutral-700 leading-relaxed italic">
+                                "HS TECH is committed to becoming a sensor-based professional company that plays a central role in the future of development. Based on your sincere advice and encouragement, we promise to be HS TECH to impress everyone."
+                            </p>
+                        </div>
+
+                        {/* Service Highlights */}
+                        <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mb-8">
+                            {[
+                                { label: 'Sales', desc: 'Authorized product sales for Korea & Vietnam' },
+                                { label: 'Technical Support', desc: 'Expert consultation & application guidance' },
+                                { label: 'Calibration', desc: 'On-site & lab calibration services' },
+                                { label: 'Installation & A/S', desc: 'Full installation and after-sales support' },
+                            ].map((s, i) => (
+                                <div key={i} className="p-5 border border-neutral-200 rounded-xl bg-neutral-50">
+                                    <p className="text-[10px] font-black text-cyan-600 uppercase tracking-widest mb-1.5">{s.label}</p>
+                                    <p className="text-xs text-neutral-500 leading-relaxed">{s.desc}</p>
+                                </div>
+                            ))}
+                        </div>
+
+                        {/* Info Cards */}
                         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                             <div className="md:col-span-2 p-8 border border-neutral-200 rounded-xl bg-white">
                                 <Globe className="w-5 h-5 text-cyan-600 mb-4" />
-                                <h4 className="font-black text-neutral-900 mb-3 uppercase tracking-wide text-sm">Authorized Distributor</h4>
-                                <p className="text-sm text-neutral-600 leading-relaxed">
-                                    HS TECH is the certified exclusive distributor of Vaisala, Setra, JUMO, and KNICK in Korea — delivering world-class environmental and industrial measurement solutions to semiconductor, pharmaceutical, plant, and building industries.
-                                </p>
-                            </div>
-                            <div className="p-8 border border-neutral-200 rounded-xl bg-white">
-                                <CheckCircle2 className="w-5 h-5 text-cyan-600 mb-4" />
-                                <h4 className="font-black text-neutral-900 mb-3 uppercase tracking-wide text-sm">Technical Consultancy</h4>
-                                <p className="text-sm text-neutral-600 leading-relaxed">Full pre- and post-sales technical support including sensor selection, system integration, calibration, and on-site maintenance services.</p>
-                            </div>
-                            <div className="p-8 border border-neutral-200 rounded-xl bg-white">
-                                <MapPin className="w-5 h-5 text-cyan-600 mb-4" />
-                                <h4 className="font-black text-neutral-900 mb-3 uppercase tracking-wide text-sm">Location</h4>
-                                <p className="text-sm text-neutral-600 leading-relaxed">D-410, 670 Daewangpangyo-ro,<br />Bundang-gu, Seongnam-si,<br />Gyeonggi-do, Korea 13494</p>
-                            </div>
-                            <div className="p-8 border border-neutral-200 rounded-xl bg-white">
-                                <Phone className="w-5 h-5 text-cyan-600 mb-4" />
-                                <h4 className="font-black text-neutral-900 mb-3 uppercase tracking-wide text-sm">Contact</h4>
-                                <div className="space-y-1.5 text-sm text-neutral-600">
-                                    <p>Tel: 070-4346-1844</p>
-                                    <p>Fax: 031-8016-3510</p>
-                                    <p>hs-tech@hs-tech.co.kr</p>
+                                <h4 className="font-black text-neutral-900 mb-3 uppercase tracking-wide text-sm">Official Partner Brands</h4>
+                                <div className="grid grid-cols-2 gap-3 text-sm">
+                                    {[
+                                        { brand: 'VAISALA', region: 'Korea & Vietnam', type: 'Environmental Sensors' },
+                                        { brand: 'SETRA', region: 'Korea', type: 'Pressure Transducers' },
+                                        { brand: 'JUMO', region: 'Korea', type: 'Measurement & Control' },
+                                        { brand: 'KNICK', region: 'Korea', type: 'Process Analysis' },
+                                    ].map((p, i) => (
+                                        <div key={i} className="border border-neutral-100 rounded-lg p-3 bg-neutral-50">
+                                            <p className="font-black text-neutral-900 text-xs tracking-wide">{p.brand}</p>
+                                            <p className="text-[10px] text-cyan-600 mt-0.5">{p.type}</p>
+                                            <p className="text-[10px] text-neutral-400 mt-0.5">{p.region}</p>
+                                        </div>
+                                    ))}
                                 </div>
                             </div>
-                            <div className="p-8 border border-neutral-200 rounded-xl bg-neutral-50">
-                                <h4 className="font-black text-neutral-900 mb-4 uppercase tracking-wide text-sm">Company Info</h4>
-                                <div className="space-y-3 text-sm">
-                                    <div><p className="text-[10px] text-neutral-400 uppercase tracking-wider mb-0.5">Company</p><p className="text-neutral-700 font-bold">HS TECH Co., Ltd.</p></div>
-                                    <div><p className="text-[10px] text-neutral-400 uppercase tracking-wider mb-0.5">Founded</p><p className="text-neutral-700 font-bold">2016</p></div>
-                                    <div><p className="text-[10px] text-neutral-400 uppercase tracking-wider mb-0.5">Reg. No.</p><p className="text-neutral-700 font-bold">144-81-08640</p></div>
+                            <div className="flex flex-col gap-4">
+                                <div className="p-6 border border-neutral-200 rounded-xl bg-white flex-1">
+                                    <MapPin className="w-4 h-4 text-cyan-600 mb-3" />
+                                    <h4 className="font-black text-neutral-900 mb-2 uppercase tracking-wide text-xs">Address</h4>
+                                    <p className="text-xs text-neutral-600 leading-relaxed">#410, U-Space2 B,<br />670 Daewangpangyo-ro,<br />Bundang-Gu, Seongnam-Si,<br />Gyeonggi-Do, Korea</p>
+                                </div>
+                                <div className="p-6 border border-neutral-200 rounded-xl bg-white flex-1">
+                                    <Phone className="w-4 h-4 text-cyan-600 mb-3" />
+                                    <h4 className="font-black text-neutral-900 mb-2 uppercase tracking-wide text-xs">Contact</h4>
+                                    <div className="space-y-1 text-xs text-neutral-600">
+                                        <p>Tel: 070-4346-1844</p>
+                                        <p>Fax: 031-8016-3510</p>
+                                        <p>hs-tech@hs-tech.co.kr</p>
+                                        <p className="text-neutral-400 pt-1">Reg. No. 144-81-08640</p>
+                                    </div>
                                 </div>
                             </div>
                         </div>
