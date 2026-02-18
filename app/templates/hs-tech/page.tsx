@@ -71,53 +71,56 @@ function ProductModal({ product, onClose }: { product: any; onClose: () => void 
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.15 }}
-            className="fixed inset-0 z-[300] bg-black/50 backdrop-blur-sm flex items-center justify-center p-4"
+            className="fixed inset-0 z-[300] bg-black/60 backdrop-blur-sm flex items-center justify-center p-4 md:p-8"
             onClick={onClose}
         >
             <motion.div
-                initial={{ opacity: 0, scale: 0.96, y: 16 }}
+                initial={{ opacity: 0, scale: 0.97, y: 20 }}
                 animate={{ opacity: 1, scale: 1, y: 0 }}
-                exit={{ opacity: 0, scale: 0.96, y: 16 }}
+                exit={{ opacity: 0, scale: 0.97, y: 20 }}
                 transition={{ duration: 0.2 }}
-                className="bg-white rounded-2xl w-full max-w-3xl max-h-[88vh] overflow-y-auto shadow-2xl border border-neutral-200"
+                className="bg-white rounded-2xl w-full max-w-5xl max-h-[92vh] overflow-y-auto shadow-2xl border border-neutral-200 flex flex-col"
                 onClick={e => e.stopPropagation()}
             >
                 {/* Header */}
-                <div className="flex items-start justify-between p-6 border-b border-neutral-100">
+                <div className="flex items-start justify-between px-8 py-6 border-b border-neutral-100 shrink-0">
                     <div>
                         <p className="text-[10px] text-cyan-600 font-black uppercase tracking-[0.3em] mb-1">{product.subtitle}</p>
-                        <h2 className="text-2xl font-black text-neutral-900 tracking-tight">{product.title}</h2>
+                        <h2 className="text-3xl font-black text-neutral-900 tracking-tight">{product.title}</h2>
                     </div>
-                    <button onClick={onClose} className="p-2 hover:bg-neutral-100 rounded-lg transition-colors ml-4 shrink-0">
-                        <X className="w-5 h-5 text-neutral-400" />
+                    <button onClick={onClose} className="p-2 hover:bg-neutral-100 rounded-lg transition-colors ml-6 shrink-0 mt-1">
+                        <X className="w-6 h-6 text-neutral-400" />
                     </button>
                 </div>
 
-                {/* Body */}
-                <div className="p-6 grid grid-cols-1 md:grid-cols-2 gap-6">
+                {/* Body — top section: image left, desc+specs right */}
+                <div className="px-8 py-6 grid grid-cols-1 md:grid-cols-[2fr_3fr] gap-8">
                     {/* Image */}
-                    <div className="bg-neutral-50 rounded-xl p-6 flex items-center justify-center min-h-48 border border-neutral-100">
+                    <div className="bg-neutral-50 rounded-2xl p-8 flex items-center justify-center min-h-64 border border-neutral-100">
                         {product.image ? (
                             // eslint-disable-next-line @next/next/no-img-element
-                            <img src={product.image} alt={product.title} className="max-h-52 w-full object-contain" />
+                            <img src={product.image} alt={product.title} className="max-h-72 w-full object-contain" />
                         ) : (
-                            <div className="text-neutral-300 text-2xl font-black tracking-tighter text-center">{product.title}</div>
+                            <div className="text-neutral-300 text-xl font-black tracking-tighter text-center uppercase">{product.title}</div>
                         )}
                     </div>
 
                     {/* Info */}
-                    <div className="flex flex-col">
+                    <div className="flex flex-col gap-5">
                         {product.desc && (
-                            <p className="text-sm text-neutral-600 leading-relaxed mb-5">{product.desc}</p>
+                            <p className="text-sm text-neutral-600 leading-relaxed">{product.desc}</p>
                         )}
                         {product.specs?.length > 0 && (
-                            <div className="border border-neutral-200 rounded-xl overflow-hidden mb-5">
-                                <table className="w-full text-xs">
+                            <div className="border border-neutral-200 rounded-xl overflow-hidden">
+                                <div className="bg-neutral-900 px-4 py-2">
+                                    <span className="text-[10px] text-neutral-400 font-black uppercase tracking-[0.2em]">Specifications</span>
+                                </div>
+                                <table className="w-full text-sm">
                                     <tbody>
                                         {product.specs.map((spec: any, i: number) => (
                                             <tr key={i} className={i % 2 === 0 ? 'bg-neutral-50' : 'bg-white'}>
-                                                <td className="py-2.5 px-4 text-neutral-400 font-bold uppercase tracking-wider w-2/5 border-r border-neutral-100">{spec.label}</td>
-                                                <td className="py-2.5 px-4 text-neutral-800 font-medium">{spec.value}</td>
+                                                <td className="py-3 px-4 text-neutral-500 font-bold uppercase tracking-wide text-xs w-[38%] border-r border-neutral-100 align-top pt-3">{spec.label}</td>
+                                                <td className="py-3 px-4 text-neutral-800 font-medium whitespace-pre-line leading-relaxed">{spec.value}</td>
                                             </tr>
                                         ))}
                                     </tbody>
@@ -126,7 +129,7 @@ function ProductModal({ product, onClose }: { product: any; onClose: () => void 
                         )}
                         {product.datasheet && (
                             <a href={product.datasheet} target="_blank" rel="noreferrer"
-                                className="inline-flex items-center gap-2 text-xs font-black text-neutral-500 hover:text-cyan-600 uppercase tracking-widest border border-neutral-200 rounded-lg px-4 py-2.5 hover:border-cyan-500/40 transition-all self-start">
+                                className="inline-flex items-center gap-2 text-xs font-black text-white bg-cyan-600 hover:bg-cyan-700 uppercase tracking-widest rounded-lg px-5 py-3 transition-all self-start shadow-sm">
                                 <ExternalLink className="w-3.5 h-3.5" />
                                 Download Datasheet
                             </a>
@@ -136,10 +139,10 @@ function ProductModal({ product, onClose }: { product: any; onClose: () => void 
 
                 {/* Gallery */}
                 {product.gallery?.length > 1 && (
-                    <div className="px-6 pb-6 flex gap-2 overflow-x-auto">
+                    <div className="px-8 pb-8 flex gap-3 overflow-x-auto">
                         {product.gallery.map((img: string, i: number) => (
                             // eslint-disable-next-line @next/next/no-img-element
-                            <img key={i} src={img} alt="" className="h-16 w-16 object-contain rounded-lg border border-neutral-200 bg-neutral-50 p-1 shrink-0" />
+                            <img key={i} src={img} alt="" className="h-20 w-20 object-contain rounded-xl border border-neutral-200 bg-neutral-50 p-2 shrink-0 hover:border-cyan-400 transition-colors cursor-pointer" />
                         ))}
                     </div>
                 )}
