@@ -651,18 +651,53 @@ function HSTechContent() {
                             <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-600 to-sky-400">Partners.</span>
                         </h2>
                         <p className="text-sm text-neutral-500 text-center mb-16 max-w-xl mx-auto">Official authorized distributor of world-class precision measurement brands.</p>
-                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-                            {Object.entries(BRANDS).map(([key, data]: [string, any]) => (
-                                <Link key={key} href={`/templates/hs-tech?tab=${key}`}
-                                    className="group block p-8 border border-neutral-200 rounded-xl bg-white hover:border-cyan-500 hover:shadow-sm transition-all">
-                                    {data.logo && (
-                                        // eslint-disable-next-line @next/next/no-img-element
-                                        <img src={data.logo} alt={data.label} className="h-10 object-contain mb-6 grayscale group-hover:grayscale-0 transition-all" />
-                                    )}
-                                    <h3 className="text-xl font-black text-neutral-900 mb-2 uppercase tracking-tight group-hover:text-cyan-600 transition-colors">{data.label}</h3>
-                                    <p className="text-xs text-neutral-500 leading-relaxed">{data.desc}</p>
-                                </Link>
-                            ))}
+                        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                            {Object.entries(BRANDS).map(([key, data]: [string, any]) => {
+                                const productCount = data.categories.reduce((acc: number, cat: string) => acc + ((DB[cat] as any[])?.length || 0), 0)
+                                return (
+                                    <Link key={key} href={`/templates/hs-tech?tab=${key}`}
+                                        className="group relative flex flex-col p-8 border border-neutral-200 rounded-2xl bg-white hover:border-cyan-400 hover:shadow-lg transition-all duration-300 overflow-hidden">
+                                        {/* Background glow on hover */}
+                                        <div className="absolute inset-0 bg-gradient-to-br from-cyan-50 to-sky-50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
+
+                                        {/* Logo */}
+                                        <div className="relative mb-8 h-14 flex items-center">
+                                            {data.logo && (
+                                                // eslint-disable-next-line @next/next/no-img-element
+                                                <img src={data.logo} alt={data.label} className="h-10 object-contain grayscale group-hover:grayscale-0 transition-all duration-300" />
+                                            )}
+                                        </div>
+
+                                        {/* Brand name & desc */}
+                                        <div className="relative flex-1">
+                                            <h3 className="text-2xl font-black text-neutral-900 mb-2 uppercase tracking-tight group-hover:text-cyan-600 transition-colors">{data.label}</h3>
+                                            <p className="text-sm text-neutral-500 leading-relaxed mb-6">{data.desc}</p>
+
+                                            {/* Category tags */}
+                                            <div className="flex flex-wrap gap-2 mb-6">
+                                                {data.categories.slice(0, 6).map((cat: string) => (
+                                                    <span key={cat} className="px-2.5 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider bg-neutral-100 text-neutral-500 group-hover:bg-cyan-50 group-hover:text-cyan-700 transition-colors">
+                                                        {CATEGORY_INFO[cat]?.title || cat}
+                                                    </span>
+                                                ))}
+                                                {data.categories.length > 6 && (
+                                                    <span className="px-2.5 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider bg-neutral-100 text-neutral-400">
+                                                        +{data.categories.length - 6}
+                                                    </span>
+                                                )}
+                                            </div>
+                                        </div>
+
+                                        {/* Footer: product count + CTA */}
+                                        <div className="relative flex items-center justify-between pt-5 border-t border-neutral-100 group-hover:border-cyan-100 transition-colors">
+                                            <span className="text-xs text-neutral-400 font-medium">{productCount} products</span>
+                                            <span className="flex items-center gap-1 text-xs font-bold text-neutral-400 group-hover:text-cyan-600 transition-colors uppercase tracking-wider">
+                                                Explore <ChevronRight className="w-3.5 h-3.5" />
+                                            </span>
+                                        </div>
+                                    </Link>
+                                )
+                            })}
                         </div>
                     </div>
                 </CatalogPage>
