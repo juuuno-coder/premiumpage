@@ -245,15 +245,33 @@ function CatalogPage({ children, currentTab }: {
 
 // ─── Category Products Layout ─────────────────────────────────────────────────
 function CategoryPage({
-    tab, title, desc, products, parentBrand, onOpen
+    tab, title, desc, products, parentBrand, onOpen, subCategories, keyApps
 }: {
     tab: string; title: string; desc: string
     products: any[]; parentBrand?: string; onOpen: (p: any) => void
+    subCategories?: Array<{ key: string; label: string }>
+    keyApps?: string[]
 }) {
+    const [activeSub, setActiveSub] = useState('all')
+
+    const filtered = subCategories
+        ? (activeSub === 'all' ? products : products.filter((p: any) => p.category === activeSub))
+        : products
+
     const PARENT_LABEL_MAP: Record<string, string> = { cms: 'DATA LOGGER' }
     const parentLabel = parentBrand ? (BRANDS[parentBrand as keyof typeof BRANDS]?.label || PARENT_LABEL_MAP[parentBrand] || parentBrand.toUpperCase()) : null
+    const heroImage = CATEGORY_INFO[tab]?.images?.[0] || null
+
     return (
         <CatalogPage currentTab={tab}>
+            {/* Category Hero strip */}
+            {heroImage && (
+                <div className="w-full border-b border-neutral-100 bg-gradient-to-r from-neutral-50 to-white flex items-center justify-center overflow-hidden" style={{ height: 180 }}>
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img src={heroImage} alt={title} className="h-full max-h-44 w-auto object-contain px-6 py-4" />
+                </div>
+            )}
+
             <div className="pt-8 px-6 max-w-6xl mx-auto">
                 {parentLabel && (
                     <Link href={`/templates/hs-tech?tab=${parentBrand}`}
@@ -262,12 +280,54 @@ function CategoryPage({
                     </Link>
                 )}
                 <h2 className="text-3xl md:text-5xl font-black text-neutral-900 mb-2 tracking-tighter uppercase">{title}</h2>
-                <p className="text-sm text-neutral-500 mb-8 max-w-2xl">{desc}</p>
+                <p className="text-sm text-neutral-500 mb-4 max-w-2xl">{desc}</p>
+
+                {/* Key application tags */}
+                {keyApps && keyApps.length > 0 && (
+                    <div className="flex flex-wrap gap-2 mb-6">
+                        {keyApps.map(app => (
+                            <span key={app} className="px-3 py-1 bg-cyan-50 border border-cyan-100 rounded-full text-[10px] font-bold text-cyan-700 uppercase tracking-wider">
+                                {app}
+                            </span>
+                        ))}
+                    </div>
+                )}
+
+                {/* Sub-category filter tabs */}
+                {subCategories && (
+                    <div className="flex flex-wrap gap-2 mb-8 border-b border-neutral-100 pb-6">
+                        <button
+                            onClick={() => setActiveSub('all')}
+                            className={cn(
+                                "px-4 py-1.5 rounded-full text-[11px] font-black uppercase tracking-widest border transition-all",
+                                activeSub === 'all'
+                                    ? "bg-neutral-900 text-white border-neutral-900"
+                                    : "border-neutral-200 text-neutral-500 hover:border-neutral-400 hover:text-neutral-800"
+                            )}
+                        >
+                            All
+                        </button>
+                        {subCategories.map(sub => (
+                            <button
+                                key={sub.key}
+                                onClick={() => setActiveSub(sub.key)}
+                                className={cn(
+                                    "px-4 py-1.5 rounded-full text-[11px] font-black uppercase tracking-widest border transition-all",
+                                    activeSub === sub.key
+                                        ? "bg-cyan-600 text-white border-cyan-600"
+                                        : "border-neutral-200 text-neutral-500 hover:border-cyan-400 hover:text-cyan-600"
+                                )}
+                            >
+                                {sub.label}
+                            </button>
+                        ))}
+                    </div>
+                )}
             </div>
             <div className="px-6 pb-28 max-w-6xl mx-auto">
-                {products.length > 0 ? (
+                {filtered.length > 0 ? (
                     <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-3">
-                        {products.map((product: any) => (
+                        {filtered.map((product: any) => (
                             <ProductCard key={product.id} product={product} onOpen={() => onOpen(product)} />
                         ))}
                     </div>
@@ -281,12 +341,14 @@ function CategoryPage({
 
 // ─── Brand Overview Layout ────────────────────────────────────────────────────
 function BrandPage({
-    tab, brandKey, headline, sub, desc, logo, categories, onOpen
+    tab, brandKey, headline, sub, desc, logo, categories, applications, onOpen
 }: {
     tab: string; brandKey: string; headline: string; sub: string; desc: string
     logo: string; categories: { tab: string; title: string; desc: string; count: number }[]
+    applications?: { title: string; desc: string }[]
     onOpen?: (p: any) => void
 }) {
+    const [section, setSection] = useState<'products' | 'applications'>('products')
     return (
         <CatalogPage currentTab={tab}>
             <div className="pt-8 pb-28 px-6 max-w-6xl mx-auto">
@@ -296,17 +358,56 @@ function BrandPage({
                     {headline}<br />
                     <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-600 to-sky-400">{sub}</span>
                 </h2>
-                <p className="text-sm text-neutral-500 mb-12 max-w-2xl">{desc}</p>
-                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-                    {categories.map(cat => (
-                        <Link key={cat.tab} href={`/templates/hs-tech?tab=${cat.tab}`}
-                            className="group p-6 border border-neutral-200 rounded-xl bg-white hover:border-cyan-500 hover:shadow-sm transition-all">
-                            <h3 className="text-sm font-black text-neutral-900 group-hover:text-cyan-600 transition-colors uppercase tracking-tight mb-2 leading-tight">{cat.title}</h3>
-                            <p className="text-xs text-neutral-400 leading-relaxed mb-3">{cat.desc}</p>
-                            <p className="text-[10px] text-neutral-300 font-bold uppercase tracking-widest">{cat.count} product{cat.count !== 1 ? 's' : ''}</p>
-                        </Link>
-                    ))}
-                </div>
+                <p className="text-sm text-neutral-500 mb-8 max-w-2xl">{desc}</p>
+
+                {/* Section tabs */}
+                {applications && (
+                    <div className="flex gap-1 p-1 bg-neutral-100 rounded-lg w-fit mb-10">
+                        <button
+                            onClick={() => setSection('products')}
+                            className={cn("px-5 py-2 rounded-md text-xs font-black uppercase tracking-widest transition-all",
+                                section === 'products' ? "bg-white text-neutral-900 shadow-sm" : "text-neutral-500 hover:text-neutral-800")}
+                        >
+                            Products & Services
+                        </button>
+                        <button
+                            onClick={() => setSection('applications')}
+                            className={cn("px-5 py-2 rounded-md text-xs font-black uppercase tracking-widest transition-all",
+                                section === 'applications' ? "bg-white text-neutral-900 shadow-sm" : "text-neutral-500 hover:text-neutral-800")}
+                        >
+                            Applications & Solutions
+                        </button>
+                    </div>
+                )}
+
+                {/* Products & Services grid */}
+                {section === 'products' && (
+                    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+                        {categories.map(cat => (
+                            <Link key={cat.tab} href={`/templates/hs-tech?tab=${cat.tab}`}
+                                className="group p-6 border border-neutral-200 rounded-xl bg-white hover:border-cyan-500 hover:shadow-sm transition-all">
+                                <h3 className="text-sm font-black text-neutral-900 group-hover:text-cyan-600 transition-colors uppercase tracking-tight mb-2 leading-tight">{cat.title}</h3>
+                                <p className="text-xs text-neutral-400 leading-relaxed mb-3">{cat.desc}</p>
+                                <p className="text-[10px] text-neutral-300 font-bold uppercase tracking-widest">{cat.count} product{cat.count !== 1 ? 's' : ''}</p>
+                            </Link>
+                        ))}
+                    </div>
+                )}
+
+                {/* Applications & Solutions grid */}
+                {section === 'applications' && applications && (
+                    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+                        {applications.map((app, i) => (
+                            <div key={i} className="p-6 border border-neutral-200 rounded-xl bg-white hover:border-cyan-400 hover:shadow-sm transition-all">
+                                <div className="w-8 h-8 rounded-lg bg-cyan-50 border border-cyan-100 flex items-center justify-center mb-4">
+                                    <span className="text-cyan-600 text-xs font-black">{String(i + 1).padStart(2, '0')}</span>
+                                </div>
+                                <h3 className="text-sm font-black text-neutral-900 uppercase tracking-tight mb-2 leading-tight">{app.title}</h3>
+                                <p className="text-xs text-neutral-400 leading-relaxed">{app.desc}</p>
+                            </div>
+                        ))}
+                    </div>
+                )}
             </div>
         </CatalogPage>
     )
@@ -539,7 +640,7 @@ function HSTechContent() {
                 <BrandPage
                     tab="vaisala" brandKey="VAISALA"
                     headline="World Leader in" sub="Measurement."
-                    desc="Vaisala has been a pioneer in environmental and industrial measurement for over 80 years, delivering reliable data across 8 core sensing disciplines including humidity, dewpoint, CO2, pressure, and weather."
+                    desc="Vaisala, founded in 1936 in Finland, is a global leader in environmental and industrial measurement with over 80 years of expertise. Trusted by scientists, engineers, and industries in 150+ countries, Vaisala delivers unmatched accuracy for humidity, dewpoint, CO₂, barometric pressure, and weather sensing. HS TECH is the exclusive authorized distributor of Vaisala instruments in Korea and Vietnam."
                     logo="/templates/hs-tech/images/brands/vaisala.svg"
                     categories={(BRANDS.vaisala.categories || []).map((catKey: string) => ({
                         tab: catKey,
@@ -547,6 +648,16 @@ function HSTechContent() {
                         desc: CATEGORY_INFO[catKey]?.desc || '',
                         count: (DB[catKey] as any[] || []).length,
                     }))}
+                    applications={[
+                        { title: 'Semiconductor', desc: 'Precise humidity and dewpoint control in cleanrooms and lithography processes.' },
+                        { title: 'Plant & Process', desc: 'Reliable monitoring for industrial drying, coating, and chemical processes.' },
+                        { title: 'Automotive', desc: 'Environmental testing in paint booths, engine test cells, and EV battery production.' },
+                        { title: 'Marine & Offshore', desc: 'Weather observation and atmospheric measurement at sea.' },
+                        { title: 'Agriculture', desc: 'Crop storage humidity control and greenhouse climate management.' },
+                        { title: 'Power Industry', desc: 'Transformer oil moisture and hydrogen monitoring for grid asset protection.' },
+                        { title: 'HVAC & Buildings', desc: 'Indoor air quality and energy-efficient building automation.' },
+                        { title: 'Life Science', desc: 'Sterile environment monitoring, bio-decontamination, and incubator control.' },
+                    ]}
                     onOpen={open}
                 />
             )}
@@ -555,37 +666,61 @@ function HSTechContent() {
             {activeTab === 'humidity' && (
                 <CategoryPage tab="humidity" title="Humidity" parentBrand="vaisala" onOpen={open}
                     desc="Best-in-class humidity measurement instruments for industrial, HVAC, handheld, and OEM applications."
-                    products={DB.humidity as any[] || []} />
+                    products={DB.humidity as any[] || []}
+                    keyApps={['Cleanroom', 'Pharmaceutical', 'Semiconductor', 'HVAC', 'Food & Beverage', 'Greenhouse']}
+                    subCategories={[
+                        { key: 'industrial',      label: 'Industrial' },
+                        { key: 'explosion_proof', label: 'Explosion Proof' },
+                        { key: 'hvac',            label: 'HVAC' },
+                        { key: 'handheld',        label: 'Handheld' },
+                        { key: 'probe',           label: 'Module / Probe' },
+                    ]} />
             )}
             {activeTab === 'dewpoint' && (
                 <CategoryPage tab="dewpoint" title="Dewpoint" parentBrand="vaisala" onOpen={open}
                     desc="Reliable dewpoint measurement for compressed air dryers, cleanrooms, and industrial gas drying applications."
-                    products={DB.dewpoint as any[] || []} />
+                    products={DB.dewpoint as any[] || []}
+                    keyApps={['Compressed Air', 'Dry Gas', 'Lithium Battery', 'Semiconductor', 'Natural Gas']}
+                    subCategories={[
+                        { key: 'fixed',    label: 'Fixed Transmitter' },
+                        { key: 'portable', label: 'Portable' },
+                        { key: 'module',   label: 'Module / OEM' },
+                    ]} />
             )}
             {activeTab === 'co2' && (
                 <CategoryPage tab="co2" title="Carbon Dioxide" parentBrand="vaisala" onOpen={open}
                     desc="Accurate CO2 monitoring for indoor air quality, HVAC systems, incubators, and industrial processes."
-                    products={DB.co2 as any[] || []} />
+                    products={DB.co2 as any[] || []}
+                    keyApps={['IAQ / HVAC', 'Incubator', 'Greenhouse', 'Food Storage', 'Life Science']}
+                    subCategories={[
+                        { key: 'probe',       label: 'CO₂ Probe' },
+                        { key: 'transmitter', label: 'Transmitter' },
+                        { key: 'handheld',    label: 'Handheld' },
+                    ]} />
             )}
             {activeTab === 'oil' && (
                 <CategoryPage tab="oil" title="Moisture in Oil" parentBrand="vaisala" onOpen={open}
                     desc="Transformer oil moisture and hydrogen gas monitoring for power industry asset protection."
-                    products={DB.oil as any[] || []} />
+                    products={DB.oil as any[] || []}
+                    keyApps={['Power Transformer', 'Grid Substation', 'Industrial Oil System']} />
             )}
             {activeTab === 'barometer' && (
                 <CategoryPage tab="barometer" title="Barometric Pressure" parentBrand="vaisala" onOpen={open}
                     desc="High-accuracy digital barometers for meteorological, aviation, and industrial pressure measurement."
-                    products={DB.barometer as any[] || []} />
+                    products={DB.barometer as any[] || []}
+                    keyApps={['Meteorology', 'Aviation', 'Calibration Lab', 'Research']} />
             )}
             {activeTab === 'weather' && (
                 <CategoryPage tab="weather" title="Weather" parentBrand="vaisala" onOpen={open}
                     desc="All-in-one weather stations and individual meteorological sensors for outdoor environmental monitoring."
-                    products={DB.weather as any[] || []} />
+                    products={DB.weather as any[] || []}
+                    keyApps={['Airport', 'Road / Highway', 'Agriculture', 'Marine', 'Smart City']} />
             )}
             {activeTab === 'h2o2' && (
                 <CategoryPage tab="h2o2" title="H₂O₂ Monitoring" parentBrand="vaisala" onOpen={open}
                     desc="Hydrogen peroxide vapor concentration measurement for bio-decontamination processes in pharmaceutical and healthcare."
-                    products={DB.h2o2 as any[] || []} />
+                    products={DB.h2o2 as any[] || []}
+                    keyApps={['Bio-decontamination', 'Pharmaceutical', 'Hospital', 'Isolator']} />
             )}
             {activeTab === 'cms' && (
                 <BrandPage
@@ -623,6 +758,12 @@ function HSTechContent() {
                         { tab: 'setra_sensor', title: 'Differential Pressure (Sensor)', desc: 'High-accuracy DP sensors for HVAC and filtration.', count: setraSensor.length },
                         { tab: 'setra_ind',    title: 'Industrial Pressure', desc: 'Rugged stainless steel industrial transducers.', count: setraInd.length },
                     ]}
+                    applications={[
+                        { title: 'Cleanroom Manufacturing', desc: 'Maintaining ISO class differential pressure between cleanroom zones for contamination control.' },
+                        { title: 'Isolation Rooms', desc: 'Negative and positive pressure monitoring in hospital isolation and operating rooms.' },
+                        { title: 'Compounding Pharmacies', desc: 'USP 797/800 compliant room pressure verification for sterile drug preparation.' },
+                        { title: 'CEMS & Industrial', desc: 'Continuous emissions and stack differential pressure monitoring in industrial plants.' },
+                    ]}
                     onOpen={open}
                 />
             )}
@@ -654,6 +795,12 @@ function HSTechContent() {
                     categories={[
                         { tab: 'jumo_liquid',  title: 'Liquid Analysis', desc: 'pH electrodes, transmitters, and conductivity sensors.', count: jumoLiquid.length },
                         { tab: 'jumo_control', title: 'Control & Recording', desc: 'PID controllers and paperless recorders.', count: jumoControl.length },
+                    ]}
+                    applications={[
+                        { title: 'Water & Wastewater', desc: 'pH, conductivity, and turbidity monitoring for drinking water treatment and effluent compliance.' },
+                        { title: 'Pharmaceutical & Biotech', desc: 'Precise liquid parameter control for sterile manufacturing and bioreactor processes.' },
+                        { title: 'Semiconductor', desc: 'Ultra-pure water quality monitoring for wafer cleaning and etching processes.' },
+                        { title: 'HVAC & Cooling Towers', desc: 'Water quality management to prevent corrosion and biological growth in cooling systems.' },
                     ]}
                     onOpen={open}
                 />
