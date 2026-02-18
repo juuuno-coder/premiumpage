@@ -340,15 +340,18 @@ function CategoryPage({
 }
 
 // ─── Brand Overview Layout ────────────────────────────────────────────────────
+type AppSection = { label: string; items: { title: string; desc: string }[] }
+
 function BrandPage({
-    tab, brandKey, headline, sub, desc, logo, categories, applications, onOpen
+    tab, brandKey, headline, sub, desc, logo, categories, applicationSections, onOpen
 }: {
     tab: string; brandKey: string; headline: string; sub: string; desc: string
     logo: string; categories: { tab: string; title: string; desc: string; count: number }[]
-    applications?: { title: string; desc: string }[]
+    applicationSections?: AppSection[]
     onOpen?: (p: any) => void
 }) {
-    const [section, setSection] = useState<'products' | 'applications'>('products')
+    const [sectionIdx, setSectionIdx] = useState<number>(-1) // -1 = products
+
     return (
         <CatalogPage currentTab={tab}>
             <div className="pt-8 pb-28 px-6 max-w-6xl mx-auto">
@@ -361,27 +364,29 @@ function BrandPage({
                 <p className="text-sm text-neutral-500 mb-8 max-w-2xl">{desc}</p>
 
                 {/* Section tabs */}
-                {applications && (
-                    <div className="flex gap-1 p-1 bg-neutral-100 rounded-lg w-fit mb-10">
+                {applicationSections && (
+                    <div className="flex flex-wrap gap-1 p-1 bg-neutral-100 rounded-xl w-fit mb-10">
                         <button
-                            onClick={() => setSection('products')}
-                            className={cn("px-5 py-2 rounded-md text-xs font-black uppercase tracking-widest transition-all",
-                                section === 'products' ? "bg-white text-neutral-900 shadow-sm" : "text-neutral-500 hover:text-neutral-800")}
+                            onClick={() => setSectionIdx(-1)}
+                            className={cn("px-4 py-2 rounded-lg text-[11px] font-black uppercase tracking-widest transition-all",
+                                sectionIdx === -1 ? "bg-white text-neutral-900 shadow-sm" : "text-neutral-500 hover:text-neutral-800")}
                         >
                             Products & Services
                         </button>
-                        <button
-                            onClick={() => setSection('applications')}
-                            className={cn("px-5 py-2 rounded-md text-xs font-black uppercase tracking-widest transition-all",
-                                section === 'applications' ? "bg-white text-neutral-900 shadow-sm" : "text-neutral-500 hover:text-neutral-800")}
-                        >
-                            Applications & Solutions
-                        </button>
+                        {applicationSections.map((sec, i) => (
+                            <button key={i}
+                                onClick={() => setSectionIdx(i)}
+                                className={cn("px-4 py-2 rounded-lg text-[11px] font-black uppercase tracking-widest transition-all",
+                                    sectionIdx === i ? "bg-white text-neutral-900 shadow-sm" : "text-neutral-500 hover:text-neutral-800")}
+                            >
+                                {sec.label}
+                            </button>
+                        ))}
                     </div>
                 )}
 
                 {/* Products & Services grid */}
-                {section === 'products' && (
+                {sectionIdx === -1 && (
                     <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
                         {categories.map(cat => (
                             <Link key={cat.tab} href={`/templates/hs-tech?tab=${cat.tab}`}
@@ -394,20 +399,22 @@ function BrandPage({
                     </div>
                 )}
 
-                {/* Applications & Solutions grid */}
-                {section === 'applications' && applications && (
-                    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-                        {applications.map((app, i) => (
-                            <div key={i} className="p-6 border border-neutral-200 rounded-xl bg-white hover:border-cyan-400 hover:shadow-sm transition-all">
-                                <div className="w-8 h-8 rounded-lg bg-cyan-50 border border-cyan-100 flex items-center justify-center mb-4">
-                                    <span className="text-cyan-600 text-xs font-black">{String(i + 1).padStart(2, '0')}</span>
+                {/* Application section grids */}
+                {applicationSections && applicationSections.map((sec, i) => (
+                    sectionIdx === i && (
+                        <div key={i} className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+                            {sec.items.map((item, j) => (
+                                <div key={j} className="p-6 border border-neutral-200 rounded-xl bg-white hover:border-cyan-400 hover:shadow-sm transition-all">
+                                    <div className="w-8 h-8 rounded-lg bg-cyan-50 border border-cyan-100 flex items-center justify-center mb-4">
+                                        <span className="text-cyan-600 text-xs font-black">{String(j + 1).padStart(2, '0')}</span>
+                                    </div>
+                                    <h3 className="text-sm font-black text-neutral-900 uppercase tracking-tight mb-2 leading-tight">{item.title}</h3>
+                                    <p className="text-xs text-neutral-400 leading-relaxed">{item.desc}</p>
                                 </div>
-                                <h3 className="text-sm font-black text-neutral-900 uppercase tracking-tight mb-2 leading-tight">{app.title}</h3>
-                                <p className="text-xs text-neutral-400 leading-relaxed">{app.desc}</p>
-                            </div>
-                        ))}
-                    </div>
-                )}
+                            ))}
+                        </div>
+                    )
+                ))}
             </div>
         </CatalogPage>
     )
@@ -648,16 +655,19 @@ function HSTechContent() {
                         desc: CATEGORY_INFO[catKey]?.desc || '',
                         count: (DB[catKey] as any[] || []).length,
                     }))}
-                    applications={[
-                        { title: 'Semiconductor', desc: 'Precise humidity and dewpoint control in cleanrooms and lithography processes.' },
-                        { title: 'Plant & Process', desc: 'Reliable monitoring for industrial drying, coating, and chemical processes.' },
-                        { title: 'Automotive', desc: 'Environmental testing in paint booths, engine test cells, and EV battery production.' },
-                        { title: 'Marine & Offshore', desc: 'Weather observation and atmospheric measurement at sea.' },
-                        { title: 'Agriculture', desc: 'Crop storage humidity control and greenhouse climate management.' },
-                        { title: 'Power Industry', desc: 'Transformer oil moisture and hydrogen monitoring for grid asset protection.' },
-                        { title: 'HVAC & Buildings', desc: 'Indoor air quality and energy-efficient building automation.' },
-                        { title: 'Life Science', desc: 'Sterile environment monitoring, bio-decontamination, and incubator control.' },
-                    ]}
+                    applicationSections={[{
+                        label: 'Applications & Solutions',
+                        items: [
+                            { title: 'Semiconductor', desc: 'Precise humidity and dewpoint control in cleanrooms and lithography processes.' },
+                            { title: 'Plant & Process', desc: 'Reliable monitoring for industrial drying, coating, and chemical processes.' },
+                            { title: 'Automotive', desc: 'Environmental testing in paint booths, engine test cells, and EV battery production.' },
+                            { title: 'Marine & Offshore', desc: 'Weather observation and atmospheric measurement at sea.' },
+                            { title: 'Agriculture', desc: 'Crop storage humidity control and greenhouse climate management.' },
+                            { title: 'Power Industry', desc: 'Transformer oil moisture and hydrogen monitoring for grid asset protection.' },
+                            { title: 'HVAC & Buildings', desc: 'Indoor air quality and energy-efficient building automation.' },
+                            { title: 'Life Science', desc: 'Sterile environment monitoring, bio-decontamination, and incubator control.' },
+                        ]
+                    }]}
                     onOpen={open}
                 />
             )}
@@ -751,18 +761,34 @@ function HSTechContent() {
                 <BrandPage
                     tab="setra" brandKey="SETRA"
                     headline="Premium" sub="Pressure."
-                    desc="SETRA Systems delivers precision pressure transducers and room pressure monitoring solutions for cleanrooms, hospitals, and industrial facilities."
+                    desc="SETRA Systems delivers precision pressure transducers and room pressure monitoring solutions for cleanrooms, hospitals, and industrial facilities. Trusted worldwide for accuracy and reliability."
                     logo="/templates/hs-tech/images/brands/setra.svg"
                     categories={[
-                        { tab: 'setra_visual', title: 'Differential Pressure (Visual)', desc: 'LED and touchscreen room pressure monitors.', count: setraVisual.length },
-                        { tab: 'setra_sensor', title: 'Differential Pressure (Sensor)', desc: 'High-accuracy DP sensors for HVAC and filtration.', count: setraSensor.length },
-                        { tab: 'setra_ind',    title: 'Industrial Pressure', desc: 'Rugged stainless steel industrial transducers.', count: setraInd.length },
+                        { tab: 'setra_visual', title: 'Differential Pressure Indicator', desc: 'LED and touchscreen room pressure monitors for real-time visual display.', count: setraVisual.length },
+                        { tab: 'setra_sensor', title: 'Differential Pressure Sensor', desc: 'High-accuracy DP sensors for HVAC, cleanrooms, and filtration monitoring.', count: setraSensor.length },
+                        { tab: 'setra_ind',    title: 'Industrial Pressure Transducer', desc: 'Rugged stainless steel transducers for harsh industrial process environments.', count: setraInd.length },
                     ]}
-                    applications={[
-                        { title: 'Cleanroom Manufacturing', desc: 'Maintaining ISO class differential pressure between cleanroom zones for contamination control.' },
-                        { title: 'Isolation Rooms', desc: 'Negative and positive pressure monitoring in hospital isolation and operating rooms.' },
-                        { title: 'Compounding Pharmacies', desc: 'USP 797/800 compliant room pressure verification for sterile drug preparation.' },
-                        { title: 'CEMS & Industrial', desc: 'Continuous emissions and stack differential pressure monitoring in industrial plants.' },
+                    applicationSections={[
+                        {
+                            label: 'Applications & Sensor',
+                            items: [
+                                { title: 'Precise Measurement Differential Pressure', desc: 'High-accuracy differential pressure measurement for critical environments requiring ±0.25% FS precision or better, including reference laboratories and calibration facilities.' },
+                                { title: 'Air Conditioning Differential Pressure', desc: 'Monitoring supply, return, and exhaust air pressure differentials in commercial HVAC systems and air handling units for energy optimization.' },
+                                { title: 'Precision Measurement Pressure Sensor', desc: 'Absolute and gauge pressure measurement for industrial process control, leak testing, and quality assurance applications.' },
+                                { title: 'Cooling and Air Conditioning Pressure', desc: 'Refrigerant pressure monitoring in cooling systems, chiller plants, and commercial HVAC installations for performance and safety.' },
+                                { title: 'UHP Pressure Sensor', desc: 'Ultra-high purity pressure sensing for semiconductor process gas lines, cleanroom air systems, and pharmaceutical manufacturing with wetted stainless or PTFE materials.' },
+                                { title: 'Barometric Pressure Sensor', desc: 'Atmospheric reference pressure measurement for altitude compensation, weather monitoring, and environmental control systems.' },
+                            ]
+                        },
+                        {
+                            label: 'Applications & Solution',
+                            items: [
+                                { title: 'Setra CEMS™', desc: 'Continuous Emissions Monitoring System solution using Setra\'s precision differential pressure sensors to monitor stack flow velocity, draft, and filter pressure drop in power plants and industrial stacks.' },
+                                { title: 'Cleanroom Manufacturing', desc: 'Maintaining ISO-classified differential pressure cascades between cleanroom zones (e.g., ISO 5→ISO 7→corridor) to prevent particle ingress and ensure GMP compliance in semiconductor and pharmaceutical manufacturing.' },
+                                { title: 'Isolation & Treatment Rooms', desc: 'Negative pressure isolation rooms (airborne infection) and positive pressure protective environments in hospitals, monitored in real-time with Setra\'s visual pressure indicators to prevent cross-contamination.' },
+                                { title: 'Compounding Pharmacies', desc: 'USP <797> and <800> compliant pressure monitoring for sterile compounding suites, hazardous drug buffer rooms, and ante-rooms — ensuring proper pressure relationships at all times.' },
+                            ]
+                        }
                     ]}
                     onOpen={open}
                 />
@@ -796,12 +822,15 @@ function HSTechContent() {
                         { tab: 'jumo_liquid',  title: 'Liquid Analysis', desc: 'pH electrodes, transmitters, and conductivity sensors.', count: jumoLiquid.length },
                         { tab: 'jumo_control', title: 'Control & Recording', desc: 'PID controllers and paperless recorders.', count: jumoControl.length },
                     ]}
-                    applications={[
-                        { title: 'Water & Wastewater', desc: 'pH, conductivity, and turbidity monitoring for drinking water treatment and effluent compliance.' },
-                        { title: 'Pharmaceutical & Biotech', desc: 'Precise liquid parameter control for sterile manufacturing and bioreactor processes.' },
-                        { title: 'Semiconductor', desc: 'Ultra-pure water quality monitoring for wafer cleaning and etching processes.' },
-                        { title: 'HVAC & Cooling Towers', desc: 'Water quality management to prevent corrosion and biological growth in cooling systems.' },
-                    ]}
+                    applicationSections={[{
+                        label: 'Applications & Solutions',
+                        items: [
+                            { title: 'Water & Wastewater', desc: 'pH, conductivity, and turbidity monitoring for drinking water treatment and effluent compliance.' },
+                            { title: 'Pharmaceutical & Biotech', desc: 'Precise liquid parameter control for sterile manufacturing and bioreactor processes.' },
+                            { title: 'Semiconductor', desc: 'Ultra-pure water quality monitoring for wafer cleaning and etching processes.' },
+                            { title: 'HVAC & Cooling Towers', desc: 'Water quality management to prevent corrosion and biological growth in cooling systems.' },
+                        ]
+                    }]}
                     onOpen={open}
                 />
             )}
