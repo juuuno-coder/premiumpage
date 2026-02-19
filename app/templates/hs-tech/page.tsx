@@ -126,13 +126,6 @@ function ProductModal({ product, onClose }: { product: any; onClose: () => void 
                                 </table>
                             </div>
                         )}
-                        {product.datasheet && (
-                            <a href={product.datasheet} target="_blank" rel="noreferrer"
-                                className="inline-flex items-center gap-2 text-xs font-black text-white bg-cyan-600 hover:bg-cyan-700 uppercase tracking-widest rounded-lg px-5 py-3 transition-all self-start shadow-sm">
-                                <ExternalLink className="w-3.5 h-3.5" />
-                                Download Datasheet
-                            </a>
-                        )}
                     </div>
                 </div>
 
