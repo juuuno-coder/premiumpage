@@ -1214,103 +1214,58 @@ function HSTechContent() {
                 </CatalogPage>
             )}
 
-            {/* ── 03. Business ── */}
+            {/* ── 03. Business (Support & Services) ── */}
             {activeTab === 'business' && (
                 <CatalogPage currentTab="business">
                     <div className="pt-8 pb-28 px-6 max-w-6xl mx-auto">
-                        <p className="text-[10px] font-black text-cyan-600 tracking-[0.4em] mb-4 uppercase">Industries We Serve</p>
-                        <h2 className="text-4xl md:text-7xl font-black text-neutral-900 mb-6 tracking-tighter uppercase leading-none">
-                            Business<br />
-                            <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-600 to-sky-400">Scope.</span>
+                        <h2 className="text-4xl md:text-6xl font-black text-neutral-900 mb-16 tracking-tighter uppercase leading-none text-center">
+                            Support &<br />
+                            <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-600 to-sky-400">Services.</span>
                         </h2>
-                        <p className="text-sm text-neutral-500 mb-12 max-w-2xl">HS TECH delivers precision measurement solutions across key industrial sectors, providing authorized products, technical support, and calibration services.</p>
 
-                        {/* 8 Industry Verticals */}
-                        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-14">
+                        {/* Support & Services Cards */}
+                        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
                             {[
                                 {
-                                    title: 'Semiconductor',
-                                    icon: Cpu,
-                                    desc: 'Cleanroom humidity and dewpoint control for lithography, diffusion, and CVD processes.',
-                                    apps: ['Cleanroom', 'Lithography', 'Wafer Processing'],
+                                    title: 'Product\nCustomization',
+                                    image: '/templates/hs-tech/images/business/product_customization.jpg',
                                 },
                                 {
-                                    title: 'Plant & Process',
-                                    icon: Factory,
-                                    desc: 'Industrial drying, coating, and chemical process monitoring for optimal yield and quality.',
-                                    apps: ['Drying', 'Coating', 'Chemical'],
+                                    title: 'Technical\nSupport',
+                                    image: '/templates/hs-tech/images/business/technical_support.jpg',
                                 },
                                 {
-                                    title: 'Automotive',
-                                    icon: Car,
-                                    desc: 'Paint booth climate control, engine test cells, and EV battery production monitoring.',
-                                    apps: ['Paint Booths', 'Engine Test', 'EV Battery'],
+                                    title: 'Calibration\n& Repair',
+                                    image: '/templates/hs-tech/images/business/calibration_repair.jpg',
                                 },
                                 {
-                                    title: 'Marine & Offshore',
-                                    icon: Ship,
-                                    desc: 'Weather observation and atmospheric measurement for maritime operations and safety.',
-                                    apps: ['Navigation', 'Offshore', 'Port'],
+                                    title: 'Customer\nTraining',
+                                    image: '/templates/hs-tech/images/business/customer_training.jpg',
                                 },
                                 {
-                                    title: 'Agriculture',
-                                    icon: Leaf,
-                                    desc: 'Crop storage humidity control and greenhouse climate management for maximum yield.',
-                                    apps: ['Greenhouse', 'Grain Storage', 'Cold Room'],
+                                    title: 'Spare Parts',
+                                    image: '/templates/hs-tech/images/business/spare_parts.jpg',
                                 },
-                                {
-                                    title: 'Power Industry',
-                                    icon: Zap,
-                                    desc: 'Transformer oil moisture and hydrogen monitoring for grid asset protection and reliability.',
-                                    apps: ['Transformer', 'Power Plant', 'Grid'],
-                                },
-                                {
-                                    title: 'HVAC & Buildings',
-                                    icon: Building2,
-                                    desc: 'Indoor air quality monitoring and energy-efficient building automation systems.',
-                                    apps: ['IAQ', 'BAS', 'Energy Mgmt'],
-                                },
-                                {
-                                    title: 'Life Science',
-                                    icon: FlaskConical,
-                                    desc: 'Sterile environment monitoring, bio-decontamination, and incubator climate control.',
-                                    apps: ['GMP', 'Bio-decon', 'Incubator'],
-                                },
-                            ].map((sector, i) => (
-                                <div key={i} className="group flex flex-col rounded-2xl border border-neutral-200 bg-white hover:border-cyan-400 hover:shadow-lg transition-all duration-300">
-                                    <div className="p-6 flex-1">
-                                        <div className="w-10 h-10 rounded-xl bg-cyan-50 flex items-center justify-center mb-4 group-hover:bg-cyan-100 transition-colors">
-                                            <sector.icon className="w-5 h-5 text-cyan-600" />
-                                        </div>
-                                        <h3 className="text-sm font-black text-neutral-900 uppercase tracking-tight mb-2 group-hover:text-cyan-600 transition-colors">{sector.title}</h3>
-                                        <p className="text-xs text-neutral-500 leading-relaxed mb-4">{sector.desc}</p>
-                                        <div className="flex flex-wrap gap-1.5">
-                                            {sector.apps.map(app => (
-                                                <span key={app} className="text-[9px] font-bold uppercase tracking-wider text-neutral-400 bg-neutral-50 border border-neutral-100 px-2 py-0.5 rounded-full">{app}</span>
-                                            ))}
-                                        </div>
+                            ].map((service, i) => (
+                                <div key={i} className="relative overflow-hidden rounded-xl bg-[#009999] group hover:shadow-xl transition-all duration-300">
+                                    {/* Title */}
+                                    <div className="relative z-10 p-6 pb-4">
+                                        <h3 className="text-white text-base md:text-lg font-medium leading-tight whitespace-pre-line">
+                                            {service.title}
+                                        </h3>
+                                    </div>
+
+                                    {/* Image */}
+                                    <div className="relative w-full aspect-[4/5] bg-white rounded-t-xl overflow-hidden">
+                                        {/* eslint-disable-next-line @next/next/no-img-element */}
+                                        <img
+                                            src={service.image}
+                                            alt={service.title.replace('\n', ' ')}
+                                            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                                        />
                                     </div>
                                 </div>
                             ))}
-                        </div>
-
-                        {/* Services */}
-                        <div className="border-t border-neutral-200 pt-10">
-                            <h3 className="text-base font-black text-neutral-900 uppercase tracking-tight mb-6">Our Services</h3>
-                            <div className="grid grid-cols-2 md:grid-cols-5 gap-3">
-                                {[
-                                    { label: 'Product Sales', desc: 'Authorized distributor for Korea & Vietnam' },
-                                    { label: 'Technical Support', desc: 'Expert consultation & product selection' },
-                                    { label: 'Calibration', desc: 'Accredited on-site & lab calibration' },
-                                    { label: 'Installation', desc: 'Full installation and system integration' },
-                                    { label: 'Training', desc: 'Hands-on product and application training' },
-                                ].map((s, i) => (
-                                    <div key={i} className="p-4 border border-neutral-200 rounded-xl bg-neutral-50">
-                                        <p className="text-[10px] font-black text-cyan-600 uppercase tracking-widest mb-1.5">{s.label}</p>
-                                        <p className="text-[10px] text-neutral-500 leading-relaxed">{s.desc}</p>
-                                    </div>
-                                ))}
-                            </div>
                         </div>
                     </div>
                 </CatalogPage>
@@ -1349,16 +1304,11 @@ function HSTechContent() {
 
                                             {/* Category tags */}
                                             <div className="flex flex-wrap gap-2 mb-6">
-                                                {data.categories.slice(0, 6).map((cat: string) => (
+                                                {data.categories.map((cat: string) => (
                                                     <span key={cat} className="px-2.5 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider bg-neutral-100 text-neutral-500 group-hover:bg-cyan-50 group-hover:text-cyan-700 transition-colors">
                                                         {CATEGORY_INFO[cat]?.title || cat}
                                                     </span>
                                                 ))}
-                                                {data.categories.length > 6 && (
-                                                    <span className="px-2.5 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider bg-neutral-100 text-neutral-400">
-                                                        +{data.categories.length - 6}
-                                                    </span>
-                                                )}
                                             </div>
                                         </div>
 
