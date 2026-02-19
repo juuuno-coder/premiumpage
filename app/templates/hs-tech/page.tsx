@@ -144,7 +144,7 @@ function ProductModal({ product, onClose }: { product: any; onClose: () => void 
                             <div className="w-full rounded-xl overflow-hidden border border-neutral-200">
                                 {/* eslint-disable-next-line @next/next/no-img-element */}
                                 <img
-                                    src="/templates/hs-tech/images/hmt330_6models_grid.png"
+                                    src="/templates/hs-tech/images/hmt330_6models_grid.jpg"
                                     alt="HMT330 Series - 6 Models"
                                     className="w-full h-auto object-contain"
                                 />
