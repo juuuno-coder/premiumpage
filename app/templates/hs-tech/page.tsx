@@ -9,7 +9,7 @@ import {
 import Link from 'next/link'
 import { useSearchParams } from 'next/navigation'
 import { motion, AnimatePresence } from 'framer-motion'
-import { DB, CATEGORY_INFO, BRANDS } from './data'
+import { DB, CATEGORY_INFO, BRANDS, VAISALA_APPLICATIONS, SETRA_APPLICATIONS_SENSOR, SETRA_APPLICATIONS_SOLUTION, JUMO_CATEGORY_INTRO } from './data'
 import { cn } from '@/lib/utils'
 import CoverView from './components/CoverView'
 
@@ -132,8 +132,8 @@ function ProductModal({ product, onClose }: { product: any; onClose: () => void 
                         </div>
                     )}
 
-                    {/* PRODUCT Section */}
-                    {hasNewSpecStructure && (
+                    {/* PRODUCT Section - Only for HMT330 */}
+                    {hasNewSpecStructure && product.id === 'hmt330' && (
                         <div className="mb-10">
                             <h3 className="text-lg md:text-xl font-black text-neutral-900 mb-4 flex items-center gap-2">
                                 <span className="w-1.5 h-1.5 bg-neutral-900 inline-block"></span>
@@ -256,6 +256,400 @@ function ProductModal({ product, onClose }: { product: any; onClose: () => void 
     )
 }
 
+// ─── Application Detail Modal ─────────────────────────────────────────────────
+function ApplicationDetailModal({ appKey, onClose }: { appKey: string; onClose: () => void }) {
+    useEffect(() => {
+        const handler = (e: KeyboardEvent) => { if (e.key === 'Escape') onClose() }
+        window.addEventListener('keydown', handler)
+        return () => window.removeEventListener('keydown', handler)
+    }, [onClose])
+
+    const appData = VAISALA_APPLICATIONS[appKey]
+    if (!appData) return null
+
+    return (
+        <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.15 }}
+            className="fixed inset-0 z-[300] bg-black/60 backdrop-blur-sm flex items-center justify-center p-3 md:p-6"
+            onClick={onClose}
+        >
+            <motion.div
+                initial={{ opacity: 0, scale: 0.97, y: 20 }}
+                animate={{ opacity: 1, scale: 1, y: 0 }}
+                exit={{ opacity: 0, scale: 0.97, y: 20 }}
+                transition={{ duration: 0.2 }}
+                className="bg-white rounded-2xl w-full md:w-[90vw] max-h-[92vh] overflow-y-auto shadow-2xl border border-neutral-200 flex flex-col"
+                onClick={e => e.stopPropagation()}
+            >
+                {/* Header */}
+                <div className="flex items-start justify-between px-6 md:px-10 py-5 border-b border-neutral-100 shrink-0 bg-gradient-to-r from-cyan-50 to-white">
+                    <div>
+                        <p className="text-[10px] text-cyan-600 font-black uppercase tracking-[0.3em] mb-1">VAISALA Applications & Solutions</p>
+                        <h2 className="text-2xl md:text-4xl font-black text-neutral-900 tracking-tight">{appData.title}</h2>
+                        <p className="text-sm text-neutral-500 mt-2">{appData.shortDesc}</p>
+                    </div>
+                    <button onClick={onClose} className="p-2 hover:bg-white rounded-lg transition-colors ml-6 shrink-0 mt-1">
+                        <X className="w-6 h-6 text-neutral-400" />
+                    </button>
+                </div>
+
+                {/* Body */}
+                <div className="px-6 md:px-10 py-8">
+
+                    {/* Applications List */}
+                    {appData.applications && appData.applications.length > 0 && (
+                        <div className="mb-8">
+                            <h3 className="text-lg md:text-xl font-black text-neutral-900 mb-4 flex items-center gap-2">
+                                <span className="w-1.5 h-1.5 bg-cyan-600 inline-block"></span>
+                                Application
+                            </h3>
+                            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
+                                {appData.applications.map((app: any, i: number) => (
+                                    <div key={i} className="p-4 border border-cyan-100 rounded-lg bg-cyan-50/50">
+                                        <p className="text-sm font-bold text-neutral-900">{i + 1}. {app.title}</p>
+                                        {app.items && app.items.length > 0 && (
+                                            <ul className="mt-2 space-y-1">
+                                                {app.items.map((item: string, j: number) => (
+                                                    <li key={j} className="text-xs text-neutral-600">• {item}</li>
+                                                ))}
+                                            </ul>
+                                        )}
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
+                    )}
+
+                    {/* Main Content */}
+                    {appData.content && (
+                        <div className="mb-8">
+                            <p className="text-sm md:text-base text-neutral-700 leading-relaxed whitespace-pre-line">
+                                {appData.content}
+                            </p>
+                        </div>
+                    )}
+
+                    {/* Systems */}
+                    {appData.systems && appData.systems.length > 0 && (
+                        <div className="mb-8">
+                            <h3 className="text-lg md:text-xl font-black text-neutral-900 mb-6 flex items-center gap-2">
+                                <span className="w-1.5 h-1.5 bg-cyan-600 inline-block"></span>
+                                SYSTEM
+                            </h3>
+                            <div className="space-y-8">
+                                {appData.systems.map((system: any, i: number) => (
+                                    <div key={i} className="border-l-4 border-cyan-500 pl-6">
+                                        <h4 className="text-base md:text-lg font-black text-neutral-900 mb-3">{system.title}</h4>
+                                        <p className="text-sm text-neutral-700 leading-relaxed mb-4 whitespace-pre-line">{system.desc}</p>
+
+                                        {/* Features */}
+                                        {system.features && system.features.length > 0 && (
+                                            <div className="mb-4">
+                                                <ul className="space-y-2">
+                                                    {system.features.map((feature: string, j: number) => (
+                                                        <li key={j} className="text-sm text-neutral-600 flex items-start gap-2">
+                                                            <span className="text-cyan-600 mt-1">■</span>
+                                                            <span>{feature}</span>
+                                                        </li>
+                                                    ))}
+                                                </ul>
+                                            </div>
+                                        )}
+
+                                        {/* Recommended Products */}
+                                        {system.recommendedProducts && system.recommendedProducts.length > 0 && (
+                                            <div className="mt-4 p-4 bg-neutral-50 rounded-lg border border-neutral-200">
+                                                <p className="text-xs font-black text-cyan-600 uppercase tracking-wider mb-3">Recommended Products</p>
+                                                <div className="flex flex-wrap gap-2">
+                                                    {system.recommendedProducts.map((productId: string, j: number) => {
+                                                        const product = findProduct(productId)
+                                                        return product ? (
+                                                            <span key={j} className="px-3 py-1.5 bg-white border border-neutral-200 rounded-lg text-xs font-bold text-neutral-700 hover:border-cyan-400 hover:text-cyan-600 transition-colors cursor-pointer">
+                                                                {product.title}
+                                                            </span>
+                                                        ) : null
+                                                    })}
+                                                </div>
+                                            </div>
+                                        )}
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
+                    )}
+
+                    {/* Recommended Products (top-level) */}
+                    {appData.recommendedProducts && appData.recommendedProducts.length > 0 && (
+                        <div className="mt-6 p-6 bg-gradient-to-br from-cyan-50 to-sky-50 rounded-xl border border-cyan-100">
+                            <p className="text-sm font-black text-cyan-700 uppercase tracking-wider mb-4">Recommended Products</p>
+                            <div className="flex flex-wrap gap-3">
+                                {appData.recommendedProducts.map((productId: string, i: number) => {
+                                    const product = findProduct(productId)
+                                    return product ? (
+                                        <span key={i} className="px-4 py-2 bg-white border-2 border-cyan-200 rounded-lg text-sm font-bold text-neutral-800 hover:border-cyan-400 hover:text-cyan-600 transition-colors cursor-pointer shadow-sm">
+                                            {product.title}
+                                        </span>
+                                    ) : null
+                                })}
+                            </div>
+                        </div>
+                    )}
+
+                    {/* External Link */}
+                    {appData.externalLink && (
+                        <div className="mt-6 p-4 bg-neutral-50 rounded-lg border border-neutral-200">
+                            <a href={appData.externalLink} target="_blank" rel="noopener noreferrer"
+                                className="text-sm text-cyan-600 hover:text-cyan-700 font-medium flex items-center gap-2">
+                                <ExternalLink className="w-4 h-4" />
+                                <span>View official Vaisala documentation →</span>
+                            </a>
+                        </div>
+                    )}
+                </div>
+            </motion.div>
+        </motion.div>
+    )
+}
+
+// ─── SETRA Application Detail Modal ───────────────────────────────────────────
+function SetraApplicationDetailModal({ appKey, onClose }: { appKey: string; onClose: () => void }) {
+    useEffect(() => {
+        const handler = (e: KeyboardEvent) => { if (e.key === 'Escape') onClose() }
+        window.addEventListener('keydown', handler)
+        return () => window.removeEventListener('keydown', handler)
+    }, [onClose])
+
+    const appData = SETRA_APPLICATIONS_SENSOR[appKey]
+    if (!appData) return null
+
+    return (
+        <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.15 }}
+            className="fixed inset-0 z-[300] bg-black/60 backdrop-blur-sm flex items-center justify-center p-3 md:p-6"
+            onClick={onClose}
+        >
+            <motion.div
+                initial={{ opacity: 0, scale: 0.97, y: 20 }}
+                animate={{ opacity: 1, scale: 1, y: 0 }}
+                exit={{ opacity: 0, scale: 0.97, y: 20 }}
+                transition={{ duration: 0.2 }}
+                className="bg-white rounded-2xl w-full md:w-[90vw] max-h-[92vh] overflow-y-auto shadow-2xl border border-neutral-200 flex flex-col"
+                onClick={e => e.stopPropagation()}
+            >
+                {/* Header */}
+                <div className="flex items-start justify-between px-6 md:px-10 py-5 border-b border-neutral-100 shrink-0 bg-gradient-to-r from-sky-50 to-white">
+                    <div>
+                        <p className="text-[10px] text-sky-600 font-black uppercase tracking-[0.3em] mb-1">SETRA Applications & Sensor</p>
+                        <h2 className="text-2xl md:text-4xl font-black text-neutral-900 tracking-tight">{appData.title}</h2>
+                        <p className="text-sm text-neutral-500 mt-2">{appData.shortDesc}</p>
+                    </div>
+                    <button onClick={onClose} className="p-2 hover:bg-white rounded-lg transition-colors ml-6 shrink-0 mt-1">
+                        <X className="w-6 h-6 text-neutral-400" />
+                    </button>
+                </div>
+
+                {/* Body */}
+                <div className="px-6 md:px-10 py-8">
+
+                    {/* Main Content */}
+                    {appData.content && (
+                        <div className="mb-8">
+                            <p className="text-sm md:text-base text-neutral-700 leading-relaxed whitespace-pre-line">
+                                {appData.content}
+                            </p>
+                        </div>
+                    )}
+
+                    {/* Product Models with Images */}
+                    {appData.models && appData.models.length > 0 && (
+                        <div className="mb-8">
+                            <h3 className="text-lg md:text-xl font-black text-neutral-900 mb-6 flex items-center gap-2">
+                                <span className="w-1.5 h-1.5 bg-sky-600 inline-block"></span>
+                                Models
+                            </h3>
+                            <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+                                {appData.models.map((model: any, i: number) => (
+                                    <div key={i} className="p-4 border border-sky-100 rounded-xl bg-sky-50/30 flex flex-col items-center">
+                                        {/* Model Image */}
+                                        {model.image && (
+                                            <div className="w-full aspect-square bg-white rounded-lg border border-neutral-200 p-3 mb-3 flex items-center justify-center overflow-hidden">
+                                                {/* eslint-disable-next-line @next/next/no-img-element */}
+                                                <img src={model.image} alt={model.name} className="max-w-full max-h-full object-contain" />
+                                            </div>
+                                        )}
+                                        {/* Model Name */}
+                                        <p className="text-sm font-black text-neutral-900 text-center">{model.name}</p>
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
+                    )}
+
+                    {/* Specification Table */}
+                    {appData.tableData && appData.tableData.length > 0 && (
+                        <div className="mb-8">
+                            <h3 className="text-lg md:text-xl font-black text-neutral-900 mb-6 flex items-center gap-2">
+                                <span className="w-1.5 h-1.5 bg-sky-600 inline-block"></span>
+                                Specifications
+                            </h3>
+                            <div className="overflow-x-auto border border-neutral-200 rounded-xl">
+                                <table className="w-full min-w-[600px]">
+                                    <tbody>
+                                        {appData.tableData.map((row: string[], rowIdx: number) => (
+                                            <tr key={rowIdx} className={rowIdx === 0 ? 'bg-sky-50' : rowIdx % 2 === 0 ? 'bg-neutral-50' : 'bg-white'}>
+                                                {row.map((cell: string, cellIdx: number) => (
+                                                    cellIdx === 0 ? (
+                                                        <th key={cellIdx} className="px-4 py-3 text-left text-xs font-black text-neutral-700 uppercase tracking-wider border-b border-r border-neutral-200 whitespace-nowrap">
+                                                            {cell}
+                                                        </th>
+                                                    ) : (
+                                                        <td key={cellIdx} className="px-4 py-3 text-xs text-neutral-600 border-b border-r border-neutral-200 last:border-r-0 whitespace-pre-line">
+                                                            {cell}
+                                                        </td>
+                                                    )
+                                                ))}
+                                            </tr>
+                                        ))}
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    )}
+                </div>
+            </motion.div>
+        </motion.div>
+    )
+}
+
+// ─── SETRA Solution Modal ─────────────────────────────────────────────────────
+function SetraSolutionModal({ solutionKey, onClose }: { solutionKey: string; onClose: () => void }) {
+    useEffect(() => {
+        const handler = (e: KeyboardEvent) => { if (e.key === 'Escape') onClose() }
+        window.addEventListener('keydown', handler)
+        return () => window.removeEventListener('keydown', handler)
+    }, [onClose])
+
+    const solutionData = SETRA_APPLICATIONS_SOLUTION[solutionKey]
+    if (!solutionData) return null
+
+    return (
+        <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.15 }}
+            className="fixed inset-0 z-[300] bg-black/60 backdrop-blur-sm flex items-center justify-center p-3 md:p-6"
+            onClick={onClose}
+        >
+            <motion.div
+                initial={{ opacity: 0, scale: 0.97, y: 20 }}
+                animate={{ opacity: 1, scale: 1, y: 0 }}
+                exit={{ opacity: 0, scale: 0.97, y: 20 }}
+                transition={{ duration: 0.2 }}
+                className="bg-white rounded-2xl w-full md:w-[90vw] max-h-[92vh] overflow-y-auto shadow-2xl border border-neutral-200 flex flex-col"
+                onClick={e => e.stopPropagation()}
+            >
+                {/* Header */}
+                <div className="flex items-start justify-between px-6 md:px-10 py-5 border-b border-neutral-100 shrink-0 bg-gradient-to-r from-sky-50 to-white">
+                    <div>
+                        <p className="text-[10px] text-sky-600 font-black uppercase tracking-[0.3em] mb-1">SETRA Applications & Solution</p>
+                        <h2 className="text-2xl md:text-4xl font-black text-neutral-900 tracking-tight">{solutionData.title}</h2>
+                        {solutionData.subtitle && (
+                            <p className="text-sm text-neutral-500 mt-2">{solutionData.subtitle}</p>
+                        )}
+                        {solutionData.shortDesc && (
+                            <p className="text-sm text-neutral-600 mt-2 font-medium">{solutionData.shortDesc}</p>
+                        )}
+                    </div>
+                    <button onClick={onClose} className="p-2 hover:bg-white rounded-lg transition-colors ml-6 shrink-0 mt-1">
+                        <X className="w-6 h-6 text-neutral-400" />
+                    </button>
+                </div>
+
+                {/* Body */}
+                <div className="px-6 md:px-10 py-8">
+
+                    {/* Main Content */}
+                    {solutionData.content && (
+                        <div className="mb-8">
+                            <p className="text-sm md:text-base text-neutral-700 leading-relaxed whitespace-pre-line">
+                                {solutionData.content}
+                            </p>
+                        </div>
+                    )}
+
+                    {/* CEMS Applications (Setra CEMS only) */}
+                    {solutionData.cemsApplications && solutionData.cemsApplications.length > 0 && (
+                        <div className="mb-8">
+                            <h3 className="text-lg md:text-xl font-black text-neutral-900 mb-4 flex items-center gap-2">
+                                <span className="w-1.5 h-1.5 bg-sky-600 inline-block"></span>
+                                CEMS Applications
+                            </h3>
+                            <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
+                                {solutionData.cemsApplications.map((app: string, i: number) => (
+                                    <div key={i} className="p-4 border border-sky-100 rounded-lg bg-sky-50/50 text-center">
+                                        <p className="text-sm font-bold text-neutral-900">{app}</p>
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
+                    )}
+
+                    {/* How It Works (Setra CEMS only) */}
+                    {solutionData.howItWorks && (
+                        <div className="mb-8">
+                            <h3 className="text-lg md:text-xl font-black text-neutral-900 mb-6 flex items-center gap-2">
+                                <span className="w-1.5 h-1.5 bg-sky-600 inline-block"></span>
+                                How It Works
+                            </h3>
+
+                            {/* Flow Diagram */}
+                            {solutionData.howItWorks.flowImage && (
+                                <div className="mb-6 rounded-xl overflow-hidden border border-neutral-200 bg-white p-6">
+                                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                                    <img src={solutionData.howItWorks.flowImage} alt="CEMS Flow" className="w-full h-auto" />
+                                </div>
+                            )}
+
+                            {/* Sensor Icons */}
+                            {solutionData.howItWorks.sensorsImage && (
+                                <div className="rounded-xl overflow-hidden border border-neutral-200 bg-white p-6">
+                                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                                    <img src={solutionData.howItWorks.sensorsImage} alt="CEMS Sensors" className="w-full h-auto" />
+                                </div>
+                            )}
+                        </div>
+                    )}
+
+                    {/* Features List */}
+                    {solutionData.features && solutionData.features.length > 0 && (
+                        <div className="mb-8">
+                            <h3 className="text-lg md:text-xl font-black text-neutral-900 mb-6 flex items-center gap-2">
+                                <span className="w-1.5 h-1.5 bg-sky-600 inline-block"></span>
+                                {solutionKey === 'cleanroom' ? 'CEMS Cleanroom Application Features' : 'Features'}
+                            </h3>
+                            <div className="space-y-4">
+                                {solutionData.features.map((feature: any, i: number) => (
+                                    <div key={i} className="border-l-4 border-sky-500 pl-5 py-2">
+                                        <h4 className="text-sm md:text-base font-black text-neutral-900 mb-1">{feature.title}</h4>
+                                        <p className="text-sm text-neutral-600 leading-relaxed">{feature.desc}</p>
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
+                    )}
+                </div>
+            </motion.div>
+        </motion.div>
+    )
+}
+
 // ─── Product Card ─────────────────────────────────────────────────────────────
 function ProductCard({ product, onOpen }: { product: any; onOpen: () => void }) {
     return (
@@ -350,12 +744,13 @@ function CatalogPage({ children, currentTab }: {
 
 // ─── Category Products Layout ─────────────────────────────────────────────────
 function CategoryPage({
-    tab, title, desc, products, parentBrand, onOpen, subCategories, keyApps
+    tab, title, desc, products, parentBrand, onOpen, subCategories, keyApps, introData
 }: {
     tab: string; title: string; desc: string
     products: any[]; parentBrand?: string; onOpen: (p: any) => void
     subCategories?: Array<{ key: string; label: string }>
     keyApps?: string[]
+    introData?: any
 }) {
     const [activeSub, setActiveSub] = useState('all')
 
@@ -395,6 +790,87 @@ function CategoryPage({
                                 {app}
                             </span>
                         ))}
+                    </div>
+                )}
+
+                {/* JUMO Category Introduction */}
+                {introData && (
+                    <div className="mb-10 border-t border-neutral-100 pt-8 mt-6">
+                        <h3 className="text-2xl md:text-4xl font-black text-neutral-900 mb-3 tracking-tight uppercase">
+                            {introData.title}
+                        </h3>
+                        {introData.subtitle && (
+                            <p className="text-lg text-cyan-600 font-bold mb-6">{introData.subtitle}</p>
+                        )}
+                        {introData.description && (
+                            <p className="text-sm text-neutral-600 mb-8 max-w-3xl leading-relaxed">{introData.description}</p>
+                        )}
+
+                        {/* For jumo_temp: products grid */}
+                        {introData.products && !introData.sections && (
+                            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                                {introData.products.map((product: any, idx: number) => (
+                                    <div key={idx} className="border border-neutral-200 rounded-lg p-5 bg-white hover:shadow-md transition-shadow">
+                                        {product.image && (
+                                            <div className="mb-4 h-40 flex items-center justify-center bg-neutral-50 rounded-md overflow-hidden">
+                                                <img src={product.image} alt={product.model} className="max-h-full object-contain p-2" />
+                                            </div>
+                                        )}
+                                        <h4 className="text-lg font-bold text-neutral-900 mb-3 uppercase tracking-tight">{product.model}</h4>
+                                        <ul className="text-xs text-neutral-600 space-y-2">
+                                            {product.features?.map((feat: string, i: number) => (
+                                                <li key={i} className="flex items-start gap-2">
+                                                    <span className="text-cyan-600 font-bold">•</span>
+                                                    <span>{feat}</span>
+                                                </li>
+                                            ))}
+                                        </ul>
+                                    </div>
+                                ))}
+                            </div>
+                        )}
+
+                        {/* For jumo_liquid: sections with products */}
+                        {introData.sections && (
+                            <div className="space-y-12">
+                                {introData.sections.map((section: any, sIdx: number) => (
+                                    <div key={sIdx} className="border-l-4 border-cyan-500 pl-6">
+                                        <h4 className="text-xl font-black text-neutral-900 mb-6 uppercase tracking-tight">{section.title}</h4>
+                                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                                            {section.products.map((product: any, pIdx: number) => (
+                                                <div key={pIdx} className="border border-neutral-200 rounded-lg p-5 bg-white">
+                                                    <h5 className="text-base font-bold text-neutral-900 mb-3 uppercase">{product.model}</h5>
+                                                    <div className="mb-4">
+                                                        <p className="text-xs font-bold text-neutral-500 uppercase tracking-wider mb-2">Features</p>
+                                                        <ul className="text-xs text-neutral-600 space-y-1">
+                                                            {product.features?.map((feat: string, i: number) => (
+                                                                <li key={i} className="flex items-start gap-2">
+                                                                    <span className="text-cyan-600 font-bold">•</span>
+                                                                    <span>{feat}</span>
+                                                                </li>
+                                                            ))}
+                                                        </ul>
+                                                    </div>
+                                                    {product.applications && product.applications.length > 0 && (
+                                                        <div>
+                                                            <p className="text-xs font-bold text-neutral-500 uppercase tracking-wider mb-2">Applications</p>
+                                                            <ul className="text-xs text-neutral-600 space-y-1">
+                                                                {product.applications.map((app: string, i: number) => (
+                                                                    <li key={i} className="flex items-start gap-2">
+                                                                        <span className="text-cyan-600 font-bold">•</span>
+                                                                        <span>{app}</span>
+                                                                    </li>
+                                                                ))}
+                                                            </ul>
+                                                        </div>
+                                                    )}
+                                                </div>
+                                            ))}
+                                        </div>
+                                    </div>
+                                ))}
+                            </div>
+                        )}
                     </div>
                 )}
 
@@ -445,7 +921,7 @@ function CategoryPage({
 }
 
 // ─── Brand Overview Layout ────────────────────────────────────────────────────
-type AppSection = { label: string; items: { title: string; desc: string }[] }
+type AppSection = { label: string; items: { title: string; desc: string; image?: string }[] }
 
 function BrandPage({
     tab, brandKey, headline, sub, desc, logo, categories, applicationSections, onOpen
@@ -456,9 +932,66 @@ function BrandPage({
     onOpen?: (p: any) => void
 }) {
     const [sectionIdx, setSectionIdx] = useState<number>(-1) // -1 = products
+    const [selectedAppKey, setSelectedAppKey] = useState<string | null>(null)
+    const [selectedSetraKey, setSelectedSetraKey] = useState<string | null>(null)
+    const [selectedSetraSolutionKey, setSelectedSetraSolutionKey] = useState<string | null>(null)
+
+    // Map application titles to keys
+    const appTitleToKey: Record<string, string> = {
+        // VAISALA Applications & Solutions
+        'Semiconductor': 'semiconductor',
+        'Plant & Process': 'plant',
+        'Automotive': 'automotive',
+        'Marine & Offshore': 'marine',
+        'Agriculture': 'agriculture',
+        'Power Industry': 'power',
+        'HVAC & Buildings': 'hvac',
+        'Life Science': 'lifescience',
+        // SETRA Applications & Sensor
+        'Precise Measurement Differential Pressure': 'precise_diff_pressure',
+        'Air Conditioning Differential Pressure': 'air_cond_diff_pressure',
+        'Precision Measurement Pressure Sensor': 'precision_pressure',
+        'Cooling and Air Conditioning Pressure': 'cooling_air_cond',
+        'UHP Pressure Sensor': 'uhp_pressure',
+        'Barometric Pressure Sensor': 'barometric',
+        // SETRA Applications & Solution
+        'Setra CEMS™': 'setra_cems',
+        'Cleanroom Manufacturing': 'cleanroom',
+        'Isolation & Treatment Rooms': 'isolation',
+        'Compounding Pharmacies': 'compounding'
+    }
 
     return (
         <CatalogPage currentTab={tab}>
+            {/* Application Detail Modal (VAISALA) */}
+            <AnimatePresence>
+                {selectedAppKey && (
+                    <ApplicationDetailModal
+                        appKey={selectedAppKey}
+                        onClose={() => setSelectedAppKey(null)}
+                    />
+                )}
+            </AnimatePresence>
+
+            {/* SETRA Sensor Application Modal */}
+            <AnimatePresence>
+                {selectedSetraKey && (
+                    <SetraApplicationDetailModal
+                        appKey={selectedSetraKey}
+                        onClose={() => setSelectedSetraKey(null)}
+                    />
+                )}
+            </AnimatePresence>
+
+            {/* SETRA Solution Modal */}
+            <AnimatePresence>
+                {selectedSetraSolutionKey && (
+                    <SetraSolutionModal
+                        solutionKey={selectedSetraSolutionKey}
+                        onClose={() => setSelectedSetraSolutionKey(null)}
+                    />
+                )}
+            </AnimatePresence>
             <div className="pt-8 pb-28 px-6 max-w-6xl mx-auto">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img src={logo} alt={brandKey} className="h-10 object-contain mb-8" />
@@ -508,15 +1041,50 @@ function BrandPage({
                 {applicationSections && applicationSections.map((sec, i) => (
                     sectionIdx === i && (
                         <div key={i} className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
-                            {sec.items.map((item, j) => (
-                                <div key={j} className="p-6 border border-neutral-200 rounded-xl bg-white hover:border-cyan-400 hover:shadow-sm transition-all">
-                                    <div className="w-8 h-8 rounded-lg bg-cyan-50 border border-cyan-100 flex items-center justify-center mb-4">
-                                        <span className="text-cyan-600 text-xs font-black">{String(j + 1).padStart(2, '0')}</span>
-                                    </div>
-                                    <h3 className="text-sm font-black text-neutral-900 uppercase tracking-tight mb-2 leading-tight">{item.title}</h3>
-                                    <p className="text-xs text-neutral-400 leading-relaxed">{item.desc}</p>
-                                </div>
-                            ))}
+                            {sec.items.map((item, j) => {
+                                const appKey = appTitleToKey[item.title]
+                                const isSetraSensor = SETRA_APPLICATIONS_SENSOR[appKey] !== undefined
+                                const isSetraSolution = SETRA_APPLICATIONS_SOLUTION[appKey] !== undefined
+                                const handleClick = () => {
+                                    if (isSetraSensor) {
+                                        setSelectedSetraKey(appKey)
+                                    } else if (isSetraSolution) {
+                                        setSelectedSetraSolutionKey(appKey)
+                                    } else {
+                                        setSelectedAppKey(appKey)
+                                    }
+                                }
+                                return (
+                                    <button
+                                        key={j}
+                                        onClick={handleClick}
+                                        className="relative overflow-hidden border border-neutral-200 rounded-xl bg-white hover:border-cyan-400 hover:shadow-sm transition-all text-left w-full cursor-pointer group"
+                                    >
+                                        {/* Background Image */}
+                                        {item.image && (
+                                            <div className="relative w-full h-48 overflow-hidden">
+                                                {/* eslint-disable-next-line @next/next/no-img-element */}
+                                                <img
+                                                    src={item.image}
+                                                    alt={item.title}
+                                                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                                                />
+                                                {/* Gradient overlay */}
+                                                <div className="absolute inset-0 bg-gradient-to-t from-neutral-900/60 to-transparent" />
+                                            </div>
+                                        )}
+
+                                        {/* Content */}
+                                        <div className="p-6">
+                                            <div className="w-8 h-8 rounded-lg bg-cyan-50 border border-cyan-100 flex items-center justify-center mb-4">
+                                                <span className="text-cyan-600 text-xs font-black">{String(j + 1).padStart(2, '0')}</span>
+                                            </div>
+                                            <h3 className="text-sm font-black text-neutral-900 uppercase tracking-tight mb-2 leading-tight">{item.title}</h3>
+                                            <p className="text-xs text-neutral-400 leading-relaxed">{item.desc}</p>
+                                        </div>
+                                    </button>
+                                )
+                            })}
                         </div>
                     )
                 ))}
@@ -1003,12 +1571,12 @@ function HSTechContent() {
                     applicationSections={[{
                         label: 'Applications & Solutions',
                         items: [
-                            { title: 'Water & Wastewater', desc: 'pH, conductivity, and turbidity monitoring for drinking water treatment plants and effluent compliance.' },
-                            { title: 'Shipbuilding', desc: 'Marine-grade sensors for seawater cooling systems, ballast water treatment, and shipboard process monitoring.' },
-                            { title: 'Pharmaceutical & Biotechnology', desc: 'Precise liquid parameter control for sterile manufacturing, bioreactor processes, and purified water systems.' },
-                            { title: 'Semiconductor & Display', desc: 'Ultra-pure water quality monitoring with high-accuracy conductivity and pH measurement for wafer cleaning and etching.' },
-                            { title: 'Heating & Air Conditioning', desc: 'Water quality management in HVAC systems and cooling towers to prevent corrosion, scaling, and biological growth.' },
-                            { title: 'Aquaculture', desc: 'Continuous pH, dissolved oxygen, and conductivity monitoring for fish farming and recirculating aquaculture systems.' },
+                            { title: 'Water & Wastewater', desc: 'pH, conductivity, and turbidity monitoring for drinking water treatment plants and effluent compliance.', image: '/templates/hs-tech/images/jumo/water_wastewater.jpg' },
+                            { title: 'Shipbuilding', desc: 'Marine-grade sensors for seawater cooling systems, ballast water treatment, and shipboard process monitoring.', image: '/templates/hs-tech/images/jumo/shipbuilding.jpg' },
+                            { title: 'Pharmaceutical & Biotechnology', desc: 'Precise liquid parameter control for sterile manufacturing, bioreactor processes, and purified water systems.', image: '/templates/hs-tech/images/jumo/pharmaceutical.jpg' },
+                            { title: 'Semiconductor & Display', desc: 'Ultra-pure water quality monitoring with high-accuracy conductivity and pH measurement for wafer cleaning and etching.', image: '/templates/hs-tech/images/jumo/semiconductor.jpg' },
+                            { title: 'Heating & Air Conditioning', desc: 'Water quality management in HVAC systems and cooling towers to prevent corrosion, scaling, and biological growth.', image: '/templates/hs-tech/images/jumo/heating.jpg' },
+                            { title: 'Aquaculture', desc: 'Continuous pH, dissolved oxygen, and conductivity monitoring for fish farming and recirculating aquaculture systems.', image: '/templates/hs-tech/images/jumo/aquaculture.jpg' },
                         ]
                     }]}
                     onOpen={open}
@@ -1023,7 +1591,8 @@ function HSTechContent() {
                     keyApps={['Injection Molding', 'Extrusion', 'Hot Runner', 'Compounding', 'Plastics Processing']}
                     subCategories={[
                         { key: 'temperature', label: 'PlastoSENS' },
-                    ]} />
+                    ]}
+                    introData={JUMO_CATEGORY_INTRO.jumo_temp} />
             )}
             {activeTab === 'jumo_liquid' && (
                 <CategoryPage tab="jumo_liquid" title="Liquid Analysis" parentBrand="jumo" onOpen={open}
@@ -1034,12 +1603,14 @@ function HSTechContent() {
                         { key: 'ph_electrode',    label: 'pH Combination Electrodes' },
                         { key: 'ph_transmitter',  label: 'pH Transmitter' },
                         { key: 'conductivity',    label: 'Conductivity Transmitter' },
-                    ]} />
+                    ]}
+                    introData={JUMO_CATEGORY_INTRO.jumo_liquid} />
             )}
             {activeTab === 'jumo_control' && (
                 <CategoryPage tab="jumo_control" title="Control & Recording" parentBrand="jumo" onOpen={open}
                     desc="PID temperature controllers and touchscreen paperless recorders for comprehensive industrial process automation."
-                    products={jumoControl} />
+                    products={jumoControl}
+                    introData={JUMO_CATEGORY_INTRO.jumo_control} />
             )}
 
             {/* ── 22. Contact ── */}

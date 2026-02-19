@@ -314,155 +314,391 @@ export const DB: Record<string, any[]> = {
     humidity: [
         {
             id: 'hmp1_9',
-            title: 'Indigo Smart Probes',
-            subtitle: 'HMP1-HMP9 SERIES',
+            title: 'HMP1 / 3 / 4 / 5 / 7 / 8 / 9',
+            subtitle: 'INDIGO-COMPATIBLE SMART PROBES + TRANSMITTERS',
             category: 'probe',
-            image: '/templates/hs-tech/images/products/hmp1_9_v1.png',
-            gallery: ["/templates/hs-tech/images/products/hmp1_9_v1.png"],
-            desc: 'Intelligent, interchangeable probes for the Vaisala Indigo family.',
+            image: '/templates/hs-tech/images/products/hmp1-9_grid.jpg',
+            gallery: ["/templates/hs-tech/images/products/hmp1-9_grid.jpg"],
+            desc: `The HMP1/3/4/5/7/8/9 are part of the Indigo product family and compatible with Indigo 500 / 200 Series Host Devices and free Insight PC Software.
+
+■ PRODUCT
+
+Intelligent, interchangeable probes for the Vaisala Indigo family with various host device options.
+
+▶ HMP1 : Wall-Mounted RH/T Probe
+▶ HMP4 : High-Pressure Installation
+▶ HMP5 : High-Temperature
+▶ HMP7 : High Humidity
+▶ HMP8 : Pressurized Processes
+▶ HMP9 : Rapidly Changing Environments
+▶ INDIGO201 : Plug & Play Transmitter (Analog)
+▶ INDIGO202 : Plug & Play Transmitter (RS485)
+▶ INDIGO520 : Universal Transmitter (2 probes)`,
             specs: [
-                { label: 'Models', value: 'HMP1, HMP3, HMP4, HMP5, HMP7, HMP8, HMP9' },
-                { label: 'HMP75 Probe (118 mm)', value: 'General purpose\nRH: 0…100% / T: -20…+60°C\nAccuracy: ±1 %RH (0…90%)' },
-                { label: 'HMP76 Probe (328 mm)', value: 'Duct spot-checking (stainless steel)\nRH: 0…100% / T: -50…+120°C\nAccuracy: ±1 %RH (0…90%)' },
-                { label: 'HMP77 Probe (5 m cable)', value: 'Difficult-to-reach areas, on-site calibration\nRH: 0…100% / T: -70…+180°C\nAccuracy: ±1 %RH (0…90%)' },
-                { label: 'Output', value: 'RS-485 Modbus RTU (Indigo compatible)' }
+                {
+                    model: 'HMP1',
+                    application: 'Wall-Mounted RH/T Probe',
+                    typicalApplication: '• Measurement Range: T -40...+60℃\n• Accuracy: ±1.0%RH / ±0.2℃T',
+                    measurementRange: 'RH range: 0...100%\nTemperature range: -70...+180℃ (HMP4/5/7/8)\nTemperature range: -40...+120℃ (HMP9)',
+                    spec: 'Accuracy\n• RH ±0.8%RH (0...90%RH)\n• T ±0.1℃ at 23℃\n\nOutput\nModbus RTU over RS-485\n\nSensor purge provides superior chemical resistance'
+                },
+                {
+                    model: 'HMP4',
+                    application: 'High-Pressure Installation',
+                    typicalApplication: '• Suitable for high pressure installation\n• Operating pressure: 0…10MPa (0...100bar)\n• Example: Compressed air systems in maritime, breathing air, and industrial applications',
+                    measurementRange: '',
+                    spec: ''
+                },
+                {
+                    model: 'HMP5',
+                    application: 'High-Temperature',
+                    typicalApplication: '• 250mm (9.84in) probe allows easy process installation through insulation\n• Example: Baking ovens, pasta dryers and industrial drying kilns',
+                    measurementRange: '',
+                    spec: ''
+                },
+                {
+                    model: 'HMP7',
+                    application: 'High Humidity',
+                    typicalApplication: '• Suitable for high humidity or rapid changes in humidity\n• Probe and sensor warming functions minimize condensation on probe\n• Example: drying and test chambers, combustion air and other humidifiers and meteorological measurement',
+                    measurementRange: '',
+                    spec: ''
+                },
+                {
+                    model: 'HMP8',
+                    application: 'Pressurized Processes',
+                    typicalApplication: '• Suitable for pressurized applications in compressed air systems with valve\n• Example: Pressurized applications in compressed air systems, refrigerant dryers, and other pressurized industrial applications',
+                    measurementRange: '',
+                    spec: ''
+                },
+                {
+                    model: 'HMP9',
+                    application: 'Rapidly Changing Environments',
+                    typicalApplication: '• Suitable for rapidly changing environments where fast response time, measurement performance, and chemical tolerance are essential\n• 5mm (0.2in) diameter miniature probe head\n• Example: Dryers, air handling units, data centers, test chambers, and other humidity measurement applications',
+                    measurementRange: '',
+                    spec: ''
+                },
+                {
+                    model: 'INDIGO201',
+                    application: 'Plug & Play Transmitter',
+                    typicalApplication: '• CH3, Analog output (V&mA)\n• 2 relays\n• Display (optional)',
+                    measurementRange: 'Operating Temperature:\n(without display) -40...+60℃\n(with display) -20...+60℃',
+                    spec: 'IP degree: IP65\nPower supply: 24VAC\nWireless interface for configuration\n\nCompatible probes:\nCO2: GMP251/252\nH2O2: HPP271/272\nRH&T: HMP4/5/7/8\nTemp: TMP1'
+                },
+                {
+                    model: 'INDIGO202',
+                    application: 'Plug & Play Transmitter',
+                    typicalApplication: '• RS485, isolated w/ Modbus RTU\n• 2 relays\n• Display version only',
+                    measurementRange: '',
+                    spec: ''
+                },
+                {
+                    model: 'INDIGO520',
+                    application: 'Universal Transmitter',
+                    typicalApplication: '• Supports two probes simultaneously\n• Touchscreen display\n• IP66 and NEMA 4 rated metal enclosure\n• 2 relays',
+                    measurementRange: 'Operating Temperature: -20...+55℃',
+                    spec: 'IP degree: IP66\n\nCompatible probes:\nHMP 1/3/4/5/7/8/9\nTMP1, DMP5/6/7/8\nGMP251/252, HPP271/272\nMMP8'
+                }
             ],
             datasheet: 'https://www.vaisala.com/sites/default/files/documents/HMP1-9-Datasheet-B211706EN.pdf'
         },
         {
             id: 'hmm170',
-            title: 'HMM170',
-            subtitle: 'HIGH TEMP MODULE',
+            title: 'HMM170 / HMM100 / HMM105',
+            subtitle: 'PRECISION HUMIDITY MODULES FOR OEM APPLICATIONS',
             category: 'probe',
-            image: '/templates/hs-tech/images/products/hmm170_v1.png',
-            gallery: ["/templates/hs-tech/images/products/hmm170_v1.png"],
-            desc: 'Robust humidity module for high temperature applications.',
+            image: '/templates/hs-tech/images/products/hmm170-100-105_grid.jpg',
+            gallery: ["/templates/hs-tech/images/products/hmm170-100-105_grid.jpg"],
+            desc: `Probe type precision humidity modules applicable to chambers, glove boxes, and other equipment.
+
+■ PRODUCT
+
+High-performance humidity modules for environmental chambers, incubators, and OEM equipment integration.
+
+▶ HMM170 : RH+T Environmental Chamber Module
+▶ HMM100 : RH-only High-Temperature Module
+▶ HMM105 : RH-only I2C Module`,
             specs: [
-                { label: 'Application', value: 'Food processing, Baking, Drying' },
-                { label: 'Temp', value: '-70 ... +180 °C' },
-                { label: 'Sensor', value: 'HUMICAP R2' }
+                {
+                    model: 'HMM170',
+                    application: 'RH+T',
+                    typicalApplication: '• Environmental chamber, Incubator, OEM chamber\n• Sensor purge provides superior chemical resistance\n• Probe and sensor warming functions minimize condensation on probe\n• Calculated parameters (Td, a, x, ppm)\n• Sensor options for corrosion tolerance, H2O2 tolerance, and moisture-in-oil measurement',
+                    measurementRange: 'RH range: 0...100%\nTemperature range: -70...+180℃',
+                    spec: 'Accuracy\n• RH ±1%RH (0...90%RH)\n• T ±0.2℃ at 20℃\n\nOutput\nThree analog outputs or RS-485 serial, Modbus'
+                },
+                {
+                    model: 'HMM100',
+                    application: 'RH',
+                    typicalApplication: '• High temperature tolerance, also suitable for heat sterilization (Operating T-range: -70…+180℃)\n• Probe types: Stainless Steel Probe, Plastic Probe (400mm-long option)\n• Sensor option for H2O2 tolerance',
+                    measurementRange: 'RH range: 0...100%\n(Calculated Parameter) Td -20…+100℃',
+                    spec: 'Accuracy\n• RH ±2%RH (0...90%RH)\n• Td ±2℃\n\nOutput\nAnalog Output Types (1 Output Selectable)\n• 2 wire 4...20mA\n• 3 wire 0…1/5/10V/20mA (user configurable by USB)'
+                },
+                {
+                    model: 'HMM105',
+                    application: 'RH',
+                    typicalApplication: '• Digital I2C communication interface available\n• High temperature tolerance, also suitable for heat sterilization (Operating temperature range: -40…+180℃ / short term peak +200℃)\n• Probe head with M10x1 threads',
+                    measurementRange: 'RH range: 0...100%\n(Calculated Parameter) Td -20…+100℃',
+                    spec: 'Accuracy\n• RH ±2%RH (0...90%RH)\n\nOutput\nI2C 5V'
+                }
             ],
             datasheet: 'https://www.vaisala.com/sites/default/files/documents/HMM170-Datasheet-B211698EN.pdf'
         },
         {
             id: 'hmp155',
             title: 'HMP155',
-            subtitle: 'METEOROLOGICAL PROBE',
+            subtitle: 'METEOROLOGICAL HUMIDITY AND TEMPERATURE PROBE',
             category: 'probe',
-            image: '/templates/hs-tech/images/products/hmp155_v1.png',
-            gallery: ["/templates/hs-tech/images/products/hmp155_v1.png"],
-            desc: 'Premium humidity and temperature probe for meteorological applications.',
+            image: '/templates/hs-tech/images/products/hmp155_v1.jpg',
+            gallery: ["/templates/hs-tech/images/products/hmp155_v1.jpg"],
+            desc: `Vaisala's HUMICAP® HMP155 is a plug-and-play sensor that has excellent stability and withstands well even in harsh environments. The probe provides reliable humidity and temperature measurement and it is designed specifically for demanding outdoor applications.
+
+■ PRODUCT
+
+Premium humidity and temperature probe for meteorological applications with weather-proof design.
+
+▶ HMP155 : Meteorology, aviation and road weather, instrumentation`,
             specs: [
-                { label: 'Application', value: 'Meteorology, Aviation, Roads' },
-                { label: 'Range', value: '0 ... 100 %RH\n-80 ... +60 °C' },
-                { label: 'Accuracy', value: '±1.0 %RH' },
-                { label: 'Protection', value: 'IP66' }
+                {
+                    model: 'HMP155',
+                    application: 'RH+T',
+                    typicalApplication: '• Meteorology, aviation and road weather, instrumentation\n• Weather-proof housing IP66\n• Various Output options: V, RS-485, resistive Pt100\n• Optional warmed humidity probe and chemical purge\n• Plug & Play\n• Using with DTR13 and DTR503 radiation shields and a Stevenson screen for long lifetime (optional)',
+                    measurementRange: 'RH range: 0...100%\nTemperature range: -80...+60℃',
+                    spec: 'Accuracy\n• RH ±1%RH (0…90%RH)\n\nOutput\n0…1/5/10V, Resistive Pt100 4-wire connection, RS-485'
+                }
             ],
             datasheet: 'https://www.vaisala.com/sites/default/files/documents/HMP155-Datasheet-B210993EN.pdf'
         },
         {
             id: 'hmp60',
-            title: 'HMP60 / HMP110',
-            subtitle: 'COMPACT PROBE',
+            title: 'HMP60 / HMP63 / HMP110 / HMP113',
+            subtitle: 'COMPACT HUMIDITY AND TEMPERATURE PROBES',
             category: 'probe',
-            image: '/templates/hs-tech/images/products/hmp60_v1.png',
-            gallery: ["/templates/hs-tech/images/products/hmp60_v1.png"],
-            desc: 'Miniature and compact probes for volume applications.',
+            image: '/templates/hs-tech/images/products/hmp60-63-110-113_grid.jpg',
+            gallery: ["/templates/hs-tech/images/products/hmp60-63-110-113_grid.jpg"],
+            desc: `Temperature and humidity probes applicable to chambers, glove boxes, and other equipment.
+
+■ PRODUCT
+
+Miniature and compact probes for OEM and volume applications.
+
+▶ HMP60 : RH+T Stainless Steel Probe (INTERCAP)
+▶ HMP63 : RH+T PC/ABS Probe (INTERCAP)
+▶ HMP110 : RH+T Stainless Steel Probe (HUMICAP)
+▶ HMP113 : RH+T PC/ABS Probe (HUMICAP)`,
             specs: [
-                { label: 'Application', value: 'OEM, Volume applications' },
-                { label: 'Models', value: 'HMP60 (Intercap), HMP110 (Humicap)' },
-                { label: 'Accuracy', value: '±3 %RH (HMP60)\n±1.5 %RH (HMP110)' },
-                { label: 'Housing', value: 'Stainless steel (IP65)' }
+                {
+                    model: 'HMP60',
+                    application: 'RH+T',
+                    typicalApplication: '• Chambers, Glove box, Incubator\n• INTERCAP Sensor\n• Housing material: Stainless steel (IP65)',
+                    measurementRange: 'RH range: 0...100%\nTemperature range: -40...+60℃',
+                    spec: 'Accuracy\n• RH ±3%RH (0…90%RH, 0…+40℃)\n• T ±0.5℃ at 10…30℃'
+                },
+                {
+                    model: 'HMP63',
+                    application: 'RH+T',
+                    typicalApplication: '• Chambers, Glove box, Incubator\n• INTERCAP Sensor\n• Housing material: PC/ABS blend (IP54)',
+                    measurementRange: 'RH range: 0...100%\nTemperature range: -40...+60℃',
+                    spec: 'Accuracy\n• RH ±3%RH (0…90%RH, 0…+40℃)\n• T ±0.5℃ at 10…30℃'
+                },
+                {
+                    model: 'HMP110',
+                    application: 'RH+T',
+                    typicalApplication: '• Chambers, Glove box, Incubator\n• HUMICAP Sensor\n• Housing material: Stainless steel (IP65)',
+                    measurementRange: 'RH range: 0...100%\nTemperature range: -40...+80℃',
+                    spec: 'Accuracy\n• RH ±1.5%RH (0…90%RH, 0…+40℃)\n• T ±0.2℃ at 0…40℃'
+                },
+                {
+                    model: 'HMP113',
+                    application: 'RH+T',
+                    typicalApplication: '• Chambers, Glove box, Incubator\n• HUMICAP Sensor\n• Housing material: PC/ABS blend (IP54)',
+                    measurementRange: 'RH range: 0...100%\nTemperature range: -40...+60℃',
+                    spec: 'Accuracy\n• RH ±1.5%RH (0…90%RH, 0…+40℃)\n• T ±0.2℃ at 0…40℃'
+                }
             ],
             datasheet: 'https://www.vaisala.com/sites/default/files/documents/HMP60-Datasheet-B210973EN.pdf'
         },
         {
             id: 'hmt370ex',
             title: 'HMT370EX Series',
-            subtitle: 'EXPLOSION PROOF TRANSMITTER',
+            subtitle: 'EXPLOSION PROOF HUMIDITY AND TEMPERATURE TRANSMITTER',
             category: 'explosion_proof',
             image: '/templates/hs-tech/images/products/hmt370ex_v1.png',
             gallery: [],
-            desc: 'Designed for hazardous areas. Ideal for fuel storage, chemicals, and pharmaceutical manufacturing.',
+            desc: `VAISALA HMT370EX series are designed for hazardous areas where explosive gases, vapors, or dust may be present. Ideal for fuel storage, chemicals, pharmaceutical manufacturing, and other demanding environments.
+
+■ PRODUCT
+
+Explosion-proof transmitter with intrinsically safe design certified for Zone 1 and Zone 2 hazardous areas.
+
+▶ HMT371 : Wall Mount
+▶ HMT373 : Confined Spaces
+▶ HMT374 : Pressurized Spaces
+▶ HMT375 : High Temperature
+▶ HMT377 : High Humidity
+▶ HMT378 : Pressurized Pipelines`,
             specs: [
-                { label: 'HMT371 (Wall)', value: 'RH: 0…100% RH\nT: -40...+60°C (-40...+140°F)\nProbe diameter: 12 mm' },
-                { label: 'HMT373 (Confined Spaces)', value: 'RH: 0…100% RH\nT (teflon): -40...+120°C\nT (rubber): -40...+80°C\nCable length: 2, 5 or 10 m' },
-                { label: 'HMT374 (Pressurized)', value: 'RH: 0…100% RH\nT: -70…+180°C (-94…+356°F)\nP: 0...10 MPa' },
-                { label: 'HMT375 (High Temp)', value: 'RH: 0…100% RH\nT: -70…+180°C (-94…+356°F)' },
-                { label: 'HMT377 (High Humidity)', value: 'RH: 0…100% RH\nT: -70…+180°C (-94…+356°F)' },
-                { label: 'HMT378 (Pipeline)', value: 'RH: 0…100% RH\nT: -70…+180°C (-94…+356°F)\nP: 0…4 MPa' },
-                { label: 'Accuracy', value: '±0.8 %RH (0…90%)\n±0.1°C @ 23°C PT1000' },
-                { label: 'Output', value: '2-Wire Current (4…20 mA)' },
-                { label: 'IP Rating', value: 'IP66 (NEMA4)' },
-                { label: 'Operating Environment', value: 'Electronics: -40…+60°C\nWith display: -20…+60°C\nStorage: -40…+70°C' },
-                { label: 'Classification', value: 'Korea (KTL): Ex ia IIC T4 Ga\nGlobal (IECEx): Ex ia IIC T4 Ga\nEU (ATEX): II 1G Ex ia IIC T4 Ga\nJapan (CML): Ex ia IIC T4 Ga\nChina (NEPSI): Ex ia IIC T4 Ga' }
+                {
+                    model: 'HMT371',
+                    application: 'Wall Mount',
+                    typicalApplication: 'ATEX/IECEx zone 1, 2, 22\nKTL / CML / NEPSI\nUL Division 1',
+                    measurementRange: 'RH range: 0…100% RH\nTemperature range: -40...+60°C (-40...+140°F)\nProbe diameter: 12 mm',
+                    spec: 'Accuracy\n• ±0.8 %RH (0…90 %RH)\n• ±0.1 ºC @ 23 ºC PT1000\n\nOutput\n2-Wire Current (4…20 mA DC)\n\nIP Rating\nIP66 (NEMA4)\n\nOperating Environment\nElectronics -40…+60°C (-40…+140°F)\nWith display -20…+60°C (-4…+140°F)\nStorage: -40…+70°C (-40…+158°F)\n\nClassification\nKorea (KTL): Ex ia IIC T4 Ga\nGlobal (IECEx): Ex ia IIC T4 Ga\nEU (ATEX): II 1G Ex ia IIC T4 Ga\nJapan (CML): Ex ia IIC T4 Ga\nChina (NEPSI): Ex ia IIC T4 Ga'
+                },
+                {
+                    model: 'HMT373',
+                    application: 'Confined Spaces',
+                    typicalApplication: 'ATEX/IECEx zone 1, 2, 22\nKTL / CML / NEPSI\nUL Division 1',
+                    measurementRange: 'RH range: 0…100% RH\nTemperature range:\n  rubber cable -40...+80°C (-40...+176°F)\n  teflon cable -40...+120°C (-40...+248°F)\nCable length: 2, 5 or 10 m',
+                    spec: ''
+                },
+                {
+                    model: 'HMT374',
+                    application: 'Pressurized Spaces',
+                    typicalApplication: 'ATEX/IECEx zone 1, 2, 22\nKTL / CML / NEPSI\nUL Division 1',
+                    measurementRange: 'RH range: 0…100% RH\nTemperature range: -70...+180°C (-94...+356°F)\nOperating pressure: 0...10 MPa (0...100 bar)',
+                    spec: ''
+                },
+                {
+                    model: 'HMT375',
+                    application: 'High Temperature',
+                    typicalApplication: 'ATEX/IECEx zone 1, 2, 22\nKTL / CML / NEPSI\nUL Division 1',
+                    measurementRange: 'RH range: 0…100% RH\nTemperature range: -70...+180°C (-94...+356°F)',
+                    spec: ''
+                },
+                {
+                    model: 'HMT377',
+                    application: 'High Humidity',
+                    typicalApplication: 'ATEX/IECEx zone 1, 2, 22\nKTL / CML / NEPSI\nUL Division 1',
+                    measurementRange: 'RH range: 0…100% RH\nTemperature range: -70...+180°C (-94...+356°F)',
+                    spec: ''
+                },
+                {
+                    model: 'HMT378',
+                    application: 'Pressurized Pipelines',
+                    typicalApplication: 'ATEX/IECEx zone 1, 2, 22\nKTL / CML / NEPSI\nUL Division 1',
+                    measurementRange: 'RH range: 0…100% RH\nTemperature range: -70...+180°C (-94...+356°F)\nOperating pressure: 0...4 MPa (0...40 bar)',
+                    spec: ''
+                }
             ],
             datasheet: 'https://www.vaisala.com/sites/default/files/documents/HMT370EX-Datasheet-B211738EN.pdf'
         },
         {
             id: 'hmt360',
             title: 'HMT360 Series',
-            subtitle: 'INTRINSICALLY SAFE TRANSMITTER',
+            subtitle: 'INTRINSICALLY SAFE HUMIDITY AND TEMPERATURE TRANSMITTER',
             category: 'explosion_proof',
             image: '/templates/hs-tech/images/products/hmt360_v1.png',
             gallery: [],
-            desc: 'Intrinsically safe humidity and temperature transmitter for hazardous environments.',
+            desc: `VAISALA HMT360 series are intrinsically safe humidity and temperature transmitters designed for Zone 2 and Zone 22 hazardous areas. Suitable for petrochemical, pharmaceutical, and industrial applications where safety is paramount.
+
+■ PRODUCT
+
+Intrinsically safe transmitter certified for Zone 2 and Zone 22 hazardous areas with KGS approval.
+
+▶ HMT361 : Wall Mount
+▶ HMT363 : Duct Type
+▶ HMT364 : High Pressure
+▶ HMT365 : High Temperature
+▶ HMT367 : High Humidity
+▶ HMT368 : Pressurized Pipelines`,
             specs: [
-                { label: 'HMT361 (Wall)', value: 'RH: 0…100% RH\nT: -40...+60°C (-40...+140°F)\nProbe diameter: 12 mm' },
-                { label: 'HMT363 (Duct)', value: 'RH: 0…100% RH\nT (teflon): -40...+120°C\nT (rubber): -40...+80°C\nCable length: 2, 5 or 10 m' },
-                { label: 'HMT364 (High Pressure)', value: 'RH: 0…100% RH\nT: -70…+180°C (-94…+356°F)\nP: 0...10 MPa' },
-                { label: 'HMT365 (High Temp)', value: 'RH: 0…100% RH\nT: -70…+180°C (-94…+356°F)' },
-                { label: 'HMT367 (High Humidity)', value: 'RH: 0…100% RH\nT: -70…+180°C (-94…+356°F)' },
-                { label: 'HMT368 (Pipeline)', value: 'RH: 0…100% RH\nT: -70…+180°C (-94…+356°F)\nP: 0…4 MPa' },
-                { label: 'Accuracy', value: '±1 %RH (0…90%)\n±0.2°C @ 20°C PT1000' },
-                { label: 'Output', value: '2-Wire Current (4…20 mA)' },
-                { label: 'IP Rating', value: 'IP66' },
-                { label: 'Operating Environment', value: 'Electronics: -40…+60°C\nWith display: -20…+60°C\nStorage: -40…+70°C (-40…+158°F)' },
-                { label: 'Classification', value: 'Korea (KOSHA): Ex ia IIC T4\nEU (ATEX): II 1G Ex ia IIC T4 Ga' }
+                {
+                    model: 'HMT361',
+                    application: 'Wall Mount',
+                    typicalApplication: 'ATEX/IECEx zone 2, 22\nKGS',
+                    measurementRange: 'RH range: 0…100% RH\nTemperature range: -40...+60°C (-40...+140°F)\nProbe diameter: 12 mm',
+                    spec: 'Accuracy\n• ±1.7 %RH (0…90 %RH)\n• ±0.2 ºC @ 23 ºC\n\nOutput\n2-Wire Current (4…20 mA DC)\n\nIP Rating\nIP66 (NEMA4)\n\nOperating Environment\nElectronics -40…+60°C (-40…+140°F)\nWith display -20…+60°C (-4…+140°F)\nStorage: -40…+70°C (-40…+158°F)\n\nClassification\nKorea (KGS): Ex ib IIC T4 Gb\nGlobal (IECEx): Ex ib IIC T4 Gb\nEU (ATEX): II 1/2G Ex ib IIC T4 Gb'
+                },
+                {
+                    model: 'HMT363',
+                    application: 'Duct Type',
+                    typicalApplication: 'ATEX/IECEx zone 2, 22\nKGS',
+                    measurementRange: 'RH range: 0…100% RH\nTemperature range:\n  rubber cable -40...+80°C (-40...+176°F)\n  teflon cable -40...+120°C (-40...+248°F)\nCable length: 2, 5 or 10 m',
+                    spec: ''
+                },
+                {
+                    model: 'HMT364',
+                    application: 'High Pressure',
+                    typicalApplication: 'ATEX/IECEx zone 2, 22\nKGS',
+                    measurementRange: 'RH range: 0…100% RH\nTemperature range: -70...+180°C (-94...+356°F)\nOperating pressure: 0...10 MPa (0...100 bar)',
+                    spec: ''
+                },
+                {
+                    model: 'HMT365',
+                    application: 'High Temperature',
+                    typicalApplication: 'ATEX/IECEx zone 2, 22\nKGS',
+                    measurementRange: 'RH range: 0…100% RH\nTemperature range: -70...+180°C (-94...+356°F)',
+                    spec: ''
+                },
+                {
+                    model: 'HMT367',
+                    application: 'High Humidity',
+                    typicalApplication: 'ATEX/IECEx zone 2, 22\nKGS',
+                    measurementRange: 'RH range: 0…100% RH\nTemperature range: -70...+180°C (-94...+356°F)',
+                    spec: ''
+                },
+                {
+                    model: 'HMT368',
+                    application: 'Pressurized Pipelines',
+                    typicalApplication: 'ATEX/IECEx zone 2, 22\nKGS',
+                    measurementRange: 'RH range: 0…100% RH\nTemperature range: -70...+180°C (-94...+356°F)\nOperating pressure: 0...4 MPa (0...40 bar)',
+                    spec: ''
+                }
             ],
             datasheet: 'https://www.vaisala.com/sites/default/files/documents/HMT360-Datasheet-B211737EN.pdf'
         },
         {
             id: 'hmd60',
-            title: 'HMD60 Series',
-            subtitle: 'HUMIDITY AND TEMPERATURE TRANSMITTER',
-            category: 'industrial',
+            title: 'HMD60',
+            subtitle: '±1.5%RH DUCT TRANSMITTER',
+            category: 'hvac',
             image: '/templates/hs-tech/images/products/hmd60_v1.png',
             gallery: ['/templates/hs-tech/images/products/hmd60_v1.png'],
-            desc: `±1.5%RH Transmitters for Demanding HVAC, with a Certificate
-▶ SUS Probe, Aluminum Housing
+            desc: `The all-metal body of the transmitter is well suited for use at building sites and industrial settings. HMD60 series provides state-of-the-art stability and environmental resistance thanks to the Vaisala HUMICAP® R2 sensor.
 
 ■ PRODUCT
 
-Output: RH+T+Td`,
+The measurement accuracy is up to ±1.5 %RH and ±0.1 °C (±0.18 °F). All common humidity parameters are available, including RH, dew point, enthalpy, and wet bulb temperature.
+
+▶ HMD62 : Duct type
+▶ TMD62 : Duct type (T-only)
+▶ HMD65 : Duct type
+▶ HMD60 : Duct type
+▶ TMD60 : Duct type (T-only)`,
             specs: [
                 {
                     model: 'HMD62',
-                    application: 'Duct Type (RH+T)',
-                    typicalApplication: '• HVAC systems\n• cleanrooms\n• pharmaceutical facilities\n• building automation',
+                    application: 'Duct type',
+                    typicalApplication: '• HVAC\n• Cleanroom\n• Aluminum body\n• Probe length: 250mm (HMD60/TMD60 can select 100 mm short probe)\n• IP66 (NEMA 4X)',
                     measurementRange: 'RH range: 0…100% RH\nTemperature range: -20...+80°C (-4...+176°F)',
-                    spec: 'Accuracy\n• ±1.5%RH (0…90%)\n• ±0.1°C @ 20°C PT1000\n\nOutput\n• 2 analog outputs: 4…20 mA\n\nHousing\n• Aluminum body\n• IP66 (NEMA 4X)\n• Probe length: 250 mm (100 mm short probe option)'
-                },
-                {
-                    model: 'HMD65',
-                    application: 'Duct Type (RH+T)',
-                    typicalApplication: '• HVAC systems\n• cleanrooms\n• industrial facilities\n• critical environments',
-                    measurementRange: 'RH range: 0…100% RH\nTemperature range: -20...+80°C (-4...+176°F)',
-                    spec: 'Output\n• 2 analog outputs: 0…10 V\n• Digital: BACnet MS/TP, Modbus RTU\n\nHousing\n• Aluminum body\n• IP66 (NEMA 4X)\n• Probe length: 250 mm'
-                },
-                {
-                    model: 'HMD60',
-                    application: 'Duct Type (Configurable)',
-                    typicalApplication: '• industrial HVAC\n• process monitoring\n• environmental chambers\n• controlled environments',
-                    measurementRange: 'RH range: 0…100% RH\nTemperature range: -20...+80°C (-4...+176°F)',
-                    spec: 'Output\n• Configurable outputs and scale\n• Short probe option available\n\nHousing\n• All-metal body\n• IP66 (NEMA 4X)'
+                    spec: 'Accuracy\n• ±1.5%RH (0…90%)\n• ±0.1°C @ 20°C PT1000\n\nOutput\n• 2 analog outputs: 4…20 mA'
                 },
                 {
                     model: 'TMD62',
-                    application: 'Duct Type (T-only)',
-                    typicalApplication: '• temperature monitoring\n• HVAC systems\n• industrial processes',
+                    application: 'Duct type',
+                    typicalApplication: '• HVAC\n• Cleanroom\n• Aluminum body\n• Probe length: 250mm\n• IP66 (NEMA 4X)',
                     measurementRange: 'Temperature range: -20...+80°C (-4...+176°F)',
-                    spec: 'Accuracy\n• ±0.1°C @ 20°C PT1000\n\nHousing\n• Aluminum body\n• IP66 (NEMA 4X)'
+                    spec: 'Accuracy\n• ±0.1°C @ 20°C PT1000\n\nOutput\n• 1 analog output: 4…20 mA'
+                },
+                {
+                    model: 'HMD65',
+                    application: 'Duct type',
+                    typicalApplication: '• HVAC\n• Cleanroom\n• Aluminum body\n• Probe length: 250mm\n• IP66 (NEMA 4X)',
+                    measurementRange: 'RH range: 0…100% RH\nTemperature range: -20...+80°C (-4...+176°F)',
+                    spec: 'Accuracy\n• ±1.5%RH (0…90%)\n• ±0.1°C @ 20°C PT1000\n\nOutput\n• 2 analog outputs: 0…10 V\n• Digital: BACnet MS/TP, Modbus RTU'
+                },
+                {
+                    model: 'HMD60',
+                    application: 'Duct type',
+                    typicalApplication: '• HVAC\n• Cleanroom\n• Aluminum body\n• Probe length: 250mm (100 mm short probe option)\n• IP66 (NEMA 4X)',
+                    measurementRange: 'RH range: 0…100% RH\nTemperature range: -20...+80°C (-4...+176°F)',
+                    spec: 'Accuracy\n• ±1.5%RH (0…90%)\n• ±0.1°C @ 20°C PT1000\n\nOutput\n• Configurable outputs and scale\n• Short probe option'
+                },
+                {
+                    model: 'TMD60',
+                    application: 'Duct type',
+                    typicalApplication: '• HVAC\n• Cleanroom\n• Aluminum body\n• Probe length: 250mm (100 mm short probe option)\n• IP66 (NEMA 4X)',
+                    measurementRange: 'Temperature range: -20...+80°C (-4...+176°F)',
+                    spec: 'Accuracy\n• ±0.1°C @ 20°C PT1000\n\nOutput\n• 1 analog output: 4…20 mA (configurable scale)\n• Short probe option'
                 }
             ],
             datasheet: 'https://www.vaisala.com/sites/default/files/documents/HMD60-Datasheet-B211704EN.pdf'
@@ -470,81 +706,357 @@ Output: RH+T+Td`,
         {
             id: 'hmw90',
             title: 'HMW90 Series',
-            subtitle: 'HVAC TRANSMITTER (WALL)',
+            subtitle: '±1.7%RH WALL TRANSMITTERS WITH A CERTIFICATE FOR DEMANDING HVAC',
             category: 'hvac',
             image: '/templates/hs-tech/images/products/hmw90_v1.png',
             gallery: [],
-            desc: 'Indoor humidity and temperature transmitter for high-end environments.',
+            desc: `The HMW90 series measures relative humidity and temperature in indoor environments, where high accuracy, stability, and reliable operation are required.
+
+■ PRODUCT
+
+Wall type transmitters with Calibration function Service Port. Optional display versions (D suffix).
+
+▶ TMW92 : T-only
+▶ TMW93 : T-only
+▶ TMW90 : T-only (Configurable)
+▶ HMW92 : RH+T
+▶ HMW92D : RH+T (with Display)
+▶ HMW93 : RH+T
+▶ HMW93D : RH+T (with Display)
+▶ HMW90 : RH+T (Configurable)
+▶ HMW95 : RH+T (Digital)
+▶ HMW95D : RH+T (Digital with Display)`,
             specs: [
-                { label: 'Application', value: 'HVAC, Cleanroom\nWall type transmitter\nDisplay option available (D: HMW92D, HMW93D)' },
-                { label: 'HMW92/93 Measurement Range', value: 'RH: 0…100% RH\nT: -5...+55°C (-23...+131°F)' },
-                { label: 'HMW92 (RH+T)', value: '2-Wire Current (4…20 mA)' },
-                { label: 'HMW93 (RH+T)', value: '3-Wire Voltage (0…5 or 10 V)' },
-                { label: 'HMW95 (RH+T)', value: 'Digital: BACnet / Modbus' },
-                { label: 'HMW90 (RH+T)', value: 'Configurable analog output' },
-                { label: 'TMW90 Series (T-only)', value: 'T only measurement\n2-Wire Current or 3-Wire Voltage or Configurable' }
+                {
+                    model: 'TMW92',
+                    application: 'T-only',
+                    typicalApplication: '• Wall Type Transmitter\n• for HVAC, Cleanroom\n• On-site calibration\n• Housing: IP30',
+                    measurementRange: 'Temperature range: -5...+55°C (-23...+131°F)',
+                    spec: 'Accuracy\n• ±0.2°C @ 20°C\n\nOutput\n2-Wire Current (4…20mA)'
+                },
+                {
+                    model: 'TMW93',
+                    application: 'T-only',
+                    typicalApplication: '• Wall Type Transmitter\n• for HVAC, Cleanroom\n• On-site calibration\n• Housing: IP30',
+                    measurementRange: 'Temperature range: -5...+55°C (-23...+131°F)',
+                    spec: 'Accuracy\n• ±0.2°C @ 20°C\n\nOutput\n3-Wire Voltage (0…5 or 10V)'
+                },
+                {
+                    model: 'TMW90',
+                    application: 'T-only',
+                    typicalApplication: '• Wall Type Transmitter\n• for HVAC, Cleanroom\n• On-site calibration\n• Housing: IP30',
+                    measurementRange: 'Temperature range: -5...+55°C (-23...+131°F)',
+                    spec: 'Accuracy\n• ±0.2°C @ 20°C\n\nOutput\nConfigurable analog output'
+                },
+                {
+                    model: 'HMW92',
+                    application: 'RH+T',
+                    typicalApplication: '• Wall Type Transmitter\n• for HVAC, Cleanroom\n• On-site calibration\n• Housing: IP30',
+                    measurementRange: 'RH range: 0…100% RH\nTemperature range: -5...+55°C (-23...+131°F)',
+                    spec: 'Accuracy\n• ±1.7%RH (0…90%RH)\n• ±0.2°C @ 20°C\n\nOutput\n2-Wire Current (4…20mA)'
+                },
+                {
+                    model: 'HMW92D',
+                    application: 'RH+T',
+                    typicalApplication: '• Wall Type Transmitter\n• for HVAC, Cleanroom\n• With Display\n• On-site calibration\n• Housing: IP30',
+                    measurementRange: 'RH range: 0…100% RH\nTemperature range: -5...+55°C (-23...+131°F)',
+                    spec: 'Accuracy\n• ±1.7%RH (0…90%RH)\n• ±0.2°C @ 20°C\n\nOutput\n2-Wire Current (4…20mA)'
+                },
+                {
+                    model: 'HMW93',
+                    application: 'RH+T',
+                    typicalApplication: '• Wall Type Transmitter\n• for HVAC, Cleanroom\n• On-site calibration\n• Housing: IP30',
+                    measurementRange: 'RH range: 0…100% RH\nTemperature range: -5...+55°C (-23...+131°F)',
+                    spec: 'Accuracy\n• ±1.7%RH (0…90%RH)\n• ±0.2°C @ 20°C\n\nOutput\n3-Wire Voltage (0…5 or 10V)'
+                },
+                {
+                    model: 'HMW93D',
+                    application: 'RH+T',
+                    typicalApplication: '• Wall Type Transmitter\n• for HVAC, Cleanroom\n• With Display\n• On-site calibration\n• Housing: IP30',
+                    measurementRange: 'RH range: 0…100% RH\nTemperature range: -5...+55°C (-23...+131°F)',
+                    spec: 'Accuracy\n• ±1.7%RH (0…90%RH)\n• ±0.2°C @ 20°C\n\nOutput\n3-Wire Voltage (0…5 or 10V)'
+                },
+                {
+                    model: 'HMW90',
+                    application: 'RH+T',
+                    typicalApplication: '• Wall Type Transmitter\n• for HVAC, Cleanroom\n• On-site calibration\n• Housing: IP30',
+                    measurementRange: 'RH range: 0…100% RH\nTemperature range: -5...+55°C (-23...+131°F)',
+                    spec: 'Accuracy\n• ±1.7%RH (0…90%RH)\n• ±0.2°C @ 20°C\n\nOutput\nConfigurable analog output'
+                },
+                {
+                    model: 'HMW95',
+                    application: 'RH+T',
+                    typicalApplication: '• Wall Type Transmitter\n• for HVAC, Cleanroom\n• On-site calibration\n• Housing: IP30',
+                    measurementRange: 'RH range: 0…100% RH\nTemperature range: -5...+55°C (-23...+131°F)',
+                    spec: 'Accuracy\n• ±1.7%RH (0…90%RH)\n• ±0.2°C @ 20°C\n\nOutput\nDigital (BACnet, Modbus)'
+                },
+                {
+                    model: 'HMW95D',
+                    application: 'RH+T',
+                    typicalApplication: '• Wall Type Transmitter\n• for HVAC, Cleanroom\n• With Display\n• On-site calibration\n• Housing: IP30',
+                    measurementRange: 'RH range: 0…100% RH\nTemperature range: -5...+55°C (-23...+131°F)',
+                    spec: 'Accuracy\n• ±1.7%RH (0…90%RH)\n• ±0.2°C @ 20°C\n\nOutput\nDigital (BACnet, Modbus)'
+                }
             ],
             datasheet: 'https://www.vaisala.com/sites/default/files/documents/HMW90-Datasheet-B211703EN.pdf'
         },
         {
             id: 'hmdw110',
-            title: 'HMDW110 Series',
-            subtitle: 'IP65 HVAC TRANSMITTER',
+            title: 'HMDW110',
+            subtitle: '±2%RH HUMIDITY AND TEMPERATURE TRANSMITTER',
             category: 'hvac',
             image: '/templates/hs-tech/images/products/hmdw110_v1.png',
             gallery: [],
-            desc: 'Versatile transmitter for duct, wall, and outdoor applications with IP65 protection.',
+            desc: `VAISALA HUMICAP® Humidity and Temperature Transmitter Series HMDW110 measure relative humidity and temperature in multiple HVAC applications. The series includes transmitters for duct mounting, IP65-classified wall transmitters and outdoor transmitters with integrated radiation shields.
+
+■ PRODUCT
+
+Versatile transmitters for wall, duct, and outdoor mounting with IP65 protection.
+
+▶ HMW110 : Wall type
+▶ HMW112 : Wall type
+▶ HMD110 : Duct type
+▶ HMD112 : Duct type
+▶ HMS110 : Outdoor type (Integrated Radiation Shields)
+▶ HMS112 : Outdoor type (Integrated Radiation Shields)`,
             specs: [
-                { label: 'Measurement Range', value: 'RH: 0…100% RH\nT: -40...+60°C\nCalculated: Td, Mixing ratio, Absolute humidity, Wet bulb temp, Enthalpy' },
-                { label: 'HMW110 (Wall)', value: '2-Wire Current (4…20 mA) or Modbus RTU' },
-                { label: 'HMW112 (Wall)', value: '2-Wire Current (4…20 mA)' },
-                { label: 'HMD110 (Duct)', value: '2-Wire Current (4…20 mA) or Modbus RTU' },
-                { label: 'HMD112 (Duct)', value: '2-Wire Current (4…20 mA)' },
-                { label: 'HMS110 (Outdoor)', value: 'RH+T measurement\n2-Wire Current (4…20 mA) or Modbus RTU' },
-                { label: 'HMS112 (Outdoor)', value: 'RH+T measurement\n2-Wire Current (4…20 mA)' }
+                {
+                    model: 'HMW110',
+                    application: 'Wall type',
+                    typicalApplication: 'IP65',
+                    measurementRange: 'RH range: 0…100% RH\nTemperature range: -40...+60°C',
+                    spec: 'Accuracy\n• ±2%RH (0…90%)\n• ±0.2°C @ 20°C PT1000\n\nOutput\n2-wire current (4…20mA) or Modbus RTU output'
+                },
+                {
+                    model: 'HMW112',
+                    application: 'Wall type',
+                    typicalApplication: 'IP65',
+                    measurementRange: 'RH range: 0…100% RH\nTemperature range: -40...+60°C',
+                    spec: 'Accuracy\n• ±2%RH (0…90%)\n• ±0.2°C @ 20°C PT1000\n\nOutput\n2-wire current output (4…20mA)'
+                },
+                {
+                    model: 'HMD110',
+                    application: 'Duct type',
+                    typicalApplication: 'IP65',
+                    measurementRange: 'RH range: 0…100% RH\nTemperature range: -40...+60°C',
+                    spec: 'Accuracy\n• ±2%RH (0…90%)\n• ±0.2°C @ 20°C PT1000\n\nOutput\n2-wire current (4…20mA) or Modbus RTU output'
+                },
+                {
+                    model: 'HMD112',
+                    application: 'Duct type',
+                    typicalApplication: 'IP65',
+                    measurementRange: 'RH range: 0…100% RH\nTemperature range: -40...+60°C',
+                    spec: 'Accuracy\n• ±2%RH (0…90%)\n• ±0.2°C @ 20°C PT1000\n\nOutput\n2-wire current output (4…20mA)'
+                },
+                {
+                    model: 'HMS110',
+                    application: 'Outdoor type (Integrated Radiation Shields)',
+                    typicalApplication: 'IP65',
+                    measurementRange: 'RH range: 0…100% RH\nTemperature range: -40...+60°C',
+                    spec: 'Accuracy\n• ±2%RH (0…90%)\n• ±0.2°C @ 20°C PT1000\n\nOutput\n2-wire current (4…20mA) or Modbus RTU output'
+                },
+                {
+                    model: 'HMS112',
+                    application: 'Outdoor type (Integrated Radiation Shields)',
+                    typicalApplication: 'IP65',
+                    measurementRange: 'RH range: 0…100% RH\nTemperature range: -40...+60°C',
+                    spec: 'Accuracy\n• ±2%RH (0…90%)\n• ±0.2°C @ 20°C PT1000\n\nOutput\n2-wire current output (4…20mA)'
+                }
             ],
             datasheet: 'https://www.vaisala.com/sites/default/files/documents/HMDW110-Datasheet-B211705EN.pdf'
         },
         {
             id: 'hmdw80',
-            title: 'HMDW80 Series',
-            subtitle: 'VERSATILE HVAC TRANSMITTER',
+            title: 'HMDW80',
+            subtitle: '±3%RH HUMIDITY AND TEMPERATURE TRANSMITTER',
             category: 'hvac',
             image: '/templates/hs-tech/images/products/hmdw80_v1.png',
             gallery: [
                 '/templates/hs-tech/images/products/hmdw80_v1.png',
                 '/templates/hs-tech/images/products/hmdw80_diagram.png'
             ],
-            desc: 'The HMDW80 series is versatile with transmitters for wall and duct mounting for measuring relative humidity and temperature in various building automation applications. Available in 15 models for wall, duct, and outdoor mounting with current (4-20mA) or voltage (0-10V) outputs.',
+            desc: `The HMDW80 series is versatile with transmitters for wall and duct mounting for measuring relative humidity and temperature in various building automation applications.
+
+■ PRODUCT
+
+Available in 20 models for wall, duct, and outdoor mounting with current (4-20mA) or voltage (0-10V) outputs.
+
+▶ TMW82 : T-only Wall type
+▶ TMW83 : T-only Wall type
+▶ TMW88 : T-only Wall type
+▶ TMD82 : T-only Duct type
+▶ TMD83 : T-only Duct type
+▶ HMW82 : RH+T Wall type
+▶ HMW82P100 : RH+T Wall type
+▶ HMW83 : RH+T Wall type
+▶ HMW88 : RH+T Wall type
+▶ HMW88D : RH+T Wall type + Display
+▶ HMW89 : RH+T Wall type
+▶ HMW89D : RH+T Wall type + Display
+▶ HMD82 : RH+T Duct type
+▶ HMD82D : RH+T Duct type + Display
+▶ HMD83 : RH+T Duct type
+▶ HMD83D : RH+T Duct type + Display
+▶ HMS82 : RH+T Outdoor type
+▶ HMS82C : RH+T Outdoor type + NPT ½" fitting
+▶ HMS83 : RH+T Outdoor type
+▶ HMS83C : RH+T Outdoor type + NPT ½" fitting`,
             specs: [
-                { label: 'Manufacturer', value: 'JUMO GmbH & Co. KG' },
-                { label: 'Series Overview', value: '15 models: Wall, Duct, Outdoor mounting\nCurrent or Voltage output options\nOptional display on select models' },
-                { label: 'HMW82 (Wall)', value: 'RH: 0…100%\nT: -5…+55℃\nAccuracy: ±3%RH (0…70%), ±0.5℃ @10…30℃\nOutput: 4…20mA (2-wire)\nIP30' },
-                { label: 'HMW82P100 (Wall)', value: 'Same as HMW82\nOutput: 4…20mA (2-wire)' },
-                { label: 'HMW83 (Wall)', value: 'Same as HMW82\nOutput: 0…10V (3-wire)' },
-                { label: 'HMW88 (Wall)', value: 'RH: 0…100%\nT: -40…+60℃\nAccuracy: ±3%RH (0…90%), ±0.3℃ @20℃\nCalculated: Td -40…+60℃, Enthalpy -40…460kJ/kg\nOutput: 4…20mA (2-wire)\nIP65' },
-                { label: 'HMW88D (Wall + Display)', value: 'Same as HMW88\nIntegrated LCD display' },
-                { label: 'HMW89 (Wall)', value: 'Same as HMW88\nOutput: 0…10V (3-wire)' },
-                { label: 'HMW89D (Wall + Display)', value: 'Same as HMW88\nOutput: 0…10V (3-wire)\nIntegrated LCD display' },
-                { label: 'HMD82 (Duct)', value: 'Same as HMW88\nDuct mounting probe\nOutput: 4…20mA (2-wire)' },
-                { label: 'HMD82D (Duct + Display)', value: 'Same as HMW88\nDuct mounting + LCD display\nOutput: 4…20mA (2-wire)' },
-                { label: 'HMD83 (Duct)', value: 'Same as HMW88\nDuct mounting probe\nOutput: 0…10V (3-wire)' },
-                { label: 'HMD83D (Duct + Display)', value: 'Same as HMW88\nDuct mounting + LCD display\nOutput: 0…10V (3-wire)' },
-                { label: 'HMS82 (Outdoor)', value: 'Same as HMW88\nIntegrated radiation shields for outdoor use\nOutput: 4…20mA (2-wire)' },
-                { label: 'HMS82C (Outdoor + NPT)', value: 'Same as HMS82\nNPT ½" fitting included' },
-                { label: 'HMS83 (Outdoor)', value: 'Same as HMW88\nIntegrated radiation shields for outdoor use\nOutput: 0…10V (3-wire)' },
-                { label: 'HMS83C (Outdoor + NPT)', value: 'Same as HMS83\nNPT ½" fitting included' },
-                { label: 'Applications', value: 'HVAC Building Automation\nCleanrooms\nData Centers\nGreenhouses\nOutdoor Weather Stations' }
-            ]
+                {
+                    model: 'TMW82',
+                    application: 'Wall type',
+                    typicalApplication: 'IP30',
+                    measurementRange: 'Temperature range: -5…+55°C',
+                    spec: 'Accuracy\n• ±0.5°C @10…30°C\n\nOutput\n2-wire current output (4…20mA)'
+                },
+                {
+                    model: 'TMW83',
+                    application: 'Wall type',
+                    typicalApplication: 'IP30',
+                    measurementRange: 'Temperature range: -5…+55°C',
+                    spec: 'Accuracy\n• ±0.5°C @10…30°C\n\nOutput\n3-wire voltage output (0…10V)'
+                },
+                {
+                    model: 'TMW88',
+                    application: 'Wall type',
+                    typicalApplication: 'IP65',
+                    measurementRange: 'Temperature range: -40…+60°C',
+                    spec: 'Accuracy\n• ±0.3°C @20°C\n\nOutput\n2-wire current output (4…20mA)'
+                },
+                {
+                    model: 'TMD82',
+                    application: 'Duct type',
+                    typicalApplication: 'IP30',
+                    measurementRange: 'Temperature range: -5…+55°C',
+                    spec: 'Accuracy\n• ±0.5°C @10…30°C\n\nOutput\n2-wire current output (4…20mA)'
+                },
+                {
+                    model: 'TMD83',
+                    application: 'Duct type',
+                    typicalApplication: 'IP30',
+                    measurementRange: 'Temperature range: -5…+55°C',
+                    spec: 'Accuracy\n• ±0.5°C @10…30°C\n\nOutput\n3-wire voltage output (0…10V)'
+                },
+                {
+                    model: 'HMW82',
+                    application: 'Wall type',
+                    typicalApplication: 'IP30',
+                    measurementRange: 'RH range: 0…100%\nTemperature range: -5…+55°C',
+                    spec: 'Accuracy\n• ±3%RH (0…70%RH)\n• ±0.5°C @10…30°C\n\nOutput\n2-wire current output (4…20mA)'
+                },
+                {
+                    model: 'HMW82P100',
+                    application: 'Wall type',
+                    typicalApplication: 'IP30',
+                    measurementRange: 'RH range: 0…100%\nTemperature range: -5…+55°C',
+                    spec: 'Accuracy\n• ±3%RH (0…70%RH)\n• ±0.5°C @10…30°C\n\nOutput\n2-wire current output (4…20mA)'
+                },
+                {
+                    model: 'HMW83',
+                    application: 'Wall type',
+                    typicalApplication: 'IP30',
+                    measurementRange: 'RH range: 0…100%\nTemperature range: -5…+55°C',
+                    spec: 'Accuracy\n• ±3%RH (0…70%RH)\n• ±0.5°C @10…30°C\n\nOutput\n3-wire voltage output (0…10V)'
+                },
+                {
+                    model: 'HMW88',
+                    application: 'Wall type',
+                    typicalApplication: 'IP65',
+                    measurementRange: 'RH range: 0…100%\nTemperature range: -40…+60°C',
+                    spec: 'Accuracy\n• ±3%RH (0…90%RH)\n• ±0.3°C @20°C\n\nCalculated Parameters\nTd -40…+60°C\nEnthalpy -40…460kJ/kg\n\nOutput\n2-wire current output (4…20mA)'
+                },
+                {
+                    model: 'HMW88D',
+                    application: 'Wall type+Display',
+                    typicalApplication: 'IP65',
+                    measurementRange: 'RH range: 0…100%\nTemperature range: -40…+60°C',
+                    spec: 'Accuracy\n• ±3%RH (0…90%RH)\n• ±0.3°C @20°C\n\nCalculated Parameters\nTd -40…+60°C\nEnthalpy -40…460kJ/kg\n\nOutput\n2-wire current output (4…20mA)'
+                },
+                {
+                    model: 'HMW89',
+                    application: 'Wall type',
+                    typicalApplication: 'IP65',
+                    measurementRange: 'RH range: 0…100%\nTemperature range: -40…+60°C',
+                    spec: 'Accuracy\n• ±3%RH (0…90%RH)\n• ±0.3°C @20°C\n\nCalculated Parameters\nTd -40…+60°C\nEnthalpy -40…460kJ/kg\n\nOutput\n3-wire voltage output (0…10V)'
+                },
+                {
+                    model: 'HMW89D',
+                    application: 'Wall type+Display',
+                    typicalApplication: 'IP65',
+                    measurementRange: 'RH range: 0…100%\nTemperature range: -40…+60°C',
+                    spec: 'Accuracy\n• ±3%RH (0…90%RH)\n• ±0.3°C @20°C\n\nCalculated Parameters\nTd -40…+60°C\nEnthalpy -40…460kJ/kg\n\nOutput\n3-wire voltage output (0…10V)'
+                },
+                {
+                    model: 'HMD82',
+                    application: 'Duct type',
+                    typicalApplication: 'IP65',
+                    measurementRange: 'RH range: 0…100%\nTemperature range: -40…+60°C',
+                    spec: 'Accuracy\n• ±3%RH (0…90%RH)\n• ±0.3°C @20°C\n\nCalculated Parameters\nTd -40…+60°C\nEnthalpy -40…460kJ/kg\n\nOutput\n2-wire current output (4…20mA)'
+                },
+                {
+                    model: 'HMD82D',
+                    application: 'Duct type+Display',
+                    typicalApplication: 'IP65',
+                    measurementRange: 'RH range: 0…100%\nTemperature range: -40…+60°C',
+                    spec: 'Accuracy\n• ±3%RH (0…90%RH)\n• ±0.3°C @20°C\n\nCalculated Parameters\nTd -40…+60°C\nEnthalpy -40…460kJ/kg\n\nOutput\n2-wire current output (4…20mA)'
+                },
+                {
+                    model: 'HMD83',
+                    application: 'Duct type',
+                    typicalApplication: 'IP65',
+                    measurementRange: 'RH range: 0…100%\nTemperature range: -40…+60°C',
+                    spec: 'Accuracy\n• ±3%RH (0…90%RH)\n• ±0.3°C @20°C\n\nCalculated Parameters\nTd -40…+60°C\nEnthalpy -40…460kJ/kg\n\nOutput\n3-wire voltage output (0…10V)'
+                },
+                {
+                    model: 'HMD83D',
+                    application: 'Duct type+Display',
+                    typicalApplication: 'IP65',
+                    measurementRange: 'RH range: 0…100%\nTemperature range: -40…+60°C',
+                    spec: 'Accuracy\n• ±3%RH (0…90%RH)\n• ±0.3°C @20°C\n\nCalculated Parameters\nTd -40…+60°C\nEnthalpy -40…460kJ/kg\n\nOutput\n3-wire voltage output (0…10V)'
+                },
+                {
+                    model: 'HMS82',
+                    application: 'Outdoor type (Integrated Radiation Shields)',
+                    typicalApplication: 'IP65',
+                    measurementRange: 'RH range: 0…100%\nTemperature range: -40…+60°C',
+                    spec: 'Accuracy\n• ±3%RH (0…90%RH)\n• ±0.3°C @20°C\n\nCalculated Parameters\nTd -40…+60°C\nEnthalpy -40…460kJ/kg\n\nOutput\n2-wire current output (4…20mA)'
+                },
+                {
+                    model: 'HMS82C',
+                    application: 'Outdoor type + NPT ½" fitting',
+                    typicalApplication: 'IP65',
+                    measurementRange: 'RH range: 0…100%\nTemperature range: -40…+60°C',
+                    spec: 'Accuracy\n• ±3%RH (0…90%RH)\n• ±0.3°C @20°C\n\nCalculated Parameters\nTd -40…+60°C\nEnthalpy -40…460kJ/kg\n\nOutput\n2-wire current output (4…20mA)'
+                },
+                {
+                    model: 'HMS83',
+                    application: 'Outdoor type (Integrated Radiation Shields)',
+                    typicalApplication: 'IP65',
+                    measurementRange: 'RH range: 0…100%\nTemperature range: -40…+60°C',
+                    spec: 'Accuracy\n• ±3%RH (0…90%RH)\n• ±0.3°C @20°C\n\nCalculated Parameters\nTd -40…+60°C\nEnthalpy -40…460kJ/kg\n\nOutput\n3-wire voltage output (0…10V)'
+                },
+                {
+                    model: 'HMS83C',
+                    application: 'Outdoor type + NPT ½" fitting',
+                    typicalApplication: 'IP65',
+                    measurementRange: 'RH range: 0…100%\nTemperature range: -40…+60°C',
+                    spec: 'Accuracy\n• ±3%RH (0…90%RH)\n• ±0.3°C @20°C\n\nCalculated Parameters\nTd -40…+60°C\nEnthalpy -40…460kJ/kg\n\nOutput\n3-wire voltage output (0…10V)'
+                }
+            ],
+            datasheet: 'https://www.vaisala.com/sites/default/files/documents/HMDW80-Datasheet-B211706EN.pdf'
         },
         {
             id: 'indigo80_hmp80',
-            title: 'Indigo80',
-            subtitle: 'HANDHELD INDICATOR',
+            title: 'Indigo80+HMP80',
+            subtitle: 'HANDHELD HUMIDITY AND TEMPERATURE METER',
             category: 'handheld',
             image: '/templates/hs-tech/images/products/indigo80_hmp80_v1.jpg',
             gallery: [],
-            desc: 'High-end handheld indicator and probe.',
+            desc: `VAISALA HUMICAP® Handheld Humidity and Temperature Meter is designed for demanding humidity measurements in spot-checking applications. It is also ideal for field checking and calibration of VAISALA's fixed humidity instruments.
+
+■ PRODUCT
+
+High-end handheld indicator and probe system for professional humidity measurement.`,
             specs: [
                 { label: 'MI70 Indicator', value: 'Operating temp: -10…+40°C\nLCD with backlight\nData logging: 2,700 points\nAudible alarm' },
                 { label: 'HMP75 Probe (118 mm)', value: 'General purpose\nRH: 0…100% / T: -20…+60°C\nAccuracy: RH ±1 %RH (0…90%) / T ±0.2°C' },
@@ -556,46 +1068,131 @@ Output: RH+T+Td`,
         {
             id: 'hm70',
             title: 'HM70',
-            subtitle: 'HANDHELD METER',
+            subtitle: 'HANDHELD HUMIDITY AND TEMPERATURE METER',
             category: 'handheld',
             image: '/templates/hs-tech/images/products/hm70_v1.jpg',
             gallery: ["/templates/hs-tech/images/products/hm70_v1.jpg"],
-            desc: 'Professional handheld humidity and temperature meter.',
+            desc: `VAISALA HUMICAP® Handheld Humidity and Temperature Meter HM70 is designed for demanding humidity measurements in spot-checking applications. It is also ideal for field checking and calibration of VAISALA's fixed humidity instruments.
+
+■ PRODUCT
+
+Professional handheld meter with interchangeable probes for versatile humidity measurement.
+
+▶ MI70 Indicator : LCD display+buttons
+▶ HMP75 Probe : General Purpose Probe (118mm)
+▶ HMP76 Probe : Long, Stainless steel Probe (328mm)
+▶ HMP77 Probe : Small probe+5m cable`,
             specs: [
-                { label: 'MI70 Indicator', value: 'Operating temp: -10…+40°C\nLCD with backlight\nData logging: 2,700 points\nAudible alarm' },
-                { label: 'HMP75 Probe (118 mm)', value: 'General purpose\nRH: 0…100% / T: -20…+60°C\nAccuracy: RH ±1 %RH (0…90%) / T ±0.2°C' },
-                { label: 'HMP76 Probe (328 mm)', value: 'Long stainless steel, duct spot-checking\nRH: 0…100% / T: -50…+120°C\nAccuracy: RH ±1 %RH (0…90%)' },
-                { label: 'HMP77 Probe (5 m cable)', value: 'Small probe for difficult-to-reach areas\nRH: 0…100% / T: -70…+180°C\nAccuracy: RH ±1 %RH (0…90%)' }
+                {
+                    model: 'MI70 Indicator',
+                    application: 'LCD display+buttons',
+                    typicalApplication: '• Operating temperature: -10…+40°C\n• LCD with Back light\n• Data logging capacity (2,700points)\n• Audible alarm function\n\n• (Option) LINK software with USB cable',
+                    measurementRange: '',
+                    spec: ''
+                },
+                {
+                    model: 'HMP75 Probe',
+                    application: 'General Purpose Probe (118mm)',
+                    typicalApplication: '',
+                    measurementRange: 'RH range: 0…100%\nTemperature range: -20…+60°C',
+                    spec: 'Accuracy\n• RH ±1%RH (0…90%RH)\n• T ±0.2°C at 20°C'
+                },
+                {
+                    model: 'HMP76 Probe',
+                    application: 'Long, Stainless steel Probe (328mm)\nDuct Spot checking',
+                    typicalApplication: '',
+                    measurementRange: 'RH range: 0…100%\nTemperature range: -50…+120°C',
+                    spec: 'Accuracy\n• RH ±1%RH (0…90%RH)\n• T ±0.2°C at 20°C'
+                },
+                {
+                    model: 'HMP77 Probe',
+                    application: 'Small probe+5m cable\nIdeal for difficult-to-reach areas\nOn-site calibration',
+                    typicalApplication: '',
+                    measurementRange: 'RH range: 0…100%\nTemperature range: -70…+180°C',
+                    spec: 'Accuracy\n• RH ±1%RH (0…90%RH)\n• T ±0.2°C at 20°C'
+                }
             ],
             datasheet: 'https://www.vaisala.com/sites/default/files/documents/HM70-Datasheet-B210974EN.pdf'
         },
         {
             id: 'hm40',
             title: 'HM40',
-            subtitle: 'COMPACT HANDHELD',
+            subtitle: 'HANDHELD HUMIDITY AND TEMPERATURE METER',
             category: 'handheld',
             image: '/templates/hs-tech/images/products/hm40_v1.png',
             gallery: ["/templates/hs-tech/images/products/hm40_v1.png"],
-            desc: 'Compact and easy-to-use handheld meter.',
+            desc: `VAISALA HUMICAP® Handheld Humidity and Temperature Meter HM40 is a compact, easy-to-use meter designed for everyday humidity and temperature measurement and spot-checking applications. It is a cost-effective solution for industrial, HVAC, and general measurement needs.
+
+■ PRODUCT
+
+Compact and affordable handheld meter for everyday humidity measurement.
+
+▶ HM41 : RH&T meter for general use
+▶ HM42 : RH&T meter for tight spaces
+▶ HM45 : RH&T meter with remote probe
+▶ HM46 : RH&T meter for mechanical durability and extra reach`,
             specs: [
-                { label: 'HM41 (General use)', value: 'Fixed probe, sensor replaceable\nRH: 0…100% / T: -10…+60°C\nAccuracy: ±1.5 %RH (0…90%)' },
-                { label: 'HM42 (Tight spaces)', value: 'Thin 4 mm diameter probe, 150 mm cable\nRH: 0…100% / T: -40…+100°C\nAccuracy: ±1.5 %RH (0…90%)' },
-                { label: 'HM45 (Remote probe)', value: 'Sensor replaceable, 120 mm cable\nRH: 0…100% / T: -40…+60°C\nAccuracy: ±1.5 %RH (0…90%)' },
-                { label: 'HM46 (Extra reach)', value: 'Stainless steel probe, brass filter, 150 mm cable\nRH: 0…100% / T: -40…+100°C\nAccuracy: ±1.5 %RH (0…90%)' }
+                {
+                    model: 'HM41',
+                    application: 'RH&T meter for general use',
+                    typicalApplication: '• Fixed Probe\n• Sensor one-to-one replaceable',
+                    measurementRange: 'RH range: 0…100%\nTemperature range: -10…+60°C',
+                    spec: 'Accuracy\n• RH ±1.5%RH (0…90%RH)\n• T ±0.2°C at 20°C'
+                },
+                {
+                    model: 'HM42',
+                    application: 'RH&T meter for tight spaces',
+                    typicalApplication: '• Thin 4mm diameter probe\n• 150mm cable',
+                    measurementRange: 'RH range: 0…100%\nTemperature range: -40…+100°C',
+                    spec: 'Accuracy\n• RH ±1.5%RH (0…90%RH)\n• T ±0.2°C at 20°C'
+                },
+                {
+                    model: 'HM45',
+                    application: 'RH&T meter with remote probe',
+                    typicalApplication: '• Sensor replaceable\n• 120mm cable',
+                    measurementRange: 'RH range: 0…100%\nTemperature range: -40…+60°C',
+                    spec: 'Accuracy\n• RH ±1.5%RH (0…90%RH)\n• T ±0.2°C at 20°C'
+                },
+                {
+                    model: 'HM46',
+                    application: 'RH&T meter for mechanical durability and extra reach',
+                    typicalApplication: '• Stainless Steel Probe\n• Brass Filter\n• 150mm Cable',
+                    measurementRange: 'RH range: 0…100%\nTemperature range: -40…+100°C',
+                    spec: 'Accuracy\n• RH ±1.5%RH (0…90%RH)\n• T ±0.2°C at 20°C'
+                }
             ],
             datasheet: 'https://www.vaisala.com/sites/default/files/documents/HM40-Datasheet-B210975EN.pdf'
         },
         {
             id: 'shm40',
             title: 'SHM40',
-            subtitle: 'CONCRETE MOISTURE',
+            subtitle: 'HANDHELD HUMIDITY AND TEMPERATURE METER FOR STRUCTURAL HUMIDITY',
             category: 'handheld',
             image: '/templates/hs-tech/images/products/shm40_v1.jpg',
-            gallery: [],
-            desc: 'Specialized for structural humidity measurement (concrete).',
+            gallery: ["/templates/hs-tech/images/products/shm40_v1.jpg"],
+            desc: `VAISALA HUMICAP® Handheld Humidity and Temperature Meter SHM40 is designed for measuring structural humidity in concrete and other building materials. It provides reliable results for construction and building diagnostics applications.
+
+■ PRODUCT
+
+Specialized handheld meter for measuring structural humidity in concrete and building materials.
+
+▶ HM40 Indicator : LCD display with calculated variables
+▶ HMP40S Probe : Stainless steel probe for boreholes`,
             specs: [
-                { label: 'HM40 Indicator', value: 'Alkaline batteries: 2×AA, 1.5 V\nLCD display\nCalculated variables: Td, Tw, a, x, h\nIP54' },
-                { label: 'HMP40S Probe', value: 'TRRS male 3.5 mm cable connector\nBorehole diameter needed: 16 mm\nStainless steel probe\nMeasurement range: 0…100% RH' }
+                {
+                    model: 'HM40 Indicator',
+                    application: 'LCD display with calculated variables',
+                    typicalApplication: '• Alkaline batteries: 2×AA, 1.5V\n• LCD display\n• Calculated variables: Td, Tw, a, x, h\n• IP54',
+                    measurementRange: '',
+                    spec: ''
+                },
+                {
+                    model: 'HMP40S Probe',
+                    application: 'Stainless steel probe for boreholes',
+                    typicalApplication: '• TRRS male 3.5mm cable connector\n• Borehole diameter needed: 16mm\n• Stainless steel probe',
+                    measurementRange: 'RH range: 0…100%',
+                    spec: ''
+                }
             ]
         },
         {
@@ -604,14 +1201,54 @@ Output: RH+T+Td`,
             subtitle: 'HUMIDITY CALIBRATOR',
             category: 'handheld',
             image: '/templates/hs-tech/images/products/hmk15_v1.png',
-            gallery: [],
-            desc: 'Saturated salt calibrator for on-site humidity probe calibration.',
+            gallery: ["/templates/hs-tech/images/products/hmk15_v1.png"],
+            desc: `VAISALA HUMICAP® Humidity Calibrator HMK15 is a saturated salt solution-based calibrator designed for on-site humidity probe calibration. It provides reliable reference humidity values at four different RH levels for field verification and calibration of humidity instruments.
+
+■ PRODUCT
+
+Portable calibrator using saturated salt solutions for on-site humidity probe verification.
+
+▶ Chamber : Calibration chamber with multiple probe size covers
+▶ LiCl Solution : 11% RH reference
+▶ MgCl₂ Solution : 33% RH reference
+▶ NaCl Solution : 75% RH reference
+▶ K₂SO₄ Solution : 97% RH reference`,
             specs: [
-                { label: 'Chamber', value: 'Covers for 12 / 13.5 / 18.5 mm probe diameter\nThermometer for temperature monitoring' },
-                { label: 'LiCl Solution', value: '11 %RH ± 1.3 %RH' },
-                { label: 'MgCl₂ Solution', value: '33 %RH ± 1.2 %RH' },
-                { label: 'NaCl Solution', value: '75 %RH ± 1.5 %RH' },
-                { label: 'K₂SO₄ Solution', value: '97 %RH ± 2.0 %RH' }
+                {
+                    model: 'Chamber',
+                    application: 'Calibration chamber with multiple probe size covers',
+                    typicalApplication: '• Covers for 12 / 13.5 / 18.5 mm probe diameter\n• Thermometer for temperature monitoring',
+                    measurementRange: '',
+                    spec: ''
+                },
+                {
+                    model: 'LiCl Solution',
+                    application: '11% RH reference',
+                    typicalApplication: '',
+                    measurementRange: '11 %RH ± 1.3 %RH',
+                    spec: ''
+                },
+                {
+                    model: 'MgCl₂ Solution',
+                    application: '33% RH reference',
+                    typicalApplication: '',
+                    measurementRange: '33 %RH ± 1.2 %RH',
+                    spec: ''
+                },
+                {
+                    model: 'NaCl Solution',
+                    application: '75% RH reference',
+                    typicalApplication: '',
+                    measurementRange: '75 %RH ± 1.5 %RH',
+                    spec: ''
+                },
+                {
+                    model: 'K₂SO₄ Solution',
+                    application: '97% RH reference',
+                    typicalApplication: '',
+                    measurementRange: '97 %RH ± 2.0 %RH',
+                    spec: ''
+                }
             ]
         },
         {
@@ -1189,17 +1826,34 @@ Output: RH+T+Td+Tdf`,
     // SETRA
     setra: [
         {
-            id: 'setra_lite', title: 'Setra Lite', subtitle: 'ROOM PRESSURE VISUAL INDICATOR', category: 'diff_ind',
+            id: 'setra_lite', title: 'Setra Lite™', subtitle: 'VISUAL DIFFERENTIAL PRESSURE INDICATOR', category: 'diff_ind',
             image: '/templates/hs-tech/images/products/849fee28dfdc5.png',
-            gallery: ['/templates/hs-tech/images/products/849fee28dfdc5.png'],
-            desc: 'Simple and reliable visual differential pressure indicator using tri-color LED lights to show positive, negative, or neutral room pressure at a glance.',
+            gallery: [
+                '/templates/hs-tech/images/products/849fee28dfdc5.png',
+                '/templates/hs-tech/images/products/setra_lite_green.png',
+                '/templates/hs-tech/images/products/setra_lite_red.png'
+            ],
+            desc: `The Setra Lite™ Room Pressure Indicator provides a simple, cost-effective, and accurate way to monitor and display room differential pressure in areas that today require manual verification.
+
+Green means good to go and red indicates an alarm. Setra has created the simplest and easiest to use visual room pressure monitor in the market. Setra Lite™ is designed to easily fit in a single gang electric box, and also provides an optional visual display of the pressure, powered by Setra's legendary capacitive pressure sensor.
+
+■ FEATURES
+Setra Lite has many features found only in larger, more complex room pressure monitors. These include a bright light ring that can be seen at an angle or down a hallway, a digital display of the pressure value that is always-on or momentary, an alarm delay for door entry, and POS or NEG room mode. Setra Lite sensor has Setra's accuracy and reliability you know you can trust.
+
+■ SIMPLE INSTALLATION
+Setra Lite is about the size of a standard light switch, and just as a simple to install. It fits in a single-gang US electrical box, or international 86-box, and is powered by 24VAC or 24VDC. The reference side pressure pickup is integral with the Setra Lite faceplate. An analog output provides the building management system with the pressure signal for any additional trending or alarming needed.
+
+■ WORKS WITH SETRA FLEX™
+Setra Lite also integrates seamlessly with the Setra FLEX environmental monitor. Mount Setra Lite at additional doors that enter the space, and use an on-screen badge to display its value.`,
             specs: [
-                { label: 'Display', value: 'Tri-color LED (Green / Red / Amber)' },
-                { label: 'Pressure Range', value: '0 ... ±0.25" WC (±62.3 Pa)' },
-                { label: 'Accuracy', value: '±2% FS' },
-                { label: 'Input Power', value: '24 VDC / VAC' },
-                { label: 'Application', value: 'Cleanrooms (ISO Class 1-8)\nOperating rooms, Isolation rooms' },
-                { label: 'Installation', value: 'Wall mount' },
+                { label: 'Visual Indication', value: 'Red/green light ring visible at an angle or down a hallway' },
+                { label: 'Digital Display', value: 'Always-on or momentary pressure value display' },
+                { label: 'Installation', value: 'Single-gang US electrical box or international 86-box' },
+                { label: 'Power', value: '24VAC or 24VDC' },
+                { label: 'Output', value: 'Analog output for BMS integration' },
+                { label: 'Configuration', value: 'Easy 3-button setup (POS/NEG mode, alarm delay)' },
+                { label: 'Application', value: 'Sterile processing, Sterile storage, USP 800 compliance, Laundry\nHospital room monitoring, Infectious control, Endoscopy, Bronchoscopy\nReplaces ball/tube through-wall pressure indicators' },
+                { label: 'Integration', value: 'Works with Setra FLEX for multi-door rooms' },
             ]
         },
         {
@@ -1217,30 +1871,89 @@ Output: RH+T+Td+Tdf`,
             ]
         },
         {
-            id: 'model_mrc', title: 'Model MRC', subtitle: 'MULTI-RANGE CONFIGURABLE DP SENSOR', category: 'diff_sen',
+            id: 'model_mrc', title: 'Model MRC', subtitle: 'MULTI-RANGE CRITICAL PRESSURE TRANSDUCER', category: 'diff_sen',
             image: '/templates/hs-tech/images/products/0173971661ad2.png',
             gallery: ['/templates/hs-tech/images/products/0173971661ad2.png', '/templates/hs-tech/images/products/0b98ec3d71c52.png', '/templates/hs-tech/images/products/866d1ed724ffa.png', '/templates/hs-tech/images/products/ba117fd1862c9.png', '/templates/hs-tech/images/products/20542e1ba6c31.png'],
-            desc: 'Field-configurable multi-range differential pressure sensor with selectable ranges. No hardware changes required — range selected via DIP switch.',
+            desc: `Setra's Model MRC multi-range low differential pressure transducer uses a dead-ended capacitive sensing element that requires minimal amplification and delivers excellent accuracy and long term stability. The MRC is the industries first multi-range sensor designed for critical environments. It is the only multi-range sensor available with ±0.5% FS accuracy and field selectable ranges down to 0.1" W.C., a requirement for critical applications. The MRC has 4 selectable ranges and 3 selectable outputs, easily adjustable on the job with a flip of a switch or jumper. The MRC is offered with 3 different housing configurations: Duct Probe, DINrail Mount or wall mount as well as a universal design that incorporates all 3 configurations in one to address any installation changes on the job site.
+
+■ THE FIRST 0.5% ACCURACY MULTI-RANGE EVER
+The Setra MRC is the first multi-range transducer designed for use in Critical Environments. No other multi-range transducer product offers better than 1% FS accuracy; a requirement in most critical applications. The Setra MRC is available down to 0.1"W.C. with 0.5% FS accuracy.
+
+■ FIELD SELECTABLE UNIVERSAL DESIGN
+The MRC has 4 selectable ranges and 3 selectable outputs, giving the flexibility to make changes on the job site. The MRC is field configurable for range, mounting (DINrail, wall mount and duct mount), output (mA or voltage) and engineering units (W.C. or Pascals). This flexibility means that the contractor can use the MRC for all of their critical needs.
+
+■ ROBUST ENCLOSURE FOR HARSH ENVIRONMENTS
+The MRC housing is a robust IP67 rated design and is sealed with a gasket to make it wash down capable for difficult applications. The MRC also has a conduit fitting that make installation and wiring easier.
+
+■ THE SETRA SENSOR
+The core technology of the MRC is the all stainless steel capacitive sensing element. Setra designs and manufactures all of their sensing elements resulting in full control over the process and quality of every single sensor. The welded dead-ended capacitive sensors requires minimal amplification and delivers excellent accuracy and longterm stability. Setra's technology has been used in over 8 million installations and has the highest field acceptance rate in the industry.`,
             specs: [
-                { label: 'Pressure Ranges', value: '0...0.1", 0...0.25", 0...0.5", 0...1.0" WC\n(Bi-directional options available)' },
-                { label: 'Accuracy', value: '±1% FS' },
-                { label: 'Output', value: '4...20 mA, 0...5 V, 0...10 V' },
-                { label: 'Input Power', value: '24 VDC / VAC' },
-                { label: 'Application', value: 'HVAC air handling units\nFilter condition monitoring' },
-                { label: 'Protection', value: 'IP65 (NEMA 4)' },
+                { label: 'Accuracy (RSS at constant temp)', value: '±0.5% FS' },
+                { label: 'Compensated Range', value: '32 to 122°F (0 to 50°C)' },
+                { label: 'Thermal Effects', value: '0.03% FS/°F (0.054% FS/°C)' },
+                { label: 'Maximum Line Pressure', value: '10 PSI' },
+                { label: 'Overpressure', value: '1 PSI' },
+                { label: 'Long Term Stability', value: '1.0% FS/YR (max)' },
+                { label: 'Zero Offset', value: '0.5% FS/G (calibrated at 0g vertical position)' },
+                { label: 'Operating Temperature', value: '32 to 122°F (0 to 50°C)' },
+                { label: 'Excitation Range', value: '13 to 30 VDC / 18 to 24 VAC (Voltage Output)\n13 to 30 VDC (4-20mA output)' },
+                { label: 'Current Consumption', value: '30mA (max)' },
+                { label: 'Mis-Wiring', value: 'Reverse Excitation Protection' },
+                { label: 'Field Selectable Output', value: '0 to 5V, 0 to 10V (3-wire), 4 to 20mA (2-wire)' },
+                { label: 'Output Resistance (Voltage)', value: '10 Ohms (max)' },
+                { label: 'Load Resistance (Voltage)', value: '10 K-Ohms (min)' },
+                { label: 'Loop Resistance (4-20mA)', value: '0 to 800 Ohms' },
+                { label: 'Approval', value: 'CE & RoHS Compliant' },
+                { label: 'Case', value: 'Fire-Retardant Polycarbonate (UL 94 V-0 Approved), Hinged Lid' },
+                { label: 'Mounting', value: 'Two Screw Holes Vertical Position' },
+                { label: 'Electrical Connection Block', value: 'Removable Screw Terminal' },
+                { label: 'Pressure Fitting', value: '3/16" O.D. Barbed Brass' },
+                { label: 'Zero & Span', value: 'Push Button' },
+                { label: 'Weight', value: '8 Ounces (approx.)' },
+                { label: 'Pressure Media', value: 'Typically air or similar non-conducting gases' },
             ]
         },
         {
-            id: 'model_mrg', title: 'Model MRG', subtitle: 'GENERAL PURPOSE DP SENSOR', category: 'diff_sen',
+            id: 'model_mrg', title: 'Model MRG', subtitle: 'MULTI-RANGE GENERAL PRESSURE TRANSDUCER', category: 'diff_sen',
             image: '/templates/hs-tech/images/products/0b98ec3d71c52.png',
             gallery: ['/templates/hs-tech/images/products/0b98ec3d71c52.png', '/templates/hs-tech/images/products/866d1ed724ffa.png'],
-            desc: 'Cost-effective differential pressure sensor for standard HVAC and building automation applications.',
+            desc: `The Setra Model MRG is Setra's newest differential pressure transducer. The Setra MRG is the ideal product for any contractor, combining the flexibility of a multi-range with the performance of a single range transducer. The MRG has 8 selectable ranges and 3 selectable outputs, easily adjustable on the job with a flip of a switch or jumper. The MRG uses an IP67 rated housing and has a conduit fitting for easy wiring, making the MRG an ideal solution for any general HVAC application.
+
+■ UNIVERSAL DESIGN
+The Setra MRG utilizes a universal design that gives the user total flexibility to make changes on the job site. The user has the option to choose the field configurable range, mounting (DIN Rail, wall mount and duct mount), output (mA or Volt) and engineering unit (W.C. or Pascals). This flexibility means that the contractor can use the MRG for all of their needs.
+
+■ 8 FIELD SELECTABLE RANGES
+The Setra MRG provides 8 field selectable ranges (0.5, 1.0, 2.5 and 5.0"W.C.). These ranges can be selected on site by flipping to the desired range.
+
+■ IP67 RATED HOUSING
+The MRG housing is a robust IP67 rated design and is sealed with a gasket to make it wash-down capable for difficult applications. The MRG also has a conduit fitting that make installation and wiring easier.
+
+■ CAPACITIVE SENSING TECHNOLOGY
+Only Setra can claim ownership to the stainless steel capacitive design used in all of our HVAC/R sensors. Our advanced capacitive element provides excellent stability and linearity, while standing above the competitors in our ability to measure low pressure (<.0001 in. W.C) at high accuracy (0.25%). Our technology has been used in over 8 million installations and has the highest field acceptance rate in the industry.`,
             specs: [
-                { label: 'Pressure Ranges', value: '0...0.1" to 0...10" WC (fixed range)' },
-                { label: 'Accuracy', value: '±2% FS' },
-                { label: 'Output', value: '4...20 mA, 0...5 V, 0...10 V' },
-                { label: 'Input Power', value: '24 VDC / VAC' },
-                { label: 'Application', value: 'Building automation\nVAV boxes, Fan control' },
+                { label: 'Accuracy (RSS at constant temp)', value: '±1.0% FS' },
+                { label: 'Compensated Range', value: '32 to 122°F (0 to 50°C)' },
+                { label: 'Thermal Effects', value: '0.03% FS/°F (0.054% FS/°C)' },
+                { label: 'Maximum Line Pressure', value: '10 PSI' },
+                { label: 'Overpressure', value: 'Up to 10 PSI (range dependent)' },
+                { label: 'Long Term Stability', value: '2.0% FS/YR (max)' },
+                { label: 'Zero Offset', value: '0.5% FS/G (calibrated at 0g vertical position)' },
+                { label: 'Operating Temperature', value: '32 to 122°F (0 to 50°C)' },
+                { label: 'Excitation Range', value: '13 to 30 VDC / 18 to 24 VAC (Voltage Output)\n13 to 30 VDC (4-20mA output)' },
+                { label: 'Current Consumption', value: '30mA (max)' },
+                { label: 'Mis-Wiring', value: 'Reverse Excitation Protection' },
+                { label: 'Field Selectable Output', value: '0 to 5V, 0 to 10V (3-wire), 4 to 20mA (2-wire)' },
+                { label: 'Output Resistance (Voltage)', value: '10 Ohms (max)' },
+                { label: 'Load Resistance (Voltage)', value: '10 K-Ohms (min)' },
+                { label: 'Loop Resistance (4-20mA)', value: '0 to 800 Ohms' },
+                { label: 'Approval', value: 'CE & RoHS Compliant' },
+                { label: 'Case', value: 'Fire-Retardant Polycarbonate (UL 94 V-0 Approved), Hinged Lid' },
+                { label: 'Mounting', value: 'Two Screw Holes Vertical Position' },
+                { label: 'Electrical Connection Block', value: 'Removable Screw Terminal' },
+                { label: 'Pressure Fitting', value: '3/16" O.D. Barbed Brass' },
+                { label: 'Zero & Span', value: 'Push Button' },
+                { label: 'Weight', value: '8 Ounces (approx.)' },
+                { label: 'Pressure Media', value: 'Typically air or similar non-conducting gases' },
             ]
         },
         {
@@ -1283,17 +1996,54 @@ Output: RH+T+Td+Tdf`,
             ]
         },
         {
-            id: 'model_axd', title: 'Model AXD', subtitle: 'HIGH ACCURACY INDUSTRIAL TRANSDUCER', category: 'industrial',
+            id: 'model_axd', title: 'Model AXD', subtitle: 'VERSATILE INDUSTRIAL PRESSURE TRANSDUCER', category: 'industrial',
             image: '/templates/hs-tech/images/products/af2c3e1c0d3d0.png',
             gallery: ['/templates/hs-tech/images/products/af2c3e1c0d3d0.png'],
-            desc: 'High accuracy, ultra-stable industrial pressure transducer for demanding process applications. Stainless steel wetted parts for corrosive media.',
+            desc: `The Accusense™ Model AXD industrial pressure sensor is designed for Industrial and OEM customers who require high performance, reliability and versatility at an affordable price. It offers exceptional ±0.25% FS accuracy for pressure ranges as low as 1 PSI up to 10,000 PSI to meet a multitude of demanding applications. The Model AXD features all stainless steel wetted materials 17-4PHSS when ordered as "AXD1" or 316LSS when ordered as "AXDH".
+
+■ AXD PRESSURE TRANSDUCER FEATURES
+• High accuracy sensor
+• IP67 rated design
+• Non-oil filled design
+• Long-term stability: less than 0.5%/year
+• Exceptional EMI/RFI
+• Rugged design withstands high shock & vibration
+• NIST traceable calibration
+• Wide operating voltage: 9 VDC to 30 VDC
+• Multiple electrical termination and pressure fitting options
+• Reverse wire protection
+• CE & RoHS compliant`,
             specs: [
-                { label: 'Pressure Ranges', value: '0...100 inH2O to 0...10,000 PSI' },
-                { label: 'Accuracy', value: '±0.11% FS BSL (incl. linearity, hysteresis, repeatability)' },
-                { label: 'Output', value: '4...20 mA, 0...5 V, 0...10 V, 1...5 V' },
-                { label: 'Material', value: '316L stainless steel wetted parts' },
-                { label: 'Application', value: 'Industrial process control\nHigh-accuracy measurement' },
-                { label: 'Protection', value: 'IP65 (NEMA 4)' },
+                { label: 'Accuracy (RSS)', value: '±0.25% FS (Non-Linearity BFSL, Non-Repeatability, Hysteresis at 70°F)' },
+                { label: 'Response Time', value: '5 millisecond' },
+                { label: 'Long Term Stability', value: '±0.5% FS/yr' },
+                { label: 'Compensated Range (AXD1)', value: '-4 to +176°F (-20 to +80°C)' },
+                { label: 'Compensated Range (AXDH)', value: '-4 to +176°F (-20 to +80°C)' },
+                { label: 'Zero Shift (code "F")', value: 'AXD1: ±2% FS/100°F (±1.8% FS/50°C)\nAXDH: ±3%/100°F (±2.7% FS/50°C)' },
+                { label: 'Zero Shift (code "Z")', value: 'AXD1: ±0.5% FS/100°F (±0.45%/50°C)\nAXDH: ±0.75%/100°F (±0.67% FS/50°C)' },
+                { label: 'Span Shift (Range >50 PSI)', value: 'AXD1: ±1% FS/100°F (±1.4% FS/50°C)\nAXDH: ±2% FS/100°F (±1.8% FS/50°C)' },
+                { label: 'Span Shift (Range ≤50 PSI)', value: 'AXD1: ±1.5% FS/100°F (±2% FS/50°C)\nAXDH: ±2% FS/100°F (±1.8% FS/50°C)' },
+                { label: 'Operating Temperature', value: '-40 to +257°F (-40 to +125°C)' },
+                { label: 'Storage Temperature', value: '-40 to +257°F (-40 to +125°C)' },
+                { label: 'Acceleration', value: '10g Maximum (Shift in output <0.05 psi/g typical; pressure port axis only)' },
+                { label: 'Shock', value: '200g Operating (Mil-Std. 202, Method 213B, Cond. C)' },
+                { label: 'Vibration', value: '20g 50-2000 Hz (Mil-Std. 202, Method 204, Cond. C)' },
+                { label: 'Excitation (Voltage)', value: 'Code "24": 9 to 30 VDC\nCode "45": 4.8-8.1 VDC (5VDC)\nCode "2E": 13.5-30 VDC\nReverse excitation protected' },
+                { label: 'Power Consumption', value: '<0.15 watts (approx. 5mA @24VDC)' },
+                { label: 'Output (Voltage)', value: 'See ordering information (calibrated into 50K ohm load, operable into 5000 ohm load or greater)\nZero output: ±25mV, Span (FS) output: ±50mV' },
+                { label: 'Output Impedance', value: '100 ohms' },
+                { label: 'Circuit (Voltage)', value: '3-wire (Exc, Out, Com)' },
+                { label: 'Circuit (Current)', value: '2-Wire' },
+                { label: 'Output (Current)', value: '4 to 20 mA (calibrated at factory with 24VDC loop supply, 250ohm load)\nZero output: ±0.08mA, Span (FS) output: ±0.16mA' },
+                { label: 'External Load (Current)', value: '0 to 800 ohms' },
+                { label: 'Min. Supply Voltage (VDC)', value: '9 + 0.02 x (Resistance of receiver plus line)' },
+                { label: 'Max. Supply Voltage (VDC)', value: '30 + 0.004 x (Resistance of receiver plus line)' },
+                { label: 'Environmental Rating', value: 'P1 (gauge): IP66/NEMA4X\nP1 (sealed), "xx" cable, M4, A1: IP67/NEMA6' },
+                { label: 'Case Material', value: '304 stainless steel' },
+                { label: 'Wetted Materials', value: 'AXD1: 17-4PHSS, 17-7PHSS\nAXDH: 316L stainless steel' },
+                { label: 'Weight', value: '5 oz (approx.)' },
+                { label: 'Pressure Media', value: 'Gases or liquids compatible with 17-4 PH or 316L stainless steel\n(Hydrogen not recommended for 17-4 PH, use 316L SS version)' },
+                { label: 'Certifications', value: 'CE, EMC Directive (2014/30/EU), EN/IEC 61326-1, EN/IEC 61326-2-3:2012 Industrial' },
             ]
         },
         {
@@ -1455,4 +2205,910 @@ Output: RH+T+Td+Tdf`,
         { id: 'poe_logger', title: 'POE Logger', subtitle: 'POWER OVER ETHERNET', category: 'network_logger', image: '/templates/hs-tech/images/products/poe_logger_v1.jpg', gallery: [], desc: 'Data logger powered and connected via a single Ethernet cable using Power over Ethernet.', specs: [{ label: 'Power', value: 'IEEE 802.3af PoE' }, { label: 'Application', value: 'Easy installation, No power outlet needed' }] },
         { id: 'cms_sw', title: 'CMS Software', subtitle: 'MONITORING PLATFORM', category: 'cms_software', image: '/templates/hs-tech/images/products/cms_sw_v1.jpg', gallery: [], desc: 'Centralized software platform for real-time monitoring, alarm management, and compliance reporting.', specs: [{ label: 'Platform', value: 'Windows Server / Web browser' }, { label: 'Features', value: 'Real-time alarms, Reports, Audit trail' }, { label: 'Compliance', value: 'GMP/GxP, FDA 21 CFR Part 11' }] }
     ]
+}
+
+// VAISALA Applications & Solutions Detail Data
+export const VAISALA_APPLICATIONS: Record<string, any> = {
+    semiconductor: {
+        title: 'Semiconductor',
+        shortDesc: 'Precise humidity and dewpoint control in cleanrooms and lithography processes.',
+        image: '/templates/hs-tech/images/applications/semiconductor.jpg',
+        applications: [
+            { title: 'Dryer - Low Dew Point' },
+            { title: 'Humidity & Temperature clean room control' },
+            { title: 'Semiconductor Tool Monitoring' }
+        ],
+        content: `Cleanroom and other critical environments require precise environmental measurements to operate within consistent criteria. Humidity and temperature measurements can be particularly difficult in a clean room environment. VAISALA's highly accurate instruments and powerful solutions address measurement challenges and help you run cleanroom functions smoothly.
+
+Our products measure, monitor, and record humidity, dew point, temperature, pressure, etc. Supports clean room operations with the latest technology, professional guidance, and a variety of services. With the latest technology, expert know-how, and extensive services to support clean room operations, our products measure, monitor and record humidity, dew point, temperature and pressure.
+
+Learn more about our solutions for continuous monitoring systems and continuous data logging designed for use in critical, clean environments. For GxP regulated applications, we offer clean room monitoring systems designed for life sciences to help you meet these requirements.`,
+        systems: [
+            {
+                title: '1. Dryer-Low Dew Point',
+                desc: `VAISALA's Dew Point Sensors are used in many industries, such as compressed air systems, plastic drying, medical gas, and breathing air and fluidized bed dryers.`,
+                features: [
+                    'Unique patented technology that reduces deviation and ensures long-term reliability',
+                    'Fastest response speed in high humidity and low humidity section of the dew-point transmitter'
+                ],
+                recommendedProducts: ['dmt340', 'dmt152', 'dmt143', 'dmt143l', 'dm70']
+            },
+            {
+                title: '2. Humidity & Temperature Clean Room Control',
+                desc: `VAISALA's products measure, monitor, and record humidity, dew point, temperature, and pressure through its extensive service supporting the latest technologies, expert know-how, and cleanroom operations. Provides a continuous monitoring system optimized for clean room control and a solution for continuous data logging.`,
+                features: [
+                    'Proven Long-Term Reliability',
+                    'Hydrogen peroxide pollution control sensor coating option'
+                ],
+                recommendedProducts: ['hmt330', 'hmp1_9', 'hmt120', 'hmw90', 'hmdw110', 'hm70']
+            },
+            {
+                title: '3. Semiconductor Tool Monitoring',
+                desc: `Ultra-precision sensors ensure long-term stability enable precise control of the micro-environment around semiconductor equipment. VAISALA provides various types of temperature and pressure transducers applicable to the semiconductor industry.`,
+                features: [
+                    'HMT120/130 Humidity and Temperature Transmitters for Cleanrooms',
+                    'PTU300 Combined Pressure, Humidity and Temperature Transmitter',
+                    'Industrial CMS for continuous monitoring',
+                    'OEM modules for various applications'
+                ],
+                recommendedProducts: ['hmt120', 'hmt330', 'hmp1_9', 'hmm170', 'hmm170', 'dmt340', 'mmt330']
+            }
+        ],
+        externalLink: 'http://www.vaisala.com/en/industrialmeasurements/applications/semiconductortoolmonitoring/Pages/default.aspx'
+    },
+    plant: {
+        title: 'Plant & Process',
+        shortDesc: 'Reliable monitoring for industrial drying, coating, and chemical processes.',
+        image: '/templates/hs-tech/images/applications/plant.jpg',
+        applications: [
+            { title: 'Lubrication & Hydraulics' },
+            { title: 'Metal Heat Treatment Furnaces' },
+            { title: 'Monitoring Lithium Battery Manufacturing' }
+        ],
+        content: `Provides rigid sensors tailored for different temperature and measurement environments and custom sensors for environmental installation criteria.`,
+        systems: [
+            {
+                title: '1. Lubricant & Hydraulics',
+                desc: `Water is a common contaminant in industrial oils that deteriorates its performance, whether used as a lubricant, coolant, insulator, or for other purposes. High moisture content increases the risk of corrosion, over-heating, machine malfunctions and other costly problems.
+
+When the water content in oil reaches the saturation point, it separates out and free water is formed. Free water formation is critical in terms of problems related to water in oil. Continuous monitoring of moisture in oil ensures reliable equipment performance at all times and helps to schedule service intervals and prevent unscheduled downtime.`,
+                features: [
+                    'Real-time measuring',
+                    'Local support – globally',
+                    'Easier maintenance',
+                    'Cost efficiency via stability and robustness',
+                    'Fast, customized implementation',
+                    'Works in most oils'
+                ],
+                recommendedProducts: ['mm70', 'mmt330', 'mmt310', 'mmt162']
+            },
+            {
+                title: '2. Metal Heat Treatment Furnaces',
+                desc: `Water vapor is a key component in furnace atmospheres and feed gas, affecting the chemistry between the gas and the metal parts in the process. Because of the wide variety of thermal heat treatment processes, target dew point temperatures can range from –60°C to elevated levels of +35°C and even higher.
+
+Due to the extremely high oven process temperatures typically involved in heat treating, a sampling system/line from the furnace to the dew point probe is normally required in order to cool the process gas before reaching the sensor.`,
+                recommendedProducts: ['dmt340', 'dmt152', 'dmt143', 'dmt143l', 'dm70']
+            },
+            {
+                title: '3. Monitoring Lithium Battery Manufacturing',
+                desc: `The lithium-ion battery manufacturing process is sensitive to moisture. This challenging production environment demands a water vapor detection instrument with reliable performance and strong resistance to process byproducts that may be present in the atmosphere.
+
+Vaisala offers a chemically resistant polymer dew point sensor that is actively manipulated to achieve long term reliability with very little measurement drift. Calibrated devices using this sensor are available as low cost transmitters or fully configurable field instruments.`,
+                recommendedProducts: ['dmt340', 'dmt152', 'hmt330', 'dmt143', 'dmt143l', 'dm70']
+            }
+        ],
+        externalLink: 'http://www.vaisala.com/en/lifescience/applications/refrigeratorandfreezermonitoring/Pages/default.aspx'
+    },
+    automotive: {
+        title: 'Automotive',
+        shortDesc: 'Environmental testing in paint booths, engine test cells, and EV battery production.',
+        image: '/templates/hs-tech/images/applications/automotive.jpg',
+        applications: [
+            { title: 'Paint Booths' },
+            { title: 'Engine Testing' }
+        ],
+        content: `Modern automotive paints are sensitive to environmental conditions during application. Humidity control of the facility, paint booth and compressed air assures an efficient process and a high-quality finish.`,
+        systems: [
+            {
+                title: '1. Paint Booths',
+                desc: `Modern automotive paints are sensitive to environmental conditions during application. Humidity control of the facility, paint booth and compressed air assures an efficient process and a high-quality finish.
+
+Vaisala provides accurate humidity and dew point instruments with extremely low long-term drift, flexible installation options, and chemically durable sensors. In addition, Vaisala offers a family of intrinsically safe humidity instruments for hazardous locations. These instruments must be properly installed with appropriate safety barriers or isolators. Always refer to the User's Manual for complete information regarding the installation and wiring of intrinsically safe instruments.`,
+                recommendedProducts: []
+            },
+            {
+                title: '2. Engine Testing',
+                desc: `Dynamometer testing often occurs at very low and very high temperatures. High reliability and uptime are desirable in test cell instrumentation.
+
+Vaisala's BAROCAP® barometers and HUMICAP® humidity and temperature transmitters have operating ranges wide enough to accommodate virtually any test condition. A remote probe with sensor heating is available for condensing conditions. Other options include graphical display of history and measurement trends, data collection and transfer to PC, and flexible calibration. A three-in-one barometric pressure, humidity and temperature combination unit is also available.`,
+                recommendedProducts: ['hmd60', 'hmt330', 'hmt120', 'hmt360', 'hmm170', 'dmt152', 'dm70']
+            }
+        ],
+        externalLink: 'http://www.vaisala.com/en/lifescience/applications/refrigeratorandfreezermonitoring/Pages/default.aspx'
+    },
+    marine: {
+        title: 'Marine & Offshore',
+        shortDesc: 'Weather observation and atmospheric measurement at sea.',
+        image: '/templates/hs-tech/images/applications/marine.jpg',
+        applications: [
+            { title: 'Integrated Bridge Systems' },
+            { title: 'Dynamic Positioning' },
+            { title: 'Lubrication and Hydraulic Systems' },
+            { title: 'Compressed Air Systems' },
+            { title: 'Engine' },
+            { title: 'Nox Emission Monitoring' }
+        ],
+        content: `Safety, security and efficiency are top requirements in maritime operations, and weather can have a serious affect on each of these. It is clear that accurate weather and sea state information is vital for ensuring the safety, security and operation of ports, ships and offshore platforms.`,
+        systems: [],
+        recommendedProducts: ['hmt330', 'dmt340', 'mmt330', 'mmt310', 'mmt162', 'mm70'],
+        externalLink: ''
+    },
+    agriculture: {
+        title: 'Agriculture',
+        shortDesc: 'Crop storage humidity control and greenhouse climate management.',
+        image: '/templates/hs-tech/images/applications/agriculture.jpg',
+        applications: [
+            { title: 'Greenhouse' }
+        ],
+        content: `Greenhouses are closed environments where conditions are optimized for plant growth. Optimal controls require information both from the indoor and outdoor environments.
+
+Typically, carbon dioxide (CO2), relative humidity, and temperature are measured in the greenhouse. Outside measurement parameters include wind speed and direction, rain and solar radiation.
+
+Vaisala offers instruments for measuring CO2, relative humidity and temperature in the greenhouse. Vaisala's outdoor transmitter portfolio includes products for measuring wind, precipitation, various humidity parameters and temperature. Outdoor transmitters come with wide operating temperature ranges suitable for most climates, flexible installation options, and solar and radiation shields for protection from the elements.`,
+        systems: [],
+        recommendedProducts: ['hmt330', 'gmp343', 'hmt120', 'hmp60', 'gmw90'],
+        externalLink: 'http://hs-tech.co.kr/page/0406.php'
+    },
+    power: {
+        title: 'Power Industry',
+        shortDesc: 'Transformer oil moisture and hydrogen monitoring for grid asset protection.',
+        image: '/templates/hs-tech/images/applications/power.jpg',
+        applications: [
+            { title: 'Power Transformers' },
+            { title: 'SF6 Gas Insulated Equipment' },
+            { title: 'Turbine Inlet Air' }
+        ],
+        content: `The power industry is currently facing the challenges of equipment coming to the end of its operational lifespan, the impact of overload situations, as well as an increasing number of network faults.
+
+Vaisala offers a diverse portfolio of real-time online measurement transmitters for utilities who want to mitigate these risks and safeguard their critical assets. Using Vaisala moisture-in-oil, hydrogen-in-oil, temperature, dew point, pressure and density meters, utilities can safely increase equipment performance and prepare timely maintenance plans to prevent unexpected outages.`,
+        systems: [
+            {
+                title: '1. Power Transformers',
+                desc: `Dissolved Gas Analysis (DGA) in Power Transformers. A multi-gas DGA monitor, like the Optimus DGA Monitor, is the best choice for your critical transformers providing a comprehensive understanding of the condition of your transformer, whereas a single-gas monitor, Moisture, Hydrogen and Temperature Transmitter MHT410, can be used as a simple early warning indicator of a fault condition.`,
+                recommendedProducts: ['mht410', 'mmt310', 'mm70', 'mmt330', 'mmt162']
+            },
+            {
+                title: '2. SF6 Gas Insulated Equipment',
+                desc: `The electric power industry uses SF6 to insulate switchgears, circuit breakers and other equipment used in electricity transmission and distribution. To ensure the integrity of SF6 gas as an insulator, the amount of water vapor in SF6 gas should be kept to a minimum.
+
+Online monitoring of SF6 is convenient with Vaisala's Multiparameter Transmitter DPT145. The DPT145 is a unique innovation that not only monitors dewpoint online but also pressure and temperature. Both sudden and minor leaks are detected by the direct normalized pressure measurement, while online dew point measurement alerts the user to moisture issues.`,
+                recommendedProducts: ['dm70']
+            },
+            {
+                title: '3. Turbine Inlet Air',
+                desc: `The accurate measurement of the humidity of inlet air is essential for good turbine control. When the air is cooler the turbine performs better because as the temperature decreases, the density of the air increases. With reliable humidity monitoring the utility operator can cool and compress the inlet air, maximizing the power generated without risking condensation.`,
+                recommendedProducts: ['hmt330', 'hm70']
+            }
+        ],
+        externalLink: 'http://www.vaisala.com/en/energy/Pages/default.aspx'
+    },
+    hvac: {
+        title: 'HVAC & Buildings',
+        shortDesc: 'Indoor air quality and energy-efficient building automation.',
+        image: '/templates/hs-tech/images/applications/hvac.jpg',
+        applications: [
+            { title: 'Demand Controlled Ventilation' },
+            { title: 'Indoor Air Quality' },
+            { title: 'Data Centers' },
+            { title: 'Hazardous Area' },
+            { title: 'Metro Station' }
+        ],
+        content: `Vaisala's reliable and accurate HVAC meters and sensors are designed with energy efficiency in mind, whether you are optimizing cooling towers or demand-controlled ventilation. Our large selection includes ±3% and ±2% humidity and temperature measurement HVAC meters, CO2 measurement sensors and also handheld meters. They can be used indoors and outdoors, and installed on walls or in ventilation ducts.`,
+        systems: [
+            {
+                title: '1. Demand Controlled Ventilation',
+                desc: `Achieve energy efficiency and employee well-being with accurate CO2 measurements. Insufficient ventilation causes human-produced carbon dioxide to build up indoors, decreasing employee well-being and productivity substantially. With accurate CO2 measurement, both energy efficiency and employee well-being can be achieved simultaneously.
+
+Green building initiatives, like the US Green Building Council's LEEDv4, British BREEAM and Australian Energy Rating all encourage commercial constructors and building operators to reduce their impact on environment by increasing their energy efficiency. The efficiency of DCV can only be optimized by accurate carbon dioxide sensing. Vaisala CARBOCAP® technology delivers maintenance-free accuracy and performance that lasts.`,
+                recommendedProducts: ['gmp343', 'gmw90', 'gmw80', 'gmw90']
+            },
+            {
+                title: '2. Indoor Air Quality',
+                desc: `Indoor air quality (IAQ) is measured with humidity meters and temperature and CO₂ sensors to ensure standards for human comfort indoors. Although human comfort depends on an interaction of multiple variables, optimizing relative humidity, temperature and CO₂ by measuring indoor air quality (IAQ) satisfies the comfort requirements for a wider variety of occupants than optimizing only temperature.`,
+                recommendedProducts: ['hmt330', 'hmp1_9', 'hmt120', 'hmw90', 'hmd60', 'hmdw110']
+            },
+            {
+                title: '3. Data Centers',
+                desc: `Data centers are energy-intensive facilities, currently consuming more than 1.3% of the world's total electricity production. Cooling and air conditioning is one of the most important processes in any data center. Data center cooling can be done in a variety of ways, depending on the location and the local climate.`,
+                recommendedProducts: ['hmt330', 'hmp1_9', 'hmt120', 'hmw90', 'hmd60', 'hmdw110']
+            },
+            {
+                title: '4. Hazardous Area',
+                desc: `Humidity control is critical in many spaces where flammable or explosive materials such as fuels, chemicals, explosives are being stored. These spaces are designated as hazardous due to potentially explosive atmospheres. They require specially designed and approved instruments for safe operation.`,
+                recommendedProducts: ['hmt360']
+            },
+            {
+                title: '5. Metro Station',
+                desc: `Humidity and temperature transmitters are used in metro stations to control ventilation and air conditioning. The control of air moisture levels provides a comfortable environment for passengers, optimizes HVAC equipment energy consumption, and maintains the integrity of the equipment.`,
+                recommendedProducts: ['gmw90', 'gmw80', 'hmdw110', 'hmdw80']
+            }
+        ],
+        externalLink: ''
+    },
+    lifescience: {
+        title: 'Life Science',
+        shortDesc: 'Sterile environment monitoring, bio-decontamination, and incubator control.',
+        image: '/templates/hs-tech/images/applications/lifescience.jpg',
+        applications: [
+            { title: 'Refrigerator and Freezer Monitoring' },
+            { title: 'Incubator Monitoring' },
+            { title: 'Laboratory Monitoring' },
+            { title: 'Hospital Pharmacy Monitoring' },
+            { title: 'Warehouse Monitoring' },
+            { title: 'Cleanroom Monitoring' },
+            { title: 'Stability Chamber Monitoring' },
+            { title: 'Pharmaceutical Manufacturing' },
+            { title: 'Environmental Mapping Qualification' }
+        ],
+        content: `Vaisala monitoring solutions provide reliable, accurate measurements for pharmaceutical, biotechnology, and life science applications. Our systems ensure GxP compliance with gap-free data recording, 24/7 alarming, and comprehensive validation support.`,
+        systems: [
+            {
+                title: '1. Refrigerator and Freezer Monitoring',
+                desc: `Vaisala fridge and freezer monitoring, alarming, and reporting solutions reduce the risk of lost product and regulatory non-compliance in life science cold storage applications. Ideal for freezer temperature monitoring, with multiple connectivity options including wired and wireless, the system is simple to set up and easy to use.`,
+                recommendedProducts: ['hmt140', 'dl2000', 'dl1000', 'dl4000', 'gmp343']
+            },
+            {
+                title: '2. Incubator Monitoring',
+                desc: `Monitor and measure your medical, pharmaceutical, and biotechnical incubators with Vaisala monitoring solutions. Designed for GxP applications, the Vaisala viewLinc monitoring system and devices ensure regulatory compliance, and provide assurance of accurate test and process results.
+
+The system offers industry-best sensors with easy-to-use software, low cost-of-ownership, scalability, gap-free data records, and 24/7 remote alarming.`,
+                recommendedProducts: ['hmt140', 'hm70', 'dmt340', 'gmp343', 'gmp251', 'dl2000', 'dl1000', 'dl4000']
+            },
+            {
+                title: '3. Laboratory Monitoring',
+                desc: `Reduce the risk of imprecise measurements and failed audits in your accredited calibration laboratories and metrological applications with Vaisala solutions. The Vaisala viewLinc continuous monitoring system offers significant savings, low cost-of-ownership, gap-free data records, and 24/7 remote alarming.`,
+                recommendedProducts: ['hmt330', 'hmw90', 'gmw90', 'hmt140', 'hm70', 'dl2000', 'dl1000']
+            },
+            {
+                title: '4-9. Additional Life Science Applications',
+                desc: `Vaisala provides comprehensive solutions for hospital pharmacy, warehouse monitoring, cleanroom monitoring, stability chambers, pharmaceutical manufacturing, and environmental mapping qualification. All systems feature gap-free data recording, GxP compliance, and comprehensive validation support.`,
+                recommendedProducts: ['hmt330', 'hmt140', 'hm70', 'hmp1_9', 'hmt120', 'dl2000', 'dl1000', 'dl4000']
+            }
+        ],
+        externalLink: 'http://www.vaisala.com/en/lifescience/applications/refrigeratorandfreezermonitoring/Pages/default.aspx'
+    }
+}
+
+// ═══════════════════════════════════════════════════════════════════════════
+// SETRA APPLICATIONS & SENSOR
+// ═══════════════════════════════════════════════════════════════════════════
+
+export const SETRA_APPLICATIONS_SENSOR: Record<string, any> = {
+    precise_diff_pressure: {
+        title: 'Precise Measurement Differential Pressure',
+        shortDesc: 'High-accuracy differential pressure measurement for critical environments requiring ±0.25% FS precision or better, including reference laboratories and calibration facilities.',
+        content: `Test stand-grade and industry standard differential pressure transducers designed for critical applications where accuracy and stability are paramount. These instruments provide exceptional performance for leak detection, cleanroom monitoring, medical instrumentation, and precision test equipment.`,
+        models: [
+            { name: 'ASL', image: '/templates/hs-tech/images/products/setra_asl.png' },
+            { name: '239', image: '/templates/hs-tech/images/products/setra_239.png' },
+            { name: '201', image: '/templates/hs-tech/images/products/setra_201.png' }
+        ],
+        tableData: [
+            ['Model', 'ASL', '239', '201'],
+            ['Description', 'Test stand-grade low differential pressure transducer', 'Industry standard for high accuracy low differential pressure transducer', 'Very low differential/gauge pressure transducer'],
+            ['Sample Applications', 'Filter pressure, Leak detection systems, Exhaust pressure, Medical instrumentation, Part integrity testing, Test stands, Wind tunnels', 'Leak detection systems, Exhaust pressure, Medical instrumentation, Part integrity testing, Cleanrooms (Captures dynamic pressure changes)', 'Vapor recovery systems, Exhaust gas control systems (Liquids or Gases Compatible with Stainless Steel and Inconel)'],
+            ['Ranges', '0.25 to 40" W.C. Unidirectional, ±0.1 to ±15" W.C. Bidirectional', '0.5 to 30" W.C. Unidirectional, ±0.25 to ±15" W.C. Bidirectional', '5 to 50" W.C. Unidirectional, ±2.5" to ±25" W.C. Bidirectional'],
+            ['Accuracy FS (RSS) or % of reading', '<±0.07% FS', 'Standard: ±0.14% FS\nOpt.: ±0.073% FS', 'Standard: ±0.5% FS\nOpt.: ±0.25% FS'],
+            ['Operating temperature', '-40 to 85°C', '-18 to 80°C', '-40 to 80°C'],
+            ['Compensated temperature range', '-20 to 60°C', '-1 to 65°C', '-33 to 80°C'],
+            ['Thermal effect span, zero offset', 'Zero/Span tol. <±0.1% FS', 'Zero/Span Shift %FS/50°C: <±0.9', 'Zero Shift %FS/°F (%FS/ºC): <±2.0 (1.8)\nSpan Shift %FS/°F (%FS/ºC): <±1.5 (1.4)'],
+            ['Overpressure', 'Operable line pressure: Vacuum to max 250 PSIG\nLine pressure effect: 2%/100 PSI', 'Up to 45 PSI', '-'],
+            ['Maximum Line Pressure', '-', '100 PSI (689,473 Pa)', '100 PSI (689,473 Pa)'],
+            ['Media compatibility', 'Clean, dry gases compatible with 300 series and 17-4 PH stainless steel', 'Gases compatible with stainless steel, hard anodized 6061 aluminum (Buna-N O-ring)', 'Gases or liquid compatible with stainless steel and Inconel'],
+            ['Output', '0 to 5 VDC, 0 to 10 VDC, 4 to 20 mA', '4 to 20 mA, ±2.5 VDC, 0 to 5 VDC, 1 to 5 VDC, 1 to 6 VDC, 0 to 10 VDC', '4 to 20 mA'],
+            ['Electrical terminations', '3 ft (1 m) standard cable, Standard 6-pin ext. bayonet connection', 'Cable, 30 AWG 9-conductor cable', '1/2" NPT Ext. conduit, 4-pin bayonet connector, Hirschmann w/ large ext. fitting, Terminal strip'],
+            ['Pressure fittings', '1/8" NPT Int., Barb; 1/8" NPT Int., 1/8" NPT Int.; 1/8" NPT Ext., Barb; 7/16"-20 SAE Ext., Barb', '1/8" NPT Int.', '1/4"-18 NPT Ext., 1/4" Tube stub, 1/4"-18 NPT Int., 7/16" SAE 37° flare'],
+            ['참고 사항', 'Thermal effect accuracy\nStandard: ±0.5%.\nOpt.: <0.25%\n(total error band, -20°C to 60°C)', 'Vibration / Acceleration / Shock:\n2g from 5 Hz to 500 Hz, 10g max, 50g operating', 'Acceleration / Shock:\n10g max / 50g operating']
+        ]
+    },
+    air_cond_diff_pressure: {
+        title: 'Air Conditioning Differential Pressure',
+        shortDesc: 'Monitoring supply, return, and exhaust air pressure differentials in commercial HVAC systems and air handling units for energy optimization.',
+        content: `HVAC-optimized differential pressure sensors for building automation, energy management, and critical environment pressure control. These transmitters provide reliable performance for static duct pressure, cleanroom cascades, and VAV system control.`,
+        models: [
+            { name: '269', image: '/templates/hs-tech/images/products/setra_269.png' },
+            { name: '267', image: '/templates/hs-tech/images/products/setra_267.png' },
+            { name: '264', image: '/templates/hs-tech/images/products/setra_264.png' }
+        ],
+        tableData: [
+            ['Model', '269', '267', '264'],
+            ['Description', "the pharmaceutical industry's stringent calibration guidelines", 'Very low differential pressure transducer', 'Low Differential Pressure Transducer'],
+            ['Sample Applications', 'High Accuracy for Demanding Pharmaceutical Applications, Secure Calibration', 'Energy Management Systems, Static Duct Pressure, Cleanroom Pressure, Oven Pressurization & Furnace Draft Controls', 'HVAC/R systems, Room pressurization for critical environments, Energy management systems, Variable air volume and fan control (VAV)'],
+            ['Ranges', '0.1 to 10" W.C. Unidirectional, ±0.05 to ±5" W.C. Bidirectional', '0.1 to 100" W.C. Unidirectional, ±0.1 to ±100" W.C. Bidirectional', '0.1 to 100" W.C. Unidirectional, ±0.05 to ±50" W.C. Bidirectional'],
+            ['Accuracy FS (RSS) or % of reading', 'Standard: ±1.0% FS\nOpt.: ±0.5%, ±0.25%', 'Standard: ±1.0% FS\nOpt.: ±0.5%, ±0.4%, ±0.25%', 'Standard: ±1.0% FS\nOpt.: ±0.4%, ±0.25%'],
+            ['Operating temperature', '-6 to 71°C', '-18 to 65°C', '-18 to 79°C'],
+            ['Compensated temperature range', '-6 to 60°C', '5 to 65°C', '-18 to 65°C'],
+            ['Thermal effect span, zero offset', 'Zero/Span Shift %FS/°F:\nOpt.: 0.01%\nStandard: 0.02%', 'Zero/Span Shift %FS/°F (°C): ±0.033 (±0.06)', 'Zero/Span Shift %FS/°F (°C): ±0.033 (±0.06)'],
+            ['Overpressure', 'Up to 2 PSI (Range Dependent)', 'Up to 10 PSI (Range Dependent)', 'Up to 10 PSI (Range Dependent)'],
+            ['Maximum Line Pressure', '10 PSI (68,947.3 Pa)', '10 PSI (68,947.3 Pa)', '10 PSI (68,947.3 Pa)'],
+            ['Media compatibility', 'air or nonconducting gases. Use with liquids or corrosive gases will damage the unit.', 'air or nonconducting gases. Use with liquids or corrosive gases will damage the unit.', 'Clean air or similar non-conducting gases.'],
+            ['Output', '4 to 20 mA', '4 to 20 mA', '4 to 20 mA, 0 to 5 VDC'],
+            ['Electrical terminations', 'Detachable Electrical Connector', 'Detachable Electrical Connector', 'Terminal strip, 1/2" conduit enc.'],
+            ['Pressure fittings', '3/16" O.D. Barbed Brass Fittings on Removable Process Head', '3/16" Barbed Brass Fitting, 1/4"NPTF Brass Fitting, Static Duct Probe', '3/16" O.D. barbed brass for 1/4" push on tubing']
+        ]
+    },
+    precision_pressure: {
+        title: 'Precision Measurement Pressure Sensor',
+        shortDesc: 'Absolute and gauge pressure measurement for industrial process control, leak testing, and quality assurance applications.',
+        content: `Test stand-grade and high accuracy pressure transducers for research, development, and demanding industrial applications. Includes vacuum manometers for semiconductor and petrochemical processes.`,
+        models: [
+            { name: 'ASM', image: '/templates/hs-tech/images/products/setra_asm.png' },
+            { name: '204', image: '/templates/hs-tech/images/products/setra_204.png' },
+            { name: '730', image: '/templates/hs-tech/images/products/setra_730.png' }
+        ],
+        tableData: [
+            ['', '정밀 계측용 압력센서', '진공 압력 센서'],
+            ['Model', 'ASM', '204', '730'],
+            ['Description', 'Test stand-grade pressure transducer', 'High accuracy pressure transducer', 'Vacuum Capacitance Manometer'],
+            ['Sample Applications', 'Engine test stands, Particle test & analysis, Manifold pressure, Refrigeration testing, High accuracy industrial', 'Research & development, Vacuum systems, Dynamometers, Engine test cells, General purpose', 'Semiconductor, Petrochemical, Plasma sterilizers, Vacuum packaging'],
+            ['Gauge (PSIG)', '•', '•', ''],
+            ['Sealed Gauge (PSIS)', '', '', ''],
+            ['Compound (PSIC)', '•', '', ''],
+            ['Absolute (PSIA)', '•', '•', ''],
+            ['Vacuum (PSIV)', '•', '•', '•'],
+            ['Ranges (PSI)', '15 to 1,000 PSIG\n15 to 1,000 PSIC\n15 to 1,000 PSIA\n0 to 14.7 PSIV', '25 to 10,000 PSIG\n25 to 5,000 PSIA\n0 to 14.7 PSIV', '10, 20, 100, 200, 1000 Torr'],
+            ['Accuracy FS (RSS) or % of reading', '±0.05% FS', '±0.11% FS, ±0.073% FS', 'Standard: ±1.0% FS\nOpt.: ±0.5%, ±0.25% FS'],
+            ['Operating temperature', '-40° to 185°F (-40° to 85°C)', '0 to 176°F (-18° to 80°C)', '0 to 80°C'],
+            ['Compensated temperature range', '-5° to 140°F (-20 to 60°C)', 'NA', '0 to 50°C'],
+            ['Thermal effect % FS/100°F (% FS/50°C)', '<0.25% (total error band)', 'Zero: <±0.4 (0.36)\nSpan: <±0.3 (0.27)', 'Zero: ±0.25% FS/50℃\nSpan: ±1.35% Rdg/50℃'],
+            ['Media compatibility', 'Gases or liquid compatible with 17-4 stainless steel', "Gases or liquids compatible with Inconel®. Inconel® wetted material is for 0.5\" tube option only. Other fitting options will add stainless steel", 'Non-condensing air or gas'],
+            ['Output', '0 to 5 VDC, 0 to 10 VDC, 4 to 20 mA', '4 to 20 mA, 0 to 5 VDC, 0 to 2.5 VDC, 1 to 5 VDC, 1 to 6 VDC, 0 to 10 VDC, 1 to 10 VDC', '0 to 5 VDC, 0 to 10 VDC'],
+            ['Electrical terminations', '3 ft (1 m) standard cable, Standard 6-pin ext. bayonet connection', 'Cable, 30 AWG 9-conductor cable', '9-pin D-Sub, Terminal strip, 15-pin D-Sub on 6" pigtail'],
+            ['Pressure fittings', '1/8" NPT Ext., 1/8" NPT Int., 1/4" NPT Ext., 1/4" NPT Int., 7/16"-20 SAE Ext.', '1/4" NPT Int.', '0.5"OD tube (inconel), ISO NW10 (16, 25), 0.25" NPT Ext']
+        ]
+    },
+    cooling_air_cond: {
+        title: 'Cooling and Air Conditioning Pressure',
+        shortDesc: 'Refrigerant pressure monitoring in cooling systems, chiller plants, and commercial HVAC installations for performance and safety.',
+        content: `OEM pressure transducers for fuel cells, hydraulic systems, compressors, and HVAC/R equipment. Available in wide pressure ranges with multiple electrical termination and pressure fitting options.`,
+        models: [
+            { name: 'AXD', image: '/templates/hs-tech/images/products/af2c3e1c0d3d0.png' },
+            { name: '206', image: '/templates/hs-tech/images/products/5175822708f3a.png' },
+            { name: '209', image: '/templates/hs-tech/images/products/a153aa767ba86.png' }
+        ],
+        tableData: [
+            ['Model', 'AXD', '206', '209'],
+            ['Description', 'Low & high range OEM pressure transducer', 'Field calibration-enabled OEM pressure transducer', 'General purpose OEM pressure transducer'],
+            ['Sample Applications', 'Fuel cell OEM, Industrial OEM, CNG/LNG, Hydraulic systems, Compressor control, HVAC/R equipment', 'Hydraulic systems, Compressor control, HVAC/R equipment, Tank level', 'Hydraulic systems, Compressor control, HVAC/R equipment, Tank level'],
+            ['Gauge (PSIG)', '•', '•', '•'],
+            ['Sealed Gauge (PSIS)', '•', '', '•'],
+            ['Compound (PSIC)', '•', '•', '•'],
+            ['Absolute (PSIA)', '', '•', ''],
+            ['Vacuum (PSIV)', '•', '', '•'],
+            ['Ranges (PSI)', '1 to 10,000 PSIG\n200 to 10,000 PSIS\n5 to 10,000 PSIC\nATM to 14.7 PSIV', '25 to 10,000 PSIG\n25 to 10,000 PSIC\n25 to 10,000 PSIA', '1 to 10,000 PSIG\n200 to 10,000 PSIS\n1 to 10,000 PSIC\nATM to 14.7 PSIV'],
+            ['Accuracy FS (RSS) or % of reading', '±0.25% FS', '±0.13% FS', '±0.25% FS'],
+            ['Operating temperature', '-40° to 257°F (-40° to 125°C)', '-40° to 185°F (-40° to 85°C)', '-40° to 185°F (-40° to 85°C)'],
+            ['Compensated temperature range', '-4° to 176°F (-20 to 80°C)', '-4° to 176°F (-20 to 80°C)', '-4° to 176°F (-20 to 80°C)'],
+            ['Thermal effect % FS/100°F (% FS/50°C)', '<1% (TEB avail.)', 'Zero: ±1 (0.9)\nSpan: ±1.5 (1.4)', 'Zero: ±2.0 (1.8)\nSpan: ±1.5 (1.3)'],
+            ['Media compatibility', 'Gases or liquid compatible with 17-4 or 316L stainless steel', 'Gases or liquid compatible with 17-4 stainless steel', 'Gases or liquid compatible with 17-4 or 17-7 stainless steel'],
+            ['Output', '4 to 20 mA\n0.5 to 5.5 VDC\n0.5 to 10.5 VDC (13.5 VDC Exc. Min)\n0.5 to 4.5 VDC (5 VDC Exc.)', '4 to 20 mA\n0.1 to 5.1 VDC\n1 to 5 VDC\n1 to 6 VDC\n0.1 to 10.1 VDC', '4 to 20 mA\n0.5 to 5.5 VDC\n1 to 5 VDC\n1 to 6 VDC\n0.5 to 4.5 VDC (5 VDC Exc.)'],
+            ['Electrical terminations', 'Cable, 3-pin Packard, M12 4-pin, 1/2" conduit', 'Cable, Hirschmann, 1/2" conduit w/ cable, Terminal strip', 'Cable, 3-pin Packard, 4-pin Packard, "Mini" Hirschmann, Terminal strip'],
+            ['Pressure fittings', '1/4" NPT Ext., 1/4" NPT Int., 1/8" NPT Ext., 1/8" NPT Int., 7/16" SAE, 1/4" Int. SAE w/ Schraeder', '1/4" NPT Ext., 1/8" NPT Ext., 7/16" SAE', '1/4" NPT Ext., 7/16" SAE Ext., 1/8" NPT Ext., 1/4 Int. SAE internal 7/16"-20 w/ Schrader, 1/2" A Ext., 1/8" NPT Int. bulkhead']
+        ]
+    },
+    uhp_pressure: {
+        title: 'UHP Pressure Sensor',
+        shortDesc: 'Ultra-high purity pressure sensing for semiconductor process gas lines, cleanroom air systems, and pharmaceutical manufacturing with wetted stainless or PTFE materials.',
+        content: `Ultra High Purity flow-through and surface mount pressure transducers designed for semiconductor, pharmaceutical, and biotech applications. 316L stainless steel wetted materials ensure compatibility with high purity gases and liquids.`,
+        models: [
+            { name: '223', image: '/templates/hs-tech/images/products/setra_223.png' },
+            { name: '224', image: '/templates/hs-tech/images/products/setra_224.png' },
+            { name: '225', image: '/templates/hs-tech/images/products/setra_225.png' },
+            { name: '227', image: '/templates/hs-tech/images/products/setra_227.png' }
+        ],
+        tableData: [
+            ['Model', '223', '224', '225', '227'],
+            ['Description', 'Ultra High Purity Flow-Through Pressure Transducers', 'Ultra High Purity Flow-Through Pressure Transducer, Virtually insensitive to thermal transients in flow stream', 'Ultra High Purity Pressure Transducers', 'Ultra-High Purity Pressure Transducer'],
+            ['Sample Applications', 'High purity gas delivery, Semiconductor process tools, Pharmaceutical & biotech process, Gas cabinets', 'Gas cabinets, High purity gas delivery systems, Semiconductor process tools', 'Modular 1-1/8" surface mount gas sticks and panels, High purity gas delivery systems, Semiconductor process tools', 'Modular 1-1/8" surface mount gas sticks and panels, High purity gas delivery systems, Semiconductor process tools'],
+            ['Gauge (PSIG)', '•', '•', '•', '•'],
+            ['Compound (PSIC)', '•', '•', '•', '•'],
+            ['Absolute (PSIA)', '•', '•', '•', '•'],
+            ['Ranges (PSI)', '0 to 25 (up to 3000) PSI, 0 to 1.7 (up to 200) Bar, -14.7 to 85.3 (up to 2983.5) PSI', '0 to 25 (up to 3000) PSI, 0 to 7 (up to 200) Bar, -14.7 to 85.3 (up to 2983.5) PSI', '0 to 25 (up to 3000) PSI, 0 to 7 (up to 200) Bar, 0 to 1000 (up to1500) Torr (ab)\n-14.7 to 85.3 (up to 2983.5) PSI', '0 to 25 (up to 3000) PSI, 0 to 7 (up to 200) Bar, 0 to 1000 (up to1500) Torr (ab)\n-14.7 to 85.3 (up to 2983.5) PSI'],
+            ['Accuracy FS (RSS) or % of reading', '±0.25% FS', '±1.0% FS, Opt ±0.25% FS', '±0.25% FS', '±1.0% FS, Opt ±0.25% FS'],
+            ['Operating temperature', '-40 to 85°C\n-30 to 80°C (방폭)', '-40 to 85°C\n-30 to 80°C (방폭)', '-40 to 85°C\n-30 to 80°C (방폭)', '-40 to 85°C\n-30 to 80°C (방폭)'],
+            ['Compensated temperature range', '-9 to 65° C', '-9 to 65° C', '-9 to 65° C', '-9 to 65° C'],
+            ['Thermal effect % FS/100°F (% FS/50°C)', '±2.0 (1.8)', '±2.0 (1.8)', '±2.0 (1.8)', '±2.0 (1.8)'],
+            ['Media compatibility', 'Liquid or gases compatible with 316L stainless steel', 'Liquid or gases compatible with 316L stainless steel', 'Liquid or gases compatible with 316L stainless steel', 'Liquid or gases compatible with 316L stainless steel'],
+            ['Output', '4 to 20 mA (2-wire)\n0 to 5 VDC, 0 to 10 VDC, 4 to 20 mA (방폭)', '4 to 20 mA (2-wire)\n0 to 5 VDC, 0 to 10 VDC, 4 to 20 mA (방폭)', '4 to 20 mA (2-wire)\n0 to 5 VDC, 0 to 10 VDC, 4 to 20 mA (방폭)', '4 to 20 mA (2-wire)\n0 to 5 VDC, 0 to 10 VDC, 4 to 20 mA (비방폭)'],
+            ['Electrical terminations', '6ft. multiconductor cable, 4 pin bayonet connector, 15 pin (9 pin) D-sub connector', '6ft. multiconductor cable, 4 pin bayonet connector, 15 pin (9 pin) D-sub connector, 5 pin mini DIN', '6ft. multiconductor cable, 4 pin bayonet connector, 15 pin D-sub connector, 4 pin M12x1', '6ft. multiconductor cable, 4 pin bayonet connector, 15 pin (9 pin) D-sub connector (비방폭)'],
+            ['Pressure fittings', '#4 M/M fixed face seals (2.24" end to end)\n#4 F/F swivel face seals (3.05" end to end)\n#4 M/F swivel face seals (3.65" end to end)\n#4  M/M swivel face seals (4.25" end to end)\n1/4" tube stubs (1.85" end to end)\n3/8" tube stubs (2.25" end to end)\n1/2" tube stubs (2.25" end to end)', '#4 male face seal swivel\n#4 female face seal swivel\n1/4" NPT male\n1/4" tube stub', 'Down mount "C" seal (1.125" Base)', 'Down mount "C" seal (1.125" Base)'],
+            ['방폭', 'Optional ETL certified as conforming to UL 121201 and ATEX 2014/34/EU approval available for 4 to 20 mA output units', 'Optional ETL certified as conforming to UL-1604 and ATEX 94/9/EC approval available for 4 to 20 mA output units', '', '']
+        ]
+    },
+    barometric: {
+        title: 'Barometric Pressure Sensor',
+        shortDesc: 'Atmospheric reference pressure measurement for altitude compensation, weather monitoring, and environmental control systems.',
+        content: `Premium and low-cost barometric pressure sensors for weather stations, environmental monitoring, and engine test applications. Provides accurate absolute pressure measurement from 500 to 1,100 mb/hPa.`,
+        models: [
+            { name: '270', image: '/templates/hs-tech/images/products/setra_270.png' },
+            { name: '276', image: '/templates/hs-tech/images/products/setra_276.png' },
+            { name: '278', image: '/templates/hs-tech/images/products/setra_278.png' }
+        ],
+        tableData: [
+            ['Model', '270', '276', '278'],
+            ['Description', 'Premium barometric pressure sensor', 'Low-cost barometric pressure transducer', 'Low power barometric pressure transducer'],
+            ['Sample Applications', 'High accuracy barometric pressure measurement, Data buoys, Remote weather stations, Engine test cells', 'Environmental monitoring systems, Wind measurement systems, Weather & environmental data logging', 'AWS, Data buoys and ships, Agriculture metrology, AWOS/ASOS systems'],
+            ['Gauge (PSIG)', '•', '', ''],
+            ['Compound (PSIC)', '', '', ''],
+            ['Absolute (PSIA)', '•', '•', '•'],
+            ['Vacuum (PSIV)', '', '', ''],
+            ['Ranges (PSI)', '600/800 to 1,100 mb/hPa, 5 to 100 PSIA', '600/800 to 1,100 mb/hPa, 20 PSIA', '500/600/800 to 1,100 mb/hPa'],
+            ['Accuracy FS (RSS) or % of reading', '±0.03% FS, ±0.05% FS', '±0.25% FS', 'Between ±0.3 and ±2.5 mb/hPa (range dependent)'],
+            ['Operating temperature', '-18° to 80°C', '-18° to 80°C', '-40 to 60°C'],
+            ['Compensated temperature range', '-1 to 49° C', '-1 to 55° C', 'NA'],
+            ['Thermal effect % FS/100°F (% FS/50°C)', 'Barometric: ±0.2 (0.18)\nOther: ±0.1 (0.09)', '±1% FS', 'Please view data sheet'],
+            ['Media compatibility', 'Non-condensing air or gas compatible with hard anodized aluminum, alumina ceramics, gold, fluorocarbon elastomer sealant & Buna-N O-ring', 'Non-condensing air or gas compatible with stainless steel, alumina ceramics, gold, and elastomer', 'Non-condensing air or gas'],
+            ['Output', '0 to 5 VDC (24 VDC Exc.), 0 to 5 VDC (12 VDC Exc.)', '0.1 to 5.1 VDC (12 VDC / 24 VDC Exc.), 0.5 to 4.5 VDC (5 VDC Exc.)', '0 to 2.5 VDC (9.5 to 28 VDC Exc.), 0 to 5 VDC (9.5 to 28 VDC Exc.)'],
+            ['Electrical terminations', 'Cable', 'Cable', '5-pin terminal block'],
+            ['Pressure fittings', '1/8" NPT Int.', '1/8" push tube fitting, 1/8" NPT Ext.', '1/8" barbed fitting']
+        ]
+    }
+}
+
+// ═══════════════════════════════════════════════════════════════════════════
+// SETRA APPLICATIONS & SOLUTION
+// ═══════════════════════════════════════════════════════════════════════════
+
+export const SETRA_APPLICATIONS_SOLUTION: Record<string, any> = {
+    setra_cems: {
+        title: 'Setra CEMS™',
+        subtitle: 'Continuous Environmental Monitoring System',
+        shortDesc: 'Real-Time Environmental Monitoring for Your Critical Spaces and Cleanroom Environments.',
+        content: `The Setra CEMS™ (Continuous Environmental Monitoring System) provides comprehensive real-time monitoring for critical spaces and cleanroom environments. With cloud-based analytics and visual monitoring capabilities, CEMS ensures your facility maintains optimal environmental conditions while meeting regulatory compliance requirements.`,
+        cemsApplications: [
+            'Cleanroom Manufacturing',
+            'Isolation & Treatment Rooms',
+            'Compounding Pharmacies'
+        ],
+        howItWorks: {
+            flowImage: '/templates/hs-tech/images/setra/cems_flow.png',
+            sensorsImage: '/templates/hs-tech/images/setra/cems_sensors.png',
+            steps: [
+                {
+                    title: 'Sensor Hardware',
+                    desc: 'Pressure, Temperature, Velocity/ACH, Door Sensor, Particle Sensing, Humidity'
+                },
+                {
+                    title: 'Setra Cloud Analytics and Data Storage',
+                    desc: 'Secure cloud-based data processing and storage'
+                },
+                {
+                    title: 'Visual Monitoring, Trending, & Alarming via CEMS® Software',
+                    desc: 'Real-time dashboards, alerts, and compliance reporting'
+                }
+            ]
+        }
+    },
+    cleanroom: {
+        title: 'Cleanroom Manufacturing',
+        subtitle: 'Cleanroom Environmental Monitoring System',
+        content: `Easily monitor the environment in cleanrooms with one system that is connected to your existing network, accessible remotely, and easily scalable up to thousands of monitored locations.
+
+CEMS software provides alarming, real-time trend data, and reports for compliance with ISO Certifications and GxP regulations. Integration and installation of your Monitoring System is fast and easy with Setra's industry leading sensors that monitor temperature, relative humidity, particle count, CO₂, differential pressure, air velocity, door contact, and more.`,
+        features: [
+            {
+                title: 'CONTINUOUS MONITORING',
+                desc: 'Monitor Temp, RH, ACH, Diff. Pressure, Particulate Count, Door Status, CO₂, and many more parameters.'
+            },
+            {
+                title: 'MEET REGULATORY REQUIREMENTS',
+                desc: 'Contained in FDA 21 CFR Part 11, EU Annex 11, USP 797/800 and ISO 14644.'
+            },
+            {
+                title: 'ENTERPRISE WIDE',
+                desc: 'Facility monitoring all within the same system for distributed access which is easily restricted to individuals on a "need to know" basis.'
+            },
+            {
+                title: 'ALARM NOTIFICATIONS',
+                desc: 'Issued in real-time via SMS / Email with the ability to customize escalation levels.'
+            },
+            {
+                title: 'MAPS AND FLOOR PLANS',
+                desc: 'Provide a quick overall snapshot of facility status.'
+            },
+            {
+                title: 'DATA INTEGRITY',
+                desc: 'Ensured through secure hosting in the SetraCLOUD or an on-premises installation.'
+            },
+            {
+                title: 'EASY TO DEPLOY AND USE',
+                desc: 'Connect CEMS software and associated measurement sensing hardware to an existing network via Ethernet, WiFi or Cellular.'
+            },
+            {
+                title: 'WEB-BASED USER INTERFACE',
+                desc: 'All that you need to interface with CEMS software from anywhere, at anytime.'
+            }
+        ]
+    },
+    isolation: {
+        title: 'Isolation & Treatment Rooms',
+        subtitle: 'Display Real-Time Feedback and Alarming',
+        content: `Modern healthcare requires nursing staff to monitor multiple things all at the same time. One person can't be in two places at the same time, which is why Setra designed this centralized monitoring system. Our system provides healthcare professionals with a central location for monitoring the environmental conditions of critical patient rooms. Our system displays real-time data while providing audible, visual and messaging alerts to those who need it most: nursing and facilities staff.`,
+        features: [
+            {
+                title: 'Maximize patient safety',
+                desc: 'Continuous environmental monitoring ensures critical patient room conditions'
+            },
+            {
+                title: 'Reduce burden on nursing staff',
+                desc: 'Centralized monitoring eliminates the need to check each room individually'
+            },
+            {
+                title: 'Building maps and floor plans built in for visual monitoring',
+                desc: 'Quick visual status overview of all monitored locations'
+            },
+            {
+                title: 'Enterprise wide monitoring in one system',
+                desc: 'Monitor multiple facilities from a single platform'
+            },
+            {
+                title: 'Easy to use and deploy',
+                desc: 'Quick installation and intuitive interface for immediate use'
+            }
+        ]
+    },
+    compounding: {
+        title: 'Compounding Pharmacies',
+        subtitle: 'USP <797> and <800> Compliance Monitoring',
+        content: `Hospital pharmacies are unique because of the critical role they play in maintaining patient health and safety. Pharmacies that perform compounded sterile preparations (CSPs), in particular, must meet specific clean room standards to ensure sterile conditions are maintained. While there are many established environmental requirements in these spaces, some pharmacy managers are choosing to go the extra mile in exchange for added peace of mind.
+
+Setra CEMS™ solution paired with our sensing hardware enable you to gain real-time insights into all your locations. With our cloud-based monitoring system, you gain data visualization and actionable insights as well as automated reporting, quality integrity, and risk mitigation.`,
+        features: [
+            {
+                title: 'Full life-cycle guidance from industry experts',
+                desc: 'Expert support in hardware and software implementation'
+            },
+            {
+                title: 'Not limited to Setra devices',
+                desc: 'Easily connect 3rd party sensors for comprehensive monitoring'
+            },
+            {
+                title: 'Eliminate manual data logging and reporting',
+                desc: 'Automated data collection and compliance reporting'
+            },
+            {
+                title: 'Regulatory compliance automation',
+                desc: 'Automatically monitor data to ensure the desired airflow, temperature, and humidity levels are achieved for regulatory compliance.'
+            }
+        ]
+    }
+}
+
+// ═══════════════════════════════════════════════════════════════════════════
+// JUMO CATEGORY INTRODUCTIONS
+// ═══════════════════════════════════════════════════════════════════════════
+
+export const JUMO_CATEGORY_INTRO: Record<string, any> = {
+    jumo_temp: {
+        title: 'PlastoSENS',
+        subtitle: 'Precision Temperature Sensors for Plastics Processing',
+        desc: 'PlastoSENS series offers innovative temperature sensors specifically designed for demanding applications in plastics processing, high-voltage environments, chemical industries, and sterilization processes.',
+        products: [
+            {
+                model: 'plastoSENS T01',
+                image: '/templates/hs-tech/images/jumo/plastosens_t01.png',
+                features: [
+                    'Nominal voltage up to 7000 V AC',
+                    'Standardized, voltage-resistant probe (e.g. for use in transformers)',
+                    'Electrically insulating and heat conducting at the same time',
+                    'Higher capacity – compared to conventional probes used in high voltage areas',
+                    'Application areas: in transformers, generators, voltage rails, combined heat and power plants, etc'
+                ]
+            },
+            {
+                model: 'plastoSENS T02',
+                image: '/templates/hs-tech/images/jumo/plastosens_t02.png',
+                features: [
+                    'Vibration and shock-resistant - shock-resistant – thanks to temperature probe that is completely surrounded by plastic',
+                    'Can be used in almost all liquids – even in chemicals',
+                    'High-Performance plastic favors low natural frequency in case of oscillation, resulting in higher load capacity for the temperature probe',
+                    'Breakage resistance due to stable sensor - Can be used for motor oils, fuels, battery acids, etc.'
+                ]
+            },
+            {
+                model: 'plastoSENS T03',
+                image: '/templates/hs-tech/images/jumo/plastosens_t03.png',
+                features: [
+                    'Protection type IP69K – also steam-tight on the cable outlet',
+                    'Absolute tightness – the applied special plastics form a substance-to-substance bond during the injection molding process and thereby guarantee steam-tightness',
+                    'Application areas: in autoclaves, steam sterilizers, CIP cleaning, SIP cleaning, etc.'
+                ]
+            },
+            {
+                model: 'plastoSENS T04',
+                image: '/templates/hs-tech/images/jumo/plastosens_t04.png',
+                features: [
+                    'For temperatures from -40 to +180 °C',
+                    'Precise pipe adaptation through full contact to surface area',
+                    'Simple and fast mounting without tools',
+                    'Heat-conductible plastic',
+                    'Water-tight, IP65 - 70 % quicker mounting with the clip in comparison to mounting with a conventional hose clamp'
+                ]
+            }
+        ]
+    },
+    jumo_liquid: {
+        title: 'Liquid Analysis',
+        subtitle: 'pH, Conductivity, and Water Quality Measurement Solutions',
+        desc: 'Comprehensive liquid analysis solutions for water treatment, chemical, pharmaceutical, and food & beverage industries.',
+        sections: [
+            {
+                title: 'pH Combination Electrodes',
+                products: [
+                    {
+                        model: 'JUMO tecLine HD pH Combination Electrodes (201021)',
+                        image: '/templates/hs-tech/images/jumo/tecline_hd.png',
+                        features: [
+                            'Especially robust industry electrodes for the most demanding applications',
+                            'For processes with increased pollutant and toxic loads as well as media containing oil',
+                            'For high process pressures up to 13 bar',
+                            'Wide temperature operating range up to 135 °C',
+                            'Extensive PTFE ring diaphragm - With quality certificate',
+                            'Temperature probe can be integrated as an addition'
+                        ]
+                    },
+                    {
+                        model: 'JUMO tecLine pH single-rod electrodes (201020)',
+                        image: '/templates/hs-tech/images/jumo/tecline_single.png',
+                        features: [
+                            'High-quality industrial electrodes',
+                            'Process / industrial applications',
+                            'Pressure resistant up to 10bar',
+                            'Additional temperature probe can be integrated',
+                            'Different fitting lengths'
+                        ],
+                        applications: [
+                            'Industrial and communal water and wastewater technology',
+                            'Measurements in suspensions and paints/lacquers',
+                            'Measurements in low ion fluids',
+                            'High-alkaline, high-temperature and sterilization processes',
+                            'Fluoride containing fluids and low temperature applications'
+                        ]
+                    },
+                    {
+                        model: 'JUMO tecLine CR-GT, Conductive Two-Electrodes Conductivity Sensor (202925)',
+                        image: '/templates/hs-tech/images/jumo/tecline_cr_gt.png',
+                        features: [
+                            'Two-electrode principle',
+                            'Special graphite electrodes',
+                            'Cell constants K = 1.0'
+                        ],
+                        applications: [
+                            'Medium separation',
+                            'Drinking water treatment',
+                            'Wastewater control/treatment',
+                            'Concentrate monitoring',
+                            'Industrial water treatment'
+                        ]
+                    }
+                ]
+            },
+            {
+                title: 'pH Transmitter',
+                products: [
+                    {
+                        model: 'JUMO ecoTRANS pH 03 transmitter / switching device (202723)',
+                        image: '/templates/hs-tech/images/jumo/ecotrans_ph03.png',
+                        features: [
+                            'Can be changed from pH to mV / ORP (Redox voltage)',
+                            'Simple connection of the probes with screw terminals',
+                            'Asymmetric and symmetric connection of the pH electrodes',
+                            'Two electrically isolated analog outputs 0(4)...20 mA / 0(2)...10 V freely configurable',
+                            'Switching output: relay changeover contact - Monitoring of the medium temperature is possible',
+                            'Simple, guided calibration procedure',
+                            '3-way isolation (input, output and power supply are electrically isolated from one another)',
+                            'For mounting on DIN rail',
+                            'Calibration timer',
+                            'Supply including calibration certificate'
+                        ],
+                        applications: [
+                            'General water/wastewater management',
+                            'Drinking water treatment',
+                            'Process technology',
+                            'Swimming pool technology',
+                            'Measurement of surface and sea water',
+                            'Fish-keeping'
+                        ]
+                    },
+                    {
+                        model: 'JUMO dTRANS pH 02 Compact multichannel transmitter/controller (202551)',
+                        image: '/templates/hs-tech/images/jumo/dtrans_ph02.png',
+                        features: [
+                            'Display visualization options: large numbers, bar graph or trend display',
+                            'Integrated calibration routines: 1, 2 and 3 points - Math and logic module',
+                            'Calibration logbook',
+                            'Integrated washing timer to control the cleaning equipment',
+                            '12 integrated user languages',
+                            'Setup program features convenient programming and system documentation',
+                            'RS422/RS485 interface (option)',
+                            'PROFIBUS-DP interface (option)',
+                            'Data logger with real-time clock (option)',
+                            'Electrode monitoring can be activated',
+                            'Optional boards can be retrofitted'
+                        ],
+                        applications: [
+                            'Neutralization',
+                            'Detoxification applications (parameter set selection)',
+                            'Redundant pH measurement with one instrument',
+                            'pH measurement including flow rate measurement',
+                            'pH measurement including measurement of free chlorine (pH-compensated chlorine measurement)'
+                        ]
+                    },
+                    {
+                        model: 'JUMO AQUIS 500 pH Transmitter/Controller (202560)',
+                        image: '/templates/hs-tech/images/jumo/aquis_500_ph.png',
+                        features: [
+                            'Automatic temperature compensation',
+                            'Display visualization is selectable: large digits, bar graph, or trend display',
+                            'Solderless connection technology',
+                            'Calibration options according to measurand one/two/three-point calibration',
+                            'Calibration logbook',
+                            'Activatable impedance measurement',
+                            'Asymmetrical and symmetrical connection of ph value sensors',
+                            'Connection option of pH-ISFET sensors through the integrated output to the voltage supply of the sensor',
+                            'Selectable languages: English, German, French; additional languages can be added via the setup program',
+                            'With setup program: easy-to-use programming, plant documentation, download of additional user languages'
+                        ],
+                        applications: [
+                            'Drinking water monitoring and processing',
+                            'Galvanic',
+                            'Process technology',
+                            'Water and wastewater technology',
+                            'Drinking and well water, boiler supply water',
+                            'Greenhouse technology',
+                            'Swimming pool',
+                            'Fishkeeping (also seawater)'
+                        ]
+                    }
+                ]
+            },
+            {
+                title: 'Conductivity Transmitter',
+                products: [
+                    {
+                        model: 'JUMO CTI-500 Inductive Conductivity/Concentration Transmitter (202755)',
+                        image: '/templates/hs-tech/images/jumo/cti_500.png',
+                        features: [
+                            'Activation of up to four measuring ranges',
+                            'Activation of up to four temperature coefficients',
+                            'Fast-response temperature sensor',
+                            'Linear temperature compensation, natural water, own characteristic line (learn function)',
+                            'Operation via keypad / LCD display or setup program',
+                            'Operating languages: English, German, French, Dutch, Spanish, Polish, Swedish, Italian, Portuguese',
+                            'Convenient programming via setup program, plant documentation',
+                            'Desalination control'
+                        ]
+                    },
+                    {
+                        model: 'JUMO AQUIS 500 CR transmitter / controller (202565)',
+                        image: '/templates/hs-tech/images/jumo/aquis_500_cr.png',
+                        features: [
+                            'Direct changeover to conductivity (μS/cm or mS/cm), resistivity (kΩ x cm or MΩ x cm), TDS measurement (ppm or mg/l), customer-specific table',
+                            'Automatic temperature compensation',
+                            'Large LC graphics display with background lighting',
+                            'Choice of display: large numbers, bar graph or trend display',
+                            'Calibration options according to measured variable: cell constant and temperature coefficient',
+                            'Calibration logbook',
+                            'Two-electrode cells (as standard) or four-electrode cells can be connected',
+                            'Pollution detection can be activated',
+                            'Auto-range operation',
+                            'IP67 enclosure protection (in surface mountable housing) IP65 enclosure protection (for panel mounting)',
+                            'Language changeover: German, English, French; further languages can be loaded through the setup program',
+                            'Using the setup program: user-friendly programming, plant documentation, additional languages can be loaded'
+                        ]
+                    },
+                    {
+                        model: 'JUMO CTI-750 Inductive Conductivity/Concentration Transmitter (202756)',
+                        image: '/templates/hs-tech/images/jumo/cti_750.png',
+                        features: [
+                            'Activation of up to four measuring ranges',
+                            'Activation of up to four temperature coefficients',
+                            'Concentration measurement',
+                            'Fast-response temperature sensor',
+                            'Operation via keypad/LCD display or setup program',
+                            'Setup program for programming/plant documentation',
+                            'Learning function for the temperature coefficient',
+                            'Individual characteristic for concentration display',
+                            'Desalination control'
+                        ],
+                        applications: [
+                            'Product separation in the food/beverage industry',
+                            'Bottle cleaning plants',
+                            'Concentration measurement',
+                            'CIP plants',
+                            'Water and wastewater technology',
+                            'Chemical dispensing'
+                        ]
+                    }
+                ]
+            }
+        ]
+    },
+    jumo_control: {
+        title: 'Control & Recording',
+        subtitle: 'Paperless Recorders and Process Controllers',
+        desc: 'Advanced control and data recording solutions for process automation, compliance monitoring, and quality assurance.',
+        products: [
+            {
+                model: 'JUMO LOGOSCREEN 600',
+                image: '/templates/hs-tech/images/jumo/logoscreen_600.png',
+                features: [
+                    '144 × 144 mm format',
+                    '14.5 cm (5.7") TFT color graphics screen (640 x 480 pixel)',
+                    '3 or 6 universal measurement inputs (optional)',
+                    '6 or 12 digital inputs (optional)',
+                    '12 digital inputs/outputs (optional)',
+                    '1 or 2 analog outputs (optional)',
+                    '24 external digital and analog inputs via interface',
+                    'Intuitive touch operation',
+                    'Measured data storage on USB flash drive',
+                    'Up to 6 customer-specific process screens',
+                    'Batch report recording',
+                    'Ethernet and RS232/485 interface (Modbus master/slave)',
+                    'Integrated web server for online visualization',
+                    'Batch control (start, stop, and text) via barcode scanner',
+                    'Counters and integrators (6 channels)',
+                    'Math and logic module (6 channels each) as extra code',
+                    'Counter input (up to 12.5 kHz)',
+                    'Data recording compliant with FDA 21 CFR Part 11 (extra code)',
+                    'Manipulation detection with digital certificate (extra code)'
+                ],
+                applications: ['Paperless recording of analog and digital process data']
+            },
+            {
+                model: 'JUMO LOGOSCREEN 700',
+                subtitle: 'Highly-Scalable Paperless Recorder (706530)',
+                image: '/templates/hs-tech/images/jumo/logoscreen_700.png',
+                features: [
+                    'Intuitive touch operation',
+                    'Up to 3 analog outputs',
+                    'Up to 10 customer-specific process screens',
+                    'PROFINET IO device interface (extra code)',
+                    'Integrated web server for online visualization same as on device',
+                    'Recording of up to 5 batch reports',
+                    'Up to 500 individual texts',
+                    'Limit value monitoring function (120 channels)',
+                    'Flow measurement (up to 8 channels)',
+                    'Up to 8 counter inputs (max. 12.5 kHz)',
+                    'User-specific application using structured text (ST code; extra code)',
+                    'Automatic data readout via PCA Communication Software PCC',
+                    'Data recording compliant with FDA 21 CFR Part 11 (extra code)',
+                    'Manipulation detection with digital certificate (extra code)',
+                    'Setup program incl. ST editor',
+                    'PC programs for data evaluation and access control',
+                    'AMS2750/CQI-9 (extra code)'
+                ]
+            },
+            {
+                model: 'JUMO Quantrol Compact Controller (702030)',
+                image: '/templates/hs-tech/images/jumo/quantrol.png',
+                features: [
+                    '48 × 48 mm formats',
+                    'Two-state/three-state, continuous controller',
+                    'Sensor monitoring',
+                    'Up to 5 outputs',
+                    'Autotuning for exact PID control',
+                    'Manual/automatic mode',
+                    'Configurable limit value monitoring (alarms)',
+                    'Setpoint changeover',
+                    'Level inhibit and keyboard lock',
+                    'RS485 interface (Modbus RTU)',
+                    'Ramp and timer function',
+                    'Firing curve for pottery kilns',
+                    'Push-in controller insert',
+                    'Setup interface (USB Mini-B)'
+                ]
+            }
+        ]
+    }
 }
