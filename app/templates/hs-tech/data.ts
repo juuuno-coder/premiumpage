@@ -620,7 +620,7 @@ Output: RH+T+Td+Tdf+a+x+Tw+ppm+pw+pws+h+dT
                     application: 'Duct Type',
                     typicalApplication: '• cleanrooms\n• Industrial HVAC systems\n• pharmaceutical processes\n• environmental chambers\n• processes with moderate temperature and humidity',
                     measurementRange: 'RH range: 0…100% RH\nTemperature range: rubber cable -40...+80°C (-40...+176°F) or teflon cable -40...+120°C (-40...+248°F)',
-                    spec: '',
+                    spec: 'Operating Voltage\n10 ... 35 VDC, 24 VAC ±20%\nwith optional power supply module: 100 ... 240 VAC, 50/60 HZ',
                     image: 'https://cdn.imweb.me/thumbnail/20211020/2fe4d5b5e85a9.png'
                 },
                 {
@@ -628,7 +628,7 @@ Output: RH+T+Td+Tdf+a+x+Tw+ppm+pw+pws+h+dT
                     application: 'High Pressure',
                     typicalApplication: '• test chambers\n• high-pressure and vacuum processes',
                     measurementRange: 'RH range: 0…100% RH\nTemperature range: -70...+180°C (-94...+356°F)\nOperating pressure: 0...10 MPa (0...100 bar)',
-                    spec: '',
+                    spec: 'Output\nCurrent outputs: 0...20mA or 4 ... 20mA\nVoltage outputs: 0 ... 1V / 5V / 10V\nDigital outputs: RS232 , RS485(optional)\n(optional) WLAN interface\n(optional) Relay outputs: 0.5A, 250VAC',
                     image: 'https://cdn.imweb.me/thumbnail/20211020/ba1eb4854b71d.png'
                 },
                 {
@@ -636,7 +636,7 @@ Output: RH+T+Td+Tdf+a+x+Tw+ppm+pw+pws+h+dT
                     application: 'High Temperature',
                     typicalApplication: '• hot drying processes\n• food processes e.g. baking ovens',
                     measurementRange: 'RH range: 0…100% RH\nTemperature range: -70...+180°C (-94...+356°F)',
-                    spec: '',
+                    spec: 'IP Rating\nIP66\nIP65 with local display',
                     image: 'https://cdn.imweb.me/thumbnail/20211020/42e6f20395c95.png'
                 },
                 {
@@ -656,12 +656,6 @@ Output: RH+T+Td+Tdf+a+x+Tw+ppm+pw+pws+h+dT
                     image: 'https://cdn.imweb.me/thumbnail/20211020/2854f28e7fc38.png'
                 }
             ],
-            commonSpecs: {
-                accuracy: '±1%RH (0…90%)\n± 0.2°C @ 20ºC PT100 ±20%',
-                operatingVoltage: '10 ... 35 VDC, 24 VAC ±20%\nwith optional power supply module: 100 ... 240 VAC, 50/60 HZ',
-                output: 'Current outputs: 0...20mA or 4 ... 20mA\nVoltage outputs: 0 ... 1V / 5V / 10V\nDigital outputs: RS232 , RS485(optional)\n(optional) WLAN interface\n(optional) Relay outputs: 0.5A, 250VAC',
-                ipRating: 'IP66\nIP65 with local display'
-            },
             datasheet: 'https://www.vaisala.com/sites/default/files/documents/HMT330-Datasheet-B211735EN.pdf'
         },
         {

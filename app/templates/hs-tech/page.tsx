@@ -280,36 +280,6 @@ function ProductModal({ product, onClose }: { product: any; onClose: () => void 
                                     )}
                                 </div>
                             </div>
-
-                            {/* Common Specs (if exists) */}
-                            {product.commonSpecs && (
-                                <div className="mt-6 grid grid-cols-1 md:grid-cols-2 gap-4">
-                                    {product.commonSpecs.accuracy && (
-                                        <div className="p-4 border border-neutral-200 rounded-lg bg-neutral-50">
-                                            <h4 className="text-xs font-black text-neutral-900 uppercase tracking-wide mb-2">Accuracy</h4>
-                                            <p className="text-sm text-neutral-700 whitespace-pre-line leading-relaxed">{product.commonSpecs.accuracy}</p>
-                                        </div>
-                                    )}
-                                    {product.commonSpecs.operatingVoltage && (
-                                        <div className="p-4 border border-neutral-200 rounded-lg bg-neutral-50">
-                                            <h4 className="text-xs font-black text-neutral-900 uppercase tracking-wide mb-2">Operating Voltage</h4>
-                                            <p className="text-sm text-neutral-700 whitespace-pre-line leading-relaxed">{product.commonSpecs.operatingVoltage}</p>
-                                        </div>
-                                    )}
-                                    {product.commonSpecs.output && (
-                                        <div className="p-4 border border-neutral-200 rounded-lg bg-neutral-50">
-                                            <h4 className="text-xs font-black text-neutral-900 uppercase tracking-wide mb-2">Output</h4>
-                                            <p className="text-sm text-neutral-700 whitespace-pre-line leading-relaxed">{product.commonSpecs.output}</p>
-                                        </div>
-                                    )}
-                                    {product.commonSpecs.ipRating && (
-                                        <div className="p-4 border border-neutral-200 rounded-lg bg-neutral-50">
-                                            <h4 className="text-xs font-black text-neutral-900 uppercase tracking-wide mb-2">IP Rating</h4>
-                                            <p className="text-sm text-neutral-700 whitespace-pre-line leading-relaxed">{product.commonSpecs.ipRating}</p>
-                                        </div>
-                                    )}
-                                </div>
-                            )}
                         </div>
                     )}
 
