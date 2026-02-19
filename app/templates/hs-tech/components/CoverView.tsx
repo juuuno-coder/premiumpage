@@ -1,20 +1,73 @@
 'use client'
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import Link from 'next/link'
 import { motion } from 'framer-motion'
 
 export default function CoverView() {
+    const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 })
+
+    useEffect(() => {
+        const handleMouseMove = (e: MouseEvent) => {
+            // Normalize mouse position to -1 to 1 range
+            const x = (e.clientX / window.innerWidth - 0.5) * 2
+            const y = (e.clientY / window.innerHeight - 0.5) * 2
+            setMousePosition({ x, y })
+        }
+
+        window.addEventListener('mousemove', handleMouseMove)
+        return () => window.removeEventListener('mousemove', handleMouseMove)
+    }, [])
+
     return (
         <div className="min-h-screen w-full bg-white antialiased relative overflow-hidden flex items-center justify-center">
 
-            {/* ─── Mesh Gradient Blobs ─── */}
+            {/* ─── Mouse-following Spotlight ─── */}
+            <motion.div
+                className="absolute pointer-events-none z-[5]"
+                animate={{
+                    x: mousePosition.x * (typeof window !== 'undefined' ? window.innerWidth / 2 : 0),
+                    y: mousePosition.y * (typeof window !== 'undefined' ? window.innerHeight / 2 : 0),
+                }}
+                transition={{ type: "spring", stiffness: 150, damping: 20, mass: 0.5 }}
+                style={{
+                    width: 600,
+                    height: 600,
+                    background: 'radial-gradient(circle, rgba(6, 182, 212, 0.12) 0%, transparent 70%)',
+                    left: '50%',
+                    top: '50%',
+                    transform: 'translate(-50%, -50%)',
+                }}
+            />
+
+            {/* ─── Mesh Gradient Blobs with Parallax ─── */}
             <div className="absolute inset-0 overflow-hidden pointer-events-none">
-                {/* Top-center: primary cyan glow */}
-                <div className="absolute -top-40 left-1/2 -translate-x-1/2 w-[900px] h-[600px] rounded-full bg-cyan-100 opacity-70 blur-[120px] mix-blend-multiply" />
-                {/* Left-mid: blue accent */}
-                <div className="absolute top-1/3 -left-48 w-[600px] h-[600px] rounded-full bg-blue-100 opacity-50 blur-[100px] mix-blend-multiply" />
-                {/* Bottom-right: sky tint */}
-                <div className="absolute bottom-0 right-0 w-[700px] h-[500px] rounded-full bg-sky-100 opacity-40 blur-[100px] mix-blend-multiply" />
+                {/* Top-center: primary cyan glow - moves faster */}
+                <motion.div
+                    animate={{
+                        x: mousePosition.x * 40,
+                        y: mousePosition.y * 40,
+                    }}
+                    transition={{ type: "spring", stiffness: 100, damping: 20 }}
+                    className="absolute -top-40 left-1/2 -translate-x-1/2 w-[900px] h-[600px] rounded-full bg-cyan-100 opacity-70 blur-[120px] mix-blend-multiply"
+                />
+                {/* Left-mid: blue accent - medium speed */}
+                <motion.div
+                    animate={{
+                        x: mousePosition.x * -25,
+                        y: mousePosition.y * 25,
+                    }}
+                    transition={{ type: "spring", stiffness: 120, damping: 20 }}
+                    className="absolute top-1/3 -left-48 w-[600px] h-[600px] rounded-full bg-blue-100 opacity-50 blur-[100px] mix-blend-multiply"
+                />
+                {/* Bottom-right: sky tint - slower */}
+                <motion.div
+                    animate={{
+                        x: mousePosition.x * 30,
+                        y: mousePosition.y * -30,
+                    }}
+                    transition={{ type: "spring", stiffness: 80, damping: 20 }}
+                    className="absolute bottom-0 right-0 w-[700px] h-[500px] rounded-full bg-sky-100 opacity-40 blur-[100px] mix-blend-multiply"
+                />
             </div>
 
             {/* ─── Subtle Dot Pattern ─── */}
@@ -37,8 +90,16 @@ export default function CoverView() {
                 </span>
             </div>
 
-            {/* ─── Content ─── */}
-            <div className="p-4 max-w-5xl mx-auto relative z-10 w-full">
+            {/* ─── Content with 3D Tilt ─── */}
+            <motion.div
+                animate={{
+                    rotateX: mousePosition.y * -3,
+                    rotateY: mousePosition.x * 3,
+                }}
+                transition={{ type: "spring", stiffness: 150, damping: 20 }}
+                style={{ perspective: 1000 }}
+                className="p-4 max-w-5xl mx-auto relative z-10 w-full"
+            >
                 <div className="flex flex-col items-center justify-center text-center">
 
                     <motion.div
@@ -114,7 +175,7 @@ export default function CoverView() {
                     </motion.div>
 
                 </div>
-            </div>
+            </motion.div>
         </div>
     )
 }
