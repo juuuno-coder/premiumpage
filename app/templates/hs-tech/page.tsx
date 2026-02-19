@@ -83,6 +83,9 @@ function ProductModal({ product, onClose }: { product: any; onClose: () => void 
         return null
     }).filter(Boolean)
 
+    // Check if product uses new 6-column spec structure
+    const hasNewSpecStructure = product.specs?.[0]?.model !== undefined
+
     return (
         <motion.div
             initial={{ opacity: 0 }}
@@ -142,28 +145,51 @@ function ProductModal({ product, onClose }: { product: any; onClose: () => void 
                                 {productSection.split('\n').find((line: string) => line.includes('Output:')) || ''}
                             </div>
 
-                            {/* 6-Model Grid */}
+                            {/* 6-Model Grid - use spec.image if available */}
                             <div className="grid grid-cols-2 md:grid-cols-3 gap-4 mb-6">
-                                {models.map((model: any, i: number) => (
-                                    <div key={i} className="border border-neutral-200 rounded-lg p-3 bg-neutral-50 hover:border-cyan-500 transition-colors">
-                                        <div className="aspect-square bg-white rounded-lg mb-3 p-3 flex items-center justify-center border border-neutral-100">
-                                            {/* eslint-disable-next-line @next/next/no-img-element */}
-                                            <img
-                                                src={model.image}
-                                                alt={model.name}
-                                                className="max-h-full max-w-full object-contain"
-                                                onError={(e) => {
-                                                    // Fallback to main image if model image not found
-                                                    (e.target as HTMLImageElement).src = product.image
-                                                }}
-                                            />
+                                {hasNewSpecStructure ? (
+                                    // New structure: use spec.image
+                                    product.specs.map((spec: any, i: number) => (
+                                        <div key={i} className="border border-neutral-200 rounded-lg p-3 bg-neutral-50 hover:border-cyan-500 transition-colors">
+                                            <div className="aspect-square bg-white rounded-lg mb-3 p-3 flex items-center justify-center border border-neutral-100">
+                                                {/* eslint-disable-next-line @next/next/no-img-element */}
+                                                <img
+                                                    src={spec.image || product.image}
+                                                    alt={spec.model}
+                                                    className="max-h-full max-w-full object-contain"
+                                                    onError={(e) => {
+                                                        (e.target as HTMLImageElement).src = product.image
+                                                    }}
+                                                />
+                                            </div>
+                                            <div className="text-center">
+                                                <p className="font-bold text-neutral-900 text-xs md:text-sm">{spec.model}</p>
+                                                <p className="text-[10px] md:text-xs text-neutral-500 mt-1">{spec.application}</p>
+                                            </div>
                                         </div>
-                                        <div className="text-center">
-                                            <p className="font-bold text-neutral-900 text-xs md:text-sm">{model.name}</p>
-                                            <p className="text-[10px] md:text-xs text-neutral-500 mt-1">{model.desc}</p>
+                                    ))
+                                ) : (
+                                    // Old structure: use model list
+                                    models.map((model: any, i: number) => (
+                                        <div key={i} className="border border-neutral-200 rounded-lg p-3 bg-neutral-50 hover:border-cyan-500 transition-colors">
+                                            <div className="aspect-square bg-white rounded-lg mb-3 p-3 flex items-center justify-center border border-neutral-100">
+                                                {/* eslint-disable-next-line @next/next/no-img-element */}
+                                                <img
+                                                    src={model.image}
+                                                    alt={model.name}
+                                                    className="max-h-full max-w-full object-contain"
+                                                    onError={(e) => {
+                                                        (e.target as HTMLImageElement).src = product.image
+                                                    }}
+                                                />
+                                            </div>
+                                            <div className="text-center">
+                                                <p className="font-bold text-neutral-900 text-xs md:text-sm">{model.name}</p>
+                                                <p className="text-[10px] md:text-xs text-neutral-500 mt-1">{model.desc}</p>
+                                            </div>
                                         </div>
-                                    </div>
-                                ))}
+                                    ))
+                                )}
                             </div>
 
                             {/* Model List */}
@@ -187,34 +213,103 @@ function ProductModal({ product, onClose }: { product: any; onClose: () => void 
                             </h3>
                             <div className="border-2 border-neutral-900 rounded-lg overflow-hidden">
                                 <div className="overflow-x-auto">
-                                    <table className="w-full text-xs md:text-sm">
-                                        <thead>
-                                            <tr className="bg-neutral-100 border-b-2 border-neutral-900">
-                                                <th className="py-3 px-3 md:px-4 text-left font-black text-neutral-900 uppercase tracking-wide border-r border-neutral-300">MODEL</th>
-                                                <th className="py-3 px-3 md:px-4 text-left font-black text-neutral-900 uppercase tracking-wide border-r border-neutral-300">APPLICATION</th>
-                                                <th className="py-3 px-3 md:px-4 text-left font-black text-neutral-900 uppercase tracking-wide">MEASUREMENT RANGE</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            {product.specs.map((spec: any, i: number) => (
-                                                <tr key={i} className={`${i % 2 === 0 ? 'bg-white' : 'bg-neutral-50'} border-b border-neutral-200`}>
-                                                    <td className="py-3 px-3 md:px-4 font-bold text-cyan-700 border-r border-neutral-200 align-top whitespace-nowrap">{spec.label}</td>
-                                                    <td className="py-3 px-3 md:px-4 text-neutral-700 border-r border-neutral-200 align-top">
-                                                        <div className="whitespace-pre-line leading-relaxed">
-                                                            {spec.value.split('Measurement Range:')[0]?.replace('Application:', '').trim()}
-                                                        </div>
-                                                    </td>
-                                                    <td className="py-3 px-3 md:px-4 text-neutral-700 align-top">
-                                                        <div className="whitespace-pre-line leading-relaxed">
-                                                            {spec.value.split('Measurement Range:')[1]?.trim() || '-'}
-                                                        </div>
-                                                    </td>
+                                    {hasNewSpecStructure ? (
+                                        // New 6-column structure for imweb layout
+                                        <table className="w-full text-xs md:text-sm">
+                                            <thead>
+                                                <tr className="bg-neutral-100 border-b-2 border-neutral-900">
+                                                    <th className="py-3 px-3 md:px-4 text-center font-black text-neutral-900 uppercase tracking-wide border-r border-neutral-300">CATEGORY</th>
+                                                    <th className="py-3 px-3 md:px-4 text-center font-black text-neutral-900 uppercase tracking-wide border-r border-neutral-300">MODEL</th>
+                                                    <th className="py-3 px-3 md:px-4 text-center font-black text-neutral-900 uppercase tracking-wide border-r border-neutral-300">APPLICATION</th>
+                                                    <th className="py-3 px-3 md:px-4 text-center font-black text-neutral-900 uppercase tracking-wide border-r border-neutral-300">TYPICAL APPLICATION</th>
+                                                    <th className="py-3 px-3 md:px-4 text-center font-black text-neutral-900 uppercase tracking-wide border-r border-neutral-300">MEASUREMENT RANGE</th>
+                                                    <th className="py-3 px-3 md:px-4 text-center font-black text-neutral-900 uppercase tracking-wide">SPEC</th>
                                                 </tr>
-                                            ))}
-                                        </tbody>
-                                    </table>
+                                            </thead>
+                                            <tbody>
+                                                {product.specs.map((spec: any, i: number) => (
+                                                    <tr key={i} className={`${i % 2 === 0 ? 'bg-white' : 'bg-neutral-50'} border-b border-neutral-200`}>
+                                                        {i === 0 && (
+                                                            <td rowSpan={product.specs.length} className="py-3 px-3 md:px-4 font-black text-neutral-900 border-r border-neutral-300 align-middle text-center text-lg">
+                                                                {product.title.split(' ')[0]}
+                                                            </td>
+                                                        )}
+                                                        <td className="py-3 px-3 md:px-4 font-bold text-cyan-700 border-r border-neutral-200 align-top text-center whitespace-nowrap">{spec.model}</td>
+                                                        <td className="py-3 px-3 md:px-4 text-neutral-700 border-r border-neutral-200 align-top text-center">{spec.application}</td>
+                                                        <td className="py-3 px-3 md:px-4 text-neutral-700 border-r border-neutral-200 align-top">
+                                                            <div className="whitespace-pre-line leading-relaxed text-sm">{spec.typicalApplication}</div>
+                                                        </td>
+                                                        <td className="py-3 px-3 md:px-4 text-neutral-700 border-r border-neutral-200 align-top">
+                                                            <div className="whitespace-pre-line leading-relaxed text-sm">{spec.measurementRange}</div>
+                                                        </td>
+                                                        <td className="py-3 px-3 md:px-4 text-neutral-700 align-top">
+                                                            <div className="whitespace-pre-line leading-relaxed text-sm">{spec.spec || '-'}</div>
+                                                        </td>
+                                                    </tr>
+                                                ))}
+                                            </tbody>
+                                        </table>
+                                    ) : (
+                                        // Old 3-column structure for backward compatibility
+                                        <table className="w-full text-xs md:text-sm">
+                                            <thead>
+                                                <tr className="bg-neutral-100 border-b-2 border-neutral-900">
+                                                    <th className="py-3 px-3 md:px-4 text-left font-black text-neutral-900 uppercase tracking-wide border-r border-neutral-300">MODEL</th>
+                                                    <th className="py-3 px-3 md:px-4 text-left font-black text-neutral-900 uppercase tracking-wide border-r border-neutral-300">APPLICATION</th>
+                                                    <th className="py-3 px-3 md:px-4 text-left font-black text-neutral-900 uppercase tracking-wide">MEASUREMENT RANGE</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                {product.specs.map((spec: any, i: number) => (
+                                                    <tr key={i} className={`${i % 2 === 0 ? 'bg-white' : 'bg-neutral-50'} border-b border-neutral-200`}>
+                                                        <td className="py-3 px-3 md:px-4 font-bold text-cyan-700 border-r border-neutral-200 align-top whitespace-nowrap">{spec.label}</td>
+                                                        <td className="py-3 px-3 md:px-4 text-neutral-700 border-r border-neutral-200 align-top">
+                                                            <div className="whitespace-pre-line leading-relaxed">
+                                                                {spec.value?.split('Measurement Range:')[0]?.replace('Application:', '').trim()}
+                                                            </div>
+                                                        </td>
+                                                        <td className="py-3 px-3 md:px-4 text-neutral-700 align-top">
+                                                            <div className="whitespace-pre-line leading-relaxed">
+                                                                {spec.value?.split('Measurement Range:')[1]?.trim() || '-'}
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                ))}
+                                            </tbody>
+                                        </table>
+                                    )}
                                 </div>
                             </div>
+
+                            {/* Common Specs (if exists) */}
+                            {product.commonSpecs && (
+                                <div className="mt-6 grid grid-cols-1 md:grid-cols-2 gap-4">
+                                    {product.commonSpecs.accuracy && (
+                                        <div className="p-4 border border-neutral-200 rounded-lg bg-neutral-50">
+                                            <h4 className="text-xs font-black text-neutral-900 uppercase tracking-wide mb-2">Accuracy</h4>
+                                            <p className="text-sm text-neutral-700 whitespace-pre-line leading-relaxed">{product.commonSpecs.accuracy}</p>
+                                        </div>
+                                    )}
+                                    {product.commonSpecs.operatingVoltage && (
+                                        <div className="p-4 border border-neutral-200 rounded-lg bg-neutral-50">
+                                            <h4 className="text-xs font-black text-neutral-900 uppercase tracking-wide mb-2">Operating Voltage</h4>
+                                            <p className="text-sm text-neutral-700 whitespace-pre-line leading-relaxed">{product.commonSpecs.operatingVoltage}</p>
+                                        </div>
+                                    )}
+                                    {product.commonSpecs.output && (
+                                        <div className="p-4 border border-neutral-200 rounded-lg bg-neutral-50">
+                                            <h4 className="text-xs font-black text-neutral-900 uppercase tracking-wide mb-2">Output</h4>
+                                            <p className="text-sm text-neutral-700 whitespace-pre-line leading-relaxed">{product.commonSpecs.output}</p>
+                                        </div>
+                                    )}
+                                    {product.commonSpecs.ipRating && (
+                                        <div className="p-4 border border-neutral-200 rounded-lg bg-neutral-50">
+                                            <h4 className="text-xs font-black text-neutral-900 uppercase tracking-wide mb-2">IP Rating</h4>
+                                            <p className="text-sm text-neutral-700 whitespace-pre-line leading-relaxed">{product.commonSpecs.ipRating}</p>
+                                        </div>
+                                    )}
+                                </div>
+                            )}
                         </div>
                     )}
 
