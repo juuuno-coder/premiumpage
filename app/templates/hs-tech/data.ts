@@ -425,18 +425,45 @@ export const DB: Record<string, any[]> = {
         {
             id: 'hmd60',
             title: 'HMD60 Series',
-            subtitle: 'HVAC TRANSMITTER (DUCT)',
-            category: 'hvac',
+            subtitle: 'HUMIDITY AND TEMPERATURE TRANSMITTER',
+            category: 'industrial',
             image: '/templates/hs-tech/images/products/hmd60_v1.png',
-            gallery: [],
-            desc: 'All-metal body transmitter optimized for building automation and industrial HVAC.',
+            gallery: ['/templates/hs-tech/images/products/hmd60_v1.png'],
+            desc: `±1.5%RH Transmitters for Demanding HVAC, with a Certificate
+▶ SUS Probe, Aluminum Housing
+
+■ PRODUCT
+
+Output: RH+T+Td`,
             specs: [
-                { label: 'Application', value: 'HVAC, Cleanroom\nAluminium body, IP66 (NEMA 4X)\nProbe length: 250 mm (100 mm short probe option)' },
-                { label: 'HMD62 / HMD65 (RH+T, Duct)', value: 'RH: 0…100% RH\nT: -20...+80°C (-4...+176°F)\nAccuracy: ±1.5 %RH / ±0.1°C @ 20°C PT1000' },
-                { label: 'TMD62 (T-only, Duct)', value: 'T: -20...+80°C (-4...+176°F)\nAccuracy: ±0.1°C @ 20°C PT1000' },
-                { label: 'HMD62 Output', value: '2 analog outputs: 4…20 mA' },
-                { label: 'HMD65 Output', value: '2 analog outputs: 0…10 V\nDigital: BACnet MS/TP, Modbus RTU' },
-                { label: 'HMD60 Output', value: 'Configurable outputs and scale\nShort probe option available' }
+                {
+                    model: 'HMD62',
+                    application: 'Duct Type (RH+T)',
+                    typicalApplication: '• HVAC systems\n• cleanrooms\n• pharmaceutical facilities\n• building automation',
+                    measurementRange: 'RH range: 0…100% RH\nTemperature range: -20...+80°C (-4...+176°F)',
+                    spec: 'Accuracy\n• ±1.5%RH (0…90%)\n• ±0.1°C @ 20°C PT1000\n\nOutput\n• 2 analog outputs: 4…20 mA\n\nHousing\n• Aluminum body\n• IP66 (NEMA 4X)\n• Probe length: 250 mm (100 mm short probe option)'
+                },
+                {
+                    model: 'HMD65',
+                    application: 'Duct Type (RH+T)',
+                    typicalApplication: '• HVAC systems\n• cleanrooms\n• industrial facilities\n• critical environments',
+                    measurementRange: 'RH range: 0…100% RH\nTemperature range: -20...+80°C (-4...+176°F)',
+                    spec: 'Output\n• 2 analog outputs: 0…10 V\n• Digital: BACnet MS/TP, Modbus RTU\n\nHousing\n• Aluminum body\n• IP66 (NEMA 4X)\n• Probe length: 250 mm'
+                },
+                {
+                    model: 'HMD60',
+                    application: 'Duct Type (Configurable)',
+                    typicalApplication: '• industrial HVAC\n• process monitoring\n• environmental chambers\n• controlled environments',
+                    measurementRange: 'RH range: 0…100% RH\nTemperature range: -20...+80°C (-4...+176°F)',
+                    spec: 'Output\n• Configurable outputs and scale\n• Short probe option available\n\nHousing\n• All-metal body\n• IP66 (NEMA 4X)'
+                },
+                {
+                    model: 'TMD62',
+                    application: 'Duct Type (T-only)',
+                    typicalApplication: '• temperature monitoring\n• HVAC systems\n• industrial processes',
+                    measurementRange: 'Temperature range: -20...+80°C (-4...+176°F)',
+                    spec: 'Accuracy\n• ±0.1°C @ 20°C PT1000\n\nHousing\n• Aluminum body\n• IP66 (NEMA 4X)'
+                }
             ],
             datasheet: 'https://www.vaisala.com/sites/default/files/documents/HMD60-Datasheet-B211704EN.pdf'
         },
@@ -660,41 +687,90 @@ Output: RH+T+Td+Tdf+a+x+Tw+ppm+pw+pws+h+dT
         },
         {
             id: 'hmt310',
-            title: 'HMT310',
+            title: 'HMT310 Series',
             subtitle: 'HUMIDITY AND TEMPERATURE TRANSMITTER',
             category: 'industrial',
             image: '/templates/hs-tech/images/products/hmt310_v1.png',
             gallery: ["/templates/hs-tech/images/products/hmt310_v1.png"],
-            desc: 'Compact transmitter with excellent stability for demanding industrial applications.',
+            desc: `HMT310 incorporates the latest generation VAISALA HUMICAP® sensor. The sensor is a capacitive thin-film polymer sensor providing high accuracy, excellent long-term stability and negligible hysteresis.
+
+■ PRODUCT
+
+Output: RH+T+Td+a+Tw+x+h+pws`,
             specs: [
-                { label: 'HMT311 (Wall)', value: 'RH: 0…100% RH\nT: -40...+60°C (-40...+140°F)' },
-                { label: 'HMT313 (Duct)', value: 'RH: 0…100% RH\nT: -40...+80°C (rubber) / -40...+120°C (teflon)' },
-                { label: 'HMT314 (High Pressure)', value: 'RH: 0…100% RH\nT: -70...+180°C (-94...+356°F)\nP: 0...10 MPa (0...100 bar)' },
-                { label: 'HMT315 (High Temp)', value: 'RH: 0…100% RH\nT: -70...+180°C (-94...+356°F)' },
-                { label: 'HMT317 (High Humidity)', value: 'RH: 0…100% RH\nT: -70...+180°C (-94...+356°F)' },
-                { label: 'HMT318 (Pipeline)', value: 'RH: 0…100% RH\nT: -70...+180°C (-94...+356°F)\nP: 0...4 MPa (0…40 bar)' },
-                { label: 'Accuracy', value: '±1 %RH (0…90%)\n±0.2°C @ 20°C PT1000' },
-                { label: 'Operating Voltage', value: '12...28 V (with serial port: 15...28 V)' },
-                { label: 'Output', value: 'Two analog outputs (selectable & scalable)\n0...20 mA or 4...20 mA / 1...5 V, 0…5 V or 0…10 V\nSerial: RS-232 (M12/8 pin connector)' },
-                { label: 'IP Rating', value: 'IP66 / IP65 with local display' }
+                {
+                    model: 'HMT311',
+                    application: 'Wall Mount',
+                    typicalApplication: '• cleanrooms\n• pharmaceutical processes\n• swimming halls\n• museums and archives',
+                    measurementRange: 'RH range: 0…100% RH\nTemperature range: -40...+60°C (-40...+140°F)',
+                    spec: 'Accuracy\n• ±1%RH (0…90%)\n• ± 0.2ºC @ 20ºC PT1000\n\nOperating voltage\n12...28V (with serial port 15...28V)\n\nOutput\n• Operating voltage: 10 ... 35 VDC\n• Two analog outputs, selectable and scalable\n  0 ... 20 mA or 4 ...20 mA\n  1 ...5 V, 0 … 5 V or 0 … 10 V\n• Serial output: RS-232 in one M12/8 pin connector\n\nIP rating\n• IP66\n• IP65 with local display'
+                },
+                {
+                    model: 'HMT313',
+                    application: 'Duct Type',
+                    typicalApplication: '• cleanrooms\n• Industrial HVAC systems\n• pharmaceutical processes\n• environmental chambers\n• processes with moderate temperature and humidity',
+                    measurementRange: 'RH range: 0…100% RH\nTemperature range: rubber cable -40...+80°C (-40...+176°F) or teflon cable -40...+120°C (-40...+248°F)',
+                    spec: ''
+                },
+                {
+                    model: 'HMT314',
+                    application: 'High Pressure',
+                    typicalApplication: '• test chambers\n• high-pressure and vacuum processes',
+                    measurementRange: 'RH range: 0…100% RH\nTemperature range: -70 ...+180 °C (-94...+356°F)\nOperating pressure: 0...10 MPa (0...100 bar)',
+                    spec: ''
+                },
+                {
+                    model: 'HMT315',
+                    application: 'High Temperature',
+                    typicalApplication: '• hot drying processes\n• food processes e.g. baking ovens',
+                    measurementRange: 'RH range: 0…100% RH\nTemperature range: -70...+180°C (-94...+356 °F)',
+                    spec: ''
+                },
+                {
+                    model: 'HMT317',
+                    application: 'High Humidity',
+                    typicalApplication: '• professional meteorology\n• intake air monitoring of engines and gas turbines\n• timber drying kilns',
+                    measurementRange: 'RH range: 0…100% RH\nTemperature range: -70...+180°C (-94...+356°F)',
+                    spec: ''
+                },
+                {
+                    model: 'HMT318',
+                    application: 'Pressurized Pipelines',
+                    typicalApplication: '• process lines\n• environmental chambers\n• vacuum-drying processes\n• compressed air lines with refrigerant dryers',
+                    measurementRange: 'RH range: 0…100% RH\nTemperature range: -70...+180°C (-94...+356°F)\nOperating pressure: 0...4 MPa (0…40bar)',
+                    spec: ''
+                }
             ],
             datasheet: 'https://www.vaisala.com/sites/default/files/documents/HMT310-Datasheet-B211734EN.pdf'
         },
         {
             id: 'hmt120',
-            title: 'HMT120 / HMT130',
+            title: 'HMT120 / HMT130 Series',
             subtitle: 'HUMIDITY AND TEMPERATURE TRANSMITTERS',
             category: 'industrial',
             image: '/templates/hs-tech/images/products/hmt120_v1.png',
             gallery: ["/templates/hs-tech/images/products/hmt120_v1.png"],
-            desc: 'Optimized for cleanrooms and light industrial applications with interchangeable probes.',
+            desc: `±1.5%RH temperature and humidity transmitter
+▶ Wall, Duct type
+
+■ PRODUCT
+
+Output: RH+T+Td+Tdf`,
             specs: [
-                { label: 'Application', value: 'Humidity and Temperature monitoring in cleanrooms\nWall / Duct / Outdoor installation' },
-                { label: 'Measurement Range', value: 'RH: 0…100% RH\nT: -40...+80°C (-40...+176°F)' },
-                { label: 'Accuracy', value: '±1.5 %RH (0…90%)\n±0.2°C @ 20°C PT1000' },
-                { label: 'HMT120', value: '2-Wire Current (4…20 mA)\nSensor one-to-one replaceable\nDisplay option available' },
-                { label: 'HMT130', value: '3-Wire Voltage (0…1 V / 5 V / 10 V), RS485\nMax cable length 20 m\nDewpoint output function' },
-                { label: 'IP Rating', value: 'IP65' }
+                {
+                    model: 'HMT120',
+                    application: 'Wall / Duct Type',
+                    typicalApplication: '• cleanrooms\n• light industrial applications\n• HVAC systems\n• building automation',
+                    measurementRange: 'RH range: 0…100% RH\nTemperature range: -40...+80°C (-40...+176°F)',
+                    spec: 'Accuracy\n• ±1.5%RH (0…90%)\n• ±0.2°C @ 20°C PT1000\n\nOutput\n• 2-Wire Current (4…20 mA)\n• Sensor one-to-one replaceable\n• Display option available\n\nIP Rating\n• IP65'
+                },
+                {
+                    model: 'HMT130',
+                    application: 'Wall / Duct Type',
+                    typicalApplication: '• cleanrooms\n• industrial processes\n• pharmaceutical facilities\n• controlled environments',
+                    measurementRange: 'RH range: 0…100% RH\nTemperature range: -40...+80°C (-40...+176°F)',
+                    spec: 'Output\n• 3-Wire Voltage (0…1 V / 5 V / 10 V)\n• RS485\n• Max cable length 20 m\n• Dewpoint output function\n\nIP Rating\n• IP65'
+                }
             ],
             datasheet: 'https://www.vaisala.com/sites/default/files/documents/HMT120-Datasheet-B211733EN.pdf'
         },
