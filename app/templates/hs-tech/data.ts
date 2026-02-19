@@ -484,15 +484,31 @@ export const DB: Record<string, any[]> = {
             subtitle: 'VERSATILE HVAC TRANSMITTER',
             category: 'hvac',
             image: '/templates/hs-tech/images/products/hmdw80_v1.png',
-            gallery: [],
-            desc: 'Versatile wall and duct mounting for standard HVAC applications.',
-            specs: [
-                { label: 'Application', value: 'Standard HVAC building automation' },
-                { label: 'Range', value: '0 ... 100 %RH\n-5 ... +55 °C' },
-                { label: 'Accuracy', value: '±3 %RH\n±0.5 °C' },
-                { label: 'Output', value: '4...20 mA, 0...10V' }
+            gallery: [
+                '/templates/hs-tech/images/products/hmdw80_v1.png',
+                '/templates/hs-tech/images/products/hmdw80_diagram.png'
             ],
-            datasheet: 'https://www.vaisala.com/sites/default/files/documents/HMDW80-Datasheet-B211603EN.pdf'
+            desc: 'The HMDW80 series is versatile with transmitters for wall and duct mounting for measuring relative humidity and temperature in various building automation applications. Available in 15 models for wall, duct, and outdoor mounting with current (4-20mA) or voltage (0-10V) outputs.',
+            specs: [
+                { label: 'Manufacturer', value: 'JUMO GmbH & Co. KG' },
+                { label: 'Series Overview', value: '15 models: Wall, Duct, Outdoor mounting\nCurrent or Voltage output options\nOptional display on select models' },
+                { label: 'HMW82 (Wall)', value: 'RH: 0…100%\nT: -5…+55℃\nAccuracy: ±3%RH (0…70%), ±0.5℃ @10…30℃\nOutput: 4…20mA (2-wire)\nIP30' },
+                { label: 'HMW82P100 (Wall)', value: 'Same as HMW82\nOutput: 4…20mA (2-wire)' },
+                { label: 'HMW83 (Wall)', value: 'Same as HMW82\nOutput: 0…10V (3-wire)' },
+                { label: 'HMW88 (Wall)', value: 'RH: 0…100%\nT: -40…+60℃\nAccuracy: ±3%RH (0…90%), ±0.3℃ @20℃\nCalculated: Td -40…+60℃, Enthalpy -40…460kJ/kg\nOutput: 4…20mA (2-wire)\nIP65' },
+                { label: 'HMW88D (Wall + Display)', value: 'Same as HMW88\nIntegrated LCD display' },
+                { label: 'HMW89 (Wall)', value: 'Same as HMW88\nOutput: 0…10V (3-wire)' },
+                { label: 'HMW89D (Wall + Display)', value: 'Same as HMW88\nOutput: 0…10V (3-wire)\nIntegrated LCD display' },
+                { label: 'HMD82 (Duct)', value: 'Same as HMW88\nDuct mounting probe\nOutput: 4…20mA (2-wire)' },
+                { label: 'HMD82D (Duct + Display)', value: 'Same as HMW88\nDuct mounting + LCD display\nOutput: 4…20mA (2-wire)' },
+                { label: 'HMD83 (Duct)', value: 'Same as HMW88\nDuct mounting probe\nOutput: 0…10V (3-wire)' },
+                { label: 'HMD83D (Duct + Display)', value: 'Same as HMW88\nDuct mounting + LCD display\nOutput: 0…10V (3-wire)' },
+                { label: 'HMS82 (Outdoor)', value: 'Same as HMW88\nIntegrated radiation shields for outdoor use\nOutput: 4…20mA (2-wire)' },
+                { label: 'HMS82C (Outdoor + NPT)', value: 'Same as HMS82\nNPT ½" fitting included' },
+                { label: 'HMS83 (Outdoor)', value: 'Same as HMW88\nIntegrated radiation shields for outdoor use\nOutput: 0…10V (3-wire)' },
+                { label: 'HMS83C (Outdoor + NPT)', value: 'Same as HMS83\nNPT ½" fitting included' },
+                { label: 'Applications', value: 'HVAC Building Automation\nCleanrooms\nData Centers\nGreenhouses\nOutdoor Weather Stations' }
+            ]
         },
         {
             id: 'indigo80_hmp80',
