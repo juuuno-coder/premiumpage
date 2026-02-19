@@ -594,19 +594,110 @@ export const DB: Record<string, any[]> = {
             category: 'industrial',
             image: '/templates/hs-tech/images/products/hmt330_v1.png',
             gallery: ["/templates/hs-tech/images/products/hmt330_v1.png"],
-            desc: 'Designed for demanding industrial applications. Six models available for various installation needs.',
+            desc: `VAISALA HMT330 series are designed for demanding industrial applications where stable measurements and extensive customization are essential.
+
+■ PRODUCT
+
+Output: RH+T+Td+Tdf+a+x+Tw+ppm+pw+pws+h+dT
+
+▶ HMT331 : Wall-Mount
+▶ HMT333 : Duct
+▶ HMT334 : High Pressure
+▶ HMT335 : High Temperature
+▶ HMT337 : High Humidity
+▶ HMT338 : Pressurized Pipeline`,
             specs: [
-                { label: 'HMT331 (Wall)', value: 'RH: 0…100% RH\nT: -40...+60°C (-40...+140°F)' },
-                { label: 'HMT333 (Duct)', value: 'RH: 0…100% RH\nT: -40...+80°C (rubber) / -40...+120°C (teflon)' },
-                { label: 'HMT334 (High Pressure)', value: 'RH: 0…100% RH\nT: -70...+180°C (-94...+356°F)\nP: 0...10 MPa (0...100 bar)' },
-                { label: 'HMT335 (High Temp)', value: 'RH: 0…100% RH\nT: -70...+180°C (-94...+356°F)' },
-                { label: 'HMT337 (High Humidity)', value: 'RH: 0…100% RH\nT: -70...+180°C (-94...+356°F)' },
-                { label: 'HMT338 (Pipeline)', value: 'RH: 0…100% RH\nT: -70...+180°C (-94...+356°F)\nP: 0...4 MPa (0…40 bar)' },
-                { label: 'Accuracy', value: '±1 %RH (0…90%)\n±0.2°C @ 20°C PT100' },
-                { label: 'Operating Voltage', value: '10...35 VDC, 24 VAC ±20%\n(optional: 100...240 VAC, 50/60 Hz)' },
-                { label: 'Output', value: 'Current: 0...20 mA or 4…20 mA\nVoltage: 0…1 V / 5 V / 10 V\nDigital: RS232, RS485 (optional)\n(optional) WLAN, Relay outputs: 0.5 A, 250 VAC' },
-                { label: 'IP Rating', value: 'IP66 / IP65 with local display' },
-                { label: 'Calculated Variables', value: 'Dew point (Td), Mixing ratio, Absolute humidity,\nWet bulb temperature, Enthalpy, Water vapor pressure' }
+                {
+                    label: 'HMT331 (Wall Mount)',
+                    value: `Application:
+• Cleanrooms
+• Pharmaceutical processes
+• Swimming halls
+• Museums and archives
+
+Measurement Range:
+RH range: 0…100% RH
+Temperature range: -40...+60°C (-40...+140°F)`
+                },
+                {
+                    label: 'HMT333 (Duct Type)',
+                    value: `Application:
+• Cleanrooms
+• Industrial HVAC systems
+• Pharmaceutical processes
+• Environmental chambers
+• Processes with moderate temperature and humidity
+
+Measurement Range:
+RH range: 0…100% RH
+Temperature range: rubber cable -40...+80°C (-40...+176°F) or teflon cable -40...+120°C (-40...+248°F)`
+                },
+                {
+                    label: 'HMT334 (High Pressure)',
+                    value: `Application:
+• Test chambers
+• High-pressure and vacuum processes
+
+Measurement Range:
+RH range: 0…100% RH
+Temperature range: -70...+180°C (-94...+356°F)
+Operating pressure: 0...10 MPa (0...100 bar)`
+                },
+                {
+                    label: 'HMT335 (High Temperature)',
+                    value: `Application:
+• Hot drying processes
+• Food processes (e.g. baking ovens)
+
+Measurement Range:
+RH range: 0…100% RH
+Temperature range: -70...+180°C (-94...+356°F)`
+                },
+                {
+                    label: 'HMT337 (High Humidity)',
+                    value: `Application:
+• Professional meteorology
+• Intake air monitoring of engines and gas turbines
+• Timber drying kilns
+
+Measurement Range:
+RH range: 0…100% RH
+Temperature range: -70...+180°C (-94...+356°F)`
+                },
+                {
+                    label: 'HMT338 (Pressurized Pipeline)',
+                    value: `Application:
+• Process lines
+• Environmental chambers
+• Vacuum-drying processes
+• Compressed air lines with refrigerant dryers
+
+Measurement Range:
+RH range: 0…100% RH
+Temperature range: -70...+180°C (-94...+356°F)
+Operating pressure: 0...4 MPa (0…40 bar)`
+                },
+                {
+                    label: 'Accuracy',
+                    value: '±1%RH (0…90%)\n±0.2°C @ 20°C PT100'
+                },
+                {
+                    label: 'Operating Voltage',
+                    value: `10...35 VDC, 24 VAC ±20%
+(optional power supply module: 100...240 VAC, 50/60 Hz)`
+                },
+                {
+                    label: 'Output',
+                    value: `Current outputs: 0...20 mA or 4…20 mA
+Voltage outputs: 0…1 V / 5 V / 10 V
+Digital outputs: RS232, RS485 (optional)
+(optional) WLAN interface
+(optional) Relay outputs: 0.5A, 250VAC`
+                },
+                {
+                    label: 'IP Rating',
+                    value: 'IP66\nIP65 with local display'
+                }
             ],
             datasheet: 'https://www.vaisala.com/sites/default/files/documents/HMT330-Datasheet-B211735EN.pdf'
         },
