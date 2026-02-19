@@ -133,73 +133,21 @@ function ProductModal({ product, onClose }: { product: any; onClose: () => void 
                     )}
 
                     {/* PRODUCT Section */}
-                    {models.length > 0 && (
+                    {hasNewSpecStructure && (
                         <div className="mb-10">
                             <h3 className="text-lg md:text-xl font-black text-neutral-900 mb-4 flex items-center gap-2">
                                 <span className="w-1.5 h-1.5 bg-neutral-900 inline-block"></span>
                                 PRODUCT
                             </h3>
 
-                            {/* Output info */}
-                            <div className="mb-6 text-sm text-neutral-600">
-                                {productSection.split('\n').find((line: string) => line.includes('Output:')) || ''}
-                            </div>
-
-                            {/* 6-Model Grid - use spec.image if available */}
-                            <div className="grid grid-cols-2 md:grid-cols-3 gap-4 mb-6">
-                                {hasNewSpecStructure ? (
-                                    // New structure: use spec.image
-                                    product.specs.map((spec: any, i: number) => (
-                                        <div key={i} className="border border-neutral-200 rounded-lg p-3 bg-neutral-50 hover:border-cyan-500 transition-colors">
-                                            <div className="aspect-square bg-white rounded-lg mb-3 p-3 flex items-center justify-center border border-neutral-100">
-                                                {/* eslint-disable-next-line @next/next/no-img-element */}
-                                                <img
-                                                    src={spec.image || product.image}
-                                                    alt={spec.model}
-                                                    className="max-h-full max-w-full object-contain"
-                                                    onError={(e) => {
-                                                        (e.target as HTMLImageElement).src = product.image
-                                                    }}
-                                                />
-                                            </div>
-                                            <div className="text-center">
-                                                <p className="font-bold text-neutral-900 text-xs md:text-sm">{spec.model}</p>
-                                                <p className="text-[10px] md:text-xs text-neutral-500 mt-1">{spec.application}</p>
-                                            </div>
-                                        </div>
-                                    ))
-                                ) : (
-                                    // Old structure: use model list
-                                    models.map((model: any, i: number) => (
-                                        <div key={i} className="border border-neutral-200 rounded-lg p-3 bg-neutral-50 hover:border-cyan-500 transition-colors">
-                                            <div className="aspect-square bg-white rounded-lg mb-3 p-3 flex items-center justify-center border border-neutral-100">
-                                                {/* eslint-disable-next-line @next/next/no-img-element */}
-                                                <img
-                                                    src={model.image}
-                                                    alt={model.name}
-                                                    className="max-h-full max-w-full object-contain"
-                                                    onError={(e) => {
-                                                        (e.target as HTMLImageElement).src = product.image
-                                                    }}
-                                                />
-                                            </div>
-                                            <div className="text-center">
-                                                <p className="font-bold text-neutral-900 text-xs md:text-sm">{model.name}</p>
-                                                <p className="text-[10px] md:text-xs text-neutral-500 mt-1">{model.desc}</p>
-                                            </div>
-                                        </div>
-                                    ))
-                                )}
-                            </div>
-
-                            {/* Model List */}
-                            <div className="space-y-2">
-                                {models.map((model: any, i: number) => (
-                                    <div key={i} className="text-sm text-neutral-700 flex items-start gap-2">
-                                        <span className="text-cyan-600 font-bold shrink-0">▶</span>
-                                        <span><strong>{model.name}</strong> : {model.desc}</span>
-                                    </div>
-                                ))}
+                            {/* 6-Model Grid Image */}
+                            <div className="w-full rounded-xl overflow-hidden border border-neutral-200">
+                                {/* eslint-disable-next-line @next/next/no-img-element */}
+                                <img
+                                    src="/templates/hs-tech/images/hmt330_6models_grid.png"
+                                    alt="HMT330 Series - 6 Models"
+                                    className="w-full h-auto object-contain"
+                                />
                             </div>
                         </div>
                     )}
@@ -242,9 +190,19 @@ function ProductModal({ product, onClose }: { product: any; onClose: () => void 
                                                         <td className="py-3 px-3 md:px-4 text-neutral-700 border-r border-neutral-200 align-top">
                                                             <div className="whitespace-pre-line leading-relaxed text-sm">{spec.measurementRange}</div>
                                                         </td>
-                                                        <td className="py-3 px-3 md:px-4 text-neutral-700 align-top">
-                                                            <div className="whitespace-pre-line leading-relaxed text-sm">{spec.spec || '-'}</div>
-                                                        </td>
+                                                        {i === 0 && (
+                                                            <td rowSpan={product.specs.length} className="py-3 px-3 md:px-4 text-neutral-700 align-top">
+                                                                <div className="whitespace-pre-line leading-relaxed text-sm">
+                                                                    {product.specs.map((s: any, idx: number) => (
+                                                                        s.spec && s.spec !== '-' ? (
+                                                                            <div key={idx} className={idx > 0 ? 'mt-4' : ''}>
+                                                                                {s.spec}
+                                                                            </div>
+                                                                        ) : null
+                                                                    ))}
+                                                                </div>
+                                                            </td>
+                                                        )}
                                                     </tr>
                                                 ))}
                                             </tbody>
