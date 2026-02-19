@@ -64,6 +64,25 @@ function ProductModal({ product, onClose }: { product: any; onClose: () => void 
         return () => window.removeEventListener('keydown', handler)
     }, [onClose])
 
+    // Parse description to extract PRODUCT section
+    const descParts = product.desc?.split('■ PRODUCT') || ['', '']
+    const mainDesc = descParts[0]?.trim() || ''
+    const productSection = descParts[1]?.trim() || ''
+
+    // Extract model list from PRODUCT section
+    const modelLines = productSection.split('\n').filter((line: string) => line.includes('▶'))
+    const models = modelLines.map((line: string) => {
+        const match = line.match(/▶\s*(\w+)\s*:\s*(.+)/)
+        if (match) {
+            return {
+                name: match[1].trim(),
+                desc: match[2].trim(),
+                image: `/templates/hs-tech/images/products/${match[1].trim()}_v1.png`
+            }
+        }
+        return null
+    }).filter(Boolean)
+
     return (
         <motion.div
             initial={{ opacity: 0 }}
@@ -78,7 +97,7 @@ function ProductModal({ product, onClose }: { product: any; onClose: () => void 
                 animate={{ opacity: 1, scale: 1, y: 0 }}
                 exit={{ opacity: 0, scale: 0.97, y: 20 }}
                 transition={{ duration: 0.2 }}
-                className="bg-white rounded-2xl w-full md:w-[80vw] max-h-[92vh] overflow-y-auto shadow-2xl border border-neutral-200 flex flex-col"
+                className="bg-white rounded-2xl w-full md:w-[85vw] max-h-[92vh] overflow-y-auto shadow-2xl border border-neutral-200 flex flex-col"
                 onClick={e => e.stopPropagation()}
             >
                 {/* Header */}
@@ -92,52 +111,123 @@ function ProductModal({ product, onClose }: { product: any; onClose: () => void 
                     </button>
                 </div>
 
-                {/* Body — 모바일: 위아래 / PC: 좌이미지 우스펙 2단 */}
-                <div className="px-6 md:px-10 py-6 grid grid-cols-1 md:grid-cols-[2fr_3fr] gap-6 md:gap-10">
-                    {/* Image */}
-                    <div className="bg-neutral-50 rounded-2xl p-6 md:p-10 flex items-center justify-center min-h-56 md:min-h-72 border border-neutral-100">
-                        {product.image ? (
-                            // eslint-disable-next-line @next/next/no-img-element
-                            <img src={product.image} alt={product.title} className="max-h-56 md:max-h-80 w-full object-contain" />
-                        ) : (
-                            <div className="text-neutral-300 text-xl font-black tracking-tighter text-center uppercase">{product.title}</div>
-                        )}
-                    </div>
+                {/* Body — imweb 스타일 레이아웃 */}
+                <div className="px-6 md:px-10 py-8">
 
-                    {/* Info */}
-                    <div className="flex flex-col gap-5">
-                        {product.desc && (
-                            <p className="text-sm text-neutral-600 leading-relaxed">{product.desc}</p>
-                        )}
-                        {product.specs?.length > 0 && (
-                            <div className="border border-neutral-200 rounded-xl overflow-hidden">
-                                <div className="bg-neutral-900 px-4 py-2">
-                                    <span className="text-[10px] text-neutral-400 font-black uppercase tracking-[0.2em]">Specifications</span>
-                                </div>
-                                <table className="w-full text-sm">
-                                    <tbody>
-                                        {product.specs.map((spec: any, i: number) => (
-                                            <tr key={i} className={i % 2 === 0 ? 'bg-neutral-50' : 'bg-white'}>
-                                                <td className="py-3 px-4 text-neutral-500 font-bold uppercase tracking-wide text-xs w-[38%] border-r border-neutral-100 align-top pt-3">{spec.label}</td>
-                                                <td className="py-3 px-4 text-neutral-800 font-medium whitespace-pre-line leading-relaxed">{spec.value}</td>
-                                            </tr>
-                                        ))}
-                                    </tbody>
-                                </table>
+                    {/* Main Image */}
+                    {product.image && (
+                        <div className="bg-neutral-50 rounded-2xl p-6 md:p-10 flex items-center justify-center mb-8 border border-neutral-100">
+                            {/* eslint-disable-next-line @next/next/no-img-element */}
+                            <img src={product.image} alt={product.title} className="max-h-72 md:max-h-96 w-full object-contain" />
+                        </div>
+                    )}
+
+                    {/* Description */}
+                    {mainDesc && (
+                        <div className="mb-8">
+                            <p className="text-sm md:text-base text-neutral-700 leading-relaxed whitespace-pre-line">{mainDesc}</p>
+                        </div>
+                    )}
+
+                    {/* PRODUCT Section */}
+                    {models.length > 0 && (
+                        <div className="mb-10">
+                            <h3 className="text-lg md:text-xl font-black text-neutral-900 mb-4 flex items-center gap-2">
+                                <span className="w-1.5 h-1.5 bg-neutral-900 inline-block"></span>
+                                PRODUCT
+                            </h3>
+
+                            {/* Output info */}
+                            <div className="mb-6 text-sm text-neutral-600">
+                                {productSection.split('\n').find((line: string) => line.includes('Output:')) || ''}
                             </div>
-                        )}
-                    </div>
-                </div>
 
-                {/* Gallery */}
-                {product.gallery?.length > 1 && (
-                    <div className="px-6 md:px-10 pb-8 flex gap-3 overflow-x-auto">
-                        {product.gallery.map((img: string, i: number) => (
-                            // eslint-disable-next-line @next/next/no-img-element
-                            <img key={i} src={img} alt="" className="h-20 w-20 object-contain rounded-xl border border-neutral-200 bg-neutral-50 p-2 shrink-0 hover:border-cyan-400 transition-colors cursor-pointer" />
-                        ))}
-                    </div>
-                )}
+                            {/* 6-Model Grid */}
+                            <div className="grid grid-cols-2 md:grid-cols-3 gap-4 mb-6">
+                                {models.map((model: any, i: number) => (
+                                    <div key={i} className="border border-neutral-200 rounded-lg p-3 bg-neutral-50 hover:border-cyan-500 transition-colors">
+                                        <div className="aspect-square bg-white rounded-lg mb-3 p-3 flex items-center justify-center border border-neutral-100">
+                                            {/* eslint-disable-next-line @next/next/no-img-element */}
+                                            <img
+                                                src={model.image}
+                                                alt={model.name}
+                                                className="max-h-full max-w-full object-contain"
+                                                onError={(e) => {
+                                                    // Fallback to main image if model image not found
+                                                    (e.target as HTMLImageElement).src = product.image
+                                                }}
+                                            />
+                                        </div>
+                                        <div className="text-center">
+                                            <p className="font-bold text-neutral-900 text-xs md:text-sm">{model.name}</p>
+                                            <p className="text-[10px] md:text-xs text-neutral-500 mt-1">{model.desc}</p>
+                                        </div>
+                                    </div>
+                                ))}
+                            </div>
+
+                            {/* Model List */}
+                            <div className="space-y-2">
+                                {models.map((model: any, i: number) => (
+                                    <div key={i} className="text-sm text-neutral-700 flex items-start gap-2">
+                                        <span className="text-cyan-600 font-bold shrink-0">▶</span>
+                                        <span><strong>{model.name}</strong> : {model.desc}</span>
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
+                    )}
+
+                    {/* Technical Data Table */}
+                    {product.specs?.length > 0 && (
+                        <div className="mb-8">
+                            <h3 className="text-lg md:text-xl font-black text-neutral-900 mb-4 flex items-center gap-2">
+                                <span className="w-1.5 h-1.5 bg-neutral-900 inline-block"></span>
+                                Technical Data
+                            </h3>
+                            <div className="border-2 border-neutral-900 rounded-lg overflow-hidden">
+                                <div className="overflow-x-auto">
+                                    <table className="w-full text-xs md:text-sm">
+                                        <thead>
+                                            <tr className="bg-neutral-100 border-b-2 border-neutral-900">
+                                                <th className="py-3 px-3 md:px-4 text-left font-black text-neutral-900 uppercase tracking-wide border-r border-neutral-300">MODEL</th>
+                                                <th className="py-3 px-3 md:px-4 text-left font-black text-neutral-900 uppercase tracking-wide border-r border-neutral-300">APPLICATION</th>
+                                                <th className="py-3 px-3 md:px-4 text-left font-black text-neutral-900 uppercase tracking-wide">MEASUREMENT RANGE</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            {product.specs.map((spec: any, i: number) => (
+                                                <tr key={i} className={`${i % 2 === 0 ? 'bg-white' : 'bg-neutral-50'} border-b border-neutral-200`}>
+                                                    <td className="py-3 px-3 md:px-4 font-bold text-cyan-700 border-r border-neutral-200 align-top whitespace-nowrap">{spec.label}</td>
+                                                    <td className="py-3 px-3 md:px-4 text-neutral-700 border-r border-neutral-200 align-top">
+                                                        <div className="whitespace-pre-line leading-relaxed">
+                                                            {spec.value.split('Measurement Range:')[0]?.replace('Application:', '').trim()}
+                                                        </div>
+                                                    </td>
+                                                    <td className="py-3 px-3 md:px-4 text-neutral-700 align-top">
+                                                        <div className="whitespace-pre-line leading-relaxed">
+                                                            {spec.value.split('Measurement Range:')[1]?.trim() || '-'}
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                            ))}
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    )}
+
+                    {/* Gallery */}
+                    {product.gallery?.length > 1 && (
+                        <div className="flex gap-3 overflow-x-auto pb-2">
+                            {product.gallery.map((img: string, i: number) => (
+                                // eslint-disable-next-line @next/next/no-img-element
+                                <img key={i} src={img} alt="" className="h-20 w-20 object-contain rounded-xl border border-neutral-200 bg-neutral-50 p-2 shrink-0 hover:border-cyan-400 transition-colors cursor-pointer" />
+                            ))}
+                        </div>
+                    )}
+                </div>
             </motion.div>
         </motion.div>
     )
