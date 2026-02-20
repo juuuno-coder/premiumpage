@@ -1828,7 +1828,7 @@ Output: RH+T+Td+Tdf`,
     setra: [
         {
             id: 'setra_lite', title: 'Setra Lite™', subtitle: 'VISUAL DIFFERENTIAL PRESSURE INDICATOR', category: 'diff_ind',
-            image: '/templates/hs-tech/images/products/849fee28dfdc5.png',
+            image: '/templates/hs-tech/images/products/Setra Lite™  Visual Differential Pressure Indicator.png',
             gallery: [
                 '/templates/hs-tech/images/products/849fee28dfdc5.png',
                 '/templates/hs-tech/images/products/setra_lite_green.png',
@@ -1859,7 +1859,7 @@ Setra Lite also integrates seamlessly with the Setra FLEX environmental monitor.
         },
         {
             id: 'setra_flex', title: 'Setra Flex', subtitle: 'TOUCHSCREEN ROOM PRESSURE MONITOR', category: 'diff_ind',
-            image: '/templates/hs-tech/images/products/849fee28dfdc5.png',
+            image: '/templates/hs-tech/images/products/Setra Lite™  Visual Differential Pressure Indicator.png',
             gallery: ['/templates/hs-tech/images/products/849fee28dfdc5.png'],
             desc: 'Advanced touchscreen room pressure monitor with numeric display and configurable alarms. Provides visual and audible alerts when room pressure goes out of range.',
             specs: [
@@ -1873,7 +1873,7 @@ Setra Lite also integrates seamlessly with the Setra FLEX environmental monitor.
         },
         {
             id: 'model_mrc', title: 'Model MRC', subtitle: 'MULTI-RANGE CRITICAL PRESSURE TRANSDUCER', category: 'diff_sen',
-            image: '/templates/hs-tech/images/products/0173971661ad2.png',
+            image: '/templates/hs-tech/images/products/Model MRC.png',
             gallery: ['/templates/hs-tech/images/products/0173971661ad2.png', '/templates/hs-tech/images/products/0b98ec3d71c52.png', '/templates/hs-tech/images/products/866d1ed724ffa.png', '/templates/hs-tech/images/products/ba117fd1862c9.png', '/templates/hs-tech/images/products/20542e1ba6c31.png'],
             desc: `Setra's Model MRC multi-range low differential pressure transducer uses a dead-ended capacitive sensing element that requires minimal amplification and delivers excellent accuracy and long term stability. The MRC is the industries first multi-range sensor designed for critical environments. It is the only multi-range sensor available with ±0.5% FS accuracy and field selectable ranges down to 0.1" W.C., a requirement for critical applications. The MRC has 4 selectable ranges and 3 selectable outputs, easily adjustable on the job with a flip of a switch or jumper. The MRC is offered with 3 different housing configurations: Duct Probe, DINrail Mount or wall mount as well as a universal design that incorporates all 3 configurations in one to address any installation changes on the job site.
 
@@ -1959,7 +1959,7 @@ Only Setra can claim ownership to the stainless steel capacitive design used in 
         },
         {
             id: 'model_264', title: 'Model 264', subtitle: 'LOW DIFFERENTIAL PRESSURE TRANSDUCER', category: 'diff_sen',
-            image: '/templates/hs-tech/images/products/866d1ed724ffa.png',
+            image: '/templates/hs-tech/images/products/264.jpg',
             gallery: ['/templates/hs-tech/images/products/866d1ed724ffa.png', '/templates/hs-tech/images/products/ba117fd1862c9.png'],
             desc: 'Low differential pressure transducer with exceptional stability. Used for HVAC pressure measurement in VAV boxes, fan pressure control, and filter monitoring.',
             specs: [
@@ -2049,7 +2049,7 @@ Only Setra can claim ownership to the stainless steel capacitive design used in 
         },
         {
             id: 'model_206', title: 'Model 206', subtitle: 'RUGGED STAINLESS STEEL TRANSDUCER', category: 'industrial',
-            image: '/templates/hs-tech/images/products/5175822708f3a.png',
+            image: '/templates/hs-tech/images/products/206.jpg',
             gallery: ['/templates/hs-tech/images/products/5175822708f3a.png'],
             desc: 'Rugged stainless steel pressure transducer for harsh industrial environments. Fully welded, hermetic construction for maximum reliability.',
             specs: [
@@ -2063,7 +2063,7 @@ Only Setra can claim ownership to the stainless steel capacitive design used in 
         },
         {
             id: 'model_209', title: 'Model 209', subtitle: 'COMPACT OEM PRESSURE SENSOR', category: 'industrial',
-            image: '/templates/hs-tech/images/products/a153aa767ba86.png',
+            image: '/templates/hs-tech/images/products/209.png',
             gallery: ['/templates/hs-tech/images/products/a153aa767ba86.png'],
             desc: 'Compact, cost-effective OEM pressure sensor for industrial equipment integration.',
             specs: [
@@ -2574,8 +2574,8 @@ export const SETRA_APPLICATIONS_SENSOR: Record<string, any> = {
         content: `OEM pressure transducers for fuel cells, hydraulic systems, compressors, and HVAC/R equipment. Available in wide pressure ranges with multiple electrical termination and pressure fitting options.`,
         models: [
             { name: 'AXD', image: '/templates/hs-tech/images/products/af2c3e1c0d3d0.png' },
-            { name: '206', image: '/templates/hs-tech/images/products/5175822708f3a.png' },
-            { name: '209', image: '/templates/hs-tech/images/products/a153aa767ba86.png' }
+            { name: '206', image: '/templates/hs-tech/images/products/206.jpg' },
+            { name: '209', image: '/templates/hs-tech/images/products/209.png' }
         ],
         tableData: [
             ['Model', 'AXD', '206', '209'],
