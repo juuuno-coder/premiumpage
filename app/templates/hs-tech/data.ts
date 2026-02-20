@@ -1431,8 +1431,8 @@ Output: RH+T+Td+Tdf`,
         },
         {
             id: 'dmt340', title: 'DMT340', subtitle: 'DEWPOINT TRANSMITTER', category: 'fixed',
-            image: '/templates/hs-tech/images/products/50e31ebdea359.png',
-            gallery: ['/templates/hs-tech/images/products/50e31ebdea359.png'],
+            image: '/templates/hs-tech/images/products/DMT340.jpg',
+            gallery: ['/templates/hs-tech/images/products/DMT340.jpg'],
             desc: 'Dewpoint transmitter for condensing environments. The heated sensor head prevents condensation on the sensor, enabling accurate measurement even in 100% RH conditions.',
             specs: [
                 { label: 'DMT341 (Wall)', value: 'Td: -70…+80°C (±2°C, up to 20 bar)\nT: 0…+80°C (±0.2°C)\nRH: 0…70% (±0.004 %RH + 20% of reading)\nGraphical LCD monitoring' },
@@ -1447,8 +1447,8 @@ Output: RH+T+Td+Tdf`,
         },
         {
             id: 'dmt345', title: 'DMT345/346', subtitle: 'HIGH TEMPERATURE DEWPOINT', category: 'fixed',
-            image: '/templates/hs-tech/images/products/5cf3bcd453c32.png',
-            gallery: ['/templates/hs-tech/images/products/5cf3bcd453c32.png'],
+            image: '/templates/hs-tech/images/products/ DMT345:346.png',
+            gallery: ['/templates/hs-tech/images/products/ DMT345:346.png'],
             desc: 'High temperature dewpoint transmitter for process streams up to +180 °C. Ideal for plastic drying, industrial ovens, and compressed air systems with high temperatures.',
             specs: [
                 { label: 'DMT345 (High Temp)', value: 'Accurate in hot and dry environments (up to +180°C)\nTd: -40…+100°C (±2°C)\nT: 0…+180°C (±0.4°C @ 100°C)\nRH: 0…100% / Mixing ratio: 0…1000 g/kg' },
@@ -1460,8 +1460,8 @@ Output: RH+T+Td+Tdf`,
         },
         {
             id: 'dmt132', title: 'DMT132', subtitle: 'DEWPOINT & HUMIDITY MODULE', category: 'module',
-            image: '/templates/hs-tech/images/products/dmt132_v1.png',
-            gallery: ['/templates/hs-tech/images/products/dmt132_v1.png'],
+            image: '/templates/hs-tech/images/products/ DMT132.jpg',
+            gallery: ['/templates/hs-tech/images/products/ DMT132.jpg'],
             desc: 'OEM dewpoint and humidity module for integration into instruments and systems.',
             specs: [
                 { label: 'Features', value: 'For refrigerant dryers\nAuto-calibration\nChemical purging\nOptional LED warning light' },
@@ -1472,8 +1472,8 @@ Output: RH+T+Td+Tdf`,
         },
         {
             id: 'dmt152', title: 'DMT152', subtitle: 'LOW DEWPOINT MODULE', category: 'module',
-            image: '/templates/hs-tech/images/products/dmt152_v1.png',
-            gallery: ['/templates/hs-tech/images/products/dmt152_v1.png'],
+            image: '/templates/hs-tech/images/products/DMT152.jpg',
+            gallery: ['/templates/hs-tech/images/products/DMT152.jpg'],
             desc: 'OEM module for very low dewpoint measurement in dry air and inert gas applications.',
             specs: [
                 { label: 'Features', value: 'Auto-calibration\nChemical purging\nCompressed air, dry chambers' },
@@ -1484,8 +1484,8 @@ Output: RH+T+Td+Tdf`,
         },
         {
             id: 'dmt143', title: 'DMT143', subtitle: 'COMPACT OEM MODULE', category: 'module',
-            image: '/templates/hs-tech/images/products/6d596692e24f1.png',
-            gallery: ['/templates/hs-tech/images/products/6d596692e24f1.png'],
+            image: '/templates/hs-tech/images/products/DMT143.jpg',
+            gallery: ['/templates/hs-tech/images/products/DMT143.jpg'],
             desc: 'Ultra-compact dewpoint transmitter module for OEM and space-limited applications.',
             specs: [
                 { label: 'Features', value: 'Auto-calibration\nChemical purging\nLED alarm\nMiniature dewpoint measurement' },
@@ -1496,8 +1496,8 @@ Output: RH+T+Td+Tdf`,
         },
         {
             id: 'dmt143l', title: 'DMT143L', subtitle: 'EXTENDED PROBE MODULE', category: 'module',
-            image: '/templates/hs-tech/images/products/289587707561d.png',
-            gallery: ['/templates/hs-tech/images/products/289587707561d.png'],
+            image: '/templates/hs-tech/images/products/DMT143L.jpg',
+            gallery: ['/templates/hs-tech/images/products/DMT143L.jpg'],
             desc: 'DMT143 module with extended probe for deep installation into pipelines and vessels.',
             specs: [
                 { label: 'Probe Length', value: 'Extended (selectable)' },
@@ -1508,8 +1508,8 @@ Output: RH+T+Td+Tdf`,
         },
         {
             id: 'dpt146', title: 'DPT146', subtitle: 'DEWPOINT & PRESSURE TRANSMITTER', category: 'module',
-            image: '/templates/hs-tech/images/products/dpt146_v1.png',
-            gallery: ['/templates/hs-tech/images/products/dpt146_v1.png'],
+            image: '/templates/hs-tech/images/products/DPT146.jpg',
+            gallery: ['/templates/hs-tech/images/products/DPT146.jpg'],
             desc: 'Combined dewpoint and pressure transmitter for compressed air quality monitoring (ISO 8573 compliance).',
             specs: [
                 { label: 'Parameters', value: 'Dewpoint (Td) + Pressure (P)' },
@@ -1521,8 +1521,8 @@ Output: RH+T+Td+Tdf`,
         },
         {
             id: 'dpt145', title: 'DPT145', subtitle: 'SF6 GAS DEWPOINT MONITOR', category: 'module',
-            image: '/templates/hs-tech/images/products/dpt145_v1.png',
-            gallery: ['/templates/hs-tech/images/products/dpt145_v1.png'],
+            image: '/templates/hs-tech/images/products/ DPT145.png',
+            gallery: ['/templates/hs-tech/images/products/ DPT145.png'],
             desc: 'Dewpoint measurement in SF6 gas systems for high-voltage switchgear monitoring.',
             specs: [
                 { label: 'Features', value: 'For SF6 gas measurement without sampling\nDetects leakage with pressure sensor' },
@@ -1562,7 +1562,7 @@ Output: RH+T+Td+Tdf`,
         },
         {
             id: 'dss70a', title: 'DSS70A', subtitle: 'SAMPLING SYSTEM FOR DM70', category: 'portable',
-            image: '/templates/hs-tech/images/products/96ddd2e578412.png',
+            image: '/templates/hs-tech/images/products/DSS70A.png',
             gallery: ['/templates/hs-tech/images/products/96ddd2e578412.png'],
             desc: 'Sampling cell system for dewpoint measurement in pressurized gas lines.',
             specs: [
@@ -1578,8 +1578,8 @@ Output: RH+T+Td+Tdf`,
     co2: [
         {
             id: 'gmw90', title: 'GMW90', subtitle: 'WALL-MOUNT CO₂ TRANSMITTER', category: 'transmitter',
-            image: '/templates/hs-tech/images/products/6251932a0e954.png',
-            gallery: ['/templates/hs-tech/images/products/6251932a0e954.png'],
+            image: '/templates/hs-tech/images/products/GMW90.png',
+            gallery: ['/templates/hs-tech/images/products/GMW90.png'],
             desc: 'Multi-parameter wall transmitter measuring CO2, temperature, and humidity. Features Vaisala CARBOCAP® dual-channel sensor for superior long-term stability — no zero drift.',
             specs: [
                 { label: 'GMW93 / GMW93D (Wall)', value: 'CO₂+T measurement\n3-wire voltage output\nDisplay option (D suffix)' },
@@ -1594,8 +1594,8 @@ Output: RH+T+Td+Tdf`,
         },
         {
             id: 'gmw80', title: 'GMW80', subtitle: 'CO₂ TRANSMITTER', category: 'transmitter',
-            image: '/templates/hs-tech/images/products/cfd2828db31bd.png',
-            gallery: ['/templates/hs-tech/images/products/cfd2828db31bd.png'],
+            image: '/templates/hs-tech/images/products/GMW80.png',
+            gallery: ['/templates/hs-tech/images/products/GMW80.png'],
             desc: 'Economical CO2 transmitter for standard indoor air quality monitoring and demand-controlled ventilation.',
             specs: [
                 { label: 'Parameter', value: 'CO₂' },
@@ -1608,8 +1608,8 @@ Output: RH+T+Td+Tdf`,
         },
         {
             id: 'gmd110', title: 'GMD110', subtitle: 'DUCT CO₂ TRANSMITTER', category: 'transmitter',
-            image: '/templates/hs-tech/images/products/c846ecca3733c.png',
-            gallery: ['/templates/hs-tech/images/products/c846ecca3733c.png'],
+            image: '/templates/hs-tech/images/products/GMD110.jpg',
+            gallery: ['/templates/hs-tech/images/products/GMD110.jpg'],
             desc: 'CO2 transmitter for duct mounting in HVAC air handling units. Measures CO2 directly in the airflow.',
             specs: [
                 { label: 'GMD20 (Duct)', value: 'IP65\nDisplay (optional)\nEasy one-to-one replacement\nExcellent long-term stability' },
@@ -1620,8 +1620,8 @@ Output: RH+T+Td+Tdf`,
         },
         {
             id: 'gmp343', title: 'GMP343', subtitle: 'INDUSTRIAL CO₂ PROBE', category: 'probe',
-            image: '/templates/hs-tech/images/products/eb130aca3df08.png',
-            gallery: ['/templates/hs-tech/images/products/eb130aca3df08.png'],
+            image: '/templates/hs-tech/images/products/GMP343.png',
+            gallery: ['/templates/hs-tech/images/products/GMP343.png'],
             desc: 'High-accuracy CO2 probe for soil respiration, ambient monitoring, plant growth chambers and OEM applications.',
             specs: [
                 { label: 'Features', value: 'Excellent accuracy and stability\nSilicon-based NDIR sensor\nDual wavelength measurement\nDiffusion and flow-through design' },
@@ -1633,8 +1633,8 @@ Output: RH+T+Td+Tdf`,
         },
         {
             id: 'gmp251', title: 'GMP251', subtitle: 'HIGH-RANGE CO₂ PROBE', category: 'probe',
-            image: '/templates/hs-tech/images/products/f6933d55699f3.png',
-            gallery: ['/templates/hs-tech/images/products/f6933d55699f3.png'],
+            image: '/templates/hs-tech/images/products/GMP251.png',
+            gallery: ['/templates/hs-tech/images/products/GMP251.png'],
             desc: 'CO2 probe for life science incubators, cold storages, fruit and vegetable transportation.',
             specs: [
                 { label: 'GMP251', value: 'Range: 0…20% (±0.1 %CO₂ @ 5% CO₂)\nIP65 classified housing\nSensor head heated for reliable operation\nOperating temp: -40…+60°C' },
@@ -1647,8 +1647,8 @@ Output: RH+T+Td+Tdf`,
         },
         {
             id: 'gmp231', title: 'GMP231', subtitle: 'INCUBATOR CO₂ PROBE', category: 'probe',
-            image: '/templates/hs-tech/images/products/8b82ea8dea629.png',
-            gallery: ['/templates/hs-tech/images/products/8b82ea8dea629.png'],
+            image: '/templates/hs-tech/images/products/GMP231.png',
+            gallery: ['/templates/hs-tech/images/products/GMP231.png'],
             desc: 'CO2 probe designed for life science incubators. High accuracy and stability at elevated temperatures.',
             specs: [
                 { label: 'Features', value: 'Max temperature durability in standby (sensor head only)\nHigh accuracy and stability as temp changes' },
@@ -1659,8 +1659,8 @@ Output: RH+T+Td+Tdf`,
         },
         {
             id: 'indigo80_gmp252', title: 'Indigo80 + GMP252', subtitle: 'PORTABLE CO₂ METER', category: 'handheld',
-            image: '/templates/hs-tech/images/products/41a5c8353e901.png',
-            gallery: ['/templates/hs-tech/images/products/41a5c8353e901.png'],
+            image: '/templates/hs-tech/images/products/Indigo80+GMP252.jpg',
+            gallery: ['/templates/hs-tech/images/products/Indigo80+GMP252.jpg'],
             desc: 'Portable CO2 measurement system combining the Indigo80 handheld indicator with the GMP252 high-range CO2 probe. Ideal for spot-checking and verification.',
             specs: [
                 { label: 'System', value: 'Indigo80 indicator + GMP252 probe' },
@@ -2797,7 +2797,7 @@ export const JUMO_CATEGORY_INTRO: Record<string, any> = {
         products: [
             {
                 model: 'plastoSENS T01',
-                image: '/templates/hs-tech/images/jumo/plastosens_t01.png',
+                image: '/templates/hs-tech/images/products/plastoSENS T01.jpg',
                 features: [
                     'Nominal voltage up to 7000 V AC',
                     'Standardized, voltage-resistant probe (e.g. for use in transformers)',
@@ -2808,7 +2808,7 @@ export const JUMO_CATEGORY_INTRO: Record<string, any> = {
             },
             {
                 model: 'plastoSENS T02',
-                image: '/templates/hs-tech/images/jumo/plastosens_t02.png',
+                image: '/templates/hs-tech/images/products/plastoSENS T02.jpg',
                 features: [
                     'Vibration and shock-resistant - shock-resistant – thanks to temperature probe that is completely surrounded by plastic',
                     'Can be used in almost all liquids – even in chemicals',
@@ -2818,7 +2818,7 @@ export const JUMO_CATEGORY_INTRO: Record<string, any> = {
             },
             {
                 model: 'plastoSENS T03',
-                image: '/templates/hs-tech/images/jumo/plastosens_t03.png',
+                image: '/templates/hs-tech/images/products/plastoSENS T03 .jpg',
                 features: [
                     'Protection type IP69K – also steam-tight on the cable outlet',
                     'Absolute tightness – the applied special plastics form a substance-to-substance bond during the injection molding process and thereby guarantee steam-tightness',
@@ -2827,7 +2827,7 @@ export const JUMO_CATEGORY_INTRO: Record<string, any> = {
             },
             {
                 model: 'plastoSENS T04',
-                image: '/templates/hs-tech/images/jumo/plastosens_t04.png',
+                image: '/templates/hs-tech/images/products/plastoSENS T04 .jpg',
                 features: [
                     'For temperatures from -40 to +180 °C',
                     'Precise pipe adaptation through full contact to surface area',
@@ -3042,7 +3042,7 @@ export const JUMO_CATEGORY_INTRO: Record<string, any> = {
         products: [
             {
                 model: 'JUMO LOGOSCREEN 600',
-                image: '/templates/hs-tech/images/jumo/logoscreen_600.png',
+                image: '/templates/hs-tech/images/products/JUMO LOGOSCREEN 600.jpg',
                 features: [
                     '144 × 144 mm format',
                     '14.5 cm (5.7") TFT color graphics screen (640 x 480 pixel)',
@@ -3069,7 +3069,7 @@ export const JUMO_CATEGORY_INTRO: Record<string, any> = {
             {
                 model: 'JUMO LOGOSCREEN 700',
                 subtitle: 'Highly-Scalable Paperless Recorder (706530)',
-                image: '/templates/hs-tech/images/jumo/logoscreen_700.png',
+                image: '/templates/hs-tech/images/products/JUMO LOGOSCREEN 700   Highly-Scalable Paperless Recorder (706530).jpg',
                 features: [
                     'Intuitive touch operation',
                     'Up to 3 analog outputs',
@@ -3092,7 +3092,7 @@ export const JUMO_CATEGORY_INTRO: Record<string, any> = {
             },
             {
                 model: 'JUMO Quantrol Compact Controller (702030)',
-                image: '/templates/hs-tech/images/jumo/quantrol.png',
+                image: '/templates/hs-tech/images/products/JUMO Quantrol Compact Controller (702030).jpg',
                 features: [
                     '48 × 48 mm formats',
                     'Two-state/three-state, continuous controller',
