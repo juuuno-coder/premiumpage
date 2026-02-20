@@ -1460,7 +1460,8 @@ Output: RH+T+Td+Tdf`,
         },
         {
             id: 'dmt132', title: 'DMT132', subtitle: 'DEWPOINT & HUMIDITY MODULE', category: 'module',
-            image: '/templates/hs-tech/images/products/2d44fea596554.png', gallery: [],
+            image: '/templates/hs-tech/images/products/dmt132_v1.png',
+            gallery: ['/templates/hs-tech/images/products/dmt132_v1.png'],
             desc: 'OEM dewpoint and humidity module for integration into instruments and systems.',
             specs: [
                 { label: 'Features', value: 'For refrigerant dryers\nAuto-calibration\nChemical purging\nOptional LED warning light' },
@@ -1471,8 +1472,8 @@ Output: RH+T+Td+Tdf`,
         },
         {
             id: 'dmt152', title: 'DMT152', subtitle: 'LOW DEWPOINT MODULE', category: 'module',
-            image: '/templates/hs-tech/images/products/2d44fea596554.png',
-            gallery: ['/templates/hs-tech/images/products/2d44fea596554.png'],
+            image: '/templates/hs-tech/images/products/dmt152_v1.png',
+            gallery: ['/templates/hs-tech/images/products/dmt152_v1.png'],
             desc: 'OEM module for very low dewpoint measurement in dry air and inert gas applications.',
             specs: [
                 { label: 'Features', value: 'Auto-calibration\nChemical purging\nCompressed air, dry chambers' },
@@ -1507,8 +1508,8 @@ Output: RH+T+Td+Tdf`,
         },
         {
             id: 'dpt146', title: 'DPT146', subtitle: 'DEWPOINT & PRESSURE TRANSMITTER', category: 'module',
-            image: '/templates/hs-tech/images/products/04ad79c254fa2.png',
-            gallery: ['/templates/hs-tech/images/products/04ad79c254fa2.png'],
+            image: '/templates/hs-tech/images/products/dpt146_v1.png',
+            gallery: ['/templates/hs-tech/images/products/dpt146_v1.png'],
             desc: 'Combined dewpoint and pressure transmitter for compressed air quality monitoring (ISO 8573 compliance).',
             specs: [
                 { label: 'Parameters', value: 'Dewpoint (Td) + Pressure (P)' },
@@ -1520,8 +1521,8 @@ Output: RH+T+Td+Tdf`,
         },
         {
             id: 'dpt145', title: 'DPT145', subtitle: 'SF6 GAS DEWPOINT MONITOR', category: 'module',
-            image: '/templates/hs-tech/images/products/04ad79c254fa2.png',
-            gallery: [],
+            image: '/templates/hs-tech/images/products/dpt145_v1.png',
+            gallery: ['/templates/hs-tech/images/products/dpt145_v1.png'],
             desc: 'Dewpoint measurement in SF6 gas systems for high-voltage switchgear monitoring.',
             specs: [
                 { label: 'Features', value: 'For SF6 gas measurement without sampling\nDetects leakage with pressure sensor' },
