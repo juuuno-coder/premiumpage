@@ -3128,18 +3128,14 @@ export const JUMO_APPLICATIONS: Record<string, any> = {
         title: 'Water & Wastewater',
         shortDesc: 'pH, conductivity, and turbidity monitoring for drinking water treatment plants and effluent compliance.',
         image: '/templates/hs-tech/images/jumo/water_wastewater.jpg',
-        content: `Water & Wastewater treatment applications (Content to be added)`,
+        content: `For water and wastewater technology, JUMO offers a variety of solutions for the most diverse applications. Whatever the requirements of measurement technology, JUMO always meets your needs. With the goal of guaranteeing consistent high-quality water and treated wastewater, there is a need to perform reliable, accurate measurements, which can be controlled and monitored from a central location.`,
         applications: [
-            'Drinking water treatment plants',
-            'Wastewater treatment',
-            'Effluent monitoring',
-            'pH and conductivity control'
+            'Drinking water',
+            'Swimming pool water',
+            'Process water and Wastewater'
         ],
         measurementProducts: [
-            'pH electrodes and transmitters',
-            'Conductivity sensors',
-            'Turbidity monitors',
-            'Process controllers'
+            'Find detailed information about products JUMO offers to the water and wastewater engineering'
         ]
     },
     shipbuilding: {
