@@ -1223,49 +1223,14 @@ function HSTechContent() {
                             <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-600 to-sky-400">Services.</span>
                         </h2>
 
-                        {/* Support & Services Cards */}
-                        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
-                            {[
-                                {
-                                    title: 'Product\nCustomization',
-                                    image: '/templates/hs-tech/images/business/product_customization.jpg',
-                                },
-                                {
-                                    title: 'Technical\nSupport',
-                                    image: '/templates/hs-tech/images/business/technical_support.jpg',
-                                },
-                                {
-                                    title: 'Calibration\n& Repair',
-                                    image: '/templates/hs-tech/images/business/calibration_repair.jpg',
-                                },
-                                {
-                                    title: 'Customer\nTraining',
-                                    image: '/templates/hs-tech/images/business/customer_training.jpg',
-                                },
-                                {
-                                    title: 'Spare Parts',
-                                    image: '/templates/hs-tech/images/business/spare_parts.jpg',
-                                },
-                            ].map((service, i) => (
-                                <div key={i} className="relative overflow-hidden rounded-xl bg-[#009999] group hover:shadow-xl transition-all duration-300">
-                                    {/* Title */}
-                                    <div className="relative z-10 p-6 pb-4">
-                                        <h3 className="text-white text-base md:text-lg font-medium leading-tight whitespace-pre-line">
-                                            {service.title}
-                                        </h3>
-                                    </div>
-
-                                    {/* Image */}
-                                    <div className="relative w-full aspect-[4/5] bg-white rounded-t-xl overflow-hidden">
-                                        {/* eslint-disable-next-line @next/next/no-img-element */}
-                                        <img
-                                            src={service.image}
-                                            alt={service.title.replace('\n', ' ')}
-                                            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                                        />
-                                    </div>
-                                </div>
-                            ))}
+                        {/* Support & Services Image */}
+                        <div className="relative w-full max-w-5xl mx-auto rounded-xl overflow-hidden shadow-2xl">
+                            {/* eslint-disable-next-line @next/next/no-img-element */}
+                            <img
+                                src="/templates/hs-tech/images/business/Support & Services.jpg"
+                                alt="Support & Services"
+                                className="w-full h-auto object-contain"
+                            />
                         </div>
                     </div>
                 </CatalogPage>
