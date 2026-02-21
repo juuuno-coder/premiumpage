@@ -2988,7 +2988,49 @@ export const JUMO_CATEGORY_INTRO: Record<string, any> = {
         title: 'PlastoSENS',
         subtitle: 'Precision Temperature Sensors for Plastics Processing',
         desc: 'PlastoSENS series offers innovative temperature sensors specifically designed for demanding applications in plastics processing, high-voltage environments, chemical industries, and sterilization processes.',
-        products: []
+        products: [
+            {
+                model: 'plastoSENS T01',
+                image: '/templates/hs-tech/images/products/plastoSENS T01.jpg',
+                features: [
+                    'Nominal voltage up to 7000 V AC',
+                    'Standardized, voltage-resistant probe (e.g. for use in transformers)',
+                    'Electrically insulating and heat conducting at the same time',
+                    'Higher capacity – compared to conventional probes used in high voltage areas',
+                    'Application areas: in transformers, generators, voltage rails, combined heat and power plants, etc'
+                ]
+            },
+            {
+                model: 'plastoSENS T02',
+                image: '/templates/hs-tech/images/products/plastoSENS T02.jpg',
+                features: [
+                    'Vibration and shock-resistant - shock-resistant – thanks to temperature probe that is completely surrounded by plastic',
+                    'Can be used in almost all liquids – even in chemicals',
+                    'High-Performance plastic favors low natural frequency in case of oscillation, resulting in higher load capacity for the temperature probe',
+                    'Breakage resistance due to stable sensor - Can be used for motor oils, fuels, battery acids, etc.'
+                ]
+            },
+            {
+                model: 'plastoSENS T03',
+                image: '/templates/hs-tech/images/products/plastoSENS T03 .jpg',
+                features: [
+                    'Protection type IP69K – also steam-tight on the cable outlet',
+                    'Absolute tightness – the applied special plastics form a substance-to-substance bond during the injection molding process and thereby guarantee steam-tightness',
+                    'Application areas: in autoclaves, steam sterilizers, CIP cleaning, SIP cleaning, etc.'
+                ]
+            },
+            {
+                model: 'plastoSENS T04',
+                image: '/templates/hs-tech/images/products/plastoSENS T04 .jpg',
+                features: [
+                    'For temperatures from -40 to +180 °C',
+                    'Precise pipe adaptation through full contact to surface area',
+                    'Simple and fast mounting without tools',
+                    'Heat-conductible plastic',
+                    'Water-tight, IP65 - 70 % quicker mounting with the clip in comparison to mounting with a conventional hose clamp'
+                ]
+            }
+        ]
     },
     jumo_liquid: {
         title: 'Liquid Analysis',
