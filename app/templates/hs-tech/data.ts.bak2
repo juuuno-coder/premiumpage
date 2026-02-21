@@ -2883,7 +2883,7 @@ export const JUMO_CATEGORY_INTRO: Record<string, any> = {
                     },
                     {
                         model: 'JUMO tecLine CR-GT, Conductive Two-Electrodes Conductivity Sensor (202925)',
-                        image: '/templates/hs-tech/images/products/ JUMO tecLine CR-GT, Conductive Two-Electrodes Conductivity Sensor (202925).jpg',
+                        image: '/templates/hs-tech/images/jumo/tecline_cr_gt.png',
                         features: [
                             'Two-electrode principle',
                             'Special graphite electrodes',
@@ -2904,7 +2904,7 @@ export const JUMO_CATEGORY_INTRO: Record<string, any> = {
                 products: [
                     {
                         model: 'JUMO ecoTRANS pH 03 transmitter / switching device (202723)',
-                        image: '/templates/hs-tech/images/products/JUMO ecoTRANS pH 03 transmitter : switching device for pH : Redox voltage and temperature (202723).jpg',
+                        image: '/templates/hs-tech/images/jumo/ecotrans_ph03.png',
                         features: [
                             'Can be changed from pH to mV / ORP (Redox voltage)',
                             'Simple connection of the probes with screw terminals',
@@ -2928,7 +2928,7 @@ export const JUMO_CATEGORY_INTRO: Record<string, any> = {
                     },
                     {
                         model: 'JUMO dTRANS pH 02 Compact multichannel transmitter/controller (202551)',
-                        image: '/templates/hs-tech/images/products/JUMO dTRANS pH 02 Compact multichannel transmitter:controller for pH, redox, ammonia, standard signals, and temperature (202551).jpg',
+                        image: '/templates/hs-tech/images/jumo/dtrans_ph02.png',
                         features: [
                             'Display visualization options: large numbers, bar graph or trend display',
                             'Integrated calibration routines: 1, 2 and 3 points - Math and logic module',
@@ -2952,7 +2952,7 @@ export const JUMO_CATEGORY_INTRO: Record<string, any> = {
                     },
                     {
                         model: 'JUMO AQUIS 500 pH Transmitter/Controller (202560)',
-                        image: '/templates/hs-tech/images/products/JUMO AQUIS 500 pH Transmitter:Controller for pH value, Redox Voltage, NH3 (ammonia) Concentration and Temperature (202560)  .jpg',
+                        image: '/templates/hs-tech/images/jumo/aquis_500_ph.png',
                         features: [
                             'Automatic temperature compensation',
                             'Display visualization is selectable: large digits, bar graph, or trend display',
@@ -2983,7 +2983,7 @@ export const JUMO_CATEGORY_INTRO: Record<string, any> = {
                 products: [
                     {
                         model: 'JUMO CTI-500 Inductive Conductivity/Concentration Transmitter (202755)',
-                        image: '/templates/hs-tech/images/products/JUMO CTI-500  Inductive Conductivity:Concentration and Temperature Transmitter with Switching Contacts (202755).jpg',
+                        image: '/templates/hs-tech/images/jumo/cti_500.png',
                         features: [
                             'Activation of up to four measuring ranges',
                             'Activation of up to four temperature coefficients',
@@ -2997,7 +2997,7 @@ export const JUMO_CATEGORY_INTRO: Record<string, any> = {
                     },
                     {
                         model: 'JUMO AQUIS 500 CR transmitter / controller (202565)',
-                        image: '/templates/hs-tech/images/products/JUMO AQUIS 500 CR  transmitter : controller for conductivity, TDS, resistivity and temperature (202565)  .jpg',
+                        image: '/templates/hs-tech/images/jumo/aquis_500_cr.png',
                         features: [
                             'Direct changeover to conductivity (μS/cm or mS/cm), resistivity (kΩ x cm or MΩ x cm), TDS measurement (ppm or mg/l), customer-specific table',
                             'Automatic temperature compensation',
@@ -3015,7 +3015,7 @@ export const JUMO_CATEGORY_INTRO: Record<string, any> = {
                     },
                     {
                         model: 'JUMO CTI-750 Inductive Conductivity/Concentration Transmitter (202756)',
-                        image: '/templates/hs-tech/images/products/JUMO CTI-750   Inductive Conductivity:Concentration and Temperature Transmitter with Switching Contacts (202756)  .jpg',
+                        image: '/templates/hs-tech/images/jumo/cti_750.png',
                         features: [
                             'Activation of up to four measuring ranges',
                             'Activation of up to four temperature coefficients',
