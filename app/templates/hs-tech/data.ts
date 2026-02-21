@@ -47,7 +47,7 @@ export const BRANDS = {
 // Category Information - Updated with existing images
 export const CATEGORY_INFO: Record<string, any> = {
     humidity: { title: "Humidity", desc: "Best-in-class humidity instruments.", images: [] },
-    dewpoint: { title: "Dewpoint", desc: "Reliable dewpoint measurement.", images: ['/templates/hs-tech/images/products/VAISALA Dew Point Sensor DRYCAP®.png', '/templates/hs-tech/images/products/38af1f4961a7a.png', '/templates/hs-tech/images/products/50e31ebdea359.png'] },
+    dewpoint: { title: "Dewpoint", desc: "Reliable dewpoint measurement.", images: [] },
     co2: { title: "Carbon Dioxide", desc: "Accurate CO2 monitoring.", images: [] },
     oil: { title: "Moisture in Oil", desc: "Transformer oil monitoring.", images: [] },
     barometer: { title: "Barometric Pressure", desc: "Digital barometers.", images: [] },
