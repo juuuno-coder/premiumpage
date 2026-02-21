@@ -318,7 +318,10 @@ export const DB: Record<string, any[]> = {
             subtitle: 'INDIGO-COMPATIBLE SMART PROBES + TRANSMITTERS',
             category: 'probe',
             image: '/templates/hs-tech/images/products/hmp1_9_v1.png',
-            gallery: ["/templates/hs-tech/images/products/hmp1_9_v1.png"],
+            gallery: [
+                "/templates/hs-tech/images/products/hmp1_9_v1.png",
+                "/templates/hs-tech/images/products/HMP1 Transmitter2.png"
+            ],
             desc: `The HMP1/3/4/5/7/8/9 are part of the Indigo product family and compatible with Indigo 500 / 200 Series Host Devices and free Insight PC Software.
 
 ■ PRODUCT
@@ -1830,6 +1833,8 @@ Output: RH+T+Td+Tdf`,
             id: 'setra_lite', title: 'Setra Lite™', subtitle: 'VISUAL DIFFERENTIAL PRESSURE INDICATOR', category: 'diff_ind',
             image: '/templates/hs-tech/images/products/Setra Lite™  Visual Differential Pressure Indicator.png',
             gallery: [
+                '/templates/hs-tech/images/products/Setra Lite™  Visual Differential Pressure Indicator.png',
+                '/templates/hs-tech/images/products/Setra Lite 2.png',
                 '/templates/hs-tech/images/products/849fee28dfdc5.png',
                 '/templates/hs-tech/images/products/setra_lite_green.png',
                 '/templates/hs-tech/images/products/setra_lite_red.png'
