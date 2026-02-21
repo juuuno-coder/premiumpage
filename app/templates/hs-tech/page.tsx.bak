@@ -9,7 +9,7 @@ import {
 import Link from 'next/link'
 import { useSearchParams } from 'next/navigation'
 import { motion, AnimatePresence } from 'framer-motion'
-import { DB, CATEGORY_INFO, BRANDS, VAISALA_APPLICATIONS, SETRA_APPLICATIONS_SENSOR, SETRA_APPLICATIONS_SOLUTION, JUMO_CATEGORY_INTRO, JUMO_APPLICATIONS } from './data'
+import { DB, CATEGORY_INFO, BRANDS, VAISALA_APPLICATIONS, SETRA_APPLICATIONS_SENSOR, SETRA_APPLICATIONS_SOLUTION, JUMO_CATEGORY_INTRO } from './data'
 import { cn } from '@/lib/utils'
 import CoverView from './components/CoverView'
 
@@ -650,101 +650,6 @@ function SetraSolutionModal({ solutionKey, onClose }: { solutionKey: string; onC
     )
 }
 
-
-function JumoApplicationModal({ appKey, onClose }: { appKey: string; onClose: () => void }) {
-    useEffect(() => {
-        const handler = (e: KeyboardEvent) => { if (e.key === 'Escape') onClose() }
-        window.addEventListener('keydown', handler)
-        return () => window.removeEventListener('keydown', handler)
-    }, [onClose])
-
-    const appData = JUMO_APPLICATIONS[appKey]
-    if (!appData) return null
-
-    return (
-        <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.15 }}
-            className="fixed inset-0 z-[300] bg-black/60 backdrop-blur-sm flex items-center justify-center p-3 md:p-6"
-            onClick={onClose}
-        >
-            <motion.div
-                initial={{ opacity: 0, scale: 0.97, y: 20 }}
-                animate={{ opacity: 1, scale: 1, y: 0 }}
-                exit={{ opacity: 0, scale: 0.97, y: 20 }}
-                transition={{ duration: 0.2 }}
-                className="bg-white rounded-2xl w-full md:w-[90vw] max-h-[92vh] overflow-y-auto shadow-2xl border border-neutral-200 flex flex-col"
-                onClick={e => e.stopPropagation()}
-            >
-                {/* Header */}
-                <div className="flex items-start justify-between px-6 md:px-10 py-5 border-b border-neutral-100 shrink-0 bg-gradient-to-r from-orange-50 to-white">
-                    <div>
-                        <p className="text-[10px] text-orange-600 font-black uppercase tracking-[0.3em] mb-1">JUMO Applications & Solutions</p>
-                        <h2 className="text-2xl md:text-4xl font-black text-neutral-900 tracking-tight">{appData.title}</h2>
-                        <p className="text-sm text-neutral-500 mt-2">{appData.shortDesc}</p>
-                    </div>
-                    <button onClick={onClose} className="p-2 hover:bg-white rounded-lg transition-colors ml-6 shrink-0 mt-1">
-                        <X className="w-6 h-6 text-neutral-400" />
-                    </button>
-                </div>
-
-                {/* Body */}
-                <div className="px-6 md:px-10 py-8">
-                    {/* Main Content */}
-                    {appData.content && (
-                        <div className="mb-8">
-                            <p className="text-sm md:text-base text-neutral-700 leading-relaxed whitespace-pre-line">
-                                {appData.content}
-                            </p>
-                        </div>
-                    )}
-
-                    {/* Applications */}
-                    {appData.applications && appData.applications.length > 0 && (
-                        <div className="mb-8">
-                            <h3 className="text-lg md:text-xl font-black text-neutral-900 mb-4 flex items-center gap-2">
-                                <span className="w-1.5 h-1.5 bg-orange-600 inline-block"></span>
-                                Applications
-                            </h3>
-                            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
-                                {appData.applications.map((app: string, i: number) => (
-                                    <div key={i} className="p-4 border border-orange-100 rounded-lg bg-orange-50/50">
-                                        <p className="text-sm font-bold text-neutral-900 flex items-start gap-2">
-                                            <span className="text-orange-600">■</span>
-                                            <span>{app}</span>
-                                        </p>
-                                    </div>
-                                ))}
-                            </div>
-                        </div>
-                    )}
-
-                    {/* Measurement Products */}
-                    {appData.measurementProducts && appData.measurementProducts.length > 0 && (
-                        <div className="mb-8">
-                            <h3 className="text-lg md:text-xl font-black text-neutral-900 mb-4 flex items-center gap-2">
-                                <span className="w-1.5 h-1.5 bg-orange-600 inline-block"></span>
-                                Measurement Products
-                            </h3>
-                            <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
-                                {appData.measurementProducts.map((product: string, i: number) => (
-                                    <div key={i} className="p-3 border border-neutral-200 rounded-lg bg-neutral-50">
-                                        <p className="text-sm text-neutral-700 flex items-start gap-2">
-                                            <span className="text-orange-600 mt-0.5">•</span>
-                                            <span>{product}</span>
-                                        </p>
-                                    </div>
-                                ))}
-                            </div>
-                        </div>
-                    )}
-                </div>
-            </motion.div>
-        </motion.div>
-    )
-}
 // ─── Product Card ─────────────────────────────────────────────────────────────
 function ProductCard({ product, onOpen }: { product: any; onOpen: () => void }) {
     return (
@@ -1030,7 +935,6 @@ function BrandPage({
     const [selectedAppKey, setSelectedAppKey] = useState<string | null>(null)
     const [selectedSetraKey, setSelectedSetraKey] = useState<string | null>(null)
     const [selectedSetraSolutionKey, setSelectedSetraSolutionKey] = useState<string | null>(null)
-    const [selectedJumoKey, setSelectedJumoKey] = useState<string | null>(null)
 
     // Map application titles to keys
     const appTitleToKey: Record<string, string> = {
@@ -1054,14 +958,7 @@ function BrandPage({
         'Setra CEMS™': 'setra_cems',
         'Cleanroom Manufacturing': 'cleanroom',
         'Isolation & Treatment Rooms': 'isolation',
-        'Compounding Pharmacies': 'compounding',
-        // JUMO Applications & Solutions
-        'Water & Wastewater': 'water_wastewater',
-        'Shipbuilding': 'shipbuilding',
-        'Pharmaceutical & Biotechnology': 'pharmaceutical',
-        'Semiconductor & Display': 'semiconductor',
-        'Heating & Air Conditioning': 'heating',
-        'Aquaculture': 'aquaculture'
+        'Compounding Pharmacies': 'compounding'
     }
 
     return (
@@ -1092,16 +989,6 @@ function BrandPage({
                     <SetraSolutionModal
                         solutionKey={selectedSetraSolutionKey}
                         onClose={() => setSelectedSetraSolutionKey(null)}
-                    />
-                )}
-            </AnimatePresence>
-
-            {/* JUMO Application Modal */}
-            <AnimatePresence>
-                {selectedJumoKey && (
-                    <JumoApplicationModal
-                        appKey={selectedJumoKey}
-                        onClose={() => setSelectedJumoKey(null)}
                     />
                 )}
             </AnimatePresence>
@@ -1158,14 +1045,11 @@ function BrandPage({
                                 const appKey = appTitleToKey[item.title]
                                 const isSetraSensor = SETRA_APPLICATIONS_SENSOR[appKey] !== undefined
                                 const isSetraSolution = SETRA_APPLICATIONS_SOLUTION[appKey] !== undefined
-                                const isJumo = JUMO_APPLICATIONS[appKey] !== undefined
                                 const handleClick = () => {
                                     if (isSetraSensor) {
                                         setSelectedSetraKey(appKey)
                                     } else if (isSetraSolution) {
                                         setSelectedSetraSolutionKey(appKey)
-                                    } else if (isJumo) {
-                                        setSelectedJumoKey(appKey)
                                     } else {
                                         setSelectedAppKey(appKey)
                                     }

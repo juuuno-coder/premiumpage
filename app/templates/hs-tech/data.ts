@@ -3118,3 +3118,124 @@ export const JUMO_CATEGORY_INTRO: Record<string, any> = {
         ]
     }
 }
+
+// ═══════════════════════════════════════════════════════════════════════════
+// JUMO APPLICATIONS & SOLUTIONS
+// ═══════════════════════════════════════════════════════════════════════════
+
+export const JUMO_APPLICATIONS: Record<string, any> = {
+    water_wastewater: {
+        title: 'Water & Wastewater',
+        shortDesc: 'pH, conductivity, and turbidity monitoring for drinking water treatment plants and effluent compliance.',
+        image: '/templates/hs-tech/images/jumo/water_wastewater.jpg',
+        content: `Water & Wastewater treatment applications (Content to be added)`,
+        applications: [
+            'Drinking water treatment plants',
+            'Wastewater treatment',
+            'Effluent monitoring',
+            'pH and conductivity control'
+        ],
+        measurementProducts: [
+            'pH electrodes and transmitters',
+            'Conductivity sensors',
+            'Turbidity monitors',
+            'Process controllers'
+        ]
+    },
+    shipbuilding: {
+        title: 'Shipbuilding',
+        shortDesc: 'Marine-grade sensors for seawater cooling systems, ballast water treatment, and shipboard process monitoring.',
+        image: '/templates/hs-tech/images/jumo/shipbuilding.jpg',
+        content: `The shipbuilding industry has high and varied demands on measuring devices. Equipment for this industry must have a secure process, long-term stability, and be unsusceptible to the salty humid sea air. In addition to the salty air, the devices are exposed to strong vibration, shocks, heat, cold, and dust. JUMO, your reliable partner, is at your side to help when you have questions, and to provide you with quick solutions.`,
+        applications: [
+            'Heating and cooling systems',
+            'Engine room monitoring',
+            'Water and wastewater treatment',
+            'Ballast water management',
+            'Ventilation and air conditioning systems'
+        ],
+        measurementProducts: [
+            'Marine-grade pH sensors',
+            'Conductivity transmitters',
+            'Temperature sensors for harsh environments',
+            'Pressure transducers'
+        ]
+    },
+    pharmaceutical: {
+        title: 'Pharmaceutical & Biotechnology',
+        shortDesc: 'Precise liquid parameter control for sterile manufacturing, bioreactor processes, and purified water systems.',
+        image: '/templates/hs-tech/images/jumo/pharmaceutical.jpg',
+        content: `Whatever is demanded of the measurement technology, JUMO will always meet every requirement. Because the aim is to produce products of a consistently high quality, it is imperative to have reliable and accurate measurements which can be controlled and monitored from a central point.`,
+        applications: [
+            'Pharmaceutical water production',
+            'Biological additives',
+            'Sterilization processes',
+            'Drying processes',
+            'Clean room monitoring'
+        ],
+        measurementProducts: [
+            'Sanitary pH electrodes',
+            'Conductivity sensors for ultra-pure water',
+            'Temperature sensors for sterilization',
+            'Process controllers for GMP compliance'
+        ]
+    },
+    semiconductor: {
+        title: 'Semiconductor & Display',
+        shortDesc: 'Ultra-pure water quality monitoring with high-accuracy conductivity and pH measurement for wafer cleaning and etching.',
+        image: '/templates/hs-tech/images/jumo/semiconductor.jpg',
+        content: `Solutions for cleaning, PCB etching, phenomenon, stripping and scrubber for semiconductor and display industries.`,
+        applications: [
+            'Scrubber systems',
+            'PCB etching processes',
+            'Wafer cleaning',
+            'CVD processes',
+            'Pump monitoring'
+        ],
+        measurementProducts: [
+            'Ultra-pure water conductivity sensors',
+            'pH sensors for etching processes',
+            'Chemical concentration monitors',
+            'Flow and pressure sensors'
+        ]
+    },
+    heating: {
+        title: 'Heating & Air Conditioning',
+        shortDesc: 'Water quality management in HVAC systems and cooling towers to prevent corrosion, scaling, and biological growth.',
+        image: '/templates/hs-tech/images/jumo/heating.jpg',
+        content: `We all prefer a nice warm room. As manufacturers of heating and air-conditioning systems, you know just how important it is for all the components involved to be reliably controlled and monitored. JUMO, your reliable partner, is at your side to help when you have questions, and to provide you with quick solutions. It does not matter how you want to control and regulate your system, nor does it matter how you would like to protect your system.`,
+        applications: [
+            'Condensing boilers',
+            'Solid fuel boilers',
+            'Pellet heating systems',
+            'Combined heat and power plants',
+            'Air-conditioning and heat pumps'
+        ],
+        measurementProducts: [
+            'Temperature controllers',
+            'Pressure sensors',
+            'Flow monitors',
+            'PID controllers for boiler systems'
+        ]
+    },
+    aquaculture: {
+        title: 'Aquaculture',
+        shortDesc: 'Continuous pH, dissolved oxygen, and conductivity monitoring for fish farming and recirculating aquaculture systems.',
+        image: '/templates/hs-tech/images/jumo/aquaculture.jpg',
+        content: `Fisheries is now the fastest growing area in food production, and more and more fish and crustaceans are being cultivated. In the aquaculture, water quality is determined by reliable processes and accurate measurement techniques, requiring precise products and solutions.`,
+        applications: [
+            'Fish farming',
+            'Recirculating aquaculture systems (RAS)',
+            'Water quality monitoring',
+            'Dissolved oxygen control',
+            'pH and temperature monitoring'
+        ],
+        measurementProducts: [
+            'pH electrodes for aquatic environments',
+            'Dissolved oxygen sensors',
+            'Conductivity transmitters',
+            'Temperature probes',
+            'Multi-parameter controllers'
+        ]
+    }
+}
