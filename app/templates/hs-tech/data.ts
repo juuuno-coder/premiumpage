@@ -46,18 +46,18 @@ export const BRANDS = {
 
 // Category Information - Updated with existing images
 export const CATEGORY_INFO: Record<string, any> = {
-    humidity: { title: "Humidity", desc: "Best-in-class humidity instruments.", images: ['/templates/hs-tech/images/products/hmt330_v1.png', '/templates/hs-tech/images/products/hmp1_9_v1.png'] },
+    humidity: { title: "Humidity", desc: "Best-in-class humidity instruments.", images: [] },
     dewpoint: { title: "Dewpoint", desc: "Reliable dewpoint measurement.", images: ['/templates/hs-tech/images/products/VAISALA Dew Point Sensor DRYCAP®.png', '/templates/hs-tech/images/products/38af1f4961a7a.png', '/templates/hs-tech/images/products/50e31ebdea359.png'] },
-    co2: { title: "Carbon Dioxide", desc: "Accurate CO2 monitoring.", images: ['/templates/hs-tech/images/products/6251932a0e954.png', '/templates/hs-tech/images/products/eb130aca3df08.png'] },
-    oil: { title: "Moisture in Oil", desc: "Transformer oil monitoring.", images: ['/templates/hs-tech/images/products/deffa2b1b398f.jpg', '/templates/hs-tech/images/products/5980bfb1851a8.png'] },
-    barometer: { title: "Barometric Pressure", desc: "Digital barometers.", images: ['/templates/hs-tech/images/products/3ca83569b6d00.jpg'] },
-    weather: { title: "Weather", desc: "Meteorological sensors.", images: ['/templates/hs-tech/images/products/2c2344f8b46d5.jpg', '/templates/hs-tech/images/products/2ddb0a75a50e4.jpg'] },
-    h2o2: { title: "H2O2", desc: "Bio-decontamination monitoring.", images: ['/templates/hs-tech/images/products/47e994f808c6a.png'] },
+    co2: { title: "Carbon Dioxide", desc: "Accurate CO2 monitoring.", images: [] },
+    oil: { title: "Moisture in Oil", desc: "Transformer oil monitoring.", images: [] },
+    barometer: { title: "Barometric Pressure", desc: "Digital barometers.", images: [] },
+    weather: { title: "Weather", desc: "Meteorological sensors.", images: [] },
+    h2o2: { title: "H2O2", desc: "Bio-decontamination monitoring.", images: [] },
 
     // Brands
-    setra: { title: "SETRA Systems", desc: "Differential & Industrial Pressure.", images: ['/templates/hs-tech/images/products/0173971661ad2.png', '/templates/hs-tech/images/products/849fee28dfdc5.png'] },
-    jumo: { title: "JUMO", desc: "Liquid Analysis & Control.", images: ['/templates/hs-tech/images/products/94259b4509a1f.png', '/templates/hs-tech/images/products/85b44cdd77766.png'] },
-    jumo_temp: { title: "Temperature", desc: "PlastoSENS precision temperature sensors for plastics processing.", images: ['/templates/hs-tech/images/products/94259b4509a1f.png'] },
+    setra: { title: "SETRA Systems", desc: "Differential & Industrial Pressure.", images: [] },
+    jumo: { title: "JUMO", desc: "Liquid Analysis & Control.", images: [] },
+    jumo_temp: { title: "Temperature", desc: "PlastoSENS precision temperature sensors for plastics processing.", images: [] },
     cms: { title: "Data Logger / CMS", desc: "Continuous monitoring systems and wireless data loggers.", images: [] }
 }
 
