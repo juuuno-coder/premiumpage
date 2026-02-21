@@ -58,6 +58,7 @@ export const CATEGORY_INFO: Record<string, any> = {
     setra: { title: "SETRA Systems", desc: "Differential & Industrial Pressure.", images: [] },
     jumo: { title: "JUMO", desc: "Liquid Analysis & Control.", images: [] },
     jumo_temp: { title: "Temperature", desc: "PlastoSENS precision temperature sensors for plastics processing.", images: [] },
+    jumo_liquid: { title: "Liquid Analysis", desc: "pH, Conductivity, and Water Quality Measurement Solutions.", images: [] },
     cms: { title: "Data Logger / CMS", desc: "Continuous monitoring systems and wireless data loggers.", images: [] }
 }
 
@@ -303,6 +304,34 @@ export const SUB_CATEGORIES: Record<string, any[]> = {
             id: 'cms_software', title: 'Monitoring Software', desc: 'CMS Software',
             items: [
                 { id: 'cms_sw', label: 'CMS Software' }
+            ]
+        }
+    ],
+
+    // === JUMO ===
+    jumo_liquid: [
+        {
+            id: 'ph_electrode', title: 'pH Combination Electrodes', desc: 'Industrial pH electrodes',
+            items: [
+                { id: 'tecline_hd_201021', label: 'tecLine HD (201021)' },
+                { id: 'tecline_201020', label: 'tecLine (201020)' },
+                { id: 'tecline_cr_gt_202925', label: 'tecLine CR-GT (202925)' }
+            ]
+        },
+        {
+            id: 'ph_transmitter', title: 'pH Transmitter', desc: 'pH measurement transmitters',
+            items: [
+                { id: 'ecotrans_202723', label: 'ecoTRANS pH 03 (202723)' },
+                { id: 'dtrans_202551', label: 'dTRANS pH 02 (202551)' },
+                { id: 'aquis_500_ph_202560', label: 'AQUIS 500 pH (202560)' }
+            ]
+        },
+        {
+            id: 'conductivity_transmitter', title: 'Conductivity Transmitter', desc: 'Conductivity measurement solutions',
+            items: [
+                { id: 'cti_500_202755', label: 'CTI-500 (202755)' },
+                { id: 'aquis_500_cr_202565', label: 'AQUIS 500 CR (202565)' },
+                { id: 'cti_750_202756', label: 'CTI-750 (202756)' }
             ]
         }
     ]
@@ -2210,6 +2239,166 @@ Only Setra can claim ownership to the stainless steel capacitive design used in 
         { id: 'vnet_wireless', title: 'Wireless vNET', subtitle: 'WIRELESS LOGGER NETWORK', category: 'network_logger', image: '', gallery: [], desc: 'Wireless monitoring network for flexible deployment in areas where cabling is impractical.', specs: [{ label: 'Wireless', value: 'IEEE 802.15.4 (mesh)' }, { label: 'Application', value: 'Retrofits, Temporary monitoring' }, { label: 'Battery', value: 'Long-life battery option' }] },
         { id: 'poe_logger', title: 'POE Logger', subtitle: 'POWER OVER ETHERNET', category: 'network_logger', image: '/templates/hs-tech/images/products/poe_logger_v1.jpg', gallery: [], desc: 'Data logger powered and connected via a single Ethernet cable using Power over Ethernet.', specs: [{ label: 'Power', value: 'IEEE 802.3af PoE' }, { label: 'Application', value: 'Easy installation, No power outlet needed' }] },
         { id: 'cms_sw', title: 'CMS Software', subtitle: 'MONITORING PLATFORM', category: 'cms_software', image: '/templates/hs-tech/images/products/cms_sw_v1.jpg', gallery: [], desc: 'Centralized software platform for real-time monitoring, alarm management, and compliance reporting.', specs: [{ label: 'Platform', value: 'Windows Server / Web browser' }, { label: 'Features', value: 'Real-time alarms, Reports, Audit trail' }, { label: 'Compliance', value: 'GMP/GxP, FDA 21 CFR Part 11' }] }
+    ],
+
+    // JUMO
+    jumo_liquid: [
+        {
+            id: 'tecline_hd_201021',
+            title: 'JUMO tecLine HD',
+            subtitle: 'pH COMBINATION ELECTRODES (201021)',
+            category: 'ph_electrode',
+            image: '/templates/hs-tech/images/products/JUMO tecLine HD pH Combination Electrodes (201021).jpg',
+            gallery: ['/templates/hs-tech/images/products/JUMO tecLine HD pH Combination Electrodes (201021).jpg'],
+            desc: 'Especially robust industry electrodes for the most demanding applications. Designed for processes with increased pollutant and toxic loads as well as media containing oil.',
+            specs: [
+                { label: 'Application', value: 'Demanding industrial processes' },
+                { label: 'Pressure', value: 'Up to 13 bar' },
+                { label: 'Temperature Range', value: 'Up to 135 °C' },
+                { label: 'Diaphragm', value: 'Extensive PTFE ring diaphragm' },
+                { label: 'Features', value: 'Temperature probe integration available\nWith quality certificate' }
+            ]
+        },
+        {
+            id: 'tecline_201020',
+            title: 'JUMO tecLine',
+            subtitle: 'pH SINGLE-ROD ELECTRODES (201020)',
+            category: 'ph_electrode',
+            image: '/templates/hs-tech/images/products/JUMO tecLine pH single-rod electrodes (201020) .jpg',
+            gallery: ['/templates/hs-tech/images/products/JUMO tecLine pH single-rod electrodes (201020) .jpg'],
+            desc: 'High-quality industrial electrodes for process and industrial applications. Suitable for measurements in suspensions, paints/lacquers, low ion fluids, and high-alkaline environments.',
+            specs: [
+                { label: 'Type', value: 'Single-rod electrode' },
+                { label: 'Pressure', value: 'Up to 10 bar' },
+                { label: 'Options', value: 'Additional temperature probe\nDifferent fitting lengths' },
+                { label: 'Applications', value: 'Water/wastewater, Suspensions, Paints\nLow ion fluids, High-temperature processes\nFluoride containing fluids' }
+            ]
+        },
+        {
+            id: 'tecline_cr_gt_202925',
+            title: 'JUMO tecLine CR-GT',
+            subtitle: 'CONDUCTIVE TWO-ELECTRODES CONDUCTIVITY SENSOR (202925)',
+            category: 'ph_electrode',
+            image: '/templates/hs-tech/images/products/ JUMO tecLine CR-GT, Conductive Two-Electrodes Conductivity Sensor (202925).jpg',
+            gallery: ['/templates/hs-tech/images/products/ JUMO tecLine CR-GT, Conductive Two-Electrodes Conductivity Sensor (202925).jpg'],
+            desc: 'Two-electrode conductivity sensor with special graphite electrodes. Ideal for medium separation, drinking water treatment, and wastewater control.',
+            specs: [
+                { label: 'Principle', value: 'Two-electrode' },
+                { label: 'Electrode Material', value: 'Special graphite' },
+                { label: 'Cell Constant', value: 'K = 1.0' },
+                { label: 'Applications', value: 'Medium separation\nDrinking water treatment\nWastewater control/treatment\nConcentrate monitoring\nIndustrial water treatment' }
+            ]
+        },
+        {
+            id: 'ecotrans_202723',
+            title: 'JUMO ecoTRANS pH 03',
+            subtitle: 'TRANSMITTER / SWITCHING DEVICE (202723)',
+            category: 'ph_transmitter',
+            image: '/templates/hs-tech/images/products/JUMO ecoTRANS pH 03 transmitter : switching device for pH : Redox voltage and temperature (202723).jpg',
+            gallery: ['/templates/hs-tech/images/products/JUMO ecoTRANS pH 03 transmitter : switching device for pH : Redox voltage and temperature (202723).jpg'],
+            desc: 'Versatile pH/Redox transmitter with simple probe connection and guided calibration. Features 3-way isolation and DIN rail mounting for easy installation.',
+            specs: [
+                { label: 'Measurement', value: 'pH / mV / ORP (Redox voltage)' },
+                { label: 'Connection', value: 'Screw terminals\nAsymmetric and symmetric' },
+                { label: 'Outputs', value: '2x analog outputs 0(4)...20 mA / 0(2)...10 V\n1x relay changeover contact' },
+                { label: 'Isolation', value: '3-way isolation (input/output/power)' },
+                { label: 'Mounting', value: 'DIN rail' },
+                { label: 'Features', value: 'Temperature monitoring\nCalibration timer\nWith calibration certificate' },
+                { label: 'Applications', value: 'Water/wastewater management\nDrinking water treatment\nProcess technology\nSwimming pool technology\nFish-keeping' }
+            ]
+        },
+        {
+            id: 'dtrans_202551',
+            title: 'JUMO dTRANS pH 02 Compact',
+            subtitle: 'MULTICHANNEL TRANSMITTER/CONTROLLER (202551)',
+            category: 'ph_transmitter',
+            image: '/templates/hs-tech/images/products/JUMO dTRANS pH 02 Compact multichannel transmitter:controller for pH, redox, ammonia, standard signals, and temperature (202551).jpg',
+            gallery: ['/templates/hs-tech/images/products/JUMO dTRANS pH 02 Compact multichannel transmitter:controller for pH, redox, ammonia, standard signals, and temperature (202551).jpg'],
+            desc: 'Advanced multichannel transmitter/controller with large number display, bar graph, or trend display visualization. Includes integrated washing timer and calibration logbook.',
+            specs: [
+                { label: 'Measurement', value: 'pH, Redox, Ammonia, Temperature\nStandard signals' },
+                { label: 'Display', value: 'Large numbers / Bar graph / Trend display' },
+                { label: 'Calibration', value: '1, 2, and 3 points\nCalibration logbook' },
+                { label: 'Features', value: 'Math and logic module\nIntegrated washing timer\n12 user languages\nElectrode monitoring' },
+                { label: 'Options', value: 'RS422/RS485 interface\nPROFIBUS-DP interface\nData logger with real-time clock\nRetrofittable option boards' },
+                { label: 'Applications', value: 'Neutralization\nDetoxification (parameter set selection)\nRedundant pH measurement\npH + flow rate measurement\npH + free chlorine measurement' }
+            ]
+        },
+        {
+            id: 'aquis_500_ph_202560',
+            title: 'JUMO AQUIS 500 pH',
+            subtitle: 'TRANSMITTER/CONTROLLER (202560)',
+            category: 'ph_transmitter',
+            image: '/templates/hs-tech/images/products/JUMO AQUIS 500 pH Transmitter:Controller for pH value, Redox Voltage, NH3 (ammonia) Concentration and Temperature (202560)  .jpg',
+            gallery: ['/templates/hs-tech/images/products/JUMO AQUIS 500 pH Transmitter:Controller for pH value, Redox Voltage, NH3 (ammonia) Concentration and Temperature (202560)  .jpg'],
+            desc: 'Comprehensive pH/Redox transmitter with automatic temperature compensation and selectable display visualization. Supports asymmetrical and symmetrical pH sensor connections.',
+            specs: [
+                { label: 'Measurement', value: 'pH, Redox voltage, NH₃ (ammonia), Temperature' },
+                { label: 'Compensation', value: 'Automatic temperature compensation' },
+                { label: 'Display', value: 'Large digits / Bar graph / Trend display' },
+                { label: 'Calibration', value: '1/2/3-point calibration\nCalibration logbook' },
+                { label: 'Connection', value: 'Solderless technology\nAsymmetrical and symmetrical pH sensors\npH-ISFET sensor support' },
+                { label: 'Features', value: 'Activatable impedance measurement\nMulti-language support\nSetup program for programming' },
+                { label: 'Applications', value: 'Drinking water monitoring\nGalvanic\nProcess technology\nWater/wastewater\nGreenhouse technology\nSwimming pool\nFishkeeping (seawater compatible)' }
+            ]
+        },
+        {
+            id: 'cti_500_202755',
+            title: 'JUMO CTI-500',
+            subtitle: 'INDUCTIVE CONDUCTIVITY/CONCENTRATION TRANSMITTER (202755)',
+            category: 'conductivity_transmitter',
+            image: '/templates/hs-tech/images/products/JUMO CTI-500  Inductive Conductivity:Concentration and Temperature Transmitter with Switching Contacts (202755).jpg',
+            gallery: ['/templates/hs-tech/images/products/JUMO CTI-500  Inductive Conductivity:Concentration and Temperature Transmitter with Switching Contacts (202755).jpg'],
+            desc: 'Inductive conductivity transmitter with up to four measuring ranges and temperature coefficients. Features fast-response temperature sensor and desalination control.',
+            specs: [
+                { label: 'Type', value: 'Inductive conductivity/concentration' },
+                { label: 'Measuring Ranges', value: 'Up to 4 ranges' },
+                { label: 'Temperature Coefficients', value: 'Up to 4 coefficients' },
+                { label: 'Temperature Sensor', value: 'Fast-response' },
+                { label: 'Compensation', value: 'Linear temperature compensation\nNatural water\nOwn characteristic line (learn function)' },
+                { label: 'Operation', value: 'Keypad/LCD display or setup program' },
+                { label: 'Languages', value: 'EN, DE, FR, NL, ES, PL, SV, IT, PT' },
+                { label: 'Features', value: 'Desalination control\nPlant documentation' }
+            ]
+        },
+        {
+            id: 'aquis_500_cr_202565',
+            title: 'JUMO AQUIS 500 CR',
+            subtitle: 'TRANSMITTER / CONTROLLER (202565)',
+            category: 'conductivity_transmitter',
+            image: '/templates/hs-tech/images/products/JUMO AQUIS 500 CR  transmitter : controller for conductivity, TDS, resistivity and temperature (202565)  .jpg',
+            gallery: ['/templates/hs-tech/images/products/JUMO AQUIS 500 CR  transmitter : controller for conductivity, TDS, resistivity and temperature (202565)  .jpg'],
+            desc: 'Versatile conductivity transmitter with direct changeover between conductivity, resistivity, TDS, and customer-specific table measurements. Features pollution detection and auto-range operation.',
+            specs: [
+                { label: 'Measurement', value: 'Conductivity (μS/cm, mS/cm)\nResistivity (kΩ·cm, MΩ·cm)\nTDS (ppm, mg/l)\nCustomer-specific table' },
+                { label: 'Compensation', value: 'Automatic temperature compensation' },
+                { label: 'Display', value: 'Large LC graphics with backlight\nLarge numbers / Bar graph / Trend display' },
+                { label: 'Calibration', value: 'Cell constant and temperature coefficient\nCalibration logbook' },
+                { label: 'Cell Support', value: 'Two-electrode cells (standard)\nFour-electrode cells' },
+                { label: 'Features', value: 'Pollution detection\nAuto-range operation' },
+                { label: 'Protection', value: 'IP67 (surface mount)\nIP65 (panel mount)' },
+                { label: 'Languages', value: 'DE, EN, FR + additional via setup program' }
+            ]
+        },
+        {
+            id: 'cti_750_202756',
+            title: 'JUMO CTI-750',
+            subtitle: 'INDUCTIVE CONDUCTIVITY/CONCENTRATION TRANSMITTER (202756)',
+            category: 'conductivity_transmitter',
+            image: '/templates/hs-tech/images/products/JUMO CTI-750   Inductive Conductivity:Concentration and Temperature Transmitter with Switching Contacts (202756)  .jpg',
+            gallery: ['/templates/hs-tech/images/products/JUMO CTI-750   Inductive Conductivity:Concentration and Temperature Transmitter with Switching Contacts (202756)  .jpg'],
+            desc: 'Advanced inductive conductivity transmitter with concentration measurement capability. Features learning function for temperature coefficient and individual concentration characteristic.',
+            specs: [
+                { label: 'Type', value: 'Inductive conductivity/concentration' },
+                { label: 'Measuring Ranges', value: 'Up to 4 ranges' },
+                { label: 'Temperature Coefficients', value: 'Up to 4 coefficients' },
+                { label: 'Concentration', value: 'Yes (with individual characteristic)' },
+                { label: 'Temperature Sensor', value: 'Fast-response' },
+                { label: 'Operation', value: 'Keypad/LCD display or setup program' },
+                { label: 'Features', value: 'Learning function for temperature coefficient\nDesalination control\nPlant documentation' },
+                { label: 'Applications', value: 'Product separation (food/beverage)\nBottle cleaning plants\nConcentration measurement\nCIP plants\nWater/wastewater technology\nChemical dispensing' }
+            ]
+        }
     ]
 }
 
@@ -2799,49 +2988,7 @@ export const JUMO_CATEGORY_INTRO: Record<string, any> = {
         title: 'PlastoSENS',
         subtitle: 'Precision Temperature Sensors for Plastics Processing',
         desc: 'PlastoSENS series offers innovative temperature sensors specifically designed for demanding applications in plastics processing, high-voltage environments, chemical industries, and sterilization processes.',
-        products: [
-            {
-                model: 'plastoSENS T01',
-                image: '/templates/hs-tech/images/products/plastoSENS T01.jpg',
-                features: [
-                    'Nominal voltage up to 7000 V AC',
-                    'Standardized, voltage-resistant probe (e.g. for use in transformers)',
-                    'Electrically insulating and heat conducting at the same time',
-                    'Higher capacity – compared to conventional probes used in high voltage areas',
-                    'Application areas: in transformers, generators, voltage rails, combined heat and power plants, etc'
-                ]
-            },
-            {
-                model: 'plastoSENS T02',
-                image: '/templates/hs-tech/images/products/plastoSENS T02.jpg',
-                features: [
-                    'Vibration and shock-resistant - shock-resistant – thanks to temperature probe that is completely surrounded by plastic',
-                    'Can be used in almost all liquids – even in chemicals',
-                    'High-Performance plastic favors low natural frequency in case of oscillation, resulting in higher load capacity for the temperature probe',
-                    'Breakage resistance due to stable sensor - Can be used for motor oils, fuels, battery acids, etc.'
-                ]
-            },
-            {
-                model: 'plastoSENS T03',
-                image: '/templates/hs-tech/images/products/plastoSENS T03 .jpg',
-                features: [
-                    'Protection type IP69K – also steam-tight on the cable outlet',
-                    'Absolute tightness – the applied special plastics form a substance-to-substance bond during the injection molding process and thereby guarantee steam-tightness',
-                    'Application areas: in autoclaves, steam sterilizers, CIP cleaning, SIP cleaning, etc.'
-                ]
-            },
-            {
-                model: 'plastoSENS T04',
-                image: '/templates/hs-tech/images/products/plastoSENS T04 .jpg',
-                features: [
-                    'For temperatures from -40 to +180 °C',
-                    'Precise pipe adaptation through full contact to surface area',
-                    'Simple and fast mounting without tools',
-                    'Heat-conductible plastic',
-                    'Water-tight, IP65 - 70 % quicker mounting with the clip in comparison to mounting with a conventional hose clamp'
-                ]
-            }
-        ]
+        products: []
     },
     jumo_liquid: {
         title: 'Liquid Analysis',
