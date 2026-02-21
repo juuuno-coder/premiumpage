@@ -1073,8 +1073,8 @@ High-end handheld indicator and probe system for professional humidity measureme
             title: 'HM70',
             subtitle: 'HANDHELD HUMIDITY AND TEMPERATURE METER',
             category: 'handheld',
-            image: '/templates/hs-tech/images/products/hm70_v1.jpg',
-            gallery: ["/templates/hs-tech/images/products/hm70_v1.jpg"],
+            image: '/templates/hs-tech/images/products/HM70.png',
+            gallery: ["/templates/hs-tech/images/products/HM70.png"],
             desc: `VAISALA HUMICAP® Handheld Humidity and Temperature Meter HM70 is designed for demanding humidity measurements in spot-checking applications. It is also ideal for field checking and calibration of VAISALA's fixed humidity instruments.
 
 ■ PRODUCT
@@ -1171,8 +1171,8 @@ Compact and affordable handheld meter for everyday humidity measurement.
             title: 'SHM40',
             subtitle: 'HANDHELD HUMIDITY AND TEMPERATURE METER FOR STRUCTURAL HUMIDITY',
             category: 'handheld',
-            image: '/templates/hs-tech/images/products/shm40_v1.jpg',
-            gallery: ["/templates/hs-tech/images/products/shm40_v1.jpg"],
+            image: '/templates/hs-tech/images/products/SHM40.png',
+            gallery: ["/templates/hs-tech/images/products/SHM40.png"],
             desc: `VAISALA HUMICAP® Handheld Humidity and Temperature Meter SHM40 is designed for measuring structural humidity in concrete and other building materials. It provides reliable results for construction and building diagnostics applications.
 
 ■ PRODUCT
