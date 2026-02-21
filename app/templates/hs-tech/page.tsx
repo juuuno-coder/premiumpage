@@ -692,6 +692,18 @@ function JumoApplicationModal({ appKey, onClose }: { appKey: string; onClose: ()
 
                 {/* Body */}
                 <div className="px-6 md:px-10 py-8">
+                    {/* Main Image */}
+                    {appData.image && (
+                        <div className="mb-8 rounded-xl overflow-hidden">
+                            {/* eslint-disable-next-line @next/next/no-img-element */}
+                            <img
+                                src={appData.image}
+                                alt={appData.title}
+                                className="w-full h-auto object-cover"
+                            />
+                        </div>
+                    )}
+
                     {/* Main Content */}
                     {appData.content && (
                         <div className="mb-8">
