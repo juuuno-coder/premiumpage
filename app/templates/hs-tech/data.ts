@@ -47,7 +47,7 @@ export const BRANDS = {
 // Category Information - Updated with existing images
 export const CATEGORY_INFO: Record<string, any> = {
     humidity: { title: "Humidity", desc: "Best-in-class humidity instruments.", images: ['/templates/hs-tech/images/products/hmt330_v1.png', '/templates/hs-tech/images/products/hmp1_9_v1.png'] },
-    dewpoint: { title: "Dewpoint", desc: "Reliable dewpoint measurement.", images: ['/templates/hs-tech/images/products/38af1f4961a7a.png', '/templates/hs-tech/images/products/50e31ebdea359.png'] },
+    dewpoint: { title: "Dewpoint", desc: "Reliable dewpoint measurement.", images: ['/templates/hs-tech/images/products/VAISALA Dew Point Sensor DRYCAP®.png', '/templates/hs-tech/images/products/38af1f4961a7a.png', '/templates/hs-tech/images/products/50e31ebdea359.png'] },
     co2: { title: "Carbon Dioxide", desc: "Accurate CO2 monitoring.", images: ['/templates/hs-tech/images/products/6251932a0e954.png', '/templates/hs-tech/images/products/eb130aca3df08.png'] },
     oil: { title: "Moisture in Oil", desc: "Transformer oil monitoring.", images: ['/templates/hs-tech/images/products/deffa2b1b398f.jpg', '/templates/hs-tech/images/products/5980bfb1851a8.png'] },
     barometer: { title: "Barometric Pressure", desc: "Digital barometers.", images: ['/templates/hs-tech/images/products/3ca83569b6d00.jpg'] },
@@ -126,13 +126,13 @@ export const SUB_CATEGORIES: Record<string, any[]> = {
             id: 'fixed', title: 'Fixed installed type', desc: 'DMT340, DMT345',
             items: [
                 { id: 'dmt340', label: 'DMT340' },
-                { id: 'dmt345', label: 'DMT345/346' },
-                { id: 'dmp1', label: 'DMP1-8' }
+                { id: 'dmt345', label: 'DMT345/346' }
             ]
         },
         {
-            id: 'module', title: 'Module/OEM', desc: 'DMT132, DMT143, DMT152',
+            id: 'module', title: 'Module/OEM', desc: 'DMT132, DMT143, DMT152, DMP1-8',
             items: [
+                { id: 'dmp1', label: 'DMP1-8' },
                 { id: 'dmt132', label: 'DMT132' },
                 { id: 'dmt152', label: 'DMT152' },
                 { id: 'dmt143', label: 'DMT143' },
@@ -1414,7 +1414,7 @@ Output: RH+T+Td+Tdf`,
     ],
     dewpoint: [
         {
-            id: 'dmp1', title: 'DMP1-8', subtitle: 'DEWPOINT PROBE SERIES', category: 'fixed',
+            id: 'dmp1', title: 'DMP1-8', subtitle: 'DEWPOINT PROBE SERIES', category: 'module',
             image: '/templates/hs-tech/images/products/38af1f4961a7a.png',
             gallery: ['/templates/hs-tech/images/products/38af1f4961a7a.png'],
             desc: 'Intelligent Indigo-compatible dewpoint probes for compressed air, dryers, and process gas applications. The DRYCAP® sensor provides fast response and excellent stability.',

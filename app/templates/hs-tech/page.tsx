@@ -1343,7 +1343,7 @@ function HSTechContent() {
                     keyApps={['Compressed Air', 'Dry Gas', 'Lithium Battery', 'Semiconductor', 'Natural Gas']}
                     subCategories={[
                         { key: 'fixed',    label: 'Fixed Transmitter' },
-                        { key: 'portable', label: 'Portable' },
+                        { key: 'portable', label: 'Portable Instrument' },
                         { key: 'module',   label: 'Module / OEM' },
                     ]} />
             )}
