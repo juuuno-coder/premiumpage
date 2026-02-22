@@ -2975,7 +2975,7 @@ export const VAISALA_APPLICATIONS: Record<string, any> = {
     semiconductor: {
         title: 'Semiconductor',
         shortDesc: 'Precise humidity and dewpoint control in cleanrooms and lithography processes.',
-        image: '/templates/hs-tech/images/applications/semiconductor.jpg',
+        image: '/hstech/images/SEMICONDUCTOR_1.png',
         applications: [
             { title: 'Dryer - Low Dew Point' },
             { title: 'Humidity & Temperature clean room control' },
@@ -3028,7 +3028,7 @@ Learn more about our solutions for continuous monitoring systems and continuous 
     plant: {
         title: 'Plant',
         shortDesc: 'Reliable monitoring for industrial drying, coating, and chemical processes.',
-        image: '/templates/hs-tech/images/applications/plant.jpg',
+        image: '/hstech/images/PLANT_1.png',
         applications: [
             { title: 'Lubrication & Hydraulics' },
             { title: 'Metal Heat Treatment Furnaces' },
@@ -3065,7 +3065,7 @@ Learn more about our solutions for continuous monitoring systems and continuous 
     automotive: {
         title: 'Automotive',
         shortDesc: 'Environmental testing in paint booths, engine test cells, and EV battery production.',
-        image: '/templates/hs-tech/images/applications/automotive.jpg',
+        image: '/hstech/images/Automotive.png',
         applications: [
             { title: 'Paint Booths' },
             { title: 'Engine Testing' }
@@ -3090,9 +3090,9 @@ Vaisala's BAROCAP® barometers and HUMICAP® humidity and temperature transmitte
         externalLink: 'http://www.vaisala.com/en/lifescience/applications/refrigeratorandfreezermonitoring/Pages/default.aspx'
     },
     marine: {
-        title: 'Marine & Offshore',
+        title: 'Maritime',
         shortDesc: 'Weather observation and atmospheric measurement at sea.',
-        image: '/templates/hs-tech/images/applications/marine.jpg',
+        image: '/hstech/images/Maritime.png',
         applications: [
             { title: 'Integrated Bridge Systems' },
             { title: 'Dynamic Positioning' },
@@ -3103,13 +3103,13 @@ Vaisala's BAROCAP® barometers and HUMICAP® humidity and temperature transmitte
         ],
         content: `Safety, security and efficiency are top requirements in maritime operations, and weather can have a serious affect on each of these. It is clear that accurate weather and sea state information is vital for ensuring the safety, security and operation of ports, ships and offshore platforms.`,
         systems: [],
-        recommendedProducts: ['hmt330', 'dmt340', 'mmt330', 'mmt310', 'mmt162', 'mm70'],
+        recommendedProducts: ['ptu300', 'hmt330', 'dmt340', 'mmt330', 'mmt310', 'mmt162', 'mm70'],
         externalLink: ''
     },
     agriculture: {
         title: 'Agriculture',
         shortDesc: 'Crop storage humidity control and greenhouse climate management.',
-        image: '/templates/hs-tech/images/applications/agriculture.jpg',
+        image: '/hstech/images/Agriculture.png',
         applications: [
             { title: 'Greenhouse' }
         ],
@@ -3125,7 +3125,7 @@ Vaisala offers instruments for measuring CO2, relative humidity and temperature 
     power: {
         title: 'Power Industry',
         shortDesc: 'Transformer oil moisture and hydrogen monitoring for grid asset protection.',
-        image: '/templates/hs-tech/images/applications/power.jpg',
+        image: '/hstech/images/POWER.png',
         applications: [
             { title: 'Power Transformers' },
             { title: 'SF6 Gas Insulated Equipment' },
@@ -3158,7 +3158,7 @@ Online monitoring of SF6 is convenient with Vaisala's Multiparameter Transmitter
     hvac: {
         title: 'HVAC & Buildings',
         shortDesc: 'Indoor air quality and energy-efficient building automation.',
-        image: '/templates/hs-tech/images/applications/hvac.jpg',
+        image: '/hstech/images/HVAC.png',
         applications: [
             { title: 'Demand Controlled Ventilation' },
             { title: 'Indoor Air Quality' },
@@ -3201,7 +3201,7 @@ Green building initiatives, like the US Green Building Council's LEEDv4, British
     lifescience: {
         title: 'Life Science',
         shortDesc: 'Sterile environment monitoring, bio-decontamination, and incubator control.',
-        image: '/templates/hs-tech/images/applications/lifescience.jpg',
+        image: '/hstech/images/LIFE SCIENCE.png',
         applications: [
             { title: 'Refrigerator and Freezer Monitoring' },
             { title: 'Incubator Monitoring' },
