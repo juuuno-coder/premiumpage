@@ -176,28 +176,28 @@ export const SUB_CATEGORIES: Record<string, any[]> = {
     ],
     oil: [
         {
-            id: 'transformer', title: 'Transformer Monitor', desc: 'MHT410',
+            id: 'transformer', title: 'Power Transformer', desc: 'MHT410',
             items: [
                 { id: 'mht410', label: 'MHT410' }
             ]
         },
         {
-            id: 'fixed', title: 'Oil Moisture Transmitter', desc: 'MMT330',
+            id: 'fixed', title: 'Fixed Installation Type', desc: 'MMT330, MMT310',
             items: [
                 { id: 'mmt330', label: 'MMT330' },
                 { id: 'mmt310', label: 'MMT310' }
             ]
         },
         {
-            id: 'handheld', title: 'Hand-held measurement', desc: 'MM70',
-            items: [
-                { id: 'mm70', label: 'MM70' }
-            ]
-        },
-        {
             id: 'oil_module', title: 'Module/OEM', desc: 'MMT162',
             items: [
                 { id: 'mmt162', label: 'MMT162' }
+            ]
+        },
+        {
+            id: 'handheld', title: 'Hand-held measurement', desc: 'MM70',
+            items: [
+                { id: 'mm70', label: 'MM70' }
             ]
         }
     ],
@@ -1849,66 +1849,134 @@ Output: RH+T+Td/f+h+Tw`,
     ],
     oil: [
         {
-            id: 'mht410', title: 'MHT410', subtitle: 'ONLINE TRANSFORMER MONITOR', category: 'transformer',
-            image: '/templates/hs-tech/images/products/deffa2b1b398f.jpg',
-            gallery: ['/templates/hs-tech/images/products/deffa2b1b398f.jpg'],
-            desc: 'Online multi-parameter monitor for power transformers. Simultaneously measures dissolved hydrogen gas and moisture in insulating oil to detect early-stage faults.',
+            id: 'mht410',
+            title: 'MHT410',
+            subtitle: 'MOISTURE, HYDROGEN AND TEMPERATURE TRANSMITTER FOR TRANSFORMER OIL',
+            category: 'transformer',
+            image: '/templates/hs-tech/images/products/VAISALA Moisture in oil sensor HUMICAP®.png',
+            gallery: ['/templates/hs-tech/images/products/VAISALA Moisture in oil sensor HUMICAP®.png'],
+            desc: `The Vaisala Moisture, Hydrogen and Temperature Transmitter MHT410 for Transformer Oil measures directly from representative transformer oil giving both reliable hydrogen trend as well as fast moisture data.`,
             specs: [
-                { label: 'Features', value: 'Real-time transformer condition measurement\nDirect installation in transformers\nDNV certified for marine applications' },
-                { label: 'Hydrogen in Oil', value: '0...5000 ppmv (±20% of reading or ±25 ppmv)' },
-                { label: 'Moisture in Oil', value: 'Measurement range: aw 0…1\nTemperature: -40…+180°C' },
-                { label: 'Installation Type', value: 'Main: Online type\n(Option) Display: External installation' }
+                {
+                    model: 'MHT410',
+                    application: 'Main_Online type',
+                    typicalApplication: '• Measurement of the condition of a real-time transformer\n• Can be installed directly in transformers\n• Installation Depth Adjustable Probe\n• Moisture, Hydrogen, Temperature Measurement\n• IP66\n• 5 years of general warranty',
+                    measurementRange: 'Hydrogen in oil: 0...5000ppmv (±20% of reading or ±25ppmv)\nMoisture in oil: 0...100%RS / aw 0...1 (±2%RS / aw ±0...1)\nTemperature: -40...+120℃ (±0.2℃)',
+                    spec: 'Inputs and Outputs:\n• Operating voltage: 15...30VDC, 24VAC\n• Analog output (Current): 3 isolated 4...20mA (loop powering)\n• Digital outputs: Isolated RS-485 half-duplex / RS-485 (Service port, non-isolated)\n  Protocols: Modbus RTU, DNP3, serial ASCII\n\n(option) Display_External installation'
+                }
             ],
-            datasheet: 'https://www.vaisala.com/sites/default/files/documents/MHT410-Datasheet-B211757EN.pdf'
+            datasheet: 'https://hs-tech-en.imweb.me/mht410'
         },
         {
-            id: 'mmt330', title: 'MMT330', subtitle: 'ONLINE OIL MOISTURE TRANSMITTER', category: 'fixed',
-            image: '/templates/hs-tech/images/products/5980bfb1851a8.png',
-            gallery: ['/templates/hs-tech/images/products/5980bfb1851a8.png'],
-            desc: 'Online moisture measurement in insulating oils. MAN Diesel & Turbo certified, DNV certified.',
+            id: 'mmt330',
+            title: 'MMT330',
+            subtitle: 'OIL MOISTURE TRANSMITTER FOR DIVERSE APPLICATIONS',
+            category: 'fixed',
+            image: '/templates/hs-tech/images/products/VAISALA Moisture in oil sensor HUMICAP®.png',
+            gallery: ['/templates/hs-tech/images/products/VAISALA Moisture in oil sensor HUMICAP®.png'],
+            desc: `For Diverse Applications and Demanding Conditions. With a wide variety of probes, the transmitter can be used in lubrication systems, hydraulic systems and transformers.`,
             specs: [
-                { label: 'Measurement Range', value: 'Water activity: aw 0…1\nTemperature: -40…+180°C' },
-                { label: 'Output', value: '2 analog outputs (3rd optional)\n0/4...20 mA, 0…5/10 V\nRS-485 Modbus (optional)' },
-                { label: 'MMT332 (Flange)', value: 'Pressure: 0…250 bar\nTemp: -40…+180°C' },
-                { label: 'MMT337 (Swagelok)', value: 'Pressure: 0…10 bar\nTemp: -40…+180°C\nFitting: R 3/8" ISO, 1/2" ISO or NPT 1/2"' },
-                { label: 'MMT338 (Ball Valve)', value: 'Pressure: 0…10 bar\nTemp: -40…+180°C\nFitting: R 1/2" ISO or NPT 1/2"' }
+                {
+                    model: 'MMT332',
+                    application: 'Flange type',
+                    typicalApplication: '• MAN Diesel & Turbo Two-Stroke Diesel Engine\n• DNV Certified\n• Button options for changing display and settings\n• Maximum cable length: 10m (MMT332), 20m (MMT337, MMT338)\n• IP66 (without display)\n• Field-checking available with MM70',
+                    measurementRange: 'Pressure range: 0…250 bar\nTemperature range: -40…+180℃',
+                    spec: 'Measurement range:\n• Water Activity aw 0…1\n• Temperature -40…+180℃\n\nOutputs:\n2 Analog outputs (3rd optional)\n• 0/4...20mA, 0…1/5/10V\nDigital outputs\n• RS-232, RS-485 (optional)\n\nOperation Environment:\nEMC compliance EN61326-1\nOperating temperature\n• Probe for each temperature range\n• Transmitter -40...+60℃\n• Transmitter (w/ display) 0...+60℃'
+                },
+                {
+                    model: 'MMT337',
+                    application: 'Swagelok Connector type',
+                    typicalApplication: 'Same as MMT332',
+                    measurementRange: 'Pressure range: 0…10 bar\nTemperature range: -40…+180℃\nFitting body: R 3/8" ISO, 1/2" ISO or NPT1/2"',
+                    spec: 'Same as MMT332'
+                },
+                {
+                    model: 'MMT338',
+                    application: 'Ball valve connector type',
+                    typicalApplication: 'Same as MMT332',
+                    measurementRange: 'Pressure range: 0…10 bar\nTemperature range: -40…+180℃\nFitting body: R1/2" ISO or NPT1/2"\nBall-valve set\nSampling cell',
+                    spec: 'Same as MMT332'
+                }
             ],
-            datasheet: 'https://www.vaisala.com/sites/default/files/documents/MMT330-Datasheet-B210993EN.pdf'
+            datasheet: 'https://hs-tech-en.imweb.me/mmt330'
         },
         {
-            id: 'mmt310', title: 'MMT310', subtitle: 'COMPACT OIL MOISTURE TRANSMITTER', category: 'fixed',
-            image: '/templates/hs-tech/images/products/3ca83569b6d00.jpg',
-            gallery: ['/templates/hs-tech/images/products/3ca83569b6d00.jpg'],
-            desc: 'Compact transmitter for continuous moisture measurement in oils.',
+            id: 'mmt310',
+            title: 'MMT310',
+            subtitle: 'TRANSMITTER FOR LUBRICATION SYSTEMS, HYDRAULIC SYSTEMS AND TRANSFORMERS',
+            category: 'fixed',
+            image: '/templates/hs-tech/images/products/VAISALA Moisture in oil sensor HUMICAP®.png',
+            gallery: ['/templates/hs-tech/images/products/VAISALA Moisture in oil sensor HUMICAP®.png'],
+            desc: `Transmitter for lubrication systems, hydraulic systems and transformers`,
             specs: [
-                { label: 'Features', value: 'Continuous measurement of moisture in oil\nMax cable length: 10 m\nIP66' },
-                { label: 'Measurement Range', value: 'Water activity: aw 0…1 (0…100 %RS)\nTemperature: -40…+180°C' },
-                { label: 'Output', value: '2 analog outputs (3rd optional)' },
-                { label: 'MMT317', value: 'Small pressure tight probe\nSwagelok: NPT 1/2", ISO 3/8" or ISO 1/2"\nPressure: 0…10 bar' },
-                { label: 'MMT318', value: 'Pressurized pipelines\nFitting: ISO 1/2", NPT 1/2"' }
-            ]
-        },
-        {
-            id: 'mm70', title: 'MM70', subtitle: 'HANDHELD OIL MOISTURE METER', category: 'handheld',
-            image: '/templates/hs-tech/images/products/a39c6508f2ff2.png',
-            gallery: ['/templates/hs-tech/images/products/a39c6508f2ff2.png'],
-            desc: 'Portable handheld instrument for spot-checking moisture in insulating and industrial oils.',
-            specs: [
-                { label: 'MI70 Indicator', value: 'Operating temp: -10…+40°C\nLCD with backlight\nData logging: 2,700 points\nAudible alarm' },
-                { label: 'MM70 Probe (In-line)', value: 'Moisture in oil sensor\nIn-line process checking via ball valve\nAw measurement, ppm calculation' }
+                {
+                    model: 'MMT317',
+                    application: 'Compact type',
+                    typicalApplication: '• Continuous measurement of moisture in oil\n• max. cable length: 10m\n• IP66',
+                    measurementRange: 'Small pressure tight probe\n• Swagelok: NPT 1/2", ISO 3/8" or ISO 1/2"\n• Pressure range: 0…10bar',
+                    spec: 'Measurement range:\n• Water Activity aw 0…1 (0…100%RS)\n• Temperature -40…+180℃\n\nOutputs:\n2 Analog outputs (3rd optional)\n• 0/4...20mA, 0…1/5/10V\nSerial output\n• RS-232C'
+                },
+                {
+                    model: 'MMT318',
+                    application: 'Pipeline type',
+                    typicalApplication: 'Same as MMT317',
+                    measurementRange: 'Pressurized pipelines\n• Fitting body: ISO 1/2", NPT 1/2"\n• Pressure range (with ball-valve up to 120℃): 0…40bar',
+                    spec: 'Same as MMT317'
+                }
             ],
-            datasheet: 'https://www.vaisala.com/sites/default/files/documents/MM70-Datasheet-B210976EN.pdf'
+            datasheet: 'https://hs-tech-en.imweb.me/mmt310'
         },
         {
-            id: 'mmt162', title: 'MMT162', subtitle: 'OEM OIL MOISTURE MODULE', category: 'oil_module',
-            image: '/templates/hs-tech/images/products/deffa2b1b398f.jpg', gallery: [],
-            desc: 'Economical online detection of moisture in oil. Direct installation in pipeline.',
+            id: 'mm70',
+            title: 'MM70',
+            subtitle: 'HANDHELD OIL MOISTURE METER',
+            category: 'handheld',
+            image: '/templates/hs-tech/images/products/VAISALA Moisture in oil sensor HUMICAP®.png',
+            gallery: ['/templates/hs-tech/images/products/VAISALA Moisture in oil sensor HUMICAP®.png'],
+            desc: `±0.02Aw ultra-precision moisture sensor is suitable for inline process check and field calibration and is compatible with module type sensors`,
             specs: [
-                { label: 'Features', value: 'Economical online moisture in oil detection\nDirect installation in pipeline\nMI70 compatible for display' },
-                { label: 'Metal Type - Working Range', value: 'Water activity: aw 0…1 (±0.02 aw)\nTemperature: -40…+80°C (±0.2°C)\nPressure: up to specified rating' },
-                { label: 'Plastic Type - Working Range', value: 'Water activity: aw 0…1 (±0.02 aw)\nTemperature: -40…+80°C (±0.2°C)' },
-                { label: 'Output', value: '2 analog outputs (3rd optional)\n0/4...20 mA, 0…5/10 V\nRS-485 non-isolated (Vaisala protocol)' }
-            ]
+                {
+                    model: 'MI70 Indicator',
+                    application: 'LCD display+buttons',
+                    typicalApplication: 'Operating temperature: -10…+40℃\nLCD with Back light\nData logging capacity (2,700 points)\nAudible alarm function\n\nLINK software with USB cable (Option)',
+                    measurementRange: '',
+                    spec: ''
+                },
+                {
+                    model: 'MM70 Probe',
+                    application: 'In-line type',
+                    typicalApplication: '• Moisture in Oil Sensor\n• in-line process checking through ball valve\n• Aw measurement, ppm calculation',
+                    measurementRange: 'Measurement range (Accuracy):\n• Water Activity aw 0…1 (±0.02aw @0…0.9)\n• Temperature -40…+100℃ (±0.2℃ @ 20℃)',
+                    spec: ''
+                }
+            ],
+            datasheet: 'https://hs-tech-en.imweb.me/mm70'
+        },
+        {
+            id: 'mmt162',
+            title: 'MMT162',
+            subtitle: 'ECONOMICAL OIL MOISTURE TRANSMITTER',
+            category: 'oil_module',
+            image: '/templates/hs-tech/images/products/VAISALA Moisture in oil sensor HUMICAP®.png',
+            gallery: ['/templates/hs-tech/images/products/VAISALA Moisture in oil sensor HUMICAP®.png'],
+            desc: `Installation Transmitter for lubrication systems, hydraulic systems and transformers. High performance, but relatively inexpensive because it's low-end`,
+            specs: [
+                {
+                    model: 'Metal type',
+                    application: 'Direct pipeline installation',
+                    typicalApplication: '• Economical online detection of moisture in oil\n• Direct installation in pipeline\n• MI70 can be used as a display, communication and datalogging device for the MMT162',
+                    measurementRange: 'Working range:\n• Water Activity aw 0…1 (±0.02 aw)\n• Temperature -40…+80℃ (±0.2℃)\n• Pressure range: Up to 200bar\n\nConnection: ISO G1/2" thread or NPT 1/2" thread',
+                    spec: 'Outputs:\n2 Analog outputs (3rd optional)\n• 0/4...20mA, 0…5/10V\nDigital outputs\n• RS-485 non-isolated, Vaisala protocol, Modbus RTU protocol\n\nOperating Environment:\nEMC compliance EN61326-1\nOperating temperature -40…+60℃\nStorage temperature -40…+80℃\nOil temperature -40…+80℃'
+                },
+                {
+                    model: 'Plastic type',
+                    application: 'Direct pipeline installation',
+                    typicalApplication: 'Same as Metal type',
+                    measurementRange: 'Working range:\n• Water Activity aw 0…1 (±0.02 aw)\n• Temperature -40…+80℃ (±0.2℃)\n• Pressure range: Up to 40bar\n\nConnection: ISO G1/2" thread',
+                    spec: 'Same as Metal type'
+                }
+            ],
+            datasheet: 'https://hs-tech-en.imweb.me/mmt162'
         },
     ],
     barometer: [
