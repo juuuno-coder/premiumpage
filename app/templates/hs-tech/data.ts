@@ -212,24 +212,7 @@ export const SUB_CATEGORIES: Record<string, any[]> = {
             ]
         }
     ],
-    weather: [
-        {
-            id: 'trans', title: 'Weather Transmitter', desc: 'WXT530, HMP155',
-            items: [
-                { id: 'wxt530', label: 'WXT530' },
-                { id: 'hmp155_w', label: 'HMP155' },
-                { id: 'hmt337', label: 'HMT337' },
-                { id: 'ptu307', label: 'PTU307' }
-            ]
-        },
-        {
-            id: 'hvac_weather', title: 'HVAC Weather Sensor', desc: 'HMS110, HMS80',
-            items: [
-                { id: 'hms110', label: 'HMS110' },
-                { id: 'hms80', label: 'HMS80' }
-            ]
-        }
-    ],
+    weather: [],
     h2o2: [
         {
             id: 'sensor', title: 'H2O2 Sensor', desc: 'HPP series',
@@ -2040,12 +2023,177 @@ Output: RH+T+Td/f+h+Tw`,
         },
     ],
     weather: [
-        { id: 'wxt530', title: 'WXT530', subtitle: 'WEATHER STATION', category: 'trans', image: '/templates/hs-tech/images/products/2c2344f8b46d5.jpg', gallery: ['/templates/hs-tech/images/products/2c2344f8b46d5.jpg'], desc: 'All-in-one multi-parameter weather sensor measuring wind, rain, pressure, temperature, and humidity.', specs: [{ label: 'Parameters', value: 'Wind speed/direction, Rain, Pressure, T, RH' }, { label: 'Output', value: 'SDI-12, RS-232, RS-485, Modbus' }, { label: 'Application', value: 'Weather monitoring, Aviation, Marine' }], datasheet: 'https://www.vaisala.com/sites/default/files/documents/WXT530-Datasheet-B211961EN.pdf' },
-        { id: 'hmp155_w', title: 'HMP155', subtitle: 'WEATHER PROBE', category: 'trans', image: '/templates/hs-tech/images/products/2ddb0a75a50e4.jpg', gallery: ['/templates/hs-tech/images/products/2ddb0a75a50e4.jpg'], desc: 'High-accuracy humidity and temperature probe for meteorological applications.', specs: [{ label: 'Range', value: '0...100 %RH / -80...+60 °C' }, { label: 'Accuracy', value: '±1.0 %RH' }, { label: 'Application', value: 'Meteorology, Roads, Aviation' }, { label: 'Protection', value: 'IP66' }] },
-        { id: 'hmt337', title: 'HMT337', subtitle: 'OUTDOOR TRANSMITTER', category: 'trans', image: '/templates/hs-tech/images/products/2ddb0a75a50e4.jpg', gallery: [], desc: 'Humidity and temperature transmitter for outdoor and challenging environments.', specs: [{ label: 'Range', value: '0...100 %RH / -40...+60 °C' }, { label: 'Accuracy', value: '±1 %RH' }, { label: 'Output', value: '4...20 mA, RS-485' }, { label: 'Protection', value: 'IP65' }] },
-        { id: 'ptu307', title: 'PTU307', subtitle: 'COMBINED WEATHER TRANSMITTER', category: 'trans', image: '/templates/hs-tech/images/products/deffa2b1b398f.jpg', gallery: [], desc: 'Combined pressure, humidity, and temperature transmitter for weather applications.', specs: [{ label: 'Parameters', value: 'P + T + RH' }, { label: 'Pressure range', value: '500...1100 hPa' }, { label: 'Application', value: 'Meteorology, Environmental monitoring' }] },
-        { id: 'hms110', title: 'HMS110', subtitle: 'WALL/DUCT HVAC SENSOR', category: 'hvac_weather', image: '/templates/hs-tech/images/products/2ddb0a75a50e4.jpg', gallery: [], desc: 'Combined humidity and temperature transmitter for wall/duct mounting in HVAC applications.', specs: [{ label: 'Range', value: '0...100 %RH / -40...+80 °C' }, { label: 'Output', value: '4...20 mA, 0...10 V' }, { label: 'Application', value: 'HVAC, Building automation' }] },
-        { id: 'hms80', title: 'HMS80', subtitle: 'COMPACT HVAC SENSOR', category: 'hvac_weather', image: '/templates/hs-tech/images/products/2ddb0a75a50e4.jpg', gallery: [], desc: 'Compact humidity and temperature transmitter for building automation and HVAC.', specs: [{ label: 'Range', value: '0...100 %RH' }, { label: 'Output', value: '4...20 mA, 0...10 V' }, { label: 'Application', value: 'HVAC, Building automation, Energy management' }] }
+        {
+            id: 'wxt530',
+            title: 'Weather Transmitter WXT530 Series',
+            subtitle: 'ALL-IN-ONE WEATHER SENSOR',
+            category: '',
+            image: '/hstech/images/Weather Transmitter WXT530 Series.png',
+            gallery: ['/hstech/images/Weather Transmitter WXT530 Series.png'],
+            desc: `The perfect mix of accurate air pressure, temperature, humidity, rainfall, wind speed, and wind direction data to measure weather conditions without the expense or magnitude of an automatic weather station.
+
+Vaisala WXT530 Series is a unique series of all-in-one weather instruments that provides 6 of the most important weather parameters: barometric pressure, temperature, relative humidity, rainfall, wind speed and direction. With 6 models available, you can choose measurement parameter combinations to fit your application.
+
+Key features include:
+
+• Proven sensor technologies used by leading meteorological agencies.
+• Ultrasonic WINDCAP® wind sensor has no moving parts and provides accurate wind speed and direction measurement.
+• Acoustic RAINCAP® sensor operates without flooding, clogging, wetting, and evaporation losses and provide maintenance-free operation.
+• Combined PTU module (barometric pressure BAROCAP®, temperature, and humidity HUMICAP® measurements) uses capacitive measurement for each parameter.
+• Compliance with marine standard IEC60945 and DNV GL approved.
+• Very low power consumption (typical 3.5mA at 12 VDC) is ideal for battery and solar panel powered system.
+• Compact design, light-weight, single cabling for all measurements and secure one bolt mounting make installation and deployment easy and fast.
+
+WXT536 replaces the WXT520 Weather Transmitter. WXT532 replaces WMT52 Ultrasonic Wind Sensor. For WXT520 and WMT52 customers, Vaisala also offers a modernization service.`,
+            specs: [
+                { label: 'Measurement range', value: 'Wind Speed: 0 ... 60 m/s\nWind Direction: 0 ... 360°\nBarometric Pressure: 600 ... 1100 hPa\nAir Temperature: -52 ... +60 °C\nRelative Humidity: 0 ... 100 %RH\nRain and Hail: Cumulative accumulation after the latest automatic or manual reset' },
+                { label: 'Measurement accuracy', value: 'Wind Speed: ±3 % at 10 m/s\nWind Direction: ±3.0° at 10 m/s\nBarometric Pressure: ±0.5 hPa at 0 ...+30 °C, ±1 hPa at -52 ...+60 °C\nAir Temperature: ±0.3 °C at 20 °C (for sensor element)\nRelative Humidity: ±3 %RH at 0 ... 90 %RH, ±5 %RH, at 90 ... 100 %RH' },
+                { label: 'Operating temperature', value: '-52 ...+60 °C (-62 ... 140°F)' },
+                { label: 'Operating pressure', value: '600 … 1100 hPa' },
+                { label: 'Operating voltage', value: '6 ... 24 VDC (-10 ... +30 %)' },
+                { label: 'IP rating', value: 'Without mounting kit: IP65, With mounting kit: IP66' },
+                { label: 'Analog outputs', value: 'Wind speed 0 … 20 mA or 4 … 20 mA\nWind direction 0 … 20 mA or 4 … 20 mA\nLoad impedance Max. 200 Ω\nFor more information on the full range of outputs available as part of our wider offering, see the datasheet.' },
+                { label: 'Digital outputs', value: 'SDI-12, RS-232, RS-485, RS-422' }
+            ],
+            datasheet: 'https://hs-tech-en.imweb.me/252'
+        },
+        {
+            id: 'hmp155',
+            title: 'HMP155 Series',
+            subtitle: 'METEOROLOGICAL HUMIDITY AND TEMPERATURE PROBE',
+            category: '',
+            image: '/hstech/images/HMP155 Series.png',
+            gallery: ['/hstech/images/HMP155 Series.png'],
+            desc: `Vaisala's HUMICAP® HMP155 is a plug-and-play sensor that has excellent stability and withstands well even in harsh environments. The probe provides reliable humidity and temperature measurement and it is designed specifically for demanding outdoor applications.`,
+            specs: [
+                {
+                    model: 'HMP155',
+                    application: 'Meteorology, aviation and road weather, instrumentation',
+                    typicalApplication: '▪ Weather-proof housing IP66\n▪ Various Output options; V, RS-485, resistive Pt100\n▪ Optional warmed humidity probe and chemical purge\n▪ Plug & Play\n▪ Using with DTR13 and DTR503 radiation shields and a Stevenson screen for long lifetime (optional)',
+                    measurementRange: 'RH range: 0…100% RH\nTemperature range: -80..+60°C',
+                    spec: 'Accuracy\n▪ ± 1%RH (0…90%)\n▪ ±0.15°C at 20℃\n\nOutput\n▪ Voltage output: 0…1/5/10V\n▪ Resistive Pt100 4-wire connection\n▪ RS-485'
+                }
+            ],
+            datasheet: 'https://hs-tech-en.imweb.me/141'
+        },
+        {
+            id: 'hms110',
+            title: 'HMS110',
+            subtitle: 'OUTDOOR HUMIDITY AND TEMPERATURE TRANSMITTER',
+            category: '',
+            image: '/hstech/images/ HMS110.png',
+            gallery: ['/hstech/images/ HMS110.png'],
+            desc: `Vaisala HUMICAP® Humidity and Temperature Transmitter Series HMS110 are ideal for cooling tower control and differential enthalpy control of economizers.`,
+            specs: [
+                {
+                    model: 'HMS110',
+                    application: 'Outdoor type (Integrated Radiation Shields)',
+                    typicalApplication: '',
+                    measurementRange: 'RH range: 0…100% RH\nTemperature range: -40..+60°C',
+                    spec: 'Accuracy\n▪ ± 2%RH (0…90%)\n▪ ± 0.2ºC @ 20ºC PT1000\n\nIP65\n\nOutput\n2-wire current(4…20mA) or Modbus RTU output'
+                },
+                {
+                    model: 'HMS112',
+                    application: 'Outdoor type (Integrated Radiation Shields)',
+                    typicalApplication: '',
+                    measurementRange: '',
+                    spec: 'Output\n2-wire current output(4…20mA)'
+                }
+            ],
+            datasheet: 'https://hs-tech-en.imweb.me/142'
+        },
+        {
+            id: 'hms80',
+            title: 'HMS80',
+            subtitle: 'OUTDOOR HVAC HUMIDITY AND TEMPERATURE TRANSMITTER',
+            category: '',
+            image: '/hstech/images/HMS80.png',
+            gallery: ['/hstech/images/HMS80.png'],
+            desc: `The Humidity and Temperature Sensor Transmitter Series HMS80 are optimized for outdoor measurements HVAC.`,
+            specs: [
+                {
+                    model: 'HMS82',
+                    application: 'Outdoor type (Integrated Radiation Shields)',
+                    typicalApplication: '▪ Measurement range:\n- RH range: 0…100%\n- Temperature range: -40…+60℃\n\n▪ Accuracy:\n- RH: ±3%RH(0…90%RH)\n- T: ± 0.3℃ @20℃\n\n▪ IP65\n\n▪ Calculated parameters\n- Td -40…+60℃\n- Enthalpy -40…460kJ/kg',
+                    measurementRange: '',
+                    spec: '2-wire current output(4…20mA)'
+                },
+                {
+                    model: 'HMS82C',
+                    application: 'Outdoor type + NPT ½" fitting',
+                    typicalApplication: '',
+                    measurementRange: '',
+                    spec: '2-wire current output(4…20mA)'
+                },
+                {
+                    model: 'HMS83',
+                    application: 'Outdoor type (Integrated Radiation Shields)',
+                    typicalApplication: '',
+                    measurementRange: '',
+                    spec: '3-wire voltage output(0…10V)'
+                },
+                {
+                    model: 'HMS83C',
+                    application: 'Outdoor type + NPT ½" fitting',
+                    typicalApplication: '',
+                    measurementRange: '',
+                    spec: '3-wire voltage output(0…10V)'
+                }
+            ],
+            datasheet: 'https://hs-tech-en.imweb.me/143'
+        },
+        {
+            id: 'hmt337',
+            title: 'HMT337',
+            subtitle: 'OUTDOOR HUMIDITY AND TEMPERATURE TRANSMITTER',
+            category: '',
+            image: '/hstech/images/HMT337.png',
+            gallery: ['/hstech/images/HMT337.png', '/hstech/images/HMT337_2.jpg'],
+            desc: `For weather observation and prediction of water vapour from precipitation`,
+            specs: [
+                {
+                    model: 'HMT337',
+                    application: 'Outdoor Installation',
+                    typicalApplication: '▪ Humidity and temperature transmitter\n▪ Graphical Display\n▪ Warmed probe, for dew point temperature measurement under constant near-condensing conditions\n▪ Humidity measurement output with RH or Td\n▪ On-site calibration is possible with VAISALA HM70 model\n▪ IP rating\n- IP66\n- IP65 with local display',
+                    measurementRange: '▪ Measurement range:\n- RH range: 0…100% RH\n- Temperature range: -70...+180°C (-94...+356°F)',
+                    spec: '▪ Outputs\n- Current outputs: 0..20mA or 4…20mA\n- Voltage outputs: 0… 1V / 5V / 10V\n- Digital outputs: RS232, RS485(optional)'
+                },
+                {
+                    model: 'HMT330MIK',
+                    application: 'Installation Kit',
+                    typicalApplication: '▪ Outdoor Humidity and Temperature Transmitter Installation Kit\n▪ Used with VAISALA HMT337 or PTU307\n▪ Effectively eliminates wind-induced pressure changes through the Vaisala SPH 10/20 Static Pressure Head (Optional)',
+                    measurementRange: '',
+                    spec: ''
+                }
+            ],
+            datasheet: 'https://hs-tech-en.imweb.me/144'
+        },
+        {
+            id: 'ptu307',
+            title: 'PTU307',
+            subtitle: 'COMBINED BAROMETRIC PRESSURE, HUMIDITY AND TEMPERATURE TRANSMITTER',
+            category: '',
+            image: '/hstech/images/PTU307.png',
+            gallery: ['/hstech/images/PTU307.png', '/hstech/images/PTU307_2.jpg'],
+            desc: `This is a unique instrument measuring three parameters simultaneously: barometric pressure, humidity, and temperature. The instrument has four different humidity probe options for various measurement needs. Reliable HUMICAP® and BAROCAP® sensor technologies make it suitable for several applications such as engine testing booths, calibration laboratories, marine engine air intake monitoring and demanding meteorology applications.`,
+            specs: [
+                {
+                    model: 'PTU307',
+                    application: 'Outdoor Installation',
+                    typicalApplication: '▪ Barometric pressure, humidity and temperature measurement in one transmitter\n▪ Graphical display and keypad for convenient operation',
+                    measurementRange: '▪ Measurement range:\n- Barometric Pressure: 500 or 50…1100hPa\n- RH range: 0…100%\n- Temperature range: -40…+60℃',
+                    spec: '▪ RS-232C serial interface with NMEA protocol for GPS use\n▪ Analog outputs, RS-232/485, LAN\n▪ Modbus protocol support (RTU/TCP)'
+                },
+                {
+                    model: 'HMT330MIK',
+                    application: 'Installation Kit',
+                    typicalApplication: '▪ Outdoor Humidity and Temperature Transmitter Installation Kit\n▪ Used with VAISALA HMT337 or PTU307\n▪ Effectively eliminates wind-induced pressure changes through the Vaisala SPH 10/20 Static Pressure Head (Optional)',
+                    measurementRange: '',
+                    spec: ''
+                }
+            ],
+            datasheet: 'https://hs-tech-en.imweb.me/145'
+        }
     ],
     h2o2: [
         {
