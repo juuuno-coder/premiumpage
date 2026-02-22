@@ -140,6 +140,14 @@ export const SUB_CATEGORIES: Record<string, any[]> = {
                 { id: 'dpt146', label: 'DPT146' },
                 { id: 'dpt145', label: 'DPT145' }
             ]
+        },
+        {
+            id: 'industrial', title: 'Demanding Industrial Applications', desc: 'HMT330, HMT120, HMDW110',
+            items: [
+                { id: 'hmt330_dewpoint', label: 'HMT330 Series' },
+                { id: 'hmt120_dewpoint', label: 'HMT120/130 Series' },
+                { id: 'hmdw110_dewpoint', label: 'HMDW110' }
+            ]
         }
     ],
     co2: [
@@ -1581,6 +1589,164 @@ Output: RH+T+Td+Tdf`,
                 { label: 'DMT242SC', value: 'Sampling cell, pressure limit: 10 MPa' },
                 { label: 'DMT242SC2', value: 'Sampling cell + Swagelok connectors (1/4" pipeline)\nPressure limit: 4 MPa' }
             ]
+        },
+        {
+            id: 'hmt330_dewpoint',
+            title: 'HMT330 Series',
+            subtitle: '±1%RH HIGH-PRECISION INDUSTRIAL TRANSMITTER',
+            category: 'industrial',
+            image: '/templates/hs-tech/images/products/hmt330_v1.png',
+            gallery: [
+                '/templates/hs-tech/images/products/hmt330_v1.png',
+                '/templates/hs-tech/images/products/hmt330_6models_grid.jpg'
+            ],
+            desc: `±1%RH high-precision, VAISALA's flagship industrial model is specifically designed for use in a variety of environments. VAISALA's unique technology provides the most reliable and accurate value.
+
+■ PRODUCT
+
+RH+T+Td+Tdf+a+x+Tw+ppm+pw+pws+h+dT
+
+(337_Td+Tdf+x+pw / RH+T+Td+Tdf+a+x+Tw+ppm+pw+pws+h+dT)
+
+▶ HMT331 : Wall-Mount
+▶ HMT334 : High Pressure
+▶ HMT337 : High Humidity
+▶ HMT333 : Duct
+▶ HMT335 : High Temperature
+▶ HMT338 : Pressurized Pipeline`,
+            specs: [
+                {
+                    model: 'HMT331',
+                    application: 'Wall Mount',
+                    typicalApplication: '• cleanrooms\n• pharmaceutical processes\n• swimming halls\n• museums and archives',
+                    measurementRange: 'RH range: 0…100% RH\nTemperature range: -40...+60°C (-40...+140°F)',
+                    spec: 'Other Available Variables (Model-Dependent)\nDew point temperature, mixing ratio, absolute humidity, wet bulb temperature, enthalpy, water vapor pressure\n\nAccuracy\n• ±1%RH (0…90%)\n• ±0.2ºC @ 20ºC PT100\n\nOperating voltage\n: 10 ... 35 VDC, 24 VAC ±20%\nwith optional power supply module: 100 ... 240 VAC, 50/60 HZ\n\nOutput\n• Current outputs: 0..20mA or 4…20mA\n• Voltage outputs: 0… 1V / 5V / 10V\n• Digital outputs: RS232, RS485(optional)\n• (optional) WLAN interface\n• (optional) Relay outputs: 0.5A, 250VAC\n\nIP rating\n• IP66\n• IP65 with local display'
+                },
+                {
+                    model: 'HMT333',
+                    application: 'Duct Type',
+                    typicalApplication: '• cleanrooms\n• Industrial HVAC systems\n• pharmaceutical processes\n• environmental chambers\n• processes with moderate temperature and humidity',
+                    measurementRange: 'RH range: 0…100% RH\nTemperature range: rubber cable -40...+80°C (-40...+176°F) or teflon cable -40...+120°C (-40...+248°F)',
+                    spec: 'Same as HMT331'
+                },
+                {
+                    model: 'HMT334',
+                    application: 'High Pressure',
+                    typicalApplication: '• test chambers\n• high-pressure and vacuum processes',
+                    measurementRange: 'RH range: 0…100% RH\nTemperature range: -70 ...+180 °C (-94...+356°F)\nOperating pressure: 0...10 MPa (0...100 bar)',
+                    spec: 'Same as HMT331'
+                },
+                {
+                    model: 'HMT335',
+                    application: 'High Temperature',
+                    typicalApplication: '• hot drying processes\n• food processes e.g. baking ovens',
+                    measurementRange: 'RH range: 0…100% RH\nTemperature range: -70...+180°C (-94...+356 °F)',
+                    spec: 'Same as HMT331'
+                },
+                {
+                    model: 'HMT337',
+                    application: 'High Humidity',
+                    typicalApplication: '• professional meteorology\n• intake air monitoring of engines and gas turbines\n• timber drying kilns',
+                    measurementRange: 'RH range: 0…100% RH\nTemperature range: -70...+180°C (-94...+356°F)',
+                    spec: 'Same as HMT331'
+                },
+                {
+                    model: 'HMT338',
+                    application: 'Pressurized Pipelines',
+                    typicalApplication: '• process lines\n• environmental chambers\n• vacuum-drying processes\n• compressed air lines with refrigerant dryers',
+                    measurementRange: 'RH range: 0…100% RH\nTemperature range: -70...+180°C (-94...+356°F)\nOperating pressure: 0...4 MPa (0…40bar)',
+                    spec: 'Same as HMT331'
+                }
+            ],
+            datasheet: 'https://hs-tech-en.imweb.me/hmt330series'
+        },
+        {
+            id: 'hmt120_dewpoint',
+            title: 'HMT120/130 Series',
+            subtitle: '±1.5%RH PRECISION TRANSMITTER',
+            category: 'industrial',
+            image: '/templates/hs-tech/images/products/hmt120_v1.png',
+            gallery: ['/templates/hs-tech/images/products/hmt120_v1.png'],
+            desc: `±1.5%RH precision product. Probe can be replaced separately. HMT120 and 130 are entry-level precision products available in a variety of environments.
+
+■ PRODUCT
+
+Output: RH+T+Td+a+Tw+x+h+pws`,
+            specs: [
+                {
+                    model: 'HMT120',
+                    application: '• Wall Mount\n• Duct Type\n• Outdoor',
+                    typicalApplication: '• Monitoring the temperature of the clean room\n• Sensor one-to-one replacement\n• Display Options\n• Duct Installation Kit Options\n• Dew point output function\n• Cable maximum length 20m\n• For wall mount types, plastic sensors can be selected',
+                    measurementRange: 'RH range: 0…100% RH\nTemperature range: -40..+80°C (-40...+176°F)\n\nOther Variables (Optional)\nDew point/frost point, mixing ratio, absolute humidity, wet bulb temperature, enthalpy, vapor pressure, saturation vapor pressure',
+                    spec: 'Accuracy\n• ±1.5%RH (0…90%)\n• ±0.2ºC @ 20ºC PT1000\n\nIP rating\n• IP65\n\nOutput\n• 2-Wire Current (4…20mA)'
+                },
+                {
+                    model: 'HMT130',
+                    application: '• Wall Mount\n• Duct Type\n• Outdoor',
+                    typicalApplication: 'Same as HMT120',
+                    measurementRange: 'Same as HMT120',
+                    spec: 'Same accuracy as HMT120\n\nOutput\n• 3-Wire Voltage (0…1V/5V/10V)\n• RS485'
+                }
+            ],
+            datasheet: 'https://hs-tech-en.imweb.me/hmt120series'
+        },
+        {
+            id: 'hmdw110_dewpoint',
+            title: 'HMDW110',
+            subtitle: 'HIGH-PERFORMANCE TEMPERATURE SENSOR',
+            category: 'industrial',
+            image: '/templates/hs-tech/images/products/hmdw110_v1.png',
+            gallery: ['/templates/hs-tech/images/products/hmdw110_v1.png'],
+            desc: `High-performance temperature sensor with excellent long-term stability and accuracy
+
+■ PRODUCT
+
+Output: RH+T+Td/f+h+Tw`,
+            specs: [
+                {
+                    model: 'HMW110',
+                    application: 'Wall type',
+                    typicalApplication: 'Wall-mounted humidity and temperature monitoring',
+                    measurementRange: 'RH range: 0…100% RH\nTemperature range: -40..+60°C\n\nCalculated Parameters\n• Td & wet bulb T -40…+60°C\n• Enthalpy -40 ... 460 kJ/kg',
+                    spec: 'Accuracy\n• ±2%RH (0…90%)\n• ±0.2ºC @ 20ºC PT1000\n\nOutput\n2-wire current (4…20mA)\nor Modbus RTU output'
+                },
+                {
+                    model: 'HMW112',
+                    application: 'Wall type',
+                    typicalApplication: 'Wall-mounted humidity and temperature monitoring',
+                    measurementRange: 'Same as HMW110',
+                    spec: 'Same accuracy as HMW110\n\nOutput\n2-wire current output (4…20mA)'
+                },
+                {
+                    model: 'HMD110',
+                    application: 'Duct type',
+                    typicalApplication: 'HVAC duct installation',
+                    measurementRange: 'Same as HMW110',
+                    spec: 'Same accuracy as HMW110\n\nOutput\n2-wire current (4…20mA)\nor Modbus RTU output'
+                },
+                {
+                    model: 'HMD112',
+                    application: 'Duct type',
+                    typicalApplication: 'HVAC duct installation',
+                    measurementRange: 'Same as HMW110',
+                    spec: 'Same accuracy as HMW110\n\nOutput\n2-wire current output (4…20mA)'
+                },
+                {
+                    model: 'HMS110',
+                    application: 'Outdoor type (RH +T)',
+                    typicalApplication: 'Outdoor weather monitoring',
+                    measurementRange: 'Same as HMW110',
+                    spec: 'Same accuracy as HMW110\n\nOutput\n2-wire current (4…20mA)\nor Modbus RTU output'
+                },
+                {
+                    model: 'HMS112',
+                    application: 'Outdoor type (RH +T)',
+                    typicalApplication: 'Outdoor weather monitoring',
+                    measurementRange: 'Same as HMW110',
+                    spec: 'Same accuracy as HMW110\n\nOutput\n2-wire current output (4…20mA)'
+                }
+            ],
+            datasheet: 'https://hs-tech-en.imweb.me/hmdw110'
         },
     ],
     co2: [
