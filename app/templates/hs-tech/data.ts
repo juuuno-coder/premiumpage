@@ -266,10 +266,7 @@ export const SUB_CATEGORIES: Record<string, any[]> = {
         {
             id: 'liquid', title: 'Liquid Analysis', desc: 'pH, Conductivity',
             items: [
-                { id: 'ph_sensor', label: 'tecline pH' },
-                { id: 'ph_trans', label: 'ecoTRANS pH 03' },
-                { id: 'dtrans_ph02', label: 'dTRANS pH 02' },
-                { id: 'cond_trans', label: 'ecoTRANS Lf 03' }
+                { id: 'dtrans_ph02', label: 'dTRANS pH 02' }
             ]
         },
         {
@@ -321,7 +318,6 @@ export const SUB_CATEGORIES: Record<string, any[]> = {
         {
             id: 'ph_transmitter', title: 'pH Transmitter', desc: 'pH measurement transmitters',
             items: [
-                { id: 'ecotrans_202723', label: 'ecoTRANS pH 03 (202723)' },
                 { id: 'dtrans_202551', label: 'dTRANS pH 02 (202551)' },
                 { id: 'aquis_500_ph_202560', label: 'AQUIS 500 pH (202560)' }
             ]
@@ -2141,35 +2137,6 @@ Only Setra can claim ownership to the stainless steel capacitive design used in 
             ]
         },
         {
-            id: 'ph_sensor', title: 'tecline pH', subtitle: 'pH COMBINATION ELECTRODE', category: 'ph_electrode',
-            image: '/templates/hs-tech/images/products/1c2022c06d474.png',
-            gallery: ['/templates/hs-tech/images/products/1c2022c06d474.png'],
-            desc: 'High-quality combination pH electrode for liquid analysis in water treatment and process industries. Available in glass and plastics (PEI, PVDF) for various media.',
-            specs: [
-                { label: 'Measurement', value: 'pH 0 ... 14' },
-                { label: 'Temperature Range', value: '0 ... +80 °C' },
-                { label: 'Electrode body', value: 'Glass / PEI / PVDF (application-specific)' },
-                { label: 'Reference system', value: 'Ag/AgCl double junction' },
-                { label: 'Connector', value: 'BNC connector (standard)' },
-                { label: 'Application', value: 'Water treatment, Process industry\nChemical, Food & Beverage' },
-            ]
-        },
-        {
-            id: 'ph_trans', title: 'ecoTRANS pH 03', subtitle: 'pH TRANSMITTER (DIN RAIL)', category: 'ph_transmitter',
-            image: '/templates/hs-tech/images/products/94259b4509a1f.png',
-            gallery: ['/templates/hs-tech/images/products/94259b4509a1f.png'],
-            desc: 'Compact panel/DIN rail pH transmitter with display. Converts electrode signal to standard 4-20 mA output for PLC/SCADA integration.',
-            specs: [
-                { label: 'Measurement', value: 'pH 0 ... 14 / Temperature' },
-                { label: 'Accuracy', value: '±0.05 pH' },
-                { label: 'Input', value: 'pH electrode (BNC/S7/Pg13.5)' },
-                { label: 'Output', value: '4...20 mA (active/passive), 2× relay' },
-                { label: 'Mounting', value: 'DIN rail 35 mm / Panel cut-out' },
-                { label: 'Display', value: 'LCD (pH, temp, mV)' },
-                { label: 'Application', value: 'Water treatment, Process monitoring\nPLC/SCADA integration' },
-            ]
-        },
-        {
             id: 'dtrans_ph02', title: 'dTRANS pH 02', subtitle: 'PROCESS pH TRANSMITTER', category: 'ph_transmitter',
             image: '/templates/hs-tech/images/products/8d15ded8da6eb.png',
             gallery: ['/templates/hs-tech/images/products/8d15ded8da6eb.png'],
@@ -2182,20 +2149,6 @@ Only Setra can claim ownership to the stainless steel capacitive design used in 
                 { label: 'Protection', value: 'IP65 / IP67 (optional)' },
                 { label: 'Communication', value: 'HART 5.x / 6.x' },
                 { label: 'Application', value: 'Industrial processes\nWaste water, Chemical' },
-            ]
-        },
-        {
-            id: 'cond_trans', title: 'ecoTRANS Lf 03', subtitle: 'CONDUCTIVITY TRANSMITTER', category: 'conductivity',
-            image: '/templates/hs-tech/images/products/75b212a123a21.png',
-            gallery: ['/templates/hs-tech/images/products/75b212a123a21.png'],
-            desc: 'Compact conductivity and temperature transmitter for water quality monitoring. DIN rail mounting with 4-20 mA output for integration into PLC/BMS systems.',
-            specs: [
-                { label: 'Measurement', value: 'Conductivity (μS/cm ... mS/cm) / Temperature' },
-                { label: 'Conductivity Range', value: '0 ... 500 μS/cm to 0 ... 500 mS/cm (cell constant dependent)' },
-                { label: 'Accuracy', value: '±1% FS' },
-                { label: 'Output', value: '4...20 mA, 2× relay' },
-                { label: 'Mounting', value: 'DIN rail 35 mm' },
-                { label: 'Application', value: 'Drinking water, Process water\nWater treatment, Boiler feed water' },
             ]
         },
         {
@@ -2271,24 +2224,6 @@ Only Setra can claim ownership to the stainless steel capacitive design used in 
                 { label: 'Electrode Material', value: 'Special graphite' },
                 { label: 'Cell Constant', value: 'K = 1.0' },
                 { label: 'Applications', value: 'Medium separation\nDrinking water treatment\nWastewater control/treatment\nConcentrate monitoring\nIndustrial water treatment' }
-            ]
-        },
-        {
-            id: 'ecotrans_202723',
-            title: 'JUMO ecoTRANS pH 03',
-            subtitle: 'TRANSMITTER / SWITCHING DEVICE (202723)',
-            category: 'ph_transmitter',
-            image: '/templates/hs-tech/images/products/JUMO ecoTRANS pH 03 transmitter : switching device for pH : Redox voltage and temperature (202723).jpg',
-            gallery: ['/templates/hs-tech/images/products/JUMO ecoTRANS pH 03 transmitter : switching device for pH : Redox voltage and temperature (202723).jpg'],
-            desc: 'Versatile pH/Redox transmitter with simple probe connection and guided calibration. Features 3-way isolation and DIN rail mounting for easy installation.',
-            specs: [
-                { label: 'Measurement', value: 'pH / mV / ORP (Redox voltage)' },
-                { label: 'Connection', value: 'Screw terminals\nAsymmetric and symmetric' },
-                { label: 'Outputs', value: '2x analog outputs 0(4)...20 mA / 0(2)...10 V\n1x relay changeover contact' },
-                { label: 'Isolation', value: '3-way isolation (input/output/power)' },
-                { label: 'Mounting', value: 'DIN rail' },
-                { label: 'Features', value: 'Temperature monitoring\nCalibration timer\nWith calibration certificate' },
-                { label: 'Applications', value: 'Water/wastewater management\nDrinking water treatment\nProcess technology\nSwimming pool technology\nFish-keeping' }
             ]
         },
         {
