@@ -271,10 +271,7 @@ export const SUB_CATEGORIES: Record<string, any[]> = {
         },
         {
             id: 'control', title: 'Control & Recording', desc: 'Recorders, Controllers',
-            items: [
-                { id: 'recording', label: 'LOGOSCREEN 600' },
-                { id: 'dtron_300', label: 'dTRON 300' }
-            ]
+            items: []
         }
     ],
 
@@ -2152,35 +2149,6 @@ Only Setra can claim ownership to the stainless steel capacitive design used in 
             ]
         },
         {
-            id: 'recording', title: 'LOGOSCREEN 600', subtitle: 'PAPERLESS CHART RECORDER', category: 'control',
-            image: '/templates/hs-tech/images/products/85b44cdd77766.png',
-            gallery: ['/templates/hs-tech/images/products/85b44cdd77766.png'],
-            desc: 'High-performance paperless chart recorder with large touchscreen. Up to 12 universal inputs for temperature, process, and digital signals. Data stored on internal flash + SD card.',
-            specs: [
-                { label: 'Display', value: '10.4" color TFT touchscreen' },
-                { label: 'Inputs', value: 'Up to 12 universal inputs\n(T/C, RTD, mV, mA, Resistance, Pulse)' },
-                { label: 'Sampling rate', value: 'Up to 500 ms per channel' },
-                { label: 'Memory', value: 'Internal flash 512 MB + SD card slot' },
-                { label: 'Communication', value: 'Ethernet, RS-485 (Modbus RTU/TCP)\nUSB, CF card' },
-                { label: 'Alarms', value: '4 relay outputs' },
-                { label: 'Application', value: 'Process visualization & recording\nGxP/FDA 21 CFR Part 11 compliant' },
-            ]
-        },
-        {
-            id: 'dtron_300', title: 'dTRON 300', subtitle: 'PANEL MOUNT PID CONTROLLER', category: 'control',
-            image: '/templates/hs-tech/images/products/2ddb0a75a50e4.jpg',
-            gallery: ['/templates/hs-tech/images/products/2ddb0a75a50e4.jpg'],
-            desc: 'Compact panel-mount PID controller for temperature and process variable control. Supports multiple sensor types with auto-tuning PID and ramp-soak programming.',
-            specs: [
-                { label: 'Panel cutout', value: '48 × 48 mm (1/16 DIN)' },
-                { label: 'Input', value: 'Thermocouple (T/C), RTD (Pt100)\n4...20 mA, 0...10 V' },
-                { label: 'Control', value: 'PID with auto-tuning\nRamp/Soak program (up to 99 segments)' },
-                { label: 'Output', value: 'Relay, SSR, 4...20 mA (controller-dependent)' },
-                { label: 'Communication', value: 'RS-485 Modbus RTU (optional)' },
-                { label: 'Application', value: 'Temperature process control\nOvens, Furnaces, Incubators, Reactors' },
-            ]
-        },
-        {
             id: 'tecline_hd_201021',
             title: 'JUMO tecLine HD',
             subtitle: 'pH COMBINATION ELECTRODES (201021)',
@@ -2974,32 +2942,6 @@ export const JUMO_CATEGORY_INTRO: Record<string, any> = {
         subtitle: 'Paperless Recorders and Process Controllers',
         desc: 'Advanced control and data recording solutions for process automation, compliance monitoring, and quality assurance.',
         products: [
-            {
-                model: 'JUMO LOGOSCREEN 600',
-                image: '/templates/hs-tech/images/products/JUMO LOGOSCREEN 600.jpg',
-                features: [
-                    '144 × 144 mm format',
-                    '14.5 cm (5.7") TFT color graphics screen (640 x 480 pixel)',
-                    '3 or 6 universal measurement inputs (optional)',
-                    '6 or 12 digital inputs (optional)',
-                    '12 digital inputs/outputs (optional)',
-                    '1 or 2 analog outputs (optional)',
-                    '24 external digital and analog inputs via interface',
-                    'Intuitive touch operation',
-                    'Measured data storage on USB flash drive',
-                    'Up to 6 customer-specific process screens',
-                    'Batch report recording',
-                    'Ethernet and RS232/485 interface (Modbus master/slave)',
-                    'Integrated web server for online visualization',
-                    'Batch control (start, stop, and text) via barcode scanner',
-                    'Counters and integrators (6 channels)',
-                    'Math and logic module (6 channels each) as extra code',
-                    'Counter input (up to 12.5 kHz)',
-                    'Data recording compliant with FDA 21 CFR Part 11 (extra code)',
-                    'Manipulation detection with digital certificate (extra code)'
-                ],
-                applications: ['Paperless recording of analog and digital process data']
-            },
             {
                 model: 'JUMO LOGOSCREEN 700',
                 subtitle: 'Highly-Scalable Paperless Recorder (706530)',

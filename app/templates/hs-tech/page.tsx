@@ -915,7 +915,7 @@ function CategoryPage({
 
                         {/* For jumo_temp: products grid */}
                         {introData.products && !introData.sections && (
-                            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                                 {introData.products.map((product: any, idx: number) => (
                                     <div key={idx} className="border border-neutral-200 rounded-lg p-5 bg-white hover:shadow-md transition-shadow">
                                         {product.image && (
