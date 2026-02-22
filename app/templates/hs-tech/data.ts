@@ -3084,7 +3084,7 @@ Vaisala provides accurate humidity and dew point instruments with extremely low 
                 desc: `Dynamometer testing often occurs at very low and very high temperatures. High reliability and uptime are desirable in test cell instrumentation.
 
 Vaisala's BAROCAP® barometers and HUMICAP® humidity and temperature transmitters have operating ranges wide enough to accommodate virtually any test condition. A remote probe with sensor heating is available for condensing conditions. Other options include graphical display of history and measurement trends, data collection and transfer to PC, and flexible calibration. A three-in-one barometric pressure, humidity and temperature combination unit is also available.`,
-                recommendedProducts: ['hmd60', 'hmt330', 'hmt120', 'hmt360', 'hmm170', 'dmt152', 'dm70']
+                recommendedProducts: ['ptu300', 'hmd60', 'hmt330', 'hmt120', 'hmt360', 'hmm100', 'dpt146', 'dmt152', 'dm70', 'ptb330ts']
             }
         ],
         externalLink: 'http://www.vaisala.com/en/lifescience/applications/refrigeratorandfreezermonitoring/Pages/default.aspx'
