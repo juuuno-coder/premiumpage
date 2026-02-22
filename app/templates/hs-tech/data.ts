@@ -327,7 +327,7 @@ export const SUB_CATEGORIES: Record<string, any[]> = {
             ]
         },
         {
-            id: 'conductivity_transmitter', title: 'Conductivity Transmitter', desc: 'Conductivity measurement solutions',
+            id: 'conductivity', title: 'Conductivity Transmitter', desc: 'Conductivity measurement solutions',
             items: [
                 { id: 'cti_500_202755', label: 'CTI-500 (202755)' },
                 { id: 'aquis_500_cr_202565', label: 'AQUIS 500 CR (202565)' },
@@ -2227,22 +2227,6 @@ Only Setra can claim ownership to the stainless steel capacitive design used in 
                 { label: 'Application', value: 'Temperature process control\nOvens, Furnaces, Incubators, Reactors' },
             ]
         },
-    ],
-
-    // CMS (Data Logger / Continuous Monitoring System)
-    cms: [
-        { id: 'dl2000', title: 'DL2000', subtitle: 'ADVANCED DATA LOGGER', category: 'data_logger', image: '/templates/hs-tech/images/products/dl2000_v1.jpg', gallery: [], desc: 'Advanced standalone data logger for multi-channel environmental monitoring with display.', specs: [{ label: 'Channels', value: 'Multi-channel inputs' }, { label: 'Display', value: 'Built-in LCD' }, { label: 'Application', value: 'Cleanrooms, Labs, Warehouses' }, { label: 'Communication', value: 'LAN, USB' }] },
-        { id: 'dl4000', title: 'DL4000', subtitle: 'HIGH CHANNEL LOGGER', category: 'data_logger', image: '/templates/hs-tech/images/products/dl4000_v1.jpg', gallery: [], desc: 'High-density data logger for large-scale continuous monitoring systems.', specs: [{ label: 'Channels', value: 'High density (up to 32+)' }, { label: 'Application', value: 'Industrial CMS, Large facilities' }, { label: 'Communication', value: 'LAN, RS-485, Modbus' }] },
-        { id: 'dl1700', title: 'DL1700', subtitle: 'COMPACT DATA LOGGER', category: 'data_logger', image: '/templates/hs-tech/images/products/dl1700_v1.jpg', gallery: [], desc: 'Compact data logger for small to medium scale environmental monitoring.', specs: [{ label: 'Size', value: 'Compact DIN rail' }, { label: 'Application', value: 'Pharmaceutical, Food storage' }, { label: 'Communication', value: 'LAN, USB' }] },
-        { id: 'dl1000_1400', title: 'DL1000/1400', subtitle: 'NETWORK LOGGER SERIES', category: 'network_logger', image: '/templates/hs-tech/images/products/dl1000_v1.jpg', gallery: [], desc: 'Network-enabled data loggers for distributed monitoring across facilities.', specs: [{ label: 'Network', value: 'LAN / PoE' }, { label: 'Application', value: 'Distributed monitoring, GxP' }, { label: 'Certification', value: '21 CFR Part 11 compliant' }] },
-        { id: 'dl1016_1416', title: 'DL1016/1416', subtitle: 'MULTI-INPUT LOGGER', category: 'network_logger', image: '/templates/hs-tech/images/products/dl1016_v1.jpg', gallery: [], desc: 'Multi-input network logger supporting various sensor types for comprehensive monitoring.', specs: [{ label: 'Inputs', value: 'Up to 16 channels' }, { label: 'Sensors', value: 'T, RH, Pressure, CO2 compatible' }, { label: 'Network', value: 'LAN, Modbus TCP' }] },
-        { id: 'vnet_wireless', title: 'Wireless vNET', subtitle: 'WIRELESS LOGGER NETWORK', category: 'network_logger', image: '', gallery: [], desc: 'Wireless monitoring network for flexible deployment in areas where cabling is impractical.', specs: [{ label: 'Wireless', value: 'IEEE 802.15.4 (mesh)' }, { label: 'Application', value: 'Retrofits, Temporary monitoring' }, { label: 'Battery', value: 'Long-life battery option' }] },
-        { id: 'poe_logger', title: 'POE Logger', subtitle: 'POWER OVER ETHERNET', category: 'network_logger', image: '/templates/hs-tech/images/products/poe_logger_v1.jpg', gallery: [], desc: 'Data logger powered and connected via a single Ethernet cable using Power over Ethernet.', specs: [{ label: 'Power', value: 'IEEE 802.3af PoE' }, { label: 'Application', value: 'Easy installation, No power outlet needed' }] },
-        { id: 'cms_sw', title: 'CMS Software', subtitle: 'MONITORING PLATFORM', category: 'cms_software', image: '/templates/hs-tech/images/products/cms_sw_v1.jpg', gallery: [], desc: 'Centralized software platform for real-time monitoring, alarm management, and compliance reporting.', specs: [{ label: 'Platform', value: 'Windows Server / Web browser' }, { label: 'Features', value: 'Real-time alarms, Reports, Audit trail' }, { label: 'Compliance', value: 'GMP/GxP, FDA 21 CFR Part 11' }] }
-    ],
-
-    // JUMO
-    jumo_liquid: [
         {
             id: 'tecline_hd_201021',
             title: 'JUMO tecLine HD',
@@ -2346,7 +2330,7 @@ Only Setra can claim ownership to the stainless steel capacitive design used in 
             id: 'cti_500_202755',
             title: 'JUMO CTI-500',
             subtitle: 'INDUCTIVE CONDUCTIVITY/CONCENTRATION TRANSMITTER (202755)',
-            category: 'conductivity_transmitter',
+            category: 'conductivity',
             image: '/templates/hs-tech/images/products/JUMO CTI-500  Inductive Conductivity:Concentration and Temperature Transmitter with Switching Contacts (202755).jpg',
             gallery: ['/templates/hs-tech/images/products/JUMO CTI-500  Inductive Conductivity:Concentration and Temperature Transmitter with Switching Contacts (202755).jpg'],
             desc: 'Inductive conductivity transmitter with up to four measuring ranges and temperature coefficients. Features fast-response temperature sensor and desalination control.',
@@ -2365,7 +2349,7 @@ Only Setra can claim ownership to the stainless steel capacitive design used in 
             id: 'aquis_500_cr_202565',
             title: 'JUMO AQUIS 500 CR',
             subtitle: 'TRANSMITTER / CONTROLLER (202565)',
-            category: 'conductivity_transmitter',
+            category: 'conductivity',
             image: '/templates/hs-tech/images/products/JUMO AQUIS 500 CR  transmitter : controller for conductivity, TDS, resistivity and temperature (202565)  .jpg',
             gallery: ['/templates/hs-tech/images/products/JUMO AQUIS 500 CR  transmitter : controller for conductivity, TDS, resistivity and temperature (202565)  .jpg'],
             desc: 'Versatile conductivity transmitter with direct changeover between conductivity, resistivity, TDS, and customer-specific table measurements. Features pollution detection and auto-range operation.',
@@ -2384,7 +2368,7 @@ Only Setra can claim ownership to the stainless steel capacitive design used in 
             id: 'cti_750_202756',
             title: 'JUMO CTI-750',
             subtitle: 'INDUCTIVE CONDUCTIVITY/CONCENTRATION TRANSMITTER (202756)',
-            category: 'conductivity_transmitter',
+            category: 'conductivity',
             image: '/templates/hs-tech/images/products/JUMO CTI-750   Inductive Conductivity:Concentration and Temperature Transmitter with Switching Contacts (202756)  .jpg',
             gallery: ['/templates/hs-tech/images/products/JUMO CTI-750   Inductive Conductivity:Concentration and Temperature Transmitter with Switching Contacts (202756)  .jpg'],
             desc: 'Advanced inductive conductivity transmitter with concentration measurement capability. Features learning function for temperature coefficient and individual concentration characteristic.',
@@ -2398,8 +2382,21 @@ Only Setra can claim ownership to the stainless steel capacitive design used in 
                 { label: 'Features', value: 'Learning function for temperature coefficient\nDesalination control\nPlant documentation' },
                 { label: 'Applications', value: 'Product separation (food/beverage)\nBottle cleaning plants\nConcentration measurement\nCIP plants\nWater/wastewater technology\nChemical dispensing' }
             ]
-        }
-    ]
+        },
+    ],
+
+    // CMS (Data Logger / Continuous Monitoring System)
+    cms: [
+        { id: 'dl2000', title: 'DL2000', subtitle: 'ADVANCED DATA LOGGER', category: 'data_logger', image: '/templates/hs-tech/images/products/dl2000_v1.jpg', gallery: [], desc: 'Advanced standalone data logger for multi-channel environmental monitoring with display.', specs: [{ label: 'Channels', value: 'Multi-channel inputs' }, { label: 'Display', value: 'Built-in LCD' }, { label: 'Application', value: 'Cleanrooms, Labs, Warehouses' }, { label: 'Communication', value: 'LAN, USB' }] },
+        { id: 'dl4000', title: 'DL4000', subtitle: 'HIGH CHANNEL LOGGER', category: 'data_logger', image: '/templates/hs-tech/images/products/dl4000_v1.jpg', gallery: [], desc: 'High-density data logger for large-scale continuous monitoring systems.', specs: [{ label: 'Channels', value: 'High density (up to 32+)' }, { label: 'Application', value: 'Industrial CMS, Large facilities' }, { label: 'Communication', value: 'LAN, RS-485, Modbus' }] },
+        { id: 'dl1700', title: 'DL1700', subtitle: 'COMPACT DATA LOGGER', category: 'data_logger', image: '/templates/hs-tech/images/products/dl1700_v1.jpg', gallery: [], desc: 'Compact data logger for small to medium scale environmental monitoring.', specs: [{ label: 'Size', value: 'Compact DIN rail' }, { label: 'Application', value: 'Pharmaceutical, Food storage' }, { label: 'Communication', value: 'LAN, USB' }] },
+        { id: 'dl1000_1400', title: 'DL1000/1400', subtitle: 'NETWORK LOGGER SERIES', category: 'network_logger', image: '/templates/hs-tech/images/products/dl1000_v1.jpg', gallery: [], desc: 'Network-enabled data loggers for distributed monitoring across facilities.', specs: [{ label: 'Network', value: 'LAN / PoE' }, { label: 'Application', value: 'Distributed monitoring, GxP' }, { label: 'Certification', value: '21 CFR Part 11 compliant' }] },
+        { id: 'dl1016_1416', title: 'DL1016/1416', subtitle: 'MULTI-INPUT LOGGER', category: 'network_logger', image: '/templates/hs-tech/images/products/dl1016_v1.jpg', gallery: [], desc: 'Multi-input network logger supporting various sensor types for comprehensive monitoring.', specs: [{ label: 'Inputs', value: 'Up to 16 channels' }, { label: 'Sensors', value: 'T, RH, Pressure, CO2 compatible' }, { label: 'Network', value: 'LAN, Modbus TCP' }] },
+        { id: 'vnet_wireless', title: 'Wireless vNET', subtitle: 'WIRELESS LOGGER NETWORK', category: 'network_logger', image: '', gallery: [], desc: 'Wireless monitoring network for flexible deployment in areas where cabling is impractical.', specs: [{ label: 'Wireless', value: 'IEEE 802.15.4 (mesh)' }, { label: 'Application', value: 'Retrofits, Temporary monitoring' }, { label: 'Battery', value: 'Long-life battery option' }] },
+        { id: 'poe_logger', title: 'POE Logger', subtitle: 'POWER OVER ETHERNET', category: 'network_logger', image: '/templates/hs-tech/images/products/poe_logger_v1.jpg', gallery: [], desc: 'Data logger powered and connected via a single Ethernet cable using Power over Ethernet.', specs: [{ label: 'Power', value: 'IEEE 802.3af PoE' }, { label: 'Application', value: 'Easy installation, No power outlet needed' }] },
+        { id: 'cms_sw', title: 'CMS Software', subtitle: 'MONITORING PLATFORM', category: 'cms_software', image: '/templates/hs-tech/images/products/cms_sw_v1.jpg', gallery: [], desc: 'Centralized software platform for real-time monitoring, alarm management, and compliance reporting.', specs: [{ label: 'Platform', value: 'Windows Server / Web browser' }, { label: 'Features', value: 'Real-time alarms, Reports, Audit trail' }, { label: 'Compliance', value: 'GMP/GxP, FDA 21 CFR Part 11' }] }
+    ],
+
 }
 
 // VAISALA Applications & Solutions Detail Data
