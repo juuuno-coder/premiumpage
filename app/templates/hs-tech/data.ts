@@ -1853,8 +1853,8 @@ Output: RH+T+Td/f+h+Tw`,
             title: 'MHT410',
             subtitle: 'MOISTURE, HYDROGEN AND TEMPERATURE TRANSMITTER FOR TRANSFORMER OIL',
             category: 'transformer',
-            image: '/templates/hs-tech/images/products/deffa2b1b398f.jpg',
-            gallery: ['/templates/hs-tech/images/products/deffa2b1b398f.jpg'],
+            image: '/hstech/images/MHT410.png',
+            gallery: ['/hstech/images/MHT410.png'],
             desc: `The Vaisala Moisture, Hydrogen and Temperature Transmitter MHT410 for Transformer Oil measures directly from representative transformer oil giving both reliable hydrogen trend as well as fast moisture data.`,
             specs: [
                 {
@@ -1872,8 +1872,8 @@ Output: RH+T+Td/f+h+Tw`,
             title: 'MMT330',
             subtitle: 'OIL MOISTURE TRANSMITTER FOR DIVERSE APPLICATIONS',
             category: 'fixed',
-            image: '/templates/hs-tech/images/products/5980bfb1851a8.png',
-            gallery: ['/templates/hs-tech/images/products/5980bfb1851a8.png'],
+            image: '/hstech/images/MMT330.png',
+            gallery: ['/hstech/images/MMT330.png'],
             desc: `For Diverse Applications and Demanding Conditions. With a wide variety of probes, the transmitter can be used in lubrication systems, hydraulic systems and transformers.`,
             specs: [
                 {
@@ -1905,8 +1905,8 @@ Output: RH+T+Td/f+h+Tw`,
             title: 'MMT310',
             subtitle: 'TRANSMITTER FOR LUBRICATION SYSTEMS, HYDRAULIC SYSTEMS AND TRANSFORMERS',
             category: 'fixed',
-            image: '/templates/hs-tech/images/products/3ca83569b6d00.jpg',
-            gallery: ['/templates/hs-tech/images/products/3ca83569b6d00.jpg'],
+            image: '/hstech/images/MMT310.png',
+            gallery: ['/hstech/images/MMT310.png'],
             desc: `Transmitter for lubrication systems, hydraulic systems and transformers`,
             specs: [
                 {
@@ -1931,23 +1931,23 @@ Output: RH+T+Td/f+h+Tw`,
             title: 'MM70',
             subtitle: 'HANDHELD OIL MOISTURE METER',
             category: 'handheld',
-            image: '/templates/hs-tech/images/products/a39c6508f2ff2.png',
-            gallery: ['/templates/hs-tech/images/products/a39c6508f2ff2.png'],
+            image: '/hstech/images/MM70.png',
+            gallery: ['/hstech/images/MM70.png', '/hstech/images/MM70_2.png'],
             desc: `±0.02Aw ultra-precision moisture sensor is suitable for inline process check and field calibration and is compatible with module type sensors`,
             specs: [
                 {
-                    model: 'MI70 Indicator',
+                    model: 'MI70\nIndicator',
                     application: 'LCD display+buttons',
-                    typicalApplication: 'Operating temperature: -10…+40℃\nLCD with Back light\nData logging capacity (2,700 points)\nAudible alarm function\n\nLINK software with USB cable (Option)',
+                    typicalApplication: '',
                     measurementRange: '',
-                    spec: ''
+                    spec: 'Operating temperature: -10…+40℃\nLCD with Back light\nData logging capacity (2,700 points)\nAudible alarm fuction\n\nLINK software with USB cable (Option)'
                 },
                 {
-                    model: 'MM70 Probe',
+                    model: 'MM70\nProbe',
                     application: 'In-line type',
-                    typicalApplication: '• Moisture in Oil Sensor\n• in-line process checking through ball valve\n• Aw measurement, ppm calculation',
-                    measurementRange: 'Measurement range (Accuracy):\n• Water Activity aw 0…1 (±0.02aw @0…0.9)\n• Temperature -40…+100℃ (±0.2℃ @ 20℃)',
-                    spec: ''
+                    typicalApplication: '',
+                    measurementRange: '',
+                    spec: 'Moisture in Oil Sensor\n\nin-line process checking through ball valve\n\nAw measurement, ppm calculation\n\nMeasurement range(Accuracy):\n- Water Activity aw 0…1(±0.02aw @0...0.9)\n- Temperature -40…+100℃(±0.2℃ @ 20℃)'
                 }
             ],
             datasheet: 'https://hs-tech-en.imweb.me/mm70'
@@ -1957,8 +1957,8 @@ Output: RH+T+Td/f+h+Tw`,
             title: 'MMT162',
             subtitle: 'ECONOMICAL OIL MOISTURE TRANSMITTER',
             category: 'oil_module',
-            image: '/templates/hs-tech/images/products/deffa2b1b398f.jpg',
-            gallery: ['/templates/hs-tech/images/products/deffa2b1b398f.jpg'],
+            image: '/hstech/images/MMT162.png',
+            gallery: ['/hstech/images/MMT162.png'],
             desc: `Installation Transmitter for lubrication systems, hydraulic systems and transformers. High performance, but relatively inexpensive because it's low-end`,
             specs: [
                 {
