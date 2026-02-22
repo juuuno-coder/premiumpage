@@ -131,9 +131,8 @@ export const SUB_CATEGORIES: Record<string, any[]> = {
             ]
         },
         {
-            id: 'module', title: 'Module/OEM', desc: 'DMT132, DMT143, DMT152, DMP1-8',
+            id: 'module', title: 'Module/OEM', desc: 'DMT132, DMT143, DMT152',
             items: [
-                { id: 'dmp1', label: 'DMP1-8' },
                 { id: 'dmt132', label: 'DMT132' },
                 { id: 'dmt152', label: 'DMT152' },
                 { id: 'dmt143', label: 'DMT143' },
@@ -1438,22 +1437,6 @@ Output: RH+T+Td+Tdf`,
         },
     ],
     dewpoint: [
-        {
-            id: 'dmp1', title: 'DMP1-8', subtitle: 'DEWPOINT PROBE SERIES', category: 'module',
-            image: '/templates/hs-tech/images/products/38af1f4961a7a.png',
-            gallery: ['/templates/hs-tech/images/products/38af1f4961a7a.png'],
-            desc: 'Intelligent Indigo-compatible dewpoint probes for compressed air, dryers, and process gas applications. The DRYCAP® sensor provides fast response and excellent stability.',
-            specs: [
-                { label: 'Measurement Range', value: '-60 ... +60 °Ctd (DMP1, DMP3, DMP5)\n-40 ... +60 °Ctd (DMP7, DMP8)' },
-                { label: 'Accuracy', value: '±2 °Ctd (@ 20 °Ctd)\n±3 °Ctd (@ -60 °Ctd)' },
-                { label: 'Sensor', value: 'Vaisala DRYCAP® 180' },
-                { label: 'Output', value: 'RS-485 Modbus RTU (Indigo compatible)' },
-                { label: 'Response time', value: '< 15 s (90% step change)' },
-                { label: 'Application', value: 'Compressed air, Industrial dryers\nCleanrooms, Process gas' },
-                { label: 'Protection', value: 'IP65' },
-            ],
-            datasheet: 'https://www.vaisala.com/sites/default/files/documents/DMP1-8-Datasheet-B211707EN.pdf'
-        },
         {
             id: 'dmt340', title: 'DMT340', subtitle: 'DEWPOINT TRANSMITTER', category: 'fixed',
             image: '/templates/hs-tech/images/products/DMT340.jpg',
