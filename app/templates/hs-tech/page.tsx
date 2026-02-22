@@ -1048,12 +1048,12 @@ function BrandPage({
     const appTitleToKey: Record<string, string> = {
         // VAISALA Applications & Solutions
         'Semiconductor': 'semiconductor',
-        'Plant & Process': 'plant',
+        'Plant': 'plant',
         'Automotive': 'automotive',
-        'Marine & Offshore': 'marine',
+        'Maritime': 'marine',
         'Agriculture': 'agriculture',
-        'Power Industry': 'power',
-        'HVAC & Buildings': 'hvac',
+        'Power': 'power',
+        'HVAC': 'hvac',
         'Life Science': 'lifescience',
         // SETRA Applications & Sensor
         'Precise Measurement Differential Pressure': 'precise_diff_pressure',
@@ -1397,16 +1397,11 @@ function HSTechContent() {
                     }))}
                     applicationSections={[{
                         label: 'Applications & Solutions',
-                        items: [
-                            { title: 'Semiconductor', desc: 'Precise humidity and dewpoint control in cleanrooms and lithography processes.' },
-                            { title: 'Plant & Process', desc: 'Reliable monitoring for industrial drying, coating, and chemical processes.' },
-                            { title: 'Automotive', desc: 'Environmental testing in paint booths, engine test cells, and EV battery production.' },
-                            { title: 'Marine & Offshore', desc: 'Weather observation and atmospheric measurement at sea.' },
-                            { title: 'Agriculture', desc: 'Crop storage humidity control and greenhouse climate management.' },
-                            { title: 'Power Industry', desc: 'Transformer oil moisture and hydrogen monitoring for grid asset protection.' },
-                            { title: 'HVAC & Buildings', desc: 'Indoor air quality and energy-efficient building automation.' },
-                            { title: 'Life Science', desc: 'Sterile environment monitoring, bio-decontamination, and incubator control.' },
-                        ]
+                        items: Object.entries(VAISALA_APPLICATIONS).map(([key, app]) => ({
+                            title: app.title,
+                            desc: app.shortDesc,
+                            image: app.image
+                        }))
                     }]}
                     onOpen={open}
                 />
