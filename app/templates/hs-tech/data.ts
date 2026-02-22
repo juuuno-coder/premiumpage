@@ -284,31 +284,7 @@ export const SUB_CATEGORIES: Record<string, any[]> = {
     ],
 
     // === CMS (Data Logger / Continuous Monitoring System) ===
-    cms: [
-        {
-            id: 'data_logger', title: 'Data Logger', desc: 'DL2000, DL4000, DL1700',
-            items: [
-                { id: 'dl2000', label: 'DL2000' },
-                { id: 'dl4000', label: 'DL4000' },
-                { id: 'dl1700', label: 'DL1700' }
-            ]
-        },
-        {
-            id: 'network_logger', title: 'Network Data Logger', desc: 'DL1000/1400, DL1016/1416, vNET',
-            items: [
-                { id: 'dl1000_1400', label: 'DL1000/1400' },
-                { id: 'dl1016_1416', label: 'DL1016/1416' },
-                { id: 'vnet_wireless', label: 'Wireless vNET' },
-                { id: 'poe_logger', label: 'POE' }
-            ]
-        },
-        {
-            id: 'cms_software', title: 'Monitoring Software', desc: 'CMS Software',
-            items: [
-                { id: 'cms_sw', label: 'CMS Software' }
-            ]
-        }
-    ],
+    cms: [],
 
     // === JUMO ===
     jumo_liquid: [
@@ -2773,14 +2749,223 @@ Only Setra can claim ownership to the stainless steel capacitive design used in 
 
     // CMS (Data Logger / Continuous Monitoring System)
     cms: [
-        { id: 'dl2000', title: 'DL2000', subtitle: 'ADVANCED DATA LOGGER', category: 'data_logger', image: '/hstech/images/ DL2000.png', gallery: [], desc: 'Advanced standalone data logger for multi-channel environmental monitoring with display.', specs: [{ label: 'Channels', value: 'Multi-channel inputs' }, { label: 'Display', value: 'Built-in LCD' }, { label: 'Application', value: 'Cleanrooms, Labs, Warehouses' }, { label: 'Communication', value: 'LAN, USB' }] },
-        { id: 'dl4000', title: 'DL4000', subtitle: 'HIGH CHANNEL LOGGER', category: 'data_logger', image: '/hstech/images/DL4000.png', gallery: [], desc: 'High-density data logger for large-scale continuous monitoring systems.', specs: [{ label: 'Channels', value: 'High density (up to 32+)' }, { label: 'Application', value: 'Industrial CMS, Large facilities' }, { label: 'Communication', value: 'LAN, RS-485, Modbus' }] },
-        { id: 'dl1700', title: 'DL1700', subtitle: 'COMPACT DATA LOGGER', category: 'data_logger', image: '/hstech/images/DL1700.png', gallery: [], desc: 'Compact data logger for small to medium scale environmental monitoring.', specs: [{ label: 'Size', value: 'Compact DIN rail' }, { label: 'Application', value: 'Pharmaceutical, Food storage' }, { label: 'Communication', value: 'LAN, USB' }] },
-        { id: 'dl1000_1400', title: 'DL1000/1400', subtitle: 'NETWORK LOGGER SERIES', category: 'network_logger', image: '/hstech/images/DL1000:1400.png', gallery: [], desc: 'Network-enabled data loggers for distributed monitoring across facilities.', specs: [{ label: 'Network', value: 'LAN / PoE' }, { label: 'Application', value: 'Distributed monitoring, GxP' }, { label: 'Certification', value: '21 CFR Part 11 compliant' }] },
-        { id: 'dl1016_1416', title: 'DL1016/1416', subtitle: 'MULTI-INPUT LOGGER', category: 'network_logger', image: '/hstech/images/DL1016:1416.png', gallery: [], desc: 'Multi-input network logger supporting various sensor types for comprehensive monitoring.', specs: [{ label: 'Inputs', value: 'Up to 16 channels' }, { label: 'Sensors', value: 'T, RH, Pressure, CO2 compatible' }, { label: 'Network', value: 'LAN, Modbus TCP' }] },
-        { id: 'vnet_wireless', title: 'Wireless vNET', subtitle: 'WIRELESS LOGGER NETWORK', category: 'network_logger', image: '', gallery: [], desc: 'Wireless monitoring network for flexible deployment in areas where cabling is impractical.', specs: [{ label: 'Wireless', value: 'IEEE 802.15.4 (mesh)' }, { label: 'Application', value: 'Retrofits, Temporary monitoring' }, { label: 'Battery', value: 'Long-life battery option' }] },
-        { id: 'poe_logger', title: 'POE Logger', subtitle: 'POWER OVER ETHERNET', category: 'network_logger', image: '/hstech/images/vNET POE.png', gallery: [], desc: 'Data logger powered and connected via a single Ethernet cable using Power over Ethernet.', specs: [{ label: 'Power', value: 'IEEE 802.3af PoE' }, { label: 'Application', value: 'Easy installation, No power outlet needed' }] },
-        { id: 'cms_sw', title: 'CMS Software', subtitle: 'MONITORING PLATFORM', category: 'cms_software', image: '/hstech/images/CMS.png', gallery: [], desc: 'Centralized software platform for real-time monitoring, alarm management, and compliance reporting.', specs: [{ label: 'Platform', value: 'Windows Server / Web browser' }, { label: 'Features', value: 'Real-time alarms, Reports, Audit trail' }, { label: 'Compliance', value: 'GMP/GxP, FDA 21 CFR Part 11' }] }
+        {
+            id: 'dl2000',
+            title: 'DL2000',
+            subtitle: 'RELATIVE HUMIDITY AND TEMPERATURE LOGGER',
+            image: '/hstech/images/DL2000.png',
+            gallery: ['/hstech/images/DL2000.png'],
+            desc: `VAISALA's 2000 series of data loggers are designed to provide high accuracy measurements for temperature, relative humidity and an analog sensor of your choice.`,
+            specs: [
+                {
+                    category: 'DL2000\n\nRH+T Logger',
+                    model: 'DL2000-20R',
+                    measuringQuantity: 'CH1: T\nCH2: RH',
+                    features: 'Recording span: 7.1months\n(Sample interval: 5 min)',
+                    application: '▪ Clean Room\n▪ Pharmaceutical Room\n▪ Laboratory\n▪ Food & beverage QC\n▪ Cosmetics factory',
+                    spec: '- Measurement range:\n    RH 10~80%RH ± 1%RH\n    Temp -25~70℃ ± 0.1℃\n\n- Interval: 10S~24H\n- Bettery Expiration Date:\n  Maximum of 10Year\n- Channel: 2~4CH\n- Memory: 122,197-12Bit Samples\n- Interface: Available RS232, USB, WIFI, Ethernet\n- Records which meet the requirements of 21 CFR Part 11 and Annex11 can be provided.'
+                },
+                {
+                    category: '',
+                    model: 'DL2000-3CR',
+                    measuringQuantity: 'CH1: T\nCH2: RH\nCH3: 4…20mA',
+                    features: 'Recording span: 4.7months\n(Sample interval: 5 min)',
+                    application: '',
+                    spec: ''
+                },
+                {
+                    category: '',
+                    model: 'DL2000-35R',
+                    measuringQuantity: 'CH1: T\nCH2: RH\nCH3:: 0…5VDC',
+                    features: 'Recording span: 4.7months\n(Sample interval: 5 min)',
+                    application: '',
+                    spec: ''
+                },
+                {
+                    category: '',
+                    model: 'DL2000-3AR',
+                    measuringQuantity: 'CH1: T\nCH2: RH\nCH3: 0…10VDC',
+                    features: 'Recording span: 4.7months\n(Sample interval: 5 min)',
+                    application: '',
+                    spec: ''
+                },
+                {
+                    category: '',
+                    model: 'DL2000-4BR',
+                    measuringQuantity: 'CH1: T\nCH2: RH\nCH3: Boolean\nCH4: Boolean',
+                    features: 'Recording span: 3.5months\n(Sample interval: 5 min)',
+                    application: '',
+                    spec: ''
+                }
+            ],
+            datasheet: 'https://hs-tech-en.imweb.me/159'
+        },
+        {
+            id: 'dl1000_1400',
+            title: 'DL1000/1400',
+            subtitle: 'TEMPERATURE DATA LOGGER',
+            image: '/hstech/images/DL1000:1400.png',
+            gallery: ['/hstech/images/DL1000:1400.png', '/hstech/images/DL1000:1400_2.png'],
+            desc: `The 1000/1400 temperature data loggers include the VL series for regulated environments and the SP seriers for non FDA/GxP regulated industries.`,
+            specs: [
+                {
+                    category: 'DL1000-1400\n\nTemperature\n\nLogger',
+                    model: 'VL1000-2XX',
+                    features: '-Sample capacity: 48,100 12-bit samples\n -up to 2 external sensors\n - Recording span(CH2): 2.7months\n   (Sample interval: 5 min)\n- SP model for non GxP application is available.',
+                    application: '▪ Refrigerators and freezers\n▪ Incubators\n▪ Stability Chambers\n▪ Warehouses\n▪ Ambient conditions',
+                    spec: '- Temperature Range\n   1) Internal Sensor: -25…70℃\n   2) External Probes\n     "N" type -25...70℃\n     "V" type -95...-40℃\n- Probe Cable Length:  3M, 7.6M\n- Interval: 10S~24H\n- Bettery Expiration Date: Maximum of    10Year\n- Interface: Available RS232, USB, \n\n  WIFI, Ethernet'
+                },
+                {
+                    category: '',
+                    model: 'VL1400-44X',
+                    features: ' -Sample capacity: 85,300 12-bit samples\n -up to 4 external sensors\n - Recording span(CH4): 2.4months\n   (Sample interval: 5 min)\n- SP model for non GxP application is available.',
+                    application: '',
+                    spec: ''
+                }
+            ],
+            datasheet: 'https://hs-tech-en.imweb.me/160'
+        },
+        {
+            id: 'dl1016_1416',
+            title: 'DL1016/1416',
+            subtitle: 'MULTI-APPLICATION TEMPERATURE DATA LOGGER',
+            image: '/hstech/images/DL1016:1416.png',
+            gallery: ['/hstech/images/DL1016:1416.png'],
+            desc: `VAISALA's multi-application temperature data loggers monitor temperatures in up to four applications with one logger-ultra-low temperature freezers, freezer/refrigerators and incubators`,
+            specs: [
+                {
+                    category: 'DL1016-1416\n\nTemperature Logger',
+                    model: 'VL1016-22V',
+                    features: ' -Sample capacity: 68,600 16-bit samples\n -up to 2 external sensors\n - Recording span(CH2): 3.8months\n   (Sample interval: 5 min)\n- SP model for non GxP application is available.',
+                    application: '▪ Refrigerators and freezers\n▪ Incubators\n▪ Stability Chambers\n▪ Warehouses\n▪ Ambient conditions',
+                    spec: '- Temperature Range\n     "V" type -95...-50℃\n- Probe Cable Length:  3M, 7.6M\n- Interval: 10S~24H\n- Bettery Expiration Date: Maximum of 10Year\n- Interface: Available RS232, USB, WIFI, Ethernet'
+                },
+                {
+                    category: '',
+                    model: 'VL1016-44V',
+                    features: ' -Sample capacity: 101,375 16-bit samples\n -up to 4 external sensors\n - Recording span(CH4): 2.8months\n   (Sample interval: 5 min)\n- SP model for non GxP application is available.',
+                    application: '',
+                    spec: ''
+                }
+            ],
+            datasheet: 'https://hs-tech-en.imweb.me/161'
+        },
+        {
+            id: 'dl4000',
+            title: 'DL4000',
+            subtitle: 'INPUT DATA LOGGER',
+            image: '/hstech/images/DL4000.png',
+            gallery: ['/hstech/images/DL4000.png'],
+            desc: `DL4000 series of data loggers are designed to interface with a wide range of transducers, transmitters and sensors with a DC voltage or 0-20 mA current loop output.`,
+            specs: [
+                {
+                    category: 'DL4000\n\nUniversal Input Data Logger',
+                    model: '4000-405',
+                    channelType: '0…5VDC',
+                    features: '- Channel: 1~4CH\n- Sample capacity: 120,000-12bit samples\n- Easily set scaling and measurement units for recording\n- SP model for non GxP application is available.',
+                    application: '▪ Clean Room\n▪ Pharmaceutical Room\n▪ Laboratory\n▪ Food & beverage QC\n▪ Cosmetics factory',
+                    spec: '- Interval: 10S~24H\n- Bettery Expiration Date: Maximum of 10Year\n- Interface: Available RS232, USB, WIFI, Ethernet\n- Optional vNet cradle for Ethernet or Power over Ethernet connectivity'
+                },
+                {
+                    category: '',
+                    model: '4000-40A',
+                    channelType: '0…10VDC',
+                    features: '',
+                    application: '',
+                    spec: ''
+                },
+                {
+                    category: '',
+                    model: '4000-40C',
+                    channelType: '0…20mA',
+                    features: '',
+                    application: '',
+                    spec: ''
+                }
+            ],
+            datasheet: 'https://hs-tech-en.imweb.me/162'
+        },
+        {
+            id: 'dl1700',
+            title: 'DL1700',
+            subtitle: 'THERMOCOUPLE DATA LOGGER',
+            image: '/hstech/images/DL1700.png',
+            gallery: ['/hstech/images/DL1700.png'],
+            desc: `■  Suitable for cold and high temperature environments from -240 to 1760°C\n\n■  Available for J, K, T, E, R, and S-type thermocouple`,
+            specs: [
+                {
+                    category: 'DL1700\n\nThermocouple\nData Logger',
+                    model: 'DL1700',
+                    features: '- Channel: 1~5CH\n  (Thermocouple 4CH + CJT 1CH)\n- Sample capacity: 135,165-12bit samples\n- SP model for non GxP application is available.\n- Applicable Thermocouple type\n Type K: Temp -200~+1370℃ ± 1.3℃\n Type J: Temp -130~+900℃ ± 1.0℃\n Type T: Temp -240~+350℃ ± 1.2℃\n Type E: Temp -110~+740℃ ± 0.7℃\n Type R: Temp -50~+1760℃ ± 4.4℃\n Type S: Temp -50~+1700℃ ± 5.1℃',
+                    application: '▪ Liquid nitrogen\n▪ Oven\n▪ Sterilization Chamber',
+                    spec: '- Interval: 10S~24H\n- Bettery Expiration Date: Maximum of 10Year\n- Interface: Available rs232, USB, WIFI, Ethernet'
+                }
+            ],
+            datasheet: 'https://hs-tech-en.imweb.me/163'
+        },
+        {
+            id: 'wireless',
+            title: 'Wireless',
+            subtitle: 'WIRELESS DATA LOGGER',
+            image: '/hstech/images/Wireless.png',
+            gallery: ['/hstech/images/Wireless.png', '/hstech/images/Wireless_2.png'],
+            desc: `Wireless data logger with temperature and humidity and two-channel analog input enables the sensor to be replaced and easy to install.\n\n■ LoRa communication, battery life of 18 months\n\n■ Replacement-type humidity and temperature sensor`,
+            specs: [
+                {
+                    category: 'Wi-Fi Data logger',
+                    model: 'HMT140',
+                    spec: ' - Measurement range(Accuracy):\n     RH 0~100%RH, ±1.5%RH\n     Temp -40...+80℃, ±0.2℃\n - Bettery Expiration Date: Maximum of 18-Month\n - Channel: 2CH\n - Memory: 3060 Samples\n - Interface: WIFI\n - Interchangable probe\n - Probe Cable Length: Fixed Probe, 3, 5, 10M\n - IP65',
+                    application: '▪ Clean Room\n▪ Pharmaceutical Room\n▪ Laboratory\n▪ Food & beverage QC\n▪ Cosmetics factory\n▪ Warehouse\n▪ Production areas'
+                },
+                {
+                    category: 'RH+T Probe',
+                    model: 'HMP110',
+                    spec: ' - Measurement range(Accuracy):\n   RH 0...100%, ±3%RH\n   Temp -40...+60℃, ±0.5℃\n - HUMICAP SENSOR\n - Max. Probe Cable Length: 10M\n - IP65',
+                    application: ''
+                },
+                {
+                    category: 'RH+T Data Logger',
+                    model: 'RFL100',
+                    spec: ' - Can be used for cold storage area(down to -196℃)\n - Detachable high-accuracy RH+T Probes\n    HMP115 / RH+T / T -40…+60℃ / IP54\n    HMP115T / T only / T -40…+60℃ / IP54\n    HMP110 / RH+T / T -40…+80℃ / IP65\n    HMP110T / T only / T -40…+80℃ / IP65\n    TMP115 / T only / T -196...+90℃ / IP65\n - 30-day First In First Out(FIFO) memory buffer\n - Operation time(@ 20℃): 18 Months\n - Uses standard alkaline batteries\n - Optional magnetic mounting bracket(up to 10kg)',
+                    application: ''
+                },
+                {
+                    category: 'Vainet Wireless Access Point',
+                    model: 'AP10',
+                    spec: ' - 1 Unit of AP10 supports 32 VaiNet data loggers\n - Powered by Power over Ethernet(PoE) or DC adapter\n - Uses HTTPS communication and encryption to ensure secure data transmission\n - Wireless\n    Modulation: LoRa chirp spread spectrum\n    Output power: 14dBm(25mW)\n    Typical range(indoors): At least 100m',
+                    application: ''
+                }
+            ],
+            datasheet: 'https://hs-tech-en.imweb.me/164'
+        },
+        {
+            id: 'vnet_poe',
+            title: 'vNET POE',
+            subtitle: 'POWER OVER ETHERNET DATA LOGGER',
+            image: '/hstech/images/vNET POE.png',
+            gallery: ['/hstech/images/vNET POE.png'],
+            desc: `Data logger powered and connected via a single Ethernet cable using Power over Ethernet.`,
+            specs: [],
+            datasheet: 'https://hs-tech-en.imweb.me/165'
+        },
+        {
+            id: 'viewlinc',
+            title: 'viewLinc Software',
+            subtitle: 'CONTINUOUS MONITORING SYSTEM',
+            image: '/hstech/images/viewLinc Software.jpg',
+            gallery: ['/hstech/images/viewLinc Software.jpg'],
+            desc: `VAISALA viewLinc Enterprise Server allows you to network several types of VAISALA data loggers using a combination of wired and wireless connections. It supports small installations of one or two measurement points or large systems that monitor thousands of locations.`,
+            specs: [
+                {
+                    category: 'SOFTWARE',
+                    model: 'viewLinc5.0',
+                    description: ' - Continuous Monitering System(Manage Program)\n\n - License Key\n ▪ Small Version: 4Device or less\n ▪ Medium Version:\n   100Device or less\n ▪ Large Version:\n   Unlimited Device',
+                    feature: '▪ Clean Room\n▪ Pharmaceutical Room\n▪ Laboratory\n▪ Food & Beverage QC\n▪ Cosmetics factory',
+                    function: ' - Real-time monitoring of distributed sensors\n - Configurable multi-stage alarming with email, SMS\n   and on-screen notification\n - Graphical dashboards and trend analysis\n - Automated report scheduling with email delivery\n   Fully journaled audit trail\n - Active directory user logon integration\n - Creation Validation Document'
+                }
+            ],
+            datasheet: 'https://hs-tech-en.imweb.me/166'
+        }
     ],
 
 }
