@@ -321,12 +321,12 @@ export const DB: Record<string, any[]> = {
     humidity: [
         {
             id: 'hmp1_9',
-            title: 'HMP1 / 3 / 4 / 5 / 7 / 8 / 9',
+            title: 'HMP1-9',
             subtitle: 'INDIGO-COMPATIBLE SMART PROBES + TRANSMITTERS',
             category: 'probe',
-            image: '/hstech/images/HMP1 : 3 : 4 : 5 : 7 : 8 : 9   + (option) Indigo500 : 200 Transmitter2.png',
+            image: '/hstech/images/HMP1-9.jpg',
             gallery: [
-                "/hstech/images/HMP1 : 3 : 4 : 5 : 7 : 8 : 9   + (option) Indigo500 : 200 Transmitter2.png"
+                "/hstech/images/HMP1-9.jpg"
             ],
             desc: `The HMP1/3/4/5/7/8/9 are part of the Indigo product family and compatible with Indigo 500 / 200 Series Host Devices and free Insight PC Software.
 
@@ -478,11 +478,11 @@ Premium humidity and temperature probe for meteorological applications with weat
         },
         {
             id: 'hmp60',
-            title: 'HMP60 / HMP63 / HMP110 / HMP113',
+            title: 'HMP60/63/110/113',
             subtitle: 'COMPACT HUMIDITY AND TEMPERATURE PROBES',
             category: 'probe',
-            image: '/hstech/images/ Combined Transmitter .jpg',
-            gallery: ["/hstech/images/ Combined Transmitter .jpg"],
+            image: '/hstech/images/HMP60:63:110:113.jpg',
+            gallery: ["/hstech/images/HMP60:63:110:113.jpg"],
             desc: `Temperature and humidity probes applicable to chambers, glove boxes, and other equipment.
 
 ■ PRODUCT
