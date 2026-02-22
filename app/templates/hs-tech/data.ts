@@ -50,7 +50,7 @@ export const CATEGORY_INFO: Record<string, any> = {
     dewpoint: { title: "Dewpoint", desc: "Reliable dewpoint measurement.", images: [] },
     co2: { title: "Carbon Dioxide", desc: "Accurate CO2 monitoring.", images: [] },
     oil: { title: "Moisture in Oil", desc: "Transformer oil monitoring.", images: [] },
-    barometer: { title: "Barometric Pressure", desc: "Digital barometers.", images: [] },
+    barometer: { title: "PRESSURE", desc: "Barometric and Differential Pressure Measurement.", images: [] },
     weather: { title: "Weather", desc: "Meteorological sensors.", images: [] },
     h2o2: { title: "H2O2", desc: "Bio-decontamination monitoring.", images: [] },
 
@@ -203,12 +203,30 @@ export const SUB_CATEGORIES: Record<string, any[]> = {
     ],
     barometer: [
         {
-            id: 'barometer', title: 'Digital Barometer', desc: 'PTB series',
+            id: 'combined', title: 'Combined Transmitter', desc: 'PTU300',
+            items: [
+                { id: 'ptu300', label: 'PTU300' }
+            ]
+        },
+        {
+            id: 'barometer', title: 'Barometer', desc: 'PTB330, PTB210, PTB110',
             items: [
                 { id: 'ptb330', label: 'PTB330' },
                 { id: 'ptb210', label: 'PTB210' },
-                { id: 'ptb110', label: 'PTB110' },
-                { id: 'ptu300', label: 'PTU300 (Combined)' }
+                { id: 'ptb110', label: 'PTB110' }
+            ]
+        },
+        {
+            id: 'differential', title: 'Differential Pressure Transmitter', desc: 'PDT102, PDT101',
+            items: [
+                { id: 'pdt102', label: 'PDT102' },
+                { id: 'pdt101', label: 'PDT101' }
+            ]
+        },
+        {
+            id: 'transfer_standard', title: 'Barometric Pressure Transfer Standard', desc: 'PTB330TS',
+            items: [
+                { id: 'ptb330ts', label: 'PTB330TS' }
             ]
         }
     ],
@@ -1964,63 +1982,145 @@ Output: RH+T+Td/f+h+Tw`,
     ],
     barometer: [
         {
-            id: 'ptb330', title: 'PTB330', subtitle: 'CLASS A DIGITAL BAROMETER', category: 'barometer',
-            image: '/templates/hs-tech/images/products/3ca83569b6d00.jpg',
-            gallery: ['/templates/hs-tech/images/products/3ca83569b6d00.jpg', '/templates/hs-tech/images/products/2ddb0a75a50e4.jpg'],
-            desc: 'Reference-level Class A digital barometer for meteorology, aviation, and research. Dual-sensor design provides redundancy and highest accuracy.',
+            id: 'ptu300',
+            title: 'PTU300',
+            subtitle: 'COMBINED PRESSURE, HUMIDITY AND TEMPERATURE TRANSMITTER',
+            category: 'combined',
+            image: '/hstech/images/PTU300.png',
+            gallery: ['/hstech/images/PTU300.png', '/hstech/images/PTU300_2.jpg'],
+            desc: `VAISALA combined pressure, humidity and temperature transmitter PTU300 is a unique instrument measuring three parameters simultaneously.`,
             specs: [
-                { label: 'Accuracy Class', value: 'A (±0.3 hPa @ +20 °C, ref to WMO)' },
-                { label: 'Pressure Range', value: '500 ... 1100 hPa' },
-                { label: 'Stability', value: '< 0.1 hPa/year' },
-                { label: 'Output', value: 'RS-232, RS-485, 4...20 mA, 0...5 V' },
-                { label: 'Display', value: 'Graphical LCD (optional)' },
-                { label: 'Application', value: 'Meteorological networks\nAviation (METAR), Research' },
-                { label: 'Calibration', value: 'NIST-traceable, ISO/IEC 17025' },
+                {
+                    model: 'PTU300',
+                    application: '• Laboratories\n• Engine rooms\n• PTU301 for wall mounting\n• PTU303 for outdoor use\n• PTU307 warmed probe for outdoor and demanding meteorology\n• PTU30T for pressure and temperature only measurement\n• HMT330MIK Meteorlogical Installation Kit for meteorological purpose',
+                    typicalApplication: 'Barometric Pressure\nPressure range 500 … 1100 hPa, 50 … 1100 hPa\nPressure units hPa, mbar, kPa, Pa, inHg, mmH20, mmHg, torr, psia\n\nRelative Humidity\nMeasurement range 0 … 100 %RH\n\nTemperature\nMeasurement range, probes\nPTU301: -40 … +60 °C\nPTU303: -40 … +80 °C\nPTU307: -40 … +180 °C\nPTU30T: -70 … +180 °C',
+                    measurementRange: '',
+                    spec: 'Barometric Pressure Accuracy\nTotal accuracy ( -40 … +60 °C )\n±0.15 hPa ( 500 … 1100 hPa )\n±0.25 hPa ( 500 … 1100 hPa )\n±0.45 hPa ( 50 … 1100 hPa )\n\nRelative Humidity Accuracy\n(At +15 … +25 °C)\n±1 %RH (0 … 90 %RH)\n±1.7 %RH (90 … 100 %RH)\n\nTemperature Accuracy\n(Accuracy at +20 °C)\nPTU301, PTU303, PTU307: ±0.2 °C\nPTU30T: ±0.1 °C (±0.18 °F)\n\nAnalog Outputs (Optional)\nCurrent output 0 … 20 mA, 4 … 20 mA\nVoltage output 0 … 1 V, 0 … 5 V, 0 … 10 V\n\nEthernet Interface (Optional)\nProtocols Telnet, Modbus TCP/IP'
+                }
             ],
-            datasheet: 'https://www.vaisala.com/sites/default/files/documents/PTB330-Datasheet-B210982EN.pdf'
+            datasheet: 'https://hs-tech-en.imweb.me/151'
         },
         {
-            id: 'ptb210', title: 'PTB210', subtitle: 'CLASS B DIGITAL BAROMETER', category: 'barometer',
-            image: '/templates/hs-tech/images/products/2e8820b69ea2b.jpg',
-            gallery: ['/templates/hs-tech/images/products/2e8820b69ea2b.jpg'],
-            desc: 'Industrial-grade Class B digital barometer for HVAC, weather stations, and environmental monitoring.',
+            id: 'ptb330',
+            title: 'PTB330',
+            subtitle: 'DIGITAL BAROMETER',
+            category: 'barometer',
+            image: '/hstech/images/PTB330.png',
+            gallery: ['/hstech/images/PTB330.png', '/hstech/images/PTB330_2.jpg'],
+            desc: `VAISALA combined pressure, humidity and temperature transmitter PTU300 is a unique instrument measuring three parameters simultaneously.`,
             specs: [
-                { label: 'Accuracy Class', value: 'B (±0.5 hPa @ +20 °C)' },
-                { label: 'Pressure Range', value: '600 ... 1100 hPa' },
-                { label: 'Output', value: 'RS-232, 4...20 mA, 0...5 V' },
-                { label: 'Application', value: 'Weather stations, HVAC\nIndustrial environmental monitoring' },
+                {
+                    model: 'PTB330',
+                    application: '• Vaisala BAROCAP® sensor\n• Accurate measurement\n• Excellent long-term stability\n• Added reliability through redundancy\n• Graphical trend display with 1-year history data\n• Altitude corrected pressure (QFE, QNH)',
+                    typicalApplication: 'Barometric Pressure Range\n: 500 ... 1100 hPa / 50 ... 1100 hPa',
+                    measurementRange: '',
+                    spec: 'Barometric Pressure Accuracy\nTotal Accuracy ( -40 ... +60 °C )\n500 ... 1100 hPa : ±0.15 hPa (Class A), ±0.25 hPa (Class B)\n50 ... 1100 hPa : ±0.45 hPa (Class B)\n\nLong-term Stability\n500 ... 1100 hPa ±0.1 hPa/year\n50 ... 1100 hPa ±0.1 hPa/year\n\nOperating Environment\nOperating temperature : -40 ... +60 °C\nOperating temperature with local display : 0 ... +60 °C'
+                }
             ],
-            datasheet: 'https://www.vaisala.com/sites/default/files/documents/PTB210-Datasheet-B210981EN.pdf'
+            datasheet: 'https://hs-tech-en.imweb.me/152'
         },
         {
-            id: 'ptb110', title: 'PTB110', subtitle: 'BAROMETRIC PRESSURE TRANSMITTER', category: 'barometer',
-            image: '/templates/hs-tech/images/products/b2209059580dc.jpg',
-            gallery: ['/templates/hs-tech/images/products/b2209059580dc.jpg'],
-            desc: 'Compact barometric pressure transmitter with analog output for building automation and HVAC systems.',
+            id: 'ptb210',
+            title: 'PTB210',
+            subtitle: 'BAROCAP® DIGITAL BAROMETER',
+            category: 'barometer',
+            image: '/hstech/images/ PTB210.png',
+            gallery: ['/hstech/images/ PTB210.png', '/hstech/images/PTB210_2.jpg'],
+            desc: `VAISALA BAROCAP® Digital Barometer PTB210 is a reliable outdoor barometer for harsh conditions.`,
             specs: [
-                { label: 'Pressure Range', value: '600 ... 1100 hPa' },
-                { label: 'Accuracy', value: '±0.5 hPa' },
-                { label: 'Output', value: '0...1 V, 0...5 V, 0...10 V, 4...20 mA' },
-                { label: 'Application', value: 'Building automation, HVAC\nAltitude compensation' },
-                { label: 'Protection', value: 'IP65' },
+                {
+                    model: 'PTB210',
+                    application: '• Serial output for 500 … 1100 hPa\n• Serial output for 50 … 1100 hPa\n• Analog output with different scalings between 500 … 1100 hPa\n• Electronics housing IP65 (protected against sprayed water)\n• Accurate and stable measurement\n• NIST Traceable calibration (certificate included)\n• (option) Integrates directly with SPH10/20 ; This pairing offers accurate measurement in all wind conditions.',
+                    typicalApplication: 'Barometric Pressure Measurement Range\n: 500 ... 1100 hPa / 50 ... 1100 hPa',
+                    measurementRange: '',
+                    spec: 'Barometric Pressure Accuracy\nTotal accuracy ( -40 … +60 °C )\n±0.25 hPa ( 500 … 1100 hPa, Class A )\n±0.30 hPa ( 500 … 1100 hPa, Class B )\n±0.50 hPa ( 50 … 1100 hPa )\n\nAnalog Output\nOutputs 0 … 5 VDC, 0 … 2.5 VDC (order specified)\n\nAll Models\nMax. pressure : 5000 hPa abs'
+                },
+                {
+                    model: 'SPH10/20',
+                    application: 'Static Pressure Head Series',
+                    typicalApplication: '• Minimizes wind induced error\n• Reliable barometric pressure measurement in all weather\n• Wind tunnel tested structure',
+                    measurementRange: '',
+                    spec: 'Operating temperature\n: -60 … +80 °C\n\nSPH20 Inputs and Outputs\nElectrical connections: M12 connector\nPower supply :\nFactory setting 12 V / Changed connection: 24 V\nPower consumption during heating : 70 W\n\nThermostat Switching Temperature\n- On : +4 °C (±3 °C)\n- Off : +13 °C (±3 °C)'
+                }
             ],
-            datasheet: 'https://www.vaisala.com/sites/default/files/documents/PTB110-Datasheet-B210980EN.pdf'
+            datasheet: 'https://hs-tech-en.imweb.me/153'
         },
         {
-            id: 'ptu300', title: 'PTU300', subtitle: 'COMBINED P + T + RH TRANSMITTER', category: 'barometer',
-            image: '/templates/hs-tech/images/products/deffa2b1b398f.jpg',
-            gallery: ['/templates/hs-tech/images/products/deffa2b1b398f.jpg', '/templates/hs-tech/images/products/2e8820b69ea2b.jpg'],
-            desc: 'Combined transmitter measuring barometric pressure, temperature, and relative humidity in a single unit. Calculates derived parameters such as absolute humidity and enthalpy.',
+            id: 'ptb110',
+            title: 'PTB110',
+            subtitle: 'BAROCAP® BAROMETER',
+            category: 'barometer',
+            image: '/hstech/images/ PTB110.png',
+            gallery: ['/hstech/images/ PTB110.png'],
+            desc: `VAISALA BAROCAP® Barometer PTB110 is designed both for accurate barometric pressure measurements at room temperature and for general environmental pressure monitoring over a wide temperature range.`,
             specs: [
-                { label: 'Parameters', value: 'Pressure (P), Temperature (T), Humidity (RH)' },
-                { label: 'Pressure Range', value: '600 ... 1100 hPa / Accuracy: ±0.5 hPa' },
-                { label: 'T Range / Accuracy', value: '-40 ... +60 °C / ±0.2 °C' },
-                { label: 'RH Range / Accuracy', value: '0 ... 100 %RH / ±1.5 %RH' },
-                { label: 'Output', value: 'RS-232, RS-485, 4...20 mA × 3' },
-                { label: 'Application', value: 'Meteorology, Weather stations\nEnvironmental monitoring' },
+                {
+                    model: 'PTB110',
+                    application: '• Vaisala BAROCAP® sensor\n• Several pressure ranges\n• Accuracy ±0.3 hPa at +20 °C\n• Long-term stability\n• On/off control with external trigger\n• Output voltage 0 ... 2.5 or 0 ... 5 VDC\n• Current consumption less than 4 mA\n• Mountable on a (35 mm wide) DIN rail\n• Traceable calibration(certificate included)',
+                    typicalApplication: 'Measurement Performance\nPressure range (1 hPa = 1 mbar)\n500 … 1 100 hPa\n600 … 1100 hPa\n800 … 1100 hPa\n800 … 1060 hPa\n600 … 1060 hPa\nResolution : 0.1 hPa',
+                    measurementRange: '',
+                    spec: 'Total Accuracy\n- at +15 … +25 °C : ±0.3 hPa\n- at 0 … +40 °C : ±0.6 hPa\n- Long-term stability : ±0.1 hPa / year\n\nOperating/Storage temperature\n: -40 … +60 °C'
+                }
             ],
-            datasheet: 'https://www.vaisala.com/sites/default/files/documents/PTU300-Datasheet-B210983EN.pdf'
+            datasheet: 'https://hs-tech-en.imweb.me/154'
         },
+        {
+            id: 'pdt102',
+            title: 'PDT102',
+            subtitle: 'DIFFERENTIAL PRESSURE TRANSMITTER',
+            category: 'differential',
+            image: '/hstech/images/PDT102.png',
+            gallery: ['/hstech/images/PDT102.png'],
+            desc: `PDT102 offers ultra low pressure measurement for cleanroom control and monitoring applications.`,
+            specs: [
+                {
+                    model: 'PDT102',
+                    application: '• In-place system calibration and on-line monitoring without disturbing process tubes with optional process valve actuator and test jacks\n• Ultrathin profile ideally suited for DIN rail mount reduces installation and calibration costs\n• High accuracy, two options; 0.25 % or 0.50 % of span\n• Extremely robust MEMS silicon sensor technology provides very high accuracy, sensitivity, stability and durability\n• NIST traceable 9 point calibration with certificate\n• Front side accessible zero and span adjustment potentiometers\n• Application:\n- pharmaceutical, biotechnology, medical device\n- semiconductor controlled\n- manufacturing environments etc.',
+                    typicalApplication: 'Measurement Performance\nMeasurement ranges(bidirectional)\n±50 Pa, ±0.25 in H2O\nAccuracy\n: 0.25 % span or 0.5 % span, depending on choice\nLong-term stability : ≤ 0.5 % span/year\nResponse time (10 ... 90 %) : 250 ms\nWarm-up time : 15 s\nPressure type : Differential, gauge, vacuum and compound',
+                    measurementRange: '',
+                    spec: 'Output Signal\n- 2-wire : 4 ... 20 mA\n- 3-wire : 0 ... 5 VDC\n\nOperating temperature\n: -29 … +70 °C'
+                }
+            ],
+            datasheet: 'https://hs-tech-en.imweb.me/155'
+        },
+        {
+            id: 'pdt101',
+            title: 'PDT101',
+            subtitle: 'DIFFERENTIAL PRESSURE TRANSMITTER',
+            category: 'differential',
+            image: '/hstech/images/PDT101.png',
+            gallery: ['/hstech/images/PDT101.png'],
+            desc: `PDT101 offers precise measurement and control of very low pressures.`,
+            specs: [
+                {
+                    model: 'PDT101',
+                    application: '• DIN rail, panel or wall mountable\n• 2 pressure ranges (Pa and inH2O)\n• Accessible zero and span adjustment potentiometers\n• ¼" brass tubing connections\n• LED status indicator\n• Specially designed for critical and regulated environments\n• Euro style detachable connector\n• NIST traceable(certificate included)\n• Application:\n- life science\n- semiconductor\n- electronics industries, etc.',
+                    typicalApplication: 'Measurement Performance\nMeasurement ranges(bidirectional)\n±60 Pa\n±0.25 in H2O\nAccuracy : 0.4% span\nLong-term stability : ≤ 0.5 % span/year\nResponse time (10 ... 90 %) : 250 ms\nWarm-up time : 15 s\nPressure type : Differential, gauge, vacuum and compound',
+                    measurementRange: '',
+                    spec: 'Output Signal\n- 2-wire : 4 ... 20 mA\n- 3-wire : 0 ... 5 VDC\n\nOperating temperature\n: -18 … +70 °C'
+                }
+            ],
+            datasheet: 'https://hs-tech-en.imweb.me/156'
+        },
+        {
+            id: 'ptb330ts',
+            title: 'PTB330TS',
+            subtitle: 'BAROMETRIC PRESSURE TRANSFER STANDARD',
+            category: 'transfer_standard',
+            image: '/hstech/images/PTB330TS .png',
+            gallery: ['/hstech/images/PTB330TS .png'],
+            desc: `Barometric Pressure Transfer Standard PTB330TS combines a PTB330 digital barometer with a handheld MI70 indicator into a portable unit that can be used as a transfer standard.`,
+            specs: [
+                {
+                    model: 'PTB330TS',
+                    application: '▪ Portable, battery operated transfer standard with data logging capability\n▪ Barometric pressure with Vaisala BAROCAP® Digital Barometer PTB330\n– Excellent long term stability, Accurate measurements, Added reliability through redundancy\n▪ Optional humidity and temperature measurements with HMP155\n– Vaisala HUMICAP®180R sensor - superior long-term stability / New, fast temperature probe / Chemical purge\n▪ Multilingual user interface, nine languages\nData can be logged, and transferred to a PC via MI70 Link software\n▪ For professional meteorology, aviation, laboratories and demanding industrial applications',
+                    typicalApplication: 'General\nOperating temperature -10 ... +40 °C\nOperating humidity Non-condensing\nMaximum pressure limit 5000 hPa abs.\nData logging capacity 2700 points\nOperation Time (Using Rechargeable Battery Pack)\nContinuous use with PTB330 11 h typical at +20 °C\nDatalogging use Up to 30 days',
+                    measurementRange: '',
+                    spec: 'Barometric Pressure (PTB330)\nMeasurement range 500 ... 1100 hPa\nTotal accuracy -40 ... +60 °C : ±0.15 hPa\nLong-term stability ±0.1 hPa/year\n\nRelative Humidity (HMP155)\nMeasurement range 0 ... 100 %RH\nAccuracy at +15 ... +25 °C : ±1 %RH (0 ... 90 %RH)\n±1.7 %RH (90 ... 100 %RH)\n\nTemperature (HMP155)\nMeasurement range -10 ... +40 °C\nAccuracy\n-10 ... +20 °C ±(0.176 - 0.0028 x temperature) °C\n+20 ... +40 °C ±(0.07 + 0.0025 x temperature) °C'
+                }
+            ],
+            datasheet: 'https://hs-tech-en.imweb.me/157'
+        }
     ],
     weather: [
         {
