@@ -315,6 +315,7 @@ export const SUB_CATEGORIES: Record<string, any[]> = {
         {
             id: 'ph_transmitter', title: 'pH Transmitter', desc: 'pH measurement transmitters',
             items: [
+                { id: 'ecotrans_202723', label: 'ecoTRANS pH 03 (202723)' },
                 { id: 'dtrans_202551', label: 'dTRANS pH 02 (202551)' },
                 { id: 'aquis_500_ph_202560', label: 'AQUIS 500 pH (202560)' }
             ]
@@ -2192,6 +2193,24 @@ Only Setra can claim ownership to the stainless steel capacitive design used in 
                 { label: 'Electrode Material', value: 'Special graphite' },
                 { label: 'Cell Constant', value: 'K = 1.0' },
                 { label: 'Applications', value: 'Medium separation\nDrinking water treatment\nWastewater control/treatment\nConcentrate monitoring\nIndustrial water treatment' }
+            ]
+        },
+        {
+            id: 'ecotrans_202723',
+            title: 'JUMO ecoTRANS pH 03',
+            subtitle: 'TRANSMITTER / SWITCHING DEVICE (202723)',
+            category: 'ph_transmitter',
+            image: '/templates/hs-tech/images/products/JUMO ecoTRANS pH 03 transmitter : switching device for pH : Redox voltage and temperature (202723).jpg',
+            gallery: ['/templates/hs-tech/images/products/JUMO ecoTRANS pH 03 transmitter : switching device for pH : Redox voltage and temperature (202723).jpg'],
+            desc: 'Versatile pH/Redox transmitter with simple probe connection and guided calibration. Features 3-way isolation and DIN rail mounting for easy installation.',
+            specs: [
+                { label: 'Measurement', value: 'pH / mV / ORP (Redox voltage)' },
+                { label: 'Connection', value: 'Screw terminals\nAsymmetric and symmetric' },
+                { label: 'Outputs', value: '2x analog outputs 0(4)...20 mA / 0(2)...10 V\n1x relay changeover contact' },
+                { label: 'Isolation', value: '3-way isolation (input/output/power)' },
+                { label: 'Mounting', value: 'DIN rail' },
+                { label: 'Features', value: 'Temperature monitoring\nCalibration timer\nWith calibration certificate' },
+                { label: 'Applications', value: 'Water/wastewater management\nDrinking water treatment\nProcess technology\nSwimming pool technology\nFish-keeping' }
             ]
         },
         {
