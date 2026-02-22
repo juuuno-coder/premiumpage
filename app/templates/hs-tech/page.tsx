@@ -1659,34 +1659,62 @@ function HSTechContent() {
             {/* ── 22. Contact ── */}
             {activeTab === 'contact' && (
                 <CatalogPage currentTab="contact">
-                    <div className="pt-8 pb-28 px-6 max-w-4xl mx-auto">
+                    <div className="pt-8 pb-28 px-6 max-w-6xl mx-auto">
                         <h2 className="text-4xl md:text-7xl font-black text-neutral-900 mb-4 tracking-tighter uppercase leading-none text-center">
                             Reach<br />
                             <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-600 to-sky-400">Out.</span>
                         </h2>
-                        <p className="text-sm text-neutral-500 mb-12 max-w-sm mx-auto text-center">Get in touch for product inquiries, technical consultations, and pricing information.</p>
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                            <div className="p-8 border border-neutral-200 rounded-xl bg-white">
-                                <Phone className="w-6 h-6 text-cyan-600 mb-4" />
-                                <p className="text-[10px] text-neutral-400 uppercase tracking-widest mb-1">Phone</p>
-                                <p className="text-xl font-black text-neutral-900">070-4346-1844</p>
+                        <p className="text-sm text-neutral-500 mb-16 max-w-sm mx-auto text-center">Get in touch for product inquiries, technical consultations, and pricing information.</p>
+
+                        {/* Official Partner Brands */}
+                        <div className="mb-16 p-8 border border-neutral-200 rounded-xl bg-white">
+                            <div className="flex items-center gap-3 mb-6">
+                                <Globe className="w-5 h-5 text-cyan-600" />
+                                <h3 className="font-black text-neutral-900 uppercase tracking-wide text-sm">Official Partner Brands</h3>
                             </div>
-                            <div className="p-8 border border-neutral-200 rounded-xl bg-white">
-                                <Phone className="w-6 h-6 text-cyan-600 mb-4" />
-                                <p className="text-[10px] text-neutral-400 uppercase tracking-widest mb-1">Fax</p>
-                                <p className="text-xl font-black text-neutral-900">031-8016-3510</p>
-                            </div>
-                            <div className="p-8 border border-neutral-200 rounded-xl bg-white">
-                                <Mail className="w-6 h-6 text-cyan-600 mb-4" />
-                                <p className="text-[10px] text-neutral-400 uppercase tracking-widest mb-1">Email</p>
-                                <p className="text-base font-black text-neutral-900">hs-tech@hs-tech.co.kr</p>
-                            </div>
-                            <div className="p-8 border border-neutral-200 rounded-xl bg-white">
-                                <MapPin className="w-6 h-6 text-cyan-600 mb-4" />
-                                <p className="text-[10px] text-neutral-400 uppercase tracking-widest mb-1">Address</p>
-                                <p className="text-sm font-bold text-neutral-900 leading-relaxed">D-410, 670 Daewangpangyo-ro,<br />Bundang-gu, Seongnam-si,<br />Gyeonggi-do, Korea 13494</p>
+                            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                                <div className="p-6 border border-neutral-100 rounded-lg bg-neutral-50">
+                                    <h4 className="font-black text-neutral-900 text-lg mb-2">VAISALA</h4>
+                                    <p className="text-sm text-cyan-600 font-semibold mb-1">Environmental Sensors</p>
+                                    <p className="text-xs text-neutral-500">Korea & Vietnam</p>
+                                </div>
+                                <div className="p-6 border border-neutral-100 rounded-lg bg-neutral-50">
+                                    <h4 className="font-black text-neutral-900 text-lg mb-2">SETRA</h4>
+                                    <p className="text-sm text-cyan-600 font-semibold mb-1">Pressure Transducers</p>
+                                    <p className="text-xs text-neutral-500">Korea</p>
+                                </div>
+                                <div className="p-6 border border-neutral-100 rounded-lg bg-neutral-50">
+                                    <h4 className="font-black text-neutral-900 text-lg mb-2">JUMO</h4>
+                                    <p className="text-sm text-cyan-600 font-semibold mb-1">Measurement & Control</p>
+                                    <p className="text-xs text-neutral-500">Korea</p>
+                                </div>
                             </div>
                         </div>
+
+                        {/* Contact Information */}
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div className="p-8 border border-neutral-200 rounded-xl bg-white">
+                                <MapPin className="w-6 h-6 text-cyan-600 mb-4" />
+                                <p className="text-[10px] text-neutral-400 uppercase tracking-widest mb-2">Address</p>
+                                <p className="text-sm font-bold text-neutral-900 leading-relaxed">
+                                    #410, U-Space2 B,<br />
+                                    670 Daewangpangyo-ro,<br />
+                                    Bundang-Gu, Seongnam-Si,<br />
+                                    Gyeonggi-Do, Korea
+                                </p>
+                            </div>
+                            <div className="p-8 border border-neutral-200 rounded-xl bg-white">
+                                <Phone className="w-6 h-6 text-cyan-600 mb-4" />
+                                <p className="text-[10px] text-neutral-400 uppercase tracking-widest mb-2">Contact</p>
+                                <div className="space-y-1">
+                                    <p className="text-sm font-bold text-neutral-900">Tel: 070-4346-1844</p>
+                                    <p className="text-sm font-bold text-neutral-900">Fax: 031-8016-3510</p>
+                                    <p className="text-sm font-bold text-cyan-600">hs-tech@hs-tech.co.kr</p>
+                                    <p className="text-xs text-neutral-400 pt-2">Reg. No. 144-81-08640</p>
+                                </div>
+                            </div>
+                        </div>
+
                         <div className="mt-8 p-6 border border-neutral-100 rounded-xl bg-neutral-50 text-center">
                             <p className="text-xs text-neutral-400 uppercase tracking-widest">HS TECH Co., Ltd. · Business Reg. 144-81-08640 · Pangyo Techno Valley</p>
                         </div>
