@@ -527,11 +527,11 @@ Miniature and compact probes for OEM and volume applications.
         },
         {
             id: 'hmt370ex',
-            title: 'HMT370EX Series',
+            title: 'HMT370EX',
             subtitle: 'EXPLOSION PROOF HUMIDITY AND TEMPERATURE TRANSMITTER',
             category: 'explosion_proof',
-            image: '/hstech/images/HMT330 Series.png',
-            gallery: [],
+            image: '/hstech/images/HMT370EX.png',
+            gallery: ['/hstech/images/HMT370EX.png', '/hstech/images/HMT370EX_2.jpeg'],
             desc: `VAISALA HMT370EX series are designed for hazardous areas where explosive gases, vapors, or dust may be present. Ideal for fuel storage, chemicals, pharmaceutical manufacturing, and other demanding environments.
 
 ■ PRODUCT
@@ -595,8 +595,8 @@ Explosion-proof transmitter with intrinsically safe design certified for Zone 1 
             title: 'HMT360 Series',
             subtitle: 'INTRINSICALLY SAFE HUMIDITY AND TEMPERATURE TRANSMITTER',
             category: 'explosion_proof',
-            image: '/hstech/images/HMT330 Series.png',
-            gallery: [],
+            image: '/hstech/images/HMT360.png',
+            gallery: ['/hstech/images/HMT360.png', '/hstech/images/HMT360_2.png'],
             desc: `VAISALA HMT360 series are intrinsically safe humidity and temperature transmitters designed for Zone 2 and Zone 22 hazardous areas. Suitable for petrochemical, pharmaceutical, and industrial applications where safety is paramount.
 
 ■ PRODUCT
@@ -1333,11 +1333,11 @@ Output: RH+T+Td+Tdf+a+x+Tw+ppm+pw+pws+h+dT
         },
         {
             id: 'hmt310',
-            title: 'HMT310 Series',
+            title: 'HMT310',
             subtitle: 'HUMIDITY AND TEMPERATURE TRANSMITTER',
             category: 'industrial',
-            image: '/hstech/images/HMT330 Series2.jpg',
-            gallery: ["/hstech/images/HMT330 Series2.jpg"],
+            image: '/hstech/images/HMT310.png',
+            gallery: ["/hstech/images/HMT310.png"],
             desc: `HMT310 incorporates the latest generation VAISALA HUMICAP® sensor. The sensor is a capacitive thin-film polymer sensor providing high accuracy, excellent long-term stability and negligible hysteresis.
 
 ■ PRODUCT
@@ -3026,7 +3026,7 @@ Learn more about our solutions for continuous monitoring systems and continuous 
         externalLink: 'http://www.vaisala.com/en/industrialmeasurements/applications/semiconductortoolmonitoring/Pages/default.aspx'
     },
     plant: {
-        title: 'Plant & Process',
+        title: 'Plant',
         shortDesc: 'Reliable monitoring for industrial drying, coating, and chemical processes.',
         image: '/templates/hs-tech/images/applications/plant.jpg',
         applications: [
@@ -3038,9 +3038,7 @@ Learn more about our solutions for continuous monitoring systems and continuous 
         systems: [
             {
                 title: '1. Lubricant & Hydraulics',
-                desc: `Water is a common contaminant in industrial oils that deteriorates its performance, whether used as a lubricant, coolant, insulator, or for other purposes. High moisture content increases the risk of corrosion, over-heating, machine malfunctions and other costly problems.
-
-When the water content in oil reaches the saturation point, it separates out and free water is formed. Free water formation is critical in terms of problems related to water in oil. Continuous monitoring of moisture in oil ensures reliable equipment performance at all times and helps to schedule service intervals and prevent unscheduled downtime.`,
+                desc: `Water is a common contaminant in industrial oils that deteriorates its performance, whether used as a lubricant, coolant, insulator, or for other purposes. High moisture content increases the risk of corrosion, over-heating, machine malfunctions and other costly problems. The ability of oil to hold water in solution depends on the oil type, its age, and what additives are present. When the water content in oil reaches the saturation point, it separates out and free water is formed. Free water formation is critical in terms of problems related to water in oil. It prevents the formation of a uniform oil layer on metal surfaces, thus reducing its lubrication performance and increasing equipment wear and corrosion. It ruins polar additives like AW (anti-wear) and EP (extreme pressure). Water can also initiate micro-pitting. Free water provides a growth medium for microbes to form slime or mats, which easily plug filters and valves and may cause critical malfunctions. Continuous monitoring of moisture in oil ensures reliable equipment performance at all times and helps to schedule service intervals and prevent unscheduled downtime. It also reduces the risk of failures of critical and expensive machine parts, while requiring the activation of oil dryer systems only when necessary.`,
                 features: [
                     'Real-time measuring',
                     'Local support – globally',
@@ -3053,16 +3051,12 @@ When the water content in oil reaches the saturation point, it separates out and
             },
             {
                 title: '2. Metal Heat Treatment Furnaces',
-                desc: `Water vapor is a key component in furnace atmospheres and feed gas, affecting the chemistry between the gas and the metal parts in the process. Because of the wide variety of thermal heat treatment processes, target dew point temperatures can range from –60°C to elevated levels of +35°C and even higher.
-
-Due to the extremely high oven process temperatures typically involved in heat treating, a sampling system/line from the furnace to the dew point probe is normally required in order to cool the process gas before reaching the sensor.`,
+                desc: `Water vapor is a key component in furnace atmospheres and feed gas, affecting the chemistry between the gas and the metal parts in the process. Because of the wide variety of thermal heat treatment processes, target dew point temperatures can range from –60°C to elevated levels of +35°C and even higher. Due to the extremely high oven process temperatures typically involved in heat treating, a sampling system/line from the furnace to the dew point probe is normally required in order to cool the process gas before reaching the sensor.`,
                 recommendedProducts: ['dmt340', 'dmt152', 'dmt143', 'dmt143l', 'dm70']
             },
             {
                 title: '3. Monitoring Lithium Battery Manufacturing',
-                desc: `The lithium-ion battery manufacturing process is sensitive to moisture. This challenging production environment demands a water vapor detection instrument with reliable performance and strong resistance to process byproducts that may be present in the atmosphere.
-
-Vaisala offers a chemically resistant polymer dew point sensor that is actively manipulated to achieve long term reliability with very little measurement drift. Calibrated devices using this sensor are available as low cost transmitters or fully configurable field instruments.`,
+                desc: `The lithium-ion battery manufacturing process is sensitive to moisture. This challenging production environment demands a water vapor detection instrument with reliable performance and strong resistance to process byproducts that may be present in the atmosphere. Vaisala offers a chemically resistant polymer dew point sensor that is actively manipulated to achieve long term reliability with very little measurement drift. Calibrated devices using this sensor are available as low cost transmitters or fully configurable field instruments.`,
                 recommendedProducts: ['dmt340', 'dmt152', 'hmt330', 'dmt143', 'dmt143l', 'dm70']
             }
         ],
