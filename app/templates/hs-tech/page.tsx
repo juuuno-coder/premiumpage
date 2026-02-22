@@ -1287,7 +1287,7 @@ function HSTechContent() {
                         </div>
 
                         {/* Service Highlights */}
-                        <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mb-8">
+                        <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
                             {[
                                 { label: 'Sales', desc: 'Authorized product sales for Korea & Vietnam' },
                                 { label: 'Technical Support', desc: 'Expert consultation & application guidance' },
@@ -1299,44 +1299,6 @@ function HSTechContent() {
                                     <p className="text-xs text-neutral-500 leading-relaxed">{s.desc}</p>
                                 </div>
                             ))}
-                        </div>
-
-                        {/* Info Cards */}
-                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                            <div className="md:col-span-2 p-8 border border-neutral-200 rounded-xl bg-white">
-                                <Globe className="w-5 h-5 text-cyan-600 mb-4" />
-                                <h4 className="font-black text-neutral-900 mb-3 uppercase tracking-wide text-sm">Official Partner Brands</h4>
-                                <div className="grid grid-cols-2 gap-3 text-sm">
-                                    {[
-                                        { brand: 'VAISALA', region: 'Korea & Vietnam', type: 'Environmental Sensors' },
-                                        { brand: 'SETRA', region: 'Korea', type: 'Pressure Transducers' },
-                                        { brand: 'JUMO', region: 'Korea', type: 'Measurement & Control' },
-                                    ].map((p, i) => (
-                                        <div key={i} className="border border-neutral-100 rounded-lg p-3 bg-neutral-50">
-                                            <p className="font-black text-neutral-900 text-xs tracking-wide">{p.brand}</p>
-                                            <p className="text-[10px] text-cyan-600 mt-0.5">{p.type}</p>
-                                            <p className="text-[10px] text-neutral-400 mt-0.5">{p.region}</p>
-                                        </div>
-                                    ))}
-                                </div>
-                            </div>
-                            <div className="flex flex-col gap-4">
-                                <div className="p-6 border border-neutral-200 rounded-xl bg-white flex-1">
-                                    <MapPin className="w-4 h-4 text-cyan-600 mb-3" />
-                                    <h4 className="font-black text-neutral-900 mb-2 uppercase tracking-wide text-xs">Address</h4>
-                                    <p className="text-xs text-neutral-600 leading-relaxed">#410, U-Space2 B,<br />670 Daewangpangyo-ro,<br />Bundang-Gu, Seongnam-Si,<br />Gyeonggi-Do, Korea</p>
-                                </div>
-                                <div className="p-6 border border-neutral-200 rounded-xl bg-white flex-1">
-                                    <Phone className="w-4 h-4 text-cyan-600 mb-3" />
-                                    <h4 className="font-black text-neutral-900 mb-2 uppercase tracking-wide text-xs">Contact</h4>
-                                    <div className="space-y-1 text-xs text-neutral-600">
-                                        <p>Tel: 070-4346-1844</p>
-                                        <p>Fax: 031-8016-3510</p>
-                                        <p>hs-tech@hs-tech.co.kr</p>
-                                        <p className="text-neutral-400 pt-1">Reg. No. 144-81-08640</p>
-                                    </div>
-                                </div>
-                            </div>
                         </div>
                     </div>
                 </CatalogPage>
