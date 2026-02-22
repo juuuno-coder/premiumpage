@@ -660,8 +660,8 @@ Intrinsically safe transmitter certified for Zone 2 and Zone 22 hazardous areas 
             title: 'HMD60',
             subtitle: '±1.5%RH DUCT TRANSMITTER',
             category: 'hvac',
-            image: '/hstech/images/ Module : Probe .png',
-            gallery: ['/hstech/images/ Module : Probe .png'],
+            image: '/hstech/images/Module : Probe .png',
+            gallery: ['/hstech/images/Module : Probe .png'],
             desc: `The all-metal body of the transmitter is well suited for use at building sites and industrial settings. HMD60 series provides state-of-the-art stability and environmental resistance thanks to the Vaisala HUMICAP® R2 sensor.
 
 ■ PRODUCT
@@ -879,10 +879,10 @@ Versatile transmitters for wall, duct, and outdoor mounting with IP65 protection
             title: 'HMDW80',
             subtitle: '±3%RH HUMIDITY AND TEMPERATURE TRANSMITTER',
             category: 'hvac',
-            image: '/hstech/images/ Module:OEM .png',
+            image: '/hstech/images/Module:OEM .png',
             gallery: [
-                '/hstech/images/ Module:OEM .png',
-                '/hstech/images/ Module:OEM .png'
+                '/hstech/images/Module:OEM .png',
+                '/hstech/images/Module:OEM .png'
             ],
             desc: `The HMDW80 series is versatile with transmitters for wall and duct mounting for measuring relative humidity and temperature in various building automation applications.
 
@@ -1526,8 +1526,8 @@ Output: RH+T+Td+Tdf`,
         },
         {
             id: 'indigo80_dmp80', title: 'Indigo80 + DMP80', subtitle: 'PORTABLE DEWPOINT SYSTEM', category: 'portable',
-            image: '/hstech/images/1388fffe59c2e.png',
-            gallery: ['/hstech/images/1388fffe59c2e.png'],
+            image: '/hstech/images/VAISALA Dew Point Sensor DRYCAP® .png',
+            gallery: ['/hstech/images/VAISALA Dew Point Sensor DRYCAP® .png'],
             desc: 'Portable dewpoint measurement system combining the Indigo80 handheld indicator with the DMP80 probe. Color display, data logging, and Bluetooth connectivity.',
             specs: [
                 { label: 'System', value: 'Indigo80 indicator + DMP80 probe' },
@@ -1542,8 +1542,8 @@ Output: RH+T+Td+Tdf`,
         },
         {
             id: 'dm70', title: 'DM70', subtitle: 'HANDHELD DEWPOINT METER', category: 'portable',
-            image: '/hstech/images/fc840485431f5.png',
-            gallery: ['/hstech/images/fc840485431f5.png'],
+            image: '/hstech/images/VAISALA Dew Point Sensor DRYCAP® .png',
+            gallery: ['/hstech/images/VAISALA Dew Point Sensor DRYCAP® .png'],
             desc: 'Professional handheld dewpoint meter with interchangeable probe. Used for field measurement, calibration verification, and spot-checking in industrial processes.',
             specs: [
                 { label: 'MI70 Indicator', value: 'Operating temp: -10…+40°C\nLCD with backlight\nData logging: 2,700 points\nAudible alarm' },
@@ -1556,7 +1556,7 @@ Output: RH+T+Td+Tdf`,
         {
             id: 'dss70a', title: 'DSS70A', subtitle: 'SAMPLING SYSTEM FOR DM70', category: 'portable',
             image: '/hstech/images/DSS70A.png',
-            gallery: ['/hstech/images/96ddd2e578412.png'],
+            gallery: ['/hstech/images/DSS70A.png'],
             desc: 'Sampling cell system for dewpoint measurement in pressurized gas lines.',
             specs: [
                 { label: 'DSS70A', value: 'Metal treatment and plastics drying processes\nOperating gases: Air, N₂, and other non-toxic inert gases\nInlet/outlet connections for pressurized gas' },
@@ -2274,8 +2274,8 @@ WXT536 replaces the WXT520 Weather Transmitter. WXT532 replaces WMT52 Ultrasonic
     h2o2: [
         {
             id: 'hpp271', title: 'HPP271 / HPP272', subtitle: 'H₂O₂ VAPOR PROBE', category: 'sensor',
-            image: '/hstech/images/47e994f808c6a.png',
-            gallery: ['/hstech/images/47e994f808c6a.png'],
+            image: '/hstech/images/Model AXD Pressure Sensor.png',
+            gallery: ['/hstech/images/Model AXD Pressure Sensor.png'],
             desc: 'Vaporized hydrogen peroxide (VHP/H2O2) measurement probe for bio-decontamination process monitoring. Enables real-time control of decontamination cycles in pharmaceutical and healthcare environments.',
             specs: [
                 { label: 'Gas', value: 'H₂O₂ vapor (VHP)' },
@@ -2298,9 +2298,9 @@ WXT536 replaces the WXT520 Weather Transmitter. WXT532 replaces WMT52 Ultrasonic
             gallery: [
                 '/hstech/images/Setra Lite™  Visual Differential Pressure Indicator.png',
                 '/hstech/images/Setra Lite™  Visual Differential Pressure Indicator 2.png',
-                '/hstech/images/849fee28dfdc5.png',
-                '/hstech/images/setra_lite_green.png',
-                '/hstech/images/setra_lite_red.png'
+                '/hstech/images/Setra Lite™  Visual Differential Pressure Indicator.png',
+                '/hstech/images/Setra Lite™  Visual Differential Pressure Indicator.png',
+                '/hstech/images/Setra Lite™  Visual Differential Pressure Indicator 2.png'
             ],
             desc: `The Setra Lite™ Room Pressure Indicator provides a simple, cost-effective, and accurate way to monitor and display room differential pressure in areas that today require manual verification.
 
@@ -2328,7 +2328,7 @@ Setra Lite also integrates seamlessly with the Setra FLEX environmental monitor.
         {
             id: 'setra_flex', title: 'Setra Flex', subtitle: 'TOUCHSCREEN ROOM PRESSURE MONITOR', category: 'diff_ind',
             image: '/hstech/images/Setra Lite™  Visual Differential Pressure Indicator.png',
-            gallery: ['/hstech/images/849fee28dfdc5.png'],
+            gallery: ['/hstech/images/Setra Lite™  Visual Differential Pressure Indicator.png'],
             desc: 'Advanced touchscreen room pressure monitor with numeric display and configurable alarms. Provides visual and audible alerts when room pressure goes out of range.',
             specs: [
                 { label: 'Display', value: '4.3" color touchscreen' },
@@ -2342,7 +2342,7 @@ Setra Lite also integrates seamlessly with the Setra FLEX environmental monitor.
         {
             id: 'model_mrc', title: 'Model MRC', subtitle: 'MULTI-RANGE CRITICAL PRESSURE TRANSDUCER', category: 'diff_sen',
             image: '/hstech/images/Model MRC.png',
-            gallery: ['/hstech/images/0173971661ad2.png', '/hstech/images/0b98ec3d71c52.png', '/hstech/images/866d1ed724ffa.png', '/hstech/images/ba117fd1862c9.png', '/hstech/images/20542e1ba6c31.png'],
+            gallery: ['/hstech/images/Model MRC.png', '/hstech/images/Model MRC.png', '/hstech/images/Model MRC.png', '/hstech/images/Model MRC.png', '/hstech/images/Model MRC.png'],
             desc: `Setra's Model MRC multi-range low differential pressure transducer uses a dead-ended capacitive sensing element that requires minimal amplification and delivers excellent accuracy and long term stability. The MRC is the industries first multi-range sensor designed for critical environments. It is the only multi-range sensor available with ±0.5% FS accuracy and field selectable ranges down to 0.1" W.C., a requirement for critical applications. The MRC has 4 selectable ranges and 3 selectable outputs, easily adjustable on the job with a flip of a switch or jumper. The MRC is offered with 3 different housing configurations: Duct Probe, DINrail Mount or wall mount as well as a universal design that incorporates all 3 configurations in one to address any installation changes on the job site.
 
 ■ THE FIRST 0.5% ACCURACY MULTI-RANGE EVER
@@ -2384,8 +2384,8 @@ The core technology of the MRC is the all stainless steel capacitive sensing ele
         },
         {
             id: 'model_mrg', title: 'Model MRG', subtitle: 'MULTI-RANGE GENERAL PRESSURE TRANSDUCER', category: 'diff_sen',
-            image: '/hstech/images/0b98ec3d71c52.png',
-            gallery: ['/hstech/images/0b98ec3d71c52.png', '/hstech/images/866d1ed724ffa.png'],
+            image: '/hstech/images/Model MRC.png',
+            gallery: ['/hstech/images/Model MRC.png', '/hstech/images/Model MRC.png'],
             desc: `The Setra Model MRG is Setra's newest differential pressure transducer. The Setra MRG is the ideal product for any contractor, combining the flexibility of a multi-range with the performance of a single range transducer. The MRG has 8 selectable ranges and 3 selectable outputs, easily adjustable on the job with a flip of a switch or jumper. The MRG uses an IP67 rated housing and has a conduit fitting for easy wiring, making the MRG an ideal solution for any general HVAC application.
 
 ■ UNIVERSAL DESIGN
@@ -2428,7 +2428,7 @@ Only Setra can claim ownership to the stainless steel capacitive design used in 
         {
             id: 'model_264', title: 'Model 264', subtitle: 'LOW DIFFERENTIAL PRESSURE TRANSDUCER', category: 'diff_sen',
             image: '/hstech/images/264.jpg',
-            gallery: ['/hstech/images/866d1ed724ffa.png', '/hstech/images/ba117fd1862c9.png'],
+            gallery: ['/hstech/images/Model MRC.png', '/hstech/images/Model MRC.png'],
             desc: 'Low differential pressure transducer with exceptional stability. Used for HVAC pressure measurement in VAV boxes, fan pressure control, and filter monitoring.',
             specs: [
                 { label: 'Pressure Ranges', value: '0...±0.25" WC to 0...±10" WC' },
@@ -2440,8 +2440,8 @@ Only Setra can claim ownership to the stainless steel capacitive design used in 
         },
         {
             id: 'pdt101', title: 'PDT101', subtitle: 'OEM DIFFERENTIAL PRESSURE SENSOR', category: 'diff_sen',
-            image: '/hstech/images/20542e1ba6c31.png',
-            gallery: ['/hstech/images/20542e1ba6c31.png'],
+            image: '/hstech/images/Model MRC.png',
+            gallery: ['/hstech/images/Model MRC.png'],
             desc: 'Compact OEM differential pressure sensor for filter condition monitoring and HVAC OEM applications.',
             specs: [
                 { label: 'Type', value: 'OEM sensor (PCB mount)' },
@@ -2453,7 +2453,7 @@ Only Setra can claim ownership to the stainless steel capacitive design used in 
         },
         {
             id: 'pdt102', title: 'PDT102', subtitle: 'DIFFERENTIAL PRESSURE TRANSMITTER', category: 'diff_sen',
-            image: '/hstech/images/20542e1ba6c31.png', gallery: [],
+            image: '/hstech/images/Model MRC.png', gallery: [],
             desc: 'High-accuracy differential pressure transmitter for HVAC and cleanroom filter condition monitoring with industry-standard 4-20 mA output.',
             specs: [
                 { label: 'Pressure Range', value: '0...0.1" to 0...10" WC' },
@@ -2518,7 +2518,7 @@ Only Setra can claim ownership to the stainless steel capacitive design used in 
         {
             id: 'model_206', title: 'Model 206', subtitle: 'RUGGED STAINLESS STEEL TRANSDUCER', category: 'industrial',
             image: '/hstech/images/206.jpg',
-            gallery: ['/hstech/images/5175822708f3a.png'],
+            gallery: ['/hstech/images/206.jpg'],
             desc: 'Rugged stainless steel pressure transducer for harsh industrial environments. Fully welded, hermetic construction for maximum reliability.',
             specs: [
                 { label: 'Pressure Ranges', value: '0...15 to 0...3000 PSI (gauge/absolute)' },
@@ -2532,7 +2532,7 @@ Only Setra can claim ownership to the stainless steel capacitive design used in 
         {
             id: 'model_209', title: 'Model 209', subtitle: 'COMPACT OEM PRESSURE SENSOR', category: 'industrial',
             image: '/hstech/images/209.png',
-            gallery: ['/hstech/images/a153aa767ba86.png'],
+            gallery: ['/hstech/images/209.png'],
             desc: 'Compact, cost-effective OEM pressure sensor for industrial equipment integration.',
             specs: [
                 { label: 'Type', value: 'OEM compact sensor' },
@@ -2548,8 +2548,8 @@ Only Setra can claim ownership to the stainless steel capacitive design used in 
     jumo: [
         {
             id: 'plastosens_pt0', title: 'PlastoSENS PT0', subtitle: 'SURFACE TEMPERATURE SENSOR', category: 'temperature',
-            image: '/hstech/images/94259b4509a1f.png',
-            gallery: ['/hstech/images/94259b4509a1f.png'],
+            image: '/hstech/images/201.jpg',
+            gallery: ['/hstech/images/201.jpg'],
             desc: 'PlastoSENS PT0 — Flush-mount surface temperature sensor for plastics processing. Designed for injection molding machines, extruders, and hot runner systems. Provides direct melt temperature measurement for process optimization.',
             specs: [
                 { label: 'Type', value: 'Thermocouple Type J / Type K (application-specific)' },
@@ -2562,8 +2562,8 @@ Only Setra can claim ownership to the stainless steel capacitive design used in 
         },
         {
             id: 'plastosens_pt2', title: 'PlastoSENS PT2', subtitle: 'MELT TEMPERATURE SENSOR', category: 'temperature',
-            image: '/hstech/images/94259b4509a1f.png',
-            gallery: ['/hstech/images/94259b4509a1f.png'],
+            image: '/hstech/images/201.jpg',
+            gallery: ['/hstech/images/201.jpg'],
             desc: 'PlastoSENS PT2 — High-pressure melt temperature sensor for continuous melt temperature measurement in high-temperature plastics processes. Spring-loaded tip ensures permanent contact with melt for reliable readings.',
             specs: [
                 { label: 'Type', value: 'Thermocouple Type J / Type K' },
@@ -2576,8 +2576,8 @@ Only Setra can claim ownership to the stainless steel capacitive design used in 
         },
         {
             id: 'dtrans_ph02', title: 'dTRANS pH 02', subtitle: 'PROCESS pH TRANSMITTER', category: 'ph_transmitter',
-            image: '/hstech/images/8d15ded8da6eb.png',
-            gallery: ['/hstech/images/8d15ded8da6eb.png'],
+            image: '/hstech/images/201.jpg',
+            gallery: ['/hstech/images/201.jpg'],
             desc: 'Industrial field-mount pH transmitter with IP65 protection. HART communication for smart instrumentation integration. Supports JUMO and third-party electrodes.',
             specs: [
                 { label: 'Measurement', value: 'pH 0 ... 14 / ORP / Temperature' },
@@ -3580,7 +3580,7 @@ export const JUMO_CATEGORY_INTRO: Record<string, any> = {
             },
             {
                 model: 'plastoSENS T03',
-                image: '/hstech/images/plastoSENS T03.jpg',
+                image: '/hstech/images/plastoSENS T03 .jpg',
                 features: [
                     'Protection type IP69K – also steam-tight on the cable outlet',
                     'Absolute tightness – the applied special plastics form a substance-to-substance bond during the injection molding process and thereby guarantee steam-tightness',
@@ -3589,7 +3589,7 @@ export const JUMO_CATEGORY_INTRO: Record<string, any> = {
             },
             {
                 model: 'plastoSENS T04',
-                image: '/hstech/images/plastoSENS T04.jpg',
+                image: '/hstech/images/plastoSENS T04 .jpg',
                 features: [
                     'For temperatures from -40 to +180 °C',
                     'Precise pipe adaptation through full contact to surface area',
