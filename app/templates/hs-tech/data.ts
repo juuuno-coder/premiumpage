@@ -340,9 +340,8 @@ export const DB: Record<string, any[]> = {
             title: 'HMP1 / 3 / 4 / 5 / 7 / 8 / 9',
             subtitle: 'INDIGO-COMPATIBLE SMART PROBES + TRANSMITTERS',
             category: 'probe',
-            image: '/templates/hs-tech/images/products/hmp1_9_v1.png',
+            image: '/templates/hs-tech/images/products/HMP1 Transmitter2.png',
             gallery: [
-                "/templates/hs-tech/images/products/hmp1_9_v1.png",
                 "/templates/hs-tech/images/products/HMP1 Transmitter2.png"
             ],
             desc: `The HMP1/3/4/5/7/8/9 are part of the Indigo product family and compatible with Indigo 500 / 200 Series Host Devices and free Insight PC Software.
@@ -473,8 +472,8 @@ High-performance humidity modules for environmental chambers, incubators, and OE
             title: 'HMP155',
             subtitle: 'METEOROLOGICAL HUMIDITY AND TEMPERATURE PROBE',
             category: 'probe',
-            image: '/templates/hs-tech/images/products/hmp155_v1.png',
-            gallery: ["/templates/hs-tech/images/products/hmp155_v1.png"],
+            image: '/templates/hs-tech/images/products/HMP155 Series.png',
+            gallery: ["/templates/hs-tech/images/products/HMP155 Series.png"],
             desc: `Vaisala's HUMICAP® HMP155 is a plug-and-play sensor that has excellent stability and withstands well even in harsh environments. The probe provides reliable humidity and temperature measurement and it is designed specifically for demanding outdoor applications.
 
 ■ PRODUCT
@@ -498,8 +497,8 @@ Premium humidity and temperature probe for meteorological applications with weat
             title: 'HMP60 / HMP63 / HMP110 / HMP113',
             subtitle: 'COMPACT HUMIDITY AND TEMPERATURE PROBES',
             category: 'probe',
-            image: '/templates/hs-tech/images/products/hmp60_v1.png',
-            gallery: ["/templates/hs-tech/images/products/hmp60_v1.png"],
+            image: '/templates/hs-tech/images/products/Combined Transmitter .jpg',
+            gallery: ["/templates/hs-tech/images/products/Combined Transmitter .jpg"],
             desc: `Temperature and humidity probes applicable to chambers, glove boxes, and other equipment.
 
 ■ PRODUCT
