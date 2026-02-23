@@ -37,9 +37,7 @@ const BROCHURE_FLOW = [
     { tab: 'barometer',     label: 'BAROMETER' },
     { tab: 'weather',       label: 'WEATHER' },
     { tab: 'h2o2',          label: 'H₂O₂' },
-    { tab: 'cms',           label: 'DATA LOGGER' },
-    { tab: 'cms_standalone', label: 'STANDALONE' },
-    { tab: 'cms_network',    label: 'NETWORK / SW' },
+    { tab: 'cms',           label: 'CMS' },
     // SETRA
     { tab: 'setra',         label: 'SETRA' },
     { tab: 'setra_visual',  label: 'DP VISUAL' },
@@ -1480,27 +1478,9 @@ function HSTechContent() {
                     keyApps={['Bio-decontamination', 'Pharmaceutical', 'Hospital', 'Isolator']} />
             )}
             {activeTab === 'cms' && (
-                <BrandPage
-                    tab="cms" brandKey="VAISALA"
-                    headline="Continuous" sub="Monitoring."
+                <CategoryPage tab="cms" title="Data Logger / CMS" parentBrand="vaisala" onOpen={open}
                     desc="Vaisala's data logger and CMS portfolio delivers GxP-compliant environmental monitoring from standalone loggers to fully networked facility-wide systems."
-                    logo="/templates/hs-tech/images/brands/vaisala.svg"
-                    categories={[
-                        { tab: 'cms_standalone', title: 'Standalone Data Loggers', desc: 'DL2000 / DL4000 / DL1700 — independent loggers with display.', count: (DB.cms as any[]).filter((p: any) => p.category === 'data_logger').length },
-                        { tab: 'cms_network',    title: 'Network Loggers & Software', desc: 'DL1000/1400, vNET Wireless, POE Logger, CMS Software.', count: (DB.cms as any[]).filter((p: any) => p.category !== 'data_logger').length },
-                    ]}
-                    onOpen={open}
-                />
-            )}
-            {activeTab === 'cms_standalone' && (
-                <CategoryPage tab="cms_standalone" title="Standalone Data Loggers" parentBrand="cms" onOpen={open}
-                    desc="Self-contained data loggers with built-in displays for independent environmental monitoring in cleanrooms, labs, and warehouses."
-                    products={(DB.cms as any[]).filter((p: any) => p.category === 'data_logger')} />
-            )}
-            {activeTab === 'cms_network' && (
-                <CategoryPage tab="cms_network" title="Network Loggers & Software" parentBrand="cms" onOpen={open}
-                    desc="LAN/PoE/wireless networked loggers and centralized CMS software for facility-wide GMP/GxP-compliant continuous monitoring."
-                    products={(DB.cms as any[]).filter((p: any) => p.category !== 'data_logger')} />
+                    products={DB.cms as any[] || []} />
             )}
 
             {/* ── 14. SETRA Brand ── */}
