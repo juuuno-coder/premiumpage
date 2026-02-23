@@ -30,6 +30,7 @@ const BROCHURE_FLOW = [
     { tab: 'products',      label: 'BRANDS' },
     // VAISALA
     { tab: 'vaisala',       label: 'VAISALA' },
+    { tab: 'vaisala_applications', label: 'APPLICATIONS' },
     { tab: 'humidity',      label: 'HUMIDITY' },
     { tab: 'dewpoint',      label: 'DEWPOINT' },
     { tab: 'co2',           label: 'CO₂' },
@@ -40,11 +41,14 @@ const BROCHURE_FLOW = [
     { tab: 'cms',           label: 'CMS' },
     // SETRA
     { tab: 'setra',         label: 'SETRA' },
+    { tab: 'setra_applications_sensor', label: 'APP SENSOR' },
+    { tab: 'setra_applications_solution', label: 'APP SOLUTION' },
     { tab: 'setra_visual',  label: 'DP VISUAL' },
     { tab: 'setra_sensor',  label: 'DP SENSOR' },
     { tab: 'setra_ind',     label: 'IND. PRESSURE' },
     // JUMO
     { tab: 'jumo',          label: 'JUMO' },
+    { tab: 'jumo_applications', label: 'APPLICATIONS' },
     { tab: 'jumo_temp',     label: 'TEMPERATURE' },
     { tab: 'jumo_liquid',   label: 'LIQUID ANALYSIS' },
     { tab: 'jumo_control',  label: 'CTRL & REC' },
@@ -1029,14 +1033,15 @@ function CategoryPage({
 type AppSection = { label: string; items: { title: string; desc: string; image?: string }[] }
 
 function BrandPage({
-    tab, brandKey, headline, sub, desc, logo, categories, applicationSections, onOpen
+    tab, brandKey, headline, sub, desc, logo, categories, applicationSections, onOpen, sectionIdx: initialSectionIdx
 }: {
     tab: string; brandKey: string; headline: string; sub: string; desc: string
     logo: string; categories: { tab: string; title: string; desc: string; count: number }[]
     applicationSections?: AppSection[]
     onOpen?: (p: any) => void
+    sectionIdx?: number
 }) {
-    const [sectionIdx, setSectionIdx] = useState<number>(-1) // -1 = products
+    const [sectionIdx, setSectionIdx] = useState<number>(initialSectionIdx ?? -1) // -1 = products
     const [selectedAppKey, setSelectedAppKey] = useState<string | null>(null)
     const [selectedSetraKey, setSelectedSetraKey] = useState<string | null>(null)
     const [selectedSetraSolutionKey, setSelectedSetraSolutionKey] = useState<string | null>(null)
@@ -1127,22 +1132,35 @@ function BrandPage({
                 {/* Section tabs */}
                 {applicationSections && (
                     <div className="flex flex-wrap gap-1 p-1 bg-neutral-100 rounded-xl w-fit mb-10">
-                        <button
-                            onClick={() => setSectionIdx(-1)}
+                        <Link
+                            href={`/templates/hs-tech?tab=${tab}`}
                             className={cn("px-4 py-2 rounded-lg text-[11px] font-black uppercase tracking-widest transition-all",
                                 sectionIdx === -1 ? "bg-white text-neutral-900 shadow-sm" : "text-neutral-500 hover:text-neutral-800")}
                         >
                             Products & Services
-                        </button>
-                        {applicationSections.map((sec, i) => (
-                            <button key={i}
-                                onClick={() => setSectionIdx(i)}
-                                className={cn("px-4 py-2 rounded-lg text-[11px] font-black uppercase tracking-widest transition-all",
-                                    sectionIdx === i ? "bg-white text-neutral-900 shadow-sm" : "text-neutral-500 hover:text-neutral-800")}
-                            >
-                                {sec.label}
-                            </button>
-                        ))}
+                        </Link>
+                        {applicationSections.map((sec, i) => {
+                            // Map section label to tab name
+                            let targetTab = tab;
+                            if (brandKey === 'VAISALA' && sec.label === 'Applications & Solutions') {
+                                targetTab = 'vaisala_applications';
+                            } else if (brandKey === 'SETRA' && sec.label === 'Applications & Sensor') {
+                                targetTab = 'setra_applications_sensor';
+                            } else if (brandKey === 'SETRA' && sec.label === 'Applications & Solution') {
+                                targetTab = 'setra_applications_solution';
+                            } else if (brandKey === 'JUMO' && sec.label === 'Applications & Solutions') {
+                                targetTab = 'jumo_applications';
+                            }
+                            return (
+                                <Link key={i}
+                                    href={`/templates/hs-tech?tab=${targetTab}`}
+                                    className={cn("px-4 py-2 rounded-lg text-[11px] font-black uppercase tracking-widest transition-all",
+                                        sectionIdx === i ? "bg-white text-neutral-900 shadow-sm" : "text-neutral-500 hover:text-neutral-800")}
+                                >
+                                    {sec.label}
+                                </Link>
+                            );
+                        })}
                     </div>
                 )}
 
@@ -1406,6 +1424,25 @@ function HSTechContent() {
                     onOpen={open}
                 />
             )}
+            {activeTab === 'vaisala_applications' && (
+                <BrandPage
+                    tab="vaisala_applications" brandKey="VAISALA"
+                    headline="Applications &" sub="Solutions."
+                    desc="Vaisala's measurement solutions serve critical industries worldwide — from semiconductor cleanrooms to pharmaceutical cold chains, automotive paint booths to power plant monitoring."
+                    logo="/templates/hs-tech/images/brands/vaisala.svg"
+                    categories={[]}
+                    applicationSections={[{
+                        label: 'Applications & Solutions',
+                        items: Object.entries(VAISALA_APPLICATIONS).map(([key, app]) => ({
+                            title: app.title,
+                            desc: app.shortDesc,
+                            image: app.image
+                        }))
+                    }]}
+                    sectionIdx={1}
+                    onOpen={open}
+                />
+            )}
 
             {/* ── 06-13. VAISALA Categories ── */}
             {activeTab === 'humidity' && (
@@ -1520,6 +1557,48 @@ function HSTechContent() {
                     onOpen={open}
                 />
             )}
+            {activeTab === 'setra_applications_sensor' && (
+                <BrandPage
+                    tab="setra_applications_sensor" brandKey="SETRA"
+                    headline="Applications &" sub="Sensor."
+                    desc="SETRA's precision pressure sensors serve diverse industrial and HVAC applications — from cleanroom monitoring to refrigeration systems and semiconductor processes."
+                    logo="/templates/hs-tech/images/brands/setra.svg"
+                    categories={[]}
+                    applicationSections={[{
+                        label: 'Applications & Sensor',
+                        items: [
+                            { title: 'Precise Measurement Differential Pressure', desc: 'High-accuracy differential pressure measurement for critical environments requiring ±0.25% FS precision or better, including reference laboratories and calibration facilities.' },
+                            { title: 'Air Conditioning Differential Pressure', desc: 'Monitoring supply, return, and exhaust air pressure differentials in commercial HVAC systems and air handling units for energy optimization.' },
+                            { title: 'Precision Measurement Pressure Sensor', desc: 'Absolute and gauge pressure measurement for industrial process control, leak testing, and quality assurance applications.' },
+                            { title: 'Cooling and Air Conditioning Pressure', desc: 'Refrigerant pressure monitoring in cooling systems, chiller plants, and commercial HVAC installations for performance and safety.' },
+                            { title: 'UHP Pressure Sensor', desc: 'Ultra-high purity pressure sensing for semiconductor process gas lines, cleanroom air systems, and pharmaceutical manufacturing with wetted stainless or PTFE materials.' },
+                            { title: 'Barometric Pressure Sensor', desc: 'Atmospheric reference pressure measurement for altitude compensation, weather monitoring, and environmental control systems.' },
+                        ]
+                    }]}
+                    sectionIdx={1}
+                    onOpen={open}
+                />
+            )}
+            {activeTab === 'setra_applications_solution' && (
+                <BrandPage
+                    tab="setra_applications_solution" brandKey="SETRA"
+                    headline="Applications &" sub="Solution."
+                    desc="Complete pressure monitoring solutions for critical environments — cleanrooms, hospitals, compounding pharmacies, and emissions monitoring systems."
+                    logo="/templates/hs-tech/images/brands/setra.svg"
+                    categories={[]}
+                    applicationSections={[{
+                        label: 'Applications & Solution',
+                        items: [
+                            { title: 'Setra CEMS™', desc: 'Continuous Emissions Monitoring System solution using Setra\'s precision differential pressure sensors to monitor stack flow velocity, draft, and filter pressure drop in power plants and industrial stacks.' },
+                            { title: 'Cleanroom Manufacturing', desc: 'Maintaining ISO-classified differential pressure cascades between cleanroom zones (e.g., ISO 5→ISO 7→corridor) to prevent particle ingress and ensure GMP compliance in semiconductor and pharmaceutical manufacturing.' },
+                            { title: 'Isolation & Treatment Rooms', desc: 'Negative pressure isolation rooms (airborne infection) and positive pressure protective environments in hospitals, monitored in real-time with Setra\'s visual pressure indicators to prevent cross-contamination.' },
+                            { title: 'Compounding Pharmacies', desc: 'USP <797> and <800> compliant pressure monitoring for sterile compounding suites, hazardous drug buffer rooms, and ante-rooms — ensuring proper pressure relationships at all times.' },
+                        ]
+                    }]}
+                    sectionIdx={1}
+                    onOpen={open}
+                />
+            )}
 
             {/* ── 15-17. SETRA Categories ── */}
             {activeTab === 'setra_visual' && (
@@ -1561,6 +1640,28 @@ function HSTechContent() {
                             { title: 'Aquaculture', desc: 'Continuous pH, dissolved oxygen, and conductivity monitoring for fish farming and recirculating aquaculture systems.', image: '/templates/hs-tech/images/jumo/aquaculture.jpg' },
                         ]
                     }]}
+                    onOpen={open}
+                />
+            )}
+            {activeTab === 'jumo_applications' && (
+                <BrandPage
+                    tab="jumo_applications" brandKey="JUMO"
+                    headline="Applications &" sub="Solutions."
+                    desc="JUMO's liquid analysis solutions serve critical industries — water treatment, pharmaceutical manufacturing, semiconductor processes, and aquaculture monitoring."
+                    logo="/templates/hs-tech/images/brands/jumo.svg"
+                    categories={[]}
+                    applicationSections={[{
+                        label: 'Applications & Solutions',
+                        items: [
+                            { title: 'Water & Wastewater', desc: 'pH, conductivity, and turbidity monitoring for drinking water treatment plants and effluent compliance.', image: '/templates/hs-tech/images/jumo/water_wastewater.jpg' },
+                            { title: 'Shipbuilding', desc: 'Marine-grade sensors for seawater cooling systems, ballast water treatment, and shipboard process monitoring.', image: '/templates/hs-tech/images/jumo/shipbuilding.jpg' },
+                            { title: 'Pharmaceutical & Biotechnology', desc: 'Precise liquid parameter control for sterile manufacturing, bioreactor processes, and purified water systems.', image: '/templates/hs-tech/images/jumo/pharmaceutical.jpg' },
+                            { title: 'Semiconductor & Display', desc: 'Ultra-pure water quality monitoring with high-accuracy conductivity and pH measurement for wafer cleaning and etching.', image: '/templates/hs-tech/images/jumo/semiconductor.jpg' },
+                            { title: 'Heating & Air Conditioning', desc: 'Water quality management in HVAC systems and cooling towers to prevent corrosion, scaling, and biological growth.', image: '/templates/hs-tech/images/jumo/heating.jpg' },
+                            { title: 'Aquaculture', desc: 'Continuous pH, dissolved oxygen, and conductivity monitoring for fish farming and recirculating aquaculture systems.', image: '/templates/hs-tech/images/jumo/aquaculture.jpg' },
+                        ]
+                    }]}
+                    sectionIdx={1}
                     onOpen={open}
                 />
             )}
