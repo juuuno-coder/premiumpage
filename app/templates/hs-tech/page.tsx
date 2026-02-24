@@ -1169,7 +1169,12 @@ function BrandPage({
 
                 {/* Products & Services grid */}
                 {sectionIdx === -1 && (
-                    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+                    <div className={`grid grid-cols-1 sm:grid-cols-2 ${
+                        categories.length === 3 ? 'md:grid-cols-3' :
+                        categories.length === 5 ? 'md:grid-cols-3' :
+                        categories.length <= 2 ? 'md:grid-cols-2' :
+                        'md:grid-cols-3 lg:grid-cols-4'
+                    } gap-6`}>
                         {categories.map(cat => (
                             <Link key={cat.tab} href={`/templates/hs-tech?tab=${cat.tab}`}
                                 className="group p-6 border border-neutral-200 rounded-xl bg-white hover:border-cyan-500 hover:shadow-sm transition-all">
