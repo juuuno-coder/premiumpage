@@ -1042,6 +1042,7 @@ function BrandPage({
     sectionIdx?: number
 }) {
     const [sectionIdx, setSectionIdx] = useState<number>(initialSectionIdx ?? -1) // -1 = products
+    useEffect(() => { setSectionIdx(initialSectionIdx ?? -1) }, [initialSectionIdx])
     const [selectedAppKey, setSelectedAppKey] = useState<string | null>(null)
     const [selectedSetraKey, setSelectedSetraKey] = useState<string | null>(null)
     const [selectedSetraSolutionKey, setSelectedSetraSolutionKey] = useState<string | null>(null)
