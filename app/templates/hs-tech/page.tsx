@@ -1133,9 +1133,9 @@ function BrandPage({
                 {applicationSections && (
                     <div className="flex flex-wrap gap-1 p-1 bg-neutral-100 rounded-xl w-fit mb-10">
                         <Link
-                            href={`/templates/hs-tech?tab=${tab}`}
+                            href={`/templates/hs-tech?tab=${brandKey === 'VAISALA' ? 'vaisala' : brandKey === 'SETRA' ? 'setra' : 'jumo'}`}
                             className={cn("px-4 py-2 rounded-lg text-[11px] font-black uppercase tracking-widest transition-all",
-                                sectionIdx === -1 ? "bg-white text-neutral-900 shadow-sm" : "text-neutral-500 hover:text-neutral-800")}
+                                (tab === 'vaisala' || tab === 'setra' || tab === 'jumo') ? "bg-white text-neutral-900 shadow-sm" : "text-neutral-500 hover:text-neutral-800")}
                         >
                             Products & Services
                         </Link>
@@ -1151,11 +1151,13 @@ function BrandPage({
                             } else if (brandKey === 'JUMO' && sec.label === 'Applications & Solutions') {
                                 targetTab = 'jumo_applications';
                             }
+                            // Check if this tab is active
+                            const isActive = tab === targetTab;
                             return (
                                 <Link key={i}
                                     href={`/templates/hs-tech?tab=${targetTab}`}
                                     className={cn("px-4 py-2 rounded-lg text-[11px] font-black uppercase tracking-widest transition-all",
-                                        sectionIdx === i ? "bg-white text-neutral-900 shadow-sm" : "text-neutral-500 hover:text-neutral-800")}
+                                        isActive ? "bg-white text-neutral-900 shadow-sm" : "text-neutral-500 hover:text-neutral-800")}
                                 >
                                     {sec.label}
                                 </Link>
