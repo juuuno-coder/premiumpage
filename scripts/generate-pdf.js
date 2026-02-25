@@ -119,7 +119,31 @@ async function captureScreenshot(page, url, label) {
             )
         })
         await page.waitForTimeout(500)
-        return await page.screenshot({ type: 'png' })
+
+        // 페이지 전체 높이 측정 후 viewport 확장 → 스크롤 없이 전체 내용 캡처
+        const fullHeight = await page.evaluate(() => {
+            // overflow:hidden 레이아웃도 고려해 scrollHeight vs body/html 높이 중 최댓값 사용
+            return Math.max(
+                document.body.scrollHeight,
+                document.documentElement.scrollHeight,
+                document.body.offsetHeight,
+                document.documentElement.offsetHeight
+            )
+        })
+        const currentViewport = page.viewportSize()
+        if (fullHeight > currentViewport.height) {
+            await page.setViewportSize({ width: currentViewport.width, height: fullHeight })
+            await page.waitForTimeout(300)
+        }
+
+        const screenshot = await page.screenshot({ type: 'png', fullPage: true })
+
+        // viewport 원복
+        if (fullHeight > currentViewport.height) {
+            await page.setViewportSize({ width: currentViewport.width, height: currentViewport.height })
+        }
+
+        return screenshot
     } catch (err) {
         console.warn(`  ⚠️  실패: ${label} — ${err.message}`)
         return null
