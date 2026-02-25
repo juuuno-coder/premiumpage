@@ -1,10 +1,7 @@
 'use client'
 
 import React, { Suspense } from 'react'
-import Image from 'next/image'
-import { MapPin, Phone, Mail, Clock } from 'lucide-react'
 import { motion } from 'framer-motion'
-import HSTechTabs from '../components/HSTechTabs'
 
 function ContactContent() {
     return (
@@ -35,25 +32,25 @@ function ContactContent() {
                         <div>
                             <div className="flex items-center gap-2 mb-4">
                                 <div className="w-3 h-3 bg-blue-600 rounded-sm"></div>
-                                <h2 className="text-xl font-bold text-slate-800">HS TECH 본사</h2>
+                                <h2 className="text-xl font-bold text-slate-800 dark:text-white">HS TECH Headquarters</h2>
                             </div>
 
-                            <div className="space-y-6 text-slate-600 text-sm md:text-base leading-relaxed">
+                            <div className="space-y-6 text-slate-600 dark:text-slate-400 text-sm md:text-base leading-relaxed">
                                 <div>
-                                    <h3 className="font-bold text-slate-900 mb-1">HS TECH Co.,Ltd</h3>
-                                    <p>에이치에스테크 주식회사</p>
+                                    <h3 className="font-bold text-slate-900 dark:text-white mb-1">HS TECH Co., Ltd.</h3>
                                 </div>
 
                                 <div className="space-y-1">
-                                    <p className="font-bold text-slate-900">주소</p>
-                                    <p>13493 경기도 성남시 분당구 대왕판교로 670</p>
-                                    <p>판교테크노밸리 유스페이스2 B동 4층 410호</p>
+                                    <p className="font-bold text-slate-900 dark:text-white">Address</p>
+                                    <p>Room 410, U-Space 2 Bldg. B, 4F</p>
+                                    <p>670 Daewangpangyo-ro, Bundang-gu</p>
+                                    <p>Seongnam-si, Gyeonggi-do 13493, Korea</p>
                                 </div>
 
                                 <div className="space-y-1">
-                                    <p><span className="font-bold text-slate-900 inline-block w-20">대표번호</span> 070-4346-1844</p>
-                                    <p><span className="font-bold text-slate-900 inline-block w-20">FAX</span> 031-8016-3510</p>
-                                    <p><span className="font-bold text-slate-900 inline-block w-20">E-mail</span> hs-tech@hs-tech.co.kr</p>
+                                    <p><span className="font-bold text-slate-900 dark:text-white inline-block w-20">Phone</span> 070-4346-1844</p>
+                                    <p><span className="font-bold text-slate-900 dark:text-white inline-block w-20">FAX</span> 031-8016-3510</p>
+                                    <p><span className="font-bold text-slate-900 dark:text-white inline-block w-20">E-mail</span> hs-tech@hs-tech.co.kr</p>
                                 </div>
                             </div>
                         </div>

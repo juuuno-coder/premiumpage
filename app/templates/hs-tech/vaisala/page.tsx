@@ -73,7 +73,7 @@ function VaisalaContent() {
                         </ul>
                     </div>
 
-                    <Link href="/templates/hs-tech/products/humidity">
+                    <Link href="/templates/hs-tech?tab=vaisala">
                         <button className="w-full md:w-auto px-8 py-4 bg-slate-900 hover:bg-blue-600 text-white font-bold rounded-xl transition-all flex items-center justify-center gap-2 shadow-lg hover:shadow-blue-500/20 hover:-translate-y-1">
                             Explore Products <ArrowRight className="w-5 h-5" />
                         </button>

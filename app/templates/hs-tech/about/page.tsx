@@ -2,7 +2,6 @@
 
 import React, { Suspense } from 'react'
 import Image from 'next/image'
-import HSTechTabs from '../components/HSTechTabs'
 import { motion } from 'framer-motion'
 
 const SECTORS = [
@@ -46,30 +45,29 @@ function AboutContent() {
                         <div className="w-12 h-1 bg-teal-500 mb-6"></div>
                         <h2 className="text-xs font-bold text-slate-400 uppercase tracking-[0.2em] mb-2">CEO Message</h2>
                         <span className="text-2xl font-black text-slate-900 dark:text-white leading-tight">
-                            Smart Sencing<br />Technology
+                            Smart Sensing<br />Technology
                         </span>
                     </div>
 
                     {/* Right: Content */}
                     <div className="lg:col-span-9 space-y-8">
-                        <div className="text-lg md:text-xl font-medium text-slate-700 dark:text-slate-300 leading-relaxed break-keep">
-                            <span className="text-teal-600 font-bold">HS TECH 주식회사</span>는 환경센서 전문업체로 <br className="hidden md:block" />
-                            온도, 습도, 압력 및 대기 수질 측정장비에 대한 판매, 기술지원, 교정, 설치 및 A/S를 지원하고 있습니다.
+                        <div className="text-lg md:text-xl font-medium text-slate-700 dark:text-slate-300 leading-relaxed">
+                            <span className="text-teal-600 font-bold">HS TECH Co., Ltd.</span> is a specialized environmental sensor company <br className="hidden md:block" />
+                            providing sales, technical support, calibration, installation and after-sales service for temperature, humidity, pressure, and air &amp; water quality measurement instruments.
                         </div>
 
-                        <div className="text-base text-slate-600 dark:text-slate-400 leading-8 tracking-wide space-y-6 break-keep">
+                        <div className="text-base text-slate-600 dark:text-slate-400 leading-8 tracking-wide space-y-6">
                             <p>
-                                HS TECH는 발전적인 미래에 중심 역할을 하는 센서 기반의 전문 업체가 되기 위해 최선을 다하고 있습니다.
+                                HS TECH is committed to becoming a leading sensor-based specialist that plays a pivotal role in shaping a progressive future.
                             </p>
                             <p>
-                                고객 여러분의 진심 어린 충고와 격려를 바탕으로 모든 분께 감동을 드릴 수 있는 <span className="text-slate-900 dark:text-white font-bold">HS TECH</span>가 될 것을 약속 드립니다.
+                                With the sincere feedback and encouragement of our valued customers, we promise to be an <span className="text-slate-900 dark:text-white font-bold">HS TECH</span> that delivers excellence and inspires trust.
                             </p>
                         </div>
 
                         <div className="pt-8 border-t border-slate-100 dark:border-slate-800 flex justify-end">
                             <div className="text-right">
-                                <p className="text-sm text-slate-400 mb-1">에이치에스테크 임직원 일동</p>
-                                {/* Signature or Name styling */}
+                                <p className="text-sm text-slate-400 mb-1">The HS TECH Team</p>
                                 <div className="text-xl font-black text-slate-900 dark:text-white font-serif italic">
                                     HS TECH Corp.
                                 </div>

@@ -1,79 +1,95 @@
 'use client'
 
 import React, { Suspense } from 'react'
-import Image from 'next/image'
+import { Settings, Headphones, Gauge, GraduationCap, Wrench } from 'lucide-react'
+import { motion } from 'framer-motion'
 
 const SERVICES = [
     {
         title: "Product Customization",
-        desc: "Customized products that can be used in specialized environments.",
-        image: "/hstech/support_services_full.png"
+        desc: "Customized products that can be used in specialized environments. We tailor sensor configurations and housings to match your exact process requirements.",
+        icon: Settings,
+        color: "from-cyan-500 to-blue-600"
     },
     {
         title: "Technical Support",
-        desc: "Technical consultations for the correct operation and maintenance.",
-        image: "/hstech/support_services_full.png"
+        desc: "Expert technical consultations for correct operation, installation and maintenance of all measurement instruments.",
+        icon: Headphones,
+        color: "from-blue-500 to-indigo-600"
     },
     {
         title: "Calibration & Repair",
-        desc: "Quality management of measuring instruments with accurate standard values and repair.",
-        image: "/hstech/support_services_full.png"
+        desc: "Traceable calibration services and professional repair with genuine parts, ensuring measurement accuracy and instrument longevity.",
+        icon: Gauge,
+        color: "from-teal-500 to-cyan-600"
     },
     {
         title: "Customer Training",
-        desc: "For our customers who need specialized knowledge and experience.",
-        image: "/hstech/support_services_full.png"
+        desc: "Comprehensive training programs designed for customers who need specialized knowledge in sensor operation and data analysis.",
+        icon: GraduationCap,
+        color: "from-emerald-500 to-teal-600"
     },
     {
         title: "Spare Parts",
-        desc: "Genuine original spare parts of the products which we supply.",
-        image: "/hstech/support_services_full.png"
+        desc: "Genuine original spare parts and accessories for all products we supply. Fast delivery and guaranteed compatibility.",
+        icon: Wrench,
+        color: "from-slate-500 to-slate-700"
     }
 ]
 
 function SupportContent() {
     return (
         <div className="w-full pb-20">
-            {/* 1. Page Title */}
-            <div className="bg-white border-b border-slate-200 dark:bg-slate-900 dark:border-slate-800">
-                <div className="max-w-7xl mx-auto px-6 py-8">
-                    <h1 className="text-3xl md:text-4xl font-black text-slate-900 dark:text-white uppercase tracking-tight flex items-center gap-3">
-                        고객지원 <span className="text-slate-300 dark:text-slate-600 font-light text-2xl">|</span> <span className="text-teal-600">SUPPORT & SERVICES</span>
-                    </h1>
-                </div>
+            {/* Header */}
+            <div className="pt-20 pb-12 text-center">
+                <motion.h1
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    className="text-3xl md:text-5xl font-black dark:text-white text-slate-900 mb-4 tracking-tight uppercase"
+                >
+                    Support & Services
+                </motion.h1>
+                <motion.p
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.1 }}
+                    className="text-base md:text-lg dark:text-slate-400 text-slate-600 max-w-3xl mx-auto"
+                >
+                    Comprehensive after-sales service and technical support for all our measurement solutions.
+                </motion.p>
             </div>
 
-            {/* Services Grid Section */}
+            {/* Services Grid */}
             <div className="w-full px-4 md:px-8 py-10">
-                <div className="max-w-[1600px] mx-auto">
-
-
+                <div className="max-w-[1400px] mx-auto">
                     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6">
-                        {SERVICES.map((s, idx) => (
-                            <div
-                                key={idx}
-                                className="group bg-teal-500 rounded-lg overflow-hidden flex flex-col h-[400px] md:h-[450px] shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1"
-                            >
-                                {/* Top Text Area */}
-                                <div className="p-6 text-center h-[120px] flex items-center justify-center">
-                                    <h3 className="text-white text-xl font-bold leading-tight group-hover:text-teal-100 transition-colors">
-                                        {s.title.split(' ').map((word, i) => (
-                                            <span key={i} className="block">{word}</span>
-                                        ))}
-                                    </h3>
-                                </div>
+                        {SERVICES.map((s, idx) => {
+                            const Icon = s.icon
+                            return (
+                                <motion.div
+                                    key={idx}
+                                    initial={{ opacity: 0, y: 30 }}
+                                    animate={{ opacity: 1, y: 0 }}
+                                    transition={{ delay: 0.1 * idx }}
+                                    className="group relative rounded-2xl overflow-hidden flex flex-col h-[380px] md:h-[420px] shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 border border-white/10 bg-neutral-900"
+                                >
+                                    {/* Icon Area */}
+                                    <div className={`p-8 flex flex-col items-center justify-center h-[180px] bg-gradient-to-br ${s.color}`}>
+                                        <Icon className="w-14 h-14 text-white mb-4 group-hover:scale-110 transition-transform duration-300" strokeWidth={1.5} />
+                                        <h3 className="text-white text-lg font-bold leading-tight text-center">
+                                            {s.title}
+                                        </h3>
+                                    </div>
 
-                                {/* Bottom Image Area */}
-                                <div className="flex-1 relative bg-white mx-6 mb-6 rounded-lg overflow-hidden flex items-center justify-center">
-                                    <Image
-                                        src={s.image}
-                                        alt={s.title}
-                                        fill
-                                        className="object-cover hover:scale-105 transition-transform duration-500"
-                                    />
-                                </div>
-                            </div>
-                        ))}
+                                    {/* Description Area */}
+                                    <div className="flex-1 p-6 flex items-start">
+                                        <p className="text-sm text-slate-400 leading-relaxed">
+                                            {s.desc}
+                                        </p>
+                                    </div>
+                                </motion.div>
+                            )
+                        })}
                     </div>
                 </div>
             </div>
@@ -88,4 +104,3 @@ export default function SupportPage() {
         </Suspense>
     )
 }
-

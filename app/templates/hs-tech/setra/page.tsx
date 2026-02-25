@@ -69,7 +69,7 @@ function SetraContent() {
                         ))}
                     </ul>
 
-                    <Link href="/templates/hs-tech/products/setra_diff">
+                    <Link href="/templates/hs-tech?tab=setra&category=setra">
                         <button className="flex items-center gap-2 text-blue-600 font-bold hover:gap-4 transition-all mt-4">
                             View Products <ArrowRight className="w-5 h-5" />
                         </button>
