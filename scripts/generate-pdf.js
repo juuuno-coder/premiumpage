@@ -224,7 +224,7 @@ async function generateHSTechPDF(timestamp) {
     console.log('\n🚀 HS-TECH 카탈로그 PDF 생성 시작')
     console.log(`   총 ${HS_TECH_PAGES.length}페이지 캡처 예정\n`)
 
-    const browser = await chromium.launch({ headless: true })
+    const browser = await chromium.launch({ headless: true, args: ['--disable-cache'] })
     const page = await browser.newPage()
     await page.setViewportSize({ width: 1440, height: 900 })
 
@@ -257,7 +257,7 @@ async function generateGentopPDF(timestamp) {
     console.log('\n🚀 GENTOP 카탈로그 PDF 생성 시작')
     console.log(`   총 ${GENTOP_PAGES.length}페이지 캡처 예정\n`)
 
-    const browser = await chromium.launch({ headless: true })
+    const browser = await chromium.launch({ headless: true, args: ['--disable-cache'] })
     const page = await browser.newPage()
     await page.setViewportSize({ width: 1440, height: 900 })
     await page.emulateMedia({ colorScheme: 'dark' })
@@ -288,7 +288,7 @@ async function generateHangseongPDF(timestamp) {
     console.log('\n🚀 항성산업사 카탈로그 PDF 생성 시작')
     console.log(`   총 ${HANGSEONG_PAGES.length}페이지 캡처 예정\n`)
 
-    const browser = await chromium.launch({ headless: true })
+    const browser = await chromium.launch({ headless: true, args: ['--disable-cache'] })
     const page = await browser.newPage()
     await page.setViewportSize({ width: 1440, height: 900 })
     await page.emulateMedia({ colorScheme: 'dark' })

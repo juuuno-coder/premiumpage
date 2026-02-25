@@ -103,14 +103,13 @@ const CatalogPage = ({
             </div>
 
             {/* Main Content */}
-            <main className="relative z-10 w-full min-h-screen">
+            <main className="relative z-10 w-full">
                 {children}
             </main>
 
-
             {/* Premium Global Footer — Contact 페이지에만 표시 */}
             {!hideUI && currentTab === 'contact' && (
-                <footer className="relative z-10 w-full pt-16 pb-24 px-6 border-t dark:border-white/5 border-slate-200 bg-slate-50 dark:bg-slate-950/50 mt-12">
+                <footer className="relative z-10 w-full pt-10 pb-16 px-6 border-t dark:border-white/5 border-slate-200 bg-slate-50 dark:bg-slate-950/50 mt-4">
                     <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-12 text-center md:text-left">
                         <div className="md:col-span-2 space-y-6">
                             <h3 className="text-2xl font-black dark:text-white text-slate-900 tracking-tighter">HANG SEONG</h3>
