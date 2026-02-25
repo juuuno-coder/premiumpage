@@ -1,7 +1,7 @@
 'use client'
 
 import React, { Suspense } from 'react'
-import { ArrowRight, FileText, Download, ChevronRight, ChevronLeft, Globe, CheckCircle2, Phone, Mail, MapPin, Factory, ShieldCheck, Cog } from 'lucide-react'
+import { ArrowRight, FileText, Download, ChevronRight, Globe, CheckCircle2, Phone, Mail, MapPin, Factory, ShieldCheck, Cog } from 'lucide-react'
 import Link from 'next/link'
 import Image from 'next/image'
 import { useRouter, useSearchParams } from 'next/navigation'
@@ -107,39 +107,6 @@ const CatalogPage = ({
                 {children}
             </main>
 
-            {/* Smart Floating Dock Navigator (Only visible on Main Tabs) */}
-            {isMainTab && !hideUI && (
-                <div className="fixed bottom-8 right-8 z-[50] flex items-center gap-4">
-                    <div className="hidden md:flex bg-slate-900/60 backdrop-blur-xl border border-white/10 px-4 py-2 rounded-full text-xs font-mono text-slate-400 shadow-[0_20px_50px_rgba(0,0,0,0.5)]">
-                        <span className="text-blue-400 mr-2">{String(safeIndex + 1).padStart(2, '0')}</span>
-                        <span className="opacity-30">/</span>
-                        <span className="ml-2">{String(PAGE_FLOW.length).padStart(2, '0')}</span>
-                    </div>
-
-                    <div className="flex bg-slate-900/60 backdrop-blur-xl border border-white/10 rounded-full p-1 shadow-[0_20px_50px_rgba(0,0,0,0.5)] gap-1">
-                        <Link
-                            href={prevPage ? `/templates/hangseong?tab=${prevPage.id}` : '#'}
-                            className={cn(
-                                "w-10 h-10 flex items-center justify-center rounded-full transition-all duration-300 hover:bg-blue-500/20 hover:text-blue-400 border border-transparent hover:border-blue-500/50",
-                                !prevPage && "opacity-20 pointer-events-none"
-                            )}
-                            aria-label="Previous Page"
-                        >
-                            <ChevronLeft className="w-5 h-5" />
-                        </Link>
-                        <Link
-                            href={nextPage ? `/templates/hangseong?tab=${nextPage.id}` : '#'}
-                            className={cn(
-                                "w-10 h-10 flex items-center justify-center rounded-full transition-all duration-300 hover:bg-blue-500/20 hover:text-blue-400 border border-transparent hover:border-blue-500/50",
-                                !nextPage && "opacity-20 pointer-events-none"
-                            )}
-                            aria-label="Next Page"
-                        >
-                            <ChevronRight className="w-5 h-5" />
-                        </Link>
-                    </div>
-                </div>
-            )}
 
             {/* Premium Global Footer */}
             {!hideUI && (
