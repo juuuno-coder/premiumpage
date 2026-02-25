@@ -19,7 +19,7 @@ function HangseongLayoutContent({ children }: { children: React.ReactNode }) {
     // Set meta tags for SEO and Open Graph
     useEffect(() => {
         // Update document title
-        document.title = '항성산업사 (hangseong)'
+        document.title = 'Hangseong Industrial Co., Ltd.'
 
         // Helper function to set or update meta tags
         const setMetaTag = (property: string, content: string, isProperty = true) => {
@@ -35,10 +35,10 @@ function HangseongLayoutContent({ children }: { children: React.ReactNode }) {
 
         // Basic SEO
         setMetaTag('description', 'Challenging To The Future', false)
-        setMetaTag('keywords', '항성산업사, Hangseong, 자동차 부품, HVAC Motor, Blower Motor', false)
+        setMetaTag('keywords', 'Hangseong Industrial, automotive parts, DC motor case, HVAC motor, blower motor, precision press', false)
 
         // Open Graph
-        setMetaTag('og:title', '항성산업사 (hangseong)')
+        setMetaTag('og:title', 'Hangseong Industrial Co., Ltd.')
         setMetaTag('og:description', 'Challenging To The Future')
         setMetaTag('og:image', 'https://hangseong.premiumpage.kr/templates/hangseong/images/slider_01.PNG')
         setMetaTag('og:url', 'https://hangseong.premiumpage.kr')
@@ -47,7 +47,7 @@ function HangseongLayoutContent({ children }: { children: React.ReactNode }) {
 
         // Twitter Card
         setMetaTag('twitter:card', 'summary_large_image', false)
-        setMetaTag('twitter:title', '항성산업사 (hangseong)', false)
+        setMetaTag('twitter:title', 'Hangseong Industrial Co., Ltd.', false)
         setMetaTag('twitter:description', 'Challenging To The Future', false)
         setMetaTag('twitter:image', 'https://hangseong.premiumpage.kr/templates/hangseong/images/slider_01.PNG', false)
     }, [])

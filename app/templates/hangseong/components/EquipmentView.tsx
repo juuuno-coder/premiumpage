@@ -41,7 +41,7 @@ const TESTING_TABLE_DATA = [
         id: '1',
         name: '3-D Coordinate Measuring Machine',
         model: 'Duckin HERO785S',
-        spec: 'Area: 500*500*400mm | Res: 0.1㎛ | Tol: 1.9+L/300㎛',
+        spec: 'Area: 500*500*400mm | Res: 0.1μm | Tol: 1.9+L/300μm',
         qty: '1'
     },
     {

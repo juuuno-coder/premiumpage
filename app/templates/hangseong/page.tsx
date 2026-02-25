@@ -148,14 +148,14 @@ const CatalogPage = ({
                         <div className="md:col-span-2 space-y-6">
                             <h3 className="text-2xl font-black dark:text-white text-slate-900 tracking-tighter">HANG SEONG</h3>
                             <p className="text-sm dark:text-slate-400 text-slate-600 max-w-sm leading-relaxed mx-auto md:mx-0">
-                                항성공업(주)는 40년 이상의 축적된 기술력을 바탕으로 자동차용 모터 부품 산업을 선도하는 정밀 프레스 전문 기업입니다.
+                                HANGSEONG INDUSTRIAL CO., LTD. is a precision press manufacturer with over 40 years of accumulated technology, leading the automotive motor components industry.
                             </p>
                         </div>
 
                         <div className="space-y-4">
                             <h4 className="text-xs font-bold uppercase tracking-widest text-blue-500">Contact</h4>
                             <div className="space-y-2 text-sm dark:text-slate-300 text-slate-700 font-medium">
-                                <p className="flex items-center justify-center md:justify-start gap-2"><Phone className="w-4 h-4 text-blue-500" /> 051-972-9935 ~ 6</p>
+                                <p className="flex items-center justify-center md:justify-start gap-2"><Phone className="w-4 h-4 text-blue-500" /> +82 51-972-9935~6</p>
                                 <p className="flex items-center justify-center md:justify-start gap-2"><Mail className="w-4 h-4 text-blue-500" /> hs@hangseong.co.kr</p>
                             </div>
                         </div>
@@ -164,7 +164,7 @@ const CatalogPage = ({
                             <h4 className="text-xs font-bold uppercase tracking-widest text-blue-500">Address</h4>
                             <p className="text-sm dark:text-slate-300 text-slate-700 leading-relaxed font-medium">
                                 <MapPin className="w-4 h-4 text-blue-500 inline mr-2" />
-                                부산광역시 강서구 지사동 1200-1
+                                1200-1 Jisa-dong, Gangseo-gu, Busan, South Korea
                             </p>
                         </div>
                     </div>
@@ -387,14 +387,14 @@ function HangseongContent() {
                             transition={{ delay: 0.1 }}
                             className="text-xl dark:text-slate-400 text-slate-600 mb-12 max-w-2xl"
                         >
-                            견적 문의, 공장 방문 및 파트너십 상담을 환영합니다.
+                            We welcome inquiries for quotes, factory visits, and partnership consultations.
                         </motion.p>
 
                         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 w-full">
                             <div className="dark:bg-slate-900/50 bg-slate-50 p-8 rounded-3xl border dark:border-white/5 border-slate-200 hover:border-blue-500/50 transition-all group shadow-xl">
                                 <Phone className="w-8 h-8 text-blue-500 mx-auto mb-4 group-hover:scale-110 transition-transform" />
                                 <h3 className="text-lg font-bold dark:text-white text-slate-900 mb-2">Telephone</h3>
-                                <p className="dark:text-slate-400 text-slate-600 font-medium">051-972-9935 ~ 6</p>
+                                <p className="dark:text-slate-400 text-slate-600 font-medium">+82 51-972-9935~6</p>
                             </div>
                             <div className="dark:bg-slate-900/50 bg-slate-50 p-8 rounded-3xl border dark:border-white/5 border-slate-200 hover:border-blue-500/50 transition-all group shadow-xl">
                                 <Mail className="w-8 h-8 text-blue-500 mx-auto mb-4 group-hover:scale-110 transition-transform" />
@@ -404,7 +404,7 @@ function HangseongContent() {
                             <div className="dark:bg-slate-900/50 bg-slate-50 p-8 rounded-3xl border dark:border-white/5 border-slate-200 hover:border-blue-500/50 transition-all group shadow-xl">
                                 <MapPin className="w-8 h-8 text-blue-500 mx-auto mb-4 group-hover:scale-110 transition-transform" />
                                 <h3 className="text-lg font-bold dark:text-white text-slate-900 mb-2">Location</h3>
-                                <p className="dark:text-slate-400 text-slate-600 font-medium text-sm leading-relaxed">부산광역시 강서구 지사동 1200-1</p>
+                                <p className="dark:text-slate-400 text-slate-600 font-medium text-sm leading-relaxed">1200-1 Jisa-dong, Gangseo-gu, Busan, South Korea</p>
                             </div>
                         </div>
                     </div>

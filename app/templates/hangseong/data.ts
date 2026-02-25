@@ -287,7 +287,7 @@ export const DB: Record<string, any[]> = {
             specs: [
                 {
                     label: 'Purpose',
-                    value: '• Automobile condenser DC-MOTOR case & blower DC motor\n• Out Diameter : Ø 98 ~ 82 mm, Ø 30~52㎜\n• Length : 36 ~ 69 mm'
+                    value: '• Automobile condenser DC-MOTOR case & blower DC motor\n• Out Diameter : Ø 98 ~ 82 mm, Ø 30~52mm\n• Length : 36 ~ 69 mm'
                 },
                 {
                     label: 'Feature',
