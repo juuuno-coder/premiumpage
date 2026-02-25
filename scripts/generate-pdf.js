@@ -80,22 +80,31 @@ const GENTOP_PAGES = [
 
 const HANGSEONG_BASE = 'https://hangseong.premiumpage.kr/templates/hangseong'
 const HANGSEONG_PAGES = [
-    { url: '?tab=cover',                              label: '01 · HOME' },
-    { url: '?category=about&tab=greeting',            label: '02 · CEO Message' },
-    { url: '?category=about&tab=history',             label: '03 · History' },
-    { url: '?category=about&tab=summary',             label: '04 · Summary' },
-    { url: '?category=about&tab=organization',        label: '05 · Organization' },
-    { url: '?category=about&tab=vision',              label: '06 · Vision' },
-    { url: '?category=about&tab=location',            label: '07 · Directions' },
-    { url: '?tab=products',                           label: '08 · Products Overview' },
-    { url: '?category=products&tab=hvac',             label: '09 · HVAC Blower Motors' },
-    { url: '?category=products&tab=all_in_one',       label: '10 · All-in-one Motors' },
-    { url: '?category=products&tab=other_press',      label: '11 · Other Press Products' },
-    { url: '?category=qm&tab=quality_mgmt',           label: '12 · Quality Management' },
-    { url: '?category=equipment&tab=equipment_status',label: '13 · Equipment Status' },
-    { url: '?category=reliability&tab=process_chart', label: '14 · Process Chart' },
-    { url: '?category=reliability&tab=certification', label: '15 · Certification' },
-    { url: '?category=support&tab=contact',           label: '16 · Contact Us' },
+    { url: '?tab=cover',                                                    label: '01 · HOME' },
+    { url: '?tab=menu',                                                     label: '02 · MENU' },
+    { url: '?category=about&tab=greeting',                                  label: '03 · CEO Message' },
+    { url: '?category=about&tab=history',                                   label: '04 · History' },
+    { url: '?category=about&tab=summary',                                   label: '05 · Summary' },
+    { url: '?category=about&tab=organization',                              label: '06 · Organization' },
+    { url: '?category=about&tab=vision',                                    label: '07 · Vision' },
+    { url: '?category=about&tab=location',                                  label: '08 · Directions' },
+    { url: '?tab=products',                                                 label: '09 · Products Overview' },
+    { url: '?category=products&tab=hvac',                                   label: '10 · HVAC Blower Motors' },
+    { url: '?category=products&tab=hvac&product=hvac_case_01',              label: '11 · HVAC Motor Case' },
+    { url: '?category=products&tab=hvac&product=hvac_cover_02',             label: '12 · HVAC Motor Cover' },
+    { url: '?category=products&tab=hvac&product=hvac_bracket_03',           label: '13 · HVAC Bracket' },
+    { url: '?category=products&tab=hvac&product=hvac_core_04',              label: '14 · HVAC Core' },
+    { url: '?category=products&tab=all_in_one',                             label: '15 · All-in-one Motors' },
+    { url: '?category=products&tab=all_in_one&product=cooling_case_01',     label: '16 · Cooling Case' },
+    { url: '?category=products&tab=all_in_one&product=cooling_bracket_01',  label: '17 · Cooling Bracket' },
+    { url: '?category=products&tab=other_press',                            label: '18 · Other Press Products' },
+    { url: '?category=products&tab=other_press&product=mount_bracket_01',   label: '19 · Mount Bracket' },
+    { url: '?category=products&tab=other_press&product=trunk_bonnet_01',    label: '20 · Trunk Bonnet' },
+    { url: '?category=qm&tab=quality_mgmt',                                 label: '21 · Quality Management' },
+    { url: '?category=equipment&tab=equipment_status',                      label: '22 · Equipment Status' },
+    { url: '?category=reliability&tab=process_chart',                       label: '23 · Process Chart' },
+    { url: '?category=reliability&tab=certification',                       label: '24 · Certification' },
+    { url: '?category=support&tab=contact',                                 label: '25 · Contact Us' },
 ]
 
 // ──────────────────────────────────────
@@ -121,14 +130,14 @@ async function captureScreenshot(page, url, label) {
         await page.waitForTimeout(500)
 
         // 페이지 전체 높이 측정 후 viewport 확장 → 스크롤 없이 전체 내용 캡처
+        // main 요소도 포함: 항성산업사처럼 root가 overflow:hidden이어도 실제 내용 높이 측정 가능
         const fullHeight = await page.evaluate(() => {
-            // overflow:hidden 레이아웃도 고려해 scrollHeight vs body/html 높이 중 최댓값 사용
-            return Math.max(
-                document.body.scrollHeight,
-                document.documentElement.scrollHeight,
-                document.body.offsetHeight,
-                document.documentElement.offsetHeight
-            )
+            const candidates = [
+                document.body,
+                document.documentElement,
+                ...Array.from(document.querySelectorAll('main')),
+            ]
+            return Math.max(...candidates.map(el => el.scrollHeight))
         })
         const currentViewport = page.viewportSize()
         if (fullHeight > currentViewport.height) {
