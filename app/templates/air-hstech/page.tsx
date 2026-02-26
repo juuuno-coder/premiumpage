@@ -1,6 +1,6 @@
 'use client'
 
-import { Suspense, useEffect, useCallback } from 'react'
+import { Suspense, useState, useEffect, useCallback } from 'react'
 import { useSearchParams, useRouter } from 'next/navigation'
 import { motion, AnimatePresence } from 'framer-motion'
 import Image from 'next/image'
@@ -431,103 +431,104 @@ function OutdoorUnitPage() {
     )
 }
 
-// ─── Product Detail Modal ─────────────────────────────────────────────────────
-function ProductDetailModal({ productId, onClose }: { productId: string; onClose: () => void }) {
-    const product = getProduct(productId)
-
+// ─── Image Lightbox ───────────────────────────────────────────────────────────
+function ImageLightbox({ src, alt, onClose }: { src: string; alt: string; onClose: () => void }) {
     useEffect(() => {
-        const handler = (e: KeyboardEvent) => {
-            if (e.key === 'Escape') onClose()
-        }
+        const handler = (e: KeyboardEvent) => { if (e.key === 'Escape') onClose() }
         window.addEventListener('keydown', handler)
         return () => window.removeEventListener('keydown', handler)
     }, [onClose])
 
-    if (!product) return null
     return (
         <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.2 }}
-            className="fixed inset-0 z-[100] flex items-center justify-center p-4 md:p-8"
+            className="fixed inset-0 z-[200] flex items-center justify-center bg-black/90 backdrop-blur-md"
+            onClick={onClose}
         >
-            {/* Backdrop */}
-            <div className="absolute inset-0 bg-black/70 backdrop-blur-sm" onClick={onClose} />
-
-            {/* Modal panel */}
             <motion.div
-                initial={{ opacity: 0, scale: 0.97, y: 12 }}
-                animate={{ opacity: 1, scale: 1, y: 0 }}
-                exit={{ opacity: 0, scale: 0.97 }}
+                initial={{ scale: 0.92, opacity: 0 }}
+                animate={{ scale: 1, opacity: 1 }}
+                exit={{ scale: 0.92, opacity: 0 }}
                 transition={{ duration: 0.2 }}
-                className="relative z-10 w-[80vw] max-h-[90vh] bg-[#0a0f1e] border border-white/20 flex flex-col"
+                className="relative max-w-4xl w-full mx-6"
+                onClick={(e) => e.stopPropagation()}
             >
-                {/* Corner brackets */}
-                <span className="absolute -top-px -left-px w-5 h-5 border-t-2 border-l-2 border-[#00d4ff]" />
-                <span className="absolute -top-px -right-px w-5 h-5 border-t-2 border-r-2 border-[#00d4ff]" />
-                <span className="absolute -bottom-px -left-px w-5 h-5 border-b-2 border-l-2 border-[#00d4ff]" />
-                <span className="absolute -bottom-px -right-px w-5 h-5 border-b-2 border-r-2 border-[#00d4ff]" />
-
-                {/* Sticky header with close button */}
-                <div className="flex items-center justify-between px-6 py-3 border-b border-white/10 flex-shrink-0">
-                    <div className="flex items-center gap-3">
-                        <div className="h-px w-6 bg-[#00d4ff]" />
-                        <span className="text-[#00d4ff] text-xs font-mono tracking-[0.3em] uppercase">{product.type.toUpperCase()}</span>
-                    </div>
-                    <button
-                        onClick={onClose}
-                        className="w-8 h-8 flex items-center justify-center bg-white/10 hover:bg-white/20 text-white transition-colors rounded-sm"
-                    >
-                        <X className="w-4 h-4" />
-                    </button>
-                </div>
-
-                {/* Scrollable content */}
-                <div className="overflow-y-auto flex-1 p-8 md:p-10">
-                    <div className="grid md:grid-cols-2 gap-10 items-start">
-                        {/* Image */}
-                        <div>
-                            <div className="relative h-64 md:h-80 overflow-hidden border border-white/10">
-                                <Image src={product.image} alt={product.model} fill className="object-cover" />
-                                <div className="absolute inset-0 bg-gradient-to-t from-[#0a0f1e]/50 to-transparent" />
-                            </div>
-                            {product.features && product.features.length > 0 && (
-                                <div className="mt-4 bg-white/5 border border-white/10 p-4">
-                                    <h3 className="text-[#00d4ff] font-mono text-xs tracking-wider uppercase mb-3">Key Features</h3>
-                                    <ul className="space-y-2">
-                                        {product.features.map((f, i) => (
-                                            <li key={i} className="flex items-start gap-2">
-                                                <Check className="w-4 h-4 text-[#00d4ff] flex-shrink-0 mt-0.5" />
-                                                <span className="text-gray-300 text-sm">{f}</span>
-                                            </li>
-                                        ))}
-                                    </ul>
-                                </div>
-                            )}
-                        </div>
-                        {/* Info */}
-                        <div>
-                            <div className="text-[#00d4ff] font-mono text-3xl font-bold mb-1">{product.model}</div>
-                            <div className="text-gray-400 text-sm mb-4">{product.name}</div>
-                            <p className="text-gray-300 text-sm leading-relaxed mb-8 border-l-2 border-[#00d4ff]/30 pl-4">
-                                {product.desc}
-                            </p>
-                            <div className="bg-white/5 border border-white/10 p-6">
-                                <h3 className="text-[#00d4ff] font-mono text-xs tracking-wider uppercase mb-4">Specifications</h3>
-                                <div className="space-y-0">
-                                    {product.specs.map(spec => (
-                                        <SpecRow key={spec.label} label={spec.label} value={spec.value} />
-                                    ))}
-                                    <SpecRow label="Brand" value="GENWISH" />
-                                    <SpecRow label="Manufacturer" value="HS TECH" />
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                <Image src={src} alt={alt} width={1200} height={900} className="object-contain w-full max-h-[85vh]" />
+                <button
+                    onClick={onClose}
+                    className="absolute top-3 right-3 w-8 h-8 bg-white/20 hover:bg-white/40 flex items-center justify-center transition-colors"
+                >
+                    <X className="w-4 h-4 text-white" />
+                </button>
             </motion.div>
         </motion.div>
+    )
+}
+
+// ─── Product Detail Page ──────────────────────────────────────────────────────
+function ProductDetailPage({ productId }: { productId: string }) {
+    const product = getProduct(productId)
+    const [lightboxOpen, setLightboxOpen] = useState(false)
+
+    if (!product) return null
+    return (
+        <div className="min-h-screen bg-[#0a0f1e] p-8 md:p-16">
+            <div className="max-w-5xl mx-auto">
+                <SectionHeader eng={product.type} title={product.model} subtitle={product.name} />
+                <div className="grid md:grid-cols-2 gap-10 items-start">
+                    {/* Image — click to enlarge */}
+                    <div>
+                        <div
+                            className="relative h-64 md:h-80 overflow-hidden border border-white/10 cursor-zoom-in group"
+                            onClick={() => setLightboxOpen(true)}
+                        >
+                            <Image src={product.image} alt={product.model} fill className="object-cover group-hover:scale-105 transition-transform duration-500" />
+                            <div className="absolute inset-0 bg-gradient-to-t from-[#0a0f1e]/50 to-transparent" />
+                            <div className="absolute bottom-3 right-3 text-[10px] text-white/40 font-mono tracking-wider bg-black/30 px-2 py-0.5">
+                                CLICK TO ENLARGE
+                            </div>
+                        </div>
+                        {product.features && product.features.length > 0 && (
+                            <div className="mt-4 bg-white/5 border border-white/10 p-4">
+                                <h3 className="text-[#00d4ff] font-mono text-xs tracking-wider uppercase mb-3">Key Features</h3>
+                                <ul className="space-y-2">
+                                    {product.features.map((f, i) => (
+                                        <li key={i} className="flex items-start gap-2">
+                                            <Check className="w-4 h-4 text-[#00d4ff] flex-shrink-0 mt-0.5" />
+                                            <span className="text-gray-300 text-sm">{f}</span>
+                                        </li>
+                                    ))}
+                                </ul>
+                            </div>
+                        )}
+                    </div>
+                    {/* Info */}
+                    <div>
+                        <div className="text-[#00d4ff] font-mono text-3xl font-bold mb-1">{product.model}</div>
+                        <div className="text-gray-400 text-sm mb-4">{product.name}</div>
+                        <p className="text-gray-300 text-sm leading-relaxed mb-8 border-l-2 border-[#00d4ff]/30 pl-4">
+                            {product.desc}
+                        </p>
+                        <div className="bg-white/5 border border-white/10 p-6">
+                            <h3 className="text-[#00d4ff] font-mono text-xs tracking-wider uppercase mb-4">Specifications</h3>
+                            {product.specs.map(spec => (
+                                <SpecRow key={spec.label} label={spec.label} value={spec.value} />
+                            ))}
+                            <SpecRow label="Brand" value="GENWISH" />
+                            <SpecRow label="Manufacturer" value="HS TECH" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <AnimatePresence>
+                {lightboxOpen && (
+                    <ImageLightbox src={product.image} alt={product.model} onClose={() => setLightboxOpen(false)} />
+                )}
+            </AnimatePresence>
+        </div>
     )
 }
 
@@ -863,7 +864,7 @@ function AirHSTechCatalog() {
             case 'hsv-260d':
             case 'hss-065s':
             case 'hs-024h':
-            case 'hs-220h':      return <ProductsOverviewPage onSelectProduct={navigate} />
+            case 'hs-220h':      return <ProductDetailPage productId={currentTab} />
             case 'controllers':  return <ControllersPage />
             case 'outdoor-unit': return <OutdoorUnitPage />
             case 'dc-tech':      return <DCTechPage />
@@ -915,10 +916,10 @@ function AirHSTechCatalog() {
                 </header>
             )}
 
-            {/* Page Content — product detail tabs reuse products-bg key to avoid re-animation */}
+            {/* Page Content */}
             <AnimatePresence mode="wait">
                 <motion.div
-                    key={PRODUCT_DETAIL_TABS.includes(currentTab) ? 'products-bg' : currentTab}
+                    key={currentTab}
                     initial={{ opacity: 0, y: 8 }}
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: -8 }}
@@ -941,16 +942,6 @@ function AirHSTechCatalog() {
                 </div>
             )}
 
-            {/* Product Detail Modal */}
-            <AnimatePresence>
-                {PRODUCT_DETAIL_TABS.includes(currentTab) && (
-                    <ProductDetailModal
-                        key="product-modal"
-                        productId={currentTab}
-                        onClose={() => navigate('products')}
-                    />
-                )}
-            </AnimatePresence>
         </div>
     )
 }

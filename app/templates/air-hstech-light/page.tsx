@@ -1,6 +1,6 @@
 'use client'
 
-import { Suspense, useEffect, useCallback } from 'react'
+import { Suspense, useState, useEffect, useCallback } from 'react'
 import { useSearchParams, useRouter } from 'next/navigation'
 import { motion, AnimatePresence } from 'framer-motion'
 import Image from 'next/image'
@@ -628,87 +628,102 @@ function ContactPage() {
     )
 }
 
-// ─── Product Detail Modal ─────────────────────────────────────────────────────
-function ProductDetailModal({ productId, onClose }: { productId: string; onClose: () => void }) {
-    const product = getProduct(productId)
-
+// ─── Image Lightbox ───────────────────────────────────────────────────────────
+function ImageLightbox({ src, alt, onClose }: { src: string; alt: string; onClose: () => void }) {
     useEffect(() => {
         const handler = (e: KeyboardEvent) => { if (e.key === 'Escape') onClose() }
         window.addEventListener('keydown', handler)
         return () => window.removeEventListener('keydown', handler)
     }, [onClose])
 
-    if (!product) return null
     return (
         <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.2 }}
-            className="fixed inset-0 z-[100] flex items-center justify-center p-4 md:p-8"
+            className="fixed inset-0 z-[200] flex items-center justify-center bg-black/85 backdrop-blur-md"
+            onClick={onClose}
         >
-            <div className="absolute inset-0 bg-black/50 backdrop-blur-sm" onClick={onClose} />
             <motion.div
-                initial={{ opacity: 0, scale: 0.97, y: 16 }}
-                animate={{ opacity: 1, scale: 1, y: 0 }}
-                exit={{ opacity: 0, scale: 0.97 }}
+                initial={{ scale: 0.92, opacity: 0 }}
+                animate={{ scale: 1, opacity: 1 }}
+                exit={{ scale: 0.92, opacity: 0 }}
                 transition={{ duration: 0.2 }}
-                className="relative z-10 w-[80vw] max-h-[90vh] bg-white rounded-2xl border border-neutral-200 shadow-2xl flex flex-col"
+                className="relative max-w-4xl w-full mx-6"
+                onClick={(e) => e.stopPropagation()}
             >
-                {/* Modal header */}
-                <div className="flex items-center justify-between px-8 py-4 border-b border-neutral-100 flex-shrink-0">
-                    <div>
-                        <p className="text-[10px] text-cyan-600 font-black uppercase tracking-[0.3em] mb-0.5">{product.type}</p>
-                        <h2 className="text-2xl font-black text-slate-900">{product.model}</h2>
-                    </div>
-                    <button
-                        onClick={onClose}
-                        className="p-2 hover:bg-neutral-100 rounded-lg transition-colors"
-                    >
-                        <X className="w-5 h-5 text-neutral-400" />
-                    </button>
-                </div>
-                {/* Scrollable content */}
-                <div className="overflow-y-auto flex-1 px-8 py-6">
-                    <div className="grid md:grid-cols-2 gap-10 items-start">
-                        <div>
-                            <div className="relative h-64 md:h-72 overflow-hidden rounded-xl border border-neutral-200 bg-neutral-50">
-                                <Image src={product.image} alt={product.model} fill className="object-cover" />
-                            </div>
-                            {product.features && product.features.length > 0 && (
-                                <div className="mt-4 bg-neutral-50 border border-neutral-200 rounded-xl p-4">
-                                    <h3 className="text-cyan-600 font-black text-[10px] tracking-wider uppercase mb-3">Key Features</h3>
-                                    <ul className="space-y-2">
-                                        {product.features.map((f, i) => (
-                                            <li key={i} className="flex items-start gap-2">
-                                                <Check className="w-4 h-4 text-cyan-500 flex-shrink-0 mt-0.5" />
-                                                <span className="text-slate-600 text-sm">{f}</span>
-                                            </li>
-                                        ))}
-                                    </ul>
-                                </div>
-                            )}
-                        </div>
-                        <div>
-                            <div className="text-slate-500 text-sm mb-3">{product.name}</div>
-                            <p className="text-slate-600 text-sm leading-relaxed mb-6 border-l-2 border-cyan-200 pl-4">
-                                {product.desc}
-                            </p>
-                            <div className="bg-neutral-50 border border-neutral-200 rounded-xl p-5">
-                                <h3 className="text-cyan-600 font-black text-[10px] tracking-wider uppercase mb-4">Specifications</h3>
-                                <div>
-                                    {product.specs.map(spec => (
-                                        <SpecRow key={spec.label} label={spec.label} value={spec.value} />
-                                    ))}
-                                    <SpecRow label="Brand" value="GENWISH" />
-                                    <SpecRow label="Manufacturer" value="HS TECH" />
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                <Image src={src} alt={alt} width={1200} height={900} className="object-contain w-full max-h-[85vh] rounded-xl" />
+                <button
+                    onClick={onClose}
+                    className="absolute top-3 right-3 w-9 h-9 bg-white/90 hover:bg-white rounded-full flex items-center justify-center shadow-lg transition-colors"
+                >
+                    <X className="w-4 h-4 text-slate-600" />
+                </button>
             </motion.div>
         </motion.div>
+    )
+}
+
+// ─── Product Detail Page ──────────────────────────────────────────────────────
+function ProductDetailPage({ productId }: { productId: string }) {
+    const product = getProduct(productId)
+    const [lightboxOpen, setLightboxOpen] = useState(false)
+
+    if (!product) return null
+    return (
+        <div className="min-h-screen bg-white p-8 md:p-16">
+            <div className="max-w-5xl mx-auto">
+                <SectionHeader label={product.type} title={product.model} subtitle={product.name} />
+                <div className="grid md:grid-cols-2 gap-10 items-start">
+                    {/* Image — click to enlarge */}
+                    <div>
+                        <div
+                            className="relative h-64 md:h-80 overflow-hidden rounded-xl border border-neutral-200 bg-neutral-50 cursor-zoom-in group"
+                            onClick={() => setLightboxOpen(true)}
+                        >
+                            <Image src={product.image} alt={product.model} fill className="object-cover group-hover:scale-105 transition-transform duration-500" />
+                            <div className="absolute bottom-3 right-3 text-[10px] text-slate-400 font-mono tracking-wider bg-white/80 px-2 py-0.5 rounded">
+                                CLICK TO ENLARGE
+                            </div>
+                        </div>
+                        {product.features && product.features.length > 0 && (
+                            <div className="mt-4 bg-neutral-50 border border-neutral-200 rounded-xl p-4">
+                                <h3 className="text-cyan-600 font-black text-[10px] tracking-wider uppercase mb-3">Key Features</h3>
+                                <ul className="space-y-2">
+                                    {product.features.map((f, i) => (
+                                        <li key={i} className="flex items-start gap-2">
+                                            <Check className="w-4 h-4 text-cyan-500 flex-shrink-0 mt-0.5" />
+                                            <span className="text-slate-600 text-sm">{f}</span>
+                                        </li>
+                                    ))}
+                                </ul>
+                            </div>
+                        )}
+                    </div>
+                    {/* Info */}
+                    <div>
+                        <div className="text-slate-500 text-sm mb-3">{product.name}</div>
+                        <p className="text-slate-600 text-sm leading-relaxed mb-6 border-l-2 border-cyan-200 pl-4">
+                            {product.desc}
+                        </p>
+                        <div className="bg-neutral-50 border border-neutral-200 rounded-xl p-5">
+                            <h3 className="text-cyan-600 font-black text-[10px] tracking-wider uppercase mb-4">Specifications</h3>
+                            {product.specs.map(spec => (
+                                <SpecRow key={spec.label} label={spec.label} value={spec.value} />
+                            ))}
+                            <SpecRow label="Brand" value="GENWISH" />
+                            <SpecRow label="Manufacturer" value="HS TECH" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <AnimatePresence>
+                {lightboxOpen && (
+                    <ImageLightbox src={product.image} alt={product.model} onClose={() => setLightboxOpen(false)} />
+                )}
+            </AnimatePresence>
+        </div>
     )
 }
 
@@ -781,7 +796,7 @@ function AirHSTechLightCatalog() {
             case 'hsv-260d':
             case 'hss-065s':
             case 'hs-024h':
-            case 'hs-220h':      return <ProductsOverviewPage onSelectProduct={navigate} />
+            case 'hs-220h':      return <ProductDetailPage productId={currentTab} />
             case 'controllers':  return <ControllersPage />
             case 'outdoor-unit': return <OutdoorUnitPage />
             case 'dc-tech':      return <DCTechPage />
@@ -834,7 +849,7 @@ function AirHSTechLightCatalog() {
             {/* Page Content */}
             <AnimatePresence mode="wait">
                 <motion.div
-                    key={PRODUCT_DETAIL_TABS.includes(currentTab) ? 'products-bg' : currentTab}
+                    key={currentTab}
                     initial={{ opacity: 0, y: 8 }}
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: -8 }}
@@ -847,16 +862,6 @@ function AirHSTechLightCatalog() {
             {/* Bottom-right navigator */}
             <PageNavigator currentTab={currentTab} onNavigate={navigate} />
 
-            {/* Product Detail Modal */}
-            <AnimatePresence>
-                {PRODUCT_DETAIL_TABS.includes(currentTab) && (
-                    <ProductDetailModal
-                        key="product-modal"
-                        productId={currentTab}
-                        onClose={() => navigate('products')}
-                    />
-                )}
-            </AnimatePresence>
         </div>
     )
 }
