@@ -49,10 +49,10 @@ export function middleware(request: NextRequest) {
         }
     }
 
-    // 5. 에어 HS-TECH (GENWISH / hstechco) 도메인 처리
+    // 5. 에어 HS-TECH (GENWISH / hstechco) 도메인 처리 - 라이트모드 기본
     if (hostname.includes('hstechco.premiumpage.kr')) {
         if (url.pathname === '/') {
-            const response = NextResponse.rewrite(new URL('/templates/air-hstech', request.url))
+            const response = NextResponse.rewrite(new URL('/templates/air-hstech-light', request.url))
             response.headers.set('x-template-page', 'true')
             return response
         }
