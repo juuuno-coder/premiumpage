@@ -78,6 +78,33 @@ const GENTOP_PAGES = [
     { url: '/en/contact',                           label: '28 · Contact' },
 ]
 
+const AIR_HSTECH_BASE = 'https://air-hstech.premiumpage.kr/templates/air-hstech'
+const AIR_HSTECH_PAGES = [
+    { tab: 'cover',         label: '01 · COVER' },
+    { tab: 'about',         label: '02 · ABOUT US' },
+    { tab: 'history',       label: '03 · HISTORY' },
+    { tab: 'brand',         label: '04 · BRAND' },
+    { tab: 'certifications',label: '05 · CERTIFICATIONS' },
+    { tab: 'process',       label: '06 · PROCESS' },
+    { tab: 'products',      label: '07 · PRODUCTS' },
+    { tab: 'hsd-180d',      label: '08 · HSD-180D' },
+    { tab: 'hsh-260d',      label: '09 · HSH-260D' },
+    { tab: 'hsp-180d',      label: '10 · HSP-180D' },
+    { tab: 'hsv-260d',      label: '11 · HSV-260D' },
+    { tab: 'hss-065s',      label: '12 · HSS-065S' },
+    { tab: 'hs-024h',       label: '13 · HS-024H' },
+    { tab: 'hs-220h',       label: '14 · HS-220H' },
+    { tab: 'controllers',   label: '15 · CONTROLLERS' },
+    { tab: 'outdoor-unit',  label: '16 · OUTDOOR UNIT' },
+    { tab: 'dc-tech',       label: '17 · DC TECHNOLOGY' },
+    { tab: 'non-operating', label: '18 · NON-OPERATING' },
+    { tab: 'crane',         label: '19 · CRANE' },
+    { tab: 'campingcar',    label: '20 · CAMPING CAR' },
+    { tab: 'ship',          label: '21 · SHIP' },
+    { tab: 'location',      label: '22 · LOCATION' },
+    { tab: 'contact',       label: '23 · CONTACT' },
+]
+
 const HANGSEONG_BASE = 'https://hangseong.premiumpage.kr/templates/hangseong'
 const HANGSEONG_PAGES = [
     { url: '?tab=cover',                                                    label: '01 · HOME' },
@@ -280,6 +307,37 @@ async function generateGentopPDF(timestamp) {
     return outputPath
 }
 
+async function generateAirHSTechPDF(timestamp) {
+    const outDir = path.join(__dirname, '..', 'public', 'report')
+    fs.mkdirSync(outDir, { recursive: true })
+    const outputPath = path.join(outDir, `Air-HS-TECH_Catalog_${timestamp}.pdf`)
+
+    console.log('\n🚀 에어 HS-TECH (GENWISH) 카탈로그 PDF 생성 시작')
+    console.log(`   총 ${AIR_HSTECH_PAGES.length}페이지 캡처 예정\n`)
+
+    const browser = await chromium.launch({ headless: true, args: ['--disable-cache'] })
+    const page = await browser.newPage()
+    await page.setViewportSize({ width: 1440, height: 900 })
+    await page.emulateMedia({ colorScheme: 'dark' })
+
+    const screenshots = []
+    for (const { tab, label } of AIR_HSTECH_PAGES) {
+        const url = `${AIR_HSTECH_BASE}?tab=${tab}`
+        const data = await captureScreenshot(page, url, label)
+        screenshots.push({ data, label })
+    }
+
+    await browser.close()
+
+    console.log('\n📄 PDF 생성 중...')
+    const pageCount = await screenshotsToPDF(screenshots, outputPath)
+
+    const sizeKB = Math.round(fs.statSync(outputPath).size / 1024)
+    console.log(`✅ 완료: ${outputPath}`)
+    console.log(`   ${pageCount}페이지 / ${sizeKB}KB\n`)
+    return outputPath
+}
+
 async function generateHangseongPDF(timestamp) {
     const outDir = path.join(__dirname, '..', 'public', 'report')
     fs.mkdirSync(outDir, { recursive: true })
@@ -322,8 +380,8 @@ async function generateHangseongPDF(timestamp) {
 async function main() {
     const target = process.argv[2] || 'all'
 
-    if (!['hstech', 'hangseong', 'gentop', 'all'].includes(target)) {
-        console.error('사용법: node scripts/generate-pdf.js [hstech|hangseong|gentop|all]')
+    if (!['hstech', 'hangseong', 'gentop', 'air-hstech', 'all'].includes(target)) {
+        console.error('사용법: node scripts/generate-pdf.js [hstech|hangseong|gentop|air-hstech|all]')
         process.exit(1)
     }
 
@@ -339,6 +397,9 @@ async function main() {
     }
     if (target === 'gentop' || target === 'all') {
         await generateGentopPDF(timestamp)
+    }
+    if (target === 'air-hstech' || target === 'all') {
+        await generateAirHSTechPDF(timestamp)
     }
 
     const elapsed = Math.round((Date.now() - start) / 1000)

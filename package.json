@@ -11,6 +11,7 @@
     "pdf:hstech": "node scripts/generate-pdf.js hstech",
     "pdf:hangseong": "node scripts/generate-pdf.js hangseong",
     "pdf:gentop": "node scripts/generate-pdf.js gentop",
+    "pdf:air-hstech": "node scripts/generate-pdf.js air-hstech",
     "postinstall": "prisma generate"
   },
   "dependencies": {
