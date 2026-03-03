@@ -75,6 +75,29 @@ model Project {
   @@index([userId])
 }
 
+// 계발자들 매거진 — 프로젝트 자기소개 포스트
+model VibersPost {
+  id          String   @id @default(cuid())
+  slug        String   @unique
+  projectName String
+  tagline     String
+  projectUrl  String?
+
+  // 공통 질문 답변
+  whatIsIt    String
+  whyBuilt    String
+  keyFeature  String
+  techStack   String
+  proudOf     String
+  challenge   String?
+
+  // 메타
+  category    String   @default("dev")
+  coverImage  String?
+  publishedAt DateTime @default(now())
+  issueId     String   @default("2026-03")
+}
+
 model QuoteRequest {
   id              String   @id @default(cuid())
   templateId      String

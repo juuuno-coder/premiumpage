@@ -5,6 +5,7 @@
  */
 
 import type { Creator, Article, Issue } from './types'
+import type { VibersPost } from '@prisma/client'
 
 // ─── Creators ────────────────────────────────────────────────────────────────
 // TODO: 계발자들 멤버 정보로 교체
@@ -93,4 +94,53 @@ export function getArticlesByIssue(issueId: string) {
 
 export function getArticleBySlug(slug: string) {
     return ARTICLES.find(a => a.slug === slug)
+}
+
+// ─── DB 연동 (VibersPost → Article 변환) ──────────────────────────────────────
+// 서버 컴포넌트 전용 (prisma는 서버에서만 사용 가능)
+
+function vibersPostToArticle(post: VibersPost): Article {
+    const readTime = Math.ceil(
+        (post.whatIsIt + post.whyBuilt + post.keyFeature + post.techStack + post.proudOf + (post.challenge ?? '')).length / 400
+    )
+    return {
+        slug:       post.slug,
+        issueId:    post.issueId,
+        title:      post.projectName,
+        subtitle:   post.tagline,
+        author: {
+            id:   'vibe-project',
+            name: post.projectName,
+            role: 'Vibe Project',
+        },
+        category:    post.category as Article['category'],
+        tags:        [post.category, '바이브코딩'],
+        coverImage:  post.coverImage ?? undefined,
+        readTime,
+        publishedAt: post.publishedAt.toISOString().slice(0, 10),
+        excerpt:     post.whatIsIt.slice(0, 120),
+        body: [
+            `# ${post.projectName}`,
+            `## 이 프로젝트는 무엇인가요?\n\n${post.whatIsIt}`,
+            `## 왜 만들게 됐나요?\n\n${post.whyBuilt}`,
+            `## 핵심 기능 / 가장 큰 장점\n\n${post.keyFeature}`,
+            `## 기술 스택\n\n${post.techStack}`,
+            `## 가장 자랑하고 싶은 부분\n\n${post.proudOf}`,
+            post.challenge ? `## 만들면서 어려웠던 점\n\n${post.challenge}` : '',
+        ].filter(Boolean).join('\n\n---\n\n'),
+    }
+}
+
+export async function getDBPosts(): Promise<Article[]> {
+    const { prisma } = await import('@/lib/prisma')
+    const posts = await prisma.vibersPost.findMany({
+        orderBy: { publishedAt: 'desc' },
+    })
+    return posts.map(vibersPostToArticle)
+}
+
+export async function getDBPostBySlug(slug: string): Promise<Article | null> {
+    const { prisma } = await import('@/lib/prisma')
+    const post = await prisma.vibersPost.findUnique({ where: { slug } })
+    return post ? vibersPostToArticle(post) : null
 }

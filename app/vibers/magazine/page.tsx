@@ -1,5 +1,6 @@
 import Link from 'next/link'
-import { CURRENT_ISSUE, ARTICLES, CATEGORY_LABELS } from './lib/data'
+import { CURRENT_ISSUE, ARTICLES, CATEGORY_LABELS, getDBPosts } from './lib/data'
+import type { Article } from './lib/types'
 
 // ─── Category Badge ───────────────────────────────────────────────────────────
 function CategoryBadge({ category }: { category: string }) {
@@ -12,7 +13,7 @@ function CategoryBadge({ category }: { category: string }) {
 
 // ─── Article Card ─────────────────────────────────────────────────────────────
 function ArticleCard({ article, featured = false }: {
-    article: typeof ARTICLES[0]
+    article: Article
     featured?: boolean
 }) {
     return (
@@ -64,8 +65,10 @@ function ArticleCard({ article, featured = false }: {
 }
 
 // ─── Page ─────────────────────────────────────────────────────────────────────
-export default function MagazinePage() {
-    const [featured, ...rest] = ARTICLES
+export default async function MagazinePage() {
+    const dbPosts = await getDBPosts()
+    const allArticles = [...ARTICLES, ...dbPosts]
+    const [featured, ...rest] = allArticles
 
     return (
         <div className="min-h-screen bg-[#F9F8F5] text-stone-900" style={{ fontFamily: "'Pretendard', -apple-system, sans-serif" }}>
@@ -106,7 +109,7 @@ export default function MagazinePage() {
                         <p className="text-stone-500 text-sm max-w-xs leading-relaxed md:text-right">
                             계발자들이 이번 달 만들고, 탐구하고, 발견한 것들.
                             <br />
-                            <span className="text-stone-400">{ARTICLES.length}개의 아티클</span>
+                            <span className="text-stone-400">{allArticles.length}개의 아티클</span>
                         </p>
                     </div>
                 </div>

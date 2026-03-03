@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
-import { getArticleBySlug, getArticlesByIssue, CATEGORY_LABELS, CURRENT_ISSUE } from '../lib/data'
+import { getArticleBySlug, getArticlesByIssue, getDBPostBySlug, getDBPosts, CATEGORY_LABELS, CURRENT_ISSUE } from '../lib/data'
 
 // ─── Static Params ────────────────────────────────────────────────────────────
 export async function generateStaticParams() {
@@ -11,13 +11,30 @@ export async function generateStaticParams() {
 // ─── Page ─────────────────────────────────────────────────────────────────────
 export default async function ArticlePage({ params }: { params: Promise<{ slug: string }> }) {
     const { slug } = await params
-    const article = getArticleBySlug(slug)
+    const article = getArticleBySlug(slug) ?? await getDBPostBySlug(slug)
     if (!article) notFound()
 
-    const issueArticles = getArticlesByIssue(article.issueId)
+    // 같은 이슈의 아티클 (static + DB 병합)
+    const staticArticles = getArticlesByIssue(article.issueId)
+    const dbPosts = await getDBPosts()
+    const issueArticles = [...staticArticles, ...dbPosts.filter(p => p.issueId === article.issueId)]
+
     const currentIdx = issueArticles.findIndex(a => a.slug === slug)
     const prev = currentIdx > 0 ? issueArticles[currentIdx - 1] : null
     const next = currentIdx < issueArticles.length - 1 ? issueArticles[currentIdx + 1] : null
+
+    // 마크다운 body를 간단한 HTML로 변환 (섹션 구분)
+    const bodyHtml = article.body
+        ? article.body
+            .split('\n\n---\n\n')
+            .map(section =>
+                section
+                    .replace(/^# (.+)$/m, '<h1 class="text-3xl font-black mb-6">$1</h1>')
+                    .replace(/^## (.+)$/m, '<h2 class="text-lg font-bold mb-3 mt-8 text-stone-700">$1</h2>')
+                    .replace(/\n/g, '<br />')
+            )
+            .join('<hr class="my-8 border-stone-200" />')
+        : null
 
     return (
         <div className="min-h-screen bg-[#F9F8F5] text-stone-900" style={{ fontFamily: "'Pretendard', -apple-system, sans-serif" }}>
@@ -69,12 +86,18 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
 
             {/* ── Body ── */}
             <article className="max-w-3xl mx-auto px-6 pb-16">
-                <div className="prose prose-stone max-w-none">
-                    {/* TODO: 실제 콘텐츠 렌더링 (브랜딩 자료 전달 후 MDX 또는 rich text로 교체) */}
-                    <p className="text-stone-400 text-sm py-16 text-center border border-dashed border-stone-300 rounded-lg">
-                        콘텐츠 준비 중 — 브랜딩 자료 전달 후 업데이트됩니다.
-                    </p>
-                </div>
+                {bodyHtml ? (
+                    <div
+                        className="prose prose-stone max-w-none text-stone-700 leading-relaxed"
+                        dangerouslySetInnerHTML={{ __html: bodyHtml }}
+                    />
+                ) : (
+                    <div className="prose prose-stone max-w-none">
+                        <p className="text-stone-400 text-sm py-16 text-center border border-dashed border-stone-300 rounded-lg">
+                            콘텐츠 준비 중 — 브랜딩 자료 전달 후 업데이트됩니다.
+                        </p>
+                    </div>
+                )}
             </article>
 
             {/* ── Prev / Next ── */}
